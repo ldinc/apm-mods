@@ -108,7 +108,7 @@ local function metal_generation(name)
     item.localised_name = {"item-name.apm_scrap_processed", {'item-name.apm_metal_type_' .. name}}
     item.localised_description = {"item-description.apm_scrap_processed"}
     item.icons = {
-        {icon = '__apm_resource_pack__/graphics/icons/dynamics/apm_processed_metal.png', tint = apm.lib.utils.data.tables.metal[name].tint, icon_size=64},
+        {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_processed_metal.png', tint = apm.lib.utils.data.tables.metal[name].tint, icon_size=64},
     }
     item.group = 'apm_recycling'
     item.subgroup = "apm_recycling_scrap_processed"
@@ -211,7 +211,7 @@ local function metal_generation(name)
     recipe.name = 'apm_recycling_smelting_' .. name
     recipe.localised_name = {type_name .. "-name." .. output_item.name}
     recipe.icons = {
-        {icon = '__apm_resource_pack__/graphics/icons/dynamics/apm_processed_metal.png', tint = apm.lib.utils.data.tables.metal[name].tint, icon_size=64},
+        {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_processed_metal.png', tint = apm.lib.utils.data.tables.metal[name].tint, icon_size=64},
         apm.lib.icons.dynamics.smelting,
     }
     recipe.category = apm.lib.utils.data.tables.metal[name].output_category
@@ -262,10 +262,10 @@ local function metal_generation(name)
         tech.localised_description = {"technology-description.apm_recycling_metal", {'item-name.apm_metal_type_' .. name}}
         
         tech.icons = {
-            {icon = '__apm_resource_pack__/graphics/technologies/dynamics/apm_recycling_metal.png', icon_size=128},
+            {icon = '__apm_resource_pack_ldinc__/graphics/technologies/dynamics/apm_recycling_metal.png', icon_size=128},
             {icon = apm.recycling.path.scrap, icon_size=64, tint = apm.lib.utils.data.tables.metal[name].tint, shift={-16, -16}, scale=0.5},
             {icon = apm.recycling.path.box, icon_size=64, shift={-16, -16}, scale=0.5},
-            {icon = '__apm_resource_pack__/graphics/icons/dynamics/apm_processed_metal.png', scale=0.5, tint = apm.lib.utils.data.tables.metal[name].tint, shift = {16, -16}, icon_size = 64},
+            {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_processed_metal.png', scale=0.5, tint = apm.lib.utils.data.tables.metal[name].tint, shift = {16, -16}, icon_size = 64},
         }
 
         local output_icon = apm.lib.utils.icon.get.from_item(output_item.name)

@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_energy_addon/prototypes/main/entities.lua'
 
@@ -44,7 +44,7 @@ charging_station.energy_source.usage_priority = "secondary-input"
 charging_station.animation = {}
 charging_station.animation.layers = {}
 charging_station.animation.layers[1] = {}
-charging_station.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/charging_station/charging_station_0.png"
+charging_station.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/charging_station_0.png"
 charging_station.animation.layers[1].priority="high"
 charging_station.animation.layers[1].width = 160
 charging_station.animation.layers[1].height = 128
@@ -53,7 +53,7 @@ charging_station.animation.layers[1].line_length = 5
 charging_station.animation.layers[1].shift = {0.4375, -0.28125}
 charging_station.animation.layers[1].animation_speed = 0.16666667
 charging_station.animation.layers[1].hr_version = {}
-charging_station.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/charging_station/hr_charging_station_0.png"
+charging_station.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_0.png"
 charging_station.animation.layers[1].hr_version.priority="high"
 charging_station.animation.layers[1].hr_version.width = 320
 charging_station.animation.layers[1].hr_version.height = 256
@@ -63,7 +63,7 @@ charging_station.animation.layers[1].hr_version.shift = {0.4375, -0.28125}
 charging_station.animation.layers[1].hr_version.scale = 0.5
 charging_station.animation.layers[1].hr_version.animation_speed = 0.16666667
 charging_station.animation.layers[2] = {}
-charging_station.animation.layers[2].filename = "__apm_resource_pack__/graphics/entities/charging_station/charging_station_shadow.png"
+charging_station.animation.layers[2].filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/charging_station_shadow.png"
 charging_station.animation.layers[2].priority="high"
 charging_station.animation.layers[2].draw_as_shadow = true
 charging_station.animation.layers[2].width = 160
@@ -73,7 +73,7 @@ charging_station.animation.layers[2].line_length = 5
 charging_station.animation.layers[2].shift = {0.4375, -0.28125}
 charging_station.animation.layers[2].animation_speed = 0.16666667
 charging_station.animation.layers[2].hr_version = {}
-charging_station.animation.layers[2].hr_version.filename = "__apm_resource_pack__/graphics/entities/charging_station/hr_charging_station_shadow.png"
+charging_station.animation.layers[2].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_shadow.png"
 charging_station.animation.layers[2].hr_version.priority="high"
 charging_station.animation.layers[2].hr_version.draw_as_shadow = true
 charging_station.animation.layers[2].hr_version.width = 320
@@ -86,7 +86,7 @@ charging_station.animation.layers[2].hr_version.animation_speed = 0.16666667
 charging_station.idle_animation = {}
 charging_station.idle_animation.layers = {}
 charging_station.idle_animation.layers[1] = {}
-charging_station.idle_animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/charging_station/charging_station_idle_0.png"
+charging_station.idle_animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/charging_station_idle_0.png"
 charging_station.idle_animation.layers[1].priority="high"
 charging_station.idle_animation.layers[1].width = 160
 charging_station.idle_animation.layers[1].height = 128
@@ -95,7 +95,7 @@ charging_station.idle_animation.layers[1].line_length = 5
 charging_station.idle_animation.layers[1].shift = {0.4375, -0.28125}
 charging_station.idle_animation.layers[1].animation_speed = 0.16666667
 charging_station.idle_animation.layers[1].hr_version = {}
-charging_station.idle_animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/charging_station/hr_charging_station_idle_0.png"
+charging_station.idle_animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_idle_0.png"
 charging_station.idle_animation.layers[1].hr_version.priority="high"
 charging_station.idle_animation.layers[1].hr_version.width = 320
 charging_station.idle_animation.layers[1].hr_version.height = 256

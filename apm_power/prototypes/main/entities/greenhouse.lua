@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/greenhouse.lua'
 
@@ -51,7 +51,7 @@ greenhouse.open_sound = { filename = "__base__/sound/machine-open.ogg", volume =
 greenhouse.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
 greenhouse.vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
 greenhouse.working_sound = {}
-greenhouse.working_sound.sound = {{filename = "__apm_resource_pack__/sounds/ambient/greenhouse.ogg", volume = 0.8}}
+greenhouse.working_sound.sound = {{filename = "__apm_resource_pack_ldinc__/sounds/ambient/greenhouse.ogg", volume = 0.8}}
 greenhouse.working_sound.apparent_volume = 1.5
 greenhouse.energy_usage = apm.power.constants.energy_usage.greenhouse_0
 greenhouse.module_specification = apm.power.constants.modules.greenhouse.specification_0
@@ -67,7 +67,7 @@ greenhouse.energy_source.smoke = smoke_burner
 greenhouse.animation = {}
 greenhouse.animation.layers = {}
 greenhouse.animation.layers[1] = {}
-greenhouse.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/greenhouse/greenhouse_0.png"
+greenhouse.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/greenhouse_0.png"
 greenhouse.animation.layers[1].priority="high"
 greenhouse.animation.layers[1].width = 160
 greenhouse.animation.layers[1].height = 128
@@ -76,7 +76,7 @@ greenhouse.animation.layers[1].line_length = 1
 greenhouse.animation.layers[1].shift = {0.4375, -0.28125}
 greenhouse.animation.layers[1].animation_speed = 0.5333334
 greenhouse.animation.layers[1].hr_version = {}
-greenhouse.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/greenhouse/hr_greenhouse_0.png"
+greenhouse.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/hr_greenhouse_0.png"
 greenhouse.animation.layers[1].hr_version.priority="high"
 greenhouse.animation.layers[1].hr_version.width = 320
 greenhouse.animation.layers[1].hr_version.height = 256
@@ -86,7 +86,7 @@ greenhouse.animation.layers[1].hr_version.shift = {0.4375, -0.28125}
 greenhouse.animation.layers[1].hr_version.scale = 0.5
 greenhouse.animation.layers[1].hr_version.animation_speed = 0.5333334
 greenhouse.animation.layers[2] = {}
-greenhouse.animation.layers[2].filename = "__apm_resource_pack__/graphics/entities/greenhouse/greenhouse_shadow.png"
+greenhouse.animation.layers[2].filename = "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/greenhouse_shadow.png"
 greenhouse.animation.layers[2].priority="high"
 greenhouse.animation.layers[2].draw_as_shadow = true
 greenhouse.animation.layers[2].width = 160
@@ -96,7 +96,7 @@ greenhouse.animation.layers[2].line_length = 1
 greenhouse.animation.layers[2].shift = {0.4375, -0.28125}
 greenhouse.animation.layers[2].animation_speed = 0.5333334
 greenhouse.animation.layers[2].hr_version = {}
-greenhouse.animation.layers[2].hr_version.filename = "__apm_resource_pack__/graphics/entities/greenhouse/hr_greenhouse_shadow.png"
+greenhouse.animation.layers[2].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/hr_greenhouse_shadow.png"
 greenhouse.animation.layers[2].hr_version.priority="high"
 greenhouse.animation.layers[2].hr_version.draw_as_shadow = true
 greenhouse.animation.layers[2].hr_version.width = 320
@@ -151,8 +151,8 @@ greenhouse.energy_source.burns_fluid = false
 greenhouse.energy_source.scale_fluid_usage = true
 greenhouse.energy_source.emissions_per_minute = apm.power.constants.emissions.gh_1
 greenhouse.energy_source.smoke = smoke_steam
-greenhouse.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/greenhouse/greenhouse_1.png"
-greenhouse.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/greenhouse/hr_greenhouse_1.png"
+greenhouse.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/greenhouse_1.png"
+greenhouse.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/hr_greenhouse_1.png"
 greenhouse.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
 greenhouse.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
 data:extend({greenhouse})
@@ -177,8 +177,8 @@ greenhouse.energy_source.type = 'electric'
 greenhouse.energy_source.usage_priority = "secondary-input"
 greenhouse.energy_source.drain = apm.power.constants.engery_drain.electric
 greenhouse.energy_source.emissions_per_minute = apm.power.constants.emissions.gh_2
-greenhouse.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/greenhouse/greenhouse_2.png"
-greenhouse.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/greenhouse/hr_greenhouse_2.png"
+greenhouse.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/greenhouse_2.png"
+greenhouse.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/hr_greenhouse_2.png"
 greenhouse.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler3pipepictures()
 greenhouse.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
 data:extend({greenhouse})

@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_nuclear/prototypes/main/entities/breeder_reactor.lua'
 
@@ -17,7 +17,7 @@ breeder_reactor.minable = {mining_time = 0.5, result = "apm_nuclear_breeder"}
 
 breeder_reactor.working_sound = {}
 breeder_reactor.working_sound.sound = {}
-breeder_reactor.working_sound.sound.filename = "__apm_resource_pack__/sounds/entities/breeder_working.ogg"
+breeder_reactor.working_sound.sound.filename = "__apm_resource_pack_ldinc__/sounds/entities/breeder_working.ogg"
 breeder_reactor.working_sound.sound.volume = 0.8
 breeder_reactor.working_sound.apparent_volume = 1.5
 
@@ -34,24 +34,24 @@ breeder_reactor.collision_box = {{-2.2, -2.2}, {2.2, 2.2}}
 breeder_reactor.selection_box = {{-2.5, -2.5}, {2.5, 2.5}}
 
 breeder_reactor.lower_layer_picture = {}
-breeder_reactor.lower_layer_picture.filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/breeder_reactor_pipes.png"
+breeder_reactor.lower_layer_picture.filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/breeder_reactor_pipes.png"
 breeder_reactor.lower_layer_picture.width = 156
 breeder_reactor.lower_layer_picture.height = 156
 breeder_reactor.lower_layer_picture.shift = util.by_pixel(-2, -4)
 breeder_reactor.lower_layer_picture.hr_version = {}
-breeder_reactor.lower_layer_picture.hr_version.filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/hr_breeder_reactor_pipes.png"
+breeder_reactor.lower_layer_picture.hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/hr_breeder_reactor_pipes.png"
 breeder_reactor.lower_layer_picture.hr_version.width = 320
 breeder_reactor.lower_layer_picture.hr_version.height = 316
 breeder_reactor.lower_layer_picture.hr_version.scale = 0.5
 breeder_reactor.lower_layer_picture.hr_version.shift = util.by_pixel(-1, -5)
 
 breeder_reactor.heat_lower_layer_picture = {}
-breeder_reactor.heat_lower_layer_picture.filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/breeder_reactor_pipes_hot.png"
+breeder_reactor.heat_lower_layer_picture.filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/breeder_reactor_pipes_hot.png"
 breeder_reactor.heat_lower_layer_picture.width = 156
 breeder_reactor.heat_lower_layer_picture.height = 156
 breeder_reactor.heat_lower_layer_picture.shift = util.by_pixel(-3, -4)
 breeder_reactor.heat_lower_layer_picture.hr_version = {}
-breeder_reactor.heat_lower_layer_picture.hr_version.filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/hr_breeder_reactor_pipes_hot.png"
+breeder_reactor.heat_lower_layer_picture.hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/hr_breeder_reactor_pipes_hot.png"
 breeder_reactor.heat_lower_layer_picture.hr_version.width = 320
 breeder_reactor.heat_lower_layer_picture.hr_version.height = 316
 breeder_reactor.heat_lower_layer_picture.hr_version.scale = 0.5
@@ -60,24 +60,24 @@ breeder_reactor.heat_lower_layer_picture.hr_version.shift = util.by_pixel(-0.5, 
 breeder_reactor.picture = {}
 breeder_reactor.picture.layers = {}
 breeder_reactor.picture.layers[1] = {}
-breeder_reactor.picture.layers[1].filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/breeder_reactor.png"
+breeder_reactor.picture.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/breeder_reactor.png"
 breeder_reactor.picture.layers[1].width = 240
 breeder_reactor.picture.layers[1].height = 170
 breeder_reactor.picture.layers[1].shift = {1.375, 0}
 breeder_reactor.picture.layers[1].hr_version = {}
-breeder_reactor.picture.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/hr_breeder_reactor.png"
+breeder_reactor.picture.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/hr_breeder_reactor.png"
 breeder_reactor.picture.layers[1].hr_version.width = 480
 breeder_reactor.picture.layers[1].hr_version.height = 340
 breeder_reactor.picture.layers[1].hr_version.scale = 0.5
 breeder_reactor.picture.layers[1].hr_version.shift = {1.375, 0}
 breeder_reactor.picture.layers[2] = {}
-breeder_reactor.picture.layers[2].filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/breeder_reactor_shadow.png"
+breeder_reactor.picture.layers[2].filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/breeder_reactor_shadow.png"
 breeder_reactor.picture.layers[2].width = 240
 breeder_reactor.picture.layers[2].height = 170
 breeder_reactor.picture.layers[2].shift = {1.375, 0}
 breeder_reactor.picture.layers[2].draw_as_shadow = true
 breeder_reactor.picture.layers[2].hr_version = {}
-breeder_reactor.picture.layers[2].hr_version.filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/hr_breeder_reactor_shadow.png"
+breeder_reactor.picture.layers[2].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/hr_breeder_reactor_shadow.png"
 breeder_reactor.picture.layers[2].hr_version.width = 480
 breeder_reactor.picture.layers[2].hr_version.height = 340
 breeder_reactor.picture.layers[2].hr_version.scale = 0.5
@@ -85,13 +85,13 @@ breeder_reactor.picture.layers[2].hr_version.shift = {1.375, 0}
 breeder_reactor.picture.layers[2].hr_version.draw_as_shadow = true
 
 breeder_reactor.working_light_picture = {}
-breeder_reactor.working_light_picture.filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/breeder_reactor_glow.png"
+breeder_reactor.working_light_picture.filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/breeder_reactor_glow.png"
 breeder_reactor.working_light_picture.width = 240
 breeder_reactor.working_light_picture.height = 170
 breeder_reactor.working_light_picture.shift = {1.375, 0}
 breeder_reactor.working_light_picture.blend_mode = "additive"
 breeder_reactor.working_light_picture.hr_version = {}
-breeder_reactor.working_light_picture.hr_version.filename = "__apm_resource_pack__/graphics/entities/breeder_reactor/hr_breeder_reactor_glow.png"
+breeder_reactor.working_light_picture.hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/breeder_reactor/hr_breeder_reactor_glow.png"
 breeder_reactor.working_light_picture.hr_version.width = 480
 breeder_reactor.working_light_picture.hr_version.height = 340
 breeder_reactor.working_light_picture.hr_version.scale = 0.5

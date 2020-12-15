@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/valves.lua'
 
@@ -24,28 +24,28 @@ local pipe_straight_horizontal = {
 ---------------------------------------------------------------------------------
 
 local symbol_direction_north_0 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_north_0.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_north_0.png",
     priority = "extra-high",
     width = 128,
     height = 128,
     scale = 0.5
 }
 local symbol_direction_east_0 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_east_0.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_east_0.png",
     priority = "extra-high",
     width = 128,
     height = 128,
     scale = 0.5
 }
 local symbol_direction_south_0 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_south_0.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_south_0.png",
     priority = "extra-high",
     width = 128,
     height = 128,
     scale = 0.5
 }
 local symbol_direction_west_0 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_west_0.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_west_0.png",
     priority = "extra-high",
     width = 128,
     height = 128,
@@ -56,28 +56,28 @@ local symbol_direction_west_0 = {
 ---------------------------------------------------------------------------------
 
 local symbol_direction_north_1 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_north_1.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_north_1.png",
     priority = "extra-high",
     width = 128,
     height = 128,
     scale = 0.5,
 }
 local symbol_direction_east_1 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_east_1.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_east_1.png",
     priority = "extra-high",
     width = 128,
     height = 128,
     scale = 0.5,
 }
 local symbol_direction_south_1 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_south_1.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_south_1.png",
     priority = "extra-high",
     width = 128,
     height = 128,
     scale = 0.5,
 }
 local symbol_direction_west_1 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_west_1.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_west_1.png",
     priority = "extra-high",
     width = 128,
     height = 128,
@@ -88,28 +88,28 @@ local symbol_direction_west_1 = {
 ---------------------------------------------------------------------------------
 
 local symbol_direction_north_2 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_north_2.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_north_2.png",
     priority = "extra-high",
     width = 128,
     height = 128,
     scale = 0.5,
 }
 local symbol_direction_east_2 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_east_2.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_east_2.png",
     priority = "extra-high",
     width = 128,
     height = 128,
     scale = 0.5,
 }
 local symbol_direction_south_2 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_south_2.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_south_2.png",
     priority = "extra-high",
     width = 128,
     height = 128,
     scale = 0.5,
 }
 local symbol_direction_west_2 = {
-    filename = "__apm_resource_pack__/graphics/entities/valve/symbol_west_2.png",
+    filename = "__apm_resource_pack_ldinc__/graphics/entities/valve/symbol_west_2.png",
     priority = "extra-high",
     width = 128,
     height = 128,

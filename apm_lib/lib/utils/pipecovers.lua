@@ -9,14 +9,14 @@ function apm.lib.utils.pipecovers.assembler1pipepictures()
   {
     north =
     {
-      filename = "__apm_resource_pack__/graphics/entities/pipecovers/assembling-machine-1-pipe-N.png",
+      filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/assembling-machine-1-pipe-N.png",
       priority = "extra-high",
       width = 35,
       height = 18,
       shift = util.by_pixel(2.5, 14),
       hr_version =
       {
-        filename = "__apm_resource_pack__/graphics/entities/pipecovers/hr-assembling-machine-1-pipe-N.png",
+        filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/hr-assembling-machine-1-pipe-N.png",
         priority = "extra-high",
         width = 71,
         height = 38,
@@ -26,14 +26,14 @@ function apm.lib.utils.pipecovers.assembler1pipepictures()
     },
     east =
     {
-      filename = "__apm_resource_pack__/graphics/entities/pipecovers/assembling-machine-1-pipe-E.png",
+      filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/assembling-machine-1-pipe-E.png",
       priority = "extra-high",
       width = 20,
       height = 38,
       shift = util.by_pixel(-25, 1),
       hr_version =
       {
-        filename = "__apm_resource_pack__/graphics/entities/pipecovers/hr-assembling-machine-1-pipe-E.png",
+        filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/hr-assembling-machine-1-pipe-E.png",
         priority = "extra-high",
         width = 42,
         height = 76,
@@ -43,14 +43,14 @@ function apm.lib.utils.pipecovers.assembler1pipepictures()
     },
     south =
     {
-      filename = "__apm_resource_pack__/graphics/entities/pipecovers/assembling-machine-1-pipe-S.png",
+      filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/assembling-machine-1-pipe-S.png",
       priority = "extra-high",
       width = 44,
       height = 31,
       shift = util.by_pixel(0, -31.5),
       hr_version =
       {
-        filename = "__apm_resource_pack__/graphics/entities/pipecovers/hr-assembling-machine-1-pipe-S.png",
+        filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/hr-assembling-machine-1-pipe-S.png",
         priority = "extra-high",
         width = 88,
         height = 61,
@@ -60,14 +60,14 @@ function apm.lib.utils.pipecovers.assembler1pipepictures()
     },
     west =
     {
-      filename = "__apm_resource_pack__/graphics/entities/pipecovers/assembling-machine-1-pipe-W.png",
+      filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/assembling-machine-1-pipe-W.png",
       priority = "extra-high",
       width = 19,
       height = 37,
       shift = util.by_pixel(25.5, 1.5),
       hr_version =
       {
-        filename = "__apm_resource_pack__/graphics/entities/pipecovers/hr-assembling-machine-1-pipe-W.png",
+        filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/hr-assembling-machine-1-pipe-W.png",
         priority = "extra-high",
         width = 39,
         height = 73,
@@ -223,13 +223,13 @@ function apm.lib.utils.pipecovers.assembler4pipepictures()
   {
     north =
     {
-      filename = "__apm_resource_pack__/graphics/entities/pipecovers/assembling-machine-4-pipe-N.png",
+      filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/assembling-machine-4-pipe-N.png",
       priority = "extra-high",
       width = 35,
       height = 18,
       shift = util.by_pixel(2.5, 14),
       hr_version = {
-        filename = "__apm_resource_pack__/graphics/entities/pipecovers/hr-assembling-machine-4-pipe-N.png",
+        filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/hr-assembling-machine-4-pipe-N.png",
         priority = "extra-high",
         width = 71,
         height = 38,
@@ -239,13 +239,13 @@ function apm.lib.utils.pipecovers.assembler4pipepictures()
     },
     east =
     {
-      filename = "__apm_resource_pack__/graphics/entities/pipecovers/assembling-machine-4-pipe-E.png",
+      filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/assembling-machine-4-pipe-E.png",
       priority = "extra-high",
       width = 20,
       height = 38,
       shift = util.by_pixel(-25, 1),
       hr_version = {
-        filename = "__apm_resource_pack__/graphics/entities/pipecovers/hr-assembling-machine-4-pipe-E.png",
+        filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/hr-assembling-machine-4-pipe-E.png",
         priority = "extra-high",
         width = 42,
         height = 76,
@@ -255,13 +255,13 @@ function apm.lib.utils.pipecovers.assembler4pipepictures()
     },
     south =
     {
-      filename = "__apm_resource_pack__/graphics/entities/pipecovers/assembling-machine-4-pipe-S.png",
+      filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/assembling-machine-4-pipe-S.png",
       priority = "extra-high",
       width = 44,
       height = 31,
       shift = util.by_pixel(0, -31.5),
       hr_version = {
-        filename = "__apm_resource_pack__/graphics/entities/pipecovers/hr-assembling-machine-4-pipe-S.png",
+        filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/hr-assembling-machine-4-pipe-S.png",
         priority = "extra-high",
         width = 88,
         height = 61,
@@ -271,13 +271,13 @@ function apm.lib.utils.pipecovers.assembler4pipepictures()
     },
     west =
     {
-      filename = "__apm_resource_pack__/graphics/entities/pipecovers/assembling-machine-4-pipe-W.png",
+      filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/assembling-machine-4-pipe-W.png",
       priority = "extra-high",
       width = 19,
       height = 37,
       shift = util.by_pixel(25.5, 1.5),
       hr_version = {
-        filename = "__apm_resource_pack__/graphics/entities/pipecovers/hr-assembling-machine-4-pipe-W.png",
+        filename = "__apm_resource_pack_ldinc__/graphics/entities/pipecovers/hr-assembling-machine-4-pipe-W.png",
         priority = "extra-high",
         width = 39,
         height = 73,

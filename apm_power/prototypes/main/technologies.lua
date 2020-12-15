@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/technologies.lua'
 
@@ -190,7 +190,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_coke_crushed', 'apm_charcoal_brick', 'apm_coke_brick'},
     {{"apm_industrial_science_pack", 1}},
     30, 15)
-apm.lib.utils.technology.mod.icon('apm_fuel-1', '__apm_resource_pack__/graphics/technologies/apm_fuel.png')
+apm.lib.utils.technology.mod.icon('apm_fuel-1', '__apm_resource_pack_ldinc__/graphics/technologies/apm_fuel.png')
 
 -- Fuel II
 apm.lib.utils.technology.new('apm_power',
@@ -199,7 +199,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_pyrolysis_charcoal_2', 'apm_pyrolysis_coke_2'},
     {{"apm_industrial_science_pack", 1}},
     75, 20)
-apm.lib.utils.technology.mod.icon('apm_fuel-2', '__apm_resource_pack__/graphics/technologies/apm_fuel.png')
+apm.lib.utils.technology.mod.icon('apm_fuel-2', '__apm_resource_pack_ldinc__/graphics/technologies/apm_fuel.png')
 
 -- Fuel III
 apm.lib.utils.technology.new('apm_power',
@@ -208,7 +208,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_pyrolysis_charcoal_3', 'apm_pyrolysis_coke_3'},
     {{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}},
     75, 15)
-apm.lib.utils.technology.mod.icon('apm_fuel-3', '__apm_resource_pack__/graphics/technologies/apm_fuel.png')
+apm.lib.utils.technology.mod.icon('apm_fuel-3', '__apm_resource_pack_ldinc__/graphics/technologies/apm_fuel.png')
 
 -- Fuel IV
 apm.lib.utils.technology.new('apm_power',
@@ -217,7 +217,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_pyrolysis_charcoal_4', 'apm_pyrolysis_coke_4'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}},
     75, 30)
-apm.lib.utils.technology.mod.icon('apm_fuel-4', '__apm_resource_pack__/graphics/technologies/apm_fuel.png')
+apm.lib.utils.technology.mod.icon('apm_fuel-4', '__apm_resource_pack_ldinc__/graphics/technologies/apm_fuel.png')
 
 -- Asphalt
 apm.lib.utils.technology.new('apm_power',
@@ -226,7 +226,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_asphalt_1', 'apm_asphalt_2'},
     {{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}},
     50, 20)
-apm.lib.utils.technology.mod.icon('apm_asphalt-1', '__apm_resource_pack__/graphics/technologies/apm_asphalt.png')
+apm.lib.utils.technology.mod.icon('apm_asphalt-1', '__apm_resource_pack_ldinc__/graphics/technologies/apm_asphalt.png')
 
 -- Asphalt
 apm.lib.utils.technology.new('apm_power',
@@ -235,7 +235,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_asphalt_3', 'apm_asphalt_4'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}, {"chemical-science-pack", 1}},
     50, 30)
-apm.lib.utils.technology.mod.icon('apm_asphalt-2', '__apm_resource_pack__/graphics/technologies/apm_asphalt.png')
+apm.lib.utils.technology.mod.icon('apm_asphalt-2', '__apm_resource_pack_ldinc__/graphics/technologies/apm_asphalt.png')
 
 -- Treated wood planks I
 apm.lib.utils.technology.new('apm_power',
@@ -244,7 +244,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_treated_wood_planks_1', 'apm_saw_blade_iron', 'apm_saw_blade_iron_maintenance'},
     {{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}},
     75, 15)
-apm.lib.utils.technology.mod.icon('apm_treated_wood_planks-1', '__apm_resource_pack__/graphics/technologies/apm_treated_wood_planks.png')
+apm.lib.utils.technology.mod.icon('apm_treated_wood_planks-1', '__apm_resource_pack_ldinc__/graphics/technologies/apm_treated_wood_planks.png')
 
 -- Treated wood planks II
 apm.lib.utils.technology.new('apm_power',
@@ -253,7 +253,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_treated_wood_planks_1b'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}},
     75, 15)
-apm.lib.utils.technology.mod.icon('apm_treated_wood_planks-2', '__apm_resource_pack__/graphics/technologies/apm_treated_wood_planks.png')
+apm.lib.utils.technology.mod.icon('apm_treated_wood_planks-2', '__apm_resource_pack_ldinc__/graphics/technologies/apm_treated_wood_planks.png')
 
 -- Treated wood planks III
 apm.lib.utils.technology.new('apm_power',
@@ -262,7 +262,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_treated_wood_planks_2b'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}},
     100, 30)
-apm.lib.utils.technology.mod.icon('apm_treated_wood_planks-3', '__apm_resource_pack__/graphics/technologies/apm_treated_wood_planks.png')
+apm.lib.utils.technology.mod.icon('apm_treated_wood_planks-3', '__apm_resource_pack_ldinc__/graphics/technologies/apm_treated_wood_planks.png')
 
 -- Water supply I
 apm.lib.utils.technology.new('apm_power',
@@ -505,7 +505,7 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_boiler_2'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}},
     125, 30)
-apm.lib.utils.technology.mod.icon('apm_power_boiler', '__apm_resource_pack__/graphics/technologies/apm_power_steam.png')
+apm.lib.utils.technology.mod.icon('apm_power_boiler', '__apm_resource_pack_ldinc__/graphics/technologies/apm_power_steam.png')
 
 -- Steam Engine
 apm.lib.utils.technology.new('apm_power',

@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/air_cleaner.lua'
 
@@ -74,7 +74,7 @@ air_cleaner.energy_source.smoke = smoke
 air_cleaner.animation = {}
 air_cleaner.animation.layers = {}
 air_cleaner.animation.layers[1] = {}
-air_cleaner.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/air_cleaner/air_cleaner_0.png"
+air_cleaner.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/air_cleaner/air_cleaner_0.png"
 air_cleaner.animation.layers[1].priority="high"
 air_cleaner.animation.layers[1].width = 160
 air_cleaner.animation.layers[1].height = 128
@@ -83,7 +83,7 @@ air_cleaner.animation.layers[1].line_length = 8
 air_cleaner.animation.layers[1].shift = {0.4375, -0.28125}
 air_cleaner.animation.layers[1].animation_speed = 1.0666667
 air_cleaner.animation.layers[1].hr_version = {}
-air_cleaner.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/air_cleaner/hr_air_cleaner_0.png"
+air_cleaner.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/air_cleaner/hr_air_cleaner_0.png"
 air_cleaner.animation.layers[1].hr_version.priority="high"
 air_cleaner.animation.layers[1].hr_version.width = 320
 air_cleaner.animation.layers[1].hr_version.height = 256
@@ -93,7 +93,7 @@ air_cleaner.animation.layers[1].hr_version.shift = {0.4375, -0.28125}
 air_cleaner.animation.layers[1].hr_version.scale = 0.5
 air_cleaner.animation.layers[1].hr_version.animation_speed = 1.0666667
 air_cleaner.animation.layers[2] = {}
-air_cleaner.animation.layers[2].filename = "__apm_resource_pack__/graphics/entities/air_cleaner/air_cleaner_shadow.png"
+air_cleaner.animation.layers[2].filename = "__apm_resource_pack_ldinc__/graphics/entities/air_cleaner/air_cleaner_shadow.png"
 air_cleaner.animation.layers[2].priority="high"
 air_cleaner.animation.layers[2].draw_as_shadow = true
 air_cleaner.animation.layers[2].width = 160
@@ -103,7 +103,7 @@ air_cleaner.animation.layers[2].line_length = 8
 air_cleaner.animation.layers[2].shift = {0.4375, -0.28125}
 air_cleaner.animation.layers[2].animation_speed = 1.0666667
 air_cleaner.animation.layers[2].hr_version = {}
-air_cleaner.animation.layers[2].hr_version.filename = "__apm_resource_pack__/graphics/entities/air_cleaner/hr_air_cleaner_shadow.png"
+air_cleaner.animation.layers[2].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/air_cleaner/hr_air_cleaner_shadow.png"
 air_cleaner.animation.layers[2].hr_version.priority="high"
 air_cleaner.animation.layers[2].hr_version.draw_as_shadow = true
 air_cleaner.animation.layers[2].hr_version.width = 320

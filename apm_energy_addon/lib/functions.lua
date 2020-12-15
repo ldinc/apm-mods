@@ -1,4 +1,4 @@
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_energy_addon/lib/functions.lua'
 
@@ -66,8 +66,8 @@ function apm.energy_addon.generate_electric_powered(name)
     }
     car.minable = {mining_time = 0.4, result = item.name}
     car.burner.smoke = nil
-    car.sound_no_fuel[1].filename = "__apm_resource_pack__/sounds/car/car-no-fuel-1.ogg"
-    car.working_sound.sound.filename = "__apm_resource_pack__/sounds/car/car-engine.ogg"
+    car.sound_no_fuel[1].filename = "__apm_resource_pack_ldinc__/sounds/car/car-no-fuel-1.ogg"
+    car.working_sound.sound.filename = "__apm_resource_pack_ldinc__/sounds/car/car-engine.ogg"
     car.working_sound.sound.volume = 1.0
     car.working_sound.activate_sound = nil
     car.working_sound.deactivate_sound = nil

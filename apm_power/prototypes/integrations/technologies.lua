@@ -1,5 +1,5 @@
 require ('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/integrations/technologies.lua'
 
@@ -241,7 +241,7 @@ end
 
 if mods.bobtech and apm_power_compat_bob then
 	if not mods.PyCoalTBaA then
-		apm.lib.utils.technology.mod.icon('apm_power_automation_science_pack', '__apm_resource_pack__/graphics/technologies/apm_power_bob_automation_science_pack.png')
+		apm.lib.utils.technology.mod.icon('apm_power_automation_science_pack', '__apm_resource_pack_ldinc__/graphics/technologies/apm_power_bob_automation_science_pack.png')
 	end
 end
 

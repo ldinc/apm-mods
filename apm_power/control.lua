@@ -3,10 +3,10 @@
 --
 -- ----------------------------------------------------------------------------
 local updates = require('lib.updates')
-local core =  require('__apm_lib__.lib.script.core')
-local patch_aai =  require('__apm_lib__.lib.script.patch.aai')
-local patch_angel =  require('__apm_lib__.lib.script.patch.angel')
-local offshore_pumps = require('__apm_lib__.lib.script.offshore_pump')
+local core =  require('__apm_lib_ldinc__.lib.script.core')
+local patch_aai =  require('__apm_lib_ldinc__.lib.script.patch.aai')
+local patch_angel =  require('__apm_lib_ldinc__.lib.script.patch.angel')
+local offshore_pumps = require('__apm_lib_ldinc__.lib.script.offshore_pump')
 
 -- Locals ---------------------------------------------------------------------
 --

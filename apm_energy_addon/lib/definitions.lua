@@ -1,4 +1,4 @@
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_energy_addon/lib/definitions.lua'
 
@@ -31,9 +31,9 @@ apm.energy_addon.constants.energy_usage_charging_station = '5MW'
 --
 --
 -- ----------------------------------------------------------------------------
-apm.energy_addon.icons.path.depleted_battery_overlay = '__apm_resource_pack__/graphics/icons/dynamics/apm_depleted_battery_overlay.png'
-apm.energy_addon.icons.path.rtg_decayed = '__apm_resource_pack__/graphics/icons/apm_rtg_decayed.png'
-apm.energy_addon.icons.path.electric_symbol = '__apm_resource_pack__/graphics/icons/dynamics/apm_electric_symbol.png'
+apm.energy_addon.icons.path.depleted_battery_overlay = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_depleted_battery_overlay.png'
+apm.energy_addon.icons.path.rtg_decayed = '__apm_resource_pack_ldinc__/graphics/icons/apm_rtg_decayed.png'
+apm.energy_addon.icons.path.electric_symbol = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_electric_symbol.png'
 
 -- Icons ----------------------------------------------------------------------
 --

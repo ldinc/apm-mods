@@ -199,9 +199,9 @@ function apm.lib.utils.icon.generate.fluid(tint_1, tint_2, symbol, background_ti
     end
     bg_tint.a = background_alpha
 
-    table.insert(icons,{icon = '__apm_resource_pack__/graphics/icons/dynamics/apm_fluid_drop_background.png', tint=bg_tint, icon_size=64})
-	table.insert(icons,{icon = '__apm_resource_pack__/graphics/icons/dynamics/apm_fluid_drop_inner.png', tint=tint_2, icon_size=64})
-	table.insert(icons,{icon = '__apm_resource_pack__/graphics/icons/dynamics/apm_fluid_drop_body.png', tint=tint_1, icon_size=64})
+    table.insert(icons,{icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_fluid_drop_background.png', tint=bg_tint, icon_size=64})
+	table.insert(icons,{icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_fluid_drop_inner.png', tint=tint_2, icon_size=64})
+	table.insert(icons,{icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_fluid_drop_body.png', tint=tint_1, icon_size=64})
 	if symbol then
 		table.insert(icons, symbol)
 	end

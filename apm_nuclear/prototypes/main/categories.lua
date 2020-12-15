@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_nuclear/prototypes/main/categories.lua'
 
@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-apm.lib.utils.category.create.group('apm_nuclear', '__apm_resource_pack__/graphics/categories/apm_nuclear.png', '70')
+apm.lib.utils.category.create.group('apm_nuclear', '__apm_resource_pack_ldinc__/graphics/categories/apm_nuclear.png', '70')
     apm.lib.utils.category.create.subgroup('apm_nuclear', 'apm_nuclear_ore', 'aa_b')
     apm.lib.utils.category.create.subgroup('apm_nuclear', 'apm_nuclear_chemistry', 'aa_b')
     apm.lib.utils.category.create.subgroup('apm_nuclear', 'apm_nuclear_hexafluoride', 'ab_a')

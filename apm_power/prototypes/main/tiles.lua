@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/tiles.lua'
 
@@ -197,18 +197,18 @@ data:extend(
         main =
         {
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-dummy.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-dummy.png",
             count = 1,
             size = 1
           },
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-dummy.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-dummy.png",
             count = 1,
             size = 2,
             probability = 0.39
           },
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-dummy.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-dummy.png",
             count = 1,
             size = 4,
             probability = 1
@@ -216,22 +216,22 @@ data:extend(
         },
         inner_corner =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-inner-corner.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-inner-corner.png",
           count = 16,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-inner-corner.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-inner-corner.png",
             count = 16,
             scale = 0.5
           }
         },
         inner_corner_mask =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-inner-corner-mask.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-inner-corner-mask.png",
           count = 16,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-inner-corner-mask.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-inner-corner-mask.png",
             count = 16,
             scale = 0.5
           }
@@ -239,22 +239,22 @@ data:extend(
 
         outer_corner =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-outer-corner.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-outer-corner.png",
           count = 8,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-outer-corner.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-outer-corner.png",
             count = 8,
             scale = 0.5
           }
         },
         outer_corner_mask =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-outer-corner-mask.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-outer-corner-mask.png",
           count = 8,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-outer-corner-mask.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-outer-corner-mask.png",
             count = 8,
             scale = 0.5
           }
@@ -262,22 +262,22 @@ data:extend(
 
         side =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-side.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-side.png",
           count = 16,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-side.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-side.png",
             count = 16,
             scale = 0.5
           }
         },
         side_mask =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-side-mask.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-side-mask.png",
           count = 16,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-side-mask.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-side-mask.png",
             count = 16,
             scale = 0.5
           }
@@ -285,22 +285,22 @@ data:extend(
 
         u_transition =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-u.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-u.png",
           count = 8,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-u.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-u.png",
             count = 8,
             scale = 0.5
           }
         },
         u_transition_mask =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-u-mask.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-u-mask.png",
           count = 8,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-u-mask.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-u-mask.png",
             count = 8,
             scale = 0.5
           }
@@ -308,22 +308,22 @@ data:extend(
 
         o_transition =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-o.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-o.png",
           count = 4,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-o.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-o.png",
             count = 4,
             scale = 0.5
           }
         },
         o_transition_mask =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt-o-mask.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-o-mask.png",
           count = 4,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt-o-mask.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-o-mask.png",
             count = 4,
             scale = 0.5
           }
@@ -332,11 +332,11 @@ data:extend(
 
         material_background =
         {
-          picture = "__apm_resource_pack__/graphics/tiles/asphalt/asphalt.png",
+          picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt.png",
           count = 8,
           hr_version =
           {
-            picture = "__apm_resource_pack__/graphics/tiles/asphalt/hr-asphalt.png",
+            picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt.png",
             count = 8,
             scale = 0.5
           }

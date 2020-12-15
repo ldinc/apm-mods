@@ -14,6 +14,6 @@ sound.type = "sound"
 sound.name = "alert_burner_equipment"
 sound.variations = {}
 sound.variations[1] = {}
-sound.variations[1].filename = "__apm_lib__/sounds/alerts/no_fuel.ogg"
+sound.variations[1].filename = "__apm_lib_ldinc__/sounds/alerts/no_fuel.ogg"
 sound.variations[1].volume = 0.5
 data:extend({sound})

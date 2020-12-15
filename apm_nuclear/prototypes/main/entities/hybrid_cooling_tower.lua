@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_nuclear/prototypes/main/entities/hybrid_cooling_tower.lua'
 
@@ -32,7 +32,7 @@ hybrid_cooling_tower.close_sound = { filename = "__base__/sound/machine-close.og
 hybrid_cooling_tower.vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
 hybrid_cooling_tower.working_sound = {}
 hybrid_cooling_tower.working_sound.sound = {}
-hybrid_cooling_tower.working_sound.sound.filename = "__apm_resource_pack__/sounds/entities/hybrid_cooling_tower.ogg"
+hybrid_cooling_tower.working_sound.sound.filename = "__apm_resource_pack_ldinc__/sounds/entities/hybrid_cooling_tower.ogg"
 hybrid_cooling_tower.working_sound.sound.volume = 0.8
 hybrid_cooling_tower.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 hybrid_cooling_tower.working_sound.apparent_volume = 1.5
@@ -46,7 +46,7 @@ hybrid_cooling_tower.energy_source.emissions_per_minute = 0.25
 hybrid_cooling_tower.animation = {}
 hybrid_cooling_tower.animation.layers = {}
 hybrid_cooling_tower.animation.layers[1] = {}
-hybrid_cooling_tower.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/hybrid_cooling_tower/hybrid_cooling_tower_0.png"
+hybrid_cooling_tower.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/hybrid_cooling_tower/hybrid_cooling_tower_0.png"
 hybrid_cooling_tower.animation.layers[1].priority="high"
 hybrid_cooling_tower.animation.layers[1].width = 160
 hybrid_cooling_tower.animation.layers[1].height = 128
@@ -55,7 +55,7 @@ hybrid_cooling_tower.animation.layers[1].line_length = 1
 hybrid_cooling_tower.animation.layers[1].shift = {0.4375, -0.28125}
 hybrid_cooling_tower.animation.layers[1].animation_speed = 0.53333335
 hybrid_cooling_tower.animation.layers[1].hr_version = {}
-hybrid_cooling_tower.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/hybrid_cooling_tower/hr_hybrid_cooling_tower_0.png"
+hybrid_cooling_tower.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/hybrid_cooling_tower/hr_hybrid_cooling_tower_0.png"
 hybrid_cooling_tower.animation.layers[1].hr_version.priority="high"
 hybrid_cooling_tower.animation.layers[1].hr_version.width = 320
 hybrid_cooling_tower.animation.layers[1].hr_version.height = 256
@@ -65,7 +65,7 @@ hybrid_cooling_tower.animation.layers[1].hr_version.shift = {0.4375, -0.28125}
 hybrid_cooling_tower.animation.layers[1].hr_version.scale = 0.5
 hybrid_cooling_tower.animation.layers[1].hr_version.animation_speed = 0.53333335
 hybrid_cooling_tower.animation.layers[2] = {}
-hybrid_cooling_tower.animation.layers[2].filename = "__apm_resource_pack__/graphics/entities/hybrid_cooling_tower/hybrid_cooling_tower_shadow.png"
+hybrid_cooling_tower.animation.layers[2].filename = "__apm_resource_pack_ldinc__/graphics/entities/hybrid_cooling_tower/hybrid_cooling_tower_shadow.png"
 hybrid_cooling_tower.animation.layers[2].priority="high"
 hybrid_cooling_tower.animation.layers[2].draw_as_shadow = true
 hybrid_cooling_tower.animation.layers[2].width = 160
@@ -75,7 +75,7 @@ hybrid_cooling_tower.animation.layers[2].line_length = 1
 hybrid_cooling_tower.animation.layers[2].shift = {0.4375, -0.28125}
 hybrid_cooling_tower.animation.layers[2].animation_speed = 0.53333335
 hybrid_cooling_tower.animation.layers[2].hr_version = {}
-hybrid_cooling_tower.animation.layers[2].hr_version.filename = "__apm_resource_pack__/graphics/entities/hybrid_cooling_tower/hr_hybrid_cooling_tower_shadow.png"
+hybrid_cooling_tower.animation.layers[2].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/hybrid_cooling_tower/hr_hybrid_cooling_tower_shadow.png"
 hybrid_cooling_tower.animation.layers[2].hr_version.priority="high"
 hybrid_cooling_tower.animation.layers[2].hr_version.draw_as_shadow = true
 hybrid_cooling_tower.animation.layers[2].hr_version.width = 320

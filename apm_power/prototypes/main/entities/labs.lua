@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/labs.lua'
 
@@ -71,7 +71,7 @@ lab.energy_source.smoke = smoke_burner
 lab.on_animation = {}
 lab.on_animation.layers = {}
 lab.on_animation.layers[1] = {}
-lab.on_animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/lab/lab_0.png"
+lab.on_animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/lab/lab_0.png"
 lab.on_animation.layers[1].priority="high"
 lab.on_animation.layers[1].width = 160
 lab.on_animation.layers[1].height = 128
@@ -81,7 +81,7 @@ lab.on_animation.layers[1].shift = {0.4375, -0.28125}
 lab.on_animation.layers[1].run_mode = 'forward-then-backward'
 lab.on_animation.layers[1].animation_speed = 0.5333334
 lab.on_animation.layers[1].hr_version = {}
-lab.on_animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/lab/hr_lab_0.png"
+lab.on_animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/lab/hr_lab_0.png"
 lab.on_animation.layers[1].hr_version.priority="high"
 lab.on_animation.layers[1].hr_version.width = 320
 lab.on_animation.layers[1].hr_version.height = 256
@@ -92,7 +92,7 @@ lab.on_animation.layers[1].hr_version.scale = 0.5
 lab.on_animation.layers[1].hr_version.run_mode = 'forward-then-backward'
 lab.on_animation.layers[1].hr_version.animation_speed = 0.5333334
 lab.on_animation.layers[2] = {}
-lab.on_animation.layers[2].filename = "__apm_resource_pack__/graphics/entities/lab/lab_shadow.png"
+lab.on_animation.layers[2].filename = "__apm_resource_pack_ldinc__/graphics/entities/lab/lab_shadow.png"
 lab.on_animation.layers[2].priority="high"
 lab.on_animation.layers[2].draw_as_shadow = true
 lab.on_animation.layers[2].width = 160
@@ -103,7 +103,7 @@ lab.on_animation.layers[2].shift = {0.4375, -0.28125}
 lab.on_animation.layers[2].run_mode = 'forward-then-backward'
 lab.on_animation.layers[2].animation_speed = 0.5333334
 lab.on_animation.layers[2].hr_version = {}
-lab.on_animation.layers[2].hr_version.filename = "__apm_resource_pack__/graphics/entities/lab/hr_lab_shadow.png"
+lab.on_animation.layers[2].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/lab/hr_lab_shadow.png"
 lab.on_animation.layers[2].hr_version.priority="high"
 lab.on_animation.layers[2].hr_version.draw_as_shadow = true
 lab.on_animation.layers[2].hr_version.width = 320
@@ -166,8 +166,8 @@ lab.energy_source.burns_fluid = false
 lab.energy_source.scale_fluid_usage = true
 lab.energy_source.emissions_per_minute = apm.power.constants.emissions.lab_1
 lab.energy_source.smoke = smoke_steam
-lab.on_animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/lab/lab_1.png"
-lab.on_animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/lab/hr_lab_1.png"
+lab.on_animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/lab/lab_1.png"
+lab.on_animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/lab/hr_lab_1.png"
 lab.off_animation = table.deepcopy(lab.on_animation)
 lab.off_animation.layers[1].frame_count = 1
 lab.off_animation.layers[1].hr_version.frame_count = 1

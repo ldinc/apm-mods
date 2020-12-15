@@ -15,4 +15,4 @@ apm.lib.utils.category.create.subgroup('signals', 'apm_signals', 'za_a')
 --
 --
 -- ----------------------------------------------------------------------------
-apm.lib.utils.category.create.group('apm_other', '__apm_resource_pack__/graphics/categories/apm_other.png', 'z-zz')
+apm.lib.utils.category.create.group('apm_other', '__apm_resource_pack_ldinc__/graphics/categories/apm_other.png', 'z-zz')

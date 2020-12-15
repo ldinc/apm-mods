@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/transport_belts.lua'
 
@@ -17,14 +17,14 @@ transport_belt.minable = {mining_time = 0.1, result = "apm_basic_transport_belt"
 transport_belt.max_health = 100
 transport_belt.belt_animation_set = {}
 transport_belt.belt_animation_set.animation_set = {}
-transport_belt.belt_animation_set.animation_set.filename = "__apm_resource_pack__/graphics/entities/basic_transport_belt/basic_transport_belt.png"
+transport_belt.belt_animation_set.animation_set.filename = "__apm_resource_pack_ldinc__/graphics/entities/basic_transport_belt/basic_transport_belt.png"
 transport_belt.belt_animation_set.animation_set.priority = "extra-high"
 transport_belt.belt_animation_set.animation_set.width = 64
 transport_belt.belt_animation_set.animation_set.height = 64
 transport_belt.belt_animation_set.animation_set.frame_count = 16
 transport_belt.belt_animation_set.animation_set.direction_count = 20
 transport_belt.belt_animation_set.animation_set.hr_version = {}
-transport_belt.belt_animation_set.animation_set.hr_version.filename = "__apm_resource_pack__/graphics/entities/basic_transport_belt/hr_basic_transport_belt.png"
+transport_belt.belt_animation_set.animation_set.hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/basic_transport_belt/hr_basic_transport_belt.png"
 transport_belt.belt_animation_set.animation_set.hr_version.priority = "extra-high"
 transport_belt.belt_animation_set.animation_set.hr_version.width = 128
 transport_belt.belt_animation_set.animation_set.hr_version.height = 128

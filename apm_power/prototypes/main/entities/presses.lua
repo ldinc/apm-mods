@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/presses.lua'
 
@@ -53,7 +53,7 @@ press.vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg"
 press.working_sound = {}
 press.working_sound.sound = {}
 press.working_sound.sound.filename = "__base__/sound/assembling-machine-t1-1.ogg"
---press.working_sound.sound.filename = "__apm_resource_pack__/sounds/entities/press.ogg"
+--press.working_sound.sound.filename = "__apm_resource_pack_ldinc__/sounds/entities/press.ogg"
 press.working_sound.sound.volume = 0.8
 press.working_sound.idle_sound = {} 
 press.working_sound.idle_sound.filename = "__base__/sound/idle1.ogg"
@@ -73,7 +73,7 @@ press.energy_source.smoke = smoke_burner
 press.animation = {}
 press.animation.layers = {}
 press.animation.layers[1] = {}
-press.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/press/press_0.png"
+press.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/press/press_0.png"
 press.animation.layers[1].priority="high"
 press.animation.layers[1].width = 160
 press.animation.layers[1].height = 128
@@ -82,7 +82,7 @@ press.animation.layers[1].line_length = 8
 press.animation.layers[1].shift = {0.4375, -0.28125}
 press.animation.layers[1].animation_speed = 1.0666667
 press.animation.layers[1].hr_version = {}
-press.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/press/hr_press_0.png"
+press.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/press/hr_press_0.png"
 press.animation.layers[1].hr_version.priority="high"
 press.animation.layers[1].hr_version.width = 320
 press.animation.layers[1].hr_version.height = 256
@@ -92,7 +92,7 @@ press.animation.layers[1].hr_version.shift = {0.4375, -0.28125}
 press.animation.layers[1].hr_version.scale = 0.5
 press.animation.layers[1].hr_version.animation_speed = 1.0666667
 press.animation.layers[2] = {}
-press.animation.layers[2].filename = "__apm_resource_pack__/graphics/entities/press/press_shadow.png"
+press.animation.layers[2].filename = "__apm_resource_pack_ldinc__/graphics/entities/press/press_shadow.png"
 press.animation.layers[2].priority="high"
 press.animation.layers[2].draw_as_shadow = true
 press.animation.layers[2].width = 160
@@ -102,7 +102,7 @@ press.animation.layers[2].line_length = 8
 press.animation.layers[2].shift = {0.4375, -0.28125}
 press.animation.layers[2].animation_speed = 1.0666667
 press.animation.layers[2].hr_version = {}
-press.animation.layers[2].hr_version.filename = "__apm_resource_pack__/graphics/entities/press/hr_press_shadow.png"
+press.animation.layers[2].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/press/hr_press_shadow.png"
 press.animation.layers[2].hr_version.priority="high"
 press.animation.layers[2].hr_version.draw_as_shadow = true
 press.animation.layers[2].hr_version.width = 320
@@ -168,8 +168,8 @@ press.energy_source.burns_fluid = false
 press.energy_source.scale_fluid_usage = true
 press.energy_source.emissions_per_minute = apm.power.constants.emissions.t1
 press.energy_source.smoke = smoke_steam
-press.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/press/press_1.png"
-press.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/press/hr_press_1.png"
+press.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/press/press_1.png"
+press.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/press/hr_press_1.png"
 press.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
 press.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
 press.fluid_boxes[2].pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
@@ -197,8 +197,8 @@ press.energy_source.type = 'electric'
 press.energy_source.usage_priority = "secondary-input"
 press.energy_source.drain = apm.power.constants.engery_drain.electric
 press.energy_source.emissions_per_minute = apm.power.constants.emissions.t2
-press.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/press/press_2.png"
-press.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/press/hr_press_2.png"
+press.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/press/press_2.png"
+press.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/press/hr_press_2.png"
 press.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler3pipepictures()
 press.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
 press.fluid_boxes[2].pipe_picture = apm.lib.utils.pipecovers.assembler3pipepictures()

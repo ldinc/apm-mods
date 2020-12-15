@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_nuclear/prototypes/main/entities/cooling_pond.lua'
 
@@ -45,7 +45,7 @@ cooling_pond.energy_source.emissions_per_minute = 0.25
 cooling_pond.animation = {}
 cooling_pond.animation.layers = {}
 cooling_pond.animation.layers[1] = {}
-cooling_pond.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/cooling_pond/cooling_pond_0.png"
+cooling_pond.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/cooling_pond/cooling_pond_0.png"
 cooling_pond.animation.layers[1].priority="high"
 cooling_pond.animation.layers[1].width = 160
 cooling_pond.animation.layers[1].height = 128
@@ -54,7 +54,7 @@ cooling_pond.animation.layers[1].line_length = 8
 cooling_pond.animation.layers[1].shift = {0.4375, -0.28125}
 cooling_pond.animation.layers[1].animation_speed = 0.53333335
 cooling_pond.animation.layers[1].hr_version = {}
-cooling_pond.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/cooling_pond/hr_cooling_pond_0.png"
+cooling_pond.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/cooling_pond/hr_cooling_pond_0.png"
 cooling_pond.animation.layers[1].hr_version.priority="high"
 cooling_pond.animation.layers[1].hr_version.width = 320
 cooling_pond.animation.layers[1].hr_version.height = 256
@@ -64,7 +64,7 @@ cooling_pond.animation.layers[1].hr_version.shift = {0.4375, -0.28125}
 cooling_pond.animation.layers[1].hr_version.scale = 0.5
 cooling_pond.animation.layers[1].hr_version.animation_speed = 0.53333335
 cooling_pond.animation.layers[2] = {}
-cooling_pond.animation.layers[2].filename = "__apm_resource_pack__/graphics/entities/cooling_pond/cooling_pond_shadow.png"
+cooling_pond.animation.layers[2].filename = "__apm_resource_pack_ldinc__/graphics/entities/cooling_pond/cooling_pond_shadow.png"
 cooling_pond.animation.layers[2].priority="high"
 cooling_pond.animation.layers[2].draw_as_shadow = true
 cooling_pond.animation.layers[2].width = 160
@@ -74,7 +74,7 @@ cooling_pond.animation.layers[2].line_length = 8
 cooling_pond.animation.layers[2].shift = {0.4375, -0.28125}
 cooling_pond.animation.layers[2].animation_speed = 0.53333335
 cooling_pond.animation.layers[2].hr_version = {}
-cooling_pond.animation.layers[2].hr_version.filename = "__apm_resource_pack__/graphics/entities/cooling_pond/hr_cooling_pond_shadow.png"
+cooling_pond.animation.layers[2].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/cooling_pond/hr_cooling_pond_shadow.png"
 cooling_pond.animation.layers[2].hr_version.priority="high"
 cooling_pond.animation.layers[2].hr_version.draw_as_shadow = true
 cooling_pond.animation.layers[2].hr_version.width = 320
@@ -87,7 +87,7 @@ cooling_pond.animation.layers[2].hr_version.animation_speed = 0.53333335
 cooling_pond.idle_animation = {}
 cooling_pond.idle_animation.layers = {}
 cooling_pond.idle_animation.layers[1] = {}
-cooling_pond.idle_animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/cooling_pond/cooling_pond_idle_0.png"
+cooling_pond.idle_animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/cooling_pond/cooling_pond_idle_0.png"
 cooling_pond.idle_animation.layers[1].priority="high"
 cooling_pond.idle_animation.layers[1].width = 160
 cooling_pond.idle_animation.layers[1].height = 128
@@ -96,7 +96,7 @@ cooling_pond.idle_animation.layers[1].line_length = 8
 cooling_pond.idle_animation.layers[1].shift = {0.4375, -0.28125}
 cooling_pond.idle_animation.layers[1].animation_speed = 0.53333335
 cooling_pond.idle_animation.layers[1].hr_version = {}
-cooling_pond.idle_animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/cooling_pond/hr_cooling_pond_idle_0.png"
+cooling_pond.idle_animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/cooling_pond/hr_cooling_pond_idle_0.png"
 cooling_pond.idle_animation.layers[1].hr_version.priority="high"
 cooling_pond.idle_animation.layers[1].hr_version.width = 320
 cooling_pond.idle_animation.layers[1].hr_version.height = 256

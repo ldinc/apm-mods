@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/pumps.lua'
 
@@ -39,12 +39,12 @@ pump.energy_source.burnt_inventory_size = 1
 pump.energy_source.emissions_per_minute = 2.5
 pump.energy_source.smoke = smoke_burner
 pump.pumping_speed = 10
---pump.animations.north.filename = '__apm_resource_pack__/graphics/entities/pumps/pump_north_0.png'
-pump.animations.north.hr_version.filename = '__apm_resource_pack__/graphics/entities/pumps/hr_pump_north_0.png'
---pump.animations.east.filename = '__apm_resource_pack__/graphics/entities/pumps/pump_east_0.png'
-pump.animations.east.hr_version.filename = '__apm_resource_pack__/graphics/entities/pumps/hr_pump_east_0.png'
---pump.animations.south.filename = '__apm_resource_pack__/graphics/entities/pumps/pump_south_0.png'
-pump.animations.south.hr_version.filename = '__apm_resource_pack__/graphics/entities/pumps/hr_pump_south_0.png'
---pump.animations.west.filename = '__apm_resource_pack__/graphics/entities/pumps/pump_west_0.png'
-pump.animations.west.hr_version.filename = '__apm_resource_pack__/graphics/entities/pumps/hr_pump_west_0.png'
+--pump.animations.north.filename = '__apm_resource_pack_ldinc__/graphics/entities/pumps/pump_north_0.png'
+pump.animations.north.hr_version.filename = '__apm_resource_pack_ldinc__/graphics/entities/pumps/hr_pump_north_0.png'
+--pump.animations.east.filename = '__apm_resource_pack_ldinc__/graphics/entities/pumps/pump_east_0.png'
+pump.animations.east.hr_version.filename = '__apm_resource_pack_ldinc__/graphics/entities/pumps/hr_pump_east_0.png'
+--pump.animations.south.filename = '__apm_resource_pack_ldinc__/graphics/entities/pumps/pump_south_0.png'
+pump.animations.south.hr_version.filename = '__apm_resource_pack_ldinc__/graphics/entities/pumps/hr_pump_south_0.png'
+--pump.animations.west.filename = '__apm_resource_pack_ldinc__/graphics/entities/pumps/pump_west_0.png'
+pump.animations.west.hr_version.filename = '__apm_resource_pack_ldinc__/graphics/entities/pumps/hr_pump_west_0.png'
 data:extend({pump})

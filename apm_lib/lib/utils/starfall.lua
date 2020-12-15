@@ -78,14 +78,14 @@ function apm.lib.utils.starfall.ore.generate()
 		resource.stage_counts = {10000, 5200, 2600, 1800, 1200, 800, 400, 80}
 		resource.stages = {
 			sheet = {
-				filename = "__apm_resource_pack__/graphics/entities/ore/meteorite-ore.png",
+				filename = "__apm_resource_pack_ldinc__/graphics/entities/ore/meteorite-ore.png",
 				priority = "extra-high",
 				width = 64,
 				height = 64,
 				frame_count = 8,
 				variation_count = 8,
 				hr_version = {
-					filename = "__apm_resource_pack__/graphics/entities/ore/hr-meteorite-ore.png",
+					filename = "__apm_resource_pack_ldinc__/graphics/entities/ore/hr-meteorite-ore.png",
 					priority = "extra-high",
 					width = 128,
 					height = 128,
@@ -97,7 +97,7 @@ function apm.lib.utils.starfall.ore.generate()
 		}
 		resource.stages_effect = {
 			sheet =	{
-				filename = "__apm_resource_pack__/graphics/entities/ore/meteorite-ore-glow.png",
+				filename = "__apm_resource_pack_ldinc__/graphics/entities/ore/meteorite-ore-glow.png",
 				priority = "extra-high",
 				width = 64,
 				height = 64,
@@ -106,7 +106,7 @@ function apm.lib.utils.starfall.ore.generate()
 				blend_mode = "additive",
 				flags = {"light"},
 				hr_version = {
-					filename = "__apm_resource_pack__/graphics/entities/ore/hr-meteorite-ore-glow.png",
+					filename = "__apm_resource_pack_ldinc__/graphics/entities/ore/hr-meteorite-ore-glow.png",
 					priority = "extra-high",
 					width = 128,
 					height = 128,

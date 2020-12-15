@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/entities/steam_engines.lua'
 
@@ -27,13 +27,13 @@ steam_engine.max_health = 500
 steam_engine.maximum_temperature = 240
 steam_engine.fluid_usage_per_tick = 0.45
 steam_engine.horizontal_animation.layers[3] = table.deepcopy(steam_engine.horizontal_animation.layers[1])
-steam_engine.horizontal_animation.layers[3].filename = '__apm_resource_pack__/graphics/masks/steam_engine/steam-engine-H.png'
+steam_engine.horizontal_animation.layers[3].filename = '__apm_resource_pack_ldinc__/graphics/masks/steam_engine/steam-engine-H.png'
 steam_engine.horizontal_animation.layers[3].tint = apm.power.color.steam_engine_tier_2
-steam_engine.horizontal_animation.layers[3].hr_version.filename = '__apm_resource_pack__/graphics/masks/steam_engine/hr-steam-engine-H.png'
+steam_engine.horizontal_animation.layers[3].hr_version.filename = '__apm_resource_pack_ldinc__/graphics/masks/steam_engine/hr-steam-engine-H.png'
 steam_engine.horizontal_animation.layers[3].hr_version.tint = apm.power.color.steam_engine_tier_2
 steam_engine.vertical_animation.layers[3] = table.deepcopy(steam_engine.vertical_animation.layers[1])
-steam_engine.vertical_animation.layers[3].filename = '__apm_resource_pack__/graphics/masks/steam_engine/steam-engine-V.png'
+steam_engine.vertical_animation.layers[3].filename = '__apm_resource_pack_ldinc__/graphics/masks/steam_engine/steam-engine-V.png'
 steam_engine.vertical_animation.layers[3].tint = apm.power.color.steam_engine_tier_2
-steam_engine.vertical_animation.layers[3].hr_version.filename = '__apm_resource_pack__/graphics/masks/steam_engine/hr-steam-engine-V.png'
+steam_engine.vertical_animation.layers[3].hr_version.filename = '__apm_resource_pack_ldinc__/graphics/masks/steam_engine/hr-steam-engine-V.png'
 steam_engine.vertical_animation.layers[3].hr_version.tint = apm.power.color.steam_engine_tier_2
 data:extend({steam_engine})

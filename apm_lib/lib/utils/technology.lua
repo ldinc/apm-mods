@@ -117,7 +117,7 @@ function apm.lib.utils.technology.new(mod_name, technology, t_prerequisites, t_r
     new = {}
     new.type = 'technology'
     new.name = technology
-    new.icon = '__apm_resource_pack__/graphics/technologies/' .. technology .. '.png'
+    new.icon = '__apm_resource_pack_ldinc__/graphics/technologies/' .. technology .. '.png'
     new.icon_size = 128
     new.effects = {}
     if t_recipes ~= nil then

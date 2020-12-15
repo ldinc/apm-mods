@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/categories.lua'
 
@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-apm.lib.utils.category.create.group('apm_power', '__apm_resource_pack__/graphics/categories/apm_power.png', '05')
+apm.lib.utils.category.create.group('apm_power', '__apm_resource_pack_ldinc__/graphics/categories/apm_power.png', '05')
     apm.lib.utils.category.create.subgroup('apm_power', 'apm_power_fluid', 'aa_a')
     apm.lib.utils.category.create.subgroup('apm_power', 'apm_power_tools', 'ab_a')
     apm.lib.utils.category.create.subgroup('apm_power', 'apm_power_sifting', 'ac_a')

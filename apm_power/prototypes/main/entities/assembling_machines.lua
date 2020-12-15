@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/assembling_machines.lua'
 
@@ -76,7 +76,7 @@ assembling_machine.energy_source.smoke = smoke_burner
 assembling_machine.animation = {}
 assembling_machine.animation.layers = {}
 assembling_machine.animation.layers[1] = {}
-assembling_machine.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/assembling_machine/assembling_machine_0.png"
+assembling_machine.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/assembling_machine/assembling_machine_0.png"
 assembling_machine.animation.layers[1].priority="high"
 assembling_machine.animation.layers[1].width = 160
 assembling_machine.animation.layers[1].height = 128
@@ -85,7 +85,7 @@ assembling_machine.animation.layers[1].line_length = 8
 assembling_machine.animation.layers[1].shift = {0.4375, -0.28125}
 assembling_machine.animation.layers[1].animation_speed = 1.0666667
 assembling_machine.animation.layers[1].hr_version = {}
-assembling_machine.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/assembling_machine/hr_assembling_machine_0.png"
+assembling_machine.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/assembling_machine/hr_assembling_machine_0.png"
 assembling_machine.animation.layers[1].hr_version.priority="high"
 assembling_machine.animation.layers[1].hr_version.width = 320
 assembling_machine.animation.layers[1].hr_version.height = 256
@@ -95,7 +95,7 @@ assembling_machine.animation.layers[1].hr_version.shift = {0.4375, -0.28125}
 assembling_machine.animation.layers[1].hr_version.scale = 0.5
 assembling_machine.animation.layers[1].hr_version.animation_speed = 1.0666667
 assembling_machine.animation.layers[2] = {}
-assembling_machine.animation.layers[2].filename = "__apm_resource_pack__/graphics/entities/assembling_machine/assembling_machine_shadow.png"
+assembling_machine.animation.layers[2].filename = "__apm_resource_pack_ldinc__/graphics/entities/assembling_machine/assembling_machine_shadow.png"
 assembling_machine.animation.layers[2].priority="high"
 assembling_machine.animation.layers[2].draw_as_shadow = true
 assembling_machine.animation.layers[2].width = 160
@@ -105,7 +105,7 @@ assembling_machine.animation.layers[2].line_length = 8
 assembling_machine.animation.layers[2].shift = {0.4375, -0.28125}
 assembling_machine.animation.layers[2].animation_speed = 1.0666667
 assembling_machine.animation.layers[2].hr_version = {}
-assembling_machine.animation.layers[2].hr_version.filename = "__apm_resource_pack__/graphics/entities/assembling_machine/hr_assembling_machine_shadow.png"
+assembling_machine.animation.layers[2].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/assembling_machine/hr_assembling_machine_shadow.png"
 assembling_machine.animation.layers[2].hr_version.priority="high"
 assembling_machine.animation.layers[2].hr_version.draw_as_shadow = true
 assembling_machine.animation.layers[2].hr_version.width = 320
@@ -167,8 +167,8 @@ assembling_machine.energy_source.burns_fluid = false
 assembling_machine.energy_source.scale_fluid_usage = true
 assembling_machine.energy_source.emissions_per_minute = apm.power.constants.emissions.t1
 assembling_machine.energy_source.smoke = smoke_steam
-assembling_machine.animation.layers[1].filename = "__apm_resource_pack__/graphics/entities/assembling_machine/assembling_machine_1.png"
-assembling_machine.animation.layers[1].hr_version.filename = "__apm_resource_pack__/graphics/entities/assembling_machine/hr_assembling_machine_1.png"
+assembling_machine.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/assembling_machine/assembling_machine_1.png"
+assembling_machine.animation.layers[1].hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/assembling_machine/hr_assembling_machine_1.png"
 assembling_machine.fluid_boxes = {}
 assembling_machine.fluid_boxes[1] = {}
 assembling_machine.fluid_boxes[1].production_type = "output"

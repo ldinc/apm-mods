@@ -1,5 +1,5 @@
 require('util')
-require('__apm_lib__.lib.log')
+require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_nuclear/prototypes/main/entities/thorium.lua'
 
@@ -54,14 +54,14 @@ resource.autoplace = resource_autoplace.resource_autoplace_settings
 resource.stage_counts = {10000, 6330, 3670, 1930, 870, 270, 100, 50}
 resource.stages = {}
 resource.stages.sheet = {}
-resource.stages.sheet.filename = "__apm_resource_pack__/graphics/entities/thorium_ore/thorium_ore.png"
+resource.stages.sheet.filename = "__apm_resource_pack_ldinc__/graphics/entities/thorium_ore/thorium_ore.png"
 resource.stages.sheet.priority = "extra-high"
 resource.stages.sheet.width = 64
 resource.stages.sheet.height = 64
 resource.stages.sheet.frame_count = 8
 resource.stages.sheet.variation_count = 8
 resource.stages.sheet.hr_version = {}
-resource.stages.sheet.hr_version.filename = "__apm_resource_pack__/graphics/entities/thorium_ore/hr_thorium_ore.png"
+resource.stages.sheet.hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/thorium_ore/hr_thorium_ore.png"
 resource.stages.sheet.hr_version.priority = "extra-high"
 resource.stages.sheet.hr_version.width = 128
 resource.stages.sheet.hr_version.height = 128
@@ -70,7 +70,7 @@ resource.stages.sheet.hr_version.variation_count = 8
 resource.stages.sheet.hr_version.scale = 0.5
 resource.stages_effect = {}
 resource.stages_effect.sheet = {}
-resource.stages_effect.sheet.filename = "__apm_resource_pack__/graphics/entities/thorium_ore/thorium_ore_glow.png"
+resource.stages_effect.sheet.filename = "__apm_resource_pack_ldinc__/graphics/entities/thorium_ore/thorium_ore_glow.png"
 resource.stages_effect.sheet.priority = "extra-high"
 resource.stages_effect.sheet.width = 64
 resource.stages_effect.sheet.height = 64
@@ -79,7 +79,7 @@ resource.stages_effect.sheet.variation_count = 8
 resource.stages_effect.sheet.blend_mode = "additive"
 resource.stages_effect.sheet.flags = {"light"}
 resource.stages_effect.sheet.hr_version = {}
-resource.stages_effect.sheet.hr_version.filename = "__apm_resource_pack__/graphics/entities/thorium_ore/hr_thorium_ore_glow.png"
+resource.stages_effect.sheet.hr_version.filename = "__apm_resource_pack_ldinc__/graphics/entities/thorium_ore/hr_thorium_ore_glow.png"
 resource.stages_effect.sheet.hr_version.priority = "extra-high"
 resource.stages_effect.sheet.hr_version.width = 128
 resource.stages_effect.sheet.hr_version.height = 128
