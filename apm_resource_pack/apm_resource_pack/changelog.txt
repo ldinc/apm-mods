@@ -1,0 +1,325 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.19.50
+Date: 23. 05. 2020
+  Changes:
+    - unification of the version with the other mods
+---------------------------------------------------------------------------------------------------
+Version: 0.19.02
+Date: 26. 01. 2020
+  Changes:
+    - add new graphics: for "Amator Phasma's Coal&Steam".
+---------------------------------------------------------------------------------------------------
+Version: 0.19.01
+Date: 23. 01. 2020
+  Changes:
+    - replaced some 32px icons with new 64px icons.
+---------------------------------------------------------------------------------------------------
+Version: 0.19.00
+Date: 21. 01. 2020
+  Major Features:
+    - Initial release for Factorio 0.18.0
+---------------------------------------------------------------------------------------------------
+Version: 0.18.04
+Date: 19. 01. 2020
+  Changes:
+    - add new graphics: for "Amator Phasma's Coal&Steam".
+    - add new graphics: for "Amator Phasma's Nuclear".
+    - add new graphics: for "Amator Phasma's Angel Addons".
+---------------------------------------------------------------------------------------------------
+Version: 0.18.03
+Date: 11. 01. 2020
+  Changes:
+    - add new graphics: for "Amator Phasma's Coal&Steam".
+---------------------------------------------------------------------------------------------------
+Version: 0.18.02
+Date: 04. 01. 2020
+  Changes:
+    - add new item graphics: for "Amator Phasma's Nuclear".
+    - add new item graphics: for "Amator Phasma's Coal&Steam".
+---------------------------------------------------------------------------------------------------
+Version: 0.18.01
+Date: 31. 12. 2019
+  Changes:
+    - new entity sprites for "Amator Phasma's Coal&Steam" -> "Improved Steelworks"
+---------------------------------------------------------------------------------------------------
+Version: 0.18.00
+Date: 01. 12. 2019
+  Changes:
+    - new item and entity icons/sprites for "Amator Phasma's Coal&Steam" and "Amator Phasma's Nuclear"
+---------------------------------------------------------------------------------------------------
+Version: 0.17.19
+Date: 10. 11. 2019
+  Changes:
+    - add new item graphics: ./graphics/icons/apm_pistions.png
+    - add new item graphics: ./graphics/icons/apm_simple_engine.png
+    - add new item graphics: ./graphics/icons/apm_steam_engine.png
+    - add new item graphics: ./graphics/icons/apm_machine_frame_basic.png
+    - add new item graphics: ./graphics/icons/apm_machine_frame_steam.png
+    - add new item graphics: ./graphics/icons/apm_machine_frame_advanced.png
+    - add new item graphics: ./graphics/icons/apm_machine_frame_basic_used.png
+    - add new item graphics: ./graphics/icons/apm_machine_frame_steam_used.png
+---------------------------------------------------------------------------------------------------
+Version: 0.17.18
+Date: 08. 11. 2019
+  Changes:
+    - add new item graphics: ./graphics/icons/dynamics/apm_crushed_bg_w.png
+    - add new item graphics: ./graphics/icons/dynamics/apm_chunk_bg_w.png
+    - add new item graphics: ./graphics/icons/dynamics/apm_briquette_bg_w.png
+    - add new item graphics: ./graphics/icons/dynamics/apm_fluid_drop_background.png
+    - replaced old 32px icons with new 64px icons
+    - removed old graphics that are no logner in use
+---------------------------------------------------------------------------------------------------
+Version: 0.17.17
+Date: 02. 11. 2019
+  Changes:
+    - add new entity graphics used for the "Burner pump" in "Amator Phasma's Coal&Steam" mod
+    - add new entity graphics used for the "Valve (Overflow)" in "Amator Phasma's Coal&Steam" mod
+    - add new entity graphics used for the "Valve (Top up)" in "Amator Phasma's Coal&Steam" mod
+    - add new item graphics "apm_breeder_container.png
+    - add new item graphics "apm_breeder_container_thorium.png"
+    - add new item graphics "apm_breeder_container_thorium_active.png"
+    - add new item graphics "apm_breeder_container_thorium_cooled.png"
+    - add new item graphics "apm_breeder_container_uranium.png"
+    - add new item graphics "apm_breeder_container_uranium_active.png"
+    - add new item graphics "apm_breeder_container_uranium_cooled.png"
+    - add new item graphics "apm_breeder_container_worn.png"
+    - add new item graphics "apm_nuclear_fuel_container.png"
+    - add new item graphics "apm_nuclear_fuel_container_worn.png"
+    - add new item graphics "apm_nuclear_fuel_mox.png"
+    - add new item graphics "apm_nuclear_fuel_mox_active.png"
+    - add new item graphics "apm_nuclear_fuel_mox_cooled.png"
+    - add new item graphics "apm_nuclear_fuel_plutonium.png"
+    - add new item graphics "apm_nuclear_fuel_plutonium_active.png"
+    - add new item graphics "apm_nuclear_fuel_plutonium_cooled.png"
+    - add new item graphics "apm_nuclear_fuel_thorium.png"
+    - add new item graphics "apm_nuclear_fuel_thorium_active.png"
+    - add new item graphics "apm_nuclear_fuel_thorium_cooled.png"
+    - add new item graphics "apm_nuclear_fuel_uranium.png"
+    - add new item graphics "apm_nuclear_fuel_uranium_active.png"
+    - add new item graphics "apm_nuclear_fuel_uranium_cooled.png"
+    - add new item graphics "apm_nuclear_science_pack-1.png"
+    - add new item graphics "apm_nuclear_science_pack.png"
+    - add new item graphics "apm_nuclear_science_pack_old.png"
+    - add new item graphics "apm_oxide_pellet_np237.png"
+    - add new item graphics "apm_oxide_pellet_pu239.png"
+    - add new item graphics "apm_oxide_pellet_th232.png"
+    - add new item graphics "apm_oxide_pellet_u235.png"
+    - add new item graphics "apm_oxide_pellet_u238.png"
+    - removed old graphics that are no logner in use.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.16
+Date: 26. 10. 2019
+  Changes:
+    - update icon graphics "Resin"
+    - update icon graphics "Gearning"
+    - update icon graphics "Rubber"
+    - update icon graphics "Industrial science pack"
+    - update icon graphics "Stone crucible"
+---------------------------------------------------------------------------------------------------
+Version: 0.17.15
+Date: 24. 10. 2019
+  Changes:
+    - add new icon graphics used for Machines Tier 1
+    - add new icon graphics used for Machines Tier 2
+    - add new icon graphics used for Machines Tier 3
+    - add new icon graphics used for Machines Tier 4
+---------------------------------------------------------------------------------------------------
+Version: 0.17.14
+Date: 22. 10. 2019
+  Changes:
+    - add new icon graphics used for "Particle filter (Tier: 1)" in "Amator Phasma's Coal&Steam" mod
+    - add new icon graphics used for "Particle filter (Tier: 2)" in "Amator Phasma's Coal&Steam" mod
+    - add new icon graphics used for "Particle filter (Tier: 3)" in "Amator Phasma's Coal&Steam" mod
+    - add new technologie graphics used for "Particle filter" in "Amator Phasma's Coal&Steam" mod
+    - add new technologie graphics used for "Particle filter 2" in "Amator Phasma's Coal&Steam" mod
+    - add new technologie graphics used for "Particle filter 3" in "Amator Phasma's Coal&Steam" mod
+    - add new icon graphics used for "Saw blade (iron)" in "Amator Phasma's Coal&Steam" mod
+    - add new icon graphics used for "Worn saw blade (iron)" in "Amator Phasma's Coal&Steam" mod
+    - add new icon graphics used for "Saw blade (steel)" in "Amator Phasma's Coal&Steam" mod
+    - add new icon graphics used for "Worn saw blade (steel)" in "Amator Phasma's Coal&Steam" mod
+    - add new entity graphics used for the "Cooling pond" in "Amator Phasma's Nuclear" mod
+    - add new technologie graphics used for "Treated wood planks" in "Amator Phasma's Coal&Steam" mod
+    - add new technologie graphics used for "Treated wood planks 2" in "Amator Phasma's Coal&Steam" mod
+    - add new technologie graphics used for "Treated wood planks 3" in "Amator Phasma's Coal&Steam" mod
+    - add new icon graphics used for cooling recipes
+    - revamp: machine base (to better fit the pipe connections without significant overlap in the graphics)
+    - new render: ./graphics/entities/press/press_0.png
+    - new render: ./graphics/entities/press/hr_press_0.png
+    - new render: ./graphics/entities/press/press_shadow.png
+    - new render: ./graphics/entities/press/hr_press_shadow.png
+    - new render: ./graphics/entities/press/press_1.png
+    - new render: ./graphics/entities/press/hr_press_1.png
+    - new render: ./graphics/entities/press/press_2.png
+    - new render: ./graphics/entities/press/hr_press_2.png
+    - new render: ./graphics/entities/coking_plant/coking_plant_shadow.png
+    - new render: ./graphics/entities/coking_plant/hr_coking_plant_shadow.png
+    - new render: ./graphics/entities/coking_plant/coking_plant_0.png
+    - new render: ./graphics/entities/coking_plant/hr_coking_plant_0.png
+    - new render: ./graphics/entities/coking_plant/coking_plant_idle_0.png
+    - new render: ./graphics/entities/coking_plant/hr_coking_plant_idle_0.png
+    - new render: ./graphics/entities/coking_plant/coking_plant_1.png
+    - new render: ./graphics/entities/coking_plant/hr_coking_plant_1.png
+    - new render: ./graphics/entities/coking_plant/coking_plant_idle_1.png
+    - new render: ./graphics/entities/coking_plant/hr_coking_plant_idle_1.png
+    - new render: ./graphics/entities/coking_plant/coking_plant_2.png
+    - new render: ./graphics/entities/coking_plant/hr_coking_plant_2.png
+    - new render: ./graphics/entities/coking_plant/coking_plant_idle_2.png
+    - new render: ./graphics/entities/coking_plant/hr_coking_plant_idle_2.png
+    - new render: ./graphics/entities/greenhouse/greenhouse_shadow.png
+    - new render: ./graphics/entities/greenhouse/hr_greenhouse_shadow.png
+    - new render: ./graphics/entities/greenhouse/greenhouse_0.png
+    - new render: ./graphics/entities/greenhouse/hr_greenhouse_0.png
+    - new render: ./graphics/entities/greenhouse/greenhouse_1.png
+    - new render: ./graphics/entities/greenhouse/hr_greenhouse_1.png
+    - new render: ./graphics/entities/crusher/crusher_shadow.png
+    - new render: ./graphics/entities/crusher/hr_crusher_shadow.png
+    - new render: ./graphics/entities/crusher/crusher_0.png
+    - new render: ./graphics/entities/crusher/hr_crusher_0.png
+    - new render: ./graphics/entities/crusher/crusher_1.png
+    - new render: ./graphics/entities/crusher/hr_crusher_1.png
+    - new render: ./graphics/entities/crusher/crusher_2.png
+    - new render: ./graphics/entities/crusher/hr_crusher_2.png
+    - new render: ./graphics/entities/crusher/crusher_shadow_electric.png
+    - new render: ./graphics/entities/crusher/hr_crusher_shadow_electric.png
+    - new render: ./graphics/entities/air_cleaner/air_cleaner_shadow.png
+    - new render: ./graphics/entities/air_cleaner/hr_air_cleaner_shadow.png
+    - new render: ./graphics/entities/air_cleaner/air_cleaner_0.png
+    - new render: ./graphics/entities/air_cleaner/hr_air_cleaner_0.png
+    - new render: ./graphics/entities/puddling_furnace/puddling_furnace_0.png
+    - new render: ./graphics/entities/puddling_furnace/hr_puddling_furnace_0.png
+    - new render: ./graphics/entities/puddling_furnace/puddling_furnace_shadow.png
+    - new render: ./graphics/entities/puddling_furnace/hr_puddling_furnace_shadow.png
+    - new render: ./graphics/entities/puddling_furnace/puddling_furnace_idle_0.png
+    - new render: ./graphics/entities/puddling_furnace/hr_puddling_furnace_idle_0.png
+    - new render: ./graphics/entities/steelworks/steelworks_0.png
+    - new render: ./graphics/entities/steelworks/hr_steelworks_0.png
+    - new render: ./graphics/entities/steelworks/steelworks_shadow.png
+    - new render: ./graphics/entities/steelworks/hr_steelworks_shadow.png
+    - new render: ./graphics/entities/steelworks/steelworks_idle_0
+    - new render: ./graphics/entities/steelworks/hr_steelworks_idle_0
+    - new render: ./graphics/entities/recycler/recycler_burner_shadow.png
+    - new render: ./graphics/entities/recycler/recycler_0.png
+    - new render: ./graphics/entities/recycler/recycler_shadow.png
+    - new render: ./graphics/entities/recycler/hr_recycler_shadow.png
+    - new render: ./graphics/entities/recycler/recycler_1.png
+    - new render: ./graphics/entities/recycler/hr_recycler_1.png
+    - new render: ./graphics/entities/recycler/recycler_2.png
+    - new render: ./graphics/entities/recycler/hr_recycler_2.png
+    - new render: ./graphics/entities/recycler/recycler_3.png
+    - new render: ./graphics/entities/recycler/hr_recycler_3.png
+    - new render: ./graphics/entities/lab/lab_shadow.png
+    - new render: ./graphics/entities/lab/lab_0.png
+    - new render: ./graphics/entities/lab/lab_1.png
+    - new render: ./graphics/entities/centrifuge/centrifuge_shadow.png
+    - new render: ./graphics/entities/centrifuge/hr_centrifuge_shadow.png
+    - new render: ./graphics/entities/centrifuge/centrifuge_0.png
+    - new render: ./graphics/entities/centrifuge/hr_centrifuge_0.png
+    - new render: ./graphics/entities/centrifuge/centrifuge_1.png
+    - new render: ./graphics/entities/centrifuge/hr_centrifuge_1.png
+    - new render: ./graphics/entities/centrifuge/centrifuge_2.png
+    - new render: ./graphics/entities/centrifuge/hr_centrifuge_2.png    
+    - new render: ./entities/centrifuge/centrifuge_shadow_2.png
+    - new render: ./entities/centrifuge/hr_centrifuge_shadow_2.png
+    - new render: ./graphics/entities/assembling_machine/assembling_machine_shadow.png
+    - new render: ./graphics/entities/assembling_machine/hr_assembling_machine_shadow.png
+    - new render: ./graphics/entities/assembling_machine/assembling_machine_0.png
+    - new render: ./graphics/entities/assembling_machine/hr_assembling_machine_0.png
+    - add new entity graphics: ./graphics/entities/pipecovers/assembling-machine-4-pipe-N.png
+    - add new entity graphics: ./graphics/entities/pipecovers/hr-assembling-machine-4-pipe-N.png
+    - add new entity graphics: ./graphics/entities/pipecovers/assembling-machine-4-pipe-E.png
+    - add new entity graphics: ./graphics/entities/pipecovers/hr-assembling-machine-4-pipe-E.png
+    - add new entity graphics: ./graphics/entities/pipecovers/assembling-machine-4-pipe-S.png
+    - add new entity graphics: ./graphics/entities/pipecovers/hr-assembling-machine-4-pipe-S.png
+    - add new entity graphics: ./graphics/entities/pipecovers/assembling-machine-4-pipe-W.png
+    - add new entity graphics: ./graphics/entities/pipecovers/hr-assembling-machine-4-pipe-W.png
+    - new render: ./graphics/entities/sieve/sieve_shadow.png
+    - new render: ./graphics/entities/sieve/hr_sieve_shadow.png
+    - new render: ./graphics/entities/sieve/sieve_0.png
+    - new render: ./graphics/entities/sieve/hr_sieve_0.png
+    - new render: ./graphics/icons/dynamics/sieve.png
+    - add new item/icon graphics: ./graphics/icons/dynamics/sieve_handel.png
+    - add new item/icon graphics: ./graphics/icons/mip/apm_crushed_stone.png
+    - add new item/icon graphics: ./graphics/icons/mip/apm_crushed_stone_1.png
+    - add new item/icon graphics: ./graphics/icons/mip/apm_crushed_stone_2.png
+    - add new item/icon graphics: ./graphics/icons/mip/apm_crushed_stone_3.png
+    - add new item/icon graphics: ./graphics/icons/apm_stone_brick_raw.png
+---------------------------------------------------------------------------------------------------
+Version: 0.17.13
+Date: 29. 08. 2019
+  Changes:
+    - (experimental) add new item graphics used for "uranhexafluorid/enrichment" in "Amator Phasma's Nuclear" mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.12
+Date: 22. 05. 2019
+  Changes:
+    - add new item graphics used for "Deuterium fuel cells" in "Amator Phasma's Nuclear" mod
+    - add new item graphics used for "Deuterium fuel cells (used)" in "Amator Phasma's Nuclear" mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.11
+Date: 16. 05. 2019
+  Changes:
+    - add new item graphics used for "Breeder inventory (Thorium)" in "Amator Phasma's Nuclear" mod
+    - add new item graphics used for "Enriched breeder inventory (Thorium)" in "Amator Phasma's Nuclear" mod
+    - add new item graphics used for "Thorium Breeder" technology in "Amator Phasma's Nuclear" mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.10
+Date: 16. 05. 2019
+  Changes:
+    - add new item graphics used for the "Thorium oxide pellet" in "Amator Phasma's Nuclear" mod
+    - add new item graphics used for the "Thorium fuel cell" in "Amator Phasma's Nuclear" mod
+    - add new item graphics used for the "Thorium fuel cell (used)" in "Amator Phasma's Nuclear" mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.09
+Date: 16. 05. 2019
+  Changes:
+    - add new item graphics used for the "Yellowcake" in "Amator Phasma's Nuclear" mod
+    - add new item graphics used for the "Potassium bromide" in "Amator Phasma's Nuclear" mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.08
+Date: 12. 05. 2019
+  Changes:
+    - add new item graphics used for the "Crusher drums" in "Amator Phasma's Coal&Steam" mod
+    - add new item graphics used for the "Crusher drums (used)" in "Amator Phasma's Coal&Steam" mod
+    - add new item graphics used for the "Press plates" in "Amator Phasma's Coal&Steam" mod
+    - add new item graphics used for the "Press plates (used)" in "Amator Phasma's Coal&Steam" mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.07
+Date: 10. 05. 2019
+  Changes:
+    - add new technology graphics used for the "Fertiliser (Quality: A)" in "Amator Phasma's Coal&Steam" mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.06
+Date: 08. 05. 2019
+  Changes:
+    - add new entity graphics used for the "Electric Centrifuge" in "Amator Phasma's Coal&Steam" mod
+    - add new entity graphics used for the "Steam sieve" in "Amator Phasma's Coal&Steam" mod
+    - add new item graphics used for the "Sieves" in "Amator Phasma's Coal&Steam" mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.05
+Date: 04. 05. 2019
+  Changes:
+    - rename: 'apm_steam_clock.png' to 'apm_steam_relay.png'
+---------------------------------------------------------------------------------------------------
+Version: 0.17.04
+Date: 04. 05. 2019
+  Major Features:
+    - update graphics
+    - moved signal icons to lib (small files and prevent the need to make this mod a dependency)
+    - moved radioactive sounds to lib (small files and prevent the need to make this mod a dependency)
+---------------------------------------------------------------------------------------------------
+Version: 0.17.03
+Date: 02. 05. 2019
+  Major Features:
+    - add new entity graphics used for the "Burner long inseter" in "Amator Phasma's Coal&Steam" mod
+    - updated entity graphics used for the "Burner filter inseter" in "Amator Phasma's Coal&Steam" mod
+    - updated icon 'dust' (gray scale used as: ash, enriched mixture etc.), 'sealing rings'
+---------------------------------------------------------------------------------------------------
+Version: 0.17.02
+Date: 30. 04. 2019
+  Major Features:
+    - add new entity graphics used for the "Steam mining drill" in "Amator Phasma's Coal&Steam" mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.01
+Date: 27. 04. 2019
+  Major Features:
+    - Initial release

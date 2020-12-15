@@ -1,0 +1,126 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.19.50
+Date: 23. 05. 2020
+  Changes:
+    - unification of the version with the other mods
+    - disable all compatibillity patches by default
+---------------------------------------------------------------------------------------------------
+Version: 0.19.03
+Date: 01. 02. 2020
+  Changes:
+    - adapted changes from the library version 0.19.03
+---------------------------------------------------------------------------------------------------
+Version: 0.19.02
+Date: 26. 01. 2020
+  Changes:
+    - adapted changes from the library version 0.19.02
+---------------------------------------------------------------------------------------------------
+Version: 0.19.01
+Date: 23. 01. 2020
+  Changes:
+    - fixed some icon related stuff in the code for better compatibillity with other mods.
+---------------------------------------------------------------------------------------------------
+Version: 0.19.00
+Date: 21. 01. 2020
+  Major Features:
+    - Initial release for Factorio 0.18.0
+---------------------------------------------------------------------------------------------------
+Version: 0.18.09
+Date: 19. 01. 2020
+  Changes:
+    - centralized initial script into the library.
+    - updated dependencies.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.08
+Date: 11. 01. 2020
+  Changes:
+    - adopt changes from library (version 0.18.18)
+---------------------------------------------------------------------------------------------------
+Version: 0.18.07
+Date: 28. 12. 2019
+  Changes:
+    - new: setting: "Show "made in" for recipes of this mod."
+    - updated dependencies.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.06
+Date: 25. 12. 2019
+  Bugfixes:
+    - fix wrong: burnt_inventory_size
+---------------------------------------------------------------------------------------------------
+Version: 0.18.05
+Date: 20. 12. 2019
+  Changes:
+    - implement log level support from apm_lib into this mod
+---------------------------------------------------------------------------------------------------
+Version: 0.18.04
+Date: 18. 12. 2019
+  Bugfixes:
+    - (aai-vehicles-miner) fix: that vehicles-miner cant drive with remote.
+    - (aai-vehicles-warden) fix: that warden cant drive with remote.
+  Changes:
+    - some optimizations, bug fixes, removing of unnecessary code.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.03
+Date: 14. 12. 2019
+  Changes:
+    - some optimizations, bug fixes, removing of unnecessary code.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.02
+Date: 12. 12. 2019
+  Compatibility:
+    - (reverse-factory) compatibillity added.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.01
+Date: 11. 12. 2019
+  Bugfixes:
+    - fix wrong description for entities with charged batteries as fuel.
+  Changes:
+    - ./lib/initial.lua: changed to use init from apm_library.
+    - cleand up ./migrations.
+    - adapt changes from the apm library mod version 0.18.04.
+    - updated dependencies.
+  Compatibility:
+    - (aai-vehicles-miner) compatibillity added.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.00
+Date: 04. 12. 2019
+  Changes:
+    - complete revision of the mods.
+    - improved integration with my other mods.
+    - improve compatibility with third party mods.
+    - new initialization script, made it possible to install this mod midway in a game.
+    - updated dependencies.
+  Compatibility:
+    - with Bobs batteries and vehicle tiers.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.06
+Date: 21. 05. 2019
+  Bugfixes:
+    - fixed wrong recipe probabilities (related to: https://forums.factorio.com/71014)
+---------------------------------------------------------------------------------------------------
+Version: 0.17.05
+Date: 12. 05. 2019
+  Changes:
+    - moved car overwrite to data-update stage
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.04
+Date: 02. 05. 2019
+  Changes:
+    - updated for 0.17.35 API Changes
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.03
+Date: 27. 04. 2019
+  Major Features:
+    - removed all media files to apm_resource_pack
+---------------------------------------------------------------------------------------------------
+Version: 0.17.02
+Date: 22. 04. 2019
+  Bugfixes:
+    - fixed wrong path for images if lowres is used.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.01
+Date: 21. 04. 2019
+  Major Features:
+    - Initial release
