@@ -1,6 +1,6 @@
 {
         "name": "apm_lib",
-        "version": "0.19.50",
+        "version": "0.20.00",
         "title": "Amator Phasma's Library",
         "author": "AmatorPhasma",
         "dependencies": [

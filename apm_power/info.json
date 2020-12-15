@@ -1,12 +1,12 @@
 {
         "name": "apm_power",
-        "version": "0.19.50",
+        "version": "0.20.00",
         "title": "Amator Phasma's Coal & Steam",
         "author": "AmatorPhasma",
         "dependencies": [
                 "base >= 0.18.26",
-                "apm_resource_pack >= 0.19.02",
-                "apm_lib >= 0.19.50",
+                "apm_resource_pack >= 0.20.00",
+                "apm_lib >= 0.20.00",
                 "(?) aai-industry >= 0.3.22",
                 "bobwarfare >= 1.1.2"
         ],
