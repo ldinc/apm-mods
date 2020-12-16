@@ -151,9 +151,8 @@ recipe.normal.ingredients = {
         {type="fluid", name="water", amount=200}
     }
 recipe.normal.results = { 
-        {type='item', name='wood', amount=14},
-        {type='item', name='wood', amount_min=1, amount_max=6, show_details_in_recipe_tooltip=false}
-    }
+    {type='item', name='wood', amount_min=15, amount_max=20, show_details_in_recipe_tooltip=false}
+}
 recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 8
 recipe.normal.always_show_products = true
