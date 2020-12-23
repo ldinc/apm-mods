@@ -534,6 +534,44 @@ data:extend({recipe})
 --
 --
 -- ----------------------------------------------------------------------------
+local item_icon_a = apm.lib.utils.icon.get.from_item('apm_crushed_stone')
+local item_icon_b = {apm.lib.icons.dynamics.t1}
+local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+
+local recipe = {}
+recipe.type = "recipe"
+recipe.name = "apm_stone_crushed_1"
+recipe.category = 'apm_crusher'
+recipe.group = "apm_power"
+recipe.order = 'ac_a'
+recipe.icons = icons
+recipe.normal = {}
+recipe.normal.enabled = false
+recipe.normal.energy_required = 1
+recipe.normal.ingredients = {
+        {type="item", name="stone-brick", amount=4}
+    }
+recipe.normal.results = { 
+        {type='item', name='apm_crushed_stone', amount=16}
+    }
+recipe.normal.main_product = 'apm_crushed_stone'
+recipe.normal.requester_paste_multiplier = 4
+recipe.normal.always_show_products = true
+recipe.normal.always_show_made_in = apm_power_always_show_made_in
+--recipe.normal.allow_decomposition = false
+--recipe.normal.allow_as_intermediate = false
+--recipe.normal.allow_intermediates = false
+recipe.expensive = table.deepcopy(recipe.normal)
+
+recipe.expensive.energy_required = 4
+--recipe.expensive.ingredients = {}
+--recipe.expensive.results = {}
+data:extend({recipe})
+
+-- Recipe ---------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
 local item_icon_a = apm.lib.utils.icon.get.from_item('apm_wood_pellets')
 local item_icon_b = {apm.lib.icons.dynamics.t1}
 local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})

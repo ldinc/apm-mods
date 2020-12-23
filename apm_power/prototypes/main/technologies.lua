@@ -83,7 +83,7 @@ data:extend({apm_electric_mining_drills})
 apm.lib.utils.technology.new('apm_power',
     'apm_crusher_machine_0',
     {}, 
-    {'apm_crusher_machine_0', 'apm_coal_crushed_1', 'apm_wood_pellets_1'},
+    {'apm_crusher_machine_0', 'apm_coal_crushed_1', 'apm_stone_crushed_1', 'apm_wood_pellets_1'},
     {{"apm_industrial_science_pack", 1}},
     5, 10)
 
@@ -114,7 +114,7 @@ apm.lib.utils.technology.new('apm_power',
 -- Stone bricks
 apm.lib.utils.technology.new('apm_power',
     'apm_stone_bricks',
-    {'apm_press_machine_0', 'apm_water_supply-1'}, 
+    {'apm_press_machine_0', 'apm_water_supply-1'},
     {'apm_crushed_stone', 'apm_stone_brick_raw_with_crushed', 'apm_stone_brick_raw_with_wed_mud', 'apm_stone_brick_raw_with_ash'},
     {{"apm_industrial_science_pack", 1}},
     15, 10)
