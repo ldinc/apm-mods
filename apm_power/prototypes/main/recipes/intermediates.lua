@@ -48,9 +48,49 @@ data:extend({recipe})
 --
 --
 -- ----------------------------------------------------------------------------
-local item_icon_a = apm.lib.utils.icon.get.from_item('apm_resin')
-local item_icon_b = {apm.lib.icons.dynamics.t1}
-local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+local recipe = {}
+recipe.type = "recipe"
+recipe.name = "apm_egen_unit"
+recipe.category = 'advanced-crafting'
+recipe.normal = {}
+recipe.normal.enabled = false
+recipe.normal.energy_required = 1.25
+recipe.normal.ingredients = {
+        {type="item", name="apm_electromagnet", amount=10},
+        {type="item", name="steel-plate", amount=1},
+        {type="item", name="iron-gear-wheel", amount=2},
+        {type="item", name="apm_iron_bearing", amount=2},
+        {type="item", name="basic-circuit-board", amount=1},
+    }
+recipe.normal.results = { 
+        {type='item', name='apm_egen_unit', amount=1}
+    }
+recipe.normal.main_product = 'apm_egen_unit'
+recipe.normal.requester_paste_multiplier = 4
+recipe.normal.always_show_products = true
+recipe.normal.always_show_made_in = apm_power_always_show_made_in
+
+recipe.expensive = table.deepcopy(recipe.normal)
+
+recipe.expensive.ingredients = {
+    {type="item", name="apm_electromagnet", amount=15},
+    {type="item", name="steel-plate", amount=2},
+    {type="item", name="iron-gear-wheel", amount=2},
+    {type="item", name="apm_iron_bearing", amount=2},
+    {type="item", name="rubber", amount=1},
+}
+
+data:extend({recipe})
+
+
+-- Recipe ---------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local icons = apm.lib.utils.icon.get.from_item('apm_resin')
+-- local item_icon_a = apm.lib.utils.icon.get.from_item('apm_resin')
+-- local item_icon_b = {apm.lib.icons.dynamics.t1}
+-- local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
 
 local recipe = {}
 recipe.type = "recipe"
@@ -135,6 +175,48 @@ data:extend({recipe})
 --
 --
 -- ----------------------------------------------------------------------------
+-- local item_icon_a = apm.lib.utils.icon.get.from_item('apm_rubber')
+-- local item_icon_b = {apm.lib.icons.dynamics.t1}
+-- local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+
+-- local recipe = {}
+-- recipe.type = "recipe"
+-- recipe.name = "apm_rubber_1"
+-- recipe.category = 'smelting'
+-- recipe.group = "apm_power"
+-- recipe.subgroup = "apm_power_intermediates"
+-- recipe.order = 'aa_a'
+-- recipe.icons = icons
+-- recipe.normal = {}
+-- recipe.normal.enabled = false
+-- recipe.normal.energy_required = 2.5
+-- recipe.normal.ingredients = {
+--         {type="item", name="apm_resin", amount=1}
+--     }
+-- recipe.normal.results = { 
+--         {type='item', name='apm_rubber', amount=1}
+--     }
+-- recipe.normal.main_product = ''
+-- recipe.normal.requester_paste_multiplier = 8
+-- recipe.normal.always_show_products = true
+-- recipe.normal.always_show_made_in = apm_power_always_show_made_in
+-- --recipe.normal.allow_decomposition = false
+-- --recipe.normal.allow_as_intermediate = false
+-- --recipe.normal.allow_intermediates = false
+-- recipe.expensive = table.deepcopy(recipe.normal)
+
+-- --recipe.expensive.energy_required =
+-- recipe.expensive.ingredients = {
+--         {type="item", name="apm_resin", amount=2}
+--     }
+-- --recipe.expensive.results = {}
+
+-- data:extend({recipe})
+
+-- Recipe ---------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
 local item_icon_a = apm.lib.utils.icon.get.from_item('apm_rubber')
 local item_icon_b = {apm.lib.icons.dynamics.t1}
 local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
@@ -142,48 +224,6 @@ local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
 local recipe = {}
 recipe.type = "recipe"
 recipe.name = "apm_rubber_1"
-recipe.category = 'smelting'
-recipe.group = "apm_power"
-recipe.subgroup = "apm_power_intermediates"
-recipe.order = 'aa_a'
-recipe.icons = icons
-recipe.normal = {}
-recipe.normal.enabled = false
-recipe.normal.energy_required = 2.5
-recipe.normal.ingredients = {
-        {type="item", name="apm_resin", amount=1}
-    }
-recipe.normal.results = { 
-        {type='item', name='apm_rubber', amount=1}
-    }
-recipe.normal.main_product = ''
-recipe.normal.requester_paste_multiplier = 8
-recipe.normal.always_show_products = true
-recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
-recipe.expensive = table.deepcopy(recipe.normal)
-
---recipe.expensive.energy_required =
-recipe.expensive.ingredients = {
-        {type="item", name="apm_resin", amount=2}
-    }
---recipe.expensive.results = {}
-
-data:extend({recipe})
-
--- Recipe ---------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item_icon_a = apm.lib.utils.icon.get.from_item('apm_rubber')
-local item_icon_b = {apm.lib.icons.dynamics.t2}
-local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
-
-local recipe = {}
-recipe.type = "recipe"
-recipe.name = "apm_rubber_2"
 recipe.category = 'apm_coking'
 recipe.group = "apm_power"
 recipe.subgroup = "apm_power_intermediates"
@@ -339,6 +379,50 @@ recipe.expensive.results = {
     }
 
 data:extend({recipe})
+
+-- Recipe ---------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local item_icon_a = apm.lib.utils.icon.get.from_item('lubricant')
+local item_icon_b = apm.lib.utils.icon.get.from_item('apm_resin')
+item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, {-6, 0})
+local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+
+local recipe = {}
+recipe.type = "recipe"
+recipe.name = "apm_lubricant_1"
+recipe.category = 'apm_press'
+recipe.group = "apm_power"
+recipe.subgroup = "apm_power_intermediates"
+recipe.order = 'ac_b'
+recipe.icons = icons
+recipe.normal = {}
+recipe.normal.enabled = false
+recipe.normal.energy_required = 2
+recipe.normal.ingredients = {
+        {type="item", name="apm_resin", amount=4}
+    }
+recipe.normal.results = {
+        {type="fluid", name="lubricant", amount=20} 
+    }
+recipe.normal.main_product = ''
+recipe.normal.requester_paste_multiplier = 8
+recipe.normal.always_show_products = true
+recipe.normal.always_show_made_in = apm_power_always_show_made_in
+--recipe.normal.allow_decomposition = false
+--recipe.normal.allow_as_intermediate = false
+--recipe.normal.allow_intermediates = false
+recipe.expensive = table.deepcopy(recipe.normal)
+
+--recipe.expensive.energy_required =
+--recipe.expensive.ingredients = {}
+recipe.expensive.results = { 
+        {type='fluid', name='lubricant', amount=15}
+    }
+
+data:extend({recipe})
+
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -640,7 +724,7 @@ recipe.normal = {}
 recipe.normal.enabled = false
 recipe.normal.energy_required = 2
 recipe.normal.ingredients = {
-        {type="item", name="apm_simple_engine", amount=1},
+        {type="item", name="apm_pistions", amount=1},
         {type="item", name="apm_steam_relay", amount=3},
         {type="item", name="apm_gearing", amount=1}
     }
@@ -896,6 +980,66 @@ recipe.expensive = table.deepcopy(recipe.normal)
 
 --recipe.expensive.energy_required =
 --recipe.expensive.ingredients = {}
+--recipe.expensive.results = {}
+
+data:extend({recipe})
+
+-- Recipe ---------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local recipe = {}
+recipe.type = "recipe"
+recipe.name = "apm_iron_bearing_ball"
+recipe.category = 'crafting'
+recipe.normal = {}
+recipe.normal.enabled = false
+recipe.normal.energy_required = 0.5
+recipe.normal.ingredients = {
+        {type="item", name="iron-plate", amount=1}
+    }
+recipe.normal.results = { 
+        {type='item', name='apm_iron_bearing_ball', amount=12}
+    }
+recipe.normal.main_product = 'apm_iron_bearing_ball'
+recipe.normal.requester_paste_multiplier = 4
+recipe.normal.always_show_products = true
+recipe.normal.always_show_made_in = apm_power_always_show_made_in
+recipe.expensive = table.deepcopy(recipe.normal)
+recipe.expensive.ingredients = {
+        {type="item", name="iron-plate", amount=1}
+    }
+
+data:extend({recipe})
+
+-- Recipe ---------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local recipe = {}
+recipe.type = "recipe"
+recipe.name = "apm_iron_bearing"
+recipe.category = 'crafting-with-fluid'
+recipe.normal = {}
+recipe.normal.enabled = false
+recipe.normal.energy_required = 0.5
+recipe.normal.ingredients = {
+        {type="item", name="iron-plate", amount=1},
+        {type="item", name="apm_iron_bearing_ball", amount=16},
+        {type="fluid", name="lubricant", amount=10},
+    }
+recipe.normal.results = { 
+        {type='item', name='apm_iron_bearing', amount=2}
+    }
+recipe.normal.main_product = 'apm_iron_bearing'
+recipe.normal.requester_paste_multiplier = 4
+recipe.normal.always_show_products = true
+recipe.normal.always_show_made_in = apm_power_always_show_made_in
+
+recipe.expensive = table.deepcopy(recipe.normal)
+recipe.expensive.ingredients = {
+        {type="item", name="iron-plate", amount=1}
+    }
 --recipe.expensive.results = {}
 
 data:extend({recipe})

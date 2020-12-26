@@ -35,7 +35,7 @@ end
 -- ----------------------------------------------------------------------------
 data:extend({
   {type = "bool-setting", name = "apm_power_overhaul_machine_frames", setting_type = "startup", default_value = true, order='ab_a'},
-  {type = "bool-setting", name = "apm_power_steam_assembler_craftin_with_fluids", setting_type = "startup", default_value = false, order='ac_a'},
+  {type = "bool-setting", name = "apm_power_steam_assembler_craftin_with_fluids", setting_type = "startup", default_value = true, order='ac_a'},
   {type = "bool-setting", name = "apm_power_always_show_made_in", setting_type = "startup", default_value = true, order='ad_a'},
   {type = "bool-setting", name = "apm_power_inherit_industrial_science", setting_type = "startup", default_value = true, order='ae_a'},
   {type = "bool-setting", name = "apm_power_inherit_steam_science", setting_type = "startup", default_value = true, order='ae_b'},

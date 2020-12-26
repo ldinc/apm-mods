@@ -39,7 +39,7 @@ recipe.normal.ingredients = {
         {type="fluid", name="apm_hot_water", amount=500}
     }
 recipe.normal.results = { 
-        {type='fluid', name='water', amount=475}
+        {type='fluid', name='water', amount=500}
     }
 recipe.normal.main_product = 'water'
 recipe.normal.requester_paste_multiplier = 4
@@ -84,7 +84,7 @@ recipe.normal.ingredients = {
         {type="fluid", name="steam", amount=500}
     }
 recipe.normal.results = {
-        {type='fluid', name='water', amount=240}
+        {type='fluid', name='water', amount=500}
     }
 recipe.normal.main_product = 'water'
 recipe.normal.requester_paste_multiplier = 4

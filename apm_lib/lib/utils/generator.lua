@@ -23,6 +23,17 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+function apm.lib.utils.generator.set.burner_fuel_categories(generator_name, fuel_categories)
+    if not apm.lib.utils.generator.exist(generator_name) then return end
+	local generator = data.raw['burner-generator'][generator_name]
+    apm.lib.utils.entity.set.fuel_category(generator, fuel_categories)
+end
+
+
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
 function apm.lib.utils.generator.get.fuel_categories(generator_name)
     if not apm.lib.utils.generator.exist(generator_name) then return nil end
 

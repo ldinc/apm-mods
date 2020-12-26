@@ -5,6 +5,482 @@ local self = 'apm_power/prototypes/integrations/recipes.lua'
 
 APM_LOG_HEADER(self)
 
+function dump(o)
+	if type(o) == 'table' then
+	   local s = '{ '
+	   for k,v in pairs(o) do
+		  if type(k) ~= 'number' then k = '"'..k..'"' end
+		  s = s .. '['..k..'] = ' .. dump(v) .. ',\n'
+	   end
+	   return s .. '} '
+	else
+	   return tostring(o)
+	end
+ end
+
+function addEquipmentGrid(eType, eName, equipmentGrid)
+	if data.raw[eType] and data.raw[eType][eName] then
+        data.raw[eType][eName].equipment_grid = equipmentGrid
+    end
+end
+
+function makeGrid(attributes)
+    local name = attributes.name .. "-grid-apm"
+    
+    data:extend({
+            {
+                type = "equipment-grid",
+                name = name,
+                width = attributes.width or 5,
+                height = attributes.height or 5,
+                equipment_categories = attributes.categories or {"armor"}
+            }
+    })
+
+	return name
+end
+
+function genBelts(name)
+	if name ~= '' then
+		name = name .. '-'
+	end
+	-- vanila loader mod compability
+	local loader = name .. 'loader'
+	-- if name == 'turbo' then 
+	-- 	loader = 'purple-loader'
+	-- end
+	-- if name == 'ultimate' then 
+	-- 	loader = 'green-loader'
+	-- end
+	return name .. 'transport-belt', name .. 'underground-belt', name .. 'splitter', loader
+end
+
+function genGearingBearing(alloy)
+	if sub == 'iron' then 
+		return 'iron-gear-wheel', 'apm_iron_bearing'
+	end
+	return alloy .. '-gear-wheel', alloy .. '-bearing'
+end
+
+function genBeltsRecipes(name, alloy, logic, sub) 
+	local belt, under, splitter, loader = genBelts(name)
+	local gearing, bearing = genGearingBearing(sub)
+	
+	-- belt
+	apm.lib.utils.recipe.ingredient.remove_all(belt)
+	apm.lib.utils.recipe.ingredient.mod(belt, bearing, 4)
+	apm.lib.utils.recipe.ingredient.mod(belt, gearing, 4)
+	apm.lib.utils.recipe.ingredient.mod(belt, alloy, 2)
+	apm.lib.utils.recipe.ingredient.mod(belt, 'apm_rubber', 1)
+	-- under
+	apm.lib.utils.recipe.ingredient.remove_all(under)
+	apm.lib.utils.recipe.ingredient.mod(under, belt, 5)
+	apm.lib.utils.recipe.ingredient.mod(under, alloy, 4)
+	-- splitter
+	apm.lib.utils.recipe.ingredient.remove_all(splitter)
+	apm.lib.utils.recipe.ingredient.mod(splitter, belt, 2)
+	apm.lib.utils.recipe.ingredient.mod(splitter, gearing, 4)
+	apm.lib.utils.recipe.ingredient.mod(splitter, bearing, 4)
+	apm.lib.utils.recipe.ingredient.mod(splitter, alloy, 4)
+	apm.lib.utils.recipe.ingredient.mod(splitter, logic, 5)
+	-- loader (if vanila mod enabled)
+	apm.lib.utils.recipe.ingredient.remove_all(loader)
+	apm.lib.utils.recipe.ingredient.mod(loader, belt, 5)
+	apm.lib.utils.recipe.ingredient.mod(loader, alloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(loader, gearing, 8)
+	apm.lib.utils.recipe.ingredient.mod(loader, logic, 5)
+end
+
+function genInsertersName(name)
+
+	if name == 'yellow' or name == '' then 
+		return 'inserter', 'yellow-filter-inserter', '', ''
+	end
+	if name == 'red' or name == 'fast' then
+		return 'long-handed-inserter', 'red-filter-inserter', 'red-stack-inserter', 'red-filter-inserter'
+	end
+	if name == 'express' then
+		return 'fast-inserter', 'filter-inserter', 'stack-inserter', 'stack-filter-inserter'
+	end
+	if name == 'ultimate' then
+		name = 'express'
+	end
+	if name ~= '' then
+		name = name .. '-'
+	end
+
+	return name .. 'inserter', name ..  'filter-inserter', name .. 'stack-inserter', name .. 'stack-filter-inserter'
+end
+
+function genInserterts(name, alloy, logic, sub, tier)
+	local ins, fins, sins, sfins = genInsertersName(name)
+	local gearing, bearing = genGearingBearing(sub)
+
+	local recipe = ins
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'electric-engine-unit', tier)
+	apm.lib.utils.recipe.ingredient.mod(recipe, gearing, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, bearing, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic, 1) 
+
+	recipe = fins
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic, 4)
+	apm.lib.utils.recipe.ingredient.mod(recipe, ins, 1)		
+	apm.lib.utils.recipe.ingredient.mod(recipe, gearing, 1)
+
+	if sins ~= '' then 
+		recipe = sins
+		apm.lib.utils.recipe.ingredient.remove_all(recipe)
+		apm.lib.utils.recipe.ingredient.mod(recipe, ins, 1)
+		apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)
+		apm.lib.utils.recipe.ingredient.mod(recipe, gearing, 1)
+		apm.lib.utils.recipe.ingredient.mod(recipe, bearing, 1)
+	end
+	if sfins ~= '' then 
+		recipe = fsins
+		apm.lib.utils.recipe.ingredient.remove_all(recipe)
+		apm.lib.utils.recipe.ingredient.mod(recipe, fins, 1)
+		apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)
+		apm.lib.utils.recipe.ingredient.mod(recipe, gearing, 1)
+		apm.lib.utils.recipe.ingredient.mod(recipe, bearing, 1)
+	end
+end
+
+function genStorageTank(recipe, alloy, pipe, tier)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'stone-brick', tier*10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 20)
+
+	local wCorners = 'bob-storage-tank-all-corners-' .. tostring(tier)
+	if tier == 1 then 
+		wCorners = 'bob-storage-tank-all-corners'
+	end
+	apm.lib.utils.recipe.ingredient.remove_all(wCorners)
+	apm.lib.utils.recipe.ingredient.mod(wCorners, recipe, 1)
+	apm.lib.utils.recipe.ingredient.mod(wCorners, pipe, 20)
+end
+
+function genElectricPole(tier, alloy, wire, logic)
+	local recipe = 'medium-electric-pole'
+	if tier > 1 then
+		recipe = recipe .. '-' .. tostring(tier)
+	end
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'steel-plate', 2 * tier)
+	apm.lib.utils.recipe.ingredient.mod(recipe, wire, 2)
+	local recipe = 'big-electric-pole'
+	if tier > 1 then
+		recipe = recipe .. '-' .. tostring(tier)
+	end
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'steel-plate', 5 * tier)
+	apm.lib.utils.recipe.ingredient.mod(recipe, wire, 5)
+	local recipe = 'substation'
+	if tier > 1 then
+		recipe = recipe .. '-' .. tostring(tier)
+	end
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'steel-plate', 5 * tier)
+	apm.lib.utils.recipe.ingredient.mod(recipe, wire, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic, 5)
+end
+
+function genPump(tier, alloy, pipe, logic) 
+	local recipe = 'bob-pump-' .. tostring(tier)
+	if tier == 1 then 
+		recipe = 'pump'
+	end
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, pipe, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_rubber', 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'electric-engine-unit', tier)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic, 2)
+end
+
+function changeConcrete()
+	local recipe = 'concrete'
+	-- pm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'iron', 0)
+	local recipe = 'refined-concrete'
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'iron-stick', 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'steel-plate', 2)
+end
+
+function locomotiveBuff(recipe,tier, armoured, w,h)
+	local locomotive = data.raw.locomotive[recipe]
+	if locomotive then
+		local list = {"noInventory", "train", "locomotive", "vehicle", "movement", "adv-generator", 'train', 'cargo-wagon'}
+		if armoured > 0 then
+			list = {"noInventory", "train", "locomotive", "vehicle", "movement", "adv-generator", 'train', 'cargo-wagon', 'armoured-vehicle', 'armoured-train', }
+		end
+		local grid = makeGrid({
+			name = recipe,
+			width = w,
+			height = h,
+			categories = list
+		})
+		locomotive.max_health = tier * (1000 + armoured * 500)
+		addEquipmentGrid(recipe, recipe, grid)
+		locomotive.equipment_grid = grid
+	end
+end
+
+function cargoWagonBuff(recipe, tier, armoured, w,h)
+	local wagon = data.raw["cargo-wagon"][recipe]
+	if wagon then
+		wagon.max_health = tier * (1000 + 500*armoured)
+		local list = {'train', 'vehicle', 'cargo-wagon'}
+		if armoured then 
+			list = {'train', 'vehicle', 'cargo-wagon', 'armoured-vehicle', 'armoured-train', 'armoured-cargo-wagon'}
+		end
+		local grid = makeGrid({
+			name = recipe,
+			width = w,
+			height = h,
+			categories = list
+		})
+		addEquipmentGrid(recipe, recipe, grid)
+		wagon.equipment_grid = grid
+	end
+end
+
+function fluidWagonBuff(recipe, tier, armoured, w,h)
+	local wagon = data.raw["fluid-wagon"][recipe]
+	if wagon then
+		wagon.max_health = tier * (1000 + 500*armoured)
+		local list = {'train', 'vehicle', 'cargo-wagon'}
+		if armoured then 
+			list = {'train', 'vehicle', 'cargo-wagon', 'armoured-vehicle', 'armoured-train', 'armoured-cargo-wagon'}
+		end
+		local grid = makeGrid({
+			name = recipe,
+			width = w,
+			height = h,
+			categories = list
+		})
+		addEquipmentGrid(recipe, recipe, grid)
+		wagon.equipment_grid = grid
+	end
+end
+
+function enableSteamCoolant()
+	if apm.nuclear then
+		local recipe = 'apm_hybrid_cooling_tower_0'
+		apm.lib.utils.recipe.ingredient.remove_all(recipe)
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'steel-plate', 5)
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'copper-pipe', 10)
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'electronic-circuit', 10)
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_machine_frame_advanced', 3)
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'pump', 1)
+		local tech = 'apm_steelworks-1'
+		if apm.lib.utils.technology.exist(tech) then
+			apm.lib.utils.technology.add.recipe_for_unlock(tech, recipe)
+			recipe = 'steam_condensing'
+			apm.lib.utils.technology.add.recipe_for_unlock(tech, recipe)
+		end
+	end
+end
+
+function fixBurnerGeneratorBob()
+	local name = 'bob-burner-generator'
+	local generator = data.raw['burner-generator'][name]
+	local fc = apm.lib.utils.entity.get.fuel_categories('apm_steelworks_0')
+	generator.burner.fuel_category = 'apm_refined_chemical'
+	generator.burner.fuel_categories = fc
+	-- boilers
+	genBoilers('boiler', 1, 'steel-plate', 'pipe')
+	genBoilers('boiler-2', 2, 'steel-plate', 'steel-pipe')
+	genBoilers('boiler-3', 3, 'titanium-plate', 'titanium-pipe')
+	genBoilers('boiler-4', 4, 'bob-tungsten-plate', 'tungsten-pipe')
+	genBoilers('boiler-5', 5, 'copper-tungsten-plate', 'copper-tungsten-pipe')
+	-- steam generators
+	genSteamEGen('steam-engine', 1, 'steel-plate', 'pipe', 'basic-circuit-board')
+	genSteamEGen('steam-engine-2', 2, 'steel-plate', 'steel-pipe', 'electronic-circuit')
+	genSteamEGen('steam-engine-3', 3, 'titanium-plate', 'titanium-pipe', 'advanced-circuit')
+	genSteamEGen('steam-engine-4', 4, 'tungsten-plate', 'tungsten-pipe', 'processing-unit')
+	genSteamEGen('steam-engine-5', 5, 'copper-tungsten-alloy', 'copper-tungsten-pipe', 'advanced-processing-unit')
+	-- fluid generators
+	genFluidEGen('fluid-generator', 1, 'steel-plate', 'steel-pipe', 'basic-circuit-board', 'steel-gearing', 'steel-bearing')
+	genFluidEGen('fluid-generator-2', 2, 'titanium-plate', 'titanium-pipe', 'electronic-circuit', 'cobalt-steel-gearing', 'cobalt-steel-bearing')
+	genFluidEGen('fluid-generator-3', 3, 'tungsten-plate', 'tungsten-pipe', 'processing-unit', 'titanium-gearing', 'titanium-bearing')
+	-- remove dissasembling
+	apm.lib.utils.recipe.remove('boiler-2-from-oil-boiler')
+	apm.lib.utils.recipe.remove('boiler-3-from-heat-exchanger')
+	apm.lib.utils.recipe.remove('boiler-3-from-oil-boiler-2')
+	apm.lib.utils.recipe.remove('boiler-4-from-heat-exchanger-2')
+	apm.lib.utils.recipe.remove('boiler-4-from-oil-boiler-3')
+	apm.lib.utils.recipe.remove('boiler-5-from-heat-exchanger-3')
+	apm.lib.utils.recipe.remove('boiler-5-from-oil-boiler-4')
+	-- fluid boilers
+	genBoilers('oil-boiler', 1, 'steel-plate', 'steel-plate')
+	genBoilers('oil-boiler-2', 2, 'titanium-plate', 'titanium-pipe')
+	genBoilers('oil-boiler-3', 3, 'tungsten-plate', 'tungsten-pipe')
+	genBoilers('oil-boiler-4', 4, 'copper-tungsten-plate', 'copper-tungsten-pipe')
+	apm.lib.utils.recipe.remove('oil-boiler-2-from-boiler-3')
+	apm.lib.utils.recipe.remove('oil-boiler-3-from-boiler-4')
+	apm.lib.utils.recipe.remove('oil-boiler-4-from-boiler-5')
+	genHydrazineEGen()
+end
+
+function genHydrazineEGen()
+	local recipe = 'hydrazine-generator'
+	local alloy, pipe, logic = 'nitinol-alloy', 'nitinol-pipe', 'advanced-processing-unit'
+	local gearing, bearing = 'nitinol-gear-wheel', 'nitinol-bearing' 
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_machine_frame_advanced', 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_egen_unit', 6 * 4)
+	apm.lib.utils.recipe.ingredient.mod(recipe, pipe, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, gearing, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, bearing, 10)	
+end
+
+function genFluidEGen(recipe, tier, alloy, pipe, logic, gearing, bearing)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_machine_frame_advanced', 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_egen_unit', 6 * tier)
+	apm.lib.utils.recipe.ingredient.mod(recipe, pipe, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, gearing, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, bearing, 10)
+end
+
+function genSteamEGen(recipe, tier, alloy, pipe, logic)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_machine_frame_steam', 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_steam_engine', 2*tier)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_egen_unit', 4 *tier)
+	apm.lib.utils.recipe.ingredient.mod(recipe, pipe, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic, 2)
+end
+
+function genBoilers(recipe, tier, alloy, pipe)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'stone-furnace', 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, pipe, 15)
+end
+
+function genFluidBoilers(recipe, tier, alloy, pipe)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'stone-furnace', 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, pipe, 5)
+end
+
+function updateGenerators()
+	local recipe = 'bob-burner-generator'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_egen_unit', 3)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_machine_frame_basic', 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'stone-furnace', 4)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'copper-cable', 6)
+end
+
+function fixSolarPanels()
+	genSolarI('solar-panel-small', 1)
+	genSolarI('solar-panel',2)
+	genSolarI('solar-panel-large',3)
+	genSolarII('solar-panel-small-2', 1)
+	genSolarII('solar-panel-2',2)
+	genSolarII('solar-panel-large-2',3)
+	genSolarIII('solar-panel-small-3', 1)
+	genSolarIII('solar-panel-3',2)
+	genSolarIII('solar-panel-large-3',3)
+end
+
+function genSolarI(recipe, size)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'glass', size)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'steel', 2*size)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'copper-plate', 2*size)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'electronic-circuit', 2*size)
+end
+
+
+function genSolarII(recipe, size)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'glass', 4*size)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'steel', 2*size)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'silver-plate', 2*size)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'advanced-circuit', 2*size)
+end
+
+function genSolarIII(recipe, size)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'silicon-wafer', 20*size)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'steel', 2*size)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'gold-plate', 2*size)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'processing-unit', 2*size)
+end
+
+function genAccum()
+	genAccumI('accumulator', 1)
+	genAccumI('fast-accumulator', 2)
+	genAccumI('slow-accumulator', 2)
+	genAccumI('large-accumulator', 3)
+	genAccumII('fast-accumulator-2', 2)
+	genAccumII('slow-accumulator-2', 2)
+	genAccumII('large-accumulator-2', 3)
+	genAccumIII('fast-accumulator-3', 2)
+	genAccumIII('slow-accumulator-3', 2)
+	genAccumIII('large-accumulator-3', 3)
+end
+
+function genAccumI(recipe, tier)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'iron', 2)
+	local battery = 5
+	if tier == 3 then
+		battery = 10
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'iron', 3)
+	end
+	if tier == 2 then
+		battery = 4 
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'electronic-circuit', 2)
+	end
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'battery', battery)
+end
+
+function genAccumII(recipe, tier)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'steel-plate', 2)
+	local battery = 5
+	if tier == 3 then
+		battery = 10
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'steel-plate', 3)
+	end
+	if tier == 2 then
+		battery = 4 
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'electronic-circuit', 2)
+	end
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'lithium-ion-battery', battery)
+end
+
+function genAccumIII(recipe, tier)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'titanium-plate', 2)
+	local battery = 5
+	if tier == 3 then
+		battery = 10
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'titanium-plate', 3)
+	end
+	if tier == 2 then
+		battery = 4 
+		apm.lib.utils.recipe.ingredient.mod(recipe, 'processig-unit', 2)
+	end
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'silver-zinc-battery', battery)
+end
+
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
 local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"].value
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
@@ -283,22 +759,30 @@ if mods.bobpower and apm_power_compat_bob then
 end
 
 if mods.boblogistics and apm_power_compat_bob then
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
-		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'iron-plate', 0)
-		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_gearing', 0)
-		apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'iron-plate', 1)
-		apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'apm_gearing', 1)
-		apm.lib.utils.recipe.ingredient.mod('fast-inserter', 'apm_gearing', 0)
+	-- if apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
 		if mods.bobores and mods.bobplates then
-			apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-plate', 'tin-plate')
-			apm.lib.utils.recipe.ingredient.replace('yellow-filter-inserter', 'iron-plate', 'tin-plate')
+			genInserterts('',  'bronze-alloy', 'basic-circuit-board', 'iron', 1) -- inserter
+			genInserterts('fast', 'brass-alloy', 'electronic-circuit', 'steel', 1) -- fast
+			genInserterts('express', 'aluminium-plate', 'advanced-circuit', 'cobalt-steel', 2)
+			genInserterts('turbo', 'titanium-plate', 'processing-unit', 'titanium', 3)
+			genInserterts('ultimate', 'nitinol-alloy', 'advanced-processing-unit', 'nitinol', 4)
 		end
-	else
-		if mods.bobores and mods.bobplates then
-			apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-plate', 'tin-plate')
-			apm.lib.utils.recipe.ingredient.replace('filter-inserter', 'iron-plate', 'tin-plate')
-		end
-	end
+
+		-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'iron-plate', 0)
+		-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_gearing', 0)
+		-- apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'iron-plate', 1)
+		-- apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'apm_gearing', 1)
+		-- apm.lib.utils.recipe.ingredient.mod('fast-inserter', 'apm_gearing', 0)
+		-- if mods.bobores and mods.bobplates then
+		-- 	apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-plate', 'tin-plate')
+		-- 	apm.lib.utils.recipe.ingredient.replace('yellow-filter-inserter', 'iron-plate', 'tin-plate')
+		-- end
+	-- else
+	-- 	if mods.bobores and mods.bobplates then
+	-- 		apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-plate', 'tin-plate')
+	-- 		apm.lib.utils.recipe.ingredient.replace('filter-inserter', 'iron-plate', 'tin-plate')
+	-- 	end
+	-- end
 	apm.lib.utils.recipe.ingredient.mod('copper-pipe', 'apm_sealing_rings', 1)
 	apm.lib.utils.recipe.ingredient.mod('steel-pipe', 'apm_sealing_rings', 1)
 	apm.lib.utils.recipe.ingredient.mod('stone-pipe', 'apm_sealing_rings', 1)
@@ -310,39 +794,126 @@ if mods.boblogistics and apm_power_compat_bob then
 	apm.lib.utils.recipe.ingredient.mod('tungsten-pipe', 'apm_sealing_rings', 1)
 	apm.lib.utils.recipe.ingredient.mod('nitinol-pipe', 'apm_sealing_rings', 1)
 	apm.lib.utils.recipe.ingredient.mod('copper-tungsten-pipe', 'apm_sealing_rings', 1)
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
-		apm.lib.utils.recipe.ingredient.mod('splitter', 'apm_mechanical_relay', 0)
-		apm.lib.utils.recipe.ingredient.mod('basic-underground-belt', 'wood', 0)
-		apm.lib.utils.recipe.ingredient.mod('basic-underground-belt', 'stone', 0)
-		apm.lib.utils.recipe.ingredient.mod('basic-underground-belt', 'iron-gear-wheel', 5)
-		apm.lib.utils.recipe.ingredient.mod('basic-underground-belt', 'iron-plate', 5)
-		apm.lib.utils.recipe.ingredient.mod('basic-splitter', 'wood', 0)
-		apm.lib.utils.recipe.ingredient.mod('basic-splitter', 'copper-cable', 0)
-		apm.lib.utils.recipe.ingredient.mod('basic-splitter', 'apm_mechanical_relay', 4)
-		apm.lib.utils.recipe.ingredient.mod('basic-transport-belt', 'apm_rubber', 1)
-		apm.lib.utils.recipe.ingredient.mod('basic-transport-belt', 'iron-stick', 2)
-		apm.lib.utils.recipe.ingredient.mod('basic-transport-belt', 'iron-plate', 0)
-		if mods.bobores and mods.bobplates then
-			apm.lib.utils.recipe.ingredient.mod('transport-belt', 'tin-plate', 2)
-		else
-			apm.lib.utils.recipe.ingredient.mod('transport-belt', 'iron-plate', 2)
+
+	apm.lib.utils.recipe.category.change('steel-bearing', 'crafting-with-fluid')
+	apm.lib.utils.recipe.category.change('cobalt-steel-bearing', 'crafting-with-fluid')
+	apm.lib.utils.recipe.ingredient.mod('steel-bearing', 'lubricant', 10)
+	apm.lib.utils.recipe.ingredient.mod('cobalt-steel-bearing', 'lubricant', 10)
+
+	apm.lib.utils.recipe.ingredient.remove_all('steam-inserter')
+	apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'apm_steam_engine', 1)
+	apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'iron-stick', 2)
+	apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'tin-plate', 1)
+
+	if mods.bobores and mods.bobplates then
+		apm.lib.utils.recipe.ingredient.mod('apm_mechanical_relay', 'iron-plate', 0)
+		apm.lib.utils.recipe.ingredient.mod('apm_mechanical_relay', 'tin-plate', 1)
+
+		apm.lib.utils.recipe.ingredient.mod('apm_steam_relay', 'tin-plate', 2)
+		apm.lib.utils.recipe.ingredient.mod('apm_steam_relay', 'iron-stick', 0)
+
+		apm.lib.utils.recipe.ingredient.mod('electric-engine-unit', 'copper-cable', 3)
+		apm.lib.utils.recipe.ingredient.mod('electric-engine-unit', 'engine-unit', 0)
+		apm.lib.utils.recipe.ingredient.mod('electric-engine-unit', 'steel-plate', 1)
+
+		apm.lib.utils.recipe.ingredient.mod('engine-unit', 'pipe', 0)
+
+		apm.lib.utils.recipe.ingredient.mod('explosives', 'water', 0)
+		apm.lib.utils.recipe.ingredient.mod('explosives', 'nitric-acid', 10)
+		--apm_steelworks_0
+		apm.lib.utils.recipe.ingredient.remove_all('apm_steelworks_0')
+		apm.lib.utils.recipe.ingredient.mod('apm_steelworks_0', 'stone-furnace', 10)
+		apm.lib.utils.recipe.ingredient.mod('apm_steelworks_0', 'advanced-circuit', 30)
+		apm.lib.utils.recipe.ingredient.mod('apm_steelworks_0', 'stone-brick', 20)
+		apm.lib.utils.recipe.ingredient.mod('apm_steelworks_0', 'apm_machine_frame_advanced', 20)
+		--apm_steelworks_1
+		apm.lib.utils.recipe.ingredient.remove_all('apm_steelworks_1')
+		apm.lib.utils.recipe.ingredient.mod('apm_steelworks_1', 'electric-furnace', 6)
+		apm.lib.utils.recipe.ingredient.mod('apm_steelworks_1', 'electronic-circuit', 30)
+		apm.lib.utils.recipe.ingredient.mod('apm_steelworks_1', 'stone-brick', 20)
+		apm.lib.utils.recipe.ingredient.mod('apm_steelworks_1', 'apm_machine_frame_advanced', 20)
+		-- storage-tank (2,3,4)
+		genStorageTank('storage-tank', 'iron-plate', 'pipe', 1)
+		genStorageTank('storage-tank-2', 'invar-alloy', 'steel-pipe', 2)
+		genStorageTank('storage-tank-3', 'titanium-plate', 'titanium-pipe', 3)
+		genStorageTank('storage-tank-4', 'nitinol-alloy', 'nitinol-pipe', 4)
+		-- electric pole
+		if mods.bobpower then 
+			genElectricPole(1, 'iron-plate', 'copper-cable', 'electronic-circuit')
+			genElectricPole(2, 'brass-alloy', 'tinned-copper-cable', 'advanced-circuit')
+			genElectricPole(3, 'titanium-plate', 'insulated-cable', 'processing-unit')
+			genElectricPole(4, 'nitinol-alloy', 'gilded-copper-cable', 'advanced-processing-unit')
 		end
-		apm.lib.utils.recipe.ingredient.mod('transport-belt', 'apm_rubber', 0)
-		apm.lib.utils.recipe.ingredient.mod('transport-belt', 'iron-stick', 0)
+		-- pump
+		genPump(1, 'steel-plate', 'pipe', 'basic-circuit-board')
+		genPump(2, 'aluminium-plate', 'steel-pipe', 'electronic-circuit')
+		genPump(3, 'titanium-plate', 'titanium-pipe', 'processing-unit')
+		genPump(4, 'nitinol-alloy', 'nitinol-pipe', 'advanced-processing-unit')
+		-- locobuff
+		locomotiveBuff('locomotive', 1, 0, 8,6)
+		locomotiveBuff('bob-locomotive-2', 2, 0, 10,6)
+		locomotiveBuff('bob-locomotive-3', 3, 0, 12,6)
+		locomotiveBuff('bob-armoured-locomotive', 2, 1, 14,8)
+		locomotiveBuff('bob-armoured-locomotive-2', 3, 1, 16,8)	
+		locomotiveBuff('nuclear-train-vehicle-rampant-arsenal', 4, 3, 20, 20)
+
+		cargoWagonBuff('cargo-wagon', 1, 0, 8, 6)
+		cargoWagonBuff('bob-cargo-wagon-2', 2, 0, 10, 6)
+		cargoWagonBuff('bob-cargo-wagon-3', 3, 0, 12, 6)
+		cargoWagonBuff('bob-armoured-cargo-wagon', 1, 1, 8, 8)
+		cargoWagonBuff('bob-armoured-cargo-wagon-2', 2, 1, 10, 8)
+		cargoWagonBuff('bob-armoured-cargo-wagon-3', 3, 1, 12, 8)
+
+		fluidWagonBuff('fluid-wagon', 1, 0, 8, 6)
+		fluidWagonBuff('bob-fluid-wagon-2', 2, 0, 10, 6)
+		fluidWagonBuff('bob-fluid-wagon-3', 3, 0, 12, 6)
+		fluidWagonBuff('bob-armoured-fluid-wagon', 1, 1, 8, 8)
+		fluidWagonBuff('bob-armoured-fluid-wagon-2', 2, 1, 10, 8)
+		fluidWagonBuff('bob-armoured-fluid-wagon-3', 3, 1, 12, 8)
+		
+		local locomotive = data.raw.locomotive['nuclear-train-vehicle-rampant-arsenal']
+		if mods.apm_nuclear and locomotive and locomotive.burner then
+			locomotive.burner.fuel_category = ''
+			locomotive.burner.fuel_categories = {'apm_nuclear_uranium', 'apm_nuclear_mox', 'apm_nuclear_neptunium', 'apm_nuclear_thorium'}
+			locomotive.max_speed = 420
+		end
+		-- concrete
+		changeConcrete()
+		-- steam fix
+		enableSteamCoolant()
+		-- generators
+		fixBurnerGeneratorBob()
+		updateGenerators()
+		-- energy
+		fixSolarPanels()
+	end
+
+	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
+
+		if mods.bobores and mods.bobplates then
+			genBeltsRecipes('basic', 'tin-plate', 'apm_mechanical_relay', 'iron') 
+			genBeltsRecipes('', 'bronze-alloy', 'basic-circuit-board', 'iron')
+			genBeltsRecipes('fast', 'brass-alloy', 'electronic-circuit', 'steel')
+			genBeltsRecipes('express', 'aluminium-plate', 'advanced-circuit', 'cobalt-steel')
+			genBeltsRecipes('turbo', 'titanium-plate', 'processing-unit', 'titanium')
+			genBeltsRecipes('ultimate', 'nitinol-alloy', 'advanced-processing-unit', 'nitinol')
+		end
+	
 		apm.lib.utils.recipe.ingredient.replace('logistic-science-pack', 'basic-transport-belt', 'transport-belt')
 	end
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
-		apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'apm_burner_long_inserter', 0)
-		apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'apm_gearing', 0)
-		apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'inserter', 1)
-		apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'inserter', 0)
-		apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'apm_burner_filter_inserter', 1)
-		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_burner_filter_inserter', 0)
-		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'fast-inserter', 1)
-	end
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-inserterrequireprevious') then
-		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'fast-inserter', 0)
-	end
+	-- if apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
+
+	-- 	-- apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'apm_burner_long_inserter', 0)
+	-- 	-- apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'apm_gearing', 0)
+	-- 	-- apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'inserter', 1)
+	-- 	-- apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'inserter', 0)
+	-- 	-- apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'apm_burner_filter_inserter', 1)
+	-- 	-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_burner_filter_inserter', 0)
+	-- 	-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'fast-inserter', 1)
+	-- end
+	-- if apm.lib.utils.setting.get.starup('bobmods-logistics-inserterrequireprevious') then
+	-- 	apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'fast-inserter', 0)
+	-- end
 end
 
 if mods.bobplates and apm_power_compat_bob then

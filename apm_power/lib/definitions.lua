@@ -2,6 +2,17 @@ require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/lib/definitions.lua'
 
+function genIconPath(name) 
+    return '__apm_resource_pack_ldinc__/graphics/icons/apm_' .. name .. '.png'
+end
+
+function genIcon(name, size) 
+    return {
+        icon = genIconPath(name),
+        icon_size=size,
+    }
+end
+
 APM_LOG_HEADER(self)
 
 if apm.power.color == nil then apm.power.color = {} end
@@ -178,6 +189,7 @@ apm.power.icons.path.item_burner_generator_basic = '__apm_resource_pack_ldinc__/
 apm.power.icons.path.item_burner_generator_advanced = '__apm_resource_pack_ldinc__/graphics/icons/apm_equipment_burner_generator_advanced.png'
 apm.power.icons.path.equipment_burner_generator_basic = '__apm_resource_pack_ldinc__/graphics/equipment/apm_equipment_burner_generator_basic.png'
 apm.power.icons.path.equipment_burner_generator_advanced = '__apm_resource_pack_ldinc__/graphics/equipment/apm_equipment_burner_generator_advanced.png'
+-- apm.power.icons.path.iron_bearing_ball = '__apm_resource_pack_ldinc__/graphics/icons/apm_iron_bearing_ball.png'
 
 -- Icons ----------------------------------------------------------------------
 --
@@ -264,4 +276,6 @@ apm.power.icons.item_burner_generator_basic = {icon=apm.power.icons.path.item_bu
 apm.power.icons.item_burner_generator_advanced = {icon=apm.power.icons.path.item_burner_generator_advanced, icon_size=64}
 apm.power.icons.equipment_burner_generator_basic = {icon=apm.power.icons.path.equipment_burner_generator_basic, icon_size=128}
 apm.power.icons.equipment_burner_generator_advanced = {icon=apm.power.icons.path.equipment_burner_generator_advanced, icon_size=128}
-
+apm.power.icons.iron_bearing_ball= genIcon('iron_bearing_ball', 32)
+apm.power.icons.iron_bearing= genIcon('iron_bearing', 32)
+apm.power.icons.electric_generator_unit={icon='__apm_resource_pack_ldinc__/graphics/icons/electric-generator-unit.png', icon_size=64, icon_mipmaps=4}

@@ -39,8 +39,8 @@ APM_LOG_INFO(self, '', 'END: basic overwrites of the fuel categories')
 apm.lib.utils.car.set.fuel_category('tank', {'apm_refined_chemical'})
 
 -- Boilers
-apm.lib.utils.boiler.overhaul('boiler', 1)
-apm.lib.utils.boiler.set.next_upgrade('boiler', 'apm_boiler_2')
+-- apm.lib.utils.boiler.overhaul('boiler', 1)
+-- apm.lib.utils.boiler.set.next_upgrade('boiler', 'apm_boiler_2')
 
 -- Generators
 apm.lib.utils.generator.overhaul('steam-engine', 1)

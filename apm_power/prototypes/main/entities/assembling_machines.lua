@@ -195,4 +195,5 @@ data:extend({assembling_machine})
 -- ----------------------------------------------------------------------------
 if settings.startup["apm_power_steam_assembler_craftin_with_fluids"].value then
     apm.lib.utils.assembler.mod.category.add('apm_assembling_machine_1', 'crafting-with-fluid')
+    apm.lib.utils.assembler.mod.category.add('apm_assembling_machine_0', 'crafting-with-fluid')
 end

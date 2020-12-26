@@ -51,14 +51,13 @@ recipe.normal = {}
 recipe.normal.enabled = false
 recipe.normal.energy_required = 4
 recipe.normal.ingredients = {
-        {type="item", name="apm_lab_0", amount=1},
+        -- {type="item", name="apm_lab_0", amount=1},
         {type="item", name="apm_steam_engine", amount=3},
         {type="item", name="apm_machine_frame_steam", amount=3},
         {type="item", name="stone-brick", amount=10}
     }
 recipe.normal.results = {
-        {type='item', name='apm_lab_1', amount=1},
-        {type='item', name='apm_machine_frame_basic_used', amount=3}
+        {type='item', name='apm_lab_1', amount=1}
     }
 recipe.normal.main_product = 'apm_lab_1'
 recipe.normal.requester_paste_multiplier = 4

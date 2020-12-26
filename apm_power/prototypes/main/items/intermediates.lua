@@ -173,6 +173,23 @@ data:extend({item})
 -- ----------------------------------------------------------------------------
 local item = {}
 item.type = 'item'
+item.name = 'apm_egen_unit'
+item.icons = {
+    apm.power.icons.electric_generator_unit
+}
+item.stack_size = 200
+item.group = "apm_power"
+item.subgroup = "apm_power_intermediates"
+item.order = 'ah_a'
+data:extend({item})
+
+
+-- Item -----------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local item = {}
+item.type = 'item'
 item.name = 'apm_crushed_stone'
 item.icons = {
     {icon=apm.power.icons.crushed_stone.filename, icon_size=apm.power.icons.crushed_stone.icon_size, tint=apm.power.icons.crushed_stone.tint}
@@ -335,6 +352,39 @@ item.order = 'ab_i'
 --item.fuel_category = 'chemical'
 --item.fuel_value = "1MJ"
 data:extend({item})
+
+-- Item -----------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local item = {}
+item.type = 'item'
+item.name = 'apm_iron_bearing_ball'
+item.icons = {
+    apm.power.icons.iron_bearing_ball
+}
+item.stack_size = 200
+item.group = "apm_power"
+item.subgroup = "apm_power_intermediates"
+item.order = 'ab_i'
+data:extend({item})
+
+-- Item -----------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local item = {}
+item.type = 'item'
+item.name = 'apm_iron_bearing'
+item.icons = {
+    apm.power.icons.iron_bearing
+}
+item.stack_size = 200
+item.group = "apm_power"
+item.subgroup = "apm_power_intermediates"
+item.order = 'ab_i'
+data:extend({item})
+
 
 -- Item -----------------------------------------------------------------------
 --

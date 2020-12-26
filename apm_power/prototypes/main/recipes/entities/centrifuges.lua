@@ -53,14 +53,13 @@ recipe.normal = {}
 recipe.normal.enabled = false
 recipe.normal.energy_required = 4
 recipe.normal.ingredients = {
-        {type="item", name="apm_centrifuge_0", amount=1},
+        -- {type="item", name="apm_centrifuge_0", amount=1},
         {type="item", name="apm_steam_engine", amount=2},
         {type="item", name="apm_machine_frame_steam", amount=3},
         {type="item", name="stone-brick", amount=10}
     }
 recipe.normal.results = {
-        {type='item', name='apm_centrifuge_1', amount=1},
-        {type='item', name='apm_machine_frame_basic_used', amount=3}
+        {type='item', name='apm_centrifuge_1', amount=1}
     }
 recipe.normal.main_product = 'apm_centrifuge_1'
 recipe.normal.requester_paste_multiplier = 4
@@ -88,14 +87,13 @@ recipe.normal = {}
 recipe.normal.enabled = false
 recipe.normal.energy_required = 6
 recipe.normal.ingredients = {
-        {type="item", name="apm_centrifuge_1", amount=1},
+        -- {type="item", name="apm_centrifuge_1", amount=1},
         {type="item", name="electric-engine-unit", amount=10},
         {type="item", name="electronic-circuit", amount=5},
         {type="item", name="apm_machine_frame_advanced", amount=3}
     }
 recipe.normal.results = {
-        {type='item', name='apm_centrifuge_2', amount=1},
-        {type='item', name='apm_machine_frame_steam_used', amount=3}
+        {type='item', name='apm_centrifuge_2', amount=1}
     }
 recipe.normal.main_product = 'apm_centrifuge_2'
 recipe.normal.requester_paste_multiplier = 4

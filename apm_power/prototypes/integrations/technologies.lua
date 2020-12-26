@@ -388,7 +388,7 @@ end
 if mods.ScienceCostTweakerM and apm_power_compat_sctm then
 
 	apm.lib.utils.technology.delete('sct-lab-t1')
-	apm.lib.utils.technology.remove.recipe_from_unlock('apm_power_automation_science_pack', 'apm_electromagnet')
+	apm.lib.utils.technology.remove.recipe_from_unlock('apm_power_automation_science_pack', 'apm_electromagnet', 'apm_egen_unit')
 	apm.lib.utils.technology.delete('apm_power_automation_science_pack')
 
 	apm.lib.utils.technology.remove.prerequisites('apm_power_electricity', 'automation-science-pack')

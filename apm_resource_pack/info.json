@@ -1,6 +1,6 @@
 {
         "name": "apm_resource_pack_ldinc",
-        "version": "0.20.00",
+        "version": "0.20.02",
         "title": "Amator Phasma's Resource Pack (forked)",
         "author": "AmatorPhasma",
         "dependencies": [
