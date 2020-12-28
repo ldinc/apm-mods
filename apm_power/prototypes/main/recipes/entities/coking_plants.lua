@@ -89,6 +89,7 @@ recipe.normal.energy_required = 6
 recipe.normal.ingredients = {
         {type="item", name="concrete", amount=25},
         {type="item", name="pipe", amount=25},
+        {type="item", name="apm_machine_frame_advanced", amount=3},
         {type="item", name="copper-plate", amount=25},
         {type="item", name="steel-plate", amount=25}
     }

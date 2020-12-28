@@ -278,4 +278,5 @@ apm.power.icons.equipment_burner_generator_basic = {icon=apm.power.icons.path.eq
 apm.power.icons.equipment_burner_generator_advanced = {icon=apm.power.icons.path.equipment_burner_generator_advanced, icon_size=128}
 apm.power.icons.iron_bearing_ball= genIcon('iron_bearing_ball', 32)
 apm.power.icons.iron_bearing= genIcon('iron_bearing', 32)
+apm.power.icons.gun_powder= genIcon('gun_powder', 419)
 apm.power.icons.electric_generator_unit={icon='__apm_resource_pack_ldinc__/graphics/icons/electric-generator-unit.png', icon_size=64, icon_mipmaps=4}

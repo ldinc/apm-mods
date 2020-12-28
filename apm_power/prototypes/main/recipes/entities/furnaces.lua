@@ -87,11 +87,12 @@ recipe.normal = {}
 recipe.normal.enabled = false
 recipe.normal.energy_required = 4
 recipe.normal.ingredients = {
-        {type="item", name="stone-brick", amount=10},
-        {type="item", name="apm_steelworks_0", amount=1},
+        {type="item", name="refined-concrete", amount=10},
+        -- {type="item", name="apm_steelworks_0", amount=1},
         apm.lib.utils.builder.recipe.item.simple('APM_CIRCUIT_T5', 10),
         {type="item", name="low-density-structure", amount=20},
-        {type="item", name="apm_machine_frame_advanced", amount=10}
+        {type="item", name="apm_machine_frame_advanced", amount=10},
+        {type="item", name="electric-furnace", amount=6},
     }
 recipe.normal.results = {
         {type='item', name='apm_steelworks_1', amount=1}
@@ -103,11 +104,12 @@ recipe.normal.always_show_made_in = apm_power_always_show_made_in
 recipe.expensive = table.deepcopy(recipe.normal)
 --recipe.expensive.energy_required =
 recipe.expensive.ingredients = {
-        {type="item", name="stone-brick", amount=20},
-        {type="item", name="apm_steelworks_0", amount=1},
-        apm.lib.utils.builder.recipe.item.simple('APM_CIRCUIT_T5', 15),
-        {type="item", name="low-density-structure", amount=30},
-        {type="item", name="apm_machine_frame_advanced", amount=15}
+    {type="item", name="refined-concrete", amount=10},
+    -- {type="item", name="apm_steelworks_0", amount=1},
+    apm.lib.utils.builder.recipe.item.simple('APM_CIRCUIT_T5', 10),
+    {type="item", name="low-density-structure", amount=20},
+    {type="item", name="apm_machine_frame_advanced", amount=10},
+    {type="item", name="electric-furnace", amount=6},
     }
 --recipe.expensive.results = {}
 data:extend({recipe})

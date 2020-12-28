@@ -272,8 +272,8 @@ apm.lib.utils.technology.mod.icon('apm_treated_wood_planks-3', '__apm_resource_p
 -- Water supply I
 apm.lib.utils.technology.new('apm_power',
     'apm_water_supply-1',
-    {'apm_rubber-1'}, 
-    {'apm_offshore_pump_0', 'apm_centrifuge_0', 'apm_sealing_rings', 'apm_seawater_centrifuging', 'apm_dirty_water_purification'},
+    {'apm_rubber-1'},
+    {'apm_offshore_pump_0', 'apm_centrifuge_0', 'apm_sealing_rings', 'apm_seawater_centrifuging', 'apm_dirty_water_purification','apm_coal_saturated_wastewater'},
     {{"apm_industrial_science_pack", 1}},
     10, 10)
 

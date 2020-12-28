@@ -41,6 +41,7 @@ data:extend({
   {type = "bool-setting", name = "apm_power_inherit_steam_science", setting_type = "startup", default_value = true, order='ae_b'},
 
   {type = "bool-setting", name = "apm_power_compat_bob", setting_type = "startup", default_value = false, order='pa_a'},
+  {type = "bool-setting", name = "apm_power_compat_bob_large_mining_drills", setting_type = "startup", default_value = false, order='pa_a'},
   {type = "bool-setting", name = "apm_power_compat_bob_overhaul_machine_frames", setting_type = "startup", default_value = false, order='pa_b'},
   {type = "bool-setting", name = "apm_power_compat_angel", setting_type = "startup", default_value = false, order='pb_a'},
   {type = "bool-setting", name = "apm_power_compat_angel_overhaul_machine_frames", setting_type = "startup", default_value = false, order='pb_b'},

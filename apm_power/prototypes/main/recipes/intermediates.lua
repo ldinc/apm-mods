@@ -1043,3 +1043,62 @@ recipe.expensive.ingredients = {
 --recipe.expensive.results = {}
 
 data:extend({recipe})
+
+-- Recipe ---------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+
+local recipe = {}
+recipe.type = "recipe"
+recipe.name = "apm_gun_powder"
+recipe.category = 'crafting'
+recipe.group = "apm_power"
+recipe.subgroup = "apm_power_intermediates"
+recipe.order = 'ak_c'
+recipe.icons = {apm.power.icons.gun_powder}
+recipe.normal = {}
+recipe.normal.enabled = false
+recipe.normal.energy_required = 1
+recipe.normal.ingredients = {
+        {type="item", name="apm_coal_crushed", amount=4},
+        {type="item", name='sulfur', amount=1},
+    }
+recipe.normal.results = { 
+        {type='item', name='apm_gun_powder', amount=16}
+    }
+recipe.normal.main_product = ''
+recipe.normal.requester_paste_multiplier = 6
+recipe.normal.always_show_products = true
+recipe.normal.always_show_made_in = apm_power_always_show_made_in
+recipe.expensive = table.deepcopy(recipe.normal)
+recipe.expensive.energy_required = 4
+
+data:extend({recipe})
+
+local recipe = {}
+recipe.type = "recipe"
+recipe.name = "apm_ammonium_sulfate_chem"
+recipe.category = 'chemical-furnace'
+recipe.group = "apm_power"
+recipe.subgroup = "apm_power_intermediates"
+recipe.order = 'ak_c'
+recipe.icons = {apm.power.icons.ammonium_sulfate}
+recipe.normal = {}
+recipe.normal.enabled = false
+recipe.normal.energy_required = 1
+recipe.normal.ingredients = {
+        {type="item", name='sulfur', amount=1},
+        {type="fluid", name="apm_coal_saturated_wastewater", amount=15}
+    }
+recipe.normal.results = { 
+        {type='item', name='apm_ammonium_sulfate', amount=5}
+    }
+recipe.normal.main_product = ''
+recipe.normal.requester_paste_multiplier = 6
+recipe.normal.always_show_products = true
+recipe.normal.always_show_made_in = apm_power_always_show_made_in
+recipe.expensive = table.deepcopy(recipe.normal)
+recipe.expensive.energy_required = 4
+
+data:extend({recipe})
