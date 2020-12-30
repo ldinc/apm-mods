@@ -11,8 +11,9 @@ APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_ma
 --
 --
 -- ----------------------------------------------------------------------------
-local item_icon = apm.lib.utils.icon.get.from_item('apm_coal_saturated_wastewater')
-local icons = {item_icon}
+local item_icon_a = apm.lib.utils.icon.get.from_item('apm_coal_saturated_wastewater')
+local item_icon_b = {apm.lib.icons.dynamics.lable_cr}
+local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
 
 local recipe = {}
 recipe.type = "recipe"
@@ -27,10 +28,10 @@ recipe.normal.enabled = false
 recipe.normal.energy_required = 2
 recipe.normal.ingredients = {
         {type="item", name="coal", amount=1},
-        {type="fluid", name="water", amount=10}
+        {type="fluid", name="water", amount=35}
     }
 recipe.normal.results = { 
-        {type='fluid', name='apm_coal_saturated_wastewater', amount=20}
+        {type='fluid', name='apm_coal_saturated_wastewater', amount=40}
     }
 recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
