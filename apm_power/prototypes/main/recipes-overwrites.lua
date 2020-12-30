@@ -49,13 +49,13 @@ apm.lib.utils.recipe.ingredient.mod('boiler', 'stone-brick', 10, 20)
 apm.lib.utils.recipe.ingredient.mod('repair-pack', 'electronic-circuit', 0)
 apm.lib.utils.recipe.ingredient.mod('repair-pack', 'apm_mechanical_relay', 2)
 
-apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-gear-wheel', 2)
+apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-gear-wheel', 1)
 apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'apm_iron_bearing', 1)
-apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-plate', 1)
 apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'apm_simple_engine', 1)
-apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-stick', 2)
+apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-stick', 0)
+apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'apm_mechanical_relay', 1)
 
-apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'iron-gear-wheel', 2)
+apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'iron-gear-wheel', 1)
 apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'apm_iron_bearing', 1)
 
 

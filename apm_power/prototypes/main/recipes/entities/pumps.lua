@@ -22,7 +22,8 @@ recipe.normal.ingredients = {
         {type="item", name="apm_rubber", amount=2},
         {type="item", name="pipe", amount=3},
         {type="item", name="apm_gearing", amount=2},
-        {type="item", name="apm_simple_engine", amount=2}
+        {type="item", name="apm_simple_engine", amount=2},
+        {type="item", name="iron-plate", amount=1},
     }
 recipe.normal.results = {
         {type='item', name='apm_pump_0', amount=1}
@@ -37,7 +38,8 @@ recipe.expensive.ingredients = {
         {type="item", name="apm_rubber", amount=2},
         {type="item", name="pipe", amount=3},
         {type="item", name="apm_gearing", amount=3},
-        {type="item", name="apm_simple_engine", amount=3}
+        {type="item", name="apm_simple_engine", amount=3},
+        {type="item", name="iron-plate", amount=2},
     }
 --recipe.expensive.results = {}
 data:extend({recipe})

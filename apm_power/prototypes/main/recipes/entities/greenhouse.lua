@@ -20,7 +20,6 @@ recipe.normal.enabled = false
 recipe.normal.energy_required = 2
 recipe.normal.ingredients = {
         {type="item", name="stone-furnace", amount=1},
-        {type="item", name="glass", amount=20},
         {type="item", name="apm_machine_frame_basic", amount=6},
         {type="item", name="stone-brick", amount=15}
     }
@@ -54,7 +53,6 @@ recipe.normal.energy_required = 4
 recipe.normal.ingredients = {
         -- {type="item", name="apm_greenhouse_0", amount=1},
         {type="item", name="stone-brick", amount=10},
-        {type="item", name="glass", amount=35},
         {type="item", name="apm_steam_engine", amount=2},
         {type="item", name="apm_machine_frame_steam", amount=6}
     }
@@ -88,7 +86,6 @@ recipe.normal.energy_required = 6
 recipe.normal.ingredients = {
         -- {type="item", name="apm_greenhouse_1", amount=1},
         {type="item", name="stone-brick", amount=10},
-        {type="item", name="glass", amount=30},
         {type="item", name='small-lamp', amount=10},
         {type="item", name="electric-engine-unit", amount=5},
         {type="item", name="electronic-circuit", amount=5},

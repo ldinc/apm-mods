@@ -58,9 +58,8 @@ recipe.normal.energy_required = 1.25
 recipe.normal.ingredients = {
         {type="item", name="apm_electromagnet", amount=10},
         {type="item", name="steel-plate", amount=1},
-        {type="item", name="iron-gear-wheel", amount=2},
         {type="item", name="apm_iron_bearing", amount=2},
-        {type="item", name="basic-circuit-board", amount=1},
+        {type="item", name="apm_mechanical_relay", amount=1},
     }
 recipe.normal.results = { 
         {type='item', name='apm_egen_unit', amount=1}
@@ -75,9 +74,8 @@ recipe.expensive = table.deepcopy(recipe.normal)
 recipe.expensive.ingredients = {
     {type="item", name="apm_electromagnet", amount=15},
     {type="item", name="steel-plate", amount=2},
-    {type="item", name="iron-gear-wheel", amount=2},
     {type="item", name="apm_iron_bearing", amount=2},
-    {type="item", name="rubber", amount=1},
+    {type="item", name="apm_mechanical_relay", amount=2},
 }
 
 data:extend({recipe})
@@ -1079,7 +1077,7 @@ data:extend({recipe})
 local recipe = {}
 recipe.type = "recipe"
 recipe.name = "apm_ammonium_sulfate_chem"
-recipe.category = 'chemical-furnace'
+recipe.category = 'crafting-with-fluid'
 recipe.group = "apm_power"
 recipe.subgroup = "apm_power_intermediates"
 recipe.order = 'ak_c'
