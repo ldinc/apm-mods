@@ -11,9 +11,8 @@ APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_ma
 --
 --
 -- ----------------------------------------------------------------------------
-local item_icon_a = apm.lib.utils.icon.get.from_item('apm_coal_saturated_wastewater')
-local item_icon_b = {apm.lib.icons.dynamics.t1}
-local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+local item_icon = apm.lib.utils.icon.get.from_item('apm_coal_saturated_wastewater')
+local icons = {item_icon}
 
 local recipe = {}
 recipe.type = "recipe"

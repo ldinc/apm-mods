@@ -54,7 +54,8 @@ local technology = {}
 technology.type = 'technology'
 technology.name = 'automobilism_electric-1'
 technology.icon = '__base__/graphics/technology/automobilism.png'
-technology.icon_size = 128
+technology.icon_size = 256
+technology.icon_mipmaps = 4
 technology.effects = {
     {type = 'unlock-recipe', recipe = 'apm_electric_car'},
 }
@@ -110,7 +111,8 @@ local technology = {}
 technology.type = 'technology'
 technology.name = 'tanks_electric-1'
 technology.icon = '__base__/graphics/technology/tank.png'
-technology.icon_size = 128
+technology.icon_size = 256
+technology.icon_mipmaps = 4
 technology.effects = {
     {type = 'unlock-recipe', recipe = 'apm_electric_tank'},
 }

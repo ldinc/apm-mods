@@ -13,7 +13,8 @@ local automation_science_pack = {}
 automation_science_pack.type = 'technology'
 automation_science_pack.name = 'apm_power_automation_science_pack'
 automation_science_pack.icon = '__base__/graphics/technology/automation-science-pack.png'
-automation_science_pack.icon_size = 128
+automation_science_pack.icon_size = 256
+automation_science_pack.icon_mipmaps = 4
 automation_science_pack.effects = {
 	{type = 'unlock-recipe', recipe = 'automation-science-pack'},
     {type = 'unlock-recipe', recipe = 'apm_electromagnet'},
@@ -48,7 +49,8 @@ local apm_steam_mining_drill = {}
 apm_steam_mining_drill.type = 'technology'
 apm_steam_mining_drill.name = 'apm_steam_mining_drill'
 apm_steam_mining_drill.icon = '__base__/graphics/technology/mining-productivity.png'
-apm_steam_mining_drill.icon_size = 128
+apm_steam_mining_drill.icon_size = 256
+apm_steam_mining_drill.icon_mipmaps = 4
 apm_steam_mining_drill.effects = {
     {type = 'unlock-recipe', recipe = 'apm_steam_mining_drill'},
 }
@@ -64,7 +66,8 @@ local apm_electric_mining_drills = {}
 apm_electric_mining_drills.type = 'technology'
 apm_electric_mining_drills.name = 'apm_electric_mining_drills'
 apm_electric_mining_drills.icon = '__base__/graphics/technology/mining-productivity.png'
-apm_electric_mining_drills.icon_size = 128
+apm_electric_mining_drills.icon_size = 256
+automation_science_pack.icon_mipmaps = 4
 apm_electric_mining_drills.effects = {
     {type = 'unlock-recipe', recipe = 'electric-mining-drill'},
 }
