@@ -1,15 +1,33 @@
 # Amator Phasma's fork changes
-## __ApmLib__
-### _0.20-0.20.02_
+## _0.21.00_
+### __ApmLib__
+*
+### __ApmEnergyAddon__
+*
+### __ApmNuclear__
+*
+### __ApmNuclear__
+*
+### __ApmPower__
+*
+### __ApmResourcePack__ 
+* __Added__ new icons:
+    * electric engine unit (_electric-generator-unit.png_)
+    * iron bearing ball (_graphics/icons/apm_iron_bearing_ball.png_)
+    * iron bearing (_graphics/icons/apm_iron_bearing.png_)
+    * gun poweder (_graphics/icons/apm_gun_powder.png_)
+___
+## _0.20-0.20.03_
+### __ApmLib__
 * Updated for supporting factorio version 1.1
-## __ApmEnergyAddon__
-### _0.20-0.20.02_
+
+### __ApmEnergyAddon__
 * Updated for supporting factorio version 1.1
-## __ApmNuclear__
-### _0.20-0.20.02_
+
+### __ApmNuclear__
 * Updated for supporting factorio version 1.1
-## __ApmPower__
-### _0.20-0.20.03_
+
+### __ApmPower__
 * __Updated__ for supporting factorio version 1.1
 * __New__ recipe: _apm_stone_crushed_1_
     
@@ -34,6 +52,6 @@
     * 1 x personal roboport (2.0 MW, 30x30 area, supporting 10 robots)
     * 5 x ZX81 construction bots (unique noncraftable bots for start)
 * __Added__ productivity module support for steel recipe (steelmaking 3)
-## __ApmResourcePack__ 
-### _0.20_
+
+### __ApmResourcePack__ 
 * Updated for supporting factorio version 1.1
