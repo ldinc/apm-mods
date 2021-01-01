@@ -7,6 +7,8 @@ APM_LOG_HEADER(self)
 
 local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
 APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_made_in)
+local reusable =  apm.lib.utils.setting.get.starup('apm_power_machine_reusable_recipies')
+APM_LOG_SETTINGS(self, 'apm_power_machine_reusable_recipies', reusable)
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -72,6 +74,12 @@ recipe.expensive.ingredients = {
         {type="item", name="stone-brick", amount=20}
     }
 --recipe.expensive.results = {}
+
+if reusable then
+    table.insert(recipe.normal.ingredients, 'apm_press_machine_0')
+    table.insert(recipe.expensive.ingredients, 'apm_press_machine_0')
+end
+
 data:extend({recipe})
 
 -- Recipe ---------------------------------------------------------------------
@@ -107,4 +115,10 @@ recipe.expensive.ingredients = {
         {type="item", name="apm_machine_frame_advanced", amount=6}
     }
 --recipe.expensive.results = {}
+
+if reusable then
+    table.insert(recipe.normal.ingredients, 'apm_press_machine_1')
+    table.insert(recipe.expensive.ingredients, 'apm_press_machine_1')
+end
+
 data:extend({recipe})

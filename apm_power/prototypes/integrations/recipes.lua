@@ -46,6 +46,54 @@ local copperPipe = 'copper-pipe'
 local copperTungstenPipe = 'copper-tungsten-pipe'
 --
 local brick, concrete, refConcrete = 'stone-brick', 'concrete', 'refined-concrete'
+local eEngine = 'electric-engine'
+local eGenerator = 'apm_egen_unit'
+local eMagnet = 'apm_electromagnet'
+
+function vanilaFinalUpdatesRecipe()
+	-- more early electric engine technology
+	apm.lib.utils.technology.remove.science_pack(eEngine ,'chemical-science-pack')
+	apm.lib.utils.technology.add.prerequisites(eEngine, 'apm_power_electricicty')
+	updateVanilaTechnology()
+	-- used frames
+	local used = apm.lib.utils.setting.get.starup('apm_power_machine_frames_recycling')
+	if not used then
+		dropFrameMaintenance()
+	end
+	-- update concrete
+	updateConcrete()
+	-- integrate electric generators
+	useEGenUnits()
+	-- setup startingresources
+	apm.lib.utils.resource.on_starting_zone('sulfur', true)
+	if not apm.lib.utils.resource.exist('sulfur') then
+		-- change recipe for gun powder 
+		apm.lib.utils.recipe.ingredient.mod('apm_gun_powder', 'sulfur', 0)
+	end
+	local recipe = 'piercing-rounds-magazine'
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_gun_powder', 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'firearm-magazine', 0)
+	recipe = 'piercing-shotgun-shell'
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_gun_powder', 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'shotgun-shell', 0)
+end
+
+function  dropFrameMaintenance()
+	apm.lib.utils.recipe.remove('apm_machine_frame_basic_maintenance')
+	apm.lib.utils.recipe.remove('apm_machine_frame_steam_maintenance')
+	apm.lib.utils.recipe.remove('apm_machine_frame_advanced_maintenance')
+end
+
+function useEGenUnits()
+	-- assuming one eGenerator ~ 400 kW
+	local recipe = 'steam-engine'
+	apm.lib.utils.recipe.ingredient.mod(recipe, eGenerator, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, eMagnet, 0)
+	recipe = 'apm_steam_engine_2'
+	apm.lib.utils.recipe.ingredient.mod(recipe, eGenerator, 4)
+	apm.lib.utils.recipe.ingredient.mod(recipe, eMagnet, 0)
+
+end
 
 function genInsertersName(name)
 
@@ -113,7 +161,7 @@ function addEquipmentGrid(eType, eName, equipmentGrid)
     end
 end
 
-function technology() 
+function updateVanilaTechnology() 
 	local recipe = 'electric-engine'
 	apm.lib.utils.technology.remove.prerequisites(recipe, 'lubricant')
 	apm.lib.utils.technology.add.prerequisites(recipe, 'apm_power_automation_science_pack')
@@ -280,7 +328,7 @@ function genPump(tier, alloy, pipe, logic)
 	apm.lib.utils.recipe.ingredient.mod(recipe, logic, 2)
 end
 
-function changeConcrete()
+function updateConcrete()
 	local recipe = 'concrete'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'water', 100)
@@ -948,12 +996,6 @@ function genEAssembler(tier)
 	apm.lib.utils.recipe.ingredient.mod(recipe, inserterTiers[tech].base, 2)
 end
 
-function  cleanFrameMaintenance()
-	apm.lib.utils.recipe.remove('apm_machine_frame_basic_maintenance')
-	apm.lib.utils.recipe.remove('apm_machine_frame_steam_maintenance')
-	apm.lib.utils.recipe.remove('apm_machine_frame_advanced_maintenance')
-end
-
 function genChemicalPlants()
 	local recipe, prev = 'chemical-plant-2', 'chemical-plant'
 	apm.lib.utils.recipe.ingredient.mod(prev, 'pump', 2)
@@ -1466,7 +1508,6 @@ APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_ma
 --
 --
 -- ----------------------------------------------------------------------------
-technology()
 -- local sulfurOre = data.raw.resource['sulfur']
 -- if sulfurOre and false then
 -- 	sulfurOre.autoplace = resource_autoplace.resource_autoplace_settings{
@@ -1477,6 +1518,9 @@ technology()
 -- 		regular_rq_factor_multiplier = 1,
 -- 	  }
 -- end
+-- set default overwrites for recipies with vanila game
+
+vanilaFinalUpdatesRecipe()
 
 if mods.apm_recycling then
 	apm.lib.utils.assembler.burner.overhaul('apm_recycling_machine_0')
@@ -1826,7 +1870,7 @@ if mods.boblogistics and apm_power_compat_bob then
 		nuclearReactor()
 
 		-- concrete
-		changeConcrete()
+		updateConcrete()
 		-- steam fix
 		enableSteamCoolant()
 		-- generators
@@ -1848,7 +1892,7 @@ if mods.boblogistics and apm_power_compat_bob then
 		genNuclearCent()
 		--
 		genAssemblers()
-		cleanFrameMaintenance()
+		dropFrameMaintenance()
 		--
 		genChemicalPlants()
 		--

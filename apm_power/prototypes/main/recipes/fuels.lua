@@ -37,9 +37,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -76,9 +73,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -118,9 +112,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -161,9 +152,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -200,9 +188,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 3
@@ -241,9 +226,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 3
@@ -284,9 +266,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 3
@@ -324,9 +303,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 5
@@ -367,9 +343,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 6
@@ -411,9 +384,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 7
@@ -455,9 +425,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 8
@@ -498,9 +465,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 9
@@ -529,9 +493,6 @@ recipe.normal.main_product = 'apm_coke_crushed'
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -560,9 +521,6 @@ recipe.normal.main_product = 'apm_coke_brick'
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -598,9 +556,6 @@ recipe.normal.main_product = 'apm_crushed_stone'
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -637,9 +592,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -679,9 +631,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -723,9 +672,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -762,9 +708,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -803,9 +746,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -846,9 +786,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -886,9 +823,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 5
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -928,9 +862,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 6
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -972,9 +903,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 8
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -1015,9 +943,6 @@ recipe.normal.main_product = ''
 recipe.normal.requester_paste_multiplier = 8
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4
@@ -1046,9 +971,6 @@ recipe.normal.main_product = 'apm_charcoal_brick'
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 recipe.expensive.energy_required = 4

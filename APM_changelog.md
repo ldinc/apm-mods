@@ -3,19 +3,36 @@
 ### __ApmLib__
 *
 ### __ApmEnergyAddon__
-*
+* __
 ### __ApmNuclear__
-*
-### __ApmNuclear__
-*
+* __Changed__ water cooling recipe (100% fluid return)
+* __Changed__ ability of using steam coolant on early tier (with steelmaking tech)
+* __Modified__ bob's mods compability:
+    * 'fusion-catalyst' as part of result for reprocessing stage B technology (deuterium compability)
+    * more 'lead-plate' usage
+    * more 'refined-concrete' usage in recipies
 ### __ApmPower__
-*
+* __Fixed__ technology icons from original game (fixed mimmap settings)
+* __Dropped__ original de localization
+* __Added__ new enity & recipe - 'gun-powder'
+* __Added__ new recipies & tech:
+    * 'apm_lubricant_1' (lubricant from wood pellete with press machine)
+    * 'apm_ammonium_sulfate_chem' (ammonium_sulfate alternative recipe)
+    * 'apm_coal_saturated_wastewater' (from water & coal, lol)
+    * 'apm_iron_bearing_ball' (inspired by bob's mod)
+    * 'apm_iron_bearing' (inspired by bob's mod)
+* __Fixed__ 'apm_steam_science_pack' bug
+* __Added__ settings to disable machine frames maintenance system
+* __Buffed__ wood production with stock greenhouses
+* __Integrated__ new entities & recipies to old
+* __Modified__ bob's mods compability (modified recipies with new items)
 ### __ApmResourcePack__ 
 * __Added__ new icons:
     * electric engine unit (_electric-generator-unit.png_)
     * iron bearing ball (_graphics/icons/apm_iron_bearing_ball.png_)
     * iron bearing (_graphics/icons/apm_iron_bearing.png_)
     * gun poweder (_graphics/icons/apm_gun_powder.png_)
+    * change bob automation science pack (_graphics/technologies/apm_power_bob_automation_science_pack.png_)
 ___
 ## _0.20-0.20.03_
 ### __ApmLib__
