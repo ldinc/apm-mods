@@ -10,16 +10,20 @@ function apm.lib.utils.debug.table(t)
     log(serpent.block( t, {comment = false, numformat = '%1.8g' } ))
 end
 
-function apm.lib.utils.dump(o)
-    if type(o) == 'table' then
+function apm.lib.utils.dump(obj)
+    return apm.lib.utils.render(obj, '')
+end
+
+function apm.lib.utils.render(obj, indent)
+    if type(obj) == 'table' then
         local s = '{ '
-        for k,v in pairs(o) do
+        for k,v in pairs(obj) do
             if type(k) ~= 'number' then k = '"'..k..'"' end
-            s = s .. '['..k..'] = ' .. apm.lib.utils.dump(v) .. ',\n'
+            s = s .. '['..k..'] = ' .. dump(v, indent .. '\t') .. ',\n' .. indent
         end
         return s .. '} '
     else
-        return tostring(o)
+        return tostring(obj)
     end
 end
 

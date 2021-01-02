@@ -15,6 +15,7 @@
 * __Fixed__ technology icons from original game (fixed mimmap settings)
 * __Dropped__ original de localization
 * __Added__ new enity & recipe - 'gun-powder'
+* __Added__ sulfur ore as startring ore if some another mods provide it & apm used it for early gunpoweder recipe
 * __Added__ new recipies & tech:
     * 'apm_lubricant_1' (lubricant from wood pellete with press machine)
     * 'apm_ammonium_sulfate_chem' (ammonium_sulfate alternative recipe)
@@ -46,8 +47,7 @@ ___
 
 ### __ApmPower__
 * __Updated__ for supporting factorio version 1.1
-* __New__ recipe: _apm_stone_crushed_1_
-    
+* __New__ recipe: _apm_stone_crushed_1_    
     Crusher: 4 x 'stone-brick' -> 16 x 'apm_crushed_stone'  
 * __Fixed__ angelsrefining compability with bad recipe
 * __Changed__ startup eqipment:
