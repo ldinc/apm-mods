@@ -28,7 +28,7 @@ local function initial_apm_mods()
     if game.active_mods['apm_power'] then
         init.add_technology_conditional_recipe('apm_wood_liquefaction', {'apm_refining_wood_1', 'apm_refining_creosote_1', 'apm_refining_coke_oven_gas_1'})
         init.add_technology_conditional_recipe('apm_rubber-1', {'apm_rubber_1', 'apm_resin_1'})
-        init.add_technology_conditional_recipe('apm_rubber-2', 'apm_rubber_2')
+        -- init.add_technology_conditional_recipe('apm_rubber-2', 'apm_rubber_2')
         init.add_technology('fluid-handling')
         init.add_technology('advanced-material-processing')
         init.add_technology('oil-processing')

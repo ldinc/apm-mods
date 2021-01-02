@@ -19,10 +19,11 @@ recipe.normal = {}
 recipe.normal.enabled = false
 recipe.normal.energy_required = 1.5
 recipe.normal.ingredients = {
-        {type="item", name="stone-furnace", amount=1},
+        {type="item", name="apm_rubber", amount=2},
         {type="item", name="pipe", amount=3},
         {type="item", name="apm_gearing", amount=2},
-        {type="item", name="apm_simple_engine", amount=2}
+        {type="item", name="apm_simple_engine", amount=2},
+        {type="item", name="iron-plate", amount=1},
     }
 recipe.normal.results = {
         {type='item', name='apm_pump_0', amount=1}
@@ -34,10 +35,11 @@ recipe.normal.always_show_made_in = apm_power_always_show_made_in
 recipe.expensive = table.deepcopy(recipe.normal)
 --recipe.expensive.energy_required =
 recipe.expensive.ingredients = {
-        {type="item", name="stone-furnace", amount=1},
+        {type="item", name="apm_rubber", amount=2},
         {type="item", name="pipe", amount=3},
         {type="item", name="apm_gearing", amount=3},
-        {type="item", name="apm_simple_engine", amount=3}
+        {type="item", name="apm_simple_engine", amount=3},
+        {type="item", name="iron-plate", amount=2},
     }
 --recipe.expensive.results = {}
 data:extend({recipe})

@@ -178,7 +178,8 @@ if mods.bobwarfare and apm_energy_addon_compat_bob then
     technology.type = 'technology'
     technology.name = 'tanks_electric-2'
     technology.icon = '__base__/graphics/technology/tank.png'
-    technology.icon_size = 128
+    technology.icon_size = 256
+    technology.icon_mipmaps = 4
     technology.effects = {
         {type = 'unlock-recipe', recipe = recipe.name},
     }

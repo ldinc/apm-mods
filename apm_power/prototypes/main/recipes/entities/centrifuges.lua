@@ -7,6 +7,8 @@ APM_LOG_HEADER(self)
 
 local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
 APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_made_in)
+local reusable =  apm.lib.utils.setting.get.starup('apm_power_machine_reusable_recipies')
+APM_LOG_SETTINGS(self, 'apm_power_machine_reusable_recipies', reusable)
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -53,14 +55,13 @@ recipe.normal = {}
 recipe.normal.enabled = false
 recipe.normal.energy_required = 4
 recipe.normal.ingredients = {
-        {type="item", name="apm_centrifuge_0", amount=1},
+        -- {type="item", name="apm_centrifuge_0", amount=1},
         {type="item", name="apm_steam_engine", amount=2},
         {type="item", name="apm_machine_frame_steam", amount=3},
         {type="item", name="stone-brick", amount=10}
     }
 recipe.normal.results = {
-        {type='item', name='apm_centrifuge_1', amount=1},
-        {type='item', name='apm_machine_frame_basic_used', amount=3}
+        {type='item', name='apm_centrifuge_1', amount=1}
     }
 recipe.normal.main_product = 'apm_centrifuge_1'
 recipe.normal.requester_paste_multiplier = 4
@@ -69,12 +70,18 @@ recipe.normal.always_show_made_in = apm_power_always_show_made_in
 recipe.expensive = table.deepcopy(recipe.normal)
 --recipe.expensive.energy_required =
 recipe.expensive.ingredients = {
-        {type="item", name="apm_centrifuge_0", amount=1},
+        -- {type="item", name="apm_centrifuge_0", amount=1},
         {type="item", name="apm_steam_engine", amount=4},
         {type="item", name="apm_machine_frame_steam", amount=6},
         {type="item", name="stone-brick", amount=20}
     }
 --recipe.expensive.results = {}
+
+if reusable then
+    table.insert(recipe.normal.ingredients, 'apm_centrifuge_0')
+    table.insert(recipe.expensive.ingredients, 'apm_centrifuge_0')
+end
+
 data:extend({recipe})
 
 -- Recipe ---------------------------------------------------------------------
@@ -88,14 +95,14 @@ recipe.normal = {}
 recipe.normal.enabled = false
 recipe.normal.energy_required = 6
 recipe.normal.ingredients = {
-        {type="item", name="apm_centrifuge_1", amount=1},
+        -- {type="item", name="apm_centrifuge_1", amount=1},
         {type="item", name="electric-engine-unit", amount=10},
         {type="item", name="electronic-circuit", amount=5},
-        {type="item", name="apm_machine_frame_advanced", amount=3}
+        {type="item", name="apm_machine_frame_advanced", amount=3},
+        {type="item", name="stone-brick", amount=10}
     }
 recipe.normal.results = {
-        {type='item', name='apm_centrifuge_2', amount=1},
-        {type='item', name='apm_machine_frame_steam_used', amount=3}
+        {type='item', name='apm_centrifuge_2', amount=1}
     }
 recipe.normal.main_product = 'apm_centrifuge_2'
 recipe.normal.requester_paste_multiplier = 4
@@ -104,10 +111,17 @@ recipe.normal.always_show_made_in = apm_power_always_show_made_in
 recipe.expensive = table.deepcopy(recipe.normal)
 --recipe.expensive.energy_required =
 recipe.expensive.ingredients = {
-        {type="item", name="apm_centrifuge_1", amount=1},
+        -- {type="item", name="apm_centrifuge_1", amount=1},
         {type="item", name="electric-engine-unit", amount=20},
         {type="item", name="electronic-circuit", amount=10},
-        {type="item", name="apm_machine_frame_advanced", amount=6}
+        {type="item", name="apm_machine_frame_advanced", amount=6},
+        {type="item", name="stone-brick", amount=15}
     }
 --recipe.expensive.results = {}
+
+if reusable then
+    table.insert(recipe.normal.ingredients, 'apm_centrifuge_1')
+    table.insert(recipe.expensive.ingredients, 'apm_centrifuge_1')
+end
+
 data:extend({recipe})

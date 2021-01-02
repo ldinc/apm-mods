@@ -21,6 +21,7 @@ recipe.normal.energy_required = 1.5
 recipe.normal.ingredients = {
         {type="item", name="pipe", amount=1},
         {type="item", name="iron-plate", amount=2},
+        {type="item", name="apm_rubber", amount=1},
         {type="item", name="apm_mechanical_relay", amount=1}
     }
 recipe.normal.results = {
@@ -49,6 +50,7 @@ recipe.normal.energy_required = 1.5
 recipe.normal.ingredients = {
         {type="item", name="pipe", amount=1},
         {type="item", name="iron-plate", amount=2},
+        {type="item", name="apm_rubber", amount=1},
         {type="item", name="apm_mechanical_relay", amount=1}
     }
 recipe.normal.results = {
@@ -77,6 +79,7 @@ recipe.normal.energy_required = 1.5
 recipe.normal.ingredients = {
         {type="item", name="pipe", amount=1},
         {type="item", name="iron-plate", amount=2},
+        {type="item", name="apm_rubber", amount=1},
         {type="item", name="apm_mechanical_relay", amount=1}
     }
 recipe.normal.results = {

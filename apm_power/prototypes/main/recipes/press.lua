@@ -29,9 +29,6 @@ recipe.normal.main_product = 'apm_press_plates'
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
 recipe.normal.always_show_made_in = apm_power_always_show_made_in
---recipe.normal.allow_decomposition = false
---recipe.normal.allow_as_intermediate = false
---recipe.normal.allow_intermediates = false
 recipe.expensive = table.deepcopy(recipe.normal)
 
 --recipe.expensive.energy_required =

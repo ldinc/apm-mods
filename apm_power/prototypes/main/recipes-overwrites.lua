@@ -49,10 +49,15 @@ apm.lib.utils.recipe.ingredient.mod('boiler', 'stone-brick', 10, 20)
 apm.lib.utils.recipe.ingredient.mod('repair-pack', 'electronic-circuit', 0)
 apm.lib.utils.recipe.ingredient.mod('repair-pack', 'apm_mechanical_relay', 2)
 
-apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-gear-wheel', 0)
-apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-plate', 1)
+apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-gear-wheel', 1)
+apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'apm_iron_bearing', 1)
 apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'apm_simple_engine', 1)
-apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-stick', 2)
+apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'iron-stick', 0)
+apm.lib.utils.recipe.ingredient.mod('burner-inserter', 'apm_mechanical_relay', 1)
+
+apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'iron-gear-wheel', 1)
+apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'apm_iron_bearing', 1)
+
 
 apm.lib.utils.recipe.ingredient.mod('burner-mining-drill', 'iron-gear-wheel', 0)
 apm.lib.utils.recipe.ingredient.mod('burner-mining-drill', 'apm_simple_engine', 1)
@@ -60,7 +65,7 @@ apm.lib.utils.recipe.ingredient.mod('burner-mining-drill', 'apm_simple_engine', 
 apm.lib.utils.recipe.ingredient.mod('inserter', 'burner-inserter', 1)
 apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-gear-wheel', 'apm_gearing')
 
-apm.lib.utils.recipe.ingredient.mod('fast-inserter', 'apm_gearing', 2)
+-- apm.lib.utils.recipe.ingredient.mod('fast-inserter', 'apm_gearing', 2)
 
 apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'iron-stick', 0)
 apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'iron-plate', 2)
@@ -68,10 +73,10 @@ apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'electronic-circuit'
 apm.lib.utils.recipe.ingredient.replace('long-handed-inserter', 'iron-gear-wheel', 'apm_gearing', 2)
 apm.lib.utils.recipe.ingredient.replace('long-handed-inserter', 'inserter', 'apm_burner_long_inserter')
 
-apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_burner_filter_inserter', 1)
-apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'fast-inserter', 0)
-apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'iron-plate', 1)
-apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_gearing', 1)
+-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_burner_filter_inserter', 1)
+-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'fast-inserter', 0)
+-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'iron-plate', 1)
+-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_gearing', 1)
 
 apm.lib.utils.recipe.ingredient.mod('transport-belt', 'apm_rubber', 1)
 apm.lib.utils.recipe.ingredient.mod('transport-belt', 'iron-stick', 2)
@@ -82,8 +87,15 @@ apm.lib.utils.recipe.ingredient.mod('offshore-pump', 'electronic-circuit', 0)
 
 apm.lib.utils.recipe.ingredient.mod('engine-unit', 'iron-gear-wheel', 0)
 apm.lib.utils.recipe.ingredient.mod('engine-unit', 'apm_simple_engine', 2, 3)
+apm.lib.utils.recipe.ingredient.mod('engine-unit', 'apm_iron_bearing', 2)
+apm.lib.utils.recipe.ingredient.mod('engine-unit', 'apm_iron_gearing', 2)
 
-apm.lib.utils.recipe.ingredient.mod('electric-engine-unit', 'apm_electromagnet', 3)
+apm.lib.utils.recipe.ingredient.mod('electric-engine-unit', 'apm_electromagnet', 8)
+apm.lib.utils.recipe.ingredient.mod('electric-engine-unit', 'apm_simple_engine', 0)
+apm.lib.utils.recipe.ingredient.mod('electric-engine-unit', 'apm_iron_bearing', 2)
+local recipe = data.raw.recipe['electric-engine-unit']
+recipe.energy_required = 3
+
 
 apm.lib.utils.recipe.ingredient.mod('steam-engine', 'iron-gear-wheel', 0)
 apm.lib.utils.recipe.ingredient.mod('steam-engine', 'pipe', 5, 10)

@@ -128,7 +128,7 @@ greenhouse.icons = {
 greenhouse.localised_description = {"entity-description.apm_greenhouse"}
 greenhouse.minable = {mining_time = 0.1, result = "apm_greenhouse_1"}
 greenhouse.crafting_categories = {"apm_greenhouse"}
-greenhouse.crafting_speed = 1.25
+greenhouse.crafting_speed = 1.5
 greenhouse.next_upgrade = nil
 greenhouse.max_health = 250
 greenhouse.energy_usage = apm.power.constants.energy_usage.greenhouse_1
@@ -166,7 +166,7 @@ greenhouse.icons = {
 }
 greenhouse.minable = {mining_time = 0.1, result = "apm_greenhouse_2"}
 greenhouse.crafting_categories = {"apm_greenhouse"}
-greenhouse.crafting_speed = 1.5
+greenhouse.crafting_speed = 2.25
 greenhouse.next_upgrade = nil
 greenhouse.max_health = 250
 greenhouse.energy_usage = apm.power.constants.energy_usage.greenhouse_2

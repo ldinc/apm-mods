@@ -13,10 +13,12 @@ local automation_science_pack = {}
 automation_science_pack.type = 'technology'
 automation_science_pack.name = 'apm_power_automation_science_pack'
 automation_science_pack.icon = '__base__/graphics/technology/automation-science-pack.png'
-automation_science_pack.icon_size = 128
+automation_science_pack.icon_size = 256
+automation_science_pack.icon_mipmaps = 4
 automation_science_pack.effects = {
 	{type = 'unlock-recipe', recipe = 'automation-science-pack'},
     {type = 'unlock-recipe', recipe = 'apm_electromagnet'},
+    {type = 'unlock-recipe', recipe = 'apm_egen_unit'},
 }
 automation_science_pack.prerequisites = {'apm_lab_1', 'apm_treated_wood_planks-1'}
 automation_science_pack.unit = {}
@@ -30,7 +32,8 @@ local apm_inserter_bonus = {}
 apm_inserter_bonus.type = 'technology'
 apm_inserter_bonus.name = 'apm_inserter_capacity_bonus'
 apm_inserter_bonus.icon = '__base__/graphics/technology/inserter-capacity.png'
-apm_inserter_bonus.icon_size = 128
+apm_inserter_bonus.icon_size = 256
+apm_inserter_bonus.icon_mipmaps = 4
 apm_inserter_bonus.effects = {
     {type = 'inserter-stack-size-bonus', modifier = 1},
 }
@@ -46,7 +49,8 @@ local apm_steam_mining_drill = {}
 apm_steam_mining_drill.type = 'technology'
 apm_steam_mining_drill.name = 'apm_steam_mining_drill'
 apm_steam_mining_drill.icon = '__base__/graphics/technology/mining-productivity.png'
-apm_steam_mining_drill.icon_size = 128
+apm_steam_mining_drill.icon_size = 256
+apm_steam_mining_drill.icon_mipmaps = 4
 apm_steam_mining_drill.effects = {
     {type = 'unlock-recipe', recipe = 'apm_steam_mining_drill'},
 }
@@ -62,7 +66,8 @@ local apm_electric_mining_drills = {}
 apm_electric_mining_drills.type = 'technology'
 apm_electric_mining_drills.name = 'apm_electric_mining_drills'
 apm_electric_mining_drills.icon = '__base__/graphics/technology/mining-productivity.png'
-apm_electric_mining_drills.icon_size = 128
+apm_electric_mining_drills.icon_size = 256
+automation_science_pack.icon_mipmaps = 4
 apm_electric_mining_drills.effects = {
     {type = 'unlock-recipe', recipe = 'electric-mining-drill'},
 }
@@ -91,23 +96,26 @@ apm.lib.utils.technology.new('apm_power',
 apm.lib.utils.technology.new('apm_power',
     'apm_rubber-1',
     {'apm_crusher_machine_0'}, 
-    {'apm_resin_1', 'apm_rubber_1'},
+    {'apm_resin_1', 'apm_rubber_1', 'apm_coking_plant_0'},
     {{"apm_industrial_science_pack", 1}},
-    5, 10)
+    15, 10)
 
 -- Rubber II
-apm.lib.utils.technology.new('apm_power',
-    'apm_rubber-2',
-    {'apm_rubber-1', 'apm_coking_plant_0', 'apm_fuel-2'}, 
-    {'apm_rubber_2'},
-    {{"apm_industrial_science_pack", 1}},
-    50, 25)
+-- apm.lib.utils.technology.new('apm_power',
+--     'apm_rubber-2',
+--     {'apm_rubber-1', 'apm_coking_plant_0'}, 
+--     {'apm_rubber_2'},
+--     {{"apm_industrial_science_pack", 1}},
+--     50, 25)
 
 -- Press
 apm.lib.utils.technology.new('apm_power',
     'apm_press_machine_0',
-    {'apm_crusher_machine_0'}, 
-    {'apm_press_machine_0', 'apm_coal_briquette_pressed_1', 'apm_wood_briquette_1', 'apm_wood_board_2'},
+    {'apm_crusher_machine_0', 'apm_water_supply-1'}, 
+    {
+        'apm_press_machine_0', 'apm_coal_briquette_pressed_1', 'apm_wood_briquette_1', 'apm_wood_board_2',
+        'apm_lubricant_1', 'apm_iron_bearing_ball', 'apm_iron_bearing',
+    },
     {{"apm_industrial_science_pack", 1}},
     5, 10)
 
@@ -123,7 +131,7 @@ apm.lib.utils.technology.new('apm_power',
 apm.lib.utils.technology.new('apm_power',
     'apm_coking_plant_0',
     {'apm_press_machine_0', 'apm_stone_bricks'}, 
-    {'apm_coking_plant_0', 'apm_pyrolysis_charcoal_1', 'apm_pyrolysis_coke_1'},
+    {'apm_pyrolysis_charcoal_1', 'apm_pyrolysis_coke_1'},
     {{"apm_industrial_science_pack", 1}},
     20, 10)
 
@@ -267,8 +275,8 @@ apm.lib.utils.technology.mod.icon('apm_treated_wood_planks-3', '__apm_resource_p
 -- Water supply I
 apm.lib.utils.technology.new('apm_power',
     'apm_water_supply-1',
-    {'apm_rubber-1'}, 
-    {'apm_offshore_pump_0', 'apm_centrifuge_0', 'apm_sealing_rings', 'apm_seawater_centrifuging', 'apm_dirty_water_purification'},
+    {'apm_rubber-1'},
+    {'apm_offshore_pump_0', 'apm_centrifuge_0', 'apm_sealing_rings', 'apm_seawater_centrifuging', 'apm_dirty_water_purification','apm_coal_saturated_wastewater'},
     {{"apm_industrial_science_pack", 1}},
     10, 10)
 
