@@ -4,3 +4,4 @@ if apm.bob_rework.lib.tier.list == nil then apm.bob_rework.lib.tier.list = {} en
 
 require('lib.enities.base')
 require('lib.tier.t0_bronze')
+require('lib.tier.t1_brass')

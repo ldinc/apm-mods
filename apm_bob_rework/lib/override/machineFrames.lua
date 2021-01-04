@@ -3,7 +3,8 @@ if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
 require('lib.enities.base')
--- require('lib.override.base')
+
+-- TODO: move to drop section
 
 apm.bob_rework.lib.override.machineFrames = function ()
     local recipe = apm.bob_rework.lib.entities.machineFrame
