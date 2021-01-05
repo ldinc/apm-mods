@@ -19,6 +19,11 @@ local brassTier = {
         filterInserter = nil,
         stackInserter = nil,
         stackFilterInserter = nil,
+        belt = apm.bob_rework.lib.entities.belt_t1,
+        underBelt = apm.bob_rework.lib.entities.underBelt_t1,
+        splitter = apm.bob_rework.lib.entities.splitter_t1,
+        loader = apm.bob_rework.lib.entities.loader_t1,
+        pump = apm.bob_rework.lib.entities.burnerPump,
     }
 }
 

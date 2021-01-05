@@ -19,6 +19,11 @@ local bronzeTier = {
         filterInserter = apm.bob_rework.lib.entities.burnerFilterInserter,
         stackInserter = nil,
         stackFilterInserter = nil,
+        belt = apm.bob_rework.lib.entities.belt_t0,
+        underBelt = apm.bob_rework.lib.entities.underBelt_t0,
+        splitter = apm.bob_rework.lib.entities.splitter_t0,
+        loader = apm.bob_rework.lib.entities.loader_t0,
+        pump = apm.bob_rework.lib.entities.burnerPump,
     }
 }
 

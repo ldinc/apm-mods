@@ -13,6 +13,7 @@ local buildGreenhousesRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.lightAlloy, 3)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 10 * tier.main.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.pipe, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 25 + 5*tier.level)
 end
 
 apm.bob_rework.lib.override.greenhouses = function ()

@@ -5,7 +5,7 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 require('lib.enities.base')
 require('lib.tier.base')
 
-local buildCookingPlantRecipe = function (recipe, tier)
+local buildCokingPlantRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 5)
@@ -13,7 +13,7 @@ local buildCookingPlantRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 20 * tier.main.basementK)
 end
 
-apm.bob_rework.lib.override.cookingPlants = function ()
-    buildCookingPlantRecipe(apm.bob_rework.lib.entities.cookingPlant, apm.bob_rework.lib.tier.bronze)
-    buildCookingPlantRecipe(apm.bob_rework.lib.entities.steamCookingPlant, apm.bob_rework.lib.tier.brass)
+apm.bob_rework.lib.override.cokingPlants = function ()
+    buildCokingPlantRecipe(apm.bob_rework.lib.entities.cokingPlant, apm.bob_rework.lib.tier.bronze)
+    buildCokingPlantRecipe(apm.bob_rework.lib.entities.steamCokingPlant, apm.bob_rework.lib.tier.brass)
 end
