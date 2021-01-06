@@ -26,6 +26,8 @@ local monelTier = {
         splitter = apm.bob_rework.lib.entities.splitter_t2,
         loader = apm.bob_rework.lib.entities.loader_t2,
         pump = apm.bob_rework.lib.entities.pump_t2,
+        wire=apm.bob_rework.lib.entities.copperCable,
+        battery=apm.bob_rework.lib.entities.battery,
     }
 }
 

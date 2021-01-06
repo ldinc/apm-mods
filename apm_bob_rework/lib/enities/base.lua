@@ -49,3 +49,6 @@ apm.bob_rework.lib.entities.steelBearing = 'steel-bearing'
 apm.bob_rework.lib.entities.pump_t2 = 'pump'
 
 apm.bob_rework.lib.entities.copperCable = 'copper-cable'
+
+--
+apm.bob_rework.lib.entities.battery = 'battery'

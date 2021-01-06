@@ -16,6 +16,7 @@ local buildCentrifugeRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.gearWheel, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.bearing, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.rubber, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, 5)
 end
 
 apm.bob_rework.lib.override.centrifuges = function ()

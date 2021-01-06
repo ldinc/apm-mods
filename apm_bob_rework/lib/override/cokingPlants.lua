@@ -11,6 +11,7 @@ local buildCokingPlantRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.lightAlloy, 3)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 20 * tier.main.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, 10)
 end
 
 apm.bob_rework.lib.override.cokingPlants = function ()

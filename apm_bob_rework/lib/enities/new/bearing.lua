@@ -31,7 +31,7 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
     recipe.normal.energy_required = 0.5
     recipe.normal.ingredients = {
             {type="item", name=base, amount=1},
-            {type="item", name=ball, amount=10},
+            {type="item", name=ball, amount=16},
             {type="fluid", name=apm.bob_rework.lib.entities.lubricant, amount=10}
         }
     recipe.normal.results = { 

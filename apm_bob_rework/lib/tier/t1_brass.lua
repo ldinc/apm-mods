@@ -24,6 +24,8 @@ local brassTier = {
         splitter = apm.bob_rework.lib.entities.splitter_t1,
         loader = apm.bob_rework.lib.entities.loader_t1,
         pump = apm.bob_rework.lib.entities.burnerPump,
+        wire=nil,
+        battery=nil,
     }
 }
 

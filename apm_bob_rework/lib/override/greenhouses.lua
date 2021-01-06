@@ -13,6 +13,7 @@ local buildGreenhousesRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.lightAlloy, 3)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 10 * tier.main.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.pipe, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, 10 + 2*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 25 + 5*tier.level)
     if tier.level >= 2 then
         apm.lib.utils.recipe.ingredient.mod(recipe, 'small-lamp', 30)
