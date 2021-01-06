@@ -47,3 +47,6 @@ apm.bob_rework.lib.entities.sieve = 'apm_sieve_0'
 
 apm.bob_rework.lib.entities.burnerPump = 'apm_pump_0'
 apm.bob_rework.lib.entities.rubber = 'apm_rubber'
+
+apm.bob_rework.lib.entities.electricGeneratorUnit = 'apm_egen_unit'
+apm.bob_rework.lib.entities.ironBearing = 'apm_iron_bearing'

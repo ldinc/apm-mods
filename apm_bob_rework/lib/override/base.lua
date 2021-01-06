@@ -20,6 +20,8 @@ require('lib.override.logics')
 require('lib.override.steamMachines')
 require('lib.override.belts')
 require('lib.override.pumps')
+require('lib.override.mining')
+require('lib.override.others')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.drop()
@@ -39,5 +41,7 @@ apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.steelworks()
     apm.bob_rework.lib.override.belts()
     apm.bob_rework.lib.override.pumps()
+    apm.bob_rework.lib.override.mining()
+    apm.bob_rework.lib.override.others()
 end
 

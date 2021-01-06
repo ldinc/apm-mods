@@ -21,4 +21,5 @@ end
 apm.bob_rework.lib.override.crushers = function ()
     buildCrusherRecipe(apm.bob_rework.lib.entities.crusher, apm.bob_rework.lib.tier.bronze)
     buildCrusherRecipe(apm.bob_rework.lib.entities.steamCrusher, apm.bob_rework.lib.tier.brass)
+    buildCrusherRecipe(apm.bob_rework.lib.entities.advancedCrusher, apm.bob_rework.lib.tier.monel)
 end

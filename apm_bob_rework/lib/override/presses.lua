@@ -20,4 +20,5 @@ end
 apm.bob_rework.lib.override.presses = function ()
     buildPressRecipe(apm.bob_rework.lib.entities.press, apm.bob_rework.lib.tier.bronze)
     buildPressRecipe(apm.bob_rework.lib.entities.steamPress, apm.bob_rework.lib.tier.brass)
+    buildPressRecipe(apm.bob_rework.lib.entities.advancedPress, apm.bob_rework.lib.tier.monel)
 end

@@ -12,6 +12,7 @@ local buildBelts = function (tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.gearWheel, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.bearing, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 2)
 
     local recipe = tier.main.underBelt
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -48,4 +49,5 @@ end
 apm.bob_rework.lib.override.belts = function ()
     buildBelts(apm.bob_rework.lib.tier.bronze)
     buildBelts(apm.bob_rework.lib.tier.brass)
+    buildBelts(apm.bob_rework.lib.tier.monel)
 end
