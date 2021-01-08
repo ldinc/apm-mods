@@ -32,5 +32,5 @@ local buildAccum = function (fast, high, slow, tier)
 end
 
 apm.bob_rework.lib.override.accums = function ()
-    buildAccum('fast-accumulator', 'large-accumulator', 'slow-accumulator')
+    buildAccum('fast-accumulator', 'large-accumulator', 'slow-accumulator', apm.bob_rework.lib.tier.monel)
 end

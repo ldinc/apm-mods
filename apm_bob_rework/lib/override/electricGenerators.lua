@@ -14,7 +14,7 @@ local buildBurnerEGen = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 10 * tier.main.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.simpleEngineUnit, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 2)
 
     -- fix fuel_category
     local generator = data.raw['burner-generator'][recipe]
@@ -25,7 +25,7 @@ end
 
 local buildSteamGenerator = function (recipe, tier, energyK)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steamEngineUnit, 2 *energyK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steamEngineUnit, 1 *energyK)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 1 *energyK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.gearWheel, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.pipe, 2)
@@ -53,7 +53,7 @@ local buildFluidBoiler = function (recipe, base, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, base, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.pipe, 4)
-
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 4)
 end
 
 apm.bob_rework.lib.override.electricGenerators = function ()
