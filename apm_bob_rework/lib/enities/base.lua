@@ -7,6 +7,8 @@ require('lib.enities.fluids')
 require('lib.enities.belts')
 require('lib.enities.gearingAndBearings')
 require('lib.enities.inserters')
+require('lib.enities.wires')
+require('lib.enities.pumps')
 
 require('lib.enities.new.base')
 
@@ -23,9 +25,6 @@ apm.bob_rework.lib.entities.electricMiner_t3 = 'bob-mining-drill-2'
 apm.bob_rework.lib.entities.electricMiner_t4 = 'bob-mining-drill-3'
 apm.bob_rework.lib.entities.electricMiner_t5 = 'bob-mining-drill-4'
 
-apm.bob_rework.lib.entities.pump_t2 = 'pump'
-
-apm.bob_rework.lib.entities.copperCable = 'copper-cable'
-
 --
 apm.bob_rework.lib.entities.battery = 'battery'
+apm.bob_rework.lib.entities.lithiumIonBattery = 'lithium-ion-battery'
