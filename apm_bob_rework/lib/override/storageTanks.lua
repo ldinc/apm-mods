@@ -8,15 +8,15 @@ require('lib.tier.base')
 local buildStorageTank = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 20 + 10* tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 25 + 10* tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.pipe, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 20 * tier.main.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 25 + 10* tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20 * tier.basementK)
 end
 
 local buildAllCornersStorageTank = function (recipe, base, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, base, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.pipe, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 4)
 end
 
 

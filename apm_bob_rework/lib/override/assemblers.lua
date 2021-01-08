@@ -8,12 +8,14 @@ require('lib.tier.base')
 apm.bob_rework.lib.override.genAssembler = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.engineUnit, 2 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.lightAlloy, 3)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 15 * tier.main.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.inserter, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, tier.level*2 + 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+    if tier.extraConstructionAlloy then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 3)
+    end
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 15 * tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.inserter, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level*2 + 1)
 end
 
 apm.bob_rework.lib.override.assemblers = function ()

@@ -8,15 +8,17 @@ require('lib.tier.base')
 local buildCentrifugeRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.engineUnit, 5 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.lightAlloy, 3)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 10 * tier.main.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.pipe, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.gearWheel, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.bearing, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.rubber, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 5 + tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+    if tier.extraConstructionAlloy then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.lightAlloy, 3)
+    end
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.rubber, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
 end
 
 apm.bob_rework.lib.override.centrifuges = function ()

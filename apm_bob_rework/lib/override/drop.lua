@@ -23,10 +23,10 @@ apm.bob_rework.lib.override.drop = function ()
     rm('oil-boiler-3-from-boiler-4')
     rm('oil-boiler-4-from-boiler-5')
 
-    rm('area-mining-drill-1')
-    rm('area-mining-drill-2')
-    rm('area-mining-drill-3')
-    rm('area-mining-drill-4')
+    rm('bob-area-mining-drill-1')
+    rm('bob-area-mining-drill-2')
+    rm('bob-area-mining-drill-3')
+    rm('bob-area-mining-drill-4')
 
     rm('stone-furnace-from-stone-chemical-furnace')
     rm('stone-furnace-from-stone-mixing-furnace')
@@ -50,4 +50,6 @@ apm.bob_rework.lib.override.drop = function ()
     rm('fluid-furnace-from-fluid-mixing-furnace')
     rm('fluid-chemical-furnace-from-fluid-furnace')
     rm('fluid-mixing-furnace-from-fluid-furnace')
+
+    rm('offshore-pump')
 end

@@ -8,20 +8,20 @@ require('lib.tier.base')
 local buildMiningRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.engineUnit, 2 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.bearing, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.gearWheel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 5)
 end
 
 local buildMiningAdvancedRecipe = function (recipe, base, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, base, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.engineUnit, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
 end
 
 apm.bob_rework.lib.override.mining = function ()

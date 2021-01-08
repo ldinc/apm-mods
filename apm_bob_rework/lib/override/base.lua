@@ -3,7 +3,6 @@ if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
 
-require('lib.override.machineFrames')
 require('lib.override.crushers')
 require('lib.override.drop')
 require('lib.override.pistions')
@@ -27,10 +26,12 @@ require('lib.override.electricPoles')
 require('lib.override.electricGenerators')
 require('lib.override.solarPanels')
 require('lib.override.accums')
+require('lib.override.pumpjacks')
+require('lib.override.compressorsAndBarrels')
+require('lib.override.flareStacks')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.drop()
-    apm.bob_rework.lib.override.machineFrames()
     apm.bob_rework.lib.override.crushers()
     apm.bob_rework.lib.override.simpleEngines()
     apm.bob_rework.lib.override.inserters()
@@ -53,5 +54,8 @@ apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.electricGenerators()
     apm.bob_rework.lib.override.solarPanels()
     apm.bob_rework.lib.override.accums()
+    apm.bob_rework.lib.override.pumpjacks()
+    apm.bob_rework.lib.override.compressorsAndBarrels()
+    apm.bob_rework.lib.override.flareStacks()
 end
 

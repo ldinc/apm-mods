@@ -6,7 +6,6 @@ require('lib.enities.base')
 require('lib.tier.base')
 
 apm.bob_rework.lib.override.steamMachines = function ()
-    -- TODO: steam sieve & air cleaner
     local recipe = apm.bob_rework.lib.entities.airCleaner
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steamEngineUnit, 5)

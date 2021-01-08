@@ -7,14 +7,14 @@ require('lib.tier.base')
 
 
 local buildSimpleEngine = function (tier)
-    local recipe = tier.main.engineUnit
+    local recipe = tier.engineUnit
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.pistions, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.gearWheel, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.bearing, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
 end
 
 apm.bob_rework.lib.override.simpleEngines = function ()
