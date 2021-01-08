@@ -20,4 +20,7 @@ end
 
 apm.bob_rework.lib.override.chemicalPlants = function ()
     buildChemicalPlant('chemical-plant', apm.bob_rework.lib.tier.monel)
+    buildChemicalPlant('chemical-plant-2', apm.bob_rework.lib.tier.steel)
+    buildChemicalPlant('chemical-plant-3', apm.bob_rework.lib.tier.aluminium)
+    buildChemicalPlant('chemical-plant-4', apm.bob_rework.lib.tier.titanium)
 end

@@ -21,4 +21,7 @@ end
 
 apm.bob_rework.lib.override.oilRefineries = function ()
     buildOilRefinery('oil-refinery', apm.bob_rework.lib.tier.monel)
+    buildOilRefinery('oil-refinery-2', apm.bob_rework.lib.tier.steel)
+    buildOilRefinery('oil-refinery-3', apm.bob_rework.lib.tier.aluminium)
+    buildOilRefinery('oil-refinery-4', apm.bob_rework.lib.tier.titanium)
 end

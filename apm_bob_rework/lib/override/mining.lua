@@ -33,5 +33,7 @@ apm.bob_rework.lib.override.mining = function ()
     buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.monel)
     buildMiningAdvancedRecipe(apm.bob_rework.lib.entities.advancedElectricMiner_t2, apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.monel)
 
-    -- TODO: others tier
+    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t3, apm.bob_rework.lib.tier.steel)
+    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t4, apm.bob_rework.lib.tier.aluminium)
+    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t5, apm.bob_rework.lib.tier.titanium)
 end

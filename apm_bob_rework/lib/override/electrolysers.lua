@@ -26,4 +26,7 @@ end
 apm.bob_rework.lib.override.electrolysers = function ()
     buildElectrolyser('electrolyser', apm.bob_rework.lib.tier.brass)
     buildElectrolyser('electrolyser-2', apm.bob_rework.lib.tier.monel)
+    buildElectrolyser('electrolyser-3', apm.bob_rework.lib.tier.steel)
+    buildElectrolyser('electrolyser-4', apm.bob_rework.lib.tier.aluminium)
+    buildElectrolyser('electrolyser-5', apm.bob_rework.lib.tier.titanium)
 end

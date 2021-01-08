@@ -11,7 +11,6 @@ local brassTier = {
     pipe = apm.bob_rework.lib.entities.brassPipe,
     heatPipe = apm.bob_rework.lib.entities.brassPipe,
     exchangePipe = apm.bob_rework.lib.entities.copperPipe,
-    frame = apm.bob_rework.lib.entities.steamMachineFrame,
     basement = apm.bob_rework.lib.entities.stoneBrick,
     basementK = 1,
     engineUnit = apm.bob_rework.lib.entities.steamEngineUnit,
@@ -28,6 +27,7 @@ local brassTier = {
     pump = apm.bob_rework.lib.entities.pump_t2,
     wire=nil,
     battery=nil,
+    heatProvider=nil,
 }
 
 apm.bob_rework.lib.tier.brass = brassTier

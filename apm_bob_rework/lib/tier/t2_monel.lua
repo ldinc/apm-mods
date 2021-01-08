@@ -13,8 +13,7 @@ local monelTier = {
     pipe = apm.bob_rework.lib.entities.ironPipe,
     heatPipe = apm.bob_rework.lib.entities.ironPipe,
     exchangePipe = apm.bob_rework.lib.entities.copperPipe,
-    frame = apm.bob_rework.lib.entities.advancedMachineFrame,
-    basement = apm.bob_rework.lib.entities.stoneBrick,
+    basement = apm.bob_rework.lib.entities.concrete,
     basementK = 1,
     engineUnit = apm.bob_rework.lib.entities.electricEngineUnit,
     gearWheel = apm.bob_rework.lib.entities.ironGearWheel,
@@ -30,6 +29,7 @@ local monelTier = {
     pump = apm.bob_rework.lib.entities.pump_t2,
     wire=apm.bob_rework.lib.entities.copperCable,
     battery=apm.bob_rework.lib.entities.battery,
+    heatProvider=apm.bob_rework.lib.entities.heatPipe,
 }
 
 apm.bob_rework.lib.tier.monel = monelTier

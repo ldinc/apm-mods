@@ -25,4 +25,17 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.bronzeGearWheel, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicBasic, 2)
 
+    local recipe = 'engine-unit'
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.simpleEngineUnit, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelGearWheel, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelBearing, 2)
+
+    local recipe = 'electric-engine-unit'
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copperCable, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electroMagnet, 12)
+
 end

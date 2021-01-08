@@ -13,8 +13,7 @@ local steelTier = {
     pipe = apm.bob_rework.lib.entities.steelPipe,
     heatPipe = apm.bob_rework.lib.entities.ceramicPipe,
     exchangePipe = apm.bob_rework.lib.entities.copperPipe,
-    frame = apm.bob_rework.lib.entities.advancedMachineFrame,
-    basement = apm.bob_rework.lib.entities.stoneBrick,
+    basement = apm.bob_rework.lib.entities.concrete,
     basementK = 1,
     engineUnit = apm.bob_rework.lib.entities.electricEngineUnit,
     gearWheel = apm.bob_rework.lib.entities.steelGearWheel,
@@ -28,8 +27,9 @@ local steelTier = {
     splitter = apm.bob_rework.lib.entities.splitter_t3,
     loader = apm.bob_rework.lib.entities.loader_t3,
     pump = apm.bob_rework.lib.entities.pump_t3,
-    wire=apm.bob_rework.lib.entities.tinCopperCable,
+    wire=apm.bob_rework.lib.entities.tinnedCopperCable,
     battery=apm.bob_rework.lib.entities.lithiumIonBattery,
+    heatProvider=apm.bob_rework.lib.entities.heatPipe,
 }
 
 apm.bob_rework.lib.tier.steel = steelTier

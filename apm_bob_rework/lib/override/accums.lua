@@ -33,4 +33,6 @@ end
 
 apm.bob_rework.lib.override.accums = function ()
     buildAccum('fast-accumulator', 'large-accumulator', 'slow-accumulator', apm.bob_rework.lib.tier.monel)
+    buildAccum('fast-accumulator-2', 'large-accumulator-2', 'slow-accumulator-2', apm.bob_rework.lib.tier.steel)
+    buildAccum('fast-accumulator-3', 'large-accumulator-3', 'slow-accumulator-3', apm.bob_rework.lib.tier.aluminium)
 end

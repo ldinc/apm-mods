@@ -5,7 +5,6 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 require('lib.enities.base')
 require('lib.tier.base')
 
-
 local buildBelts = function (tier)
     local recipe = tier.belt
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -50,4 +49,7 @@ apm.bob_rework.lib.override.belts = function ()
     buildBelts(apm.bob_rework.lib.tier.bronze)
     buildBelts(apm.bob_rework.lib.tier.brass)
     buildBelts(apm.bob_rework.lib.tier.monel)
+    buildBelts(apm.bob_rework.lib.tier.steel)
+    buildBelts(apm.bob_rework.lib.tier.aluminium)
+    buildBelts(apm.bob_rework.lib.tier.titanium)
 end

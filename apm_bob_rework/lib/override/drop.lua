@@ -52,4 +52,15 @@ apm.bob_rework.lib.override.drop = function ()
     rm('fluid-mixing-furnace-from-fluid-furnace')
 
     rm('offshore-pump')
+
+    rm('heat-exchanger-2-from-boiler-4')
+    rm('heat-exchanger-3-from-boiler-5')
+    rm('fluid-reactor-from-fluid-furnace')
+
+    rm('stone-furnace')
+    rm('steel-furnace')
+    rm('fluid-furnace')
+    rm('electric-furnace')
+    rm('electric-furnace-2')
+    rm('electric-furnace-3')
 end

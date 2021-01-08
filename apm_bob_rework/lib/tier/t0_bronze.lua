@@ -27,6 +27,7 @@ local bronzeTier = {
     pump = apm.bob_rework.lib.entities.burnerPump,
     wire=nil,
     battery=nil,
+    heatProvider=nil,
 }
 
 apm.bob_rework.lib.tier.bronze = bronzeTier

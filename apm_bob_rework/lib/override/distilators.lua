@@ -23,4 +23,7 @@ end
 apm.bob_rework.lib.override.distilators = function ()
     buildDistilator('bob-distillery', apm.bob_rework.lib.tier.brass)
     buildDistilator('bob-distillery-2', apm.bob_rework.lib.tier.monel)
+    buildDistilator('bob-distillery-3', apm.bob_rework.lib.tier.steel)
+    buildDistilator('bob-distillery-4', apm.bob_rework.lib.tier.aluminium)
+    buildDistilator('bob-distillery-5', apm.bob_rework.lib.tier.titanium)
 end

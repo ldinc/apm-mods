@@ -13,3 +13,8 @@ apm.bob_rework.lib.entities.ceramicPipe = 'ceramic-pipe'
 apm.bob_rework.lib.entities.tungstenPipe = 'tungsten-pipe'
 apm.bob_rework.lib.entities.nitinolPipe = 'nitinol-pipe'
 apm.bob_rework.lib.entities.copperTungstenPipe = 'copper-tungsten-pipe'
+
+-- heat pipes
+apm.bob_rework.lib.entities.heatPipe = 'heat-pipe'
+apm.bob_rework.lib.entities.heatPipe_t2 = 'heat-pipe-2'
+apm.bob_rework.lib.entities.heatPipe_t3 = 'heat-pipe-3'

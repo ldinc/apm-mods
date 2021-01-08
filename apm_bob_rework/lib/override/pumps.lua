@@ -30,6 +30,9 @@ end
 apm.bob_rework.lib.override.pumps = function ()
     buildPumpRecipe(apm.bob_rework.lib.tier.bronze)
     buildPumpRecipe(apm.bob_rework.lib.tier.monel)
+    buildPumpRecipe(apm.bob_rework.lib.tier.steel)
+    buildPumpRecipe(apm.bob_rework.lib.tier.aluminium)
+    buildPumpRecipe(apm.bob_rework.lib.tier.titanium)
 
     buildOffshore('apm_offshore_pump_0', apm.bob_rework.lib.tier.bronze)
     buildOffshore('apm_offshore_pump_1', apm.bob_rework.lib.tier.monel)

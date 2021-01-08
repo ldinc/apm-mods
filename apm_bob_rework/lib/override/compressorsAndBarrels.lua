@@ -44,8 +44,14 @@ end
 
 apm.bob_rework.lib.override.compressorsAndBarrels = function ()
     buildCompressor('air-pump', apm.bob_rework.lib.tier.monel)
+    buildCompressor('air-pump-2', apm.bob_rework.lib.tier.steel)
+    buildCompressor('air-pump-3', apm.bob_rework.lib.tier.aluminium)
+    buildCompressor('air-pump-4', apm.bob_rework.lib.tier.titanium)
 
     buildBarrelling('water-pump', apm.bob_rework.lib.tier.monel)
+    buildBarrelling('water-pump-2', apm.bob_rework.lib.tier.steel)
+    buildBarrelling('water-pump-3', apm.bob_rework.lib.tier.aluminium)
+    buildBarrelling('water-pump-4', apm.bob_rework.lib.tier.titanium)
 
     buildGasVenting('void-pump', apm.bob_rework.lib.tier.monel)
 end

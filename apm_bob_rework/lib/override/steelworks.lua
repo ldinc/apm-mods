@@ -16,10 +16,16 @@ apm.bob_rework.lib.override.steelworks = function ()
     local recipe = apm.bob_rework.lib.entities.steelworks
     local tier = apm.bob_rework.lib.tier.monel
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 20)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 20)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 30)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.concrete, 30)
 
-    -- TODO: advanced steelworks_1 (tier_3 mb)
+    local recipe = apm.bob_rework.lib.entities.advancedSteelworks
+    local tier = apm.bob_rework.lib.tier.aluminium
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 30)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 30)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.concrete, 30)
 end

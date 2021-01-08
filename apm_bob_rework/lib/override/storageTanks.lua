@@ -27,6 +27,13 @@ apm.bob_rework.lib.override.storageTanks = function ()
     local recipe = 'bob-small-storage-tank'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 5)
 
-    buildStorageTank('storage-tank', apm.bob_rework.lib.tier.brass)
-    buildAllCornersStorageTank('bob-storage-tank-all-corners', 'storage-tank',apm.bob_rework.lib.tier.brass)
+    local gen = function (base, extra, tier)
+        buildStorageTank(base, tier)
+        buildAllCornersStorageTank(extra, base, tier)
+    end
+
+    gen('storage-tank', 'bob-storage-tank-all-corners', apm.bob_rework.lib.tier.brass)
+    gen('storage-tank-2', 'bob-storage-tank-all-corners-2', apm.bob_rework.lib.tier.steel)
+    gen('storage-tank-3', 'bob-storage-tank-all-corners-3', apm.bob_rework.lib.tier.aluminium)
+    gen('storage-tank-4', 'bob-storage-tank-all-corners-4', apm.bob_rework.lib.tier.titanium)
 end

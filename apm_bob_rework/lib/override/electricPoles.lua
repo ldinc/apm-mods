@@ -25,11 +25,14 @@ local buildEPole = function (medium, big, substation, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copper, 5 + 2*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10 + 2*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 40)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5*tier.level)
 end
 
 apm.bob_rework.lib.override.electricPoles = function ()
     buildEPole('medium-electric-pole', 'big-electric-pole', 'substation', apm.bob_rework.lib.tier.monel)
+    buildEPole('medium-electric-pole-2', 'big-electric-pole-2', 'substation-2', apm.bob_rework.lib.tier.steel)
+    buildEPole('medium-electric-pole-3', 'big-electric-pole-3', 'substation-3', apm.bob_rework.lib.tier.aluminium)
+    buildEPole('medium-electric-pole-4', 'big-electric-pole-4', 'substation-4', apm.bob_rework.lib.tier.titanium)
 end
