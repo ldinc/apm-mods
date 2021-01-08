@@ -4,38 +4,13 @@ require('lib.enities.logic')
 require('lib.enities.pipes')
 require('lib.enities.platesAndAlloys')
 require('lib.enities.fluids')
+require('lib.enities.belts')
+require('lib.enities.gearingAndBearings')
+require('lib.enities.inserters')
 
 require('lib.enities.new.base')
 
 apm.bob_rework.lib.entities.glass = 'glass'
-
--- inserters
-apm.bob_rework.lib.entities.burnerInserter = 'burner-inserter'
-apm.bob_rework.lib.entities.burnerFilterInserter = 'apm_burner_filter_inserter'
-apm.bob_rework.lib.entities.steamInserter = 'steam-inserter'
-
-apm.bob_rework.lib.entities.yellowInserter = 'inserter'
-apm.bob_rework.lib.entities.yellowFilterInserter = 'yellow-filter-inserter'
-apm.bob_rework.lib.entities.redInserter = 'long-handed-inserter'
-apm.bob_rework.lib.entities.redFilterInserter = 'red-filter-inserter'
-apm.bob_rework.lib.entities.redStackInserter = 'red-stack-inserter'
-apm.bob_rework.lib.entities.redFilterStackInserter = 'red-stack-filter-inserter'
-
--- belts & loaders (vanila loaders mod)
-apm.bob_rework.lib.entities.belt_t0 = 'basic-transport-belt'
-apm.bob_rework.lib.entities.underBelt_t0 = 'basic-underground-belt'
-apm.bob_rework.lib.entities.splitter_t0 = 'basic-splitter'
-apm.bob_rework.lib.entities.loader_t0 = 'basic-loader'
-
-apm.bob_rework.lib.entities.belt_t1 = 'transport-belt'
-apm.bob_rework.lib.entities.underBelt_t1 = 'underground-belt'
-apm.bob_rework.lib.entities.splitter_t1 = 'splitter'
-apm.bob_rework.lib.entities.loader_t1 = 'loader'
-
-apm.bob_rework.lib.entities.belt_t2 = 'fast-transport-belt'
-apm.bob_rework.lib.entities.underBelt_t2 = 'fast-underground-belt'
-apm.bob_rework.lib.entities.splitter_t2 = 'fast-splitter'
-apm.bob_rework.lib.entities.loader_t2 = 'fast-loader'
 
 apm.bob_rework.lib.entities.electricEngineUnit = 'electric-engine-unit'
 
