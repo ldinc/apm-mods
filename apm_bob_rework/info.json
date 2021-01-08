@@ -1,0 +1,18 @@
+{
+    "name": "apm_bob_rework_ldinc",
+    "version": "0.21.00",
+    "title": "APM bob's extra compability",
+    "author": "ldinc",
+    "dependencies": [
+        "base >= 0.18.26",
+        "apm_resource_pack_ldinc >= 0.21.00",
+        "apm_lib_ldinc >= 0.21.00",
+        "apm_power_ldinc >= 0.21.00",
+        "apm_nuclear_ldinc >= 0.21.00",
+        "apm_energy_addon_ldinc >= 0.21.00",
+        "bobplates >= 1.1.0"
+    ],
+    "description": "Rework APM recipies wuth bob's mods.",
+    "factorio_version": "1.1",
+    "homepage": ""
+}
