@@ -83,7 +83,7 @@ local fixNulcearLocomotive = function (recipe)
 		locomotive.burner.fuel_category = ''
 		locomotive.burner.fuel_categories = {'apm_nuclear_uranium', 'apm_nuclear_mox', 'apm_nuclear_neptunium', 'apm_nuclear_thorium'}
 		locomotive.max_speed = 1.5
-		locomotive.max_power = '5.67MW'
+		locomotive.max_power = '3.67MW'
 	end
 
 	local generator = data.raw['generator-equipment']['nuclear-generator-rampant-arsenal']
