@@ -4,6 +4,8 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.utils == nil then apm.bob_rework.lib.utils = {} end
 if apm.bob_rework.lib.utils.grid == nil then apm.bob_rework.lib.utils.grid = {} end
 
+require('lib.utils.debug')
+
 apm.bob_rework.lib.utils.grid.new = function (attributes)
     local name = attributes.name .. "-grid-apm"
     
@@ -18,4 +20,15 @@ apm.bob_rework.lib.utils.grid.new = function (attributes)
     })
 
 	return name
+end
+
+apm.bob_rework.lib.utils.grid.set = function (name, w, h)
+    local grid = data.raw['equipment-grid'][name]
+    apm.bob_rework.lib.utils.debug.object("------------------")
+    apm.bob_rework.lib.utils.debug.object(grid)
+    apm.bob_rework.lib.utils.debug.object("------------------")
+    if grid then
+        grid.width = w
+        grid.height = h
+    end
 end
