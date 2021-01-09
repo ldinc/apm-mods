@@ -83,7 +83,8 @@ local fixNulcearLocomotive = function (recipe)
 		locomotive.burner.fuel_category = ''
 		locomotive.burner.fuel_categories = {'apm_nuclear_uranium', 'apm_nuclear_mox', 'apm_nuclear_neptunium', 'apm_nuclear_thorium'}
 		locomotive.max_speed = 1.5
-		locomotive.max_power = '3.67MW'
+        locomotive.max_power = '3.67MW'
+        locomotive.weight = 20000
 	end
 
 	local generator = data.raw['generator-equipment']['nuclear-generator-rampant-arsenal']
@@ -99,7 +100,7 @@ local buildNuclearLocomotive = function (recipe, tier, armoured)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 40)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 30)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.lead, 100)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.lead, 100)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 40)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 16)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 36)
