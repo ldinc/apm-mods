@@ -51,17 +51,19 @@ local buildFluidWagon  = function (recipe, tier, hp, w,h, armoured)
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     if armoured then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 30)
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 40)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 30)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 20)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.enities.rubber, 40)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 40)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 8)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 12)
 end
 
 buildFluidWagon('fluid-wagon', apm.bob_rework.lib.tier.brass, 1000, 8, 6, false)
 buildFluidWagon('bob-fluid-wagon-2', apm.bob_rework.lib.tier.monel, 2000, 10, 6, false)
-buildFluidWagon('bob-fluid-wagon-2', apm.bob_rework.lib.tier.steel, 3000, 12, 6, false)
+buildFluidWagon('bob-fluid-wagon-3', apm.bob_rework.lib.tier.steel, 3000, 12, 6, false)
 buildFluidWagon('bob-armoured-fluid-wagon', apm.bob_rework.lib.tier.aluminium, 4000, 14, 6, true)
 buildFluidWagon('bob-armoured-fluid-wagon-2', apm.bob_rework.lib.tier.titanium, 5000, 16, 6, true)
+
+-------------------------------------------------------------------------------
