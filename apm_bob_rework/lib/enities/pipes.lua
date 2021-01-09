@@ -14,6 +14,9 @@ apm.bob_rework.lib.entities.tungstenPipe = 'tungsten-pipe'
 apm.bob_rework.lib.entities.nitinolPipe = 'nitinol-pipe'
 apm.bob_rework.lib.entities.copperTungstenPipe = 'copper-tungsten-pipe'
 
+apm.bob_rework.lib.entities.nitinolUnderPipe = 'nitinol-pipe-to-ground'
+apm.bob_rework.lib.entities.stoneUnderPipe = 'stone-pipe-to-ground'
+
 -- heat pipes
 apm.bob_rework.lib.entities.heatPipe = 'heat-pipe'
 apm.bob_rework.lib.entities.heatPipe_t2 = 'heat-pipe-2'

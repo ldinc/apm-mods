@@ -21,6 +21,7 @@ end
 local buildOffshore = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 1)

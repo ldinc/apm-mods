@@ -35,6 +35,8 @@ require('lib.override.electrolysers')
 require('lib.override.oilRefineries')
 require('lib.override.burnerReactors')
 require('lib.override.furnaces')
+require('lib.override.containers')
+require('lib.override.heatExhangers')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.drop()

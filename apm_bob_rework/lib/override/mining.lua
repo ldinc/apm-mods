@@ -24,14 +24,30 @@ local buildMiningAdvancedRecipe = function (recipe, base, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
 end
 
+local buildYellowMiner = function ()
+    local recipe, tier = apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.brass
+    local engine = apm.bob_rework.lib.entities.electricEngineUnit
+    local logic = apm.bob_rework.lib.entities.logicContact
+
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+
+    apm.lib.utils.recipe.ingredient.mod(recipe, engine, 2 + tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 5)
+end
+
 apm.bob_rework.lib.override.mining = function ()
     buildMiningRecipe(apm.bob_rework.lib.entities.burnerMiner, apm.bob_rework.lib.tier.bronze)
     buildMiningAdvancedRecipe(apm.bob_rework.lib.entities.improvedBurnerMiner, apm.bob_rework.lib.entities.burnerMiner, apm.bob_rework.lib.tier.bronze)
    
     buildMiningRecipe(apm.bob_rework.lib.entities.steamMiner, apm.bob_rework.lib.tier.brass)
     
-    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.monel)
-    buildMiningAdvancedRecipe(apm.bob_rework.lib.entities.advancedElectricMiner_t2, apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.monel)
+    -- buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.brass)
+    buildYellowMiner()
+    buildMiningRecipe(apm.bob_rework.lib.entities.advancedElectricMiner_t2, apm.bob_rework.lib.tier.monel)
+    -- buildMiningAdvancedRecipe(apm.bob_rework.lib.entities.advancedElectricMiner_t2, apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.monel)
 
     buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t3, apm.bob_rework.lib.tier.steel)
     buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t4, apm.bob_rework.lib.tier.aluminium)

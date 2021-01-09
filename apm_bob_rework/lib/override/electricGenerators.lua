@@ -10,9 +10,11 @@ local buildBurnerEGen = function ()
     local tier = apm.bob_rework.lib.tier.brass
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copper, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.alloy, 2)
+    if tier.extraConstructionAlloy then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 5)
+    end
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.simpleEngineUnit, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 2)
 
@@ -30,6 +32,7 @@ local buildSteamGenerator = function (recipe, tier, energyK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
 end
 
 local buildFluidGenerator = function (recipe, tier, energyK)
@@ -57,6 +60,19 @@ local buildFluidBoiler = function (recipe, base, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 4)
 end
 
+local buildTurbine = function (recipe, tier, energyK)
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 1 *energyK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 16 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 10 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 20 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 40)
+    if tier.extraConstructionAlloy then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 20)
+    end
+end
+
 apm.bob_rework.lib.override.electricGenerators = function ()
     buildBurnerEGen()
     --
@@ -81,4 +97,8 @@ apm.bob_rework.lib.override.electricGenerators = function ()
     buildFluidBoiler('oil-boiler-2', 'boiler-3', apm.bob_rework.lib.tier.steel)
     buildFluidBoiler('oil-boiler-3', 'boiler-4', apm.bob_rework.lib.tier.aluminium)
     buildFluidBoiler('oil-boiler-4', 'boiler-5', apm.bob_rework.lib.tier.titanium)
+    --
+    buildTurbine('steam-turbine', apm.bob_rework.lib.tier.steel, 14)
+    buildTurbine('steam-turbine-2', apm.bob_rework.lib.tier.aluminium, 18)
+    buildTurbine('steam-turbine-3', apm.bob_rework.lib.tier.titanium, 23)
 end

@@ -63,4 +63,9 @@ apm.bob_rework.lib.override.drop = function ()
     rm('electric-furnace')
     rm('electric-furnace-2')
     rm('electric-furnace-3')
+
+    rm(apm.bob_rework.lib.entities.stonePipe)
+    rm(apm.bob_rework.lib.entities.nitinolPipe)
+    rm(apm.bob_rework.lib.entities.nitinolUnderPipe)
+    rm(apm.bob_rework.lib.entities.stoneUnderPipe)
 end
