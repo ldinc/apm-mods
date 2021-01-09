@@ -142,3 +142,31 @@ buildLocomotive('bob-locomotive-3', apm.bob_rework.lib.tier.steel, 3000, 12, 6, 
 buildLocomotive('bob-armoured-locomotive', apm.bob_rework.lib.tier.aluminium, 4000, 14, 8, true)
 buildLocomotive('bob-armoured-locomotive-2', apm.bob_rework.lib.tier.titanium, 5000, 16, 8, true)
 buildLocomotive('nuclear-train-vehicle-rampant-arsenal', apm.bob_rework.lib.tier.titanium, 7000, 18, 8, true)
+
+-------------------------------------------------------------------------------
+
+local setNewGridSizeAndHPToArtillery = function (recipe, hp, w, h)
+    local wagon = data.raw['artillery-wagon'][recipe]
+    if wagon then
+		wagon.max_health = hp
+        local equipmentGridName = wagon.equipment_grid
+        apm.bob_rework.lib.utils.grid.set(equipmentGridName, w, h)
+    end
+end
+
+local buildArtilleryWagon = function (recipe, tier, hp, w, h)
+    setNewGridSizeAndHPToArtillery(recipe, hp, w, h)
+
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 40)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 30)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 60)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 16)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 36)
+    local engine = apm.bob_rework.lib.entities.engineUnit
+    apm.lib.utils.recipe.ingredient.mod(recipe, engine, 40 + 10*tier.level)
+end
+
+buildArtilleryWagon('artillery-wagon', apm.bob_rework.lib.tier.steel, 3000, 12, 8)
+buildArtilleryWagon('bob-artillery-wagon-2', apm.bob_rework.lib.tier.aluminium, 3500, 14, 8)
+buildArtilleryWagon('bob-artillery-wagon-3', apm.bob_rework.lib.tier.titanium, 4000, 16, 8)
