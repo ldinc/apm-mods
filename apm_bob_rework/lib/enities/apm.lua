@@ -33,6 +33,7 @@ apm.bob_rework.lib.entities.moduleLaboratory = 'lab-module'
 
 apm.bob_rework.lib.entities.simpleEngineUnit = 'apm_simple_engine'
 apm.bob_rework.lib.entities.steamEngineUnit = 'apm_steam_engine'
+apm.bob_rework.lib.entities.engineUnit = 'engine-unit'
 apm.bob_rework.lib.entities.pistions = 'apm_pistions'
 
 apm.bob_rework.lib.entities.woodenBoard = 'apm_wood_board'
