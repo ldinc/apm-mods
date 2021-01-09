@@ -105,7 +105,7 @@ local buildNuclearLocomotive = function (recipe, tier, armoured)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 36)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 6)
-    apm.lib.utils.recipe.ingredient.mod(recipe, 'nuclear-reactor', 6)
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'nuclear-reactor', 1)
     local engine = apm.bob_rework.lib.entities.steamEngineUnit
     apm.lib.utils.recipe.ingredient.mod(recipe, engine, 20 + 5*tier.level)
 
