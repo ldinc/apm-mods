@@ -33,4 +33,6 @@ apm.bob_rework.lib.entities.silverZincBattery = 'silver-zinc-battery'
 
 
 apm.bob_rework.lib.entities.carbon = 'carbon'
+apm.bob_rework.lib.entities.cordite = 'cordite'
+apm.bob_rework.lib.entities.explosives = 'explosives'
 

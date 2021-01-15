@@ -52,3 +52,5 @@ apm.bob_rework.lib.entities.rubber = 'apm_rubber'
 apm.bob_rework.lib.entities.electricGeneratorUnit = 'apm_egen_unit'
 apm.bob_rework.lib.entities.ironBearing = 'apm_iron_bearing'
 apm.bob_rework.lib.entities.electroMagnet = 'apm_electromagnet'
+
+apm.bob_rework.lib.entities.gunPowder = 'apm_gun_powder'
