@@ -81,4 +81,8 @@ apm.bob_rework.lib.override.drop = function ()
     rm('logistic-chest-storage-2')
     rm('logistic-chest-storage-3')
 
+    rm('advanced-car-vehicle-rampant-arsenal')
+    rm('advanced-tank-vehicle-rampant-arsenal')
+    rm('nuclear-car-vehicle-rampant-arsenal')
+    rm('nuclear-tank-vehicle-rampant-arsenal')
 end
