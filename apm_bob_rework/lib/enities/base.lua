@@ -30,3 +30,7 @@ apm.bob_rework.lib.entities.electricMiner_t5 = 'bob-mining-drill-4'
 apm.bob_rework.lib.entities.battery = 'battery'
 apm.bob_rework.lib.entities.lithiumIonBattery = 'lithium-ion-battery'
 apm.bob_rework.lib.entities.silverZincBattery = 'silver-zinc-battery'
+
+
+apm.bob_rework.lib.entities.carbon = 'carbon'
+

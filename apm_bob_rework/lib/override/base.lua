@@ -39,6 +39,7 @@ require('lib.override.containers')
 require('lib.override.heatExhangers')
 require('lib.override.trains')
 require('lib.override.repairkits')
+require('lib.override.nuclear')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.drop()
