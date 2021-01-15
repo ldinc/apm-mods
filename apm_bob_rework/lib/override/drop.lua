@@ -68,4 +68,17 @@ apm.bob_rework.lib.override.drop = function ()
     rm(apm.bob_rework.lib.entities.nitinolPipe)
     rm(apm.bob_rework.lib.entities.nitinolUnderPipe)
     rm(apm.bob_rework.lib.entities.stoneUnderPipe)
+
+    rm('bob-greenhouse')
+    rm('logistic-chest-active-provider-2')
+    rm('logistic-chest-active-provider-3')
+    rm('logistic-chest-buffer-2')
+    rm('logistic-chest-buffer-3')
+    rm('logistic-chest-passive-provider-2')
+    rm('logistic-chest-passive-provider-2')
+    rm('logistic-chest-requester-2')
+    rm('logistic-chest-requester-3')
+    rm('logistic-chest-storage-2')
+    rm('logistic-chest-storage-3')
+
 end
