@@ -20,9 +20,8 @@ local buildBurnerEGen = function ()
 
     -- fix fuel_category
     local generator = data.raw['burner-generator'][recipe]
-	local fc = apm.lib.utils.entity.get.fuel_categories('apm_steelworks_0')
-	generator.burner.fuel_category = 'apm_refined_chemical'
-	generator.burner.fuel_categories = fc
+	generator.burner.fuel_categories = {'chemical','apm_refined_chemical'}
+	generator.burner.burnt_inventory_size = 1
 end
 
 local buildSteamGenerator = function (recipe, tier, energyK)
