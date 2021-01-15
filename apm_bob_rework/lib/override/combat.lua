@@ -71,6 +71,8 @@ local buildLaserTurret = function ()
     prev = recipe
     recipe = 'bob-laser-turret-5'
     apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tungstenCarbide, 20)
 
     local recipe = 'advanced-laser-item-rampant-arsenal'
     local tier = apm.bob_rework.lib.tier.titanium
@@ -122,6 +124,45 @@ local buildRocketTurret = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 30)
 end
 
+local genArtillery = function (recipe, tier)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 60)
+    if tier.extraConstructionAlloy then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 30)
+    end
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 30)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 30)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 50*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.engineUnit, 20 + 20*tier.level)
+end
+
+local buildArtillery = function ()
+    genArtillery('artillery-turret', apm.bob_rework.lib.tier.steel)
+    genArtillery('bob-artillery-turret-2', apm.bob_rework.lib.tier.aluminium)
+    genArtillery('bob-artillery-turret-3', apm.bob_rework.lib.tier.titanium)
+end
+
+local buildGunTurret = function(recipe, tier)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 10)
+end
+
+local buildGunTurrets = function ()
+    buildGunTurret('gun-turret', apm.bob_rework.lib.tier.brass)
+    buildGunTurret('bob-gun-turret-2', apm.bob_rework.lib.tier.monel)
+    buildGunTurret('bob-gun-turret-3', apm.bob_rework.lib.tier.steel)
+    buildGunTurret('bob-gun-turret-4', apm.bob_rework.lib.tier.aluminium)
+    buildGunTurret('bob-gun-turret-5', apm.bob_rework.lib.tier.titanium)
+
+    buildGunTurret('bob-sniper-turret-1', apm.bob_rework.lib.tier.monel)
+    buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel)
+    buildGunTurret('bob-sniper-turret-3', apm.bob_rework.lib.tier.titanium)
+
+end
+
 local modify = function ()
     local recipe = 'piercing-rounds-magazine'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -162,12 +203,19 @@ local modify = function ()
 
     local recipe = 'nuclear-generator-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'fusion-reactor-equipment-2', 0)
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'nuclear-reactor', 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'nuclear-reactor', 1)
+
+	local recipe = 'capsule-item-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelBearing, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelGearWheel, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.explosives, 0)
 
     buildLaserTurret()
     buildShotgunTurret()
     buildCanonTurret()
     buildRocketTurret()
+    buildArtillery()
+    buildGunTurrets()
 
 	-- -- disable tech
 	-- apm.lib.utils.technology.delete('bob-fire-artillery-shells')
@@ -182,25 +230,9 @@ local modify = function ()
 	-- apm.lib.utils.technology.delete('bob-shotgun-plasma-shells')
 	-- apm.lib.utils.technology.delete('bob-shotgun-plasma-shells')
 	-- apm.lib.utils.technology.delete('bob-plasma-turrets-1')
-	-- --
-
-	-- --
-	-- -- genGunTurrets()
-	-- --
-	-- -- genLasers()
-	-- --
-
-	-- --
+    -- --
+    
 	-- genSniperTurrets()
-	-- recipe = 'suppression-cannon-item-rampant-arsenal'
-	-- apm.lib.utils.recipe.ingredient.mod(recipe, steelB, 20)
-	-- apm.lib.utils.recipe.ingredient.mod(recipe, steelG, 20)
-	-- apm.lib.utils.recipe.ingredient.mod(recipe, logic2, 0)
-	-- apm.lib.utils.recipe.ingredient.mod(recipe, logic3, 30)
-	-- recipe = 'capsule-item-rampant-arsenal'
-	-- apm.lib.utils.recipe.ingredient.mod(recipe, steelB, 10)
-	-- apm.lib.utils.recipe.ingredient.mod(recipe, steelG, 10)
-	-- apm.lib.utils.recipe.ingredient.mod(recipe, 'explosives', 0)
 end
 
 apm.bob_rework.lib.override.combat = function ()
