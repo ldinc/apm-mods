@@ -30,10 +30,10 @@ local buildCargoWagon  = function (recipe, tier, hp, w,h, armoured)
 end
 
 buildCargoWagon('cargo-wagon', apm.bob_rework.lib.tier.brass, 1000, 8, 6, false)
-buildCargoWagon('bob-cargo-wagon-2', apm.bob_rework.lib.tier.monel, 2000, 10, 6, false)
-buildCargoWagon('bob-cargo-wagon-3', apm.bob_rework.lib.tier.steel, 3000, 12, 6, false)
-buildCargoWagon('bob-armoured-cargo-wagon', apm.bob_rework.lib.tier.aluminium, 4000, 14, 6, true)
-buildCargoWagon('bob-armoured-cargo-wagon-2', apm.bob_rework.lib.tier.titanium, 5000, 16, 6, true)
+buildCargoWagon('bob-cargo-wagon-2', apm.bob_rework.lib.tier.steel, 2000, 10, 6, false)
+buildCargoWagon('bob-cargo-wagon-3', apm.bob_rework.lib.tier.titanium, 3000, 12, 6, false)
+buildCargoWagon('bob-armoured-cargo-wagon', apm.bob_rework.lib.tier.steel, 2500, 14, 6, true)
+buildCargoWagon('bob-armoured-cargo-wagon-2', apm.bob_rework.lib.tier.titanium, 4000, 16, 6, true)
 
 -------------------------------------------------------------------------------
 
@@ -61,10 +61,10 @@ local buildFluidWagon  = function (recipe, tier, hp, w,h, armoured)
 end
 
 buildFluidWagon('fluid-wagon', apm.bob_rework.lib.tier.brass, 1000, 8, 6, false)
-buildFluidWagon('bob-fluid-wagon-2', apm.bob_rework.lib.tier.monel, 2000, 10, 6, false)
-buildFluidWagon('bob-fluid-wagon-3', apm.bob_rework.lib.tier.steel, 3000, 12, 6, false)
-buildFluidWagon('bob-armoured-fluid-wagon', apm.bob_rework.lib.tier.aluminium, 4000, 14, 6, true)
-buildFluidWagon('bob-armoured-fluid-wagon-2', apm.bob_rework.lib.tier.titanium, 5000, 16, 6, true)
+buildFluidWagon('bob-fluid-wagon-2', apm.bob_rework.lib.tier.steel, 2000, 10, 6, false)
+buildFluidWagon('bob-fluid-wagon-3', apm.bob_rework.lib.tier.titanium, 3000, 12, 6, false)
+buildFluidWagon('bob-armoured-fluid-wagon', apm.bob_rework.lib.tier.steel, 2500, 14, 6, true)
+buildFluidWagon('bob-armoured-fluid-wagon-2', apm.bob_rework.lib.tier.titanium, 4000, 16, 6, true)
 
 -------------------------------------------------------------------------------
 
@@ -137,10 +137,10 @@ end
 
 
 buildLocomotive('locomotive', apm.bob_rework.lib.tier.brass, 1000, 8, 6, false)
-buildLocomotive('bob-locomotive-2', apm.bob_rework.lib.tier.monel, 2000, 10, 6, false)
-buildLocomotive('bob-locomotive-3', apm.bob_rework.lib.tier.steel, 3000, 12, 6, false)
-buildLocomotive('bob-armoured-locomotive', apm.bob_rework.lib.tier.aluminium, 4000, 14, 8, true)
-buildLocomotive('bob-armoured-locomotive-2', apm.bob_rework.lib.tier.titanium, 5000, 16, 8, true)
+buildLocomotive('bob-locomotive-2', apm.bob_rework.lib.tier.steel, 2000, 10, 6, false)
+buildLocomotive('bob-locomotive-3', apm.bob_rework.lib.tier.titanium, 3000, 12, 6, false)
+buildLocomotive('bob-armoured-locomotive', apm.bob_rework.lib.tier.steel, 2500, 14, 8, true)
+buildLocomotive('bob-armoured-locomotive-2', apm.bob_rework.lib.tier.titanium, 4000, 16, 8, true)
 buildLocomotive('nuclear-train-vehicle-rampant-arsenal', apm.bob_rework.lib.tier.titanium, 7000, 18, 8, true)
 
 -------------------------------------------------------------------------------
