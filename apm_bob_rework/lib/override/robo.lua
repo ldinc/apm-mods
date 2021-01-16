@@ -28,6 +28,39 @@ local buildChargePad = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 2)
 end
 
+local buildToolCombat = function (recipe, tier)
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 3)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 2)
+    if tier.level == 2 then
+        apm.lib.utils.recipe.ingredient.mod(recipe, 'ruby-5', 1)
+    end
+    if tier.level == 3 then
+        apm.lib.utils.recipe.ingredient.mod(recipe, 'emerald-5', 1)
+    end
+    if tier.level == 4 then
+        apm.lib.utils.recipe.ingredient.mod(recipe, 'topaz-5', 1)
+    end
+    if tier.level == 5 then
+        apm.lib.utils.recipe.ingredient.mod(recipe, 'diamond-5', 1)
+    end
+end
+
+local buildToolConstruction = function (recipe, tier)
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 2)
+end
+
+local buildToolLogistic= function (recipe, tier)
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 2)
+end
+
 local build = function ()
     modify('roboport', apm.bob_rework.lib.tier.monel, 15)
     modify('bob-roboport-2', apm.bob_rework.lib.tier.steel, 15)
@@ -63,6 +96,21 @@ local build = function ()
     buildChargePad('roboport-chargepad-2', apm.bob_rework.lib.tier.steel)
     buildChargePad('roboport-chargepad-3', apm.bob_rework.lib.tier.aluminium)
     buildChargePad('roboport-chargepad-4', apm.bob_rework.lib.tier.titanium)
+
+    buildToolCombat('robot-tool-combat', apm.bob_rework.lib.tier.monel)
+    buildToolCombat('robot-tool-combat-2', apm.bob_rework.lib.tier.steel)
+    buildToolCombat('robot-tool-combat-3', apm.bob_rework.lib.tier.aluminium)
+    buildToolCombat('robot-tool-combat-4', apm.bob_rework.lib.tier.titanium)
+
+    buildToolConstruction('robot-tool-construction', apm.bob_rework.lib.tier.monel)
+    buildToolConstruction('robot-tool-construction-2', apm.bob_rework.lib.tier.steel)
+    buildToolConstruction('robot-tool-construction-3', apm.bob_rework.lib.tier.aluminium)
+    buildToolConstruction('robot-tool-construction-4', apm.bob_rework.lib.tier.titanium)
+
+    buildToolLogistic('robot-tool-logistic', apm.bob_rework.lib.tier.monel)
+    buildToolLogistic('robot-tool-logistic-2', apm.bob_rework.lib.tier.steel)
+    buildToolLogistic('robot-tool-logistic-3', apm.bob_rework.lib.tier.aluminium)
+    buildToolLogistic('robot-tool-logistic-4', apm.bob_rework.lib.tier.titanium)
 
     local prev, recipe = 'roboport', 'bob-roboport-2'
 	apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
