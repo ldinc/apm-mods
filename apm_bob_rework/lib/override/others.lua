@@ -37,9 +37,18 @@ apm.bob_rework.lib.override.others = function ()
     local recipe = 'small-lamp'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 1)
 
-    local recipe = apm.bob_rework.enities.ironStick
+    local recipe = apm.bob_rework.lib.entities.ironStick
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
+
+    local recipe = 'automation-science-pack'
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricEngineUnit, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_treated_wood_planks', 2)
     
-    
+    local recipe = 'advanced-logistics-science-pack'
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'brass-chest', 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 5)
+
+
 end
