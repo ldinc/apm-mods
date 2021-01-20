@@ -85,4 +85,8 @@ apm.bob_rework.lib.override.drop = function ()
     rm('advanced-tank-vehicle-rampant-arsenal')
     rm('nuclear-car-vehicle-rampant-arsenal')
     rm('nuclear-tank-vehicle-rampant-arsenal')
+
+    rm('bob-power-armor-mk3')
+    rm('bob-power-armor-mk4')
+    rm('bob-power-armor-mk5')
 end

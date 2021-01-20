@@ -36,3 +36,4 @@ apm.bob_rework.lib.entities.carbon = 'carbon'
 apm.bob_rework.lib.entities.cordite = 'cordite'
 apm.bob_rework.lib.entities.explosives = 'explosives'
 
+apm.bob_rework.lib.entities.ironStick = 'iron-stick'

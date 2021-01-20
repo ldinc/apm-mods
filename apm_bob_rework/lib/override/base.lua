@@ -43,6 +43,7 @@ require('lib.override.nuclear')
 require('lib.override.combat')
 require('lib.override.radars')
 require('lib.override.robo')
+require('lib.override.vehicle')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.drop()
