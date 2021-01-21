@@ -45,6 +45,7 @@ require('lib.override.radars')
 require('lib.override.robo')
 require('lib.override.vehicle')
 require('lib.override.rocket')
+require('lib.override.productivity')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.drop()
