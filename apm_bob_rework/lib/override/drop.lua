@@ -89,4 +89,8 @@ apm.bob_rework.lib.override.drop = function ()
     rm('bob-power-armor-mk3')
     rm('bob-power-armor-mk4')
     rm('bob-power-armor-mk5')
+
+    rm(apm.bob_rework.lib.entities.nitinol)
+    rm(apm.bob_rework.lib.entities.nitinolGearWheel)
+    rm(apm.bob_rework.lib.entities.nitinolBearing)
 end

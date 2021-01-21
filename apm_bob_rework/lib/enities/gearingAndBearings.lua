@@ -7,6 +7,7 @@ apm.bob_rework.lib.entities.bronzeGearWheel = 'bronze-gear-wheel'
 apm.bob_rework.lib.entities.titaniumGearWheel = 'titanium-gear-wheel'
 apm.bob_rework.lib.entities.cobaltGearWheel = 'cobalt-steel-gear-wheel'
 apm.bob_rework.lib.entities.steelGearWheel = 'steel-gear-wheel'
+apm.bob_rework.lib.entities.nitinolGearWheel = 'nitinol-gear-wheel'
 
 
 --bearing-balls
@@ -21,3 +22,4 @@ apm.bob_rework.lib.entities.steelBearing = 'steel-bearing'
 apm.bob_rework.lib.entities.ceramicBearing = 'ceramic-bearing'
 apm.bob_rework.lib.entities.cobaltBearing = 'cobalt-steel-bearing'
 apm.bob_rework.lib.entities.titaniumBearing = 'titanium-bearing'
+apm.bob_rework.lib.entities.nitinolBearing = 'nitinol-bearing'
