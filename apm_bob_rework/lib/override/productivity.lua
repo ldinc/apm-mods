@@ -4,14 +4,21 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 
 require('lib.utils.recipe')
 
-local update = function ()
-    local dp = apm.bob_rework.lib.utils.disable_productivity
-    local recipes = {}
-    local push = function (recipe)
-        recipes[recipe] = true
+local conv = function (array)
+    local m = {}
+    for _, el in pairs(array) do
+        m[el] = true
     end
-    push('water-electrolysis')
-    dp(recipes)
+
+    return m
+end
+
+local update = function ()
+    local fluids = apm.bob_rework.lib.utils.recipe.getAllFluids()
+    apm.bob_rework.lib.utils.recipe.disableProductivity(conv(fluids))
+
+    fluids = apm.bob_rework.lib.utils.recipe.getWithFluids()
+    apm.bob_rework.lib.utils.recipe.disableProductivity(conv(fluids))
 end
 
 update()
