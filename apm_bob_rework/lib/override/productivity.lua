@@ -18,7 +18,12 @@ local update = function ()
     apm.bob_rework.lib.utils.recipe.disableProductivity(conv(fluids))
 
     fluids = apm.bob_rework.lib.utils.recipe.getWithFluids()
-    apm.bob_rework.lib.utils.recipe.disableProductivity(conv(fluids))
+    local v = conv(fluids)
+    v['apm_refining_creosote_1'] = true
+    v['apm_refining_wood_1'] = true
+    v['apm_lubricant_1'] = true
+    v['apm_coal_saturated_wastewater'] = true
+    apm.bob_rework.lib.utils.recipe.disableProductivity(v)
 end
 
 update()
