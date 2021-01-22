@@ -19,6 +19,12 @@ apm.bob_rework.lib.override.repairKits = function ()
     buildRepairKit('repair-kit-3', apm.bob_rework.lib.tier.steel)
     buildRepairKit('repair-kit-4', apm.bob_rework.lib.tier.aluminium)
     buildRepairKit('repair-kit-5', apm.bob_rework.lib.tier.titanium)
+
+    buildRepairKit('repair-pack', apm.bob_rework.lib.tier.bronze)
+    buildRepairKit('repair-pack-2', apm.bob_rework.lib.tier.monel)
+    buildRepairKit('repair-pack-3', apm.bob_rework.lib.tier.steel)
+    buildRepairKit('repair-pack-4', apm.bob_rework.lib.tier.aluminium)
+    buildRepairKit('repair-pack-5', apm.bob_rework.lib.tier.titanium)
 end
 
 apm.bob_rework.lib.override.repairKits()

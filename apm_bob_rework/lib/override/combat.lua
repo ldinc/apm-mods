@@ -246,17 +246,40 @@ local buildPersonalRoboportsControl = function ()
 	local recipe = 'personal-roboport-robot-equipment-2'
 	local prev = 'personal-roboport-robot-equipment'
 	apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.moduleCase, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'module-case', 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 5)
 
 	prev = recipe
 	recipe = 'personal-roboport-robot-equipment-3'
 	apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.moduleCase, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'module-case', 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 5)
 
 	prev = recipe
 	recipe = 'personal-roboport-robot-equipment-4'
 	apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.moduleCase, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'module-case', 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 5)
+end
+
+local buildPersonalRoboport = function (recipe, tier, level)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
+	local antenna = 'roboport-antenna-' .. tostring(level)
+	local hatch = 'roboport-door-' .. tostring(level)
+	local pad = 'roboport-chargepad-' .. tostring(level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, antenna, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, hatch, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, pad, 2)
+end
+
+local buildNightvision = function (recipe, tier, optics)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, optics, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 5)
 end
 
 local modify = function ()
@@ -311,6 +334,36 @@ local modify = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titaniumPipe, 10)
 
+	local recipe = 'vehicle-solar-panel-5'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+	local recipe = 'vehicle-solar-panel-6'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+
+	local recipe = 'vehicle-fusion-reactor-1'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 50)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.lead, 50)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_depleted_uranium_ingots', 10)
+
+	local recipe = 'vehicle-big-turret-5'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+	local recipe = 'vehicle-big-turret-6'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+
+	local recipe = 'vehicle-laser-defense-5'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+	local recipe = 'vehicle-laser-defense-6'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+
+	local recipe = 'vehicle-roboport-4'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+
 
 
     buildLaserTurret()
@@ -340,15 +393,24 @@ local modify = function ()
 	buildExoskeleton('exoskeleton-equipment-2', apm.bob_rework.lib.tier.aluminium)
 	buildExoskeleton('exoskeleton-equipment-3', apm.bob_rework.lib.tier.titanium)
 	--
-	buildPersonalRoboport('personal-roboport-antenna-equipment',1)
-	buildPersonalRoboport('personal-roboport-antenna-equipment-2',2)
-	buildPersonalRoboport('personal-roboport-antenna-equipment-3',3)
-	buildPersonalRoboport('personal-roboport-antenna-equipment-4',4)
+	buildPersonalRoboport('personal-roboport-antenna-equipment', apm.bob_rework.lib.tier.monel, 1)
+	buildPersonalRoboport('personal-roboport-antenna-equipment-2', apm.bob_rework.lib.tier.steel, 2)
+	buildPersonalRoboport('personal-roboport-antenna-equipment-3', apm.bob_rework.lib.tier.aluminium, 3)
+	buildPersonalRoboport('personal-roboport-antenna-equipment-4', apm.bob_rework.lib.tier.titanium, 4)
 	--
 	buildPersonalChargePad('personal-roboport-chargepad-equipment', 1)
 	buildPersonalChargePad('personal-roboport-chargepad-equipment-2', 2)
 	buildPersonalChargePad('personal-roboport-chargepad-equipment-3', 3)
 	buildPersonalChargePad('personal-roboport-chargepad-equipment-4', 4)
+	--
+	buildPersonalRoboport('personal-roboport-equipment', apm.bob_rework.lib.tier.monel, 1)
+	buildPersonalRoboport('personal-roboport-mk2-equipment', apm.bob_rework.lib.tier.steel, 2)
+	buildPersonalRoboport('personal-roboport-mk3-equipment', apm.bob_rework.lib.tier.aluminium, 3)
+	buildPersonalRoboport('personal-roboport-mk4-equipment', apm.bob_rework.lib.tier.titanium, 4)
+	--
+	buildNightvision('night-vision-equipment', apm.bob_rework.lib.tier.monel, apm.bob_rework.lib.entities.glass)
+	buildNightvision('night-vision-equipment-2', apm.bob_rework.lib.tier.aluminium, 'topaz-5')
+	buildNightvision('night-vision-equipment-3', apm.bob_rework.lib.tier.titanium, 'diamond-5')
 	--
 
 	-- -- disable tech
