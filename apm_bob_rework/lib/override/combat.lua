@@ -211,6 +211,54 @@ local buildEqReactors = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.heatPipe_t3, 20)
 end
 
+local buildPersonalLaser = function (recipe, tier, optics)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.optics, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 3)
+end
+
+local buildExoskeleton = function (recipe, tier)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricEngineUnit, 5*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 30)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 30)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 30)
+end
+
+local buildPersonalRoboport = function (recipe, level)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	local antenna = 'roboport-antenna-' .. tostring(level)
+	local hatch = 'roboport-door-' .. tostring(level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, antenna, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, hatch, 1)
+end
+
+local buildPersonalChargePad = function (recipe, level)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	local pad = 'roboport-chargepad-' .. tostring(level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, pad, 2)
+end
+
+local buildPersonalRoboportsControl = function ()
+	local recipe = 'personal-roboport-robot-equipment-2'
+	local prev = 'personal-roboport-robot-equipment'
+	apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.moduleCase, 1)
+
+	prev = recipe
+	recipe = 'personal-roboport-robot-equipment-3'
+	apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.moduleCase, 1)
+
+	prev = recipe
+	recipe = 'personal-roboport-robot-equipment-4'
+	apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.moduleCase, 1)
+end
+
 local modify = function ()
     local recipe = 'piercing-rounds-magazine'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -271,12 +319,37 @@ local modify = function ()
     buildRocketTurret()
     buildArtillery()
 	buildGunTurrets()
+	--
 	buildSolarPanel('solar-panel-equipment', apm.bob_rework.lib.tier.monel, apm.bob_rework.lib.entities.glass, apm.bob_rework.lib.entities.copper)
 	buildSolarPanel('solar-panel-equipment-2', apm.bob_rework.lib.tier.steel, apm.bob_rework.lib.entities.glass, apm.bob_rework.lib.entities.silver)
 	buildSolarPanel('solar-panel-equipment-3', apm.bob_rework.lib.tier.aluminium, apm.bob_rework.lib.entities.siliconWafer, apm.bob_rework.lib.entities.gold)
 	buildSolarPanel('solar-panel-equipment-4', apm.bob_rework.lib.tier.titanium, apm.bob_rework.lib.entities.siliconWafer, apm.bob_rework.lib.entities.gold)
+	--
 	buildEqBurnerGen()
 	buildEqReactors()
+	buildPersonalRoboportsControl()
+	--
+	buildPersonalLaser('personal-laser-defence-equipment', apm.bob_rework.lib.tier.monel, apm.bob_rework.lib.entities.glass)
+	buildPersonalLaser('personal-laser-defence-equipment-2', apm.bob_rework.lib.tier.monel, 'ruby-5')
+	buildPersonalLaser('personal-laser-defence-equipment-3', apm.bob_rework.lib.tier.steel, 'emerald-5')
+	buildPersonalLaser('personal-laser-defence-equipment-4', apm.bob_rework.lib.tier.aluminium, 'amethyst-5')
+	buildPersonalLaser('personal-laser-defence-equipment-5', apm.bob_rework.lib.tier.aluminium, 'topaz-5')
+	buildPersonalLaser('personal-laser-defence-equipment-6', apm.bob_rework.lib.tier.titanium, 'diamond-5')
+	--
+	buildExoskeleton('exoskeleton-equipment', apm.bob_rework.lib.tier.monel)
+	buildExoskeleton('exoskeleton-equipment-2', apm.bob_rework.lib.tier.aluminium)
+	buildExoskeleton('exoskeleton-equipment-3', apm.bob_rework.lib.tier.titanium)
+	--
+	buildPersonalRoboport('personal-roboport-antenna-equipment',1)
+	buildPersonalRoboport('personal-roboport-antenna-equipment-2',2)
+	buildPersonalRoboport('personal-roboport-antenna-equipment-3',3)
+	buildPersonalRoboport('personal-roboport-antenna-equipment-4',4)
+	--
+	buildPersonalChargePad('personal-roboport-chargepad-equipment', 1)
+	buildPersonalChargePad('personal-roboport-chargepad-equipment-2', 2)
+	buildPersonalChargePad('personal-roboport-chargepad-equipment-3', 3)
+	buildPersonalChargePad('personal-roboport-chargepad-equipment-4', 4)
+	--
 
 	-- -- disable tech
 	-- apm.lib.utils.technology.delete('bob-fire-artillery-shells')

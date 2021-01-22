@@ -38,3 +38,4 @@ apm.bob_rework.lib.entities.explosives = 'explosives'
 
 apm.bob_rework.lib.entities.ironStick = 'iron-stick'
 apm.bob_rework.lib.entities.plastic = 'plastic-bar'
+apm.bob_rework.lib.entities.moduleCase = 'module-case'
