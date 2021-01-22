@@ -160,7 +160,55 @@ local buildGunTurrets = function ()
     buildGunTurret('bob-sniper-turret-1', apm.bob_rework.lib.tier.monel)
     buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel)
     buildGunTurret('bob-sniper-turret-3', apm.bob_rework.lib.tier.titanium)
+end
 
+local buildSolarPanel = function (recipe, tier, shell, conduct)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, shell, 3)
+	apm.lib.utils.recipe.ingredient.mod(recipe, conduct, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 5)
+	if tier.level == 5 then
+		apm.lib.utils.recipe.ingredient.mod(recipe, shell, 12)
+	end
+end
+
+local buildEqBurnerGen = function ()
+	local recipe = 'apm_equipment_burner_generator_basic'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.monel.logic, 8)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.monel.wire, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
+
+	local recipe = 'apm_equipment_burner_generator_advanced'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.aluminium.logic, 8)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.aluminium.wire, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
+end
+
+local buildFusionReactorEq = function (recipe, level)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.lead, 30+20*level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicProcessing, 100 + 50*level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicAPU, 100 + 50*level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.lowDS, 30 + 20*level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_depleted_uranium_ingots', 10 + 5*level)
+end
+
+local buildEqReactors = function ()
+	buildFusionReactorEq('fusion-reactor-equipment', 1)
+	buildFusionReactorEq('fusion-reactor-equipment-2', 2)
+	buildFusionReactorEq('fusion-reactor-equipment-3', 3)
+	buildFusionReactorEq('fusion-reactor-equipment-4', 4)
+	local recipe = 'nuclear-generator-rampant-arsenal'
+	buildFusionReactorEq(recipe, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_depleted_uranium_ingots', 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 50)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.heatPipe_t3, 20)
 end
 
 local modify = function ()
@@ -222,7 +270,13 @@ local modify = function ()
     buildCanonTurret()
     buildRocketTurret()
     buildArtillery()
-    buildGunTurrets()
+	buildGunTurrets()
+	buildSolarPanel('solar-panel-equipment', apm.bob_rework.lib.tier.monel, apm.bob_rework.lib.entities.glass, apm.bob_rework.lib.entities.copper)
+	buildSolarPanel('solar-panel-equipment-2', apm.bob_rework.lib.tier.steel, apm.bob_rework.lib.entities.glass, apm.bob_rework.lib.entities.silver)
+	buildSolarPanel('solar-panel-equipment-3', apm.bob_rework.lib.tier.aluminium, apm.bob_rework.lib.entities.siliconWafer, apm.bob_rework.lib.entities.gold)
+	buildSolarPanel('solar-panel-equipment-4', apm.bob_rework.lib.tier.titanium, apm.bob_rework.lib.entities.siliconWafer, apm.bob_rework.lib.entities.gold)
+	buildEqBurnerGen()
+	buildEqReactors()
 
 	-- -- disable tech
 	-- apm.lib.utils.technology.delete('bob-fire-artillery-shells')
