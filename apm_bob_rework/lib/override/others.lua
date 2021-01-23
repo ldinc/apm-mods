@@ -43,7 +43,9 @@ apm.bob_rework.lib.override.others = function ()
 
     local recipe = 'automation-science-pack'
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electroMagnet, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brassGearWheel, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brassBearing, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_treated_wood_planks', 2)
 
     local recipe = 'logistic-science-pack'

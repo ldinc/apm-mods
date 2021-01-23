@@ -12,7 +12,17 @@ local rebind = function (base, sub)
     apm.lib.utils.technology.remove.prerequisites(sub, base)
     apm.lib.utils.technology.add.prerequisites(base, sub)
 end
+local rm = apm.lib.utils.technology.remove.recipe_from_unlock
 local drop = apm.lib.utils.technology.remove.science_pack
+local free = function (name)
+    apm.lib.utils.technology.disable(name)
+    apm.lib.utils.technology.delete(name)
+    -- force
+    if data.raw.technology[name] then
+        data.raw.technology[name] = nil
+    end
+end
+local unbind = apm.lib.utils.technology.remove.prerequisites
 
 -- apm.lib.utils.technology.remove.recipe_from_unlock('alloy-processing', 'stone-mixing-furnace')
 -- setup startup entities & remove some techs
@@ -33,6 +43,7 @@ off('repair-pack')
 off('incinerator')
 off(apm.bob_rework.lib.entities.steamInserter)
 off(apm.bob_rework.lib.entities.monel)
+off(apm.bob_rework.lib.entities.cobaltAlloy)
 
 
 push('apm_crusher_machine_0', 'apm_gun_powder')
@@ -61,6 +72,21 @@ push('apm_power_electricicty', 'incinerator')
 rebind('logistics', 'automation')
 rebind('automation', 'electric-engine')
 
-push('alloy-processing', apm.bob_rework.lib.monel)
+push('alloy-processing', apm.bob_rework.lib.entities.monel)
+push('alloy-processing', apm.bob_rework.lib.entities.cobaltAlloy)
+rm('alloy-processing', apm.bob_rework.lib.entities.bronze)
+rm('alloy-processing', apm.bob_rework.lib.entities.bronzePipe)
+rm('alloy-processing', apm.bob_rework.lib.entities.bronzeUnderPipe)
+rm('alloy-processing', 'stone-mixing-furnace')
 drop('invar-processing', 'logistic-science-pack')
 rebind('logistic-science-pack', 'invar-processing')
+
+unbind('electric-energy-distribution-1', 'steel-processing')
+free('nitinol-processing')
+free('bob-plasma-rocket')
+free('electric-rocket')
+free('bob-shotgun-plasma-shells')
+free('bob-shotgun-electric-shells')
+free('bob-electric-bullets')
+free('bob-plasma-bullets')
+free('bob-atomic-artillery-shell')
