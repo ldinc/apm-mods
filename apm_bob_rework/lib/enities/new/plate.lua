@@ -101,3 +101,38 @@ apm.bob_rework.lib.entities.genCobaltAlloy = function ()
 end
 
 apm.bob_rework.lib.entities.genCobaltAlloy()
+
+apm.bob_rework.lib.entities.genEarlyZinc = function ()
+    local ico = {
+        icon = "__apm_bob_rework_ldinc__/graphics/icons/zinc-plate.png",
+        icon_size = 32,
+    }
+
+    local recipe = {}
+    recipe.type = "recipe"
+    recipe.name = 'apm_zinc'
+    recipe.category = "mixing-furnace"
+    recipe.normal = {}
+    recipe.normal.enabled = true
+    recipe.normal.energy_required = 15
+    recipe.normal.ingredients = {
+        {type="item", name='zinc-ore', amount=5},
+        {type="item", name='apm_coke', amount=1},
+    }
+    recipe.normal.results = { 
+        {type='item', name='zinc-plate', amount=5}
+    }
+    recipe.normal.main_product = 'zinc-plate'
+    recipe.normal.requester_paste_multiplier = 4
+    recipe.normal.always_show_products = true
+    recipe.normal.always_show_made_in = true
+    recipe.expensive = table.deepcopy(recipe.normal)
+    recipe.expensive.ingredients = {
+        {type="item", name='zinc-ore', amount=5},
+        {type="item", name='apm_coke', amount=2},
+    }
+    recipe.allow_decomposition = false
+    data:extend({recipe})
+end
+
+apm.bob_rework.lib.entities.genEarlyZinc()

@@ -5,8 +5,9 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 require('lib.enities.base')
 require('lib.tier.base')
 
-local buildEFurnace = function (recipe, tier)
-    
+local fix = function (recipe)
+    local item = data.raw['assembling-machine'][recipe]
+    item.energy_source.burnt_inventory_size = 1
 end
 
 apm.bob_rework.lib.override.furnaces = function ()
@@ -21,4 +22,10 @@ apm.bob_rework.lib.override.furnaces = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.advancedMachineFrame, 0)
     local recipe = 'electric-chemical-mixing-furnace-2'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.advancedMachineFrame, 0)
+
+    -- fix ash
+    fix('stone-mixing-furnace')
+    fix('stone-chemical-furnace')
+    fix('steel-mixing-furnace')
+    fix('steel-chemical-furnace')
 end
