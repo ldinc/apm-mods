@@ -62,4 +62,8 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 2)
 
+    local recipe = 'explosives'
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'water', 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'nitride-acid', 20)
+
 end

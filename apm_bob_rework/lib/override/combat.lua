@@ -282,6 +282,11 @@ local buildNightvision = function (recipe, tier, optics)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 5)
 end
 
+local changeIron2GM = function (recipe, count)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, count)
+end
+
 local modify = function ()
     local recipe = 'piercing-rounds-magazine'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -364,6 +369,54 @@ local modify = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 5)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
 
+	local recipe = 'firearm-magazine'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.lead, 5)
+
+	local recipe = 'cannon-shell'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 0)
+
+	local recipe = 'explosive-cannon-shell'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 0)
+
+	local recipe = 'scatter-cannon-shell'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.cordite, 10)
+
+	local recipe = 'artillery-shell'
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tungsten, 15)
+
+	local recipe = 'atomic-bomb'
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'rocket-body', 1)
+
+	local recipe = 'grenade'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunPowder, 40)
+
+
+
+	changeIron2GM('grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('bio-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('he-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('incendiary-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('cluster-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('posion-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('toxic-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('slowdown-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('paralysis-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('defender-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('distractor-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('destroyer-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('landmine-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('bio-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('he-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('incendiary-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
+	changeIron2GM('incendiary-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
 
 
     buildLaserTurret()
