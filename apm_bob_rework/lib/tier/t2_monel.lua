@@ -7,7 +7,7 @@ require('lib.enities.base')
 local monelTier = {
     level = 2,
     constructionAlloy = apm.bob_rework.lib.entities.invar,
-    extraConstructionAlloy = nil,
+    extraConstructionAlloy = apm.bob_rework.lib.entities.iron,
     heatAlloy = apm.bob_rework.lib.entities.monel,
     logic = apm.bob_rework.lib.entities.logicElectronic,
     pipe = apm.bob_rework.lib.entities.ironPipe,

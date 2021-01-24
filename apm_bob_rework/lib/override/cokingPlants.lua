@@ -10,9 +10,6 @@ local buildCokingPlantRecipe = function (recipe, tier)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-    if tier.extraConstructionAlloy then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 3)
-    end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
 end

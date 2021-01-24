@@ -151,14 +151,14 @@ local buildGunTurret = function(recipe, tier)
 end
 
 local buildGunTurrets = function ()
-    buildGunTurret('gun-turret', apm.bob_rework.lib.tier.brass)
-    buildGunTurret('bob-gun-turret-2', apm.bob_rework.lib.tier.monel)
-    buildGunTurret('bob-gun-turret-3', apm.bob_rework.lib.tier.steel)
-    buildGunTurret('bob-gun-turret-4', apm.bob_rework.lib.tier.aluminium)
-    buildGunTurret('bob-gun-turret-5', apm.bob_rework.lib.tier.titanium)
+    buildGunTurret('gun-turret', apm.bob_rework.lib.tier.bronze)
+    buildGunTurret('bob-gun-turret-2', apm.bob_rework.lib.tier.brass)
+    buildGunTurret('bob-gun-turret-3', apm.bob_rework.lib.tier.monel)
+    buildGunTurret('bob-gun-turret-4', apm.bob_rework.lib.tier.steel2)
+    buildGunTurret('bob-gun-turret-5', apm.bob_rework.lib.tier.monel)
 
     buildGunTurret('bob-sniper-turret-1', apm.bob_rework.lib.tier.monel)
-    buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel)
+    buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel2)
     buildGunTurret('bob-sniper-turret-3', apm.bob_rework.lib.tier.titanium)
 end
 

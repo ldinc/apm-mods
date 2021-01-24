@@ -40,3 +40,5 @@ apm.bob_rework.lib.entities.ironStick = 'iron-stick'
 apm.bob_rework.lib.entities.plastic = 'plastic-bar'
 
 apm.bob_rework.lib.entities.moduleCase = 'module-case'
+apm.bob_rework.lib.entities.wood = 'wood'
+apm.bob_rework.lib.entities.woodPlanks = 'apm_treated_wood_planks'

@@ -5,7 +5,7 @@ if apm.bob_rework.lib.tier.list == nil then apm.bob_rework.lib.tier.list = {} en
 local brassTier = {
     level = 1,
     constructionAlloy = apm.bob_rework.lib.entities.brass,
-    extraConstructionAlloy=apm.bob_rework.lib.entities.copper,
+    extraConstructionAlloy=apm.bob_rework.lib.entities.woodPlanks,
     heatAlloy = apm.bob_rework.lib.entities.brass,
     logic = apm.bob_rework.lib.entities.logicSteam,
     pipe = apm.bob_rework.lib.entities.brassPipe,
