@@ -95,4 +95,10 @@ apm.bob_rework.lib.override.drop = function ()
     rm(apm.bob_rework.lib.entities.nitinol)
     rm(apm.bob_rework.lib.entities.nitinolGearWheel)
     rm(apm.bob_rework.lib.entities.nitinolBearing)
+
+    rm('shotgun-passive-defence-rampant-arsenal')
+    rm('cannon-passive-defence-rampant-arsenal')
+    rm('lightning-passive-defence-rampant-arsenal')
+    rm('bullets-passive-defence-rampant-arsenal')
+    rm('slow-passive-defence-rampant-arsenal')
 end

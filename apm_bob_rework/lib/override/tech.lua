@@ -43,7 +43,7 @@ off('repair-pack')
 off('incinerator')
 off(apm.bob_rework.lib.entities.steamInserter)
 off(apm.bob_rework.lib.entities.monel)
-off(apm.bob_rework.lib.entities.cobaltAlloy)
+-- off(apm.bob_rework.lib.entities.cobaltAlloy)
 
 
 push('apm_crusher_machine_0', 'apm_gun_powder')
@@ -73,7 +73,7 @@ rebind('logistics', 'automation')
 rebind('automation', 'electric-engine')
 
 push('alloy-processing', apm.bob_rework.lib.entities.monel)
-push('alloy-processing', apm.bob_rework.lib.entities.cobaltAlloy)
+-- push('alloy-processing', apm.bob_rework.lib.entities.cobaltAlloy)
 rm('alloy-processing', apm.bob_rework.lib.entities.bronze)
 rm('alloy-processing', apm.bob_rework.lib.entities.bronzePipe)
 rm('alloy-processing', apm.bob_rework.lib.entities.bronzeUnderPipe)

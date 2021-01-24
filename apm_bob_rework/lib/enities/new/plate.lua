@@ -100,7 +100,7 @@ apm.bob_rework.lib.entities.genCobaltAlloy = function ()
     data:extend({recipe})
 end
 
-apm.bob_rework.lib.entities.genCobaltAlloy()
+-- apm.bob_rework.lib.entities.genCobaltAlloy()
 
 apm.bob_rework.lib.entities.genEarlyZinc = function ()
     local ico = {

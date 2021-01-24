@@ -11,6 +11,7 @@ local modify = function (recipe, tier, count)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.aluminium, 0)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 0)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.siliconNitride, 0)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, count)
 end
 
@@ -86,6 +87,11 @@ local build = function ()
     modify('bob-robo-charge-port-large-2', apm.bob_rework.lib.tier.steel, 15)
     modify('bob-robo-charge-port-large-3', apm.bob_rework.lib.tier.aluminium, 15)
     modify('bob-robo-charge-port-large-4', apm.bob_rework.lib.tier.titanium, 15)
+
+    modify('flying-robot-frame', apm.bob_rework.lib.tier.monel, 1)
+    modify('flying-robot-frame-2', apm.bob_rework.lib.tier.steel, 1)
+    modify('flying-robot-frame-3', apm.bob_rework.lib.tier.aluminium, 1)
+    modify('flying-robot-frame-4', apm.bob_rework.lib.tier.titanium, 1)
 
     buildDoor('roboport-door-1', apm.bob_rework.lib.tier.monel)
     buildDoor('roboport-door-2', apm.bob_rework.lib.tier.steel)

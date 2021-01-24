@@ -25,9 +25,9 @@ local brassTier = {
     splitter = apm.bob_rework.lib.entities.splitter_t1,
     loader = apm.bob_rework.lib.entities.loader_t1,
     pump = apm.bob_rework.lib.entities.pump_t2,
-    wire=nil,
-    battery=nil,
-    heatProvider=nil,
+    wire=apm.bob_rework.lib.entities.copperCable,
+    battery=apm.bob_rework.lib.entities.battery,
+    heatProvider=apm.bob_rework.lib.entities.heatPipe,
 }
 
 apm.bob_rework.lib.tier.brass = brassTier

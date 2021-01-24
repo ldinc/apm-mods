@@ -36,13 +36,13 @@ end
 
 
 apm.bob_rework.lib.override.burnerReactors = function ()
-    buildBurnerReactor('burner-geneartor', apm.bob_rework.lib.tier.monel)
-    buildBurnerReactor('burner-geneartor-2', apm.bob_rework.lib.tier.aluminium)
-    buildBurnerReactor('burner-geneartor-3', apm.bob_rework.lib.tier.titanium)
+    buildBurnerReactor('burner-reactor', apm.bob_rework.lib.tier.monel)
+    buildBurnerReactor('burner-reactor-2', apm.bob_rework.lib.tier.aluminium)
+    buildBurnerReactor('burner-reactor-3', apm.bob_rework.lib.tier.titanium)
 
     buildFluidBurnerReactor('fluid-reactor', apm.bob_rework.lib.tier.monel)
     buildFluidBurnerReactor('fluid-reactor-2', apm.bob_rework.lib.tier.aluminium)
-    buildFluidBurnerReactor('fluid-reactor-3', apm.bob_rework.lib.tier.titanium)
+    buildFluidBurnerReactor('fluid-reactor-3', apm.bob_rework.lib.tier.titanium)    
 
     fixFuelForHeatExhanger('burner-reactor')
     fixFuelForHeatExhanger('burner-reactor-2')

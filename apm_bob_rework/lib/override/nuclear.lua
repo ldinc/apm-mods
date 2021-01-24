@@ -36,6 +36,15 @@ local buildNuclearRecipies = function ()
     local recipe = 'apm_hexafluoride_sample'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.lead, 2)
 
+    local recipe = 'nuclear-reactor-2'
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.lead, 750)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.refinedConcrete, 750)
+
+    local recipe = 'nuclear-reactor-3'
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.lead, 1000)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.refinedConcrete, 1250)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tungstenCarbide, 1250)
+
 end
 
 buildNuclearRecipies()

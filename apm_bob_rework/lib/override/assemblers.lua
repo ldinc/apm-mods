@@ -9,13 +9,13 @@ apm.bob_rework.lib.override.genAssembler = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     local logic, inserter = tier.logic, tier.inserter
-    local engine = tier.enhineUnit
+    local engine = tier.engineUnit
     if recipe == 'assembling-machine-6' then
         apm.bob_rework.lib.override.genAssembler6(recipe, tier)
         return
     end
 
-    if tier.level == 1 and (recipe == 'assembling-machine-2' or recipe == 'assembling-machine-1') then
+    if recipe == 'assembling-machine-2' or recipe == 'assembling-machine-1' then
         logic = apm.bob_rework.lib.entities.logicContact
         inserter = apm.bob_rework.lib.entities.yellowInserter
         engine = apm.bob_rework.lib.entities.electricEngineUnit
@@ -46,13 +46,15 @@ local buildAdvancedAssembler = function (recipe, base, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     local logic, inserter = tier.logic, tier.inserter
-    if tier.level == 1 and (recipe == 'assembling-machine-2' or recipe == 'assembling-machine-1') then
+    local engine = tier.engineUnit
+    if recipe == 'assembling-machine-2' or recipe == 'assembling-machine-1' then
         logic = apm.bob_rework.lib.entities.logicContact
         inserter = apm.bob_rework.lib.entities.yellowInserter
+        engine = apm.bob_rework.lib.entities.electricEngineUnit
     end
 
     apm.lib.utils.recipe.ingredient.mod(recipe, base, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 )
+    apm.lib.utils.recipe.ingredient.mod(recipe, engine, 2 )
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, 4)

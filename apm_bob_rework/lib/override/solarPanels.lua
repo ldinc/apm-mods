@@ -35,7 +35,7 @@ local buildSolarPanel= function (small, normal, large, tier, shell, alloy)
 end
 
 apm.bob_rework.lib.override.solarPanels = function ()
-    buildSolarPanel('solar-panel-small', 'solar-panel', 'solar-panel-large', apm.bob_rework.lib.tier.monel, apm.bob_rework.lib.entities.glass, apm.bob_rework.lib.entities.copper)
+    buildSolarPanel('solar-panel-small', 'solar-panel', 'solar-panel-large', apm.bob_rework.lib.tier.brass, apm.bob_rework.lib.entities.glass, apm.bob_rework.lib.entities.copper)
     buildSolarPanel('solar-panel-small-2', 'solar-panel-2', 'solar-panel-large-2', apm.bob_rework.lib.tier.steel, apm.bob_rework.lib.entities.glass, apm.bob_rework.lib.entities.silver)
-    buildSolarPanel('solar-panel-small-3', 'solar-panel-3', 'solar-panel-large-3', apm.bob_rework.lib.tier.aluminium, apm.bob_rework.lib.entities.siliconWafer, apm.bob_rework.lib.entities.gold)
+    buildSolarPanel('solar-panel-small-3', 'solar-panel-3', 'solar-panel-large-3', apm.bob_rework.lib.tier.titanium, apm.bob_rework.lib.entities.siliconWafer, apm.bob_rework.lib.entities.gold)
 end
