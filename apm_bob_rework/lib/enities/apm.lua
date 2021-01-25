@@ -54,3 +54,4 @@ apm.bob_rework.lib.entities.ironBearing = 'apm_iron_bearing'
 apm.bob_rework.lib.entities.electroMagnet = 'apm_electromagnet'
 
 apm.bob_rework.lib.entities.gunPowder = 'apm_gun_powder'
+apm.bob_rework.lib.entities.filter = 'apm_filter_charcoal'
