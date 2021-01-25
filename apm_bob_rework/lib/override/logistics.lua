@@ -23,7 +23,7 @@ local modify = function ()
         'warehouse-buffer',
         'warehouse-requester',
     }
-    for recipe, _ in pairs(recipies) do
+    for _, recipe in pairs(recipies) do
         apm.lib.utils.recipe.ingredient.mod(recipe, 'roboport-antenna-1', 1)
     end
     local recipies = {
@@ -33,7 +33,7 @@ local modify = function ()
         'logistic-chest-requester-3',
         'logistic-chest-storage-3',
     }
-    for recipe, _ in pairs(recipies) do
+    for _, recipe in pairs(recipies) do
         apm.lib.utils.recipe.ingredient.mod(recipe, 'roboport-antenna-4', 1)
     end
 end

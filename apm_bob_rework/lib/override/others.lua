@@ -73,5 +73,10 @@ apm.bob_rework.lib.override.others = function ()
     local recipe = 'apm_lubricant_1'
     apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_resin', 2)
 
-
+    local recipe = 'apm_steel_0'
+    apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 10, 20, nil)
+    local recipe = 'apm_steel_1'
+    apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 12, 22, nil)
+    local recipe = 'apm_steel_2'
+    apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 16, 24, nil)
 end
