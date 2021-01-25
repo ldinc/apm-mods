@@ -97,7 +97,7 @@ apm.bob_rework.lib.override.electricGenerators = function ()
     buildFluidBoiler('oil-boiler-3', 'boiler-4', apm.bob_rework.lib.tier.aluminium)
     buildFluidBoiler('oil-boiler-4', 'boiler-5', apm.bob_rework.lib.tier.titanium)
     --
-    buildTurbine('steam-turbine', apm.bob_rework.lib.tier.steel, 14)
+    buildTurbine('steam-turbine', apm.bob_rework.lib.tier.steel2, 14)
     buildTurbine('steam-turbine-2', apm.bob_rework.lib.tier.aluminium, 18)
     buildTurbine('steam-turbine-3', apm.bob_rework.lib.tier.titanium, 23)
 end

@@ -1,13 +1,13 @@
-1) фильтры на брасс вместо стали
+XXX фильтры на брасс вместо стали
 2) фильтры в хим завод, компрессор, дистилятор
-3) offshore pump : invar -> iron
-4) rm logic coking plant
-5) lubricant make cheaper x2
+XXX offshore pump : invar -> iron
+XXX rm logic coking plant
+XXX lubricant make cheaper x2
 6) extraConstAllot increase (apm building)
-7) ящики логистические добавить антенны
-8) вернуть 3ий тир логистических ящиков
+XXX ящики логистические добавить антенны
+XXX вернуть 3ий тир логистических ящиков
 9) турбина пластик -
-10) артиллерия пластик -
+XXX артиллерия пластик -
 11) аккум/солнечная панель - стим релей убрать
 12) pumpjack/waterjack, буры = добавить iron sticks
 13) pumpjack/waterjack - убрать насосы, добавь резину, электродвижки, трубы
@@ -20,11 +20,11 @@
 20) лаба 2 адванс машинфрейм убрать
 21) хим заводы + насосы, фильтры, резина, компрессор (здание) - шестеренки, подшибники
 22) электролайзер + фильтр, насос, серебро, резина - extraconstrAlloy
-23) взрывчатка - нитридацид пропал
-24) убрать вольфрамовые шестерни
-25) explosive-canon-shell -> 1 steel, 2 explosive
+XXX взрывчатка - нитридацид пропал
+XXX убрать вольфрамовые шестерни
+XXX explosive-canon-shell -> 1 steel, 2 explosive
 26) launcher-ammo -> gunmetal
-27) rm personal shotgun
-28) gun-turret-mk5 ??
+XXX rm personal shotgun
+XXX gun-turret-mk5 ??
 29) танки
-30) убрать жел подшибники (+шары)
+XXX убрать жел подшибники (+шары)

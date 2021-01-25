@@ -138,7 +138,7 @@ local genArtillery = function (recipe, tier)
 end
 
 local buildArtillery = function ()
-    genArtillery('artillery-turret', apm.bob_rework.lib.tier.steel)
+    genArtillery('artillery-turret', apm.bob_rework.lib.tier.steel2)
     genArtillery('bob-artillery-turret-2', apm.bob_rework.lib.tier.aluminium)
     genArtillery('bob-artillery-turret-3', apm.bob_rework.lib.tier.titanium)
 end
@@ -155,7 +155,7 @@ local buildGunTurrets = function ()
     buildGunTurret('bob-gun-turret-2', apm.bob_rework.lib.tier.brass)
     buildGunTurret('bob-gun-turret-3', apm.bob_rework.lib.tier.monel)
     buildGunTurret('bob-gun-turret-4', apm.bob_rework.lib.tier.steel2)
-    buildGunTurret('bob-gun-turret-5', apm.bob_rework.lib.tier.monel)
+    buildGunTurret('bob-gun-turret-5', apm.bob_rework.lib.tier.aluminium)
 
     buildGunTurret('bob-sniper-turret-1', apm.bob_rework.lib.tier.monel)
     buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel2)
@@ -321,9 +321,14 @@ local modify = function ()
 	local recipe = 'cannon-shell'
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.cordite, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.explosives, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 4)
+
 	local recipe = 'explosive-cannon-shell'
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.cordite, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.explosives, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.explosives, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 4)
 
     local recipe = 'nuclear-generator-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'fusion-reactor-equipment-2', 0)
@@ -437,7 +442,7 @@ local modify = function ()
 	--
 	buildPersonalLaser('personal-laser-defense-equipment', apm.bob_rework.lib.tier.monel, apm.bob_rework.lib.entities.glass)
 	buildPersonalLaser('personal-laser-defense-equipment-2', apm.bob_rework.lib.tier.monel, 'ruby-5')
-	buildPersonalLaser('personal-laser-defense-equipment-3', apm.bob_rework.lib.tier.steel, 'emerald-5')
+	buildPersonalLaser('personal-laser-defense-equipment-3', apm.bob_rework.lib.tier.steel2, 'emerald-5')
 	buildPersonalLaser('personal-laser-defense-equipment-4', apm.bob_rework.lib.tier.aluminium, 'amethyst-5')
 	buildPersonalLaser('personal-laser-defense-equipment-5', apm.bob_rework.lib.tier.aluminium, 'topaz-5')
 	buildPersonalLaser('personal-laser-defense-equipment-6', apm.bob_rework.lib.tier.titanium, 'diamond-5')

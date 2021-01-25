@@ -21,9 +21,15 @@ end
 local buildOffshore = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
+    local alloy = apm.bob_rework.lib.entities.iron
+    local pipe = apm.bob_rework.lib.entities.ironPipe
+    if tier.level == 0 then 
+        alloy = tier.constructionAlloy
+        pipe = tier.pipe
+    end
+    apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, pipe, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
 end

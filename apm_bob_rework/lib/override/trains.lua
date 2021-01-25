@@ -167,6 +167,6 @@ local buildArtilleryWagon = function (recipe, tier, hp, w, h)
     apm.lib.utils.recipe.ingredient.mod(recipe, engine, 40 + 10*tier.level)
 end
 
-buildArtilleryWagon('artillery-wagon', apm.bob_rework.lib.tier.steel, 3000, 12, 8)
+buildArtilleryWagon('artillery-wagon', apm.bob_rework.lib.tier.steel2, 3000, 12, 8)
 buildArtilleryWagon('bob-artillery-wagon-2', apm.bob_rework.lib.tier.aluminium, 3500, 14, 8)
 buildArtilleryWagon('bob-artillery-wagon-3', apm.bob_rework.lib.tier.titanium, 4000, 16, 8)

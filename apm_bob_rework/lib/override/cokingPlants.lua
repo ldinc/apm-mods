@@ -9,9 +9,9 @@ local buildCokingPlantRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
 end
 
 apm.bob_rework.lib.override.cokingPlants = function ()
