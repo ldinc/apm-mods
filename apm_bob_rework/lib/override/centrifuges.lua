@@ -31,7 +31,7 @@ local buildNuclearCentrifuge = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 80 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 50)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 100)
-
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 100+10*tier.level)
 end
 
 apm.bob_rework.lib.override.centrifuges = function ()

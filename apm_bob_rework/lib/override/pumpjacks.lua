@@ -15,8 +15,9 @@ local buildPumpjack = function(recipe, tier)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 30)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricEngineUnit, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.engine.rubber, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.engine.ironStick, 15)
 end
 
 apm.bob_rework.lib.override.pumpjacks = function ()

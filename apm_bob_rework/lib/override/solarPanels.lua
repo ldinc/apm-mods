@@ -7,9 +7,13 @@ require('lib.tier.base')
 
 local buildSolarPanel= function (small, normal, large, tier, shell, alloy)
     local recipe = small
+    local logic = tier.logic
+    if tier.level == 1 then
+        logic = apm.bob_rework.lib.entities.logicContact
+    end
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 6)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 6)
     apm.lib.utils.recipe.ingredient.mod(recipe, shell, 4*tier.level)
     if alloy then
         apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 2)
@@ -18,7 +22,7 @@ local buildSolarPanel= function (small, normal, large, tier, shell, alloy)
     local recipe = normal
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, shell, 8*tier.level)
     if alloy then
         apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 4)
@@ -27,7 +31,7 @@ local buildSolarPanel= function (small, normal, large, tier, shell, alloy)
     local recipe = large
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 8)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 24)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 24)
     apm.lib.utils.recipe.ingredient.mod(recipe, shell, 16*tier.level)
     if alloy then
         apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 8)

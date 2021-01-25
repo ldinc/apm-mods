@@ -7,12 +7,16 @@ require('lib.tier.base')
 
 local buildAccum = function (fast, high, slow, tier)
     local recipe = fast
+    local logic = tier.logic
+    if tier.level == 1 then
+        logic = apm.bob_rework.lib.entities.logicContact
+    end
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     if tier.battery then
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 4)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 2)
 
     local recipe = high
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -20,7 +24,7 @@ local buildAccum = function (fast, high, slow, tier)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 10)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 4)
 
     local recipe = slow
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -28,7 +32,7 @@ local buildAccum = function (fast, high, slow, tier)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 4)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 4)
 end
 
 apm.bob_rework.lib.override.accums = function ()

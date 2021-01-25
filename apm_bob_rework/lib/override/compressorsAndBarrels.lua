@@ -23,9 +23,7 @@ local buildBarrelling = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 3)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 2)
 
 end
