@@ -15,8 +15,8 @@ local buildOilRefinery = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 20)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 40 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 16)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.filter, 40)
 end
 
 apm.bob_rework.lib.override.oilRefineries = function ()

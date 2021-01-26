@@ -13,6 +13,9 @@ local buildMiningRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 5)
+    if tier.level > 1 then 
+        apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 5)
+    end
 end
 
 local buildMiningAdvancedRecipe = function (recipe, base, tier)
