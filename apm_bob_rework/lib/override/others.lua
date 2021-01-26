@@ -69,6 +69,11 @@ apm.bob_rework.lib.override.others = function ()
     local recipe = 'apm_filter_charcoal'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 0)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brass, 1)
+    if settings.startup['apm_bob_rework_replace_filter'].value == true then
+        apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_charcoal_brick', 0)
+        apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_coal_briquette', 1)
+    end
+
 
     local recipe = 'apm_lubricant_1'
     apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_resin', 2)

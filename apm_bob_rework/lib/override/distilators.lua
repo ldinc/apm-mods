@@ -14,10 +14,11 @@ local buildDistilator = function (recipe, tier)
     end
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.exchangePipe, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 15 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 3)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.filter, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 1)
 end
 
 apm.bob_rework.lib.override.distilators = function ()

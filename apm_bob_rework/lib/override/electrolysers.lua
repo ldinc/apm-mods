@@ -16,11 +16,11 @@ local buildElectrolyser = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.exchangePipe, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-    if tier.extraConstructionAlloy then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 5)
-    end
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.silver, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 8)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 1)
+
 end
 
 apm.bob_rework.lib.override.electrolysers = function ()

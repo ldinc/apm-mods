@@ -20,7 +20,7 @@ apm.bob_rework.lib.override.furnaces = function ()
 
     local recipe = 'electric-chemical-mixing-furnace'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.advancedMachineFrame, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe, 'electric-chemical-mixing-furnace', 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'electric-chemical-furnace', 0)
     local recipe = 'electric-chemical-mixing-furnace-2'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.advancedMachineFrame, 0)
     apm.lib.utils.recipe.ingredient.mod(recipe, 'electric-chemical-mixing-furnace', 0)
