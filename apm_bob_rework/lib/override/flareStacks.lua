@@ -35,4 +35,7 @@ apm.bob_rework.lib.override.flareStacks = function ()
     buildFlare('flare-stack')
     buildFlare('incinerator')
     buildFlare('electric-incinerator')
+
+    -- local obj = data.raw.furnace['electric-incinerator']
+    -- obj.result_inventory_size = 1
 end
