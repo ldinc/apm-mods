@@ -422,7 +422,11 @@ local modify = function ()
 	changeIron2GM('he-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
 	changeIron2GM('incendiary-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
 	changeIron2GM('incendiary-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
-
+	changeIron2GM('bio-cannon-shell-ammo-rampant-arsenal', 1)
+	changeIron2GM('he-cannon-shell-ammo-rampant-arsenal', 1)
+	changeIron2GM('incendiary-cannon-shell-ammo-rampant-arsenal', 1)
+	changeIron2GM('toxic-capsule-rampant-arsenal', 3)
+	changeIron2GM('paralysis-capsule-rampant-arsenal', 3)
 
     buildLaserTurret()
     buildShotgunTurret()

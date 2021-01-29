@@ -29,7 +29,7 @@ apm.bob_rework.lib.entities.genGearWheel = function (name, base, tint)
     recipe.normal.ingredients = {
             {type="item", name=base, amount=1}
         }
-    recipe.normal.results = { 
+    recipe.normal.results = {
             {type='item', name=name, amount=1}
         }
     recipe.normal.main_product = name

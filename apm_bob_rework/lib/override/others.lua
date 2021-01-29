@@ -4,6 +4,7 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 
 require('lib.enities.base')
 require('lib.tier.base')
+require('lib.utils.debug')
 
 apm.bob_rework.lib.override.others = function ()
     local recipe = apm.bob_rework.lib.entities.electricGeneratorUnit
@@ -84,4 +85,34 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 12, 22, nil)
     local recipe = 'apm_steel_2'
     apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 16, 24, nil)
+
+    local recipe = 'dry411srev-bronze-gear-wheel'
+    local obj = data.raw['recipe'][recipe] --apm.lib.utils.debug.object)
+    obj.normal.results = {{type='item', name=apm.bob_rework.lib.entities.bronze, amount=1}}
+    obj.expensive.results = {{type='item', name=apm.bob_rework.lib.entities.bronze, amount=1}}
+
+    local recipe = 'dry411srev-bronze-bearing-ball'
+    local obj = data.raw['recipe'][recipe] --apm.lib.utils.debug.object)
+    obj.normal.results = {{type='item', name=apm.bob_rework.lib.entities.bronze, amount=1}}
+    obj.expensive.results = {{type='item', name=apm.bob_rework.lib.entities.bronze, amount=1}}
+
+    local recipe = 'dry411srev-brass-gear-wheel'
+    local obj = data.raw['recipe'][recipe] --apm.lib.utils.debug.object)
+    obj.normal.results = {{type='item', name=apm.bob_rework.lib.entities.brass, amount=1}}
+    obj.expensive.results = {{type='item', name=apm.bob_rework.lib.entities.brass, amount=1}}
+
+    local recipe = 'dry411srev-brass-bearing-ball'
+    local obj = data.raw['recipe'][recipe] --apm.lib.utils.debug.object)
+    obj.normal.results = {{type='item', name=apm.bob_rework.lib.entities.brass, amount=1}}
+    obj.expensive.results = {{type='item', name=apm.bob_rework.lib.entities.brass, amount=1}}
+
+    local recipe = 'dry411srev-bronze-bearing'
+    local obj = data.raw['recipe'][recipe] --apm.lib.utils.debug.object)
+    obj.normal.results = {{type='item', name=apm.bob_rework.lib.entities.bronze, amount=1}}
+    obj.expensive.results = {{type='item', name=apm.bob_rework.lib.entities.bronze, amount=1}}
+
+    local recipe = 'dry411srev-brass-bearing'
+    local obj = data.raw['recipe'][recipe] --apm.lib.utils.debug.object)
+    obj.normal.results = {{type='item', name=apm.bob_rework.lib.entities.brass, amount=1}}
+    obj.expensive.results = {{type='item', name=apm.bob_rework.lib.entities.brass, amount=1}}
 end
