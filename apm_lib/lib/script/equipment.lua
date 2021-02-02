@@ -519,8 +519,6 @@ function equipment_script.on_nth_tick(event)
     local tick = game.tick
     if tick == 0 then return end
 
-    log(tick)
-
     local players = core.get_valid_players()
     if not players then return end
     for _, t_object in pairs(players) do
@@ -546,6 +544,10 @@ function equipment_default_startup(player)
     player.insert{name="battery-equipment", count=1}
     player.insert{name="apm_zx80_construction_robot", count=5}
     player.insert{name="modular-armor", count=1}
+    player.insert{name="apm_assembling_machine_0", count=5}
+    player.insert{name="apm_crusher_machine_0", count=5}
+    player.insert{name="apm_press_machine_0", count=5}
+    player.insert{name="apm_lab_0", count=1}
 end
 
 
