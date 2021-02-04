@@ -523,9 +523,40 @@ function equipment_script.on_nth_tick(event)
     if not players then return end
     for _, t_object in pairs(players) do
         check(t_object.player, t_object.character)
-        if tick > 500 and tick < 700  then
-            equipment_default_startup(t_object.player)
-        end
+        check_starting_equipment(t_object.player)
+        -- if tick > 500 and tick < 700  then
+        --     equipment_default_startup(t_object.player)
+        -- end
+    end
+end
+
+function check_starting_equipment(player)
+    -- if player.online_time < 1000 then
+    if not global.startupEquipment[player.name] then
+        player.remove_item{name="burner-mining-drill", count=1}
+        player.remove_item{name="stone-furnace", count=5}
+
+        player.insert{name="apm_equipment_burner_generator_basic", count=1}
+        player.insert{name="iron-plate", count=200}
+        player.insert{name="copper-plate", count=200}
+        player.insert{name="coal", count=200}
+        player.insert{name="apm_coke", count=200}
+        player.insert{name="wood", count=200}
+        player.insert{name="stone", count=200}
+        player.insert{name="burner-inserter", count=5}
+        player.insert{name="apm_burner_filter_inserter", count=5}
+        player.insert{name="burner-mining-drill", count=10}
+        -- player.insert{name="stone-furnace", count=10}
+        player.insert{name="personal-roboport-equipment", count=1}
+        player.insert{name="battery-equipment", count=1}
+        player.insert{name="apm_zx80_construction_robot", count=5}
+        player.insert{name="modular-armor", count=1}
+        player.insert{name="apm_assembling_machine_0", count=5}
+        player.insert{name="apm_crusher_machine_0", count=5}
+        player.insert{name="apm_press_machine_0", count=5}
+        player.insert{name="apm_lab_0", count=1}
+
+        global.startupEquipment[player.name] = true
     end
 end
 

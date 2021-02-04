@@ -33,7 +33,7 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint, handm
             {type="fluid", name=apm.bob_rework.lib.entities.lubricant, amount=10}
         }
     recipe.normal.results = { 
-            {type='item', name=name, amount=12}
+            {type='item', name=name, amount=2}
         }
     recipe.normal.main_product = name
     recipe.normal.requester_paste_multiplier = 4
@@ -59,7 +59,7 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint, handm
                 {type="item", name=apm.bob_rework.lib.entities.wood, amount=2}
             }
         recipe.normal.results = { 
-                {type='item', name=name, amount=12},
+                {type='item', name=name, amount=2},
                 {type='item', name='apm_wood_pellets', amount=6}
             }
         recipe.normal.main_product = name
