@@ -138,7 +138,7 @@ local genArtillery = function (recipe, tier)
 end
 
 local buildArtillery = function ()
-    genArtillery('artillery-turret', apm.bob_rework.lib.tier.steel2)
+    genArtillery('artillery-turret', apm.bob_rework.lib.tier.steel)
     genArtillery('bob-artillery-turret-2', apm.bob_rework.lib.tier.aluminium)
     genArtillery('bob-artillery-turret-3', apm.bob_rework.lib.tier.titanium)
 end
@@ -146,6 +146,7 @@ end
 local buildGunTurret = function(recipe, tier)
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 10)
 end
@@ -154,11 +155,11 @@ local buildGunTurrets = function ()
     buildGunTurret('gun-turret', apm.bob_rework.lib.tier.bronze)
     buildGunTurret('bob-gun-turret-2', apm.bob_rework.lib.tier.brass)
     buildGunTurret('bob-gun-turret-3', apm.bob_rework.lib.tier.monel)
-    buildGunTurret('bob-gun-turret-4', apm.bob_rework.lib.tier.steel2)
+    buildGunTurret('bob-gun-turret-4', apm.bob_rework.lib.tier.steel)
     buildGunTurret('bob-gun-turret-5', apm.bob_rework.lib.tier.aluminium)
 
     buildGunTurret('bob-sniper-turret-1', apm.bob_rework.lib.tier.monel)
-    buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel2)
+    buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel)
     buildGunTurret('bob-sniper-turret-3', apm.bob_rework.lib.tier.titanium)
 end
 
@@ -451,7 +452,7 @@ local modify = function ()
 	--
 	buildPersonalLaser('personal-laser-defense-equipment', apm.bob_rework.lib.tier.monel, apm.bob_rework.lib.entities.glass)
 	buildPersonalLaser('personal-laser-defense-equipment-2', apm.bob_rework.lib.tier.monel, 'ruby-5')
-	buildPersonalLaser('personal-laser-defense-equipment-3', apm.bob_rework.lib.tier.steel2, 'emerald-5')
+	buildPersonalLaser('personal-laser-defense-equipment-3', apm.bob_rework.lib.tier.steel, 'emerald-5')
 	buildPersonalLaser('personal-laser-defense-equipment-4', apm.bob_rework.lib.tier.aluminium, 'amethyst-5')
 	buildPersonalLaser('personal-laser-defense-equipment-5', apm.bob_rework.lib.tier.aluminium, 'topaz-5')
 	buildPersonalLaser('personal-laser-defense-equipment-6', apm.bob_rework.lib.tier.titanium, 'diamond-5')

@@ -36,13 +36,13 @@ local buildTank = function (recipe, tier, engine, count)
 end
 
 local update = function ()
-    buildOverdriveMotor('vehicle-motor', apm.bob_rework.lib.tier.steel2, 1)
+    buildOverdriveMotor('vehicle-motor', apm.bob_rework.lib.tier.steel, 1)
     buildOverdriveMotor('vehicle-engine', apm.bob_rework.lib.tier.titanium, 2)
     buildCar('car', apm.bob_rework.lib.tier.brass, apm.bob_rework.lib.entities.engineUnit, 1)
     buildCar('apm_electric_car', apm.bob_rework.lib.tier.monel, apm.bob_rework.lib.entities.electricEngineUnit, 4)
     --
-    buildTank('tank', apm.bob_rework.lib.tier.steel2, apm.bob_rework.lib.entities.engineUnit, 32)
-    buildTank('apm_electric_tank', apm.bob_rework.lib.tier.steel2, apm.bob_rework.lib.entities.electricEngineUnit, 32)
+    buildTank('tank', apm.bob_rework.lib.tier.steel, apm.bob_rework.lib.entities.engineUnit, 32)
+    buildTank('apm_electric_tank', apm.bob_rework.lib.tier.steel, apm.bob_rework.lib.entities.electricEngineUnit, 32)
     buildTank('bob-tank-2', apm.bob_rework.lib.tier.aluminium, apm.bob_rework.lib.entities.engineUnit, 42)
     buildTank('apm_electric_bob-tank-2', apm.bob_rework.lib.tier.aluminium, apm.bob_rework.lib.entities.electricEngineUnit, 42)
     buildTank('bob-tank-3', apm.bob_rework.lib.tier.titanium, apm.bob_rework.lib.entities.engineUnit, 50)

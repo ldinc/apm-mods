@@ -30,11 +30,23 @@ local buildGasVenting = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 4)
 end
 
+local buildIncinerator = function (recipe)
+    local tier = apm.bob_rework.lib.tier.monel
+    if recipe == 'incinerator' then
+        tier = apm.bob_rework.lib.tier.brass
+    end
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
+end
+
 apm.bob_rework.lib.override.flareStacks = function ()
     buildGasVenting('vent-stack', apm.bob_rework.lib.tier.monel)
     buildFlare('flare-stack')
-    buildFlare('incinerator')
-    buildFlare('electric-incinerator')
+    buildIncinerator('incinerator')
+    buildIncinerator('electric-incinerator')    
 
     -- local obj = data.raw.furnace['electric-incinerator']
     -- obj.result_inventory_size = 1

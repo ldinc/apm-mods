@@ -7,22 +7,23 @@ require('lib.tier.base')
 
 local buildEPole = function (medium, big, substation, tier)
     local recipe = medium
+    local m = tier.level - 2
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5+2*m)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 2 + 2*m)
 
     local recipe = big
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10 + 3*m)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 4+4*m)
 
     local recipe = substation
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10 + 2*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 40)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 40 + 5*m)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5*tier.level)
 end
