@@ -89,6 +89,11 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, 'electric-mixing-furnace', 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, 'productivity-module', 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, 'productivity-module-3', 4)
+    -- sad hack
+    local obj = data.raw.recipe[recipe]
+    apm.bob_rework.lib.utils.debug.object(obj)
+    table.insert(obj.ingredients, {type='item', name='rail', amount=40})
+    table.insert(obj.ingredients, {type='item', name='productivity-module', amount=4})
 
     local recipe = 'apm_industrial_science_pack_0'
     apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.logicBasic, 1)
