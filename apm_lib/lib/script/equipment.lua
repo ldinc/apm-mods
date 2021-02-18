@@ -532,6 +532,9 @@ end
 
 function check_starting_equipment(player)
     -- if player.online_time < 1000 then
+    if not global.startupEquipment then
+        global.startupEquipment = {}
+    end
     if not global.startupEquipment[player.name] then
         player.remove_item{name="burner-mining-drill", count=1}
         player.remove_item{name="stone-furnace", count=5}
