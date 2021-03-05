@@ -15,11 +15,12 @@ local buildChemicalPlant = function (recipe, tier, compressor)
     if tier.level >= 4 then
         count = 2
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, compressor, count)
+    -- apm.lib.utils.recipe.ingredient.mod(recipe, compressor, count)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.tier.pump, count)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.filter, 30)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 10 + 5*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 10)
+    -- apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 10)
 end
 
 apm.bob_rework.lib.override.chemicalPlants = function ()
