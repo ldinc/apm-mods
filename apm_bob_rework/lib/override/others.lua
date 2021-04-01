@@ -99,4 +99,17 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.logicBasic, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.stone, 5)
 
+    local spaceship = data.raw.container['crash-site-spaceship']
+    apm.bob_rework.lib.utils.debug.object(spaceship)
+    spaceship.max_health = 99
+    spaceship.loot = {
+        {item='small-lamp',count_min=40,count_max=40},
+        {item=apm.bob_rework.lib.entities.bronzeBearing,count_min=150,count_max=150},
+        {item=apm.bob_rework.lib.entities.bronzeGearWheel,count_min=200,count_max=200},
+        {item=apm.bob_rework.lib.entities.logicBasic,count_min=50,count_max=50},
+        {item=apm.bob_rework.lib.entities.bronze,count_min=200,count_max=400},
+        {item=apm.bob_rework.lib.entities.gunPowder,count_min=100,count_max=200},
+        {item='piercing-rounds-magazine',count_min=200,count_max=400},
+    }
+
 end
