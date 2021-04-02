@@ -75,11 +75,11 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint, handm
     end
 end
 
-apm.bob_rework.lib.entities.genBearing(
-    apm.bob_rework.lib.entities.bronzeBearing, apm.bob_rework.lib.entities.bronze,
-    apm.bob_rework.lib.entities.bronzeBearingBall, {r=151/255, g=115/255, b=81/255},
-    true
-)
+-- apm.bob_rework.lib.entities.genBearing(
+--     apm.bob_rework.lib.entities.bronzeBearing, apm.bob_rework.lib.entities.bronze,
+--     apm.bob_rework.lib.entities.bronzeBearingBall, {r=151/255, g=115/255, b=81/255},
+--     true
+-- )
 apm.bob_rework.lib.entities.genBearing(
     apm.bob_rework.lib.entities.brassBearing, apm.bob_rework.lib.entities.brass,
     apm.bob_rework.lib.entities.brassBearingBall, {r=235/255, g=244/255, b=181/255},

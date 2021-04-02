@@ -103,7 +103,6 @@ apm.bob_rework.lib.override.others = function ()
     apm.bob_rework.lib.utils.debug.object(spaceship)
     spaceship.max_health = 99
     spaceship.loot = {
-        {item='small-lamp',count_min=40,count_max=40},
         {item=apm.bob_rework.lib.entities.bronzeBearing,count_min=150,count_max=150},
         {item=apm.bob_rework.lib.entities.bronzeGearWheel,count_min=200,count_max=200},
         {item=apm.bob_rework.lib.entities.logicBasic,count_min=50,count_max=50},
