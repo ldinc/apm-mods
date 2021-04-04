@@ -45,7 +45,6 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
         }
 
     data:extend({recipe})
-    end
 end
 
 apm.bob_rework.lib.entities.genBearing(

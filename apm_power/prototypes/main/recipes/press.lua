@@ -18,7 +18,7 @@ recipe.name = "apm_press_plates"
 recipe.category = 'advanced-crafting'
 recipe.normal = {}
 recipe.normal.enabled = false
-recipe.normal.energy_required = 3
+recipe.normal.energy_required = 1
 recipe.normal.ingredients = {
         {type="item", name="steel-plate", amount=2}
     }
@@ -57,7 +57,7 @@ recipe.order = 'ad_b'
 recipe.icons = icons
 recipe.normal = {}
 recipe.normal.enabled = false
-recipe.normal.energy_required = 3
+recipe.normal.energy_required = 1
 recipe.normal.ingredients = {
         {type="fluid", name="water", amount=30},
         {type="item", name="apm_press_plates_used", amount=5},
