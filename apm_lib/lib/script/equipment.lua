@@ -538,28 +538,51 @@ function check_starting_equipment(player)
     if not global.startupEquipment[player.name] then
         player.remove_item{name="burner-mining-drill", count=1}
         player.remove_item{name="stone-furnace", count=5}
+        player.remove_item{name="wood", count=100}
 
-        player.insert{name="apm_equipment_burner_generator_basic", count=1}
-        player.insert{name="iron-plate", count=200}
-        player.insert{name="copper-plate", count=200}
-        player.insert{name="coal", count=200}
-        player.insert{name="apm_coke", count=200}
-        player.insert{name="wood", count=200}
-        player.insert{name="stone", count=200}
-        player.insert{name="burner-inserter", count=5}
-        player.insert{name="apm_burner_filter_inserter", count=5}
-        player.insert{name="burner-mining-drill", count=10}
-        -- player.insert{name="stone-furnace", count=10}
-        player.insert{name="personal-roboport-equipment", count=1}
-        player.insert{name="battery-equipment", count=1}
-        player.insert{name="apm_zx80_construction_robot", count=5}
-        player.insert{name="modular-armor", count=1}
-        player.insert{name="apm_assembling_machine_0", count=5}
-        player.insert{name="apm_crusher_machine_0", count=5}
-        player.insert{name="apm_press_machine_0", count=5}
-        player.insert{name="apm_lab_0", count=1}
+        -- player.insert{name="apm_equipment_burner_generator_basic", count=1}
+        -- player.insert{name="iron-plate", count=200}
+        -- player.insert{name="copper-plate", count=200}
+        -- player.insert{name="coal", count=200}
+        -- player.insert{name="apm_coke", count=200}
+        -- player.insert{name="wood", count=200}
+        -- player.insert{name="stone", count=200}
+        -- player.insert{name="burner-inserter", count=5}
+        -- player.insert{name="apm_burner_filter_inserter", count=5}
+        -- player.insert{name="burner-mining-drill", count=10}
+        -- -- player.insert{name="stone-furnace", count=10}
+        -- player.insert{name="personal-roboport-equipment", count=1}
+        -- player.insert{name="battery-equipment", count=1}
+        -- player.insert{name="apm_zx80_construction_robot", count=5}
+        -- player.insert{name="modular-armor", count=1}
+        -- player.insert{name="apm_assembling_machine_0", count=5}
+        -- player.insert{name="apm_crusher_machine_0", count=5}
+        -- player.insert{name="apm_press_machine_0", count=5}
+        -- player.insert{name="apm_lab_0", count=1}
 
+        itemsFromSettings(player)
         global.startupEquipment[player.name] = true
+    end
+end
+
+function itemsFromSettings(player)
+    local input = settings.startup["apm_lib_player_items"].value
+    if input ~= '' then
+        for i in string.gmatch(input, "%S+") do
+            local name = ''
+            local count = 0
+            local ind = 0
+            for v in string.gmatch(i, "[^:]+") do
+                if ind == 0 then
+                    name = v
+                end
+                if ind == 1 then
+                    count =  tonumber(v)
+                end
+                ind = ind + 1
+            end
+            player.insert{name=name, count=count}
+        end
     end
 end
 
