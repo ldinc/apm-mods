@@ -41,6 +41,7 @@ local buildYellowMiner = function ()
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, engine, 2 + tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)

@@ -101,12 +101,12 @@ apm.lib.utils.technology.new('apm_power',
     15, 10)
 
 -- Rubber II
--- apm.lib.utils.technology.new('apm_power',
---     'apm_rubber-2',
---     {'apm_rubber-1', 'apm_coking_plant_0'}, 
---     {'apm_rubber_2'},
---     {{"apm_industrial_science_pack", 1}},
---     50, 25)
+apm.lib.utils.technology.new('apm_power',
+    'apm_rubber-2',
+    {'apm_rubber-1', 'apm_coking_plant_0'}, 
+    {'apm_rubber_2'},
+    {{"apm_industrial_science_pack", 1}},
+    50, 25)
 
 -- Press
 apm.lib.utils.technology.new('apm_power',

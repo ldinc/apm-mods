@@ -95,3 +95,6 @@ free('bob-electric-rocket')
 free('bob-plasma-turrets-1')
 free('reinforced-wall')
 free('rampant-arsenal-technology-regeneration-turrets')
+
+push('titanium-processing', apm.bob_rework.lib.entities.nitinolPipe)
+push('titanium-processing', apm.bob_rework.lib.entities.nitinolUnderPipe)

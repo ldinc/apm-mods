@@ -14,10 +14,8 @@ local buildFlare = function (recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 6)
 end
 
 

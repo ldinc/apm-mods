@@ -65,6 +65,7 @@ local buildLaserTurret = function ()
     prev = recipe
     recipe = 'bob-laser-turret-3'
     apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicAdvanced, 25)
     prev = recipe
     recipe = 'bob-laser-turret-4'
     apm.lib.utils.recipe.ingredient.mod(recipe, prev, 0)
@@ -381,7 +382,7 @@ local modify = function ()
 	local recipe = 'cannon-shell'
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 2)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 0)
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 2)
 
 	local recipe = 'explosive-cannon-shell'
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 2)
@@ -426,10 +427,10 @@ local modify = function ()
 	changeIron2GM('he-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
 	changeIron2GM('incendiary-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
 	changeIron2GM('incendiary-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
-	changeIron2GM('bio-cannon-shell-ammo-rampant-arsenal', 1)
-	changeIron2GM('he-cannon-shell-ammo-rampant-arsenal', 1)
-	changeIron2GM('incendiary-cannon-shell-ammo-rampant-arsenal', 1)
-	changeIron2GM('toxic-capsule-rampant-arsenal', 3)
+	changeIron2GM('bio-cannon-shell-ammo-rampant-arsenal', 0)
+	changeIron2GM('he-cannon-shell-ammo-rampant-arsenal', 0)
+	changeIron2GM('incendiary-cannon-shell-ammo-rampant-arsenal', 0)
+	changeIron2GM('toxic-capsule-rampant-arsenal', 1)
 	changeIron2GM('paralysis-capsule-rampant-arsenal', 3)
 
     buildLaserTurret()

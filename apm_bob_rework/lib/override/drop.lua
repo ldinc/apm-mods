@@ -65,9 +65,11 @@ apm.bob_rework.lib.override.drop = function ()
     rm('electric-furnace-3')
 
     rm(apm.bob_rework.lib.entities.stonePipe)
-    rm(apm.bob_rework.lib.entities.nitinolPipe)
-    rm(apm.bob_rework.lib.entities.nitinolUnderPipe)
+    -- rm(apm.bob_rework.lib.entities.nitinolPipe)
+    -- rm(apm.bob_rework.lib.entities.nitinolUnderPipe)
     rm(apm.bob_rework.lib.entities.stoneUnderPipe)
+    rm(apm.bob_rework.lib.entities.plasticPipe)
+    rm(apm.bob_rework.lib.entities.plasticUnderPipe)
 
     rm('bob-greenhouse')
     rm('logistic-chest-active-provider-2')

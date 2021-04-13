@@ -6,6 +6,29 @@ require('lib.enities.base')
 require('lib.tier.base')
 require('lib.utils.debug')
 
+local sulfur = function ()
+    -- if resource_generator then
+    -- resource_generator.setup_resource_autoplace_data("sulfur", {
+    --     name = "sulfur",
+    --     order = "c",
+    --     base_density = 8,
+    --     has_starting_area_placement = true, -- main change from original bob
+    --     regular_rq_factor_multiplier = 0.1,
+    -- }
+    -- )
+    -- else
+    -- data.raw.resource["sulfur"].autoplace = resource_autoplace.resource_autoplace_settings{
+    --     name = "sulfur",
+    --     order = "c",
+    --     base_density = 8,
+    --     has_starting_area_placement = true, -- main change from original bob
+    --     regular_rq_factor_multiplier = 0.1,
+    -- }
+    -- end
+    -- data.raw.resource["sulfur"].autoplace.has_starting_area_placement = true
+    -- bobmods.ores.sulfur.enabled = true
+end
+
 apm.bob_rework.lib.override.others = function ()
     local recipe = apm.bob_rework.lib.entities.electricGeneratorUnit
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -121,17 +144,19 @@ apm.bob_rework.lib.override.others = function ()
 
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1b', 'crafting-with-fluid')
+    apm.lib.utils.recipe.category.change('apm_saw_blade_iron', 'crafting')
+    apm.lib.utils.recipe.category.change('apm_saw_blade_iron_maintenance', 'crafting-with-fluid')
 
-    -- local spaceship = data.raw.container['crash-site-spaceship']
-    -- apm.bob_rework.lib.utils.debug.object(spaceship)
-    -- spaceship.max_health = 99
-    -- spaceship.loot = {
-    --     {item=apm.bob_rework.lib.entities.bronzeBearing,count_min=150,count_max=150},
-    --     {item=apm.bob_rework.lib.entities.bronzeGearWheel,count_min=200,count_max=200},
-    --     {item=apm.bob_rework.lib.entities.logicBasic,count_min=50,count_max=50},
-    --     {item=apm.bob_rework.lib.entities.bronze,count_min=200,count_max=400},
-    --     {item=apm.bob_rework.lib.entities.gunPowder,count_min=100,count_max=200},
-    --     {item='piercing-rounds-magazine',count_min=200,count_max=400},
-    -- }
+    -- setup sulfur as starting resource (because gun powder recipies)
+    -- bobmods.ores.sulfur.create_autoplace = sulfur
+    -- sulfur()
 
+    local recipe = apm.bob_rework.lib.entities.nitinolPipe
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+    local recipe = apm.bob_rework.lib.entities.nitinolUnderPipe
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
 end
