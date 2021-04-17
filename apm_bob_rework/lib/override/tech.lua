@@ -81,6 +81,11 @@ rm('alloy-processing', 'stone-mixing-furnace')
 drop('invar-processing', 'logistic-science-pack')
 rebind('logistic-science-pack', 'invar-processing')
 
+drop('stone-wall', 'apm_steam_science_pack')
+drop('stone-wall', 'automation-science-pack')
+drop('gun-turret', 'apm_steam_science_pack')
+drop('gun-turret', 'automation-science-pack')
+
 unbind('electric-energy-distribution-1', 'steel-processing')
 free('nitinol-processing')
 free('bob-plasma-rocket')

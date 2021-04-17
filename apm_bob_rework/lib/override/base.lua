@@ -48,6 +48,7 @@ require('lib.override.productivity')
 require('lib.override.tech')
 require('lib.override.logistics')
 require('lib.override.others')
+require('lib.override.buff')
 
 
 apm.bob_rework.lib.override.apply = function ()
@@ -84,5 +85,6 @@ apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.furnaces()
 
     apm.bob_rework.lib.override.others()
+    apm.bob_rework.lib.override.buff()
 end
 

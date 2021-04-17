@@ -93,6 +93,7 @@ local buildShotgunTurret = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brassBearing, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brassGearWheel, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.brass.constructionAlloy, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.brass.logic, 5)
 end
 
 local buildCanonTurret = function ()
@@ -144,24 +145,28 @@ local buildArtillery = function ()
     genArtillery('bob-artillery-turret-3', apm.bob_rework.lib.tier.titanium)
 end
 
-local buildGunTurret = function(recipe, tier)
+local buildGunTurret = function(recipe, tier, extraGlass)
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
+	if extraGlass then
+		apm.lib.utils.recipe.ingredient.mod(recipe, tier.glass, 10)	
+	end
 end
 
 local buildGunTurrets = function ()
-    buildGunTurret('gun-turret', apm.bob_rework.lib.tier.bronze)
-    buildGunTurret('bob-gun-turret-2', apm.bob_rework.lib.tier.brass)
-    buildGunTurret('bob-gun-turret-3', apm.bob_rework.lib.tier.monel)
-    buildGunTurret('bob-gun-turret-4', apm.bob_rework.lib.tier.steel)
-    buildGunTurret('bob-gun-turret-5', apm.bob_rework.lib.tier.aluminium)
+    buildGunTurret('gun-turret', apm.bob_rework.lib.tier.bronze, false)
+    buildGunTurret('bob-gun-turret-2', apm.bob_rework.lib.tier.brass, false)
+    buildGunTurret('bob-gun-turret-3', apm.bob_rework.lib.tier.monel, false)
+    buildGunTurret('bob-gun-turret-4', apm.bob_rework.lib.tier.steel, false)
+    buildGunTurret('bob-gun-turret-5', apm.bob_rework.lib.tier.aluminium, false)
 
-    buildGunTurret('bob-sniper-turret-1', apm.bob_rework.lib.tier.monel)
-    buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel)
-    buildGunTurret('bob-sniper-turret-3', apm.bob_rework.lib.tier.titanium)
+    buildGunTurret('bob-sniper-turret-1', apm.bob_rework.lib.tier.monel, true)
+    buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel, true)
+    buildGunTurret('bob-sniper-turret-3', apm.bob_rework.lib.tier.titanium, true)
 end
 
 local buildSolarPanel = function (recipe, tier, shell, conduct)
