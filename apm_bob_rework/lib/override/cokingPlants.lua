@@ -10,14 +10,14 @@ local buildCokingPlantRecipe = function (recipe, tier)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
-local count = 20
+    local count = 20
     if tier.level == 1 then
         count = 15
     end
     if tier.level > 1 then
         count = 10
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20 * tier.basementK)
 end
 

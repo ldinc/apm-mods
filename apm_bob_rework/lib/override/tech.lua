@@ -75,6 +75,20 @@ drop('warehouse-research', 'apm_steam_science_pack')
 drop('warehouse-research', 'automation-science-pack')
 drop('warehouse-research', 'logistic-science-pack')
 
+unbind('apm_power_steam', 'apm_puddling_furnace_0')
+bind('apm_power_steam', 'apm_coking_plant_0')
+
+unbind('apm_coking_plant_1', 'apm_assembler_machine_1')
+bind('apm_coking_plant_1', 'apm_steam_science_pack')
+bind('apm_assembler_machine_1', 'apm_treated_wood_planks-1')
+bind('apm_centrifuge_0', 'apm_treated_wood_planks-1')
+bind('apm_greenhouse-2', 'apm_treated_wood_planks-1')
+
+drop('rampant-arsenal-technology-shotgun', 'automation-science-pack')
+bind('electric-engine', 'apm_power_electricity')
+unbind('electric-engine', 'apm_power_automation_science_pack')
+repush('apm_power_automation_science_pack', 'apm_power_electricity', apm.bob_rework.lib.entities.electricGeneratorUnit)
+
 -- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelBearingBall)
 -- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelBearing)
 -- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelGearWheel)
@@ -93,7 +107,7 @@ push('apm_power_electricicty', 'incinerator')
 rebind('logistics', 'automation')
 rebind('automation', 'electric-engine')
 
-push('alloy-processing', apm.bob_rework.lib.entities.monel)
+push('nickel-processing', apm.bob_rework.lib.entities.monel)
 -- push('alloy-processing', apm.bob_rework.lib.entities.cobaltAlloy)
 rm('alloy-processing', apm.bob_rework.lib.entities.bronze)
 rm('alloy-processing', apm.bob_rework.lib.entities.bronzePipe)
@@ -109,6 +123,16 @@ drop('gun-turret', 'automation-science-pack')
 drop('gate', 'logistic-science-pack')
 unbind('gate', 'military-2')
 bind('gate', 'military')
+
+repush('apm_fluid_control-1', 'apm_water_supply-1', 'apm_pump_0')
+
+unbind('fluid-handling', 'engine')
+unbind('fluid-handling', 'automation-2')
+bind('fluid-handling', 'electronics')
+drop('fluid-handling', 'logistic-science-pack')
+
+bind('electrolysis-1', 'fluid-handling')
+
 rm('military-2', 'piercing-rounds-magazine')
 rm('military-2', 'grenade')
 push('military', 'piercing-rounds-magazine')
@@ -122,6 +146,7 @@ repushItems('zinc-processing', 'apm_coking_plant_0', {
     apm.bob_rework.lib.entities.brassGearWheel, apm.bob_rework.lib.entities.brassPipe,
     apm.bob_rework.lib.entities.brassUnderPipe, 'brass-chest',
 })
+bind('electrolysis-1', 'apm_air_cleaner_machine')
 
 unbind('electric-energy-distribution-1', 'steel-processing')
 free('nitinol-processing')
@@ -137,6 +162,9 @@ free('bob-electric-rocket')
 free('bob-plasma-turrets-1')
 free('reinforced-wall')
 free('rampant-arsenal-technology-regeneration-turrets')
+
+free('bob-greenhouse')
+free('bob-fertiliser')
 
 push('titanium-processing', apm.bob_rework.lib.entities.nitinolPipe)
 push('titanium-processing', apm.bob_rework.lib.entities.nitinolUnderPipe)
