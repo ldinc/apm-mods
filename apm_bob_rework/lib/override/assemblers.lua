@@ -22,31 +22,31 @@ apm.bob_rework.lib.override.genAssembler = function (recipe, tier)
     end
 
     apm.lib.utils.recipe.ingredient.mod(recipe, engine, 2 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5+2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 8 + 3*tier.level)
     if tier.extraConstructionAlloy then
         local count = 20
         if tier.level == 1 then
-            count = 15
+            count = 10
         end
         if tier.level > 1 then
-            count = 10
+            count = 15
         end
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 15 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 4 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, logic, tier.level*2 + 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 4 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, tier.level*4 + 1)
 end
 
 apm.bob_rework.lib.override.genAssembler6 = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 4 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 20)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tungstenCarbide, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.refinedConcrete, 30)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.inserter, 5*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level*2 + 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 30)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tungstenCarbide, 20)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.refinedConcrete, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.inserter, 5 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level*10)
 end
 
 local buildAdvancedAssembler = function (recipe, base, tier)
@@ -76,13 +76,13 @@ local buildElectronicAssembler = function (recipe, tier)
         inserter = apm.bob_rework.lib.entities.yellowInserter
     end
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5+2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5+3*tier.level)
     if tier.extraConstructionAlloy then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 3+2*tier.level)
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 5+3*tier.level)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 15 * tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 5 * tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, logic, tier.level*10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, tier.level*4)
 end
 
 apm.bob_rework.lib.override.assemblers = function ()

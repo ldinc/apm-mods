@@ -15,7 +15,7 @@ local buildAccum = function (fast, high, slow, tier)
     if tier.battery then
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 4)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, 2)
 
     local recipe = high
@@ -23,7 +23,7 @@ local buildAccum = function (fast, high, slow, tier)
     if tier.battery then
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 10)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 6)
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, 4)
 
     local recipe = slow
@@ -31,7 +31,7 @@ local buildAccum = function (fast, high, slow, tier)
     if tier.battery then
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 4)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, 4)
 end
 

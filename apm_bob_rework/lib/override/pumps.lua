@@ -11,11 +11,7 @@ local buildPumpRecipe = function (tier)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 3)
-    if tier.level == apm.bob_rework.lib.tier.monel.level then
-        apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 2)
-    else
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
-    end
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2 + tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level*2 + 1)

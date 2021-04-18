@@ -9,20 +9,20 @@ require('lib.tier.base')
 local buildBurnerReactor = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatProvider, 12)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 20)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20*tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatProvider, 8)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 6 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 4 + 3*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10*tier.basementK)
 end
 
 local buildFluidBurnerReactor = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatProvider, 12)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 20)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20*tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatProvider, 8)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 6 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 4 + 3*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10*tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 5 + 3*tier.level)
 end
 
 local fixFuelForHeatExhanger = function (recipe)

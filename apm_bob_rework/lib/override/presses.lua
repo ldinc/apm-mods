@@ -11,7 +11,7 @@ local buildPressRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
     if tier.extraConstructionAlloy then
-        local count = 20
+        local count = 8
         if tier.level == 1 then
             count = 15
         end

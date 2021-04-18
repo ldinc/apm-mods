@@ -63,10 +63,10 @@ local buildToolLogistic= function (recipe, tier)
 end
 
 local build = function ()
-    modify('roboport', apm.bob_rework.lib.tier.monel, 15)
-    modify('bob-roboport-2', apm.bob_rework.lib.tier.steel, 15)
-    modify('bob-roboport-3', apm.bob_rework.lib.tier.aluminium, 15)
-    modify('bob-roboport-4', apm.bob_rework.lib.tier.titanium, 15)
+    modify('roboport', apm.bob_rework.lib.tier.monel, 40)
+    modify('bob-roboport-2', apm.bob_rework.lib.tier.steel, 60)
+    modify('bob-roboport-3', apm.bob_rework.lib.tier.aluminium, 80)
+    modify('bob-roboport-4', apm.bob_rework.lib.tier.titanium, 100)
 
     modify('bob-logistic-zone-expander', apm.bob_rework.lib.tier.monel, 5)
     modify('bob-logistic-zone-expander-2', apm.bob_rework.lib.tier.steel, 5)

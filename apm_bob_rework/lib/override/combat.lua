@@ -100,7 +100,7 @@ local buildCanonTurret = function ()
     local recipe = 'cannon-item-rampant-arsenal'
     local tier = apm.bob_rework.lib.tier.steel
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 50)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 100)
@@ -112,14 +112,14 @@ local buildRocketTurret = function ()
     local recipe = 'rocket-item-rampant-arsenal'
     local tier = apm.bob_rework.lib.tier.steel
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 30)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 20)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 15)
     
     local recipe = 'rapid-rocket-item-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 40)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.engineUnit, 20)
@@ -128,9 +128,9 @@ end
 
 local genArtillery = function (recipe, tier)
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 60)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 100)
     if tier.extraConstructionAlloy then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 30)
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 50)
     end
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 30)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)

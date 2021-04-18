@@ -125,22 +125,22 @@ apm.bob_rework.lib.override.others = function ()
     --#
     local recipe = 'apm_crusher_machine_2'
     apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_greenhouse_2'
     apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_press_machine_2'
     apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_coking_plant_2'
     apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_centrifuge_2'
     apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_steelworks_0'
     apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
 
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1b', 'crafting-with-fluid')

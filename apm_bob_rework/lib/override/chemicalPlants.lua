@@ -8,17 +8,17 @@ require('lib.tier.base')
 local buildChemicalPlant = function (recipe, tier, compressor)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 15*tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.exchangePipe, 5)
-    local count = 1
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10*tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 6 + 5*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.exchangePipe, 4*tier.level)
+    local count = 2
     if tier.level >= 4 then
-        count = 2
+        count = 4
     end
     -- apm.lib.utils.recipe.ingredient.mod(recipe, compressor, count)
     apm.lib.utils.recipe.ingredient.mod(recipe,     tier.pump, count)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.filter, 30)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.filter, 12)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 15)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 10 + 5*tier.level)
     -- apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 10)
 end

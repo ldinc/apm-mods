@@ -21,7 +21,7 @@ local buildLaboratoryRecipe = function (recipe, tier)
             count = 15
         end
         if tier.level > 1 then
-            count = 10
+            count = 20
         end
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     end

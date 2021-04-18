@@ -13,12 +13,12 @@ local buildElectrolyser = function (recipe, tier)
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.silver, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 8 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 9 + 3*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 8 + 4*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.silver, 6)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 8)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 2)
 
 end
 

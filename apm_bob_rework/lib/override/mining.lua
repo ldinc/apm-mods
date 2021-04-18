@@ -9,12 +9,12 @@ local buildMiningRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 8 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 14 + 4*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 12 + 3*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 12 + 3*tier.level)
     if tier.level > 1 then 
-        apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 5)
+        apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 8 + 3*tier.level)
     end
     if tier.level < 1 then
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 0)
@@ -41,12 +41,12 @@ local buildYellowMiner = function ()
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 8)
     apm.lib.utils.recipe.ingredient.mod(recipe, engine, 2 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 16)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 15)
 end
 
 apm.bob_rework.lib.override.mining = function ()

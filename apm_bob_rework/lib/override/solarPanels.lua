@@ -20,7 +20,7 @@ local buildSolarPanel= function (small, normal, large, tier, extra, alloy)
         apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 2)
     end
     if extra then
-        apm.lib.utils.recipe.ingredient.mod(recipe, shell, 4*tier.level)
+        apm.lib.utils.recipe.ingredient.mod(recipe, extra, 4*tier.level)
     end
 
     local recipe = normal
@@ -44,7 +44,7 @@ local buildSolarPanel= function (small, normal, large, tier, extra, alloy)
         apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 8)
     end
     if extra then
-        apm.lib.utils.recipe.ingredient.mod(recipe, shell, 16*tier.level)
+        apm.lib.utils.recipe.ingredient.mod(recipe, extra, 16*tier.level)
     end
 end
 
