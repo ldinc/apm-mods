@@ -294,6 +294,24 @@ local changeIron2GM = function (recipe, count)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, count)
 end
 
+local updateWeapons = function ()
+	local recipe = 'pistol'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tin, 6)
+
+	local recipe = 'submachine-gun'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tin, 12)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.wood, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironGearWheel, 5)
+
+	local recipe = 'shotgun'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tin, 12)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.wood, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironGearWheel, 10)
+end
+
 local modify = function ()
     local recipe = 'piercing-rounds-magazine'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -413,6 +431,14 @@ local modify = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 5)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunPowder, 40)
 
+	local recipe = 'rifle-item-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.bronze, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tin, 15)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.wood, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.bronze.logic, 2)
+
+
 
 
 	changeIron2GM('grenade-capsule-ammo-rampant-arsenal', 2)
@@ -484,6 +510,8 @@ local modify = function ()
 	buildNightvision('night-vision-equipment-2', apm.bob_rework.lib.tier.aluminium, 'topaz-5')
 	buildNightvision('night-vision-equipment-3', apm.bob_rework.lib.tier.titanium, 'diamond-5')
 	--
+
+	updateWeapons()
 
 	-- -- disable tech
 	-- apm.lib.utils.technology.delete('bob-fire-artillery-shells')

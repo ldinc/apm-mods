@@ -20,8 +20,8 @@ local buildOilRefinery = function (recipe, tier, compressor)
 end
 
 apm.bob_rework.lib.override.oilRefineries = function ()
-    buildOilRefinery('oil-refinery', apm.bob_rework.lib.tier.monel, 'air-pimp')
-    buildOilRefinery('oil-refinery-2', apm.bob_rework.lib.tier.steel, 'air-pimp-2')
-    buildOilRefinery('oil-refinery-3', apm.bob_rework.lib.tier.aluminium, 'air-pimp-3')
-    buildOilRefinery('oil-refinery-4', apm.bob_rework.lib.tier.titanium, 'air-pimp-4')
+    buildOilRefinery('oil-refinery', apm.bob_rework.lib.tier.monel, 'air-pump')
+    buildOilRefinery('oil-refinery-2', apm.bob_rework.lib.tier.steel, 'air-pump-2')
+    buildOilRefinery('oil-refinery-3', apm.bob_rework.lib.tier.aluminium, 'air-pump-3')
+    buildOilRefinery('oil-refinery-4', apm.bob_rework.lib.tier.titanium, 'air-pump-4')
 end

@@ -23,11 +23,22 @@ local free = function (name)
     end
 end
 local unbind = apm.lib.utils.technology.remove.prerequisites
+local bind = apm.lib.utils.technology.add.prerequisites
+local repush = function (from, to, item)
+    rm(from, item)
+    push(to, item)
+end
+local repushItems = function (from, to, items)
+    for _, v in pairs(items) do
+        repush(from, to, v)
+    end
+end
 
 -- apm.lib.utils.technology.remove.recipe_from_unlock('alloy-processing', 'stone-mixing-furnace')
 -- setup startup entities & remove some techs
 on('stone-mixing-furnace')
 on(apm.bob_rework.lib.entities.bronze)
+off('iron-stick')
 off('apm_steam_science_pack')
 off(apm.bob_rework.lib.entities.bronzeBearing)
 off(apm.bob_rework.lib.entities.bronzeBearingBall)
@@ -53,10 +64,20 @@ push('apm_press_machine_0', 'repair-pack')
 push('apm_water_supply-1', apm.bob_rework.lib.entities.bronzePipe)
 push('apm_water_supply-1', apm.bob_rework.lib.entities.bronzeUnderPipe)
 
-push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.ironStick)
-push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelBearingBall)
-push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelBearing)
-push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelGearWheel)
+drop('steel-processing', 'apm_steam_science_pack')
+drop('steel-processing', 'automation-science-pack')
+push('steel-processing', apm.bob_rework.lib.entities.ironStick)
+rebind('steel-processing', 'apm_puddling_furnace_0')
+unbind('steel-processing', 'electrolysis-1')
+unbind('steel-processing', 'chemical-processing-1')
+unbind('steel-processing', 'apm_power_automation_science_pack')
+drop('warehouse-research', 'apm_steam_science_pack')
+drop('warehouse-research', 'automation-science-pack')
+drop('warehouse-research', 'logistic-science-pack')
+
+-- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelBearingBall)
+-- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelBearing)
+-- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelGearWheel)
 
 push('apm_steam_science_pack', apm.bob_rework.lib.entities.steamInserter)
 push('apm_power_steam', apm.bob_rework.lib.entities.brass)
@@ -85,10 +106,26 @@ drop('stone-wall', 'apm_steam_science_pack')
 drop('stone-wall', 'automation-science-pack')
 drop('gun-turret', 'apm_steam_science_pack')
 drop('gun-turret', 'automation-science-pack')
+drop('gate', 'logistic-science-pack')
+unbind('gate', 'military-2')
+bind('gate', 'military')
+rm('military-2', 'piercing-rounds-magazine')
+rm('military-2', 'grenade')
+push('military', 'piercing-rounds-magazine')
+push('military', 'grenade')
+bind('gun-turret', 'apm_press_machine_0')
+bind('stone-wall', 'apm_press_machine_0')
+repush('apm_stone_bricks', 'apm_coking_plant_0', 'storage-tank')
+repushItems('zinc-processing', 'apm_coking_plant_0', {
+    apm.bob_rework.lib.entities.brass, apm.bob_rework.lib.entities.gunMetal,
+    apm.bob_rework.lib.entities.brassBearing, apm.bob_rework.lib.entities.brassBearingBall,
+    apm.bob_rework.lib.entities.brassGearWheel, apm.bob_rework.lib.entities.brassPipe,
+    apm.bob_rework.lib.entities.brassUnderPipe, 'brass-chest',
+})
 
 unbind('electric-energy-distribution-1', 'steel-processing')
 free('nitinol-processing')
-free('bob-plasma-rocket')
+free('bob-plasma-rocket')   
 free('electric-rocket')
 free('bob-shotgun-plasma-shells')
 free('bob-shotgun-electric-shells')
