@@ -17,4 +17,11 @@ apm.bob_rework.lib.override.logics = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brassGearWheel , 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brass, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.woodenBoard, 1)
+
+    local recipe = 'arithmetic-combinator'
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron , 1)
+    local recipe = 'decider-combinator'
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron , 1)
+    local recipe = 'constant-combinator'
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron , 1)
 end

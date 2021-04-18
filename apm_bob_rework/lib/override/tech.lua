@@ -132,6 +132,55 @@ bind('fluid-handling', 'electronics')
 drop('fluid-handling', 'logistic-science-pack')
 
 bind('electrolysis-1', 'fluid-handling')
+bind('rail-signals', 'electronics')
+bind('apm_water_supply-2', 'fluid-handling')
+
+bind('apm_steelworks-1', 'electronics')
+bind('apm_steelworks-1', 'nickel-processing')
+
+unbind('apm_electric_mining_drills', 'electronics')
+bind('apm_electric_mining_drills', 'electric-engine')
+
+unbind('concrete', 'advanced-material-processing')
+unbind('concrete', 'automation-2')
+bind('concrete', 'steel-processing')
+drop('concrete', 'apm_steam_science_pack')
+drop('concrete', 'automation-science-pack')
+drop('concrete', 'logistic-science-pack')
+
+bind('apm_steelworks-1', 'concrete')
+bind('bob-boiler-2', 'concrete')
+bind('bob-boiler-2', 'invar-processing')
+bind('bob-steam-engine-2', 'concrete')
+bind('bob-steam-engine-2', 'invar-processing')
+bind('fluid-generator-1', 'invar-processing')
+bind('logistic-science-pack', 'concrete')
+
+bind('air-compressor-1', 'invar-processing')
+bind('water-bore-1', 'invar-processing')
+bind('water-miner-2', 'invar-processing')
+bind('alloy-processing', 'apm_power_automation_science_pack')
+
+drop('circuit-network', 'logistic-science-pack')
+unbind('circuit-network', 'logistic-science-pack')
+bind('circuit-network', 'steel-processing')
+
+drop('military-2', 'logistic-science-pack')
+unbind('military-2', 'logistic-science-pack')
+bind('military-2', 'apm_power_electricity')
+
+local f = function (t)
+    bind(t, 'concrete')
+    bind(t, 'electronics')
+    drop(t, 'logistic-science-pack')
+    drop(t, 'logistic-science-pack')
+    drop(t, 'chemical-science-pack')
+end
+f('apm_centrifuge_2')
+f('apm_crusher_machine_2')
+f('apm_press_machine_2')
+f('apm_greenhouse-3')
+
 
 rm('military-2', 'piercing-rounds-magazine')
 rm('military-2', 'grenade')
@@ -147,6 +196,12 @@ repushItems('zinc-processing', 'apm_coking_plant_0', {
     apm.bob_rework.lib.entities.brassUnderPipe, 'brass-chest',
 })
 bind('electrolysis-1', 'apm_air_cleaner_machine')
+
+unbind('bob-turrets-2', 'steel-processing')
+unbind('bob-turrets-2', 'logistic-science-pack')
+bind('bob-turrets-2', 'apm_steam_science_pack')
+
+
 
 unbind('electric-energy-distribution-1', 'steel-processing')
 free('nitinol-processing')
@@ -165,6 +220,7 @@ free('rampant-arsenal-technology-regeneration-turrets')
 
 free('bob-greenhouse')
 free('bob-fertiliser')
+free('void-fluid')
 
 push('titanium-processing', apm.bob_rework.lib.entities.nitinolPipe)
 push('titanium-processing', apm.bob_rework.lib.entities.nitinolUnderPipe)
