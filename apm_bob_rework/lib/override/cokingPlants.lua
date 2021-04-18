@@ -16,8 +16,8 @@ local count = 20
     end
     if tier.level > 1 then
         count = 12
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
 end
 
