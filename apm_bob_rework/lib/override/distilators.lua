@@ -13,12 +13,12 @@ local buildDistilator = function (recipe, tier)
         logic = apm.bob_rework.lib.entities.logicContact
     end
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.exchangePipe, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 3)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.filter, 15)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.exchangePipe, 3 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 8 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 6 + tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.filter, 9)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 1 + tier.level)
 end
 
 apm.bob_rework.lib.override.distilators = function ()

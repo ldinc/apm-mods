@@ -9,23 +9,23 @@ local buildGreenhousesRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 5 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
     if tier.extraConstructionAlloy then
         local count = 20
         if tier.level == 1 then
-            count = 15
+            count = 8
         end
         if tier.level > 1 then
-            count = 10
+            count = 12
         end
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20 * tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 16)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10 + 2*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 25 + 5*tier.level)
     if tier.level >= 2 then
-        apm.lib.utils.recipe.ingredient.mod(recipe, 'small-lamp', 30)
+        apm.lib.utils.recipe.ingredient.mod(recipe, 'small-lamp', 14)
     end
 end
 

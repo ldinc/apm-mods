@@ -8,16 +8,16 @@ require('lib.tier.base')
 local buildPumpjack = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20 + 5*tier.level)
     local logic = tier.logic
     if tier.level == 1 then 
         logic = apm.bob_rework.lib.entities.logicContact
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 30)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricEngineUnit, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 6 + 3*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 20 + 5*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricEngineUnit, 5 + tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 12)
 end
 
 apm.bob_rework.lib.override.pumpjacks = function ()

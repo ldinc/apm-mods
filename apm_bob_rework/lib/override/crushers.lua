@@ -10,20 +10,20 @@ local buildCrusherRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5 + 5*tier.level)
     if tier.extraConstructionAlloy then
-        local count = 20
+        local count = 8
         if tier.level == 1 then
-            count = 15
+            count = 10
         end
         if tier.level > 1 then
-            count = 10
+            count = 12
         end
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 15 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 2 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4 + 2*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level*2 + 1)
 end
 

@@ -8,9 +8,9 @@ require('lib.tier.base')
 local buildHeatExhanger = function (recipe, base, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, base, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatProvider, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatProvider, 3 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 4 + 2*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 3*tier.level)
 end
 
 buildHeatExhanger('heat-exchanger', 'boiler-3', apm.bob_rework.lib.tier.steel)

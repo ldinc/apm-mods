@@ -10,12 +10,12 @@ local buildOilRefinery = function (recipe, tier, compressor)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 3 + tier.level*2)
     apm.lib.utils.recipe.ingredient.mod(recipe, compressor, tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 20)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 40 * tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20 + 10*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 8 + 4*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10 + 5*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 10 + 5*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10 + 4*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 10)
 end
 
