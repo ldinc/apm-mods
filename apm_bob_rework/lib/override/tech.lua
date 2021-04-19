@@ -14,6 +14,7 @@ local rebind = function (base, sub)
 end
 local rm = apm.lib.utils.technology.remove.recipe_from_unlock
 local drop = apm.lib.utils.technology.remove.science_pack
+local science = apm.lib.utils.technology.add.science_pack
 local free = function (name)
     apm.lib.utils.technology.disable(name)
     apm.lib.utils.technology.delete(name)
@@ -197,10 +198,64 @@ repushItems('zinc-processing', 'apm_coking_plant_0', {
 })
 bind('electrolysis-1', 'apm_air_cleaner_machine')
 
+bind('bob-sniper-turrets-1', 'invar-processing')
+
 unbind('bob-turrets-2', 'steel-processing')
 unbind('bob-turrets-2', 'logistic-science-pack')
 bind('bob-turrets-2', 'apm_steam_science_pack')
 
+unbind('pumpjack', 'logistic-science-pack')
+unbind('pumpjack', 'electronics')
+bind('pumpjack', 'electric-engine')
+drop('pumpjack', 'logistic-science-pack')
+
+bind('oil-processing', 'invar-processing')
+unbind('apm_coking_plant_2', 'oil-processing')
+bind('apm_coking_plant_2', 'invar-processing')
+drop('apm_coking_plant_2', 'logistic-science-pack')
+
+drop('apm_equipment_burner_generator-1', 'chemical-science-pack')
+drop('apm_equipment_burner_generator-2', 'chemical-science-pack')
+unbind('apm_equipment_burner_generator-2', 'utility-science-pack')
+drop('apm_equipment_burner_generator-2', 'utility-science-pack')
+bind('apm_equipment_burner_generator-2', 'advanced-electronics-2')
+science('apm_equipment_burner_generator-2', 'chemical-science-pack')
+
+bind('electronics-machine-2', 'express-inserters')
+science('electronics-machine-2', 'chemical-science-pack')
+bind('automation-2','fast-inserter')
+bind('automation-3','fast-inserter')
+
+bind('radars-2', 'ceramics')
+science('radars-2', 'chemical-science-pack')
+
+bind('bob-repair-pack-3', 'ceramics')
+science('bob-repair-pack-3', 'chemical-science-pack')
+science('bob-repair-pack-4', 'chemical-science-pack')
+science('bob-repair-pack-5', 'chemical-science-pack')
+
+bind('bob-boiler-2', 'ceramics')
+science('bob-boiler-2', 'chemical-science-pack')
+bind('bob-oil-boiler-2', 'ceramics')
+science('bob-oil-boiler-2', 'chemical-science-pack')
+bind('bob-boiler-3', 'ceramics')
+science('bob-boiler-3', 'chemical-science-pack')
+bind('bob-oil-boiler-3', 'ceramics')
+science('bob-oil-boiler-3', 'chemical-science-pack')
+
+bind('fluid-generator-2', 'ceramics')
+science('fluid-generator-2', 'chemical-science-pack')
+
+bind('bob-drills-2', 'ceramics')
+science('bob-drills-2', 'chemical-science-pack')
+bind('bob-area-drills-2', 'ceramics')
+science('bob-area-drills-2', 'chemical-science-pack')
+
+bind('bob-railway-2', 'ceramics')
+science('bob-railway-2', 'chemical-science-pack')
+
+bind('bob-steam-engine-3', 'ceramics')
+science('bob-steam-engine-3', 'chemical-science-pack')
 
 
 unbind('electric-energy-distribution-1', 'steel-processing')
@@ -221,6 +276,8 @@ free('rampant-arsenal-technology-regeneration-turrets')
 free('bob-greenhouse')
 free('bob-fertiliser')
 free('void-fluid')
+free('fluid-furnace')
+free('rampant-arsenal-technology-boosters')
 
 push('titanium-processing', apm.bob_rework.lib.entities.nitinolPipe)
 push('titanium-processing', apm.bob_rework.lib.entities.nitinolUnderPipe)
