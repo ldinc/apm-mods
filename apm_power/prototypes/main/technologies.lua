@@ -451,7 +451,7 @@ apm.lib.utils.technology.new('apm_power',
 -- Electric crusher
 apm.lib.utils.technology.new('apm_power',
     'apm_crusher_machine_2',
-    {'apm_crusher_machine_1', 'electric-engine'}, 
+    {'apm_crusher_machine_1', 'electric-engine', 'chemical-science-pack'},
     {'apm_crusher_machine_2'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}, {"chemical-science-pack", 1}},
     75, 30)
@@ -459,7 +459,7 @@ apm.lib.utils.technology.new('apm_power',
 -- Electric press
 apm.lib.utils.technology.new('apm_power',
     'apm_press_machine_2',
-    {'apm_press_machine_1', 'electric-engine'}, 
+    {'apm_press_machine_1', 'electric-engine', 'chemical-science-pack'},
     {'apm_press_machine_2'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}, {"chemical-science-pack", 1}},
     75, 30)
@@ -467,7 +467,7 @@ apm.lib.utils.technology.new('apm_power',
 -- Electric centrifuge
 apm.lib.utils.technology.new('apm_power',
     'apm_centrifuge_2',
-    {'apm_centrifuge_0', 'electric-engine'}, 
+    {'apm_centrifuge_0', 'electric-engine', 'chemical-science-pack'},
     {'apm_centrifuge_2'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}, {"chemical-science-pack", 1}},
     75, 30)
@@ -475,7 +475,7 @@ apm.lib.utils.technology.new('apm_power',
 -- Greenhouse III
 apm.lib.utils.technology.new('apm_power',
     'apm_greenhouse-3',
-    {'apm_greenhouse-2','electric-engine'}, 
+    {'apm_greenhouse-2', 'electric-engine', 'chemical-science-pack'},
     {'apm_greenhouse_2'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}, {"chemical-science-pack", 1}},
     75, 30)
@@ -483,7 +483,7 @@ apm.lib.utils.technology.new('apm_power',
 -- Equipment Burner Generator I
 apm.lib.utils.technology.new('apm_power',
     'apm_equipment_burner_generator-1',
-    {'modular-armor','electric-engine'},
+    {'modular-armor', 'electric-engine', 'chemical-science-pack'},
     {'apm_equipment_burner_generator_basic'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}, {"chemical-science-pack", 1}},
     150, 30)

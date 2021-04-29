@@ -95,3 +95,14 @@ apm.lib.utils.technology.add.prerequisites('weapon-shooting-speed-2', 'logistic-
 apm.lib.utils.technology.add.prerequisites('physical-projectile-damage-2', 'logistic-science-pack')
 
 apm.lib.utils.technology.force.recipe_for_unlock('uranium-processing', 'apm_coal_ash_washing')
+
+-- additional dependencies now that red science needs to be researched
+apm.lib.utils.technology.add.prerequisites('gun-turret', 'apm_power_automation_science_pack')
+apm.lib.utils.technology.add.prerequisites('stone-wall', 'apm_power_automation_science_pack')
+
+-- this is needed here as opposed to the base game, as in the base
+-- game it is not possible to get to lubricant until after reaching
+-- chemical science
+apm.lib.utils.technology.add.prerequisites('electric-engine', 'engine')
+
+apm.lib.utils.technology.add.prerequisites('robotics', 'chemical-science-pack')
