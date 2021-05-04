@@ -45,6 +45,22 @@ local buildNuclearRecipies = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.refinedConcrete, 1250)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tungstenCarbide, 1250)
 
+    -- merge rtg with bob
+    -- apm.lib.utils.recipe.remove('apm_rtg_radioisotope_thermoelectric_generator')
+    
+    
+    local recipe = 'rtg'
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_oxide_pellet_pu239', 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_depleted_uranium_ingots', 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.lead, 20)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicProcessing, 20)
+
+    apm.lib.utils.recipe.ingredient.mod('satellite', 'apm_rtg_radioisotope_thermoelectric_generator', 0)
+    apm.lib.utils.recipe.ingredient.mod('satellite', recipe, 25)
+    apm.lib.utils.recipe.remove('apm_rtg_radioisotope_thermoelectric_generator')
+
+
+
 end
 
 buildNuclearRecipies()

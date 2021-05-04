@@ -513,6 +513,11 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+
+function equipment_script.on_cutscene_cancelled(event)
+    
+end
+
 function equipment_script.on_nth_tick(event)
 
     generate_burnt_fuel_stack_size_table()
@@ -523,46 +528,43 @@ function equipment_script.on_nth_tick(event)
     if not players then return end
     for _, t_object in pairs(players) do
         check(t_object.player, t_object.character)
-        check_starting_equipment(t_object.player)
+        -- check_starting_equipment(t_object.player)
         -- if tick > 500 and tick < 700  then
         --     equipment_default_startup(t_object.player)
         -- end
     end
 end
 
+function equipment_script.check_starting_equipment(player)
+    check_starting_equipment(player)
+end
+
 function check_starting_equipment(player)
-    -- if player.online_time < 1000 then
-    if not global.startupEquipment then
-        global.startupEquipment = {}
+    local success = player.insert{name="wood", count=1} > 0
+    if success then
+        -- log("JIBRIL:: success")
+        -- usualy for multiplayer game it works
+        removeStartingItems(player)
+        itemsFromSettings(player) 
+    else
+        local ctrlType = player.controller_type
+        -- log("JIBRIL:: failed::" .. tostring(player.controller_type))
+        local inventory = player.get_inventory(defines.inventory.character_main)
+        if inventory == nil then
+            inventory = player.get_inventory(defines.inventory.god_main)
+        end
+        -- log("JIB::" .. tostring(inventory))
+        if inventory then
+            removeStartingItems(inventory)
+            itemsFromSettings(inventory)
+        end
     end
-    if not global.startupEquipment[player.name] then
-        player.remove_item{name="burner-mining-drill", count=1}
-        player.remove_item{name="stone-furnace", count=5}
-        player.remove_item{name="wood", count=100}
+end
 
-        -- player.insert{name="apm_equipment_burner_generator_basic", count=1}
-        -- player.insert{name="iron-plate", count=200}
-        -- player.insert{name="copper-plate", count=200}
-        -- player.insert{name="coal", count=200}
-        -- player.insert{name="apm_coke", count=200}
-        -- player.insert{name="wood", count=200}
-        -- player.insert{name="stone", count=200}
-        -- player.insert{name="burner-inserter", count=5}
-        -- player.insert{name="apm_burner_filter_inserter", count=5}
-        -- player.insert{name="burner-mining-drill", count=10}
-        -- -- player.insert{name="stone-furnace", count=10}
-        -- player.insert{name="personal-roboport-equipment", count=1}
-        -- player.insert{name="battery-equipment", count=1}
-        -- player.insert{name="apm_zx80_construction_robot", count=5}
-        -- player.insert{name="modular-armor", count=1}
-        -- player.insert{name="apm_assembling_machine_0", count=5}
-        -- player.insert{name="apm_crusher_machine_0", count=5}
-        -- player.insert{name="apm_press_machine_0", count=5}
-        -- player.insert{name="apm_lab_0", count=1}
-
-        itemsFromSettings(player)
-        global.startupEquipment[player.name] = true
-    end
+function removeStartingItems(player)
+    player.remove_item{name="burner-mining-drill", count=1}
+    player.remove_item{name="stone-furnace", count=5}
+    player.remove_item{name="wood", count=200}
 end
 
 function itemsFromSettings(player)
@@ -581,7 +583,11 @@ function itemsFromSettings(player)
                 end
                 ind = ind + 1
             end
-            player.insert{name=name, count=count}
+            if pcall(function ()
+                player.insert{name=name, count=count}
+            end) == false then
+                log("APM_LIB:: invalid item recipe in settings for starting items: " .. name)
+            end
         end
     end
 end

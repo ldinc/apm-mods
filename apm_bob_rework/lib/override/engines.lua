@@ -20,8 +20,4 @@ end
 apm.bob_rework.lib.override.simpleEngines = function ()
     buildSimpleEngine(apm.bob_rework.lib.tier.bronze)
     buildSimpleEngine(apm.bob_rework.lib.tier.brass)
-
-    local recipe = apm.bob_rework.lib.entities.engineUnit
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 1)
 end

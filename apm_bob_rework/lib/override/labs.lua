@@ -11,7 +11,11 @@ local buildLaboratoryRecipe = function (recipe, tier)
 
 
     if tier.level > 0 then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.inserter, 5)
+        local inserter = tier.inserter
+        if tier.level == apm.bob_rework.lib.tier.monel.level then
+            inserter = apm.bob_rework.lib.entities.yellowInserter
+        end
+        apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 5)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)

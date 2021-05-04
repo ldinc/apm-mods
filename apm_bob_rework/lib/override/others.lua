@@ -33,27 +33,31 @@ apm.bob_rework.lib.override.others = function ()
     local recipe = apm.bob_rework.lib.entities.electricGeneratorUnit
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelBearing, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copperCable, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electroMagnet, 10)
 
     local recipe = 'train-stop'
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brass, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicSteam, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.stoneBrick, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.stoneBrick, 5)
     
     local recipe = 'engine-unit'
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.simpleEngineUnit, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironGearWheel, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.pistions, 8)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironGearWheel, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelBearing, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelBearing, 2)
 
     local recipe = 'electric-engine-unit'
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copperCable, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electroMagnet, 12)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelBearing, 2)
@@ -96,12 +100,12 @@ apm.bob_rework.lib.override.others = function ()
     local recipe = 'apm_lubricant_1'
     apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_resin', 2)
 
-    local recipe = 'apm_steel_0'
-    apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 10, 20, nil)
-    local recipe = 'apm_steel_1'
-    apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 12, 22, nil)
-    local recipe = 'apm_steel_2'
-    apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 16, 24, nil)
+    -- local recipe = 'apm_steel_0'
+    -- apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 10, 20, nil)
+    -- local recipe = 'apm_steel_1'
+    -- apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 12, 22, nil)
+    -- local recipe = 'apm_steel_2'
+    -- apm.lib.utils.recipe.result.add_with_probability(recipe, 'apm_crushed_stone', 16, 24, nil)
 
     local recipe = 'rail'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 2)
@@ -159,4 +163,10 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.titanium, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
+
+    -- add stone for sifting machine
+    apm.lib.utils.recipe.result.add_with_probability('apm_dry_mud_sifting_iron', 'stone', 2,8, 1)
+    apm.lib.utils.recipe.result.add_with_probability('apm_dry_mud_sifting_copper', 'stone', 1, 8, 1)
+    -- apm_dry_mud_sifting_iron
+    -- apm_dry_mud_sifting_copper
 end

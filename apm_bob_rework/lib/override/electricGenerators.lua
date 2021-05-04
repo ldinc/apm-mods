@@ -101,8 +101,4 @@ apm.bob_rework.lib.override.electricGenerators = function ()
     buildTurbine('steam-turbine', apm.bob_rework.lib.tier.steel, 14)
     buildTurbine('steam-turbine-2', apm.bob_rework.lib.tier.aluminium, 18)
     buildTurbine('steam-turbine-3', apm.bob_rework.lib.tier.titanium, 23)
-
-    local recipe = apm.bob_rework.lib.entities.electricGeneratorUnit
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 1)
 end

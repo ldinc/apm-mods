@@ -86,5 +86,7 @@ apm.bob_rework.lib.override.apply = function ()
 
     apm.bob_rework.lib.override.others()
     apm.bob_rework.lib.override.buff()
+
+    apm.bob_rework.lib.override.tech()
 end
 

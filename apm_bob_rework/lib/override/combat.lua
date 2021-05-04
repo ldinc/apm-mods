@@ -185,15 +185,16 @@ local buildEqBurnerGen = function ()
 	local recipe = 'apm_equipment_burner_generator_basic'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.engineUnit, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.monel.logic, 8)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.monel.wire, 5)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
 
 	local recipe = 'apm_equipment_burner_generator_advanced'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 2)
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.aluminium.logic, 8)
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.aluminium.wire, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricGeneratorUnit, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_equipment_burner_generator_basic', 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.monel.wire, 6)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
 end
 

@@ -12,6 +12,7 @@ local buildBelts = function (tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 2)
+    apm.lib.utils.recipe.result.mod(recipe, recipe, 2)
 
     local recipe = tier.underBelt
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
