@@ -1,6 +1,6 @@
 {
     "name": "apm_bob_rework_ldinc",
-    "version": "0.22.19",
+    "version": "0.22.22",
     "title": "APM bob's extra compability",
     "author": "ldinc",
     "dependencies": [

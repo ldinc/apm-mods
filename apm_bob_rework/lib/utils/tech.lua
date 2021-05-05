@@ -254,6 +254,12 @@ function apm.bob_rework.lib.utils.tech.rebuild(startingTName, startingSciencePac
         end
     end
     apm.bob_rework.lib.utils.tech.dropModulesFromNonModules(researchedTech, depMap, reverseDepMap)
+    apm.bob_rework.lib.utils.tech.finalHacks(researchedTech, depMap, reverseDepMap)
+end
+
+function apm.bob_rework.lib.utils.tech.finalHacks(researchedTech, depMap, reverseDepMap)
+    apm.lib.utils.technology.add.prerequisites('fluid-wagon', 'fluid-handling')
+
 end
 
 -- expected builded full reverseDepMap structure

@@ -7,6 +7,7 @@ require('lib.enities.base')
 apm.bob_rework.lib.override.drop = function ()
     local rm = apm.lib.utils.recipe.remove
     rm('apm_gearing')
+    rm('wood-pellets')
     rm(apm.bob_rework.lib.entities.machineFrame)
     rm(apm.bob_rework.lib.entities.steamMachineFrame)
     rm(apm.bob_rework.lib.entities.advancedMachineFrame)

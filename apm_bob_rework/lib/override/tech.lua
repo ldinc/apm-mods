@@ -8,6 +8,7 @@ require('lib.utils.tech')
 
 function apm.bob_rework.lib.override.tech()
 
+
     local off = apm.lib.utils.recipe.disable
     local on = apm.lib.utils.recipe.enable
     local push = apm.lib.utils.technology.add.recipe_for_unlock
@@ -357,5 +358,7 @@ function apm.bob_rework.lib.override.tech()
     -- push('titanium-processing', apm.bob_rework.lib.entities.nitinolPipe)
     -- push('titanium-processing', apm.bob_rework.lib.entities.nitinolUnderPipe)
     
-    apm.bob_rework.lib.utils.tech.rebuild('apm_crusher_machine_0', 'apm_industrial_science_pack')
+    if settings.startup['apm_bob_rework_experimental_tech_tree_rebuilder'].value == true then
+        apm.bob_rework.lib.utils.tech.rebuild('apm_crusher_machine_0', 'apm_industrial_science_pack')
+    end
 end
