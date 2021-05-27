@@ -21,12 +21,12 @@ local moduleList = {
     ['pollution-create-processor'] ={},
 }
 local buffList = {
-    ['toolbelt'] = {deps = {['military-science-pack']={}}},
+    ['toolbelt'] = {},
     ['toolbelt-2'] = {},
     ['toolbelt-3'] = {},
     ['toolbelt-4'] = {},
     ['toolbelt-5'] = {},
-    ['steel-axe'] = {deps = {['military-science-pack']={}}},
+    ['steel-axe'] = {deps = {}},
     ['steel-axe-2'] = {},
     ['steel-axe-3'] = {},
     ['steel-axe-4'] = {},
@@ -134,9 +134,111 @@ local buffList = {
     ['inserter-stack-size-bonus-7'] = {},
     ['inserter-stack-size-bonus-8'] = {},
     ['inserter-stack-size-bonus-9'] = {},
-
 }
 
+local militarySP = 'military-science-pack'
+local steamSP = 'apm_steam_science_pack'
+local chemicalSP = 'chemical-science-pack'
+local logisticSP = 'logistic-science-pack'
+local automationSP = 'automation-science-pack'
+local advancedLogisticSP = 'advanced-logistic-science-pack'
+local utilitySP = 'utility-science-pack'
+local nuclearSP = 'apm_nuclear_science_pack'
+local productionSP = 'production-science-pack'
+local spaceSP = 'space-science-pack'
+local industrialSP = 'apm_industrial_science_pack'
+
+local sciencePackFrom = {
+    ['military-science-pack'] = militarySP,
+    ['apm_steam_science_pack'] = steamSP,
+    ['chemical-science-pack'] = chemicalSP,
+    ['logistic-science-pack'] = logisticSP,
+    ['apm_power_automation_science_pack'] = automationSP,
+    ['advanced-logistic-science-pack'] = advancedLogisticSP,
+    ['utility-science-pack'] = utilitySP,
+    ['apm_nuclear_science_pack'] = nuclearSP,
+    ['space-science-pack'] = spaceSP,
+    ['production-science-pack'] = productionSP,
+}
+
+function apm.bob_rework.lib.utils.tech.getTechFromSP(sp)
+    if sp == nuclearSP then return 'apm_nuclear_science_pack' end
+    if sp == steamSP then return 'apm_steam_science_pack' end
+    if sp == automationSP then return 'apm_power_automation_science_pack' end
+    return sp
+end
+
+local techTier = {
+    [1] = {
+        science = {[0] = industrialSP, [1] = steamSP},
+        core= {
+            [0] = 'apm_fuel-3', [1] = 'apm_coking_plant_1', [2] = 'apm_tools_2', [3] = 'more-inserters-1',
+            [4] = 'military-science-pack', [5] = 'physical-projectile-damage-1', [6] = 'weapon-shooting-speed-1',
+        },
+    },
+    [2] = {
+        science = {[0] = industrialSP, [1] = steamSP, [2] = automationSP},
+        core = {
+            [0] = 'chemical-processing-1', [1] = 'inserter-stack-size-bonus-1', [2] = 'electric-engine', [3] = 'fluid-handling', [4] = 'electrolysis',
+            [5] = 'apm_electric_mining_drills', [6] = 'automation', [7] = 'logistics', [8] = 'pumpjack',
+            [9] = 'electronics-machine-1', [10] = 'automation-2',
+            
+        },
+    },
+    [3] = {
+        science = {[0] = industrialSP, [1] = steamSP, [2] = automationSP, [3] = logisticSP},
+        core = {
+            [0] = 'logistic-train-network', [1] = 'fluid-wagon', [2] = 'electrolysis-2', [3] = 'more-inserters-2',
+            [4] = 'bob-heat-pipe-1', [5] = 'fast-inserter', [6] = 'chemical-plant', [7] = 'bob-distillery-2',
+            [8] = 'apm_fuel-4', [9] = 'bob-pumpjacks-1', [10] = 'inserter-stack-size-bonus-1',
+            [11] = 'engine',
+        },
+    },
+    [4] = {
+        science = {[0] = industrialSP, [1] = steamSP, [2] = automationSP, [3] = logisticSP, [4] = chemicalSP},
+        core = {
+            [0] = 'lead-processing', [1] = 'electrolyser-2', [2] = 'electric-pole-2', [3] = 'lithium-processing',
+            [4] = 'advanced-oil-processing', [5] = 'toolbelt-2', [6] = 'inserter-stack-size-bonus-2',
+        },
+    },
+    [5] = {
+        science = {[0] = industrialSP, [1] = steamSP, [2] = automationSP, [3] = logisticSP, [4] = chemicalSP, [5] = advancedLogisticSP},
+        core = {
+            [0] = 'inserters-stack-size-bonus-2', [1] = 'gas-canisters',
+        },
+    },
+    [6] = {
+        science = {[0] = industrialSP, [1] = steamSP, [2] = automationSP, [3] = logisticSP, [4] = chemicalSP, [5] = advancedLogisticSP, [6] = productionSP},
+        core = {
+            [0] = 'electrolyser-3',
+        },
+    },
+    [7] = {
+        science = {[0] = industrialSP, [1] = steamSP, [2] = automationSP, [3] = logisticSP, [4] = chemicalSP,  [5] = advancedLogisticSP, [6] = productionSP, [7] = utilitySP},
+        core = {
+            [0] = 'heavy-water-processing', [1] = 'electrolyser-4',
+        },
+    },
+    [8] = {
+        science = {[0] = industrialSP, [1] = steamSP, [2] = automationSP, [3] = logisticSP, [4] = chemicalSP, [5] = advancedLogisticSP, [6] = productionSP, [7] = utilitySP, [8] = nuclearSP},
+        core = {
+            [0] = 'electrolyser-5', [1] = 'apm_nuclear_thorium_processing',
+        },
+    },
+    [9] = {
+        science = {[0] = industrialSP, [1] = steamSP, [2] = automationSP, [3] = logisticSP, [4] = chemicalSP, [5] = advancedLogisticSP, [6] = productionSP, [7] = utilitySP, [8] = nuclearSP, [9] = spaceSP},
+    },
+    [10] = {
+        addative = true,
+        science = {[0] = militarySP},
+        core = {
+            [0] = 'bob-turrets-2', [1] = 'rampant-arsenal-technology-shotgun', [2] = 'physical-projectile-damage-1', [3] = 'physical-projectile-damage-2',
+            [4] = 'weapon-shooting-speed-1', [5] = 'heavy-armor', [6] = 'bob-sniper-turrets-1', [7] = 'night-vision-equipment',
+            [8] = 'exoskeleton-equipment', [9] = 'solar-panel-equipment', [10] = 'power-armor-mk2',
+            [11] = 'military-2',
+        }
+    },
+}
 
 function apm.bob_rework.lib.utils.tech.free(name)
     apm.lib.utils.technology.disable(name)
@@ -245,6 +347,7 @@ function apm.bob_rework.lib.utils.tech.rebuild(startingTName, startingSciencePac
         end
     end
 
+    apm.bob_rework.lib.utils.tech.extendTreeWithTTiers(researchedTech, depMap, reverseDepMap)
     apm.bob_rework.lib.utils.tech.cleanupGraph(researchedTech, depMap, reverseDepMap)
     apm.bob_rework.lib.utils.tech.handleScience(researchedTech, depMap, reverseDepMap)
     for tName, _ in pairs(researchedTech) do
@@ -253,14 +356,95 @@ function apm.bob_rework.lib.utils.tech.rebuild(startingTName, startingSciencePac
             apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(tName)
         end
     end
+
+    apm.bob_rework.lib.utils.tech.postProcessByTTiers()
     apm.bob_rework.lib.utils.tech.dropModulesFromNonModules(researchedTech, depMap, reverseDepMap)
-    apm.bob_rework.lib.utils.tech.finalHacks(researchedTech, depMap, reverseDepMap)
+    -- apm.bob_rework.lib.utils.tech.finalHacks(researchedTech, depMap, reverseDepMap)
 end
 
-function apm.bob_rework.lib.utils.tech.finalHacks(researchedTech, depMap, reverseDepMap)
-    apm.lib.utils.technology.add.prerequisites('fluid-wagon', 'fluid-handling')
 
+local forceBind = {
+    ['bob-boiler-2'] = {['apm_power_steam']={}},
+    ['apm_coking_plant_1'] = {['apm_power_steam']={}},
+    ['apm_fuel-3'] = {['apm_power_steam']={}},
+    ['fluid-wagon'] = {['fluid-handling']={}, ['railway']={}},
+    ['apm_tools_2'] = {['apm_treated_wood_planks-1']={}},
+    ['bob-turrets-2'] = {['gun-turret']={}},
+    ['automated-rail-transportation'] = {['railway']={}},
+    ['electric-engine'] = {['apm_power_electricity']={}},
+    ['landfill'] = {['apm_ash_production']={}},
+    ['more-inserters-1'] = {['apm_power_steam']={}},
+    ['steel-axe'] = {['steel-processing']={}},
+    ['steel-mixing-furnace'] = {['steel-processing']={}},
+    ['steel-chemical-furnace'] = {['chemical-processing-1']={}},
+    ['fluid-mixing-furnace'] = {['pumpjack']={}},
+    ['fluid-chemical-furnace'] = {['pumpjack']={}},
+    ['military-science-pack'] = {['apm_lab_1']={}},
+    ['apm_tools_0'] = {['apm_press_machine_1']={}},
+    ['apm_tools_1'] = {['apm_crusher_machine_1']={}},
+    ['bob-drills-1'] = {['apm_electric_mining_drills']={}},
+    ['bob-pumpjacks-1'] = {['pumpjack']={}},
+    ['bob-solar-energy-2'] = {['solar-energy']={}},
+    ['vehicle-solar-panel-equipment-1'] = {['solar-energy']={}},
+    ['solar-panel-equipment'] = {['solar-energy']={}},
+    ['electric-pole-2'] = {['electric-energy-distribution-1']={}},
+    ['chemical-plant-2'] = {['chemical-plant']={}},
+    ['stack-inserter'] = {['fast-inserter']={}},
+    ['automobilism_electric-1'] = {['automobilism']={}, ['battery']={}},
+}
+
+function apm.bob_rework.lib.utils.tech.postProcessByTTiers()
+    for _, v in pairs(techTier) do
+        if v.core then
+            for _, tName in pairs(v.core) do
+                local tech = data.raw.technology[tName]
+                -- apm.lib.utils.technology.add.science_pack(tName, industrialSP)
+                -- apm.bob_rework.lib.utils.tech.insertSciencePack(tech, industrialSP)
+                for _, sp in pairs(v.science) do
+                    apm.bob_rework.lib.utils.debug.object("adding sp:: " .. tName .. ' - ' .. sp)
+                    -- apm.lib.utils.technology.add.science_pack(tName, sp)
+                    apm.bob_rework.lib.utils.tech.insertSciencePack(tech, sp)
+                end
+            end
+        end
+    end
 end
+
+function apm.bob_rework.lib.utils.tech.extendTreeWithTTiers(researchedTech, depMap, reverseDepMap)
+    -- first add some hack
+    for tName, deps in pairs(forceBind) do
+        if not researchedTech[tName] then
+            researchedTech[tName] = data.raw.technology[tName]
+        end
+        for dep, _ in pairs(deps) do
+            apm.bob_rework.lib.utils.debug.object("bind force to tech:: " .. tName .. ' - ' .. dep)
+            apm.bob_rework.lib.utils.tech.addDependency(tName, dep, depMap)
+        end
+    end
+    for _, v in pairs(techTier) do
+        if v.core then
+            for _, tName in pairs(v.core) do
+                if not v.addative then
+                    apm.bob_rework.lib.utils.tech.dropAllSciencePacks(data.raw.technology[tName])
+                end
+                for _, sp in pairs(v.science) do
+                    apm.bob_rework.lib.utils.debug.object("adding tech:: " .. tName .. ' - ' .. apm.bob_rework.lib.utils.tech.getTechFromSP(sp))
+                    
+                    -- apm.lib.utils.technology.add.science_pack(tName, sp)
+
+                    if sp ~= industrialSP then
+                        apm.bob_rework.lib.utils.tech.addDependency(tName, apm.bob_rework.lib.utils.tech.getTechFromSP(sp), depMap)
+                    end
+                end
+            end
+        end
+    end
+end
+
+-- function apm.bob_rework.lib.utils.tech.finalHacks(researchedTech, depMap, reverseDepMap)
+--     apm.lib.utils.technology.add.prerequisites('fluid-wagon', 'fluid-handling')
+
+-- end
 
 -- expected builded full reverseDepMap structure
 function apm.bob_rework.lib.utils.tech.handleScience(researchedTech, depMap, reverseDepMap)
@@ -311,12 +495,13 @@ function apm.bob_rework.lib.utils.tech.handleScience(researchedTech, depMap, rev
         if t and t.force then
             local tech = data.raw.technology[tName] 
             apm.bob_rework.lib.utils.tech.insertSciencePack(tech, t.force)
+            apm.bob_rework.lib.utils.tech.addDependency(tName, t.force, depMap)
             apm.lib.utils.technology.add.prerequisites(tName, t.force)
         end
     end
 
     apm.bob_rework.lib.utils.tech.handleScienceBuffs(researchedTech, depMap, reverseDepMap)
-    apm.bob_rework.lib.utils.tech.handleMilitary(researchedTech, depMap, reverseDepMap)
+    -- apm.bob_rework.lib.utils.tech.handleMilitary(researchedTech, depMap, reverseDepMap)
     
 end
 
@@ -449,7 +634,7 @@ function apm.bob_rework.lib.utils.tech.isAvailable(tech, requiredProducts, avail
     return true
 end
 
-function apm.bob_rework.lib.utils.tech.buildLine(techMap, availableProducts, availableCraftingGroups, researchedTech, sciencePacksMap, depMap, index)
+function apm.bob_rework.lib.utils.tech.buildLine(techMap, availableProducts, availableCraftingGroups, researchedTech, sciencePacksMap, depMap, reverseDepMap, index)
     -- apm.bob_rework.lib.utils.debug.object('tech rebuild:: buildLine .. ' .. tostring(index))
     local noChanges = true
     local dbg = 'fluid-handling'
@@ -678,8 +863,17 @@ function apm.bob_rework.lib.utils.tech.dropAllSciencePacks(tech)
 end
 
 function apm.bob_rework.lib.utils.tech.insertSciencePack(tech, pack)
+    -- if tech and tech.unit and tech.unit.ingredients then
+    --     for _, v in ipairs(tech.unit.ingredients) do
+    --         if v.name == pack then
+    --             return
+    --         end
+    --     end
+    --     table.insert(tech.unit.ingredients, {pack, 1})
+    -- end
     if tech then
-        table.insert(tech.unit.ingredients, {pack, 1})
+        local tName = tech.name
+        apm.lib.utils.technology.add.science_pack(tName, pack)
     end
 end
 

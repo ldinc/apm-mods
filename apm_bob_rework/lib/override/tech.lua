@@ -102,12 +102,37 @@ function apm.bob_rework.lib.override.tech()
     -- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelGearWheel)
     
     push('apm_steam_science_pack', apm.bob_rework.lib.entities.steamInserter)
-    push('apm_power_steam', apm.bob_rework.lib.entities.brass)
-    push('apm_power_steam', apm.bob_rework.lib.entities.brassGearWheel)
-    push('apm_power_steam', apm.bob_rework.lib.entities.brassBearing)
-    push('apm_power_steam', apm.bob_rework.lib.entities.brassBearingBall)
-    push('apm_power_steam', apm.bob_rework.lib.entities.brassPipe)
-    push('apm_power_steam', apm.bob_rework.lib.entities.brassUnderPipe)
+    
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brass)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassGearWheel)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassBearing)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassBearingBall)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassPipe)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassUnderPipe)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brass)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassGearWheel)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassBearing)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassBearingBall)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassPipe)
+    -- push('apm_power_steam', apm.bob_rework.lib.entities.brassUnderPipe)
+    push('alloy-processing', apm.bob_rework.lib.entities.brass)
+    push('alloy-processing', apm.bob_rework.lib.entities.brassGearWheel)
+    push('alloy-processing', apm.bob_rework.lib.entities.brassBearing)
+    push('alloy-processing', apm.bob_rework.lib.entities.brassBearingBall)
+    push('alloy-processing', apm.bob_rework.lib.entities.brassPipe)
+    push('alloy-processing', apm.bob_rework.lib.entities.brassUnderPipe)
+    unbind('bob-distillery-2', 'alloy-processing')
+    unbind('steel-mixing-furnace', 'alloy-processing')
+    unbind('electronics', 'alloy-processing')
+    unbind('invar-processing', 'alloy-processing')
+    unbind('alloy-processing', 'apm_power_automation_science_pack')
+    bind('alloy-processing', 'apm_coking_plant_0')
+    bind('apm_power_steam', 'alloy-processing')
+    -- apm.bob_rework.lib.utils.tech.dropAllPrerequisites(data.raw.technology['alloy_processing'])
+    drop('alloy-processing', 'apm_steam_science_pack')
+    drop('alloy-processing', 'automation-science-pack')
+    -- bind('apm_power_steam', 'alloy-processing')
+
     push('apm_coking_plant_0', 'apm_zinc')
     push('apm_stone_brick', 'apm_stone_crushed_1')
     
@@ -167,7 +192,6 @@ function apm.bob_rework.lib.override.tech()
     bind('air-compressor-1', 'invar-processing')
     bind('water-bore-1', 'invar-processing')
     bind('water-miner-2', 'invar-processing')
-    bind('alloy-processing', 'apm_power_automation_science_pack')
     
     drop('circuit-network', 'logistic-science-pack')
     unbind('circuit-network', 'logistic-science-pack')
@@ -196,9 +220,10 @@ function apm.bob_rework.lib.override.tech()
     push('military', 'grenade')
     bind('gun-turret', 'apm_press_machine_0')
     bind('stone-wall', 'apm_press_machine_0')
-    repush('apm_stone_bricks', 'apm_coking_plant_0', 'storage-tank')
-    repushItems('zinc-processing', 'apm_coking_plant_0', {
-        apm.bob_rework.lib.entities.brass, apm.bob_rework.lib.entities.gunMetal,
+    repush('apm_stone_bricks', 'alloy-processing', 'storage-tank')
+    repushItems('zinc-processing', 'alloy-processing', {
+        apm.bob_rework.lib.entities.brass,
+        apm.bob_rework.lib.entities.gunMetal,
         apm.bob_rework.lib.entities.brassBearing, apm.bob_rework.lib.entities.brassBearingBall,
         apm.bob_rework.lib.entities.brassGearWheel, apm.bob_rework.lib.entities.brassPipe,
         apm.bob_rework.lib.entities.brassUnderPipe, 'brass-chest',
@@ -241,8 +266,6 @@ function apm.bob_rework.lib.override.tech()
     science('bob-repair-pack-4', 'chemical-science-pack')
     science('bob-repair-pack-5', 'chemical-science-pack')
     
-    bind('bob-boiler-2', 'ceramics')
-    science('bob-boiler-2', 'chemical-science-pack')
     bind('bob-oil-boiler-2', 'ceramics')
     science('bob-oil-boiler-2', 'chemical-science-pack')
     bind('bob-boiler-3', 'ceramics')
@@ -324,6 +347,9 @@ function apm.bob_rework.lib.override.tech()
     repush('waterfill', 'uranium-processing', 'waterfill-green')
     repush('waterfill', 'uranium-processing', 'deepwaterfill-green')
 
+    repush('electrolysis-1', 'apm_water_supply-1', 'bob-small-storage-tank')
+    repush('electrolysis-1', 'apm_water_supply-1', 'bob-small-inline-storage-tank')
+
     repush('chemical-processing-1', 'apm_fertiliser_2', 'apm_ammonium_sulfate_chem')
 
     push('thorium-plutonium-fuel-cell', 'thorium-plutonium-fuel-cell')
@@ -354,6 +380,7 @@ function apm.bob_rework.lib.override.tech()
     -- free('rampant-arsenal-technology-nuclear-cars')
     free('bob-robot-plasma-drones')
     rm('apm_nuclear_rtg', 'apm_rtg_radioisotope_thermoelectric_generator')
+    free('thorium-plutonium-fuel-cell')
     
     -- push('titanium-processing', apm.bob_rework.lib.entities.nitinolPipe)
     -- push('titanium-processing', apm.bob_rework.lib.entities.nitinolUnderPipe)

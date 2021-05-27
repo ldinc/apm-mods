@@ -94,6 +94,10 @@ apm.bob_rework.lib.override.others = function ()
     if settings.startup['apm_bob_rework_replace_filter'].value == true then
         apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_charcoal_brick', 0)
         apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_coal_briquette', 1)
+
+        local recipe = 'apm_filter_charcoal_used_recycling'
+        apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_charcoal_brick', 0)
+        apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_coal_briquette', 3)
     end
 
 
