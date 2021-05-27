@@ -314,7 +314,7 @@ local updateWeapons = function ()
 end
 
 local modify = function ()
-	local reciipe = 'cordite'
+	local recipe = 'cordite'
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'gun-cotton', 6)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'nitroglycerin', 25)
 
