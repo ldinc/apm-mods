@@ -36,6 +36,7 @@ apm.bob_rework.lib.override.genAssembler = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 4 + 2*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, tier.level*4 + 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 5 +tier.level*2)
 end
 
 apm.bob_rework.lib.override.genAssembler6 = function (recipe, tier)
@@ -47,6 +48,7 @@ apm.bob_rework.lib.override.genAssembler6 = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.refinedConcrete, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.inserter, 5 + 2*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level*10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 5 +tier.level*2)
 end
 
 local buildAdvancedAssembler = function (recipe, base, tier)
@@ -65,6 +67,7 @@ local buildAdvancedAssembler = function (recipe, base, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 5 +tier.level*2)
 end
 
 local buildElectronicAssembler = function (recipe, tier)
@@ -83,6 +86,7 @@ local buildElectronicAssembler = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 5 * tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, tier.level*4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 5 +tier.level*2)
 end
 
 apm.bob_rework.lib.override.assemblers = function ()

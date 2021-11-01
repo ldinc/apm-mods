@@ -96,7 +96,10 @@ function apm.bob_rework.lib.override.tech()
     bind('electric-engine', 'apm_power_electricity')
     unbind('electric-engine', 'apm_power_automation_science_pack')
     repush('apm_power_automation_science_pack', 'apm_power_electricity', apm.bob_rework.lib.entities.electricGeneratorUnit)
-    
+    repush('explosives', 'military-2', 'mortar-gun-rampant-arsenal')
+    repush('rampant-arsenal-technology-capsule-turret', 'military-2', 'slowdown-capsule-ammo-rampant-arsenal')
+    repush('rampant-arsenal-technology-capsule-turret', 'military-2', 'poison-capsule-ammo-rampant-arsenal')
+
     -- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelBearingBall)
     -- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelBearing)
     -- push('apm_puddling_furnace_0', apm.bob_rework.lib.entities.steelGearWheel)
@@ -180,7 +183,7 @@ function apm.bob_rework.lib.override.tech()
     drop('concrete', 'apm_steam_science_pack')
     drop('concrete', 'automation-science-pack')
     drop('concrete', 'logistic-science-pack')
-    
+
     bind('apm_steelworks-1', 'concrete')
     bind('bob-boiler-2', 'concrete')
     bind('bob-boiler-2', 'invar-processing')

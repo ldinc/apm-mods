@@ -122,6 +122,7 @@ apm.bob_rework.lib.override.drop = function ()
     rm('lightning-passive-defense-rampant-arsenal')
     rm('bullets-passive-defense-rampant-arsenal')
     rm('slow-passive-defense-rampant-arsenal')
+    rm('posion-mine')
 
     rm('apm_iron_bearing')
     rm('apm_iron_bearing_ball')

@@ -44,6 +44,7 @@ apm.bob_rework.lib.entities.puddingFurnace = 'apm_puddling_furnace_0'
 apm.bob_rework.lib.entities.steelworks = 'apm_steelworks_0'
 apm.bob_rework.lib.entities.advancedSteelworks = 'apm_steelworks_1'
 apm.bob_rework.lib.entities.airCleaner = 'apm_air_cleaner_machine_0'
+apm.bob_rework.lib.entities.airCleanerAdvanced = 'apm_air_cleaner_machine_1'
 apm.bob_rework.lib.entities.sieve = 'apm_sieve_0'
 
 apm.bob_rework.lib.entities.burnerPump = 'apm_pump_0'

@@ -4,6 +4,7 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 
 require('lib.enities.base')
 require('lib.tier.base')
+require('lib.utils.debug')
 
 local drop = function ()
     local rm = apm.lib.utils.recipe.remove
@@ -15,11 +16,11 @@ local drop = function ()
 	rm('he-shotgun-ammo-rampant-arsenal')
 	rm('incendiary-shotgun-ammo-rampant-arsenal')
 	rm('uranium-shotgun-ammo-rampant-arsenal')
-	rm('bio-rocket-ammo-rampant-arsenal')
-	rm('he-rocket-ammo-rampant-arsenal')
-	rm('incendiary-rocket-ammo-rampant-arsenal')
-	rm('rocket')
-	rm('explosive-rocket')
+	-- rm('bio-rocket-ammo-rampant-arsenal')
+	-- rm('he-rocket-ammo-rampant-arsenal')
+	-- rm('incendiary-rocket-ammo-rampant-arsenal')
+	-- rm('rocket')
+	-- rm('explosive-rocket')
 	rm('bob-electric-rocket')
 	rm('electric-bullet-magazine')
 	rm('electric-bullet')
@@ -106,6 +107,16 @@ local buildCanonTurret = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 100)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.engineUnit, 20)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 20)
+
+	local recipe = 'rapid-cannon-item-rampant-arsenal'
+    local tier = apm.bob_rework.lib.tier.titanium
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 50)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 100)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.engineUnit, 25)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 30)
 end
 
 local buildRocketTurret = function ()
@@ -118,6 +129,7 @@ local buildRocketTurret = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 15)
     
     local recipe = 'rapid-rocket-item-rampant-arsenal'
+    local tier = apm.bob_rework.lib.tier.titanium
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 40)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
@@ -147,13 +159,13 @@ end
 
 local buildGunTurret = function(recipe, tier, extraGlass)
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 4)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
 	if extraGlass then
-		apm.lib.utils.recipe.ingredient.mod(recipe, tier.glass, 10)	
+		apm.lib.utils.recipe.ingredient.mod(recipe, tier.glass, 2)
 	end
 end
 
@@ -164,9 +176,9 @@ local buildGunTurrets = function ()
     buildGunTurret('bob-gun-turret-4', apm.bob_rework.lib.tier.steel, false)
     buildGunTurret('bob-gun-turret-5', apm.bob_rework.lib.tier.aluminium, false)
 
-    buildGunTurret('bob-sniper-turret-1', apm.bob_rework.lib.tier.monel, true)
-    buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.steel, true)
-    buildGunTurret('bob-sniper-turret-3', apm.bob_rework.lib.tier.titanium, true)
+    buildGunTurret('bob-sniper-turret-1', apm.bob_rework.lib.tier.brass, true)
+    buildGunTurret('bob-sniper-turret-2', apm.bob_rework.lib.tier.monel, true)
+    buildGunTurret('bob-sniper-turret-3', apm.bob_rework.lib.tier.steel, true)
 end
 
 local buildSolarPanel = function (recipe, tier, shell, conduct)
@@ -316,7 +328,8 @@ end
 local modify = function ()
 	local recipe = 'cordite'
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'gun-cotton', 6)
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'nitroglycerin', 25)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'nitroglycerin', 30)
+	apm.lib.utils.recipe.result.mod(recipe, recipe, 10)
 
     local recipe = 'piercing-rounds-magazine'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -347,15 +360,15 @@ local modify = function ()
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 5)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.tungsten, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.cordite, 25)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.cordite, 50)
 	local recipe = 'cannon-shell'
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.cordite, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.cordite, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.explosives, 0)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 0)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 4)
 
 	local recipe = 'explosive-cannon-shell'
-	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.cordite, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.cordite, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 0)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.explosives, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 4)
@@ -367,6 +380,7 @@ local modify = function ()
 	local recipe = 'capsule-item-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelBearing, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelGearWheel, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.concrete, 40)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.explosives, 0)
 
 	local recipe = 'mech-leg-segment'
@@ -443,7 +457,107 @@ local modify = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.wood, 5)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.bronze.logic, 2)
 
+	local rbody = 'rocket-body'
+	local rhead = 'rocket-warhead'
+	local recipe = 'rocket'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, rbody, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, rhead, 1)
+	local recipe = 'explosive-rocket'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, rbody, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosive-rocket-warhead', 1)
+	local recipe = 'bio-rocket-ammo-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, rbody, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'poison-rocket-warhead', 1)
+	local recipe = 'he-rocket-ammo-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, rbody, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosives', 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosive-rocket-warhead', 1)
+	local recipe = 'incendiary-rocket-ammo-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, rbody, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'flame-rocket-warhead', 1)
 
+	apm.lib.utils.technology.add.recipe_for_unlock('rocketry', rbody)
+	apm.lib.utils.technology.add.recipe_for_unlock('rocketry', rhead)
+	apm.lib.utils.technology.remove.recipe_from_unlock('bob-poison-rocket', 'bob-poison-rocket')
+	apm.lib.utils.technology.remove.recipe_from_unlock('bob-flame-rocket', 'bob-flame-rocket')
+	apm.lib.utils.technology.remove.recipe_from_unlock('bob-explosive-rocket', 'bob-explosive-rocket')
+
+	apm.lib.utils.technology.delete('bob-rocket')
+
+	local recipe = 'mortar-gun-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosives', 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelPipe, 1)
+
+	local recipe = 'grenade-capsule-ammo-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosives', 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunPowder, 20)
+
+	local recipe = 'he-artillery-ammo-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'cluster-grenade', 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosives', 20)
+
+	local recipe = 'poison-capsule'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_creosote', 20)
+	apm.lib.utils.recipe.category.change(recipe, 'crafting-with-fluid')
+
+	local recipe = 'toxic-capsule-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.category.change(recipe, 'crafting-with-fluid')
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 3)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'chlorine', 20)
+
+	local recipe = 'fire-capsule'
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'electronic-circuit', 0)
+	local recipe = 'slowdown-capsule'
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'electronic-circuit', 0)
+
+	local recipe = 'cluster-grenade'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.explosives, 5)
+
+	local turret = data.raw['ammo-turret']['rapid-cannon-ammo-turret-rampant-arsenal']
+	turret.attack_parameters.range = 45
+	local turret = data.raw['ammo-turret']['cannon-ammo-turret-rampant-arsenal']
+	turret.attack_parameters.range = 45
+	local turret = data.raw['ammo-turret']['rocket-ammo-turret-rampant-arsenal']
+	turret.attack_parameters.range = 60
+	local turret = data.raw['ammo-turret']['rapid-rocket-ammo-turret-rampant-arsenal']
+	turret.attack_parameters.range = 60
+	local launcher = data.raw.gun['rocket-launcher']
+	launcher.attack_parameters.range = 50
+	local launcher = data.raw.gun['rocket-launcher-gun-rampant-arsenal']
+	launcher.attack_parameters.range = 50
+
+	local shells = {
+		[1] = 'cannon-shell', [2] = 'explosive-cannon-shell', [3] = 'bio-cannon-shell-ammo-rampant-arsenal',
+		[4] = 'he-cannon-shell-ammo-rampant-arsenal', [5] = 'incendiary-cannon-shell-ammo-rampant-arsenal',
+		[6] = 'scatter-cannon-shell', [7] = 'uranium-cannon-shell', [8] = 'explosive-uranium-cannon-shell'
+	}
+	for _, shell in ipairs(shells) do
+		local ammo = data.raw.ammo[shell]
+	
+		if ammo and ammo.ammo_type and ammo.ammo_type.action and ammo.ammo_type.action.action_delivery then
+			ammo.ammo_type.action.action_delivery.max_range = 50
+		end
+
+		if ammo and ammo.ammo_type and ammo.ammo_type and ammo.ammo_type.action then
+			for _, v in ipairs(ammo.ammo_type.action) do
+				if v.action_delivery and v.action_delivery.max_range then
+					v.action_delivery.max_range = 50
+				end
+			end
+		end
+	end
+	
 
 
 	changeIron2GM('grenade-capsule-ammo-rampant-arsenal', 2)

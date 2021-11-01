@@ -391,6 +391,11 @@ local forceBind = {
     ['chemical-plant-2'] = {['chemical-plant']={}},
     ['stack-inserter'] = {['fast-inserter']={}},
     ['automobilism_electric-1'] = {['automobilism']={}, ['battery']={}},
+    ['bob-poison-rocket'] = {['rocketry']={}},
+    ['bob-explosive-rocket'] = {['rocketry']={}},
+    ['bob-flame-rocket'] = {['rocketry']={}},
+    ['bob-piercing-rocket'] = {['rocketry']={}},
+    ['bob-acid-rocket'] = {['rocketry']={}},
 }
 
 function apm.bob_rework.lib.utils.tech.postProcessByTTiers()

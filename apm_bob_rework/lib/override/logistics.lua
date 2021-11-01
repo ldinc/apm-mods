@@ -36,6 +36,12 @@ local modify = function ()
     for _, recipe in pairs(recipies) do
         apm.lib.utils.recipe.ingredient.mod(recipe, 'roboport-antenna-4', 1)
     end
+
+    local recipe = 'cliff-explosives'
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'explosives', 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunPowder, 160)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, 'empty-barrel', 0)
 end
 
 modify()

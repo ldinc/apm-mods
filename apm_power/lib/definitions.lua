@@ -66,6 +66,7 @@ apm.power.constants.emissions.cp_1 = 6
 apm.power.constants.emissions.cp_2 = 4
 apm.power.constants.emissions.cp_3 = 3
 apm.power.constants.emissions.air_cleaner_0 = -50
+apm.power.constants.emissions.air_cleaner_1 = -150
 apm.power.constants.emissions.offpump_0 = 3
 apm.power.constants.emissions.offpump_1 = 2
 apm.power.constants.emissions.steam_miner = 4.5
@@ -86,6 +87,7 @@ apm.power.constants.energy_usage.coking_plant_0 = '250kW'
 apm.power.constants.energy_usage.coking_plant_1 = '350kW'
 apm.power.constants.energy_usage.coking_plant_2 = '450kW'
 apm.power.constants.energy_usage.air_cleaner_0 = '300kW'
+apm.power.constants.energy_usage.air_cleaner_1 = '500kW'
 apm.power.constants.energy_usage.puddling_furnace_0 = '490kW'
 apm.power.constants.energy_usage.steelworks_0 = '910kW'
 apm.power.constants.energy_usage.steelworks_1 = '1092kW'
@@ -114,8 +116,11 @@ apm.power.constants.modules.greenhouse.specification_2 = {module_slots = 3}
 apm.power.constants.modules.greenhouse.allowed_effects_2 = {"consumption", "speed", "productivity"}
 
 apm.power.constants.modules.air_cleaner = {}
-apm.power.constants.modules.air_cleaner.specification_0 = {module_slots = 3}
+apm.power.constants.modules.air_cleaner.specification_0 = {module_slots = 0}
 apm.power.constants.modules.air_cleaner.allowed_effects_0 = {"consumption", "productivity"}
+apm.power.constants.modules.air_cleaner.specification_1 = {module_slots = 0}
+apm.power.constants.modules.air_cleaner.allowed_effects_1 = {"consumption", "productivity"}
+
 
 -- Icon path ------------------------------------------------------------------
 --

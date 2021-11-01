@@ -22,5 +22,7 @@ function apm.bob_rework.lib.utils.render(obj, indent)
 end
 
 function apm.bob_rework.lib.utils.debug.object(obj)
+    log("-------------------------------------------------------")
     log(apm.bob_rework.lib.utils.dump(obj))
+    log("-------------------------------------------------------")
 end

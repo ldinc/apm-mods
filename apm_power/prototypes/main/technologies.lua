@@ -368,6 +368,15 @@ apm.lib.utils.technology.new('apm_power',
     {{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}},
     75, 30)
 
+-- Electric air cleaner
+apm.lib.utils.technology.new('apm_power',
+'apm_air_cleaner_machine_1',
+{'apm_centrifuge_2', 'apm_air_cleaner_machine'},
+{'apm_air_cleaner_machine_1'},
+{{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}, {"automation-science-pack", 1},{"logistic-science-pack", 1}},
+75, 30)
+    
+
 -- Particle Filter 1
 apm.lib.utils.technology.new('apm_power',
     'apm_particle_filter',

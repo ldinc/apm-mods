@@ -49,7 +49,7 @@ require('lib.override.tech')
 require('lib.override.logistics')
 require('lib.override.others')
 require('lib.override.buff')
-
+require('lib.override.eboiler')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.drop()
@@ -83,6 +83,7 @@ apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.oilRefineries()
     apm.bob_rework.lib.override.burnerReactors()
     apm.bob_rework.lib.override.furnaces()
+    apm.bob_rework.lib.override.eboiler()
 
     apm.bob_rework.lib.override.others()
     apm.bob_rework.lib.override.buff()
