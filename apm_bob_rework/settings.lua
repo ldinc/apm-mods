@@ -20,4 +20,11 @@ data:extend({
         default_value = true,
         order='aa_a'
     },
+    {
+        type = "bool-setting",
+        name = "apm_bob_rework_power_rebalance",
+        setting_type = "startup",
+        default_value = true,
+        order='aa_a'
+    },
 })

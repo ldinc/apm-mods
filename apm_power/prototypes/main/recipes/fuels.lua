@@ -140,7 +140,7 @@ recipe.normal.enabled = false
 recipe.normal.energy_required = 1
 recipe.normal.ingredients = {
         {type="item", name="coal", amount=4},
-        {type="item", name="apm_crusher_drums", amount=1},
+        {type="item", name="apm_crusher_drums", amount=2},
         {type="fluid", name="water", amount=40}
     }
 recipe.normal.results = { 
@@ -254,7 +254,7 @@ recipe.normal.enabled = false
 recipe.normal.energy_required = 1
 recipe.normal.ingredients = {
         {type="item", name="apm_coal_crushed", amount=8},
-        {type="item", name="apm_press_plates", amount=1},
+        {type="item", name="apm_press_plates", amount=2},
         {type="fluid", name="water", amount=40}
     }
 recipe.normal.results = { 
@@ -659,7 +659,7 @@ recipe.normal.enabled = false
 recipe.normal.energy_required = 1
 recipe.normal.ingredients = {
         {type="item", name="wood", amount=2},
-        {type="item", name="apm_crusher_drums", amount=1},
+        {type="item", name="apm_crusher_drums", amount=2},
         {type="fluid", name="water", amount=40}
     }
 recipe.normal.results = { 
@@ -774,7 +774,7 @@ recipe.normal.enabled = false
 recipe.normal.energy_required = 1
 recipe.normal.ingredients = {
         {type="item", name="apm_wood_pellets", amount=8},
-        {type="item", name="apm_press_plates", amount=1},
+        {type="item", name="apm_press_plates", amount=2},
         {type="fluid", name="water", amount=40}
     }
 recipe.normal.results = {

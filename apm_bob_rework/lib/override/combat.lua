@@ -514,15 +514,37 @@ local modify = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'chlorine', 20)
 
+	local recipe = 'poison-bullet-projectile'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.category.change(recipe, 'crafting-with-fluid')
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copper, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'chlorine', 5)
+
+	local recipe = 'paralysis-capsule-rampant-arsenal'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.category.change(recipe, 'crafting-with-fluid')
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 3)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, 3)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'ammonia', 20)
+
 	local recipe = 'fire-capsule'
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'electronic-circuit', 0)
 	local recipe = 'slowdown-capsule'
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'electronic-circuit', 0)
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.resin, 5)
 
 	local recipe = 'cluster-grenade'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 2)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.explosives, 5)
+
+	local recipe = 'poison-rocket-warhead'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.category.change(recipe, 'crafting-with-fluid')
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 3)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'chlorine', 20)
 
 	local turret = data.raw['ammo-turret']['rapid-cannon-ammo-turret-rampant-arsenal']
 	turret.attack_parameters.range = 45
@@ -655,4 +677,4 @@ apm.bob_rework.lib.override.combat = function ()
     modify()
 end
 
-apm.bob_rework.lib.override.combat()
+-- apm.bob_rework.lib.override.combat()

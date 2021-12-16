@@ -357,6 +357,9 @@ function apm.bob_rework.lib.override.tech()
 
     push('thorium-plutonium-fuel-cell', 'thorium-plutonium-fuel-cell')
 
+    repush('military-2', 'military-3', 'poison-capsule-ammo-rampant-arsenal')
+    repush('military-2', 'military-3', 'slowdown-capsule-ammo-rampant-arsenal')
+
     free('nitinol-processing')
     free('bob-plasma-rocket')   
     free('electric-rocket')

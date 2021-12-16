@@ -13,6 +13,7 @@ require('lib.enities.pumps')
 require('lib.enities.new.base')
 
 apm.bob_rework.lib.entities.glass = 'glass'
+apm.bob_rework.lib.entities.resin = 'apm_resin'
 apm.bob_rework.lib.entities.siliconWafer = 'silicon-wafer'
 
 apm.bob_rework.lib.entities.electricEngineUnit = 'electric-engine-unit'

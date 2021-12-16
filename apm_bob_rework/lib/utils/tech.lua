@@ -235,7 +235,7 @@ local techTier = {
             [0] = 'bob-turrets-2', [1] = 'rampant-arsenal-technology-shotgun', [2] = 'physical-projectile-damage-1', [3] = 'physical-projectile-damage-2',
             [4] = 'weapon-shooting-speed-1', [5] = 'heavy-armor', [6] = 'bob-sniper-turrets-1', [7] = 'night-vision-equipment',
             [8] = 'exoskeleton-equipment', [9] = 'solar-panel-equipment', [10] = 'power-armor-mk2',
-            [11] = 'military-2',
+            [11] = 'military-2'
         }
     },
 }
@@ -396,6 +396,7 @@ local forceBind = {
     ['bob-flame-rocket'] = {['rocketry']={}},
     ['bob-piercing-rocket'] = {['rocketry']={}},
     ['bob-acid-rocket'] = {['rocketry']={}},
+    ['radars-2'] = {['military-2']={}},
 }
 
 function apm.bob_rework.lib.utils.tech.postProcessByTTiers()

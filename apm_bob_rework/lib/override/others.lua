@@ -122,7 +122,7 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, 'productivity-module-3', 4)
     -- sad hack
     local obj = data.raw.recipe[recipe]
-    apm.bob_rework.lib.utils.debug.object(obj)
+    -- apm.bob_rework.lib.utils.debug.object(obj)
     table.insert(obj.ingredients, {type='item', name='rail', amount=40})
     table.insert(obj.ingredients, {type='item', name='productivity-module', amount=4})
 
@@ -173,4 +173,22 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.result.add_with_probability('apm_dry_mud_sifting_copper', 'stone', 1, 8, 1)
     -- apm_dry_mud_sifting_iron
     -- apm_dry_mud_sifting_copper
+
+    -- buf personal egen
+
+    local modify = settings.startup['apm_bob_rework_replace_filter'].value == true
+
+    local target = 'apm_equipment_burner_generator_basic'
+    local itm = data.raw["generator-equipment"][target]
+    itm.power = "500kW"
+    if modify then
+        itm.burner.effectivity = "0.1"
+    end
+    
+    local target = 'apm_equipment_burner_generator_advanced'
+    local itm = data.raw["generator-equipment"][target]
+    itm.power = "1000kW"
+    if modify then
+        itm.burner.effectivity = "0.14"
+    end
 end
