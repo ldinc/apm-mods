@@ -31,7 +31,7 @@ APM_LOG_SETTINGS(self, 'apm_nuclear_always_show_made_in', apm_nuclear_always_sho
 --
 --
 -- ----------------------------------------------------------------------------------------
-if mods.apm_power then
+if mods.apm_power_ldinc then
     apm.lib.utils.recipe.remove('apm_nuclear_ash')
     apm.lib.utils.recipe.ingredient.replace('apm_phosphorus', 'apm_nuclear_ash', 'apm_generic_ash')
 end

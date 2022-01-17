@@ -1,4 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.23.0
+Date: 11.01.2022
+  Changes:
+    - reworked: personal energy transmitter
+    - synced: with other mods
+---------------------------------------------------------------------------------------------------
+Version: 0.20.03
+Date: 10.01.2022
+  Changes:
+    - adding: personal discharger (200 kw 1x1 personal slot)
+---------------------------------------------------------------------------------------------------
+Version: 0.20.02
+Date: 10.01.2022
+  Changes:
+    - fix: discharger & charger icons
+---------------------------------------------------------------------------------------------------
+Version: 0.20.01
+Date: 10.01.2022
+  Changes:
+    - added: discharger for accumulators (can provide electricity to your network with 95% efficiency)
+---------------------------------------------------------------------------------------------------
 Version: 0.19.50
 Date: 23. 05. 2020
   Changes:

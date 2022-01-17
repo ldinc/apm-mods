@@ -6,6 +6,13 @@ require('lib.enities.base')
 require('lib.tier.base')
 require('lib.utils.debug')
 
+local buffStackSizeForArtillery = function (name)
+	local item = data.raw.ammo[name]
+	if item then
+		item.stack_size = 20
+	end
+end
+
 local drop = function ()
     local rm = apm.lib.utils.recipe.remove
 
@@ -54,6 +61,14 @@ local drop = function ()
 	rm('lightning-item-rampant-arsenal')
 	rm('advanced-beam-item-rampant-arsenal')
 	rm('gun-item-rampant-arsenal')
+
+	-- drop vehicle plasma cannons ...
+	rm('vehicle-big-turret-1')
+	rm('vehicle-big-turret-2')
+	rm('vehicle-big-turret-3')
+	rm('vehicle-big-turret-4')
+	rm('vehicle-big-turret-5')
+	rm('vehicle-big-turret-6')
 end
 
 local buildLaserTurret = function ()
@@ -325,6 +340,17 @@ local updateWeapons = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironGearWheel, 10)
 end
 
+local changeRange = function(type, name, radius)
+	local typed = data.raw[type]
+	if typed == nil then
+		return
+	end
+	local turret = typed[name]
+	if turret and turret.attack_parameters then
+		turret.attack_parameters.range = radius
+	end
+end
+
 local modify = function ()
 	local recipe = 'cordite'
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'gun-cotton', 6)
@@ -546,18 +572,52 @@ local modify = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 3)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'chlorine', 20)
 
-	local turret = data.raw['ammo-turret']['rapid-cannon-ammo-turret-rampant-arsenal']
-	turret.attack_parameters.range = 45
-	local turret = data.raw['ammo-turret']['cannon-ammo-turret-rampant-arsenal']
-	turret.attack_parameters.range = 45
-	local turret = data.raw['ammo-turret']['rocket-ammo-turret-rampant-arsenal']
-	turret.attack_parameters.range = 60
-	local turret = data.raw['ammo-turret']['rapid-rocket-ammo-turret-rampant-arsenal']
-	turret.attack_parameters.range = 60
-	local launcher = data.raw.gun['rocket-launcher']
-	launcher.attack_parameters.range = 50
-	local launcher = data.raw.gun['rocket-launcher-gun-rampant-arsenal']
-	launcher.attack_parameters.range = 50
+	local ammoTurretType = 'ammo-turret'
+	local gunType = 'gun'
+	local electricTurretType = 'electric-turret'
+	changeRange(ammoTurretType, 'rapid-cannon-ammo-turret-rampant-arsenal', 50)
+	changeRange(ammoTurretType, 'cannon-ammo-turret-rampant-arsenal', 50)
+	changeRange(ammoTurretType, 'rocket-ammo-turret-rampant-arsenal', 70)
+	changeRange(ammoTurretType, 'rapid-rocket-ammo-turret-rampant-arsenal', 70)
+	changeRange(ammoTurretType, 'gun-turret', 22)
+	changeRange(ammoTurretType, 'bob-gun-turret-2', 24)
+	changeRange(ammoTurretType, 'bob-gun-turret-3', 26)
+	changeRange(ammoTurretType, 'bob-gun-turret-4', 28)
+	changeRange(ammoTurretType, 'bob-gun-turret-5', 30)
+	changeRange(ammoTurretType, 'bob-sniper-turret-1', 50)
+	changeRange(ammoTurretType, 'bob-sniper-turret-2', 55)
+	changeRange(ammoTurretType, 'bob-sniper-turret-3', 60)
+	changeRange(ammoTurretType, 'rifle-ammo-turret-rampant-arsenal', 20)
+	changeRange(ammoTurretType, 'shotgun-ammo-turret-rampant-arsenal', 22)
+
+	changeRange(electricTurretType, 'laser-turret', 28)
+	changeRange(electricTurretType, 'bob-laser-turret-2', 30)
+	changeRange(electricTurretType, 'bob-laser-turret-3', 32)
+	changeRange(electricTurretType, 'bob-laser-turret-4', 34)
+	changeRange(electricTurretType, 'bob-laser-turret-5', 36)
+	changeRange(electricTurretType, 'advanced-laser-electric-turret-rampant-arsenal', 56)
+
+	changeRange(gunType, 'rocket-launcher', 60)
+	changeRange(gunType, 'rocket-launcher-gun-rampant-arsenal', 60)
+
+	local activeDefenceEquipment = 'active-defense-equipment'
+	changeRange(activeDefenceEquipment, 'personal-laser-defense-equipment', 30)
+	changeRange(activeDefenceEquipment, 'personal-laser-defense-equipment-2', 32)
+	changeRange(activeDefenceEquipment, 'personal-laser-defense-equipment-3', 34)
+	changeRange(activeDefenceEquipment, 'personal-laser-defense-equipment-4', 36)
+	changeRange(activeDefenceEquipment, 'personal-laser-defense-equipment-5', 38)
+	changeRange(activeDefenceEquipment, 'personal-laser-defense-equipment-6', 40)
+
+	changeRange(activeDefenceEquipment, 'vehicle-laser-defense-1', 30)
+	changeRange(activeDefenceEquipment, 'vehicle-laser-defense-2', 32)
+	changeRange(activeDefenceEquipment, 'vehicle-laser-defense-3', 34)
+	changeRange(activeDefenceEquipment, 'vehicle-laser-defense-4', 36)
+	changeRange(activeDefenceEquipment, 'vehicle-laser-defense-5', 38)
+	changeRange(activeDefenceEquipment, 'vehicle-laser-defense-6', 40)
+
+	local generator = data.raw['generator-equipment']['apm_equipment_burner_generator_advanced']
+	generator.shape.width = 2
+	generator.shape.height = 2
 
 	local shells = {
 		[1] = 'cannon-shell', [2] = 'explosive-cannon-shell', [3] = 'bio-cannon-shell-ammo-rampant-arsenal',
@@ -568,13 +628,13 @@ local modify = function ()
 		local ammo = data.raw.ammo[shell]
 	
 		if ammo and ammo.ammo_type and ammo.ammo_type.action and ammo.ammo_type.action.action_delivery then
-			ammo.ammo_type.action.action_delivery.max_range = 50
+			ammo.ammo_type.action.action_delivery.max_range = 60
 		end
 
 		if ammo and ammo.ammo_type and ammo.ammo_type and ammo.ammo_type.action then
 			for _, v in ipairs(ammo.ammo_type.action) do
 				if v.action_delivery and v.action_delivery.max_range then
-					v.action_delivery.max_range = 50
+					v.action_delivery.max_range = 60
 				end
 			end
 		end
@@ -653,6 +713,20 @@ local modify = function ()
 	--
 
 	updateWeapons()
+
+	buffStackSizeForArtillery('cannon-shell')
+	buffStackSizeForArtillery('explosive-cannon-shell')
+	buffStackSizeForArtillery('bio-cannon-shell-ammo-rampant-arsenal')
+	buffStackSizeForArtillery('he-cannon-shell-ammo-rampant-arsenal')
+	buffStackSizeForArtillery('incendiary-cannon-shell-ammo-rampant-arsenal')
+	buffStackSizeForArtillery('scatter-cannon-shell')
+	buffStackSizeForArtillery('uranium-cannon-shell')
+	buffStackSizeForArtillery('explosive-uranium-cannon-shell')
+	buffStackSizeForArtillery('artillery-shell')
+	buffStackSizeForArtillery('bio-artillery-ammo-rampant-arsenal')
+	buffStackSizeForArtillery('he-artillery-ammo-rampant-arsenal')
+	buffStackSizeForArtillery('incendiary-artillery-ammo-rampant-arsenal')
+	buffStackSizeForArtillery('nuclear-artillery-ammo-rampant-arsenal')
 
 	-- -- disable tech
 	-- apm.lib.utils.technology.delete('bob-fire-artillery-shells')

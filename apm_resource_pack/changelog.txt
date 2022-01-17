@@ -1,5 +1,16 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.22.02
+Version: 0.23.0
+Date: 11.01.2022
+  Changes:
+    - reworked: personal energy transmitter
+    - synced: with other mods
+---------------------------------------------------------------------------------------------------
+Version: 0.21.02
+Date: 13. 6. 2021
+  Changes:
+    - added: accumulator discharger equipment icon & entity graphics
+---------------------------------------------------------------------------------------------------
+Version: 0.21.02
 Date: 13. 6. 2021
   Changes:
     - added electric air cleaner (w\ new entity animation)
