@@ -47,15 +47,98 @@ data:extend({item})
 --
 --
 -- ----------------------------------------------------------------------------
+local item_icon_a = apm.lib.utils.icon.get.from_item('locomotive')
+local item_icon_b = {apm.lib.icons.dynamics.t2}
+local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+local item_locomotive = data.raw['item-with-entity-data']['locomotive']
+local item = {}
+item.type = 'item'
+item.name = 'apm_electric_locomotive'
+item.icons = icons
+item.stack_size = item_locomotive.stack_size
+item.group = item_locomotive.group
+item.subgroup = item_locomotive.subgroup
+item.order = item_locomotive.order .. 'z'
+item.place_result = "apm_electric_locomotive"
+data:extend({item})
+
+-- Item -----------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
 local item = {}
 item.type = 'item'
 item.name = 'apm_battery_charging_station'
 item.icons = {
-        apm.lib.icons.dynamics.machine.t2,
-        apm.lib.icons.dynamics.lable_lightning
+	apm.lib.icons.dynamics.machine.t2,
+	apm.lib.icons.dynamics.lable_lightning,
+	apm.lib.icons.dynamics.recycling
     }
 item.stack_size = 10
 item.subgroup = "production-machine"
 item.order = "d[apm_battery_charging_station]"
 item.place_result = "apm_battery_charging_station"
 data:extend({item})
+
+-- Item -----------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local item = {}
+item.type = 'item'
+item.name = 'apm_battery_discharging_station'
+item.icons = {
+	apm.lib.icons.dynamics.machine.t2,
+	apm.lib.icons.dynamics.lable_lightning
+    }
+item.stack_size = 10
+item.subgroup = "production-machine"
+item.order = "d[apm_battery_discharging_station]"
+item.place_result = "apm_battery_discharging_station"
+data:extend({item})
+
+-- Item -----------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local item = {}
+item.type = 'item'
+item.name = 'apm_equipment_energy_transmitter'
+item.icons = {
+    apm.power.icons.apm_equipment_energy_transmitter
+}
+item.stack_size = 20
+--item.group = "apm_other"
+item.subgroup = "equipment"
+item.order = "a[energy-source]-b[apm-a]"
+item.placed_as_equipment_result = "apm_equipment_energy_transmitter"
+data:extend({item})
+
+-- Equipment ------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+local equipment = {}
+equipment.type = "generator-equipment"
+equipment.name = "apm_equipment_energy_transmitter"
+equipment.sprite = {}
+equipment.sprite.filename = apm.power.icons.item_equipment_energy_transmitter.icon
+equipment.sprite.width = apm.power.icons.item_equipment_energy_transmitter.icon_size
+equipment.sprite.height = apm.power.icons.item_equipment_energy_transmitter.icon_size
+equipment.sprite.priority = "medium"
+equipment.shape = {}
+equipment.shape.width = 1
+equipment.shape.height = 1
+equipment.shape.type = "full"
+equipment.energy_source = {}
+equipment.energy_source.type = "electric"
+equipment.energy_source.usage_priority = "secondary-output"
+equipment.power = "200kW"
+equipment.categories = {"armor"}
+equipment.burner = {}
+equipment.burner.fuel_categories = {'apm_electrical'}
+equipment.burner.fuel_inventory_size = 2
+equipment.burner.burnt_inventory_size = 2
+equipment.burner.emissions_per_minute = 0
+equipment.burner.type = "burner"
+data:extend({equipment})
