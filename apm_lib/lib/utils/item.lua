@@ -296,7 +296,7 @@ function apm.lib.utils.item.overwrite.battery(level, item_name, fuel_value, burn
     local item = data.raw.item[item_name]
     local base_acceleration_multiplier = 1.0
     local base_top_speed_multiplier = 1.0
-    local new_acceleration_multiplier = apm.lib.utils.math.round(base_acceleration_multiplier+(0.1*level),2)
+    local new_acceleration_multiplier = apm.lib.utils.math.round(base_acceleration_multiplier+(0.2*level),2)
     local new_top_speed_multiplier = apm.lib.utils.math.round(base_top_speed_multiplier+(0.1*level),2)
 
     item.fuel_category = 'apm_electrical'

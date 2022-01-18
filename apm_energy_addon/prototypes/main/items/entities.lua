@@ -47,6 +47,25 @@ data:extend({item})
 --
 --
 -- ----------------------------------------------------------------------------
+local item_icon_a = apm.lib.utils.icon.get.from_item('locomotive')
+local item_icon_b = {apm.lib.icons.dynamics.t2}
+local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+local item_locomotive = data.raw['item-with-entity-data']['locomotive']
+local item = {}
+item.type = 'item'
+item.name = 'apm_electric_locomotive'
+item.icons = icons
+item.stack_size = item_locomotive.stack_size
+item.group = item_locomotive.group
+item.subgroup = item_locomotive.subgroup
+item.order = item_locomotive.order .. 'z'
+item.place_result = "apm_electric_locomotive"
+data:extend({item})
+
+-- Item -----------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
 local item = {}
 item.type = 'item'
 item.name = 'apm_battery_charging_station'

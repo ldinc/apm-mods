@@ -1,5 +1,11 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.0
+Version: 0.23.01
+Date: 11.01.2022
+  Added:
+    - new electric locomotive
+    - bob's logistics mod compatibility with trains
+---------------------------------------------------------------------------------------------------
+Version: 0.23.00
 Date: 11.01.2022
   Changes:
     - reworked: personal energy transmitter
