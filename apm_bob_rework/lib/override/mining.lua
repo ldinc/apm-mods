@@ -8,59 +8,29 @@ require('lib.tier.base')
 local buildMiningRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 8 + 2*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 14 + 4*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 12 + 3*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 12 + 3*tier.level)
-    if tier.level > 1 then 
-        apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 8 + 3*tier.level)
-    end
-    if tier.level < 1 then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 0)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 2)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 1)
-    end
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.engineUnit, 2 + tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.bearing, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.gearWheel, 5)
 end
 
-local buildMiningAdvancedRecipe = function (recipe, base, tier)
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-
-    apm.lib.utils.recipe.ingredient.mod(recipe, base, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-end
-
-local buildYellowMiner = function ()
-    local recipe, tier = apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.brass
-    local engine = apm.bob_rework.lib.entities.electricEngineUnit
-    local logic = apm.bob_rework.lib.entities.logicContact
+local buildImprovedBurnerMinerRecipe = function ()
+    local recipe = apm.bob_rework.lib.entities.improvedBurnerMiner
+    local tier = apm.bob_rework.lib.tier.bronze
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 8)
-    apm.lib.utils.recipe.ingredient.mod(recipe, engine, 2 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 16)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 15)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.burnerMiner, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.engineUnit, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 5)
 end
 
 apm.bob_rework.lib.override.mining = function ()
     buildMiningRecipe(apm.bob_rework.lib.entities.burnerMiner, apm.bob_rework.lib.tier.bronze)
-    buildMiningAdvancedRecipe(apm.bob_rework.lib.entities.improvedBurnerMiner, apm.bob_rework.lib.entities.burnerMiner, apm.bob_rework.lib.tier.bronze)
-   
+    buildImprovedBurnerMinerRecipe()
+    buildMiningRecipe(apm.bob_rework.lib.entities.steam, apm.bob_rework.lib.tier.brass)
     buildMiningRecipe(apm.bob_rework.lib.entities.steamMiner, apm.bob_rework.lib.tier.brass)
-    
-    -- buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.brass)
-    buildYellowMiner()
-    buildMiningRecipe(apm.bob_rework.lib.entities.advancedElectricMiner_t2, apm.bob_rework.lib.tier.monel)
-    -- buildMiningAdvancedRecipe(apm.bob_rework.lib.entities.advancedElectricMiner_t2, apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.monel)
 
-    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t3, apm.bob_rework.lib.tier.steel)
-    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t4, apm.bob_rework.lib.tier.aluminium)
-    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t5, apm.bob_rework.lib.tier.titanium)
 end

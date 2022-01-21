@@ -1,9 +1,6 @@
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
-
-require('lib.enities.gearingAndBearings')
-
 apm.bob_rework.lib.entities.bronzeBearing = 'bronze-bearing'
 apm.bob_rework.lib.entities.brassBearing = 'brass-bearing'
 
@@ -34,12 +31,11 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
     recipe.normal.energy_required = 0.5
     recipe.normal.ingredients = {
             {type="item", name=base, amount=1},
-            {type="item", name=ball, amount=16},
+            {type="item", name=ball, amount=10},
             {type="fluid", name=apm.bob_rework.lib.entities.lubricant, amount=10}
         }
     recipe.normal.results = { 
-            {type='item', name=name, amount=2}
-
+            {type='item', name=name, amount=12}
         }
     recipe.normal.main_product = name
     recipe.normal.requester_paste_multiplier = 4

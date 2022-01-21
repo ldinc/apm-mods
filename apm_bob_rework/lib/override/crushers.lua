@@ -9,22 +9,13 @@ require('lib.tier.base')
 local buildCrusherRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5 + 5*tier.level)
-    if tier.extraConstructionAlloy then
-        local count = 8
-        if tier.level == 1 then
-            count = 10
-        end
-        if tier.level > 1 then
-            count = 12
-        end
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
-    end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 2 + 2*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4 + 2*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level*2 + 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.engineUnit, 2 + tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.lightAlloy, 3)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 15 * tier.main.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.gearWheel, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.bearing, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.logic, tier.level*2 + 1)
 end
 
 apm.bob_rework.lib.override.crushers = function ()

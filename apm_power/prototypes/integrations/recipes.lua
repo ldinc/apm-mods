@@ -2009,24 +2009,20 @@ if mods.bobgreenhouse and apm_power_compat_bob then
 	apm.lib.utils.recipe.result.mod('bob-seedling', 'bob-seedling', 10)
 end
 
-if not apm.lib.utils.setting.get.starup('apm_power_bob_rework') then
-	if not mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
+if not mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
+	apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 0)
+elseif mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
+	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
+		apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 5)
+	else
 		apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 0)
-	elseif mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
-		if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
-			apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 5)
-		else
-			apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 0)
-		end
 	end
 end
 
-if not apm.lib.utils.setting.get.starup('apm_power_bob_rework') then
-	if mods.bobplates and apm_power_compat_bob and not mods.angelsrefining and not mods['aai-industry'] then
-		apm.lib.utils.recipe.ingredient.mod('apm_lab_0', 'glass', 5)
-		apm.lib.utils.recipe.ingredient.mod('apm_lab_1', 'glass', 10)
-		apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_0', 'glass', 25)
-	end
+if mods.bobplates and apm_power_compat_bob and not mods.angelsrefining and not mods['aai-industry'] then
+	apm.lib.utils.recipe.ingredient.mod('apm_lab_0', 'glass', 5)
+	apm.lib.utils.recipe.ingredient.mod('apm_lab_1', 'glass', 10)
+	apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_0', 'glass', 25)
 end
 
 if mods.bobelectronics and mods.angelsrefining and apm_power_compat_bob then
