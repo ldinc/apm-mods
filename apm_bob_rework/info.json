@@ -1,6 +1,8 @@
 {
     "name": "apm_bob_rework_ldinc",
+
     "version": "0.22.54",
+
     "title": "APM bob's extra compability",
     "author": "ldinc",
     "dependencies": [
@@ -32,6 +34,7 @@
         "Rampant >= 1.0.9",
         "RampantArsenal >= 1.0.8",
         "?electricboiler >= 1.1.0"
+
     ],
     "description": "Rework APM recipies wuth bob's mods.",
     "factorio_version": "1.1",
