@@ -6,7 +6,6 @@ require('lib.enities.base')
 require('lib.tier.base')
 
 apm.bob_rework.lib.override.steamMachines = function ()
-    -- TODO: steam sieve & air cleaner
     local recipe = apm.bob_rework.lib.entities.airCleaner
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steamEngineUnit, 5)
@@ -15,6 +14,17 @@ apm.bob_rework.lib.override.steamMachines = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copper, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.stoneBrick, 15)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicSteam, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 5)
+
+    local recipe = apm.bob_rework.lib.entities.airCleanerAdvanced
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steamEngineUnit, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironPipe, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.monel.constructionAlloy, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copper, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.monel.basement, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.tier.monel.logic, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 5)
 
     local recipe = apm.bob_rework.lib.entities.sieve
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -24,4 +34,5 @@ apm.bob_rework.lib.override.steamMachines = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copper, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.stoneBrick, 15)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicSteam, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 5)
 end

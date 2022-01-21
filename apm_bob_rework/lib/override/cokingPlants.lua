@@ -8,9 +8,17 @@ require('lib.tier.base')
 local buildCokingPlantRecipe = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.alloy, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.lightAlloy, 3)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.main.basement, 20 * tier.main.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 8 + 4*tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 12 + 4*tier.level)
+local count = 20
+    if tier.level == 1 then
+        count = 10
+    end
+    if tier.level > 1 then
+        count = 12
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
+    end
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
 end
 
 apm.bob_rework.lib.override.cokingPlants = function ()

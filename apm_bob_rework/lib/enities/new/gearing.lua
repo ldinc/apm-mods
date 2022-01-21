@@ -1,7 +1,9 @@
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
-apm.bob_rework.lib.entities.bronzeGearWheel = 'bronze-gear-wheel'
+
+require('lib.enities.gearingAndBearings')
+
 
 apm.bob_rework.lib.entities.genGearWheel = function (name, base, tint)
     local ico = {
@@ -29,7 +31,7 @@ apm.bob_rework.lib.entities.genGearWheel = function (name, base, tint)
     recipe.normal.ingredients = {
             {type="item", name=base, amount=1}
         }
-    recipe.normal.results = { 
+    recipe.normal.results = {
             {type='item', name=name, amount=1}
         }
     recipe.normal.main_product = name
