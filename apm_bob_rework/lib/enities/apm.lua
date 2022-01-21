@@ -33,6 +33,7 @@ apm.bob_rework.lib.entities.moduleLaboratory = 'lab-module'
 
 apm.bob_rework.lib.entities.simpleEngineUnit = 'apm_simple_engine'
 apm.bob_rework.lib.entities.steamEngineUnit = 'apm_steam_engine'
+apm.bob_rework.lib.entities.engineUnit = 'engine-unit'
 apm.bob_rework.lib.entities.pistions = 'apm_pistions'
 
 apm.bob_rework.lib.entities.woodenBoard = 'apm_wood_board'
@@ -43,6 +44,7 @@ apm.bob_rework.lib.entities.puddingFurnace = 'apm_puddling_furnace_0'
 apm.bob_rework.lib.entities.steelworks = 'apm_steelworks_0'
 apm.bob_rework.lib.entities.advancedSteelworks = 'apm_steelworks_1'
 apm.bob_rework.lib.entities.airCleaner = 'apm_air_cleaner_machine_0'
+apm.bob_rework.lib.entities.airCleanerAdvanced = 'apm_air_cleaner_machine_1'
 apm.bob_rework.lib.entities.sieve = 'apm_sieve_0'
 
 apm.bob_rework.lib.entities.burnerPump = 'apm_pump_0'
@@ -51,3 +53,6 @@ apm.bob_rework.lib.entities.rubber = 'apm_rubber'
 apm.bob_rework.lib.entities.electricGeneratorUnit = 'apm_egen_unit'
 apm.bob_rework.lib.entities.ironBearing = 'apm_iron_bearing'
 apm.bob_rework.lib.entities.electroMagnet = 'apm_electromagnet'
+
+apm.bob_rework.lib.entities.gunPowder = 'apm_gun_powder'
+apm.bob_rework.lib.entities.filter = 'apm_filter_charcoal'
