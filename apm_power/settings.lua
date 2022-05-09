@@ -34,6 +34,8 @@ end
 --
 -- ----------------------------------------------------------------------------
 data:extend({
+
+  {type="int-setting", name = "apm_sinkhole_fluid_rate", setting_type = "startup", allow_blank = false, default_value = 200, minimum_value = 1, maximum_value = 10000},
   {type = "bool-setting", name = "apm_power_overhaul_machine_frames", setting_type = "startup", default_value = true, order='ab_a'},
   {type = "bool-setting", name = "apm_power_machine_frames_recycling", setting_type = "startup", default_value = false, order='ab_a'},
   {type = "bool-setting", name = "apm_power_machine_reusable_recipies", setting_type = "startup", default_value = false, order='ab_a'},

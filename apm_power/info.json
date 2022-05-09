@@ -1,6 +1,6 @@
 {
         "name": "apm_power_ldinc",
-        "version": "0.23.00",
+        "version": "0.23.02",
         "title": "Amator Phasma's Coal & Steam (forked)",
         "author": "AmatorPhasma",
         "dependencies": [

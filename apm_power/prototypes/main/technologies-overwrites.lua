@@ -95,3 +95,5 @@ apm.lib.utils.technology.add.prerequisites('weapon-shooting-speed-2', 'logistic-
 apm.lib.utils.technology.add.prerequisites('physical-projectile-damage-2', 'logistic-science-pack')
 
 apm.lib.utils.technology.force.recipe_for_unlock('uranium-processing', 'apm_coal_ash_washing')
+
+apm.lib.utils.technology.add.recipe_for_unlock('concrete', 'apm_sinkhole')
