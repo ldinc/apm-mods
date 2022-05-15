@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.22.53
+Version: 0.22.54
 Date: 09. 01. 2022
   Changes:
     - changed: improved personal burnur generator grid size 3x3 -> 2x2

@@ -207,7 +207,8 @@ function apm.lib.utils.assembler.centrifuge.overhaul(centrifuge_name, level)
 	if not apm.lib.utils.assembler.exist(centrifuge_name) then return end
 
 	local centrifuge = data.raw['assembling-machine'][centrifuge_name]
-    centrifuge.flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"}
+    centrifuge.flags = {"placeable-neutral", "placeable-player", "player-creation"}
+    -- centrifuge.flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"}
 	centrifuge.fluid_boxes = {}
 	centrifuge.fluid_boxes[1] = {}
 	centrifuge.fluid_boxes[1].production_type = "input"
@@ -235,6 +236,7 @@ function apm.lib.utils.assembler.centrifuge.overhaul(centrifuge_name, level)
 	centrifuge.fluid_boxes[3].secondary_draw_orders = { north = -1 }
 	centrifuge.fast_replaceable_group = "centrifuge"
 	centrifuge.allowed_effects = {"consumption", "speed", "pollution"}
+    -- centrifuge.flags["not-rotatable"] = false
 	-- centrifuge.always_draw_idle_animation = false
 	-- move all layer to animation, otherwise the pipe_picture will overlap
 	if centrifuge.idle_animation then

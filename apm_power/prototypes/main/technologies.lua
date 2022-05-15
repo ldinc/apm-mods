@@ -101,12 +101,12 @@ apm.lib.utils.technology.new('apm_power',
     15, 10)
 
 -- Rubber II
--- apm.lib.utils.technology.new('apm_power',
---     'apm_rubber-2',
---     {'apm_rubber-1', 'apm_coking_plant_0'}, 
---     {'apm_rubber_2'},
---     {{"apm_industrial_science_pack", 1}},
---     50, 25)
+apm.lib.utils.technology.new('apm_power',
+    'apm_rubber-2',
+    {'apm_rubber-1', 'apm_coking_plant_0'}, 
+    {'apm_rubber_2'},
+    {{"apm_industrial_science_pack", 1}},
+    50, 25)
 
 -- Press
 apm.lib.utils.technology.new('apm_power',
@@ -320,6 +320,14 @@ apm.lib.utils.technology.new('apm_power',
     {{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}},
     75, 30)
 
+-- -- sinkhole
+-- apm.lib.utils.technology.new('apm_power',
+--     'apm_sinkhole',
+--     {'apm_coking_plant_1'},
+--     {'apm_sinkhole'},
+--     {{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}},
+--     75, 30)
+
 -- Greenhouse I
 apm.lib.utils.technology.new('apm_power',
     'apm_greenhouse',
@@ -367,6 +375,15 @@ apm.lib.utils.technology.new('apm_power',
     {'apm_air_cleaner_machine_0', 'apm_filter_charcoal', 'apm_filter_charcoal_used_recycling', 'apm_air_cleaning_1'},
     {{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}},
     75, 30)
+
+-- Electric air cleaner
+apm.lib.utils.technology.new('apm_power',
+'apm_air_cleaner_machine_1',
+{'apm_centrifuge_2', 'apm_air_cleaner_machine'},
+{'apm_air_cleaner_machine_1'},
+{{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}, {"automation-science-pack", 1},{"logistic-science-pack", 1}},
+75, 30)
+    
 
 -- Particle Filter 1
 apm.lib.utils.technology.new('apm_power',

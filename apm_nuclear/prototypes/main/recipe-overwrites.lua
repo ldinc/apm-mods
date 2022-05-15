@@ -32,3 +32,18 @@ apm.lib.utils.recipe.remove('nuclear-fuel-reprocessing')
 apm.lib.utils.recipe.remove('uranium-fuel-cell')
 apm.lib.utils.recipe.remove('uranium-processing')
 apm.lib.utils.recipe.remove('kovarex-enrichment-process')
+
+if bobmods and bobmods.plates then
+    local name = 'apm_fuel_cell_neptunium_recovery_stage_b'
+    local recipe = data.raw.recipe[name]
+    table.insert(recipe.normal.results, {type="item", name="fusion-catalyst", amount=1})
+    local name = 'apm_fuel_cell_thorium_recovery_stage_b'
+    local recipe = data.raw.recipe[name]
+    table.insert(recipe.normal.results, {type="item", name="fusion-catalyst", amount=1})
+    local name = 'apm_breeder_thorium_seperation_process_b'
+    local recipe = data.raw.recipe[name]
+    table.insert(recipe.normal.results, {type="item", name="fusion-catalyst", amount=1})
+    local name = 'apm_fuel_rod_uranium_recovery_stage_b'
+    local recipe = data.raw.recipe[name]
+    table.insert(recipe.normal.results, {type="item", name="fusion-catalyst", amount=1})
+end

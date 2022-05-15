@@ -15,6 +15,7 @@ require('lib.script.interfaces')
 --
 -- ----------------------------------------------------------------------------
 local function event_on_init()
+    global.startupEquipment = {}
     initial.run()
 	inserter.on_init()
     radiation.on_init()
@@ -63,6 +64,10 @@ end
 -- ----------------------------------------------------------------------------
 local function on_nth_tick()
     equipment.on_nth_tick()
+end
+
+local function on_cutscene_cancelled(player)
+    equipment.check_starting_equipment(game.players[player])
 end
 
 -- Function -------------------------------------------------------------------
@@ -188,6 +193,7 @@ local function event_on_player_created(event)
 
 
     result = equipment.check_equipment_manager(player)
+    equipment.check_starting_equipment(player)
 
     -- player.insert{name="apm_equipment_burner_generator_basic", count=1}
     -- player.insert{name="iron-plate", count=200}
@@ -250,6 +256,9 @@ script.on_event(defines.events.on_player_removed_equipment, function(event) even
 script.on_event(defines.events.on_player_armor_inventory_changed, function(event) event_on_player_armor_inventory_changed(event) end)
 
 script.on_nth_tick(60*10, function() on_nth_tick() end)
+script.on_event(defines.events.on_cutscene_cancelled, function (event)
+    on_cutscene_cancelled(event.player_index)
+end)
 
 -- ----------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------

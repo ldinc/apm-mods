@@ -66,6 +66,7 @@ apm.power.constants.emissions.cp_1 = 6
 apm.power.constants.emissions.cp_2 = 4
 apm.power.constants.emissions.cp_3 = 3
 apm.power.constants.emissions.air_cleaner_0 = -50
+apm.power.constants.emissions.air_cleaner_1 = -150
 apm.power.constants.emissions.offpump_0 = 3
 apm.power.constants.emissions.offpump_1 = 2
 apm.power.constants.emissions.steam_miner = 4.5
@@ -86,6 +87,7 @@ apm.power.constants.energy_usage.coking_plant_0 = '250kW'
 apm.power.constants.energy_usage.coking_plant_1 = '350kW'
 apm.power.constants.energy_usage.coking_plant_2 = '450kW'
 apm.power.constants.energy_usage.air_cleaner_0 = '300kW'
+apm.power.constants.energy_usage.air_cleaner_1 = '500kW'
 apm.power.constants.energy_usage.puddling_furnace_0 = '490kW'
 apm.power.constants.energy_usage.steelworks_0 = '910kW'
 apm.power.constants.energy_usage.steelworks_1 = '1092kW'
@@ -114,8 +116,11 @@ apm.power.constants.modules.greenhouse.specification_2 = {module_slots = 3}
 apm.power.constants.modules.greenhouse.allowed_effects_2 = {"consumption", "speed", "productivity"}
 
 apm.power.constants.modules.air_cleaner = {}
-apm.power.constants.modules.air_cleaner.specification_0 = {module_slots = 3}
+apm.power.constants.modules.air_cleaner.specification_0 = {module_slots = 0}
 apm.power.constants.modules.air_cleaner.allowed_effects_0 = {"consumption", "productivity"}
+apm.power.constants.modules.air_cleaner.specification_1 = {module_slots = 0}
+apm.power.constants.modules.air_cleaner.allowed_effects_1 = {"consumption", "productivity"}
+
 
 -- Icon path ------------------------------------------------------------------
 --
@@ -185,10 +190,15 @@ apm.power.icons.path.machine_frame_basic_used = '__apm_resource_pack_ldinc__/gra
 apm.power.icons.path.machine_frame_steam_used = '__apm_resource_pack_ldinc__/graphics/icons/apm_machine_frame_steam_used.png'
 apm.power.icons.path.machine_frame_advanced_used = '__apm_resource_pack_ldinc__/graphics/icons/apm_machine_frame_advanced_used.png'
 apm.power.icons.path.equipment_battery_tiny = '__apm_resource_pack_ldinc__/graphics/icons/apm_equipment_battery_tiny.png'
+
 apm.power.icons.path.item_burner_generator_basic = '__apm_resource_pack_ldinc__/graphics/icons/apm_equipment_burner_generator_basic.png'
 apm.power.icons.path.item_burner_generator_advanced = '__apm_resource_pack_ldinc__/graphics/icons/apm_equipment_burner_generator_advanced.png'
+apm.power.icons.path.item_equipment_energy_transmitter = '__apm_resource_pack_ldinc__/graphics/icons/apm_equipment_energy_transmitter.png'
+
 apm.power.icons.path.equipment_burner_generator_basic = '__apm_resource_pack_ldinc__/graphics/equipment/apm_equipment_burner_generator_basic.png'
 apm.power.icons.path.equipment_burner_generator_advanced = '__apm_resource_pack_ldinc__/graphics/equipment/apm_equipment_burner_generator_advanced.png'
+apm.power.icons.path.equipment_energy_transmitter= '__apm_resource_pack_ldinc__/graphics/equipment/apm_equipment_energy_transmitter.png'
+
 -- apm.power.icons.path.iron_bearing_ball = '__apm_resource_pack_ldinc__/graphics/icons/apm_iron_bearing_ball.png'
 
 -- Icons ----------------------------------------------------------------------
@@ -272,10 +282,15 @@ apm.power.icons.valve_2 = {icon=apm.power.icons.path.valve_2, icon_size=64}
 apm.power.icons.coke_oven_gas_symbol = {icon=apm.power.icons.path.coke_oven_gas_symbol, icon_size=64}
 apm.power.icons.zx80_construction_robot = {icon=apm.power.icons.path.zx80_construction_robot, icon_size=64, tint={r=0.689, g=0.571, b=0.377}, icon_mipmaps=4}
 apm.power.icons.equipment_battery_tiny = {icon=apm.power.icons.path.equipment_battery_tiny, icon_size=64}
+
 apm.power.icons.item_burner_generator_basic = {icon=apm.power.icons.path.item_burner_generator_basic, icon_size=64}
 apm.power.icons.item_burner_generator_advanced = {icon=apm.power.icons.path.item_burner_generator_advanced, icon_size=64}
+apm.power.icons.item_equipment_energy_transmitter = {icon=apm.power.icons.path.item_equipment_energy_transmitter, icon_size=64}
+
 apm.power.icons.equipment_burner_generator_basic = {icon=apm.power.icons.path.equipment_burner_generator_basic, icon_size=128}
 apm.power.icons.equipment_burner_generator_advanced = {icon=apm.power.icons.path.equipment_burner_generator_advanced, icon_size=128}
+apm.power.icons.apm_equipment_energy_transmitter = {icon=apm.power.icons.path.equipment_energy_transmitter, icon_size=128}
+
 apm.power.icons.iron_bearing_ball= genIcon('iron_bearing_ball', 32)
 apm.power.icons.iron_bearing= genIcon('iron_bearing', 32)
 apm.power.icons.gun_powder= genIcon('gun_powder', 419)

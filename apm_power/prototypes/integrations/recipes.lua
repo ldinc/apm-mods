@@ -66,7 +66,7 @@ function vanilaFinalUpdatesRecipe()
 	-- integrate electric generators
 	useEGenUnits()
 	-- setup startingresources
-	apm.lib.utils.resource.on_starting_zone('sulfur', true)
+	-- apm.lib.utils.resource.on_starting_zone('sulfur', true)
 	if not apm.lib.utils.resource.exist('sulfur') then
 		-- change recipe for gun powder 
 		apm.lib.utils.recipe.ingredient.mod('apm_gun_powder', 'sulfur', 0)

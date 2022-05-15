@@ -10,3 +10,6 @@ apm.energy_addon.overhaul('apm_electric_car')
 
 -- tank
 apm.energy_addon.overhaul('apm_electric_tank')
+
+-- locomotive
+apm.energy_addon.overhaul('apm_electric_locomotive')

@@ -7,8 +7,11 @@ APM_LOG_HEADER(self)
 if apm.lib.icons == nil then apm.lib.icons = {} end
 if apm.lib.icons.path == nil then apm.lib.icons.path = {} end
 if apm.lib.icons.dynamics == nil then apm.lib.icons.dynamics = {} end
+if apm.lib.icons.static == nil then apm.lib.icons.static = {} end
 if apm.lib.icons.dynamics.machine == nil then apm.lib.icons.dynamics.machine = {} end
 if apm.lib.icons.signal == nil then apm.lib.icons.signal = {} end
+
+local staticP = '__apm_resource_pack_ldinc__/graphics/icons/'
 
 -- Icon path ----------------------------------------------------------------------
 --
@@ -103,3 +106,4 @@ apm.lib.icons.signal.radioactive = {icon=apm.lib.icons.path.signal_radioactive, 
 apm.lib.icons.signal.info = {icon=apm.lib.icons.path.signal_info, icon_size=64}
 apm.lib.icons.signal.warning = {icon=apm.lib.icons.path.signal_warning, icon_size=64}
 apm.lib.icons.signal.bullet_point = {icon=apm.lib.icons.path.signal_bullet_point, icon_size=64}
+apm.lib.icons.static.sinkhole = {icon=staticP..'apm_sinkhole.png', icon_size=64}

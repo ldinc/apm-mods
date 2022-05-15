@@ -51,6 +51,7 @@ require('lib.override.others')
 require('lib.override.buff')
 require('lib.override.eboiler')
 require('lib.override.power')
+require('lib.override.plate')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.drop()
@@ -92,5 +93,6 @@ apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.combat()
 
     apm.bob_rework.lib.override.tech()
+    apm.bob_rework.lib.override.plate()
 end
 

@@ -40,6 +40,7 @@ apm.lib.utils.recipe.category.create('apm_centrifuge_2')
 apm.lib.utils.recipe.category.create('apm_sifting_0')
 apm.lib.utils.recipe.category.create('apm_sifting_1')
 apm.lib.utils.recipe.category.create('apm_sifting_2')
+apm.lib.utils.recipe.category.create('apm_sinkhole')
 
 -- apm_nuclear
 apm.lib.utils.recipe.category.create('apm_nuclear_breeding')

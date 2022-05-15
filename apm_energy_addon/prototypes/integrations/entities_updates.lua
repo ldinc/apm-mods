@@ -44,4 +44,5 @@ end
 if mods.bobvehicleequipment and apm_energy_addon_compat_bob then
     data.raw.car['apm_electric_car'].equipment_grid = "bob-car"
     data.raw.car['apm_electric_tank'].equipment_grid = "bob-tank"
+    data.raw.locomotive['apm_electric_locomotive'].equipment_grid = "bob-locomotive"
 end

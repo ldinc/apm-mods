@@ -34,6 +34,7 @@ apm.lib.utils.category.create.group('apm_power', '__apm_resource_pack_ldinc__/gr
     apm.lib.utils.category.create.subgroup('apm_power', 'apm_power_machines_miner', 'ap_a')
     apm.lib.utils.category.create.subgroup('apm_power', 'apm_power_mobile', 'aq_a')
     apm.lib.utils.category.create.subgroup('apm_power', 'apm_power_science', 'ar_a')
+    apm.lib.utils.category.create.subgroup('apm_power', 'apm_power_sinkhole', 'ar_a')
 
 -- Subgroups ------------------------------------------------------------------
 --

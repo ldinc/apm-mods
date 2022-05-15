@@ -8,4 +8,3 @@ apm.bob_rework.lib.entities.logicElectronic = 'electronic-circuit'
 apm.bob_rework.lib.entities.logicAdvanced = 'advanced-circuit'
 apm.bob_rework.lib.entities.logicProcessing = 'processing-unit'
 apm.bob_rework.lib.entities.logicAPU = 'advanced-processing-unit'
-

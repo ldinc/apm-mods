@@ -8,9 +8,9 @@ apm.bob_rework.lib.override.drop = function ()
     local rm = apm.lib.utils.recipe.remove
     rm('apm_gearing')
     rm('wood-pellets')
-    rm(apm.bob_rework.lib.entities.machineFrame)
-    rm(apm.bob_rework.lib.entities.steamMachineFrame)
-    rm(apm.bob_rework.lib.entities.advancedMachineFrame)
+    --rm(apm.bob_rework.lib.entities.machineFrame)
+    --rm(apm.bob_rework.lib.entities.steamMachineFrame)
+    --rm(apm.bob_rework.lib.entities.advancedMachineFrame)
 
     rm('boiler-2-from-oil-boiler')
     rm('boiler-3-from-heat-exchanger')

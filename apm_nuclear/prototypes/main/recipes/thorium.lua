@@ -207,8 +207,8 @@ recipe.normal.results = {
                 {type='item', name='apm_oxide_pellet_np237', amount_min=1, amount_max=1, probability=apm.nuclear.constants.probability_neptunium/3, show_details_in_recipe_tooltip=false},
                 {type='item', name='apm_oxide_pellet_pu239', amount_min=1, amount_max=1, probability=apm.nuclear.constants.probability_plutonium/3, show_details_in_recipe_tooltip=false},
                 {type='item', name='apm_radioactive_waste', amount=1, show_details_in_recipe_tooltip=false},
-                {type="fluid", name='apm_radioactive_wastewater', amount=apm.nuclear.constants.amount_of_rocow },
-                {type="item", name="fusion-catalyst", amount=1}
+                {type="fluid", name='apm_radioactive_wastewater', amount=apm.nuclear.constants.amount_of_rocow }
+                -- {type="item", name="fusion-catalyst", amount=1}
             }
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
@@ -450,8 +450,8 @@ recipe.normal.results = {
                 {type='item', name='apm_oxide_pellet_np237', amount=4, show_details_in_recipe_tooltip=false},
                 {type='item', name='apm_oxide_pellet_pu239', amount_min=1, amount_max=1, probability=apm.nuclear.constants.probability_plutonium/2, show_details_in_recipe_tooltip=false},
                 {type='item', name='apm_radioactive_waste', amount=1, show_details_in_recipe_tooltip=false},
-                {type="fluid", name='apm_radioactive_wastewater', amount=apm.nuclear.constants.amount_of_rocow },
-                {type="item", name="fusion-catalyst", amount=1},
+                {type="fluid", name='apm_radioactive_wastewater', amount=apm.nuclear.constants.amount_of_rocow }
+                -- {type="item", name="fusion-catalyst", amount=1},
             }
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true

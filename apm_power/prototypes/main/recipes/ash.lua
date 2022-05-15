@@ -27,7 +27,7 @@ recipe.order = 'ak_c'
 recipe.icons = icons
 recipe.normal = {}
 recipe.normal.enabled = false
-recipe.normal.energy_required = 2
+recipe.normal.energy_required = 1.5
 recipe.normal.ingredients = {
         {type="item", name="apm_crushed_stone", amount=2},
         {type="item", name='apm_generic_ash', amount=2},
