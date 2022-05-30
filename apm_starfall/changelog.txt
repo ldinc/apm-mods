@@ -1,0 +1,295 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.19.50
+Date: 23. 05. 2020
+  Changes:
+    - unification of the version with the other mods
+    - disable all compatibillity patches by default
+---------------------------------------------------------------------------------------------------
+Version: 0.19.03
+Date: 01. 02. 2020
+  Bugfixes:
+    - small icon fix for "Meteorite chunks".
+  Changes:
+    - adapted changes from the library version 0.19.03
+---------------------------------------------------------------------------------------------------
+Version: 0.19.02
+Date: 26. 01. 2020
+  Bugfixes:
+    - fixed ./lib/scripts/starfall.lua: Meteorites will no longer land on water, I missed a chunk check.
+  Balancing:
+    - recipe: "Meteorite crushing 1 and 2" increased needed water by 20 to 40, and added 20x "dirty water" as byproduct.
+  Changes:
+    - adapted changes from the library version 0.19.02
+---------------------------------------------------------------------------------------------------
+Version: 0.19.01
+Date: 23. 01. 2020
+  Changes:
+    - fixed some icon related stuff in the code for better compatibillity with other mods.
+---------------------------------------------------------------------------------------------------
+Version: 0.19.00
+Date: 21. 01. 2020
+  Major Features:
+    - Initial release for Factorio 0.18.0
+---------------------------------------------------------------------------------------------------
+Version: 0.18.18
+Date: 19. 01. 2020
+  Bugfixes:
+    - scripts: fixed some missing "local" declarations. (hopefully this will fix a very rare desync edge case)
+    - recipe: allow "Alien fuel cell" for hand crafting.
+  Balancing:
+    - removed byproduct from meteorite ore crushing.
+  Changes:
+    - increased probability value for all starfall secondary ores by 0.2.
+    - centralized initial script into the library.
+    - updated dependencies.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.17
+Date: 11. 01. 2020
+  Changes:
+    - adopt changes from library (version 0.18.18)
+---------------------------------------------------------------------------------------------------
+Version: 0.18.16
+Date: 05. 01. 2020
+  Changes:
+    - add "alien" fuel category to prototype: "generator-equipment" with property burner, for theses that uses chemical or refined chemical fuel.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.15
+Date: 04. 01. 2020
+  Bugfixes:
+    - fix: typo in "crusher drumms", it's now "crusher drums".
+  Changes:
+    - updated dependencies.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.14
+Date: 30. 12. 2019
+  Bugfixes:
+    - (aai-programmable-vehicles) fix: description for cars, tanks, etc.
+    - (aai-programmable-vehicles) fix: wrong fuel categories on hidden entities.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.13
+Date: 28. 12. 2019
+  Changes:
+    - new: setting: "Show "made in" for recipes of this mod."
+    - updated dependencies.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.12
+Date: 26. 12. 2019
+  Bugfixes:
+    - fix: https://mods.factorio.com/mod/apm_starfall/discussion/5e04d2b085df81000cc36598
+---------------------------------------------------------------------------------------------------
+Version: 0.18.10
+Date: 26. 12. 2019
+  Changes:
+    - add setting per player: Sound volume template (Very Low, Low, Normal), default: Normal.
+    - add setting per player: "Play meteroit alert sound effect", default: active.
+    - add setting per player: "Play meteroit impact sound effect", default: active.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.09
+Date: 20. 12. 2019
+  Changes:
+    - implement log level support from apm_lib into this mod
+---------------------------------------------------------------------------------------------------
+Version: 0.18.08
+Date: 19. 12. 2019
+  Changes:
+    - added a description for "Alien fuel cell" to make it clear that this fuel reduce the pollution on a machine by 80%
+---------------------------------------------------------------------------------------------------
+Version: 0.18.07
+Date: 18. 12. 2019
+  Changes:
+    - some optimizations, bug fixes, removing of unnecessary code.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.06
+Date: 15. 12. 2019
+  Changes:
+    - some optimizations, bug fixes, removing of unnecessary code.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.05
+Date: 14. 12. 2019
+  Changes:
+    - some optimizations, bug fixes, removing of unnecessary code.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.04
+Date: 12. 12. 2019
+  Bugfixes:
+    - wrong file name for german translation (settig-cfg -> settings.cfg)
+  Changes:
+    - new: setting: "Guaranteed impacts in the start area, at the beginning" default is enabled.
+  Compatibility:
+    - (reverse-factory) compatibillity added.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.03
+Date: 11. 12. 2019
+  Bugfixes:
+    - fix: added missing overwrites and checks for prototype pump with burner energy source
+  Changes:
+    - ./lib/initial.lua: changed to use init from apm_library.
+    - cleand up ./migrations.
+    - adapt changes from the apm library mod version 0.18.04.
+    - updated dependencies.
+---------------------------------------------------------------------------------------------------
+Version: 0.18.02
+Date: 08. 12. 2019
+  Changes:
+    - adapt changes from the apm library mod version 0.18.02
+---------------------------------------------------------------------------------------------------
+Version: 0.18.01
+Date: 07. 12. 2019
+  Changes:
+    - new: added remote.interface for other mods
+      Examples:
+      - /c remote.call('apm_starfall', 'add_surface', 1)
+      - /c remote.call('apm_starfall', 'remove_surface', 1)
+      - /c remote.call('apm_starfall', 'add_event', 1, 2, game.tick+600)
+      - /c remote.call('apm_starfall', 'add_event', 1, 2, game.tick+600, {max=128,min=10})
+    - rebalanced meteorite ore patch richness by distance from the center
+    - new: custom event: event_on_impact() -> event:
+      - event.surface = Index of the LuaSurface
+      - event.position = Types/Position of the impact center
+    - setting: "Create tag for the impact zone on the map" set default to: false
+---------------------------------------------------------------------------------------------------
+Version: 0.18.00
+Date: 04. 12. 2019
+  Changes:
+    - new settings for: event timer, ore richness and tags on map.
+    - improved integration with my other mods.
+    - improve compatibility with third party mods.
+    - new initialization script, made it possible to install this mod midway in a game.
+    - updated dependencies.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.24
+Date: 09. 11. 2019
+  Changes:
+    - changed recipe definition to use my revamped apm.lib.utils.builder function.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.23
+Date: 08. 11. 2019
+  Changes:
+    - More adjustments to the new tooltip UI (https://forums.factorio.com/viewtopic.php?f=3&t=77551).
+    - Changed some localisation names for fluids and recipes.
+  Balancing:
+    - recipe: "Mixed meteorite solution centrifuging 2" new result ratios: 42.5% iron, 42.5% copper, 10% uranium, 5% thorium.
+    - recipe: "Cupric meteorite solution centrifuging" increased input by 5 to 15x "Cupric meteorite solution".
+    - recipe: "Ferum meteorite solution centrifuging" increased input by 5 to 15x "Ferum meteorite solution".
+    - item/fuel: "Alien fuel cell" increased fuel value from 22.4 MJ to 25.6 MJ.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.22
+Date: 04. 11. 2019
+  Changes:
+    - Adjustments to the new tooltip UI (https://forums.factorio.com/viewtopic.php?f=3&t=77551)
+---------------------------------------------------------------------------------------------------
+Version: 0.17.21
+Date: 29. 10. 2019
+  Balancing:
+    - technologies: lock "Meteorite catalysis 1" behind "Water Treatment 1" if angel refining is active.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.20
+Date: 22. 10. 2019
+  Changes:
+    - general: mod renamed to "Amator Phasma's Starfall (Addon)".
+    - recipes: revamp.
+    - items: revamp.
+    - technologies: revamp.
+    - updated dependencies.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.19
+Date: 02. 05. 2019
+  Changes:
+    - updated for 0.17.35 API Changes
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.18
+Date: 28. 04. 2019
+  Changes:
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.17
+Date: 27. 04. 2019
+  Major Features:
+    - removed all media files to apm_resource_pack
+---------------------------------------------------------------------------------------------------
+Version: 0.17.15
+Date: 23. 04. 2019
+  Changes:
+    - marked as incompatible with 'Space Exploration' (for now, because there is allready such a functionallity in this mod)
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.14
+Date: 21. 04. 2019
+  Minor Features:
+    - new: ./lib/utils/starfall.lua: function: apm.lib.utils.starfall.remove.ore(ore_name)
+  Changes:
+    - relocate fuel- and recipe- categories to the library mod
+---------------------------------------------------------------------------------------------------
+Version: 0.17.13
+Date: 14. 04. 2019
+  Changes:
+    - updated thumbnail
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.12
+Date: 10. 04. 2019
+  Changes:
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.11
+Date: 09. 04. 2019
+  Changes:
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.10
+Date: 08. 04. 2019
+  Bugfixes:
+    - technology: was locked behind not exsitent prerequisites if ScienceCostTweaker Mod (mexmer) is present
+  Changes:
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.09
+Date: 07. 04. 2019
+  Changes:
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.08
+Date: 06. 04. 2019
+  Compatibility:
+    - added: ScienceCostTweaker Mod (mexmer)
+  Changes:
+    - updated dependencies
+    - added file LICENSE
+---------------------------------------------------------------------------------------------------
+Version: 0.17.07
+Date: 31. 03. 2019
+  Changes:
+    - change some internal names from the other mods
+    - change icon defenitions (./lib/definitions.lua)
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.06
+Date: 29. 03. 2019
+  Bugfixes:
+    - hardend namespace for inner and outer function from "utils.xxx" to "apm.lib.utils.xxx" this should prevent crashes if other mods can overwrite utils.
+---------------------------------------------------------------------------------------------------
+Version: 0.17.05
+Date: 28. 03. 2019
+  Changes:
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.04
+Date: 27. 03. 2019
+  Changes:
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.03
+Date: 23. 03. 2019
+  Bugfixes:
+    - fixed a error in script
+---------------------------------------------------------------------------------------------------
+Version: 0.17.02
+Date: 23. 03. 2019
+  Changes:
+    - updated dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.17.01
+Date: 16. 03. 2019
+  Major Features:
+    - Initial release

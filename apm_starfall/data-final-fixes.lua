@@ -1,0 +1,5 @@
+require('prototypes.main.entities.ore')
+require('prototypes.integrations.recipes')
+require('prototypes.integrations.technologies')
+require('prototypes.integrations.entities')
+require('prototypes.integrations.fuel')

@@ -62,7 +62,7 @@ local buildAdvancedAssembler = function (recipe, base, tier)
         engine = apm.bob_rework.lib.entities.electricEngineUnit
     end
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, base, 1)
+    -- apm.lib.utils.recipe.ingredient.mod(recipe, base, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, engine, 2 )
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 2)

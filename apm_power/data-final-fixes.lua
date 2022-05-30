@@ -16,6 +16,19 @@ require('prototypes.integrations.patches')
 
 local amount = settings.startup["apm_sinkhole_fluid_rate"].value
 
+
+local get_icons = function(prototype)
+  if prototype.icons then
+    return table.deepcopy(prototype.icons)
+  else
+    return {{
+      icon = prototype.icon,
+      icon_size = prototype.icon_size,
+      icon_mipmaps = prototype.icon_mipmaps
+    }}
+  end
+end
+
 for k, v in pairs(data.raw.fluid) do
     local newicons = get_icons(v)
     table.insert(newicons, no_icon)
@@ -26,7 +39,7 @@ for k, v in pairs(data.raw.fluid) do
         category = "apm_sinkhole",
         subgroup = "fluid-recipes",
         enabled = true,
-        hidden = false,
+        hidden = true,
         energy_required = 1,
         ingredients =
         {

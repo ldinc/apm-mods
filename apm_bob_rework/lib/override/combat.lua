@@ -100,7 +100,7 @@ local buildLaserTurret = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricEngineUnit, 50)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 50)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'diamond-5', 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'large-accumulator-3', 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'large-accumulator-2', 20)
 end
 
 local buildShotgunTurret = function ()

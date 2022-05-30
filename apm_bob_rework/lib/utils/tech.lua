@@ -396,7 +396,7 @@ local forceBind = {
     ['bob-flame-rocket'] = {['rocketry']={}},
     ['bob-piercing-rocket'] = {['rocketry']={}},
     ['bob-acid-rocket'] = {['rocketry']={}},
-    ['radars-2'] = {['military-2']={}},
+    ['radars-2'] = {['military-2']={}}
 }
 
 function apm.bob_rework.lib.utils.tech.postProcessByTTiers()

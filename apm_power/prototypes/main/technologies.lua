@@ -320,14 +320,6 @@ apm.lib.utils.technology.new('apm_power',
     {{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}},
     75, 30)
 
--- -- sinkhole
--- apm.lib.utils.technology.new('apm_power',
---     'apm_sinkhole',
---     {'apm_coking_plant_1'},
---     {'apm_sinkhole'},
---     {{"apm_industrial_science_pack", 1}, {"apm_steam_science_pack", 1}},
---     75, 30)
-
 -- Greenhouse I
 apm.lib.utils.technology.new('apm_power',
     'apm_greenhouse',

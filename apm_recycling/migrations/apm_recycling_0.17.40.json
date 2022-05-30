@@ -1,0 +1,22 @@
+{
+  "fluid":
+  [
+    ["apm_dirt_water", "apm_dirty_cleaning_solution"]
+  ],
+  "item":
+  [
+    ["", ""]
+  ],
+  "entity":
+  [
+    ["", ""]
+  ],
+  "recipe":
+  [
+    ["apm_dirt_water_recycling", "apm_dirty_cleaning_solution_reprocessing"]
+  ],
+  "technology":
+  [
+    ["", ""]
+  ]
+}
