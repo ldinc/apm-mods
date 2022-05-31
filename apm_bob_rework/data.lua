@@ -31,4 +31,8 @@ require('prototypes.main.entities.antimatter')
 require('prototypes.main.items.entities.antimatter')
 require('prototypes.main.recipes.entities.antimatter')
 
+require('prototypes.main.entities.mining')
+require('prototypes.main.items.entities.mining')
+require('prototypes.main.recipes.entities.mining')
+
 require('prototypes.main.technologies')

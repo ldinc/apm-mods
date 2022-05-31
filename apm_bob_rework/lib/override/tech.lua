@@ -431,7 +431,7 @@ function apm.bob_rework.lib.override.tech()
     free('bob-pumpjacks-2')
     free('bob-drills-4')
     free('bob-drills-3')
-    free('bob-drills-2')
+    -- free('bob-drills-2')
 
 
     free('logistic-system-3')
@@ -465,6 +465,11 @@ function apm.bob_rework.lib.override.tech()
 
     push('apm_power_electricity', 'kr-sentinel')
     push('deuterium-fuel-cell-2', 'kr-antimatter-reactor')
+
+    push('bob-drills-1', 'kr-electric-mining-drill-mk2')
+    push('bob-drills-2', 'kr-electric-mining-drill-mk3')
+    rm('bob-drills-1', 'bob-mining-drill-1')
+    rm('bob-drills-2', 'bob-mining-drill-2')
 
     -- push('titanium-processing', apm.bob_rework.lib.entities.nitinolPipe)
     -- push('titanium-processing', apm.bob_rework.lib.entities.nitinolUnderPipe)
