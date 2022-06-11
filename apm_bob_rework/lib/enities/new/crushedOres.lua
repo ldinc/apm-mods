@@ -5,7 +5,7 @@ apm.bob_rework.lib.entities.ore = {}
 
 apm.bob_rework.lib.entities.ore.copper = 'copper-ore'
 apm.bob_rework.lib.entities.ore.iron = 'iron-ore'
-apm.bob_rework.lib.entities.ore.aluminium = 'alumina'
+apm.bob_rework.lib.entities.ore.aluminium = 'bauxite-ore'
 apm.bob_rework.lib.entities.ore.zinc = 'zinc-ore'
 apm.bob_rework.lib.entities.ore.lead = 'lead-ore'
 apm.bob_rework.lib.entities.ore.gold = 'gold-ore'
@@ -41,19 +41,6 @@ apm.bob_rework.lib.entities.crushed.ore.silver = crushed(apm.bob_rework.lib.enti
 apm.bob_rework.lib.entities.crushed.ore.tin = crushed(apm.bob_rework.lib.entities.ore.tin)
 apm.bob_rework.lib.entities.crushed.ore.nickel = crushed(apm.bob_rework.lib.entities.ore.nickel)
 apm.bob_rework.lib.entities.crushed.ore.tungsten = crushed(apm.bob_rework.lib.entities.ore.tungsten)
--- advanced tier
-apm.bob_rework.lib.entities.crushed.ore.advanced.copper = crushedAdvanced(apm.bob_rework.lib.entities.ore.copper)
-apm.bob_rework.lib.entities.crushed.ore.advanced.iron = crushedAdvanced(apm.bob_rework.lib.entities.ore.iron)
-apm.bob_rework.lib.entities.crushed.ore.advanced.aluminium = crushedAdvanced(apm.bob_rework.lib.entities.ore.aluminium)
-apm.bob_rework.lib.entities.crushed.ore.advanced.zinc = crushedAdvanced(apm.bob_rework.lib.entities.ore.zinc)
-apm.bob_rework.lib.entities.crushed.ore.advanced.lead = crushedAdvanced(apm.bob_rework.lib.entities.ore.lead)
-apm.bob_rework.lib.entities.crushed.ore.advanced.gold = crushedAdvanced(apm.bob_rework.lib.entities.ore.gold)
-apm.bob_rework.lib.entities.crushed.ore.advanced.cobalt = crushedAdvanced(apm.bob_rework.lib.entities.ore.cobalt)
-apm.bob_rework.lib.entities.crushed.ore.advanced.titanium = crushedAdvanced(apm.bob_rework.lib.entities.ore.titanium)
-apm.bob_rework.lib.entities.crushed.ore.advanced.silver = crushedAdvanced(apm.bob_rework.lib.entities.ore.silver)
-apm.bob_rework.lib.entities.crushed.ore.advanced.tin = crushedAdvanced(apm.bob_rework.lib.entities.ore.tin)
-apm.bob_rework.lib.entities.crushed.ore.advanced.nickel = crushedAdvanced(apm.bob_rework.lib.entities.ore.nickel)
-apm.bob_rework.lib.entities.crushed.ore.advanced.tungsten = crushedAdvanced(apm.bob_rework.lib.entities.ore.tungsten)
 
 -- recipe settings for generate functions
 local recipeSetting = {

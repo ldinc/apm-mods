@@ -4,7 +4,6 @@ if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
 apm.bob_rework.lib.entities.enriched = {}
 apm.bob_rework.lib.entities.enriched.ore = {}
-apm.bob_rework.lib.entities.enriched.ore.advanced = {}
 
 local crushed = function(ore)
     return 'crushed-' .. ore
@@ -17,6 +16,19 @@ end
 local enrichedAdvanced = function(ore)
     return 'advanced-enriched-' .. ore
 end
+
+apm.bob_rework.lib.entities.enriched.ore.copper = enriched(apm.bob_rework.lib.entities.ore.copper)
+apm.bob_rework.lib.entities.enriched.ore.iron = enriched(apm.bob_rework.lib.entities.ore.iron)
+apm.bob_rework.lib.entities.enriched.ore.aluminium = enriched(apm.bob_rework.lib.entities.ore.aluminium)
+apm.bob_rework.lib.entities.enriched.ore.zinc = enriched(apm.bob_rework.lib.entities.ore.zinc)
+apm.bob_rework.lib.entities.enriched.ore.lead = enriched(apm.bob_rework.lib.entities.ore.lead)
+apm.bob_rework.lib.entities.enriched.ore.gold = enriched(apm.bob_rework.lib.entities.ore.gold)
+apm.bob_rework.lib.entities.enriched.ore.cobalt = enriched(apm.bob_rework.lib.entities.ore.cobalt)
+apm.bob_rework.lib.entities.enriched.ore.titanium = enriched(apm.bob_rework.lib.entities.ore.titanium)
+apm.bob_rework.lib.entities.enriched.ore.silver = enriched(apm.bob_rework.lib.entities.ore.silver)
+apm.bob_rework.lib.entities.enriched.ore.tin = enriched(apm.bob_rework.lib.entities.ore.tin)
+apm.bob_rework.lib.entities.enriched.ore.nickel = enriched(apm.bob_rework.lib.entities.ore.nickel)
+apm.bob_rework.lib.entities.enriched.ore.tungsten = enriched(apm.bob_rework.lib.entities.ore.tungsten)
 
 local icoPath = "__apm_bob_rework_ldinc__/graphics/icons/apm_heap.png"
 local tier1Ico = "__apm_bob_rework_ldinc__/graphics/icons/apm_tier_1.png"
@@ -58,7 +70,7 @@ local generateCommonEnriched = function(ore, tint)
     local item = {}
     item.type = 'item'
     item.name = target
-    item.icons = { ico, tier }
+    item.icons = { ico }
     item.stack_size = 200
     item.group = "apm_power"
     item.subgroup = "apm_power_intermediates"
@@ -70,6 +82,7 @@ local generateCommonEnriched = function(ore, tint)
     recipe.type = "recipe"
     recipe.name = target
     recipe.category = "apm_sifting_0"
+    recipe.icons = { ico, tier }
     recipe.normal = {}
     recipe.normal.enabled = true
     recipe.normal.energy_required = settings.sieveEnergyRequired
@@ -136,7 +149,7 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     recipe.normal.always_show_made_in = true
     recipe.expensive = table.deepcopy(recipe.normal)
     recipe.expensive.ingredients = {
-        { type = "item", name = crushedName, amount = settings.crushedOreAmount +2 },
+        { type = "item", name = crushedName, amount = settings.crushedOreAmount + 2 },
         { type = "fluid", name = liquid, amount = liquidAmount + 10 },
         { type = "fluid", name = extraLiquid, amount = extraLiquidAmount },
     }
@@ -144,7 +157,7 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     data:extend({ recipe })
 end
 
-local gen = function (ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
+local gen = function(ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
     generateCommonEnriched(ore, tint)
     generateAdvancedEnriched(ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
 end
