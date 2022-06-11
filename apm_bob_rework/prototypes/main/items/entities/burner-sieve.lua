@@ -8,7 +8,7 @@ local item = {}
 item.type = 'item'
 item.name = 'apm_burner_sieve'
 item.icons = {
-    apm.lib.icons.dynamics.machine.t1,
+    apm.lib.icons.dynamics.machine.t0,
     apm.lib.icons.dynamics.lable_si
 }
 item.stack_size = 50

@@ -26,7 +26,7 @@ sieve.type = "assembling-machine"
 sieve.name = "apm_burner_sieve"
 sieve.icons = {
     -- TODO: set new icon
-    apm.lib.icons.dynamics.machine.t1,
+    apm.lib.icons.dynamics.machine.t0,
     apm.lib.icons.dynamics.lable_si
 }
 sieve.localised_description = {"entity-description.apm_burner_sieve"}
