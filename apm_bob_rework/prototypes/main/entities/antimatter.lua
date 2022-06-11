@@ -194,7 +194,7 @@ data:extend({
         },
         burner = {
             type = "burner",
-            fuel_category = "chemical",  --- change
+            fuel_category = "deuterium", -- using deuterium 2 from bob
             fuel_inventory_size = 1,
             burnt_inventory_size = 1,
             effectivity = 1,
