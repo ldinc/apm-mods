@@ -5,12 +5,22 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 require('lib.enities.base')
 require('lib.tier.base')
 
-local fix = function (recipe)
+local fix = function(recipe)
     local item = data.raw['assembling-machine'][recipe]
     item.energy_source.burnt_inventory_size = 1
 end
 
-apm.bob_rework.lib.override.furnaces = function ()
+local bob_update = function ()
+    local name = 'electric-chemical-mixing-furnace'
+    local furnace = data.raw['assembling-machine'][name]
+    if furnace == nil or furnace.animation == nil then
+        return
+    end
+
+    furnace.animation.filename = '__apm_bob_rework_ldinc__/graphics/entities/bob/electric-chemical-mixing-furnace.png'
+end
+
+apm.bob_rework.lib.override.furnaces = function()
     local recipe = 'electric-mixing-furnace'
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 15)
@@ -32,4 +42,7 @@ apm.bob_rework.lib.override.furnaces = function ()
     fix('stone-chemical-furnace')
     fix('steel-mixing-furnace')
     fix('steel-chemical-furnace')
+
+    -- change color for bob furnace
+    bob_update()
 end
