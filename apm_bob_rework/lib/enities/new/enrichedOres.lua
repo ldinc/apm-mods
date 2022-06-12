@@ -72,8 +72,8 @@ local generateCommonEnriched = function(ore, tint)
     item.name = target
     item.icons = { ico }
     item.stack_size = 200
-    item.group = "apm_power"
-    item.subgroup = "apm_power_intermediates"
+    -- item.group = "apm_power"
+    item.subgroup = "bob-material"
     item.order = 'ab_i'
     data:extend({ item })
 

@@ -75,10 +75,10 @@ apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom = function(ore, tin
     local item = {}
     item.type = 'item'
     item.name = crushedName
-    item.icons = { ico, trash, tier }
+    item.icons = { ico }
     item.stack_size = 200
-    item.group = "apm_power"
-    item.subgroup = "apm_power_intermediates"
+    -- item.group = "apm_power"
+    item.subgroup = "bob-material"
     item.order = 'ab_i'
     data:extend({ item })
 
