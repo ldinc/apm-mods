@@ -52,7 +52,9 @@ apm.bob_rework.lib.entities.genMonel()
 
 --
 apm.bob_rework.lib.entities.cobaltAlloy = 'cobalt-alloy'
+apm.bob_rework.lib.entities.cobaltPlate = 'cobalt-plate'
 
+-- TODO: check dead code?
 apm.bob_rework.lib.entities.genCobaltAlloy = function ()
     local tint = {r=50/255, g=65/255, b=56/255}
     local ico = {
@@ -99,8 +101,6 @@ apm.bob_rework.lib.entities.genCobaltAlloy = function ()
     recipe.allow_decomposition = false
     data:extend({recipe})
 end
-
--- apm.bob_rework.lib.entities.genCobaltAlloy()
 
 apm.bob_rework.lib.entities.genEarlyZinc = function ()
     local ico = {

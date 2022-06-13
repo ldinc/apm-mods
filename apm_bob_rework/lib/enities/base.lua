@@ -1,4 +1,5 @@
 require('lib.enities.apm')
+require('lib.enities.bobPlates')
 require('lib.enities.basements')
 require('lib.enities.logic')
 require('lib.enities.pipes')

@@ -54,6 +54,7 @@ require('lib.override.power')
 require('lib.override.beacon')
 require('lib.override.grid')
 require('lib.override.plates')
+require('lib.override.titaniumAlloy')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.crushers()

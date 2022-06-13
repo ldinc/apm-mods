@@ -13,6 +13,7 @@ apm.bob_rework.lib.entities.nitinolGearWheel = 'nitinol-gear-wheel'
 --bearing-balls
 apm.bob_rework.lib.entities.bronzeBearingBall = 'bronze-bearing-ball'
 apm.bob_rework.lib.entities.brassBearingBall = 'brass-bearing-ball'
+apm.bob_rework.lib.entities.titaniumBearingBall = 'titanium-bearing-ball'
 
 -- bearings
 apm.bob_rework.lib.entities.steelBearing = 'steel-bearing'

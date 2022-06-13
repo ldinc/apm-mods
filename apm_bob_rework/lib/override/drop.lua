@@ -88,9 +88,9 @@ apm.bob_rework.lib.override.drop = function ()
 
     rm('bob-plasma-rocket')
 
-    -- rm(apm.bob_rework.lib.entities.nitinol)
-    -- rm(apm.bob_rework.lib.entities.nitinolGearWheel)
-    -- rm(apm.bob_rework.lib.entities.nitinolBearing)
+    rm(apm.bob_rework.lib.entities.nitinol)
+    rm(apm.bob_rework.lib.entities.nitinolGearWheel)
+    rm(apm.bob_rework.lib.entities.nitinolBearing)
 
     rm('shotgun-passive-defence-rampant-arsenal')
     rm('cannon-passive-defence-rampant-arsenal')
