@@ -489,6 +489,13 @@ function apm.bob_rework.lib.override.tech()
     free('bob-robot-gun-drones')
     free('bob-robot-laser-drones')
     free('bob-robot-flamethrower-drones')
+    free('bob-laser-turrets-5')
+    free('bob-laser-turrets-4')
+    free('radars-4')
+    free('radars-3')
+
+    free('apm_tools_1')
+    free('apm_tools_0')
 
     -- push('titanium-processing', apm.bob_rework.lib.entities.nitinolPipe)
     -- push('titanium-processing', apm.bob_rework.lib.entities.nitinolUnderPipe)

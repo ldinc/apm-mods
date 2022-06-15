@@ -10,6 +10,7 @@ require('lib.enities.gearingAndBearings')
 require('lib.enities.inserters')
 require('lib.enities.wires')
 require('lib.enities.pumps')
+require('lib.enities.nuclear')
 
 require('lib.enities.new.base')
 

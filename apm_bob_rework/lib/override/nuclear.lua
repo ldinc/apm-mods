@@ -5,7 +5,8 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 require('lib.enities.base')
 require('lib.tier.base')
 
-local buildNuclearRecipies = function ()
+local buildNuclearRecipies = function()
+    local mod = apm.lib.utils.recipe.ingredient.mod
     local recipe = 'apm_fuel_rod_container'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.carbon, 5)
 
@@ -47,8 +48,7 @@ local buildNuclearRecipies = function ()
 
     -- merge rtg with bob
     -- apm.lib.utils.recipe.remove('apm_rtg_radioisotope_thermoelectric_generator')
-    
-    
+
     local recipe = 'rtg'
     apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_oxide_pellet_pu239', 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_depleted_uranium_ingots', 10)
@@ -59,8 +59,14 @@ local buildNuclearRecipies = function ()
     apm.lib.utils.recipe.ingredient.mod('satellite', recipe, 25)
     apm.lib.utils.recipe.remove('apm_rtg_radioisotope_thermoelectric_generator')
 
-
-
+    -- change deuterium fuel cell 2 for super reactor
+    recipe = apm.bob_rework.lib.entities.nuclear.deuterium.cell.II
+    mod(recipe, apm.bob_rework.lib.entities.chem.deuterium, 1200)
+    mod(recipe, apm.bob_rework.lib.entities.nuclear.fusionCatalyst, 1)
+    local itm = data.raw.item[recipe]
+    if itm then
+        itm.fuel_value = '540GJ'
+    end
 end
 
 buildNuclearRecipies()

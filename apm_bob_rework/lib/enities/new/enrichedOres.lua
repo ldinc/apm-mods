@@ -200,7 +200,7 @@ gen(ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
 local tint = { r = 48 / 255, g = 126 / 255, b = 112 / 255 }
 local ore = apm.bob_rework.lib.entities.ore.zinc
 local liquid = 'sulfuric-acid'
-local extraLiquid = 'lubricant'
+local extraLiquid = apm.bob_rework.lib.entities.chem.lubricant
 gen(ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
 
 local tint = { r = 54 / 255, g = 54 / 255, b = 53 / 255 }

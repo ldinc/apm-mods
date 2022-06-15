@@ -81,6 +81,8 @@ local generateTitaniumAlloyTech = function ()
       data:extend({tech})
 
       apm.lib.utils.technology.add.recipe_for_unlock(apm.bob_rework.lib.tech.titaniumAlloy, apm.bob_rework.lib.entities.titaniumAlloy)
+      apm.lib.utils.technology.add.recipe_for_unlock(apm.bob_rework.lib.tech.titaniumAlloy, apm.bob_rework.lib.pipe.titaniumAlloy)
+      apm.lib.utils.technology.add.recipe_for_unlock(apm.bob_rework.lib.tech.titaniumAlloy, apm.bob_rework.lib.pipe.toGround.titaniumAlloy)
 end
 
 local generateTitaniumAlloyPipes = function ()
@@ -100,5 +102,5 @@ end
 
 generateTitaniumAlloyItem()
 generateTitaniumAlloyRecipe()
-generateTitaniumAlloyTech()
 generateTitaniumAlloyPipes()
+generateTitaniumAlloyTech()

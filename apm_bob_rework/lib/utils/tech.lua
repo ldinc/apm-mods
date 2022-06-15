@@ -962,7 +962,7 @@ function apm.bob_rework.lib.utils.tech.requiredProducts(tech, availableProducts)
         products['apm_fuel_rod_mox_active'] = nil
     end
     if tech.name == 'gun-turret' then
-        products['lubricant'] = {}
+        products[apm.bob_rework.lib.entities.chem.lubricant] = {}
     end
 
     return products

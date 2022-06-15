@@ -4,7 +4,7 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 
 require('lib.enities.base')
 
-apm.bob_rework.lib.override.drop = function ()
+apm.bob_rework.lib.override.drop = function()
     local rm = apm.lib.utils.recipe.remove
     rm('apm_gearing')
     rm('wood-pellets')
@@ -151,4 +151,12 @@ apm.bob_rework.lib.override.drop = function ()
     -- rm('ultimate-filter-inserter')
     -- rm('ultimate-stack-inserter')
     -- rm('ultimate-stack-filter-inserter')
+
+    rm('apm_sieve_copper')
+    rm('apm_dry_mud_sifting_iron')
+    rm('apm_dry_mud_sifting_copper')
+
+    rm('cobalt-steel-gear-wheel')
+    rm('cobalt-steel-bearing-ball')
+    rm('cobalt-steel-bearing')
 end
