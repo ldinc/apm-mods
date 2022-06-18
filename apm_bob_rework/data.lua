@@ -35,4 +35,8 @@ require('prototypes.main.entities.mining')
 require('prototypes.main.items.entities.mining')
 require('prototypes.main.recipes.entities.mining')
 
+require('prototypes.main.entities.se-beacon')
+require('prototypes.main.items.entities.se-beacon')
+require('prototypes.main.recipes.entities.se-beacon')
+
 require('prototypes.main.technologies')

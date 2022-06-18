@@ -51,3 +51,13 @@ newTech(
     40, 10,
     "__apm_bob_rework_ldinc__/graphics/tech/krastorio/wind-turbine.png"
 )
+
+newTech(
+    'apm_power',
+    'wide-beacon',
+    {'effect-transmission'},
+    {'wide-beacon'},
+    {{'apm_industrial_science_pack', 1}},
+    200, 70,
+    '__apm_bob_rework_ldinc__/graphics/tech/se/wide-beacon-2.png'
+)
