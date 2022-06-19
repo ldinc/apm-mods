@@ -39,4 +39,8 @@ require('prototypes.main.entities.se-beacon')
 require('prototypes.main.items.entities.se-beacon')
 require('prototypes.main.recipes.entities.se-beacon')
 
+require('prototypes.main.entities.se-rails')
+require('prototypes.main.items.entities.se-rails')
+require('prototypes.main.recipes.entities.se-rails')
+
 require('prototypes.main.technologies')

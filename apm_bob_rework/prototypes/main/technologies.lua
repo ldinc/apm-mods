@@ -61,3 +61,13 @@ newTech(
     200, 70,
     '__apm_bob_rework_ldinc__/graphics/tech/se/wide-beacon-2.png'
 )
+
+newTech(
+    'apm_power',
+    'alt-rail',
+    {'advanced-logistic-science-pack'},
+    {'alt-rail'},
+    {{'apm_industrial_science_pack', 1}},
+    200, 70,
+    '__apm_bob_rework_ldinc__/graphics/tech/se/rail-128.png'
+)
