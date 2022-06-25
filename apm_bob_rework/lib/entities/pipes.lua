@@ -20,6 +20,9 @@ apm.bob_rework.lib.entities.copperTungstenPipe = 'copper-tungsten-pipe'
 
 --refactored
 apm.bob_rework.lib.pipe.nitinol = 'nitinol-pipe'
+apm.bob_rework.lib.pipe.iron = 'pipe'
+apm.bob_rework.lib.pipe.steel = 'steel-pipe'
+apm.bob_rework.lib.pipe.copper = 'copper-pipe'
 
 apm.bob_rework.lib.entities.bronzeUnderPipe = 'bronze-pipe-to-ground'
 apm.bob_rework.lib.entities.brassUnderPipe = 'brass-pipe-to-ground'

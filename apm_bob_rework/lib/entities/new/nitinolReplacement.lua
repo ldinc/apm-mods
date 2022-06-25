@@ -4,8 +4,8 @@ if apm.bob_rework.lib.tech == nil then apm.bob_rework.lib.tech = {} end
 if apm.bob_rework.lib.pipe == nil then apm.bob_rework.lib.pipe = {} end
 if apm.bob_rework.lib.pipe.toGround == nil then apm.bob_rework.lib.pipe.toGround = {} end
 
-require('lib.enities.pipes')
-require('lib.enities.new.plate')
+require('lib.entities.pipes')
+require('lib.entities.new.plate')
 
 apm.bob_rework.lib.entities.titaniumAlloy = 'titanium-alloy'
 apm.bob_rework.lib.tech.titaniumAlloy = 'titanium-alloy-processing'

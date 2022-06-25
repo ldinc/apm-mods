@@ -2,10 +2,12 @@ if apm == nil then apm = {} end
 if apm.bob_rework == nil then apm.bob_rework = {} end
 
 -- require('lib.override.base')
-require('lib.enities.new.base')
-require('lib.enities.base')
+require('lib.entities.new.base')
+require('lib.entities.base')
 
 -- apm.bob_rework.lib.override.apply()
+
+require('prototypes.main.categories.item-subgroups')
 
 require('prototypes.main.entities.burner-sieve')
 require('prototypes.main.items.entities.burner-sieve')
@@ -42,5 +44,8 @@ require('prototypes.main.recipes.entities.se-beacon')
 require('prototypes.main.entities.se-rails')
 require('prototypes.main.items.entities.se-rails')
 require('prototypes.main.recipes.entities.se-rails')
+
+require('prototypes.main.entities.crashsite')
+require('prototypes.main.items.entities.crashsite')
 
 require('prototypes.main.technologies')

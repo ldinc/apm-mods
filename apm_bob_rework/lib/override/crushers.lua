@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 
@@ -28,7 +28,7 @@ local buildCrusherRecipe = function (recipe, tier)
 end
 
 apm.bob_rework.lib.override.crushers = function ()
-    buildCrusherRecipe(apm.bob_rework.lib.entities.crusher, apm.bob_rework.lib.tier.bronze)
-    buildCrusherRecipe(apm.bob_rework.lib.entities.steamCrusher, apm.bob_rework.lib.tier.brass)
-    buildCrusherRecipe(apm.bob_rework.lib.entities.advancedCrusher, apm.bob_rework.lib.tier.monel)
+    buildCrusherRecipe(apm.bob_rework.lib.entities.crusher, apm.bob_rework.lib.tier.gray)
+    buildCrusherRecipe(apm.bob_rework.lib.entities.steamCrusher, apm.bob_rework.lib.tier.steam)
+    buildCrusherRecipe(apm.bob_rework.lib.entities.advancedCrusher, apm.bob_rework.lib.tier.red)
 end

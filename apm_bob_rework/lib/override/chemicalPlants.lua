@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 local bob_chemical_plant_facing = function(tint, offset)
@@ -149,9 +149,8 @@ local buildChemicalPlant = function(recipe, tier, compressor)
 end
 
 apm.bob_rework.lib.override.chemicalPlants = function()
-    buildChemicalPlant('chemical-plant', apm.bob_rework.lib.tier.monel, 'air-pump')
-    buildChemicalPlant('chemical-plant-2', apm.bob_rework.lib.tier.steel, 'air-pump-2')
-    buildChemicalPlant('chemical-plant-3', apm.bob_rework.lib.tier.aluminium, 'air-pump-3')
-    buildChemicalPlant('chemical-plant-4', apm.bob_rework.lib.tier.titanium, 'air-pump-4')
+    buildChemicalPlant('chemical-plant', apm.bob_rework.lib.tier.yellow, 'air-pump')
+    buildChemicalPlant('chemical-plant-2', apm.bob_rework.lib.tier.red, 'air-pump-2')
+    buildChemicalPlant('chemical-plant-3', apm.bob_rework.lib.tier.blue, 'air-pump-3')
     redrawChemicalPlant()
 end

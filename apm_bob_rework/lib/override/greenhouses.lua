@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 local buildGreenhousesRecipe = function (recipe, tier)
@@ -30,7 +30,7 @@ local buildGreenhousesRecipe = function (recipe, tier)
 end
 
 apm.bob_rework.lib.override.greenhouses = function ()
-    buildGreenhousesRecipe(apm.bob_rework.lib.entities.greenhouse, apm.bob_rework.lib.tier.bronze)
-    buildGreenhousesRecipe(apm.bob_rework.lib.entities.steamGreenhouse, apm.bob_rework.lib.tier.brass)
-    buildGreenhousesRecipe(apm.bob_rework.lib.entities.advancedGreenhouse, apm.bob_rework.lib.tier.monel)
+    buildGreenhousesRecipe(apm.bob_rework.lib.entities.greenhouse, apm.bob_rework.lib.tier.gray)
+    buildGreenhousesRecipe(apm.bob_rework.lib.entities.steamGreenhouse, apm.bob_rework.lib.tier.steam)
+    buildGreenhousesRecipe(apm.bob_rework.lib.entities.advancedGreenhouse, apm.bob_rework.lib.tier.red)
 end

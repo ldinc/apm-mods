@@ -2,11 +2,12 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 require('lib.utils.debug')
+local wire = require('lib.entities.wires')
 
-local sulfur = function ()
+local sulfur = function()
     -- if resource_generator then
     -- resource_generator.setup_resource_autoplace_data("sulfur", {
     --     name = "sulfur",
@@ -29,13 +30,13 @@ local sulfur = function ()
     -- bobmods.ores.sulfur.enabled = true
 end
 
-apm.bob_rework.lib.override.others = function ()
+apm.bob_rework.lib.override.others = function()
     local recipe = apm.bob_rework.lib.entities.electricGeneratorUnit
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelBearing, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copperCable, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, wire.copper, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electroMagnet, 10)
 
     local recipe = 'train-stop'
@@ -44,7 +45,7 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicSteam, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.stoneBrick, 5)
-    
+
     local recipe = 'engine-unit'
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.pistions, 8)
@@ -58,7 +59,7 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.ironStick, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.iron, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.copperCable, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, wire.copper, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electroMagnet, 12)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steelBearing, 2)
 
@@ -74,7 +75,7 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electroMagnet, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brassGearWheel, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_treated_wood_planks', 2)
-    
+
     local recipe = 'advanced-logistic-science-pack'
     apm.lib.utils.recipe.ingredient.mod(recipe, 'brass-chest', 0)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.plastic, 5)
@@ -123,32 +124,32 @@ apm.bob_rework.lib.override.others = function ()
     -- sad hack
     local obj = data.raw.recipe[recipe]
     -- apm.bob_rework.lib.utils.debug.object(obj)
-    table.insert(obj.ingredients, {type='item', name='rail', amount=40})
-    table.insert(obj.ingredients, {type='item', name='productivity-module', amount=4})
+    table.insert(obj.ingredients, { type = 'item', name = 'rail', amount = 40 })
+    table.insert(obj.ingredients, { type = 'item', name = 'productivity-module', amount = 4 })
 
     local recipe = 'apm_industrial_science_pack_0'
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.logicBasic, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.stone, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicBasic, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.stone, 5)
 
     --#
     local recipe = 'apm_crusher_machine_2'
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.invar, 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_greenhouse_2'
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.invar, 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_press_machine_2'
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.invar, 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_coking_plant_2'
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.invar, 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_centrifuge_2'
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.invar, 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 15)
     local recipe = 'apm_steelworks_0'
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.invar, 0)
-    apm.lib.utils.recipe.ingredient.mod(recipe,apm.bob_rework.lib.entities.steel, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.invar, 0)
+    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.steel, 15)
 
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1b', 'crafting-with-fluid')
@@ -169,7 +170,7 @@ apm.bob_rework.lib.override.others = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.nitinol, 0)
 
     -- add stone for sifting machine
-    apm.lib.utils.recipe.result.add_with_probability('apm_dry_mud_sifting_iron', 'stone', 2,8, 1)
+    apm.lib.utils.recipe.result.add_with_probability('apm_dry_mud_sifting_iron', 'stone', 2, 8, 1)
     apm.lib.utils.recipe.result.add_with_probability('apm_dry_mud_sifting_copper', 'stone', 1, 8, 1)
     -- apm_dry_mud_sifting_iron
     -- apm_dry_mud_sifting_copper
@@ -184,7 +185,7 @@ apm.bob_rework.lib.override.others = function ()
     if modify then
         itm.burner.effectivity = "0.1"
     end
-    
+
     local target = 'apm_equipment_burner_generator_advanced'
     local itm = data.raw["generator-equipment"][target]
     itm.power = "1000kW"

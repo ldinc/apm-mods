@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 local buildStorageTank = function (recipe, tier)
@@ -32,8 +32,8 @@ apm.bob_rework.lib.override.storageTanks = function ()
         buildAllCornersStorageTank(extra, base, tier)
     end
 
-    gen('storage-tank', 'bob-storage-tank-all-corners', apm.bob_rework.lib.tier.brass)
-    gen('storage-tank-2', 'bob-storage-tank-all-corners-2', apm.bob_rework.lib.tier.steel)
-    gen('storage-tank-3', 'bob-storage-tank-all-corners-3', apm.bob_rework.lib.tier.aluminium)
-    gen('storage-tank-4', 'bob-storage-tank-all-corners-4', apm.bob_rework.lib.tier.titanium)
+    gen('storage-tank', 'bob-storage-tank-all-corners', apm.bob_rework.lib.tier.gray)
+    gen('storage-tank-2', 'bob-storage-tank-all-corners-2', apm.bob_rework.lib.tier.red)
+    -- gen('storage-tank-3', 'bob-storage-tank-all-corners-3', apm.bob_rework.lib.tier.aluminium)
+    -- gen('storage-tank-4', 'bob-storage-tank-all-corners-4', apm.bob_rework.lib.tier.titanium)
 end

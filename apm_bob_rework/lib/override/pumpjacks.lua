@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 local buildPumpjack = function(recipe, tier)
@@ -21,15 +21,15 @@ local buildPumpjack = function(recipe, tier)
 end
 
 apm.bob_rework.lib.override.pumpjacks = function ()
-    buildPumpjack('pumpjack', apm.bob_rework.lib.tier.brass)
-    buildPumpjack('bob-pumpjack-1', apm.bob_rework.lib.tier.monel)
-    buildPumpjack('bob-pumpjack-2', apm.bob_rework.lib.tier.steel)
-    buildPumpjack('bob-pumpjack-3', apm.bob_rework.lib.tier.aluminium)
-    buildPumpjack('bob-pumpjack-4', apm.bob_rework.lib.tier.titanium)
+    buildPumpjack('pumpjack', apm.bob_rework.lib.tier.yellow)
+    buildPumpjack('bob-pumpjack-1', apm.bob_rework.lib.tier.red)
+    -- buildPumpjack('bob-pumpjack-2', apm.bob_rework.lib.tier.steel)
+    -- buildPumpjack('bob-pumpjack-3', apm.bob_rework.lib.tier.aluminium)
+    -- buildPumpjack('bob-pumpjack-4', apm.bob_rework.lib.tier.titanium)
 
-    buildPumpjack('water-miner-1', apm.bob_rework.lib.tier.brass)
-    buildPumpjack('water-miner-2', apm.bob_rework.lib.tier.monel)
-    buildPumpjack('water-miner-3', apm.bob_rework.lib.tier.steel)
-    buildPumpjack('water-miner-4', apm.bob_rework.lib.tier.aluminium)
-    buildPumpjack('water-miner-5', apm.bob_rework.lib.tier.titanium)
+    buildPumpjack('water-miner-1', apm.bob_rework.lib.tier.yellow)
+    buildPumpjack('water-miner-2', apm.bob_rework.lib.tier.red)
+    -- buildPumpjack('water-miner-3', apm.bob_rework.lib.tier.steel)
+    -- buildPumpjack('water-miner-4', apm.bob_rework.lib.tier.aluminium)
+    -- buildPumpjack('water-miner-5', apm.bob_rework.lib.tier.titanium)
 end

@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 require('lib.utils.debug')
@@ -29,11 +29,11 @@ local buildCargoWagon  = function (recipe, tier, hp, w,h, armoured)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 12)
 end
 
-buildCargoWagon('cargo-wagon', apm.bob_rework.lib.tier.brass, 1000, 8, 6, false)
-buildCargoWagon('bob-cargo-wagon-2', apm.bob_rework.lib.tier.steel, 2000, 10, 6, false)
-buildCargoWagon('bob-cargo-wagon-3', apm.bob_rework.lib.tier.titanium, 3000, 12, 6, false)
-buildCargoWagon('bob-armoured-cargo-wagon', apm.bob_rework.lib.tier.steel, 2500, 14, 6, true)
-buildCargoWagon('bob-armoured-cargo-wagon-2', apm.bob_rework.lib.tier.titanium, 4000, 16, 6, true)
+buildCargoWagon('cargo-wagon', apm.bob_rework.lib.tier.red, 1000, 8, 6, false)
+-- buildCargoWagon('bob-cargo-wagon-2', apm.bob_rework.lib.tier.steel, 2000, 10, 6, false)
+-- buildCargoWagon('bob-cargo-wagon-3', apm.bob_rework.lib.tier.titanium, 3000, 12, 6, false)
+buildCargoWagon('bob-armoured-cargo-wagon', apm.bob_rework.lib.tier.red, 2500, 14, 6, true)
+-- buildCargoWagon('bob-armoured-cargo-wagon-2', apm.bob_rework.lib.tier.titanium, 4000, 16, 6, true)
 
 -------------------------------------------------------------------------------
 
@@ -60,11 +60,11 @@ local buildFluidWagon  = function (recipe, tier, hp, w,h, armoured)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 12)
 end
 
-buildFluidWagon('fluid-wagon', apm.bob_rework.lib.tier.brass, 1000, 8, 6, false)
-buildFluidWagon('bob-fluid-wagon-2', apm.bob_rework.lib.tier.steel, 2000, 10, 6, false)
-buildFluidWagon('bob-fluid-wagon-3', apm.bob_rework.lib.tier.titanium, 3000, 12, 6, false)
-buildFluidWagon('bob-armoured-fluid-wagon', apm.bob_rework.lib.tier.steel, 2500, 14, 6, true)
-buildFluidWagon('bob-armoured-fluid-wagon-2', apm.bob_rework.lib.tier.titanium, 4000, 16, 6, true)
+buildFluidWagon('fluid-wagon', apm.bob_rework.lib.tier.red, 1000, 8, 6, false)
+-- buildFluidWagon('bob-fluid-wagon-2', apm.bob_rework.lib.tier.steel, 2000, 10, 6, false)
+-- buildFluidWagon('bob-fluid-wagon-3', apm.bob_rework.lib.tier.titanium, 3000, 12, 6, false)
+-- buildFluidWagon('bob-armoured-fluid-wagon', apm.bob_rework.lib.tier.steel, 2500, 14, 6, true)
+-- buildFluidWagon('bob-armoured-fluid-wagon-2', apm.bob_rework.lib.tier.titanium, 4000, 16, 6, true)
 
 -------------------------------------------------------------------------------
 
@@ -136,12 +136,12 @@ local buildLocomotive = function (recipe, tier, hp, w, h, armoured)
 end
 
 
-buildLocomotive('locomotive', apm.bob_rework.lib.tier.brass, 1000, 8, 6, false)
-buildLocomotive('bob-locomotive-2', apm.bob_rework.lib.tier.steel, 2000, 10, 6, false)
-buildLocomotive('bob-locomotive-3', apm.bob_rework.lib.tier.titanium, 3000, 12, 6, false)
-buildLocomotive('bob-armoured-locomotive', apm.bob_rework.lib.tier.steel, 2500, 14, 8, true)
-buildLocomotive('bob-armoured-locomotive-2', apm.bob_rework.lib.tier.titanium, 4000, 16, 8, true)
-buildLocomotive('nuclear-train-vehicle-rampant-arsenal', apm.bob_rework.lib.tier.titanium, 7000, 18, 8, true)
+buildLocomotive('locomotive', apm.bob_rework.lib.tier.red, 1000, 8, 6, false)
+-- buildLocomotive('bob-locomotive-2', apm.bob_rework.lib.tier.steel, 2000, 10, 6, false)
+-- buildLocomotive('bob-locomotive-3', apm.bob_rework.lib.tier.titanium, 3000, 12, 6, false)
+buildLocomotive('bob-armoured-locomotive', apm.bob_rework.lib.tier.red, 2500, 14, 8, true)
+-- buildLocomotive('bob-armoured-locomotive-2', apm.bob_rework.lib.tier.titanium, 4000, 16, 8, true)
+buildLocomotive('nuclear-train-vehicle-rampant-arsenal', apm.bob_rework.lib.tier.blue, 7000, 18, 8, true)
 
 -------------------------------------------------------------------------------
 
@@ -167,6 +167,6 @@ local buildArtilleryWagon = function (recipe, tier, hp, w, h)
     apm.lib.utils.recipe.ingredient.mod(recipe, engine, 40 + 10*tier.level)
 end
 
-buildArtilleryWagon('artillery-wagon', apm.bob_rework.lib.tier.steel, 3000, 12, 8)
-buildArtilleryWagon('bob-artillery-wagon-2', apm.bob_rework.lib.tier.aluminium, 3500, 14, 8)
-buildArtilleryWagon('bob-artillery-wagon-3', apm.bob_rework.lib.tier.titanium, 4000, 16, 8)
+buildArtilleryWagon('artillery-wagon', apm.bob_rework.lib.tier.red, 3000, 12, 8)
+-- buildArtilleryWagon('bob-artillery-wagon-2', apm.bob_rework.lib.tier.aluminium, 3500, 14, 8)
+-- buildArtilleryWagon('bob-artillery-wagon-3', apm.bob_rework.lib.tier.titanium, 4000, 16, 8)

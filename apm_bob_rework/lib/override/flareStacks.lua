@@ -2,14 +2,14 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
-local buildFlare = function (recipe)
-    local tier = apm.bob_rework.lib.tier.monel
-    if recipe == 'incinerator' then
-        tier = apm.bob_rework.lib.tier.brass
-    end
+local buildFlare = function(recipe)
+    local tier = apm.bob_rework.lib.tier.yellow
+    -- if recipe == 'incinerator' then
+    --     tier = apm.bob_rework.lib.tier.ga
+    -- end
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
@@ -19,7 +19,7 @@ local buildFlare = function (recipe)
 end
 
 
-local buildGasVenting = function (recipe, tier)
+local buildGasVenting = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
@@ -28,11 +28,11 @@ local buildGasVenting = function (recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 4)
 end
 
-local buildIncinerator = function (recipe)
-    local tier = apm.bob_rework.lib.tier.monel
-    if recipe == 'incinerator' then
-        tier = apm.bob_rework.lib.tier.brass
-    end
+local buildIncinerator = function(recipe)
+    local tier = apm.bob_rework.lib.tier.yellow
+    -- if recipe == 'incinerator' then
+    --     tier = apm.bob_rework.lib.tier.brass
+    -- end
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
@@ -40,11 +40,11 @@ local buildIncinerator = function (recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
 end
 
-apm.bob_rework.lib.override.flareStacks = function ()
-    buildGasVenting('vent-stack', apm.bob_rework.lib.tier.monel)
+apm.bob_rework.lib.override.flareStacks = function()
+    buildGasVenting('vent-stack', apm.bob_rework.lib.tier.yellow)
     buildFlare('flare-stack')
     buildIncinerator('incinerator')
-    buildIncinerator('electric-incinerator')    
+    buildIncinerator('electric-incinerator')
 
     -- local obj = data.raw.furnace['electric-incinerator']
     -- obj.result_inventory_size = 1

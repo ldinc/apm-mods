@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 
@@ -12,9 +12,9 @@ local buildLaboratoryRecipe = function (recipe, tier)
 
     if tier.level > 0 then
         local inserter = tier.inserter
-        if tier.level == apm.bob_rework.lib.tier.monel.level then
-            inserter = apm.bob_rework.lib.entities.yellowInserter
-        end
+        -- if tier.level == apm.bob_rework.lib.tier.monel.level then
+        --     inserter = apm.bob_rework.lib.entities.yellowInserter
+        -- end
         apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 5)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
     end
@@ -35,9 +35,9 @@ local buildLaboratoryRecipe = function (recipe, tier)
 end
 
 apm.bob_rework.lib.override.laboratories = function ()
-    buildLaboratoryRecipe(apm.bob_rework.lib.entities.laboratory, apm.bob_rework.lib.tier.bronze)
-    buildLaboratoryRecipe(apm.bob_rework.lib.entities.steamLaboratory, apm.bob_rework.lib.tier.brass)
-    buildLaboratoryRecipe(apm.bob_rework.lib.entities.advancedLaboratory, apm.bob_rework.lib.tier.monel)
+    buildLaboratoryRecipe(apm.bob_rework.lib.entities.laboratory, apm.bob_rework.lib.tier.gray)
+    buildLaboratoryRecipe(apm.bob_rework.lib.entities.steamLaboratory, apm.bob_rework.lib.tier.steam)
+    buildLaboratoryRecipe(apm.bob_rework.lib.entities.advancedLaboratory, apm.bob_rework.lib.tier.red)
     -- TODO: fix tier foe lab-2
-    buildLaboratoryRecipe('lab-2', apm.bob_rework.lib.tier.monel)
+    buildLaboratoryRecipe('lab-2', apm.bob_rework.lib.tier.blue)
 end

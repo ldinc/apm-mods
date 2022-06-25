@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 local buildMiningRecipe = function (recipe, tier)
@@ -35,7 +35,7 @@ local buildMiningAdvancedRecipe = function (recipe, base, tier)
 end
 
 local buildYellowMiner = function ()
-    local recipe, tier = apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.brass
+    local recipe, tier = apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.yellow
     local engine = apm.bob_rework.lib.entities.electricEngineUnit
     local logic = apm.bob_rework.lib.entities.logicContact
 
@@ -50,17 +50,18 @@ local buildYellowMiner = function ()
 end
 
 apm.bob_rework.lib.override.mining = function ()
-    buildMiningRecipe(apm.bob_rework.lib.entities.burnerMiner, apm.bob_rework.lib.tier.bronze)
-    buildMiningAdvancedRecipe(apm.bob_rework.lib.entities.improvedBurnerMiner, apm.bob_rework.lib.entities.burnerMiner, apm.bob_rework.lib.tier.bronze)
+    buildMiningRecipe(apm.bob_rework.lib.entities.burnerMiner, apm.bob_rework.lib.tier.gray)
+    buildMiningAdvancedRecipe(apm.bob_rework.lib.entities.improvedBurnerMiner, apm.bob_rework.lib.entities.burnerMiner, apm.bob_rework.lib.tier.gray)
    
-    buildMiningRecipe(apm.bob_rework.lib.entities.steamMiner, apm.bob_rework.lib.tier.brass)
+    buildMiningRecipe(apm.bob_rework.lib.entities.steamMiner, apm.bob_rework.lib.tier.steam)
     
     -- buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.brass)
     buildYellowMiner()
-    buildMiningRecipe(apm.bob_rework.lib.entities.advancedElectricMiner_t2, apm.bob_rework.lib.tier.monel)
+    --TODO: addd m2 & mk3
+    -- buildMiningRecipe(apm.bob_rework.lib.entities.advancedElectricMiner_t2, apm.bob_rework.lib.tier.monel)
     -- buildMiningAdvancedRecipe(apm.bob_rework.lib.entities.advancedElectricMiner_t2, apm.bob_rework.lib.entities.electricMiner_t2, apm.bob_rework.lib.tier.monel)
 
-    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t3, apm.bob_rework.lib.tier.steel)
-    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t4, apm.bob_rework.lib.tier.aluminium)
-    buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t5, apm.bob_rework.lib.tier.titanium)
+    -- buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t3, apm.bob_rework.lib.tier.steel)
+    -- buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t4, apm.bob_rework.lib.tier.aluminium)
+    -- buildMiningRecipe(apm.bob_rework.lib.entities.electricMiner_t5, apm.bob_rework.lib.tier.titanium)
 end

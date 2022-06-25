@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 local buildPressRecipe = function (recipe, tier)
@@ -27,7 +27,7 @@ local buildPressRecipe = function (recipe, tier)
 end
 
 apm.bob_rework.lib.override.presses = function ()
-    buildPressRecipe(apm.bob_rework.lib.entities.press, apm.bob_rework.lib.tier.bronze)
-    buildPressRecipe(apm.bob_rework.lib.entities.steamPress, apm.bob_rework.lib.tier.brass)
-    buildPressRecipe(apm.bob_rework.lib.entities.advancedPress, apm.bob_rework.lib.tier.monel)
+    buildPressRecipe(apm.bob_rework.lib.entities.press, apm.bob_rework.lib.tier.gray)
+    buildPressRecipe(apm.bob_rework.lib.entities.steamPress, apm.bob_rework.lib.tier.steam)
+    buildPressRecipe(apm.bob_rework.lib.entities.advancedPress, apm.bob_rework.lib.tier.red)
 end

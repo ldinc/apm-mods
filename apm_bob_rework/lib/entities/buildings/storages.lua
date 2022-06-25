@@ -1,0 +1,3 @@
+local storages = {}
+
+return storages

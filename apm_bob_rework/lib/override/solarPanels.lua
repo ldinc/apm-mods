@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 local buildSolarPanel= function (small, normal, large, tier, extra, alloy)
@@ -49,7 +49,7 @@ local buildSolarPanel= function (small, normal, large, tier, extra, alloy)
 end
 
 apm.bob_rework.lib.override.solarPanels = function ()
-    buildSolarPanel('solar-panel-small', 'solar-panel', 'solar-panel-large', apm.bob_rework.lib.tier.brass, nil, apm.bob_rework.lib.entities.copper)
-    buildSolarPanel('solar-panel-small-2', 'solar-panel-2', 'solar-panel-large-2', apm.bob_rework.lib.tier.steel, nil, apm.bob_rework.lib.entities.silver)
-    buildSolarPanel('solar-panel-small-3', 'solar-panel-3', 'solar-panel-large-3', apm.bob_rework.lib.tier.titanium, apm.bob_rework.lib.entities.siliconWafer, apm.bob_rework.lib.entities.gold)
+    buildSolarPanel('solar-panel-small', 'solar-panel', 'solar-panel-large', apm.bob_rework.lib.tier.yellow, nil, apm.bob_rework.lib.entities.copper)
+    buildSolarPanel('solar-panel-small-2', 'solar-panel-2', 'solar-panel-large-2', apm.bob_rework.lib.tier.red, nil, apm.bob_rework.lib.entities.silver)
+    -- buildSolarPanel('solar-panel-small-3', 'solar-panel-3', 'solar-panel-large-3', apm.bob_rework.lib.tier.titanium, apm.bob_rework.lib.entities.siliconWafer, apm.bob_rework.lib.entities.gold)
 end

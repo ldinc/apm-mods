@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 apm.bob_rework.lib.override.steelworks = function ()
@@ -14,7 +14,7 @@ apm.bob_rework.lib.override.steelworks = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.brassPipe, 5)
 
     local recipe = apm.bob_rework.lib.entities.steelworks
-    local tier = apm.bob_rework.lib.tier.monel
+    local tier = apm.bob_rework.lib.tier.yellow
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 14)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 15)
@@ -22,7 +22,7 @@ apm.bob_rework.lib.override.steelworks = function ()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.concrete, 20)
 
     local recipe = apm.bob_rework.lib.entities.advancedSteelworks
-    local tier = apm.bob_rework.lib.tier.titanium
+    local tier = apm.bob_rework.lib.tier.red
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 18)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 20)

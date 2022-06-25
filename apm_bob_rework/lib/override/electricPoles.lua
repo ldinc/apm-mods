@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 local buildEPole = function (medium, big, substation, tier, r)
@@ -47,8 +47,8 @@ local buildEPole = function (medium, big, substation, tier, r)
 end
 
 apm.bob_rework.lib.override.electricPoles = function ()
-    buildEPole('medium-electric-pole', 'big-electric-pole', 'substation', apm.bob_rework.lib.tier.monel, 9)
-    buildEPole('medium-electric-pole-2', 'big-electric-pole-2', 'substation-2', apm.bob_rework.lib.tier.steel, 18)
+    buildEPole('medium-electric-pole', 'big-electric-pole', 'substation', apm.bob_rework.lib.tier.yellow, 9)
+    buildEPole('medium-electric-pole-2', 'big-electric-pole-2', 'substation-2', apm.bob_rework.lib.tier.blue, 18)
     -- buildEPole('medium-electric-pole-3', 'big-electric-pole-3', 'substation-3', apm.bob_rework.lib.tier.aluminium)
     -- buildEPole('medium-electric-pole-4', 'big-electric-pole-4', 'substation-4', apm.bob_rework.lib.tier.titanium)
 end

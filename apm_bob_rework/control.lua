@@ -1,5 +1,6 @@
 local event = require("__flib__.event")
 local on_tick_n = require("__flib__.on-tick-n")
+local migrations = require("scripts.migrations")
 
 local energy_absorber = require("scripts.energy-absorber")
 local tesla_coil = require("scripts.tesla-coil")
@@ -13,6 +14,7 @@ event.on_init(function()
     -- Initialize `global` table
     tesla_coil.init()
     tesla_coil.get_absorber_buffer_capacity()
+    migrations.generic()
 end)
 
 -- CUSTOM INPUT

@@ -1,11 +1,11 @@
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
-require('lib.enities.gearingAndBearings')
+require('lib.entities.gearingAndBearings')
 
-apm.bob_rework.lib.entities.genBearingBall = function (name, base, tint)
+apm.bob_rework.lib.entities.genGearWheel = function (name, base, tint)
     local ico = {
-        icon = "__apm_bob_rework_ldinc__/graphics/icons/bearing-ball.png",
+        icon = "__apm_bob_rework_ldinc__/graphics/icons/gear-wheel.png",
         icon_size = 32,
         tint = tint,
     }
@@ -29,8 +29,8 @@ apm.bob_rework.lib.entities.genBearingBall = function (name, base, tint)
     recipe.normal.ingredients = {
             {type="item", name=base, amount=1}
         }
-    recipe.normal.results = { 
-            {type='item', name=name, amount=12}
+    recipe.normal.results = {
+            {type='item', name=name, amount=1}
         }
     recipe.normal.main_product = name
     recipe.normal.requester_paste_multiplier = 4
@@ -44,5 +44,6 @@ apm.bob_rework.lib.entities.genBearingBall = function (name, base, tint)
     data:extend({recipe})
 end
 
-apm.bob_rework.lib.entities.genBearingBall(apm.bob_rework.lib.entities.bronzeBearingBall, apm.bob_rework.lib.entities.bronze, {r=151/255, g=115/255, b=81/255})
-apm.bob_rework.lib.entities.genBearingBall(apm.bob_rework.lib.entities.brassBearingBall, apm.bob_rework.lib.entities.brass, {r=235/255, g=244/255, b=181/255})
+local alloy = require('lib.entities.alloys')
+
+apm.bob_rework.lib.entities.genGearWheel(apm.bob_rework.lib.entities.bronzeGearWheel, alloy.bronze, {r=151/255, g=115/255, b=81/255})

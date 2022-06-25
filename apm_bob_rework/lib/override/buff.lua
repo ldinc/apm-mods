@@ -1,7 +1,7 @@
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 
 apm.bob_rework.lib.override.buff = function ()
     apm.lib.utils.recipe.energy_required.mod('apm_stone_brick_raw_with_crushed', 1, 1.5)

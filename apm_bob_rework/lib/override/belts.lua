@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 local buildBelts = function (tier)
@@ -47,10 +47,9 @@ local buildBelts = function (tier)
 end
 
 apm.bob_rework.lib.override.belts = function ()
-    buildBelts(apm.bob_rework.lib.tier.bronze)
-    buildBelts(apm.bob_rework.lib.tier.brass)
-    buildBelts(apm.bob_rework.lib.tier.monel)
-    buildBelts(apm.bob_rework.lib.tier.steel)
-    buildBelts(apm.bob_rework.lib.tier.aluminium)
-    buildBelts(apm.bob_rework.lib.tier.titanium)
+    buildBelts(apm.bob_rework.lib.tier.gray)
+    -- steam same as yellow
+    buildBelts(apm.bob_rework.lib.tier.yellow)
+    buildBelts(apm.bob_rework.lib.tier.red)
+    buildBelts(apm.bob_rework.lib.tier.blue)
 end

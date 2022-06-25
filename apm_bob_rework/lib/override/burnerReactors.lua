@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 -- require('lib.utils.debug')
 
@@ -36,15 +36,15 @@ end
 
 
 apm.bob_rework.lib.override.burnerReactors = function ()
-    buildBurnerReactor('burner-reactor', apm.bob_rework.lib.tier.monel)
-    buildBurnerReactor('burner-reactor-2', apm.bob_rework.lib.tier.aluminium)
-    buildBurnerReactor('burner-reactor-3', apm.bob_rework.lib.tier.titanium)
+    buildBurnerReactor('burner-reactor', apm.bob_rework.lib.tier.yellow)
+    -- buildBurnerReactor('burner-reactor-2', apm.bob_rework.lib.tier.aluminium)
+    -- buildBurnerReactor('burner-reactor-3', apm.bob_rework.lib.tier.titanium)
 
-    buildFluidBurnerReactor('fluid-reactor', apm.bob_rework.lib.tier.monel)
-    buildFluidBurnerReactor('fluid-reactor-2', apm.bob_rework.lib.tier.aluminium)
-    buildFluidBurnerReactor('fluid-reactor-3', apm.bob_rework.lib.tier.titanium)    
+    buildFluidBurnerReactor('fluid-reactor', apm.bob_rework.lib.tier.yellow)
+    -- buildFluidBurnerReactor('fluid-reactor-2', apm.bob_rework.lib.tier.aluminium)
+    -- buildFluidBurnerReactor('fluid-reactor-3', apm.bob_rework.lib.tier.titanium)    
 
     fixFuelForHeatExhanger('burner-reactor')
-    fixFuelForHeatExhanger('burner-reactor-2')
-    fixFuelForHeatExhanger('burner-reactor-3')
+    -- fixFuelForHeatExhanger('burner-reactor-2')
+    -- fixFuelForHeatExhanger('burner-reactor-3')
 end

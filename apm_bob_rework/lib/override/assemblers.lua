@@ -2,7 +2,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.enities.base')
+require('lib.entities.base')
 require('lib.tier.base')
 
 apm.bob_rework.lib.override.genAssembler = function (recipe, tier)
@@ -90,16 +90,17 @@ local buildElectronicAssembler = function (recipe, tier)
 end
 
 apm.bob_rework.lib.override.assemblers = function ()
-    apm.bob_rework.lib.override.genAssembler('apm_assembling_machine_0', apm.bob_rework.lib.tier.bronze)
-    apm.bob_rework.lib.override.genAssembler('apm_assembling_machine_1', apm.bob_rework.lib.tier.brass)
-    apm.bob_rework.lib.override.genAssembler('assembling-machine-1', apm.bob_rework.lib.tier.brass)
-    buildAdvancedAssembler('assembling-machine-2', 'assembling-machine-1', apm.bob_rework.lib.tier.brass)
-    apm.bob_rework.lib.override.genAssembler('assembling-machine-3', apm.bob_rework.lib.tier.monel)
-    apm.bob_rework.lib.override.genAssembler('assembling-machine-4', apm.bob_rework.lib.tier.steel)
-    apm.bob_rework.lib.override.genAssembler('assembling-machine-5', apm.bob_rework.lib.tier.aluminium)
-    apm.bob_rework.lib.override.genAssembler('assembling-machine-6', apm.bob_rework.lib.tier.titanium)
+    apm.bob_rework.lib.override.genAssembler('apm_assembling_machine_0', apm.bob_rework.lib.tier.gray)
+    apm.bob_rework.lib.override.genAssembler('apm_assembling_machine_1', apm.bob_rework.lib.tier.steam)
+    -- apm.bob_rework.lib.override.genAssembler('assembling-machine-1', apm.bob_rework.lib.tier.brass)
+    -- buildAdvancedAssembler('assembling-machine-2', 'assembling-machine-1', apm.bob_rework.lib.tier.brass)
+    apm.bob_rework.lib.override.genAssembler('assembling-machine-2', apm.bob_rework.lib.tier.yellow)
+    apm.bob_rework.lib.override.genAssembler('assembling-machine-3', apm.bob_rework.lib.tier.red)
+    apm.bob_rework.lib.override.genAssembler('assembling-machine-4', apm.bob_rework.lib.tier.blue)
+    -- apm.bob_rework.lib.override.genAssembler('assembling-machine-5', apm.bob_rework.lib.tier.aluminium)
+    -- apm.bob_rework.lib.override.genAssembler('assembling-machine-6', apm.bob_rework.lib.tier.titanium)
 
-    buildElectronicAssembler('electronics-machine-1', apm.bob_rework.lib.tier.brass)
-    buildElectronicAssembler('electronics-machine-2', apm.bob_rework.lib.tier.steel)
-    buildElectronicAssembler('electronics-machine-3', apm.bob_rework.lib.tier.titanium)
+    -- buildElectronicAssembler('electronics-machine-1', apm.bob_rework.lib.tier.brass)
+    -- buildElectronicAssembler('electronics-machine-2', apm.bob_rework.lib.tier.steel)
+    -- buildElectronicAssembler('electronics-machine-3', apm.bob_rework.lib.tier.titanium)
 end

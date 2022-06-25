@@ -1,12 +1,12 @@
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
-require('lib.enities.fluids')
-require('lib.enities.gearingAndBearings')
+require('lib.entities.gearingAndBearings')
+local alloy = require('lib.entities.alloys')
 
-apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
+apm.bob_rework.lib.entities.genBearingBall = function (name, base, tint)
     local ico = {
-        icon = "__apm_bob_rework_ldinc__/graphics/icons/bearing.png",
+        icon = "__apm_bob_rework_ldinc__/graphics/icons/bearing-ball.png",
         icon_size = 32,
         tint = tint,
     }
@@ -24,17 +24,14 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
     local recipe = {}
     recipe.type = "recipe"
     recipe.name = name
-    recipe.category = 'crafting-with-fluid'
     recipe.normal = {}
     recipe.normal.enabled = true
     recipe.normal.energy_required = 0.5
     recipe.normal.ingredients = {
-            {type="item", name=base, amount=1},
-            {type="item", name=ball, amount=16},
-            {type="fluid", name=apm.bob_rework.lib.entities.chem.lubricant, amount=10}
+            {type="item", name=base, amount=1}
         }
     recipe.normal.results = { 
-            {type='item', name=name, amount=2}
+            {type='item', name=name, amount=12}
         }
     recipe.normal.main_product = name
     recipe.normal.requester_paste_multiplier = 4
@@ -48,11 +45,5 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
     data:extend({recipe})
 end
 
-apm.bob_rework.lib.entities.genBearing(
-    apm.bob_rework.lib.entities.bronzeBearing, apm.bob_rework.lib.entities.bronze,
-    apm.bob_rework.lib.entities.bronzeBearingBall, {r=151/255, g=115/255, b=81/255}
-)
-apm.bob_rework.lib.entities.genBearing(
-    apm.bob_rework.lib.entities.brassBearing, apm.bob_rework.lib.entities.brass,
-    apm.bob_rework.lib.entities.brassBearingBall, {r=235/255, g=244/255, b=181/255}
-)
+apm.bob_rework.lib.entities.genBearingBall(apm.bob_rework.lib.entities.bronzeBearingBall, alloy.bronze, {r=151/255, g=115/255, b=81/255})
+apm.bob_rework.lib.entities.genBearingBall(apm.bob_rework.lib.entities.brassBearingBall, alloy.brass, {r=235/255, g=244/255, b=181/255})
