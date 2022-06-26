@@ -8,3 +8,18 @@ apm.bob_rework.lib.entities.logicElectronic = 'electronic-circuit'
 apm.bob_rework.lib.entities.logicAdvanced = 'advanced-circuit'
 apm.bob_rework.lib.entities.logicProcessing = 'processing-unit'
 apm.bob_rework.lib.entities.logicAPU = 'advanced-processing-unit'
+
+local logics = {
+    mechanical = 'apm_mechanical_relay',
+    steam = 'apm_steam_relay',
+
+    circuit = {
+        low = 'basic-circuit-board',
+        basic = 'electronic-circuit',
+        advanced = 'advanced-circuit',
+    },
+    PU = 'processing-unit',
+    APU = 'advanced-processing-unit',
+}
+
+return logics

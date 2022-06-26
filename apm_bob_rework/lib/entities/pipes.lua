@@ -36,3 +36,17 @@ apm.bob_rework.lib.pipe.toGround.nitinol = 'nitinol-pipe-to-ground'
 apm.bob_rework.lib.entities.heatPipe = 'heat-pipe'
 apm.bob_rework.lib.entities.heatPipe_t2 = 'heat-pipe-2'
 apm.bob_rework.lib.entities.heatPipe_t3 = 'heat-pipe-3'
+
+local pipes = {
+    base = {
+        brass = 'brass-pipe',
+        steel = 'steel-pipe',
+        titanium = 'titanium-pipe'
+    },
+    under = {
+        brass = 'brass-pipe-to-ground',
+        steel = 'steel-pipe-to-ground',
+    },
+}
+
+return pipes
