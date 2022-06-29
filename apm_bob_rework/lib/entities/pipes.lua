@@ -40,12 +40,27 @@ apm.bob_rework.lib.entities.heatPipe_t3 = 'heat-pipe-3'
 local pipes = {
     base = {
         brass = 'brass-pipe',
+        bronze = 'bronze-pipe',
+        copper = 'copper-pipe',
         steel = 'steel-pipe',
-        titanium = 'titanium-pipe'
+        iron = 'iron-pipe',
+        titanium = 'titanium-pipe',
+        titaniumAlloy = 'titanium-alloy-pipe',
+        ceramic = 'ceramic-pipe',
+        copperTungsten = 'copper-tungsten-pipe',
+        nitinol = 'nitinol-pipe',
     },
     under = {
         brass = 'brass-pipe-to-ground',
+        bronze = 'bronze-pipe-to-ground',
+        copper = 'copper-pipe-to-ground',
         steel = 'steel-pipe-to-ground',
+        iron = 'iron-pipe-to-ground',
+        titanium = 'titanium-pipe-to-ground',
+        titaniumAlloy = 'titanium-alloy-pipe-to-ground',
+        ceramic = 'ceramic-pipe-to-ground',
+        copperTungsten = 'copper-tungsten-pipe-to-ground',
+        nitinol = 'nitinol-pipe-to-ground',
     },
 }
 

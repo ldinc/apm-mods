@@ -7,6 +7,9 @@ local alloys =  {
         nitinol = 'nitinol-alloy',
         gunmetal = 'gunmetal-alloy',
         lowDensityStructure = 'low-density-structure',
+        monel = 'monel-alloy',
+        tungstenCarbide = 'tungsten-carbide',
+        titanium = 'titanium-alloy',
     }
 
 return alloys

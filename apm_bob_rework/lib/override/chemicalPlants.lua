@@ -2,8 +2,10 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.entities.base')
-require('lib.tier.base')
+local t = require('lib.tier.base')
+local b = require('lib.entities.buildings.chemistry')
+local p = require('lib.entities.product')
+local m = require('lib.entities.materials')
 
 local bob_chemical_plant_facing = function(tint, offset)
     return {
@@ -130,8 +132,12 @@ local redrawChemicalPlant = function()
     buildIcon(cp3, "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant-b.png")
 end
 
-local buildChemicalPlant = function(recipe, tier, compressor)
+local buildChemicalPlant = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
+
+    if tier.frame then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 9)
+    end
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 6 + 5 * tier.level)
@@ -140,17 +146,16 @@ local buildChemicalPlant = function(recipe, tier, compressor)
     if tier.level >= 4 then
         count = 4
     end
-    -- apm.lib.utils.recipe.ingredient.mod(recipe, compressor, count)
+
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, count)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.filter, 12)
+    apm.lib.utils.recipe.ingredient.mod(recipe, p.filter, 12)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 15)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 10 + 5 * tier.level)
-    -- apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, m.glass, 10 + 5 * tier.level)
 end
 
 apm.bob_rework.lib.override.chemicalPlants = function()
-    buildChemicalPlant('chemical-plant', apm.bob_rework.lib.tier.yellow, 'air-pump')
-    buildChemicalPlant('chemical-plant-2', apm.bob_rework.lib.tier.red, 'air-pump-2')
-    buildChemicalPlant('chemical-plant-3', apm.bob_rework.lib.tier.blue, 'air-pump-3')
+    buildChemicalPlant(b.plant.yellow, t.yellow)
+    buildChemicalPlant(b.plant.red, t.red)
+    buildChemicalPlant(b.plant.blue, t.blue)
     redrawChemicalPlant()
 end

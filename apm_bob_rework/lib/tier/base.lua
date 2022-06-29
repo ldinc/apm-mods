@@ -7,3 +7,5 @@ require('lib.tier.t0_gray')
 require('lib.tier.t1_yellow')
 require('lib.tier.t2_red')
 require('lib.tier.t3_blue')
+
+return apm.bob_rework.lib.tier

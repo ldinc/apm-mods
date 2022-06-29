@@ -365,8 +365,9 @@ function apm.bob_rework.lib.override.tech()
     free('thorium-plutonium-fuel-cell')
 
     free('effect-transmission-3')
-    rm('effect-transmission-2', 'beacon-2')
-    push('effect-transmission-2', 'beacon-3')
+    free('effect-transmission-2')
+    -- rm('effect-transmission-2', 'beacon-2')
+    -- push('effect-transmission-2', 'beacon-3')
 
     free('turbo-inserter')
     free('ultimate-inserter')

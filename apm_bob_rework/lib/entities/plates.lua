@@ -33,6 +33,7 @@ local plates = {
     silver = 'silver-plate',
     gold = 'gold-plate',
     lead = 'lead-plate',
+    cobalt = 'cobalt-plate',
 }
 
 return plates
