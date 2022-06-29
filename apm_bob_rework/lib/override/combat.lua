@@ -2,6 +2,8 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
+--TODO: rework
+
 require('lib.entities.base')
 require('lib.tier.base')
 require('lib.utils.debug')

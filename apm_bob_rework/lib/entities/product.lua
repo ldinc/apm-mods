@@ -5,6 +5,8 @@ local p = {
         electric = 'engine-unit',
     },
 
+    egenerator = 'apm_egen_unit',
+
     gearwheel = {
         bronze = 'bronze-gear-wheel',
         brass = 'brass-gear-wheel',

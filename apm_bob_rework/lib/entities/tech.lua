@@ -10,6 +10,10 @@ local t = {
     science = {
         production = '"production-science-pack',
     },
+
+    boiler = {
+        electric = 'electric-boiler',
+    },
 }
 
 return t
