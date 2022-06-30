@@ -95,6 +95,13 @@ local energy = {
         dischargin = 'apm_battery_discharging_station',
     },
 
+    sub = {
+        station = {
+            basic = 'substation',
+            advance = 'substation-2',
+        },
+    },
+
     switch = 'power-switch',
 }
 

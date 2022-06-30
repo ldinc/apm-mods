@@ -1,5 +1,5 @@
 local miners = {
-    burener = {
+    burner = {
         basic = 'burner-mining-drill',
         advanced = 'apm_burner_miner_drill_2',
     },

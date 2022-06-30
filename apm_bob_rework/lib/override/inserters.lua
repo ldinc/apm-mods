@@ -2,7 +2,8 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.entities.base')
+local ins = require('lib.entities.buildings.inserters')
+local t = require('lib.tier.base')
 
 local genInserterts = function (tier, eK)
     local recipe = tier.inserter
@@ -12,7 +13,7 @@ local genInserterts = function (tier, eK)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 1)
-    if recipe == apm.bob_rework.lib.entities.steamInserter then
+    if recipe == ins.basic.steam then
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 1)
     end
 
@@ -41,30 +42,10 @@ local genInserterts = function (tier, eK)
     end
 end
 
-local genYellowInserters = function ()
-    local recipe = apm.bob_rework.lib.entities.yellowInserter
-    local tier = apm.bob_rework.lib.tier.yellow
-
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.electricEngineUnit, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicContact, 1)
-
-    local recipe = apm.bob_rework.lib.entities.yellowFilterInserter
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.yellowInserter, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.logicContact, 4)
-end
-
 apm.bob_rework.lib.override.inserters = function ()
-    genInserterts(apm.bob_rework.lib.tier.gray, 1)
-    genInserterts(apm.bob_rework.lib.tier.yellow, 1)
-    genInserterts(apm.bob_rework.lib.tier.red, 2)
-    genInserterts(apm.bob_rework.lib.tier.blue, 3)
-    -- genInserterts(apm.bob_rework.lib.tier.aluminium, 3)
-    -- genInserterts(apm.bob_rework.lib.tier.titanium, 3)
-    -- gen second electric tier
-    genYellowInserters()
+    genInserterts(t.gray, 1)
+    genInserterts(t.steam, 1)
+    genInserterts(t.yellow, 1)
+    genInserterts(t.red, 2)
+    genInserterts(t.blue, 3)
 end

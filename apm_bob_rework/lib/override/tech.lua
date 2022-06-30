@@ -6,6 +6,8 @@ require('lib.entities.base')
 require('lib.tier.base')
 require('lib.utils.tech')
 
+local t = require('lib.entities.tech')
+
 function apm.bob_rework.lib.override.tech()
 
 
@@ -355,6 +357,8 @@ function apm.bob_rework.lib.override.tech()
     free('bob-plasma-turrets-3')
     free('bob-plasma-turrets-4')
     free('bob-plasma-turrets-5')
+
+    rm(t.puddling.furnace, 'apm_burner_miner_drill_2')
 
     free('bob-greenhouse')
     free('bob-fertiliser')

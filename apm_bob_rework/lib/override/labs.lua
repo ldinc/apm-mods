@@ -2,19 +2,19 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.entities.base')
-require('lib.tier.base')
+local l = require('lib.entities.buildings.labs')
+local t = require('lib.tier.base')
+local m = require('lib.entities.materials')
 
-
-local buildLaboratoryRecipe = function (recipe, tier)
+local buildLaboratoryRecipe = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
+    if tier.frame then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 9)
+    end
 
     if tier.level > 0 then
         local inserter = tier.inserter
-        -- if tier.level == apm.bob_rework.lib.tier.monel.level then
-        --     inserter = apm.bob_rework.lib.entities.yellowInserter
-        -- end
         apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 5)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
     end
@@ -30,14 +30,13 @@ local buildLaboratoryRecipe = function (recipe, tier)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 15 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level*2 + 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.glass, 20)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level * 2 + 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, m.glass, 20)
 end
 
-apm.bob_rework.lib.override.laboratories = function ()
-    buildLaboratoryRecipe(apm.bob_rework.lib.entities.laboratory, apm.bob_rework.lib.tier.gray)
-    buildLaboratoryRecipe(apm.bob_rework.lib.entities.steamLaboratory, apm.bob_rework.lib.tier.steam)
-    buildLaboratoryRecipe(apm.bob_rework.lib.entities.advancedLaboratory, apm.bob_rework.lib.tier.red)
-    -- TODO: fix tier foe lab-2
-    buildLaboratoryRecipe('lab-2', apm.bob_rework.lib.tier.blue)
+apm.bob_rework.lib.override.laboratories = function()
+    buildLaboratoryRecipe(l.burner, t.gray)
+    buildLaboratoryRecipe(l.steam, t.steam)
+    buildLaboratoryRecipe(l.basic, t.red)
+    buildLaboratoryRecipe(l.advanced, t.blue)
 end

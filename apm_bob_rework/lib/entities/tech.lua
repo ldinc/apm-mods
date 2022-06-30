@@ -14,6 +14,8 @@ local t = {
     boiler = {
         electric = 'electric-boiler',
     },
+
+    puddling = {furnace = 'apm_puddling_furnace_0'},
 }
 
 return t

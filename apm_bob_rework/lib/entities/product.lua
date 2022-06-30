@@ -32,6 +32,23 @@ local p = {
     sealing = { rings = 'apm_sealing_rings' },
     rubber = 'apm_rubber',
     filter = 'apm_filter_charcoal',
+    lamp = 'small-lamp',
+    stick = 'iron-stick',
+
+    board = {
+        wooden = 'apm_wood_board',
+    },
+
+    cliff = { explosives = 'cliff-explosives' },
+    explosives = 'explosives',
+
+    gun = {
+        powder = 'apm_gun_powder',
+    },
+
+    barrel = {
+        empty = 'empty-barrel',
+    }
 }
 
 return p

@@ -1,5 +1,5 @@
 local wire = {
-    copper = 'copperCable',
+    copper = 'copper-cable',
     tinned = { copper = 'tinned-copper-cable' },
     unsulated = 'insulated-cable',
     gilded = { copper = 'gilded-copper-cable' },

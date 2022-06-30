@@ -1,2 +1,2 @@
 call build.bat bob_rework
-call move.bat bob_rework 0.22.58
+call move.bat bob_rework 0.22.59

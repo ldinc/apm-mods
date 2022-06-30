@@ -7,3 +7,14 @@ apm.bob_rework.lib.entities.nuclear.deuterium.cell = { I = 'deuterium-fuel-cell'
 apm.bob_rework.lib.entities.nuclear.deuterium.cell = { II = 'deuterium-fuel-cell-2' }
 
 apm.bob_rework.lib.entities.nuclear.fusionCatalyst = 'fusion-catalyst'
+
+return {
+    fusion = {catalyst = 'fusion-catalyst'},
+    deuterium = {
+        cell = {
+            I = 'deuterium-fuel-cell',
+            II = 'deuterium-fuel-cell-2',
+        }
+    },
+    rtg = 'rtg',
+}

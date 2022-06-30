@@ -2,32 +2,32 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.entities.base')
-require('lib.tier.base')
+local t = require('lib.tier.base')
+local p = require('lib.entities.product')
+local plate = require('lib.entities.plates')
+local b = require('lib.entities.buildings.chemistry')
 
-local buildElectrolyser = function (recipe, tier)
+local buildElectrolyser = function(recipe, tier)
     local logic = tier.logic
     local silverCount = 6 + tier.level - 1
-    if tier.level == 1 then
-        logic = apm.bob_rework.lib.entities.logicContact
-        silverCount = 0
-    end
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 8 + 2*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 9 + 3*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 8 + 4*tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.silver, silverCount)
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 8)
+    if tier.frame then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 9)
+    end
+
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic, 8 + 2 * tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 9 + 3 * tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 8 + 4 * tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, plate.silver, silverCount)
+    apm.lib.utils.recipe.ingredient.mod(recipe, p.rubber, 8)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 2)
 
 end
 
-apm.bob_rework.lib.override.electrolysers = function ()
-    buildElectrolyser('electrolyser', apm.bob_rework.lib.tier.yellow)
-    buildElectrolyser('electrolyser-2', apm.bob_rework.lib.tier.red)
-    buildElectrolyser('electrolyser-3', apm.bob_rework.lib.tier.blue)
-    -- buildElectrolyser('electrolyser-4', apm.bob_rework.lib.tier.aluminium)
-    -- buildElectrolyser('electrolyser-5', apm.bob_rework.lib.tier.titanium)
+apm.bob_rework.lib.override.electrolysers = function()
+    buildElectrolyser(b.electrolyser.yellow, t.yellow)
+    buildElectrolyser(b.electrolyser.red, t.red)
+    buildElectrolyser(b.electrolyser.blue, t.blue)
 end

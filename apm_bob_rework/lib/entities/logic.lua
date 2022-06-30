@@ -20,6 +20,13 @@ local logics = {
     },
     PU = 'processing-unit',
     APU = 'advanced-processing-unit',
+
+    combinator = {
+        arithmetic = 'arithmetic-combinator',
+        decider = 'decider-combinator',
+        const = 'constant-combinator'
+    },
+
 }
 
 return logics
