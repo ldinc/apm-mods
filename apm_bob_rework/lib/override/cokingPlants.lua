@@ -8,6 +8,9 @@ local b = require('lib.entities.buildings.coking-plant')
 
 local buildCokingPlantRecipe = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    if tier.frame then 
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, tier.level * 2)
+    end
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 8 + 4 * tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 12 + 4 * tier.level)

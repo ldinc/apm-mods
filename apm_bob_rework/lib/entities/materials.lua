@@ -8,6 +8,8 @@ local m = {
         concrete = 'refined-concrete',
     },
     glass = 'glass',
+    carbon = 'carbon',
+    plastic = 'plastic-bar',
 }
 
 return m

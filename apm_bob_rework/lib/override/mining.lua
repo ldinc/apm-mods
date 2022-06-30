@@ -10,7 +10,7 @@ local buildMiningRecipe = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     if tier.frame then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 4)
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, tier.level*2)
     end
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
@@ -51,9 +51,15 @@ apm.bob_rework.lib.override.mining = function()
     buildMiningRecipe(miner.red, t.red)
     buildMiningRecipe(miner.blue, t.blue)
 
-    buff(miner.burner.basic, 0.4, 1.99) -- 4x4
-    buff(miner.steam, 0.8, 2.49) -- 5x5
-    buff(miner.basic, 1, 2.49)
+    buff(miner.burner.basic, 0.6, 1.99) -- 4x4
+    buff(miner.steam, 1, 2.49) -- 5x5
+    buff(miner.basic, 1.2, 2.49)
     buff(miner.red, 2, 3.49)
     buff(miner.blue, 4, 4.49)
+
+    local item = data.raw['mining-drill'][miner.basic]
+    if item then
+        item.next_upgrade = miner.red
+        item.fast_replaceable_group = "electric-mining-drill"
+    end
 end

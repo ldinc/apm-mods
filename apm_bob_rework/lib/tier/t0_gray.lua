@@ -48,6 +48,7 @@ apm.bob_rework.lib.tier.list[0] = grayTier
 local steamTier = {
     level = 1,
     frame = frame.steam,
+    frameK = 1,
     constructionAlloy = alloy.brass,
     extraConstructionAlloy = mat.planks,
     heatAlloy = alloy.brass,

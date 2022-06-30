@@ -14,7 +14,7 @@ local buildElectrolyser = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     if tier.frame then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 9)
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, tier.level*3)
     end
 
     apm.lib.utils.recipe.ingredient.mod(recipe, logic, 8 + 2 * tier.level)

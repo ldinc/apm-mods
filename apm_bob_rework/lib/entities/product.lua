@@ -9,6 +9,7 @@ local p = {
 
     gearwheel = {
         bronze = 'bronze-gear-wheel',
+        iron = 'iron-gear-wheel',
         brass = 'brass-gear-wheel',
         steel = 'steel-gear-wheel',
         titanium = 'titanium-gear-wheel',
@@ -34,6 +35,8 @@ local p = {
     filter = 'apm_filter_charcoal',
     lamp = 'small-lamp',
     stick = 'iron-stick',
+    magnet = 'apm_electromagnet',
+    pistons = 'apm_pistions',
 
     board = {
         wooden = 'apm_wood_board',

@@ -2,14 +2,15 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-require('lib.entities.base')
-require('lib.tier.base')
+local t = require('lib.tier.base')
+local b = require('lib.entities.buildings.chemistry')
 
 local buildOilRefinery = function (recipe, tier, compressor)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 3 + tier.level*2)
     apm.lib.utils.recipe.ingredient.mod(recipe, compressor, tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, tier.level * 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 20 + 10*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 8 + 4*tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10 + 5*tier.level)
@@ -20,8 +21,6 @@ local buildOilRefinery = function (recipe, tier, compressor)
 end
 
 apm.bob_rework.lib.override.oilRefineries = function ()
-    buildOilRefinery('oil-refinery', apm.bob_rework.lib.tier.yellow, 'air-pump')
-    -- buildOilRefinery('oil-refinery-2', apm.bob_rework.lib.tier.steel, 'air-pump-2')
-    -- buildOilRefinery('oil-refinery-3', apm.bob_rework.lib.tier.aluminium, 'air-pump-3')
-    -- buildOilRefinery('oil-refinery-4', apm.bob_rework.lib.tier.titanium, 'air-pump-4')
+    buildOilRefinery(b.oil.refinery.basic, t.red, b.compressor.basic)
+    buildOilRefinery(b.oil.refinery.advanced, t.blue, b.compressor.advance)
 end

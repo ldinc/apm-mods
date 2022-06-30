@@ -10,7 +10,7 @@ local buildFlare = function(recipe)
     local tier = t.yellow
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    if tier.frame then 
+    if tier.frame then
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 1)
     end
 
@@ -24,6 +24,9 @@ end
 
 local buildGasVenting = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    if tier.frame then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 1)
+    end
 
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 4)
@@ -35,6 +38,10 @@ local buildIncinerator = function(recipe)
     local tier = t.yellow
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    if tier.frame then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 1)
+    end
+
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 5)
