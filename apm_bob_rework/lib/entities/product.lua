@@ -22,6 +22,10 @@ local p = {
         steel = 'steel-bearing',
         titanium = 'titanium-bearing',
         cobaltSteel = 'cobalt-steel-bearing',
+
+        balls = {
+            titanium = 'titanium-bearing-ball',
+        },
     },
 
     battery = {

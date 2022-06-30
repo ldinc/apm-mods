@@ -76,15 +76,15 @@ data:extend({
             module_info_max_icons_per_row = 5,
             module_info_max_icon_rows = 5,
             module_info_multi_row_initial_height_modifier = -0.3,
-            module_slots = 15
+            module_slots = 3
         },
         distribution_effectivity = 0.5,
-        supply_area_distance = 14, -- extends from edge of collision box, actual is 16
+        supply_area_distance = 8, -- extends from edge of collision box, actual is 16
         radius_visualisation_picture = {
             filename = "__base__/graphics/entity/beacon/beacon-radius-visualization.png",
-            height = 10,
+            height = 8,
             priority = "extra-high-no-scale",
-            width = 10
+            width = 8
         },
         vehicle_impact_sound = {
             {

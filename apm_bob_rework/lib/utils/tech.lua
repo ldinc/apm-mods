@@ -364,39 +364,40 @@ end
 
 
 local forceBind = {
-    ['bob-boiler-2'] = {['apm_power_steam']={}},
-    ['apm_coking_plant_1'] = {['apm_power_steam']={}},
-    ['apm_fuel-3'] = {['apm_power_steam']={}},
-    ['fluid-wagon'] = {['fluid-handling']={}, ['railway']={}},
-    ['apm_tools_2'] = {['apm_treated_wood_planks-1']={}},
-    ['bob-turrets-2'] = {['gun-turret']={}},
-    ['automated-rail-transportation'] = {['railway']={}},
-    ['electric-engine'] = {['apm_power_electricity']={}},
-    ['landfill'] = {['apm_ash_production']={}},
-    ['more-inserters-1'] = {['apm_power_steam']={}},
-    ['steel-axe'] = {['steel-processing']={}},
-    ['steel-mixing-furnace'] = {['steel-processing']={}},
-    ['steel-chemical-furnace'] = {['chemical-processing-1']={}},
-    ['fluid-mixing-furnace'] = {['pumpjack']={}},
-    ['fluid-chemical-furnace'] = {['pumpjack']={}},
-    ['military-science-pack'] = {['apm_lab_1']={}},
-    ['apm_tools_0'] = {['apm_press_machine_1']={}},
-    ['apm_tools_1'] = {['apm_crusher_machine_1']={}},
-    ['bob-drills-1'] = {['apm_electric_mining_drills']={}},
-    ['bob-pumpjacks-1'] = {['pumpjack']={}},
-    ['bob-solar-energy-2'] = {['solar-energy']={}},
-    ['vehicle-solar-panel-equipment-1'] = {['solar-energy']={}},
-    ['solar-panel-equipment'] = {['solar-energy']={}},
-    ['electric-pole-2'] = {['electric-energy-distribution-1']={}},
-    ['chemical-plant-2'] = {['chemical-plant']={}},
-    ['stack-inserter'] = {['fast-inserter']={}},
-    ['automobilism_electric-1'] = {['automobilism']={}, ['battery']={}},
-    ['bob-poison-rocket'] = {['rocketry']={}},
-    ['bob-explosive-rocket'] = {['rocketry']={}},
-    ['bob-flame-rocket'] = {['rocketry']={}},
-    ['bob-piercing-rocket'] = {['rocketry']={}},
-    ['bob-acid-rocket'] = {['rocketry']={}},
-    ['radars-2'] = {['military-2']={}}
+    -- ['bob-boiler-2'] = {['apm_power_steam']={}},
+    -- ['apm_coking_plant_1'] = {['apm_power_steam']={}},
+    -- ['apm_fuel-3'] = {['apm_power_steam']={}},
+    -- ['apm_fuel-2'] = {['apm_fuel-1']={}},
+    -- ['fluid-wagon'] = {['fluid-handling']={}, ['railway']={}},
+    -- ['apm_tools_2'] = {['apm_treated_wood_planks-1']={}},
+    -- ['bob-turrets-2'] = {['gun-turret']={}},
+    -- ['automated-rail-transportation'] = {['railway']={}},
+    -- ['electric-engine'] = {['apm_power_electricity']={}},
+    -- ['landfill'] = {['apm_ash_production']={}},
+    -- ['more-inserters-1'] = {['apm_power_steam']={}},
+    -- ['steel-axe'] = {['steel-processing']={}},
+    -- ['steel-mixing-furnace'] = {['steel-processing']={}},
+    -- ['steel-chemical-furnace'] = {['chemical-processing-1']={}},
+    -- ['fluid-mixing-furnace'] = {['pumpjack']={}},
+    -- ['fluid-chemical-furnace'] = {['pumpjack']={}},
+    -- ['military-science-pack'] = {['apm_lab_1']={}},
+    -- ['apm_tools_0'] = {['apm_press_machine_1']={}},
+    -- ['apm_tools_1'] = {['apm_crusher_machine_1']={}},
+    -- ['bob-drills-1'] = {['apm_electric_mining_drills']={}},
+    -- ['bob-pumpjacks-1'] = {['pumpjack']={}},
+    -- ['bob-solar-energy-2'] = {['solar-energy']={}},
+    -- ['vehicle-solar-panel-equipment-1'] = {['solar-energy']={}},
+    -- ['solar-panel-equipment'] = {['solar-energy']={}},
+    -- ['electric-pole-2'] = {['electric-energy-distribution-1']={}},
+    -- ['chemical-plant-2'] = {['chemical-plant']={}},
+    -- ['stack-inserter'] = {['fast-inserter']={}},
+    -- ['automobilism_electric-1'] = {['automobilism']={}, ['battery']={}},
+    -- ['bob-poison-rocket'] = {['rocketry']={}},
+    -- ['bob-explosive-rocket'] = {['rocketry']={}},
+    -- ['bob-flame-rocket'] = {['rocketry']={}},
+    -- ['bob-piercing-rocket'] = {['rocketry']={}},
+    -- ['bob-acid-rocket'] = {['rocketry']={}},
+    -- ['radars-2'] = {['military-2']={}}
 }
 
 function apm.bob_rework.lib.utils.tech.postProcessByTTiers()
@@ -718,7 +719,10 @@ function apm.bob_rework.lib.utils.tech.mark(
     local providedProducts = apm.bob_rework.lib.utils.tech.products(tech)
     for product, _ in pairs(providedProducts) do
         if not availableProducts[product] then
-            availableProducts[product] = {by = tName}
+            if tName ~= 'apm_fuel-2' then 
+                -- КОСТЫЛь
+                availableProducts[product] = {by = tName}
+            end 
             -- apm.bob_rework.lib.utils.debug.object('tech mark:: push new product  ' .. product  .. ' by ' .. tName)
         end
     end

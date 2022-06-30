@@ -31,7 +31,7 @@ local buildPressRecipe = function(recipe, tier)
 end
 
 apm.bob_rework.lib.override.presses = function()
-    buildPressRecipe(presses.basic, t.gray)
+    buildPressRecipe(presses.burner, t.gray)
     buildPressRecipe(presses.steam, t.steam)
     buildPressRecipe(presses.basic, t.red)
 end
