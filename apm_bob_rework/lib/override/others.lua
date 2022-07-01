@@ -1,5 +1,7 @@
 local storages = require "lib.entities.buildings.storages"
 local alloys   = require "lib.entities.alloys"
+local product  = require "lib.entities.product"
+local frames   = require "lib.entities.frames"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -143,18 +145,30 @@ apm.bob_rework.lib.override.others = function()
     recipe = 'apm_press_machine_2'
     mod(recipe, alloys.invar, 0)
     mod(recipe, plates.steel, 15)
-    
+
     recipe = 'apm_coking_plant_2'
     mod(recipe, alloys.invar, 0)
     mod(recipe, plates.steel, 15)
-    
+
     recipe = 'apm_centrifuge_2'
     mod(recipe, alloys.invar, 0)
     mod(recipe, plates.steel, 15)
-    
+
     recipe = 'apm_steelworks_0'
     mod(recipe, alloys.invar, 0)
     mod(recipe, plates.steel, 15)
+
+    recipe = 'apm_stone_brick_raw_with_wed_mud'
+    mod(recipe, materials.mud.wet, 5)
+    mod(recipe, product.crushed.stone, 0)
+
+    recipe = materials.refined.concrete
+    mod(recipe, plates.steel, 0)
+    mod(recipe, product.stick, 8)
+
+    recipe = product.bearing.titanium
+    mod(recipe, product.bearing.balls.titanium, 0)
+    mod(recipe, product.bearing.balls.ceramic, 16)
 
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1b', 'crafting-with-fluid')
@@ -188,4 +202,10 @@ apm.bob_rework.lib.override.others = function()
     if modify then
         itm.burner.effectivity = "0.14"
     end
+
+    recipe = data.raw.recipe['apm_machine_frame_steam']
+    recipe.localised_name = { "entity-name.primitive-frame", { "entity-name.primitive-frame" } }
+
+    local itm = data.raw.item[frames.steam]
+    itm.localised_name = { "entity-name.primitive-frame", { "entity-name.primitive-frame" } }
 end

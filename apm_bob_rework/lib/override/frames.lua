@@ -12,7 +12,7 @@ apm.bob_rework.lib.override.frames = function()
     apm.lib.utils.recipe.ingredient.remove_all(frame.basic)
     apm.lib.utils.recipe.ingredient.mod(frame.basic, alloy.cobalt.steel, 3)
     apm.lib.utils.recipe.ingredient.mod(frame.basic, pipe.base.steel, 2)
-    apm.lib.utils.recipe.ingredient.mod(frame.basic, logic.circuit.basic, 4)
+    apm.lib.utils.recipe.ingredient.mod(frame.basic, logic.circuit.advanced, 4)
     -- advanced
     apm.lib.utils.recipe.ingredient.remove_all(frame.advanced)
     apm.lib.utils.recipe.ingredient.mod(frame.advanced, alloy.titanium, 3)

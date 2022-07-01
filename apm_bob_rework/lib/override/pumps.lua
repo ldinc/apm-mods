@@ -38,6 +38,7 @@ local buildOffshore = function(recipe, tier)
 end
 
 apm.bob_rework.lib.override.pumps = function()
+    buildPumpRecipe(t.gray)
     buildPumpRecipe(t.yellow)
     buildPumpRecipe(t.red)
     buildPumpRecipe(t.blue)

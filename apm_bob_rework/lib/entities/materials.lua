@@ -10,6 +10,9 @@ local m = {
     glass = 'glass',
     carbon = 'carbon',
     plastic = 'plastic-bar',
+    mud = {
+        wet = 'apm_wet_mud',
+    },
 }
 
 return m

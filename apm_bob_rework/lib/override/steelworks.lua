@@ -1,6 +1,7 @@
 local steelworks = require "lib.entities.buildings.steelworks"
 local plates     = require "lib.entities.plates"
 local materials  = require "lib.entities.materials"
+local alloys     = require "lib.entities.alloys"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -19,7 +20,7 @@ apm.bob_rework.lib.override.steelworks = function ()
     local tier = t.yellow
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 14)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, alloys.monel, 15)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 30)
     apm.lib.utils.recipe.ingredient.mod(recipe, materials.concrete, 20)
 

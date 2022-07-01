@@ -1,3 +1,4 @@
+local plates = require "lib.entities.plates"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -10,6 +11,7 @@ local p = require('lib.entities.product')
 local buildEPole = function(medium, big, substation, tier, r)
     local recipe = medium
     local m = tier.level - 2
+
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5 + 2 * m)
     apm.lib.utils.recipe.ingredient.mod(recipe, p.rubber, 2)
@@ -52,6 +54,6 @@ local buildEPole = function(medium, big, substation, tier, r)
 end
 
 apm.bob_rework.lib.override.electricPoles = function()
-    buildEPole(e.pole.medium.basic, e.pole.big.basic, e.sub.station.basic, t.yellow, 9)
+    buildEPole(e.pole.medium.basic, e.pole.big.basic, e.sub.station.basic, t.red, 9)
     buildEPole(e.pole.medium.advance, e.pole.big.advance, e.sub.station.advance, t.blue, 18)
 end

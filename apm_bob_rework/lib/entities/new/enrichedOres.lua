@@ -31,9 +31,9 @@ apm.bob_rework.lib.entities.enriched.ore.nickel = enriched(apm.bob_rework.lib.en
 apm.bob_rework.lib.entities.enriched.ore.tungsten = enriched(apm.bob_rework.lib.entities.ore.tungsten)
 
 -- local icoPath = "__apm_bob_rework_ldinc__/graphics/icons/apm_heap.png"
-local icoPath = "__apm_bob_rework_ldinc__/graphics/icons/ore-washed-template.png"
+local icoPath = "__apm_bob_rework_ldinc__/graphics/icons/apm_crushed.png"
+-- local icoPath = "__apm_bob_rework_ldinc__/graphics/icons/ore-washed-template.png"
 local tier1Ico = "__apm_bob_rework_ldinc__/graphics/icons/apm_tier_1.png"
-local tier2Ico = "__apm_bob_rework_ldinc__/graphics/icons/apm_tier_2.png"
 
 local settings = {
     energyRequired = 1,
@@ -118,7 +118,7 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     }
 
     local tier = {
-        icon = tier2Ico,
+        icon = tier1Ico,
         icon_size = 64,
     }
     local recipeName = enrichedAdvanced(ore)

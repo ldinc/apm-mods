@@ -46,7 +46,7 @@ apm.bob_rework.lib.override.steamMachines = function()
     apm.lib.utils.recipe.ingredient.mod(recipe, t.gray.engineUnit, 2)
     apm.lib.utils.recipe.ingredient.mod(recipe, t.gray.pipe, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, t.gray.constructionAlloy, 10)
-    apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 4)
+    apm.lib.utils.recipe.ingredient.mod(recipe, product.sieve.iron, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, t.gray.basement, 15)
     apm.lib.utils.recipe.ingredient.mod(recipe, t.gray.logic, 2)
 end

@@ -1,3 +1,4 @@
+local product = require "lib.entities.product"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -30,6 +31,41 @@ local change2Tier = function()
     local port = data.raw['roboport'][robo.port.advanced]
     port.construction_radius = 90
     port.logistics_radius = 90
+end
+
+local genAntenna = function(recipe, tier)
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
+    if tier.extraLogic then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraLogic, 5)
+    end
+end
+
+local genFrame = function(recipe, tier)
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
+    if tier.extraLogic then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraLogic, 5)
+    end
+end
+
+local genParts = function (brain, tool, tier)
+    apm.lib.utils.recipe.ingredient.remove_all(brain)
+    apm.lib.utils.recipe.ingredient.mod(brain, tier.wire, 5)
+    apm.lib.utils.recipe.ingredient.mod(brain, tier.logic, 5)
+    if tier.extraLogic then
+        apm.lib.utils.recipe.ingredient.mod(brain, tier.extraLogic, 5)
+    end
+
+    apm.lib.utils.recipe.ingredient.remove_all(tool)
+    apm.lib.utils.recipe.ingredient.mod(tool, tier.bearing, 2)
+    apm.lib.utils.recipe.ingredient.mod(tool, tier.gearWheel, 6)
+    apm.lib.utils.recipe.ingredient.mod(tool, tier.constructionAlloy, 1)
 end
 
 local modify = function()
@@ -76,6 +112,17 @@ local modify = function()
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.logistic.blue, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.rtg, 1)
+
+    genAntenna(robo.antenna.base, t.red)
+    genAntenna(robo.antenna.advanced, t.blue)
+
+    genFrame(robo.frame.basic, t.red)
+    genFrame(robo.frame.advanced, t.blue)
+
+    genParts(robo.bots.construction.part.brain.red, robo.bots.construction.part.tool.red, t.red)
+    genParts(robo.bots.logistic.part.brain.red, robo.bots.logistic.part.tool.red, t.red)
+    genParts(robo.bots.construction.part.brain.blue, robo.bots.construction.part.tool.blue, t.blue)
+    genParts(robo.bots.logistic.part.brain.blue, robo.bots.logistic.part.tool.blue, t.blue)
 
     change2Tier()
 end

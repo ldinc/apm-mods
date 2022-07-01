@@ -8,7 +8,8 @@ local t = {
     },
 
     science = {
-        production = '"production-science-pack',
+        production = 'production-science-pack',
+        automation = 'apm_power_automation_science_pack',
     },
 
     boiler = {

@@ -2,7 +2,8 @@ local p = {
     engine = {
         burner = 'apm_simple_engine',
         steam = 'apm_steam_engine',
-        electric = 'engine-unit',
+        electric = 'electric-engine-unit',
+        basic = 'engine-unit',
     },
 
     egenerator = 'apm_egen_unit',
@@ -22,9 +23,11 @@ local p = {
         steel = 'steel-bearing',
         titanium = 'titanium-bearing',
         cobaltSteel = 'cobalt-steel-bearing',
+        ceramic = 'ceramic-bearing',
 
         balls = {
             titanium = 'titanium-bearing-ball',
+            ceramic = 'ceramic-bearing-ball',
         },
     },
 
@@ -42,6 +45,10 @@ local p = {
     magnet = 'apm_electromagnet',
     pistons = 'apm_pistions',
 
+    sieve = {
+        iron = 'apm_sieve_iron',
+    },
+
     board = {
         wooden = 'apm_wood_board',
     },
@@ -55,7 +62,11 @@ local p = {
 
     barrel = {
         empty = 'empty-barrel',
-    }
+    },
+
+    crushed = {
+        stone = 'apm_crushed_stone',
+    },
 }
 
 return p

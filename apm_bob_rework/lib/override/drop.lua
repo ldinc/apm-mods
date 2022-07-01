@@ -1,3 +1,4 @@
+local product = require "lib.entities.product"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -151,4 +152,31 @@ apm.bob_rework.lib.override.drop = function()
     rm('apm_sieve_copper')
     rm('apm_dry_mud_sifting_iron')
     rm('apm_dry_mud_sifting_copper')
+
+    rm('apm_electric_bob-locomotive-2')
+    rm('apm_electric_bob-locomotive-3')
+    rm('apm_electric_bob-armoured-locomotive-2')
+    rm('apm_electric_bob-tank-2')
+    rm('apm_electric_bob-tank-3')
+
+    rm('bob-fluid-wagon-2')
+    rm('bob-fluid-wagon-3')
+    rm('bob-armoured-fluid-wagon-2')
+    rm('brass-chest')
+
+    rm(product.bearing.balls.titanium)
+    rm(product.bearing.ceramic)
+
+    rm('bob-logistic-zone-interface')
+    rm('bob-robo-charge-port')
+    rm('bob-robo-charge-port-2')
+    rm('bob-robo-charge-port-3')
+    rm('bob-robo-charge-port-4')
+    rm('robot-drone-frame-large')
+    rm('robot-drone-frame')
+
+    rm('bob-logistic-zone-expander')
+    rm('bob-logistic-zone-expander-2')
+    rm('bob-robo-charge-port-large')
+    rm('bob-robo-charge-port-large-2')
 end

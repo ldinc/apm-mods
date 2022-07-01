@@ -581,6 +581,10 @@ function apm.bob_rework.lib.override.tech()
     free('bob-tanks-2')
     free('nitinol-processing')
 
+    push(t.processing.cobalt, 'electric-engine-unit-2')
+    push(t.processing.titaniumAlloy, 'electric-engine-unit-3')
+    push(t.science.automation, 'apm_machine_frame_steam-2')
+
     if settings.startup['apm_bob_rework_experimental_tech_tree_rebuilder'].value == true then
         apm.bob_rework.lib.utils.tech.rebuild('apm_crusher_machine_0', 'apm_industrial_science_pack')
     end

@@ -48,4 +48,7 @@ require('prototypes.main.recipes.entities.se-rails')
 require('prototypes.main.entities.crashsite')
 require('prototypes.main.items.entities.crashsite')
 
+require('prototypes.main.recipes.electric-engine')
+require('prototypes.main.recipes.frame')
+
 require('prototypes.main.technologies')

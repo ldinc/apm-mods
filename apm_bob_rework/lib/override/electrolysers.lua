@@ -21,6 +21,7 @@ local buildElectrolyser = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 9 + 3 * tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 8 + 4 * tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, plate.silver, silverCount)
+    apm.lib.utils.recipe.ingredient.mod(recipe, plate.copper, silverCount)
     apm.lib.utils.recipe.ingredient.mod(recipe, p.rubber, 8)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.pump, 2)
 

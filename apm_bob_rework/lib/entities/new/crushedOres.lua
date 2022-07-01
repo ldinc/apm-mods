@@ -52,7 +52,8 @@ local recipeSetting = {
 }
 
 -- local crushedIcoPath = "__apm_bob_rework_ldinc__/graphics/icons/apm_crushed.png"
-local crushedIcoPath = "__apm_bob_rework_ldinc__/graphics/icons/ore-crushed-template.png"
+-- local crushedIcoPath = "__apm_bob_rework_ldinc__/graphics/icons/ore-crushed-template.png"
+local crushedIcoPath = "__apm_bob_rework_ldinc__/graphics/icons/ore-washed-template.png"
 local tier1Ico = "__apm_bob_rework_ldinc__/graphics/icons/apm_tier_1.png"
 local tier2Ico = "__apm_bob_rework_ldinc__/graphics/icons/apm_tier_2.png"
 
