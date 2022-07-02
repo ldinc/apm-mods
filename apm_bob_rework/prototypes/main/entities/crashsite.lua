@@ -530,7 +530,7 @@ data:extend({
                 },
             },
         },
-        crafting_categories = { "apm_crusher", "apm_sifting_0" },
+        crafting_categories = { "apm_crusher", "apm_sifting_0", "apm_crashsite" },
         crafting_speed = 0.5,
         energy_source = {
             type = "electric",

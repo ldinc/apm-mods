@@ -67,26 +67,11 @@ local p = {
     crushed = {
         stone = 'apm_crushed_stone',
     },
+
+    chemistry = {
+        resin = 'apm_resin',
+        cordite = 'cordite',
+    }
 }
 
 return p
-
--- rm('cobalt-steel-gear-wheel')
--- rm('cobalt-steel-bearing-ball')
--- rm('cobalt-steel-bearing')
-
--- apm.bob_rework.lib.entities.ironGearWheel = 'iron-gear-wheel'
--- apm.bob_rework.lib.entities.bronzeGearWheel = 'bronze-gear-wheel'
--- apm.bob_rework.lib.entities.titaniumGearWheel = 'titanium-gear-wheel'
--- apm.bob_rework.lib.entities.cobaltGearWheel = 'cobalt-steel-gear-wheel'
--- apm.bob_rework.lib.entities.steelGearWheel = 'steel-gear-wheel'
--- apm.bob_rework.lib.entities.nitinolGearWheel = 'nitinol-gear-wheel'
-
--- apm.bob_rework.lib.entities.steelBearing = 'steel-bearing'
--- apm.bob_rework.lib.entities.bronzeBearing = 'bronze-bearing'
--- apm.bob_rework.lib.entities.brassBearing = 'brass-bearing'
--- apm.bob_rework.lib.entities.steelBearing = 'steel-bearing'
--- apm.bob_rework.lib.entities.ceramicBearing = 'ceramic-bearing'
--- apm.bob_rework.lib.entities.cobaltBearing = 'cobalt-steel-bearing'
--- apm.bob_rework.lib.entities.titaniumBearing = 'titanium-bearing'
--- apm.bob_rework.lib.entities.nitinolBearing = 'nitinol-bearing'

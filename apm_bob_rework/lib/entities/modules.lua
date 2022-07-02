@@ -9,4 +9,5 @@ return {
             VIII = 'raw-speed-module-8',
         },
     },
+    case = 'module-case',
 }
