@@ -252,6 +252,17 @@ local buildFlameTurrets = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 60)
+
+	local recipe = 'capsule-item-rampant-arsenal'
+	local tier = t.red
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 30)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 4)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20)
 end
 
 local buildSolarPanel = function(recipe, tier, shell, conduct)
@@ -391,20 +402,20 @@ local updateWeapons = function()
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 12)
 	apm.lib.utils.recipe.ingredient.mod(recipe, materials.wood, 2)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.iron, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.bronze, 10)
 
 	recipe = combat.gun.shotgun.combat
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 6)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 6)
 	apm.lib.utils.recipe.ingredient.mod(recipe, materials.wood, 2)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.steel, 8)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.brass, 8)
 
 	recipe = combat.gun.rifle.basic
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 14)
 	apm.lib.utils.recipe.ingredient.mod(recipe, materials.wood, 2)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.iron, 6)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.bronze, 6)
 
 	recipe = combat.gun.rifle.sniper
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -412,7 +423,7 @@ local updateWeapons = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, materials.wood, 2)
 	apm.lib.utils.recipe.ingredient.mod(recipe, materials.glass, 4)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.steel, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.brass, 2)
 
 	recipe = combat.gun.rifle.laser
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -448,6 +459,38 @@ local updateWeapons = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.steel, 4)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.cobalt.steel, 4)
+
+	recipe = combat.armor.shield.I
+	local tier = t.yellow
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
+
+	recipe = combat.armor.shield.II
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, combat.armor.shield.I, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
+
+	recipe = combat.armor.shield.III
+	tier = t.red
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, modules.productivity.pure.VI)
+	apm.lib.utils.recipe.ingredient.mod(recipe, modules.speed.pure.VI)
+
+	recipe = combat.armor.shield.IV
+	tier = t.blue
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraLogic, 10*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, modules.productivity.pure.VIII)
+	apm.lib.utils.recipe.ingredient.mod(recipe, modules.speed.pure.VIII)
 end
 
 local changeRange = function(type, name, radius)
@@ -673,6 +716,7 @@ local modify = function()
 	local recipe = combat.armor.power.extra
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.lowDensityStructure, 150)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 30)
 	apm.lib.utils.recipe.ingredient.mod(recipe, t.blue.logic, 50)
 	apm.lib.utils.recipe.ingredient.mod(recipe, t.blue.extraLogic, 50)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 50)
@@ -685,13 +729,32 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 30)
 	apm.lib.utils.recipe.ingredient.mod(recipe, t.red.wire, 30)
 
+	local recipe = combat.equip.generator.transmitter.tesla
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, t.yellow.wire, 30)
+	apm.lib.utils.recipe.ingredient.mod(recipe, t.yellow.logic, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.iron, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.rubber, 2)
+
+	recipe = combat.wall.red
+	local tier = t.red
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, materials.refined.concrete, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
+
+	recipe = combat.wall.blue
+	tier = t.blue
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.tungstenCarbide, 15)
 
 	buildBattery(combat.equip.battery.I, t.yellow)
 	local recipe = combat.equip.battery.II
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, combat.equip.battery.I, 2)
 	apm.lib.utils.recipe.ingredient.mod(recipe, t.yellow.logic, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, t.wire, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, t.yellow.wire, 10)
 
 	buildBattery(combat.equip.battery.III, t.red)
 	buildBattery(combat.equip.battery.IV, t.blue)

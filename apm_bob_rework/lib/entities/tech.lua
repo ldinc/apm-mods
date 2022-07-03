@@ -17,6 +17,14 @@ local t = {
     },
 
     puddling = {furnace = 'apm_puddling_furnace_0'},
+
+    crusher = {
+        burner = 'apm_crusher_machine_0',
+    },
+
+    sieve = {
+        steam = 'apm_sieve_0',
+    },
 }
 
 return t

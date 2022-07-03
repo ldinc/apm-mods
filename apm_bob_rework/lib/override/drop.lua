@@ -195,4 +195,9 @@ apm.bob_rework.lib.override.drop = function()
     rm('vehicle-laser-defense-1')
     rm('vehicle-laser-defense-2')
     rm('vehicle-belt-immunity-equipment')
+
+    rm('iron-gear-wheel')
+    rm('steel-bearing')
+    rm('steel-bearing-ball')
+    rm('steel-gear-wheel')
 end

@@ -2,6 +2,7 @@ local storages = require "lib.entities.buildings.storages"
 local alloys   = require "lib.entities.alloys"
 local product  = require "lib.entities.product"
 local frames   = require "lib.entities.frames"
+local energy   = require "lib.entities.buildings.energy"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -38,6 +39,18 @@ local sulfur = function()
     -- bobmods.ores.sulfur.enabled = true
 end
 
+local changeSubGroupForItem = function(name, sg)
+    local itm = data.raw['item'][name]
+    if itm then
+        itm.subgroup = sg
+    end
+end
+
+local enableRecipeOnStart = function(name)
+    local obj = data.raw['recipe'][name]
+    obj.enabled = true
+end
+
 apm.bob_rework.lib.override.others = function()
     local mod = apm.lib.utils.recipe.ingredient.mod
 
@@ -45,7 +58,7 @@ apm.bob_rework.lib.override.others = function()
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     mod(recipe, plates.iron, 2)
     mod(recipe, p.stick, 1)
-    mod(recipe, p.bearing.steel, 2)
+    mod(recipe, p.bearing.brass, 2)
     mod(recipe, wire.copper, 2)
     mod(recipe, p.magnet, 10)
 
@@ -61,8 +74,8 @@ apm.bob_rework.lib.override.others = function()
     mod(recipe, p.pistons, 8)
     mod(recipe, plates.iron, 4)
     mod(recipe, p.stick, 4)
-    mod(recipe, p.gearwheel.iron, 10)
-    mod(recipe, p.bearing.steel, 2)
+    mod(recipe, p.gearwheel.brass, 10)
+    mod(recipe, p.bearing.brass, 2)
 
     recipe = 'electric-engine-unit'
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -70,7 +83,7 @@ apm.bob_rework.lib.override.others = function()
     mod(recipe, plates.iron, 2)
     mod(recipe, wire.copper, 4)
     mod(recipe, p.magnet, 12)
-    mod(recipe, p.bearing.steel, 2)
+    mod(recipe, p.bearing.brass, 2)
 
     recipe = 'small-lamp'
     mod(recipe, materials.glass, 1)
@@ -129,6 +142,11 @@ apm.bob_rework.lib.override.others = function()
     table.insert(obj.ingredients, { type = 'item', name = 'rail', amount = 40 })
     table.insert(obj.ingredients, { type = 'item', name = 'productivity-module', amount = 4 })
 
+    -- enabled sieve on startup
+    enableRecipeOnStart('apm_sieve_iron')
+    enableRecipeOnStart(energy.pole.small)
+    enableRecipeOnStart(alloys.bronze)
+
     recipe = 'apm_industrial_science_pack_0'
     mod(recipe, logic.mechanical, 1)
     mod(recipe, materials.stone, 5)
@@ -169,6 +187,13 @@ apm.bob_rework.lib.override.others = function()
     recipe = product.bearing.titanium
     mod(recipe, product.bearing.balls.titanium, 0)
     mod(recipe, product.bearing.balls.ceramic, 16)
+
+    changeSubGroupForItem(product.bearing.bronze, 'bob-bearings')
+    changeSubGroupForItem(product.bearing.brass, 'bob-bearings')
+    changeSubGroupForItem(product.bearing.balls.bronze, 'bob-bearings')
+    changeSubGroupForItem(product.bearing.balls.brass, 'bob-bearings')
+    changeSubGroupForItem(product.gearwheel.bronze, 'bob-gears')
+    changeSubGroupForItem(product.gearwheel.brass, 'bob-gears')
 
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1b', 'crafting-with-fluid')

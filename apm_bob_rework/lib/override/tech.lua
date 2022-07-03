@@ -1,3 +1,5 @@
+local tech = require "lib.entities.tech"
+local product = require "lib.entities.product"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -582,8 +584,14 @@ function apm.bob_rework.lib.override.tech()
     free('nitinol-processing')
 
     push(t.processing.cobalt, 'electric-engine-unit-2')
+    push(t.processing.cobalt, 'engine-unit-2')
+    push(t.processing.cobalt, 'apm_egen_unit-2')
     push(t.processing.titaniumAlloy, 'electric-engine-unit-3')
+    push(t.processing.titaniumAlloy, 'engine-unit-3')
+    push(t.processing.titaniumAlloy, 'apm_egen_unit-3')
     push(t.science.automation, 'apm_machine_frame_steam-2')
+    rm(product.sieve)
+    on(product.sieve)
 
     if settings.startup['apm_bob_rework_experimental_tech_tree_rebuilder'].value == true then
         apm.bob_rework.lib.utils.tech.rebuild('apm_crusher_machine_0', 'apm_industrial_science_pack')

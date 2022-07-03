@@ -26,7 +26,7 @@ newTech(
     'apm_power',
     'apm_burner_sieve',
     {'apm_coking_plant_1'},
-    {'apm_burner_sieve', 'apm_dry_mud', 'apm_sieve_iron', 'apm_dry_mud_sifting_iron', 'apm_sieve_copper', 'apm_dry_mud_sifting_copper'},
+    {'apm_burner_sieve', 'apm_dry_mud', 'apm_dry_mud_sifting_iron', 'apm_sieve_copper', 'apm_dry_mud_sifting_copper'},
     {{"apm_industrial_science_pack", 1}},
     25, 10,
     "__apm_bob_rework_ldinc__/graphics/tech/burner-sieve.png"

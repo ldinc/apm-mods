@@ -1,4 +1,9 @@
 local constants = require("scripts.constants")
+local product   = require("lib.entities.product")
+local science   = require("lib.entities.science")
+local energy    = require("lib.entities.buildings.energy")
+local miners    = require("lib.entities.buildings.miners")
+local storages  = require("lib.entities.buildings.storages")
 
 local freeplay = {}
 
@@ -19,11 +24,13 @@ function freeplay.add_starting_items()
     local items = remote.call("freeplay", "get_created_items")
 
     -- Shelter
-    items["bronze-bearing"] = 400
-    items["apm_industrial_science_pack"] = 120
+    items[product.bearing.bronze] = 400
+    items[science.industrial] = 120
 
     -- Electric poles
-    items["small-electric-pole"] = 30
+    items[energy.pole.small] = 30
+    items[miners.burner.basic] = 30
+    items[storages.chest.steel] = 30
 
 
     remote.call("freeplay", "set_created_items", items)

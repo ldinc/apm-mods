@@ -28,6 +28,8 @@ local p = {
         balls = {
             titanium = 'titanium-bearing-ball',
             ceramic = 'ceramic-bearing-ball',
+            bronze = 'bronze-bearing-ball',
+            brass = 'brass-bearing-ball',
         },
     },
 

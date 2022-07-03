@@ -66,6 +66,12 @@ return {
         },
     },
 
+    wall = {
+        basic = 'stone-wall',
+        red = 'reinforced-wall-rampant-arsenal',
+        blue = 'heavy-wall-rampant-arsenal',
+    },
+
     equip = {
         generator = {
             burner = {
