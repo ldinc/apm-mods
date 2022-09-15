@@ -5,6 +5,7 @@ local updates = {}
 --
 -- ----------------------------------------------------------------------------
 local function update_01801()
+    
     if global.update_01801 == nil then global.update_01801 = false end
     
     if game.active_mods['apm_starfall'] >= '0.18.1' and not global.update_01801 then
@@ -21,7 +22,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 function updates.run()
-    update_01801()
+    if settings.startup["apm_starfall_update_01801_disable"].value == false then
+        update_01801()
+    end
 end
 
 -- ----------------------------------------------------------------------------

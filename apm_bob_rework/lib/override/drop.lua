@@ -7,6 +7,9 @@ require('lib.entities.base')
 
 apm.bob_rework.lib.override.drop = function()
     local rm = apm.lib.utils.recipe.remove
+    -- local hd = apm.lib.utils.item.delete_hard
+    local hd = apm.lib.utils.item.remove
+
     rm('apm_gearing')
     rm('wood-pellets')
 
@@ -200,4 +203,21 @@ apm.bob_rework.lib.override.drop = function()
     rm('steel-bearing')
     rm('steel-bearing-ball')
     rm('steel-gear-wheel')
+
+    -- unused entities
+    -- hd('bob-artillery-wagon-2')
+    -- hd('bob-cargo-wagon-2')
+    -- hd('bob-gun-turret-3')
+    -- hd('bob-laser-turret-3')
+    -- hd('bob-locomotive-2')
+    -- hd('bob-sniper-turret-2')
+    -- hd('heavy-armor-2')
+    -- hd('personal-laser-defense-equipment-3')
+    -- hd('vehicle-laser-defense-3')
+    -- hd('bob-fluid-wagon-2')
+    -- hd('bob-plasma-turret-3')
+    -- hd('bob-power-armor-mk3')
+    -- hd('vehicle-big-turret-3')
+    -- hd('fluid-generator-2')
+    -- hd('electric-furnace-2')
 end

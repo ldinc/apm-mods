@@ -258,8 +258,8 @@ function apm.bob_rework.lib.override.tech()
     bind('bob-oil-boiler-3', 'ceramics')
     science('bob-oil-boiler-3', 'chemical-science-pack')
 
-    bind('fluid-generator-2', 'ceramics')
-    science('fluid-generator-2', 'chemical-science-pack')
+    -- bind('fluid-generator-2', 'ceramics')
+    -- science('fluid-generator-2', 'chemical-science-pack')
 
     bind('bob-drills-2', 'ceramics')
     science('bob-drills-2', 'chemical-science-pack')

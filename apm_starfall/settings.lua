@@ -9,6 +9,7 @@ data:extend(
   {type = "bool-setting", name = "apm_starfall_compat_angel", setting_type = "startup", default_value = false, order='pb_a'},
   {type = "bool-setting", name = "apm_starfall_compat_earendel", setting_type = "startup", default_value = false, order='pc_a'},
   {type = "bool-setting", name = "apm_starfall_compat_reverse_factory", setting_type = "startup", default_value = false, order='pd_a'},
+  {type = "bool-setting", name = "apm_starfall_update_01801_disable", setting_type = "startup", default_value = false, order='pd_a'},
 })
 
 -- runtime-global -------------------------------------------------------------
