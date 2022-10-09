@@ -29,8 +29,8 @@
         "?AtomicArtillery >= 0.2.3",
         "?Flare Stack >= 2.2.10",
         "?LogisticTrainNetwork >= 1.16.0",
-        "Rampant >= 1.0.9",
-        "RampantArsenal >= 1.0.8",
+        "?Rampant >= 1.0.9",
+        "?RampantArsenal >= 1.0.8",
         "?electricboiler >= 1.1.0"
     ],
     "description": "Rework APM recipies wuth bob's mods.",
