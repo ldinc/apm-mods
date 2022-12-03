@@ -15,6 +15,12 @@ apm.bob_rework.lib.entities.bronzeBearingBall = 'bronze-bearing-ball'
 apm.bob_rework.lib.entities.brassBearingBall = 'brass-bearing-ball'
 apm.bob_rework.lib.entities.titaniumBearingBall = 'titanium-bearing-ball'
 
+
+apm.bob_rework.lib.entities.bronzeBearingBalls = 'bronze-bearing-balls'
+apm.bob_rework.lib.entities.brassBearingBalls = 'brass-bearing-balls'
+apm.bob_rework.lib.entities.cobaltSteelBearingBalls = 'cobalt-steel-bearing-balls'
+apm.bob_rework.lib.entities.ceramicBearingBalls = 'ceramic-bearing-balls'
+
 -- bearings
 apm.bob_rework.lib.entities.steelBearing = 'steel-bearing'
 apm.bob_rework.lib.entities.bronzeBearing = 'bronze-bearing'

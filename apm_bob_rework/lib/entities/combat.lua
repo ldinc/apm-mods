@@ -1,4 +1,11 @@
 return {
+
+    ammo = {
+        magazine = {
+            firearm = 'firearm-magazine',
+        },
+    },
+
     gun = {
         pistol = 'pistol',
         submachine = 'submachine-gun',
@@ -42,6 +49,7 @@ return {
             advance = 'bob-gun-turret-2',
             sniper = 'bob-sniper-turret-1',
         },
+
     },
 
     artillery = {
@@ -107,6 +115,12 @@ return {
                 red = 'personal-roboport-equipment',
                 blue = 'personal-roboport-mk2-equipment',
             },
+        },
+    },
+
+    disabled = {
+        turret = {
+            rifle = 'rifle-item-rampant-arsenal',
         },
     },
 }

@@ -1,6 +1,10 @@
+local alloys = require "lib.entities.alloys"
+local plates = require "lib.entities.plates"
+local ores   = require "lib.entities.ores"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
+-- TODO: remove
 apm.bob_rework.lib.entities.monel = 'monel-alloy'
 
 apm.bob_rework.lib.entities.genMonel = function ()
@@ -13,7 +17,7 @@ apm.bob_rework.lib.entities.genMonel = function ()
 
     local item = {}
     item.type = 'item'
-    item.name = apm.bob_rework.lib.entities.monel
+    item.name = alloys.monel
     item.icons = {ico}
     item.stack_size = 200
     item.group = "apm_power"
@@ -136,3 +140,40 @@ apm.bob_rework.lib.entities.genEarlyZinc = function ()
 end
 
 apm.bob_rework.lib.entities.genEarlyZinc()
+
+-- gen alternatice starting recipe
+apm.bob_rework.lib.entities.genStartingPlate = function (name, ore)
+
+    local ico = apm.lib.utils.icon.get.from_item(name)
+    local suffix = 'apm_default_'
+    local product = suffix .. name
+
+    local recipe = {}
+    recipe.type = "recipe"
+    recipe.name = product
+    recipe.category = "mixing-furnace"
+    recipe.normal = {}
+    recipe.normal.enabled = true
+    recipe.normal.energy_required = 15
+    recipe.normal.ingredients = {
+        {type="item", name=ore, amount=1},
+    }
+    recipe.normal.results = { 
+        {type='item', name=name, amount=1}
+    }
+    recipe.normal.main_product = name
+    recipe.normal.requester_paste_multiplier = 4
+    recipe.normal.always_show_products = true
+    recipe.normal.always_show_made_in = true
+    recipe.expensive = table.deepcopy(recipe.normal)
+    recipe.expensive.ingredients = {
+        {type="item", name=ore, amount=1},
+    }
+    recipe.allow_decomposition = false
+    data:extend({recipe})
+end
+
+apm.bob_rework.lib.entities.genStartingPlate(plates.iron, ores.iron)
+apm.bob_rework.lib.entities.genStartingPlate(plates.tin, ores.tin)
+apm.bob_rework.lib.entities.genStartingPlate(plates.copper, ores.copper)
+apm.bob_rework.lib.entities.genStartingPlate(plates.lead, ores.lead)

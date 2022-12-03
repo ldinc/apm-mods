@@ -24,9 +24,6 @@ end
 
 apm.bob_rework.lib.utils.grid.set = function(name, w, h)
     local grid = data.raw['equipment-grid'][name]
-    apm.bob_rework.lib.utils.debug.object("------------------")
-    apm.bob_rework.lib.utils.debug.object(grid)
-    apm.bob_rework.lib.utils.debug.object("------------------")
     if grid then
         grid.width = w
         grid.height = h

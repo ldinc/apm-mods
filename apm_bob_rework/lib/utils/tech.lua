@@ -1,3 +1,6 @@
+local default = require "lib.entities.default"
+local assemblers = require "lib.entities.buildings.assemblers"
+local furnaces   = require "lib.entities.buildings.furnaces"
 if apm == nil then apm = {} end
 if apm.bob_rework == nil then apm.bob_rework = {} end
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
@@ -256,7 +259,6 @@ function apm.bob_rework.lib.utils.tech.rebuild(startingTName, startingSciencePac
     local techMap = {}
     local depMap = {}
     local reverseDepMap = {}
-   
 
     local availableProducts = apm.bob_rework.lib.utils.recipe.allItems()
     -- local availableProducts = apm.bob_rework.lib.utils.tech.startingList(startingTName)
@@ -275,7 +277,9 @@ function apm.bob_rework.lib.utils.tech.rebuild(startingTName, startingSciencePac
         end
     end
     -- ignore pushItems
-    availableProducts = apm.bob_rework.lib.utils.tech.startingList()
+
+    -- availableProducts = apm.bob_rework.lib.utils.tech.startingList()
+    availableProducts = table.deepcopy(default.list)
 
     -- for tname, _ in pairs(techMap) do
     -- local tech = data.raw.technology[tname]
@@ -288,14 +292,19 @@ function apm.bob_rework.lib.utils.tech.rebuild(startingTName, startingSciencePac
         end
     end
 
+    apm.bob_rework.lib.utils.debug.object('tech rebuild:: reset prerequisites & science packs for technologies')
+
     local startingTech = data.raw.technology[startingTName]
     apm.bob_rework.lib.utils.tech.insertSciencePack(startingTech, startingSciencePack)
-    -- apm.bob_rework.lib.utils.tech.toogleItems(startingTech, availableProducts)
 
-    -- apm.bob_rework.lib.utils.debug.object('JIB: availableProducts::')
-    -- apm.bob_rework.lib.utils.debug.object(availableProducts)
-    -- apm.bob_rework.lib.utils.debug.object('JIB: techMap::')
-    -- apm.bob_rework.lib.utils.debug.object(techMap)
+    apm.bob_rework.lib.utils.debug.object('tech rebuild:: starting tech ['..startingTName..'] with sp ['..startingSciencePack..']')
+
+    -- prepare map of required products for technologies
+    local requiredProductsMap = {}
+    for tName, tech in pairs(techMap) do
+        local requirements = apm.bob_rework.lib.utils.tech.requiredProducts(tech, availableProducts)
+        requiredProductsMap[tName] = requirements
+    end
 
     local done = false
     local ind = 1
@@ -306,9 +315,9 @@ function apm.bob_rework.lib.utils.tech.rebuild(startingTName, startingSciencePac
     local sciencePacksMap = {
         [-1] = {pack = startingSciencePack}
     }
-    apm.bob_rework.lib.utils.tech.buildLine(t, availableProducts, availableCraftingGroups, researchedTech, sciencePacksMap, depMap, reverseDepMap, ind)
+    apm.bob_rework.lib.utils.tech.buildLine(t, availableProducts, requiredProductsMap, availableCraftingGroups, researchedTech, sciencePacksMap, depMap, reverseDepMap, ind)
     while not done do
-        done = apm.bob_rework.lib.utils.tech.buildLine(techMap, availableProducts, availableCraftingGroups, researchedTech, sciencePacksMap, depMap, reverseDepMap, ind)
+        done = apm.bob_rework.lib.utils.tech.buildLine(techMap, availableProducts, requiredProductsMap, availableCraftingGroups, researchedTech, sciencePacksMap, depMap, reverseDepMap, ind)
         ind = ind + 1
     end
 
@@ -351,7 +360,6 @@ function apm.bob_rework.lib.utils.tech.rebuild(startingTName, startingSciencePac
     apm.bob_rework.lib.utils.tech.cleanupGraph(researchedTech, depMap, reverseDepMap)
     apm.bob_rework.lib.utils.tech.handleScience(researchedTech, depMap, reverseDepMap)
     for tName, _ in pairs(researchedTech) do
-    -- for tName, _ in pairs(data.raw.technology) do
         if not apm.bob_rework.lib.utils.tech.isModule(tName) then
             apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(tName)
         end
@@ -359,7 +367,6 @@ function apm.bob_rework.lib.utils.tech.rebuild(startingTName, startingSciencePac
 
     apm.bob_rework.lib.utils.tech.postProcessByTTiers()
     apm.bob_rework.lib.utils.tech.dropModulesFromNonModules(researchedTech, depMap, reverseDepMap)
-    -- apm.bob_rework.lib.utils.tech.finalHacks(researchedTech, depMap, reverseDepMap)
 end
 
 
@@ -447,11 +454,6 @@ function apm.bob_rework.lib.utils.tech.extendTreeWithTTiers(researchedTech, depM
         end
     end
 end
-
--- function apm.bob_rework.lib.utils.tech.finalHacks(researchedTech, depMap, reverseDepMap)
---     apm.lib.utils.technology.add.prerequisites('fluid-wagon', 'fluid-handling')
-
--- end
 
 -- expected builded full reverseDepMap structure
 function apm.bob_rework.lib.utils.tech.handleScience(researchedTech, depMap, reverseDepMap)
@@ -548,12 +550,6 @@ end
 
 function apm.bob_rework.lib.utils.tech.handleScienceBuffs(researchedTech, depMap, reverseDepMap)
 
-    -- apm.bob_rework.lib.utils.tech.dropAllSciencePacks(data.raw.technology['more-inserters-1'])
-    -- apm.bob_rework.lib.utils.tech.dropAllSciencePacks(data.raw.technology['more-inserters-2'])
-    -- apm.bob_rework.lib.utils.tech.dropAllSciencePacks(data.raw.technology['long-inserters-2'])
-    -- apm.bob_rework.lib.utils.tech.dropAllSciencePacks(data.raw.technology['long-inserters-2'])
-    
-    
     apm.lib.utils.technology.add.prerequisites('steel-axe', 'logistics-0')
     apm.lib.utils.technology.add.prerequisites('apm_inserter_capacity_bonus', 'logistic-0')
     apm.lib.utils.technology.add.prerequisites('apm_inserter_capacity_bonus', 'apm_coking_plant_0')
@@ -617,8 +613,21 @@ function apm.bob_rework.lib.utils.tech.cleanupGraph(researchedTech, depMap, reve
 end
 
 function apm.bob_rework.lib.utils.tech.defaultCtaftingGroups()
-    local list = apm.bob_rework.lib.utils.assembler.craftingCategories('apm_assembling_machine_0')
+    local list = {}
+    local get = function (name)
+        local sub = apm.bob_rework.lib.utils.assembler.craftingCategories(genInsertersName)
+        for k,v in pairs(sub) do
+            list[k] = v
+        end
+    end
+    
+    get(assemblers.burner)
+    get(furnaces.mixing.burner.basic)
+
     list['rocket-building'] = {}
+    -- list['smelting'] = {}
+    -- -- list['mixing-furnace'] = {}
+
     return list
 end
 
@@ -641,12 +650,13 @@ function apm.bob_rework.lib.utils.tech.isAvailable(tech, requiredProducts, avail
     return true
 end
 
-function apm.bob_rework.lib.utils.tech.buildLine(techMap, availableProducts, availableCraftingGroups, researchedTech, sciencePacksMap, depMap, reverseDepMap, index)
-    -- apm.bob_rework.lib.utils.debug.object('tech rebuild:: buildLine .. ' .. tostring(index))
+function apm.bob_rework.lib.utils.tech.buildLine(techMap, availableProducts, requiredProductsMap, availableCraftingGroups, researchedTech, sciencePacksMap, depMap, reverseDepMap, index)
+    local debugLine = 'tech rebuild:: buildLine .. ' .. tostring(index)
+
+    apm.bob_rework.lib.utils.debug.object(debugLine)
     local noChanges = true
-    local dbg = 'fluid-handling'
     for tName, tech in pairs(techMap) do
-        local requiredProducts = apm.bob_rework.lib.utils.tech.requiredProducts(tech, availableProducts)
+        local requiredProducts = requiredProductsMap[tName]
         local hasItems = false
         for _, _ in pairs(requiredProducts) do
             hasItems = true
@@ -654,8 +664,8 @@ function apm.bob_rework.lib.utils.tech.buildLine(techMap, availableProducts, ava
         end
 
         if hasItems then
-            -- apm.bob_rework.lib.utils.debug.object('tech rebuild:: buildLine:: required products for ' .. tName)
-            -- apm.bob_rework.lib.utils.debug.object(requiredProducts)
+            apm.bob_rework.lib.utils.debug.object(debugLine..':: required products for ' .. tName)
+            apm.bob_rework.lib.utils.debug.object(requiredProducts)
             --
             if apm.bob_rework.lib.utils.tech.isAvailable(tech, requiredProducts, availableProducts) then
                 -- check if new recipies can be crafted with current tech levels
@@ -676,7 +686,7 @@ function apm.bob_rework.lib.utils.tech.buildLine(techMap, availableProducts, ava
                 end
 
                 if canBeResearched then
-                    -- apm.bob_rework.lib.utils.debug.object('tech rebuild:: buildLine:: tech can be researched ' .. tName)
+                    apm.bob_rework.lib.utils.debug.object(debugLine..':: tech can be researched ' .. tName)
                     techMap[tName] = nil
                     noChanges = false
                     apm.bob_rework.lib.utils.tech.mark(
@@ -686,19 +696,9 @@ function apm.bob_rework.lib.utils.tech.buildLine(techMap, availableProducts, ava
                         )
                     break
                 end
-                if not canBeResearched and tName == dbg then
-                    -- apm.bob_rework.lib.utils.debug.object('tech rebuild:: buildLine:: tech can not be researched ' .. tName)
-                    -- apm.bob_rework.lib.utils.debug.object('tech rebuild:: buildLine:: requiredCraftingGroups for' .. tName)
-                    -- apm.bob_rework.lib.utils.debug.object(requiredCraftingGroups)
-                    -- apm.bob_rework.lib.utils.debug.object('tech rebuild:: buildLine:: techCraftingGroups for ' .. tName)
-                    -- apm.bob_rework.lib.utils.debug.object(techCraftingGroups)
-                    -- apm.bob_rework.lib.utils.debug.object('tech rebuild:: buildLine:: availableCraftingGroups for ' .. tName)
-                    -- apm.bob_rework.lib.utils.debug.object(availableCraftingGroups)
-
-                end
             end
         else
-            -- apm.bob_rework.lib.utils.debug.object('tech rebuild:: buildLine:: skipping ' .. tName)
+            apm.bob_rework.lib.utils.debug.object(debugLine..':: skipping ' .. tName)
         end
     end
     return noChanges
@@ -818,10 +818,9 @@ function  apm.bob_rework.lib.utils.tech.craftingGroups(tech)
     if tech then
         local products = apm.bob_rework.lib.utils.tech.products(tech)
         for key, _ in pairs(products) do
-            local res = apm.bob_rework.lib.utils.assembler.craftingCategories(key)
-            for g, _ in pairs(res) do
-                groups[g] = {}
-            end
+            local recipe = data.raw.recipe[key]
+            local craftingGroup = recipe.category
+            groups[craftingGroup] = {}
         end
     end
 
@@ -901,11 +900,13 @@ function apm.bob_rework.lib.utils.tech.addDependency(tName, dep, depMap)
 end
 
 function apm.bob_rework.lib.utils.tech.products(tech)
-    local products ={}
+    local products = {}
+    local recipies = {}
     if tech and tech.effects then
         for _, v in pairs(tech.effects) do
             local eType = v.type
             if eType == unlockRecipeTag then
+                recipies[v.recipe] = {}
                 local list = apm.bob_rework.lib.utils.recipe.getProducts(v.recipe)
                 for _, p in ipairs(list) do
                     products[p] = {}
@@ -918,7 +919,7 @@ function apm.bob_rework.lib.utils.tech.products(tech)
 
     end
 
-    return products
+    return products, recipies
 end
 
 function apm.bob_rework.lib.utils.tech.fluidHandleHack(products)

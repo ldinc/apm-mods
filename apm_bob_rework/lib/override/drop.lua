@@ -1,14 +1,55 @@
 local product = require "lib.entities.product"
+local bob     = require "lib.entities.bob"
+local types   = require "lib.entities.types"
+local assemblers = require "lib.entities.buildings.assemblers"
+local flags      = require "lib.entities.flags"
+
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
 require('lib.entities.base')
 
+
+
 apm.bob_rework.lib.override.drop = function()
     local rm = apm.lib.utils.recipe.remove
     -- local hd = apm.lib.utils.item.delete_hard
     local hd = apm.lib.utils.item.remove
+
+    local hide = function (name, type)
+        local base = data.raw[type]
+        -- if base == nil then
+        --     return
+        -- end
+        local entity = base[name]
+        -- if entity == nil then
+        --     return
+        -- end
+        apm.lib.utils.entity.add.flag(entity, flags.notmadein)
+        apm.lib.utils.entity.add.flag(entity, flags.hidden)
+    end
+
+    local d = function (name, type)
+        hide(name, type)
+        rm(name)
+        hd(name)
+    end
+
+
+    local resetUpgrades = function (name, type)
+        local base = data.raw[type]
+        -- if base == nil then
+        --     return
+        -- end
+        local entity = base[name]
+        -- if entity == nil then
+        --     return
+        -- end
+
+        entity.next_upgrade = nil
+    end
+
 
     rm('apm_gearing')
     rm('wood-pellets')
@@ -203,6 +244,39 @@ apm.bob_rework.lib.override.drop = function()
     rm('steel-bearing')
     rm('steel-bearing-ball')
     rm('steel-gear-wheel')
+
+    rm('cobalt-steel-bearing-ball')
+    rm('ceramic-bearing-ball')
+    rm('titanium-bearing-ball')
+
+    rm(bob.valve.check)
+    rm(bob.valve.overflow)
+    rm(bob.valve.topup)
+
+    resetUpgrades(assemblers.steam, types.assemblers)
+    resetUpgrades(bob.assembler.burner, types.assemblers)
+    resetUpgrades(bob.assembler.steam, types.assemblers)
+    resetUpgrades(bob.assembler.electric.base, types.assemblers)
+    resetUpgrades(bob.assembler.electric.yellow, types.assemblers)
+    resetUpgrades(bob.assembler.electric.red, types.assemblers)
+    resetUpgrades(bob.assembler.electric.blue, types.assemblers)
+    resetUpgrades(bob.assembler.electric.green, types.assemblers)
+    resetUpgrades(bob.assembler.electric.purple, types.assemblers)
+
+    resetUpgrades(bob.assembler.electronics.yellow, types.assemblers)
+    resetUpgrades(bob.assembler.electronics.green, types.assemblers)
+    resetUpgrades(bob.assembler.electronics.blue, types.assemblers)
+
+    d(bob.assembler.burner, types.assemblers)
+    d(bob.assembler.steam, types.assemblers)
+    d(bob.assembler.electric.purple, types.assemblers)
+    d(bob.assembler.electric.green, types.assemblers)
+    d(bob.assembler.electric.base, types.assemblers)
+    d(bob.assembler.electronics.green, types.assemblers)
+    d(bob.assembler.electronics.blue, types.assemblers)
+    d(bob.assembler.electronics.yellow, types.assemblers)
+
+-- ????    apm.lib.utils.item.delete_hard
 
     -- unused entities
     -- hd('bob-artillery-wagon-2')

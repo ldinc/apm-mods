@@ -1,3 +1,4 @@
+-- TODO: drop (use pls logistisc.lua)
 local d = {
     belt = {
         gray = 'basic-transport-belt',

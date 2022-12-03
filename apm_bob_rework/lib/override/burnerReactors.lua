@@ -26,10 +26,6 @@ end
 
 local fixFuelForHeatExhanger = function(recipe)
     local exchanger = data.raw['reactor'][recipe]
-    -- local fc = apm.lib.utils.entity.get.fuel_categories('apm_steelworks_0')
-    -- apm.bob_rework.lib.utils.debug.object(exchanger)
-    -- exchanger.energy_source.fuel_category = 'apm_refined_chemical'
-    -- exchanger.energy_source.fuel_categories = fc
     exchanger.energy_source.burnt_inventory_size = 1
 end
 

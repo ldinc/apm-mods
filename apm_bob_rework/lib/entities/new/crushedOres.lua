@@ -1,6 +1,7 @@
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
+-- TODO: remove (use ores.lua)
 apm.bob_rework.lib.entities.ore = {}
 
 apm.bob_rework.lib.entities.ore.copper = 'copper-ore'
@@ -15,6 +16,7 @@ apm.bob_rework.lib.entities.ore.silver = 'silver-ore'
 apm.bob_rework.lib.entities.ore.tin = 'tin-ore'
 apm.bob_rework.lib.entities.ore.nickel = 'nickel-ore'
 apm.bob_rework.lib.entities.ore.tungsten = 'tungsten-ore'
+--#endregion
 
 local crushed = function(ore)
     return 'crushed-' .. ore
@@ -79,8 +81,7 @@ apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom = function(ore, tin
     item.name = crushedName
     item.icons = { ico }
     item.stack_size = 200
-    -- item.group = "apm_power"
-    item.subgroup = "bob-material"
+    item.group = "apm_power"
     item.order = 'ab_i'
     data:extend({ item })
 
@@ -90,7 +91,8 @@ apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom = function(ore, tin
     recipe.name = crushedName
     recipe.category = "apm_crusher"
     recipe.normal = {}
-    recipe.normal.enabled = true
+    recipe.normal.enabled = false
+    recipe.normal.hide_from_player_crafting = true
     recipe.normal.energy_required = recipeSetting.energyRequired
     recipe.normal.ingredients = {
         { type = "item", name = ore, amount = recipeSetting.amountOfOre },
@@ -110,60 +112,6 @@ apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom = function(ore, tin
     data:extend({ recipe })
 end
 
-apm.bob_rework.lib.entities.crushed.ore.generate.crushedStartingFrom = function(ore, tint)
-
-    local crushedName = 'crashsite-'..crushed(ore)
-    local enrichedName = 'enriched-'..ore
-
-    -- local tint = { r = 255 / 255, g = 69 / 255, b = 0 / 255 }
-    local ico = {
-        icon = crushedIcoPath,
-        icon_size = 64,
-        tint = tint,
-    }
-    local tier = {
-        icon = tier1Ico,
-        icon_size = 64,
-    }
-    -- generate item
-    local item = {}
-    item.type = 'item'
-    item.name = crushedName
-    item.icons = { ico }
-    item.stack_size = 200
-    -- item.group = "apm_power"
-    item.subgroup = "bob-material"
-    item.order = 'ab_i'
-    data:extend({ item })
-
-    -- generate recipe
-    local recipe = {}
-    recipe.type = "recipe"
-    recipe.name = crushedName
-    recipe.category = "apm_crashsite"
-    recipe.hidden = true
-    recipe.hide_from_player_crafting = true
-    recipe.enabled = true
-    recipe.normal = {}
-    recipe.normal.enabled = true
-    recipe.normal.energy_required = recipeSetting.energyRequired
-    recipe.normal.ingredients = {
-        { type = "item", name = ore, amount = recipeSetting.amountOfOre },
-    }
-    recipe.normal.results = {
-        { type = 'item', name = enrichedName, amount = recipeSetting.amountOfResult }
-    }
-    recipe.normal.main_product = enrichedName
-    recipe.normal.requester_paste_multiplier = 4
-    recipe.normal.always_show_products = true
-    recipe.normal.always_show_made_in = true
-    recipe.expensive = table.deepcopy(recipe.normal)
-    recipe.expensive.ingredients = {
-        { type = "item", name = ore, amount = recipeSetting.amountOfOre + 2 },
-    }
-    recipe.allow_decomposition = true
-    data:extend({ recipe })
-end
 
 apm.bob_rework.lib.entities.crushed.ore.generate.advancedCrushedFrom = function(ore, tint)
     -- local tint = {r=255/255, g=69/255, b=0/255}
@@ -187,7 +135,8 @@ apm.bob_rework.lib.entities.crushed.ore.generate.advancedCrushedFrom = function(
     recipe.category = "apm_crusher_2"
     recipe.icons = { ico, tier }
     recipe.normal = {}
-    recipe.normal.enabled = true
+    recipe.normal.enabled = false
+    recipe.normal.hide_from_player_crafting = true
     recipe.normal.energy_required = recipeSetting.energyRequired
     recipe.normal.ingredients = {
         { type = "item", name = ore, amount = recipeSetting.amountOfOre },
@@ -213,8 +162,6 @@ end
 local gen = function(ore, tint)
     apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom(ore, tint)
     apm.bob_rework.lib.entities.crushed.ore.generate.advancedCrushedFrom(ore, tint)
-    
-    apm.bob_rework.lib.entities.crushed.ore.generate.crushedStartingFrom(ore, tint)
 end
 
 -- generates crushed ores

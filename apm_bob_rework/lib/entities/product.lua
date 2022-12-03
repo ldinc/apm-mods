@@ -23,13 +23,22 @@ local p = {
         steel = 'steel-bearing',
         titanium = 'titanium-bearing',
         cobaltSteel = 'cobalt-steel-bearing',
+        cobalt = {steel = 'cobalt-steel-bearing'},
         ceramic = 'ceramic-bearing',
 
-        balls = {
+        -- TODO: remove
+        ball = {
             titanium = 'titanium-bearing-ball',
             ceramic = 'ceramic-bearing-ball',
             bronze = 'bronze-bearing-ball',
             brass = 'brass-bearing-ball',
+        },
+
+        balls = {
+            cobalt = {steel = 'cobalt-steel-bearing-balls'},
+            ceramic = 'ceramic-bearing-balls',
+            bronze = 'bronze-bearing-balls',
+            brass = 'brass-bearing-balls',
         },
     },
 
@@ -49,6 +58,9 @@ local p = {
 
     sieve = {
         iron = 'apm_sieve_iron',
+        disabled = {
+            copper = 'apm_sieve_copper',
+        },
     },
 
     board = {
@@ -73,7 +85,9 @@ local p = {
     chemistry = {
         resin = 'apm_resin',
         cordite = 'cordite',
-    }
+        plastic = 'plastic-bar',
+    },
+
 }
 
 return p

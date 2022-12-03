@@ -1780,10 +1780,10 @@ if mods.boblogistics and apm_power_compat_bob then
 	apm.lib.utils.recipe.ingredient.mod('nitinol-pipe', 'apm_sealing_rings', 1)
 	apm.lib.utils.recipe.ingredient.mod('copper-tungsten-pipe', 'apm_sealing_rings', 1)
 
-	apm.lib.utils.recipe.category.change('steel-bearing', 'crafting-with-fluid')
-	apm.lib.utils.recipe.category.change('cobalt-steel-bearing', 'crafting-with-fluid')
-	apm.lib.utils.recipe.ingredient.mod('steel-bearing', 'lubricant', 10)
-	apm.lib.utils.recipe.ingredient.mod('cobalt-steel-bearing', 'lubricant', 10)
+	-- apm.lib.utils.recipe.category.change('steel-bearing', 'crafting-with-fluid')
+	-- apm.lib.utils.recipe.category.change('cobalt-steel-bearing', 'crafting-with-fluid')
+	-- apm.lib.utils.recipe.ingredient.mod('steel-bearing', 'lubricant', 10)
+	-- apm.lib.utils.recipe.ingredient.mod('cobalt-steel-bearing', 'lubricant', 10)
 
 	-- apm.lib.utils.recipe.ingredient.remove_all('steam-inserter')
 	-- apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'apm_steam_engine', 1)

@@ -1,6 +1,8 @@
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
+-- TODO: remove & drop (use pls logistisc.lua package)
+
 apm.bob_rework.lib.entities.belt_t0 = 'basic-transport-belt'
 apm.bob_rework.lib.entities.underBelt_t0 = 'basic-underground-belt'
 apm.bob_rework.lib.entities.splitter_t0 = 'basic-splitter'

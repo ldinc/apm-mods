@@ -118,8 +118,6 @@ local redrawChemicalPlant = function()
     cp3.animation = bob_chemical_plant_animation({ r = 0.1, g = 0.5, b = 0.7 })
     cp2.animation = bob_chemical_plant_animation({ r = 0.7, g = 0.2, b = 0.1 })
     cp.animation = bob_chemical_plant_animation({ r = 0.7, g = 0.7, b = 0.1 })
-    apm.lib.utils.debug.object(cp)
-    apm.lib.utils.debug.object(cp.icon)
     cp.icon = "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant.png"
     cp2.icon = "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant.png"
     cp3.icon = "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant.png"

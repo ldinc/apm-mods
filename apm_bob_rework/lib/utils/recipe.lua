@@ -103,11 +103,6 @@ function apm.bob_rework.lib.utils.recipe.getProducts(name)
 
         return list
     end
- 
-
-    -- apm.bob_rework.lib.utils.debug.object('getProducts:: failed find results')
-    -- apm.bob_rework.lib.utils.debug.object(recipe)
-
 
     return list
 end
@@ -132,8 +127,6 @@ function apm.bob_rework.lib.utils.recipe.getIngredients(name)
             items = recipe.normal.ingredients
         end
             -- TODO: handle normal and expensive recipe
-        -- apm.bob_rework.lib.utils.debug.object("DEBUG")
-        -- apm.bob_rework.lib.utils.debug.object(recipe)
         for _, ingredient in ipairs(items) do
             local itm = ingredient.name
             if not itm then

@@ -1,5 +1,16 @@
 local tech = require "lib.entities.tech"
 local product = require "lib.entities.product"
+local alloys  = require "lib.entities.alloys"
+local pipes   = require "lib.entities.pipes"
+local bob     = require "lib.entities.bob"
+local logistics = require "lib.entities.logistics"
+local ores      = require "lib.entities.ores"
+local combat    = require "lib.entities.combat"
+local frames    = require "lib.entities.frames"
+local recipies  = require "lib.entities.recipies"
+local logic     = require "lib.entities.logic"
+local inserters = require "lib.entities.buildings.inserters"
+
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -7,6 +18,7 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 require('lib.entities.base')
 require('lib.tier.base')
 require('lib.utils.tech')
+require('lib.utils.techtree')
 
 local t = require('lib.entities.tech')
 
@@ -57,6 +69,10 @@ function apm.bob_rework.lib.override.tech()
     off(apm.bob_rework.lib.entities.brassBearing)
     off(apm.bob_rework.lib.entities.brassBearingBall)
     off(apm.bob_rework.lib.entities.brassGearWheel)
+    off(product.bearing.balls.brass)
+    off(product.bearing.balls.bronze)
+    off(product.bearing.balls.ceramic)
+    off(product.bearing.balls.cobalt.steel)
     off('steel-plate')
     off('apm_zinc')
     off('apm_stone_crushed_1')
@@ -65,6 +81,10 @@ function apm.bob_rework.lib.override.tech()
     off('incinerator')
     off(apm.bob_rework.lib.entities.steamInserter)
     off(apm.bob_rework.lib.entities.monel)
+
+
+    push(tech.processing.cobalt, product.bearing.balls.cobalt.steel)
+    push(tech.materials.ceramics, product.bearing.balls.ceramic)
 
     push('apm_crusher_machine_0', 'apm_gun_powder')
     push('apm_press_machine_0', apm.bob_rework.lib.entities.bronzeBearing)
@@ -104,17 +124,21 @@ function apm.bob_rework.lib.override.tech()
 
     push('apm_steam_science_pack', apm.bob_rework.lib.entities.steamInserter)
 
-    push('alloy-processing', apm.bob_rework.lib.entities.brass)
-    push('alloy-processing', apm.bob_rework.lib.entities.brassGearWheel)
-    push('alloy-processing', apm.bob_rework.lib.entities.brassBearing)
-    push('alloy-processing', apm.bob_rework.lib.entities.brassBearingBall)
-    push('alloy-processing', apm.bob_rework.lib.entities.brassPipe)
-    push('alloy-processing', apm.bob_rework.lib.entities.brassUnderPipe)
+    -- alloy processing
+    push(tech.processing.alloy, alloys.brass)
+    push(tech.processing.alloy, product.gearwheel.brass)
+    push(tech.processing.alloy, product.bearing.brass)
+    push(tech.processing.alloy, product.bearing.balls.brass)
+    push(tech.processing.alloy, pipes.base.brass)
+    push(tech.processing.alloy, pipes.under.brass)
+    rm(tech.processing.alloy, alloys.bronze)
+
+
     unbind('bob-distillery-2', 'alloy-processing')
     unbind('steel-mixing-furnace', 'alloy-processing')
     unbind('electronics', 'alloy-processing')
-    unbind('invar-processing', 'alloy-processing')
     unbind('alloy-processing', 'apm_power_automation_science_pack')
+    unbind('invar-processing', 'alloy-processing')
     bind('alloy-processing', 'apm_coking_plant_0')
     bind('apm_power_steam', 'alloy-processing')
     drop('alloy-processing', 'apm_steam_science_pack')
@@ -593,7 +617,77 @@ function apm.bob_rework.lib.override.tech()
     rm(product.sieve)
     on(product.sieve)
 
+    push(t.fluid.control.basic, pipes.base.copper)
+    push(t.fluid.control.basic, pipes.under.copper)
+    push(t.logistics.basic, logistics.belt.slow)
+
+    push(t.crusher.burner, ores.crushed.basic.aluminium)
+    push(t.crusher.burner, ores.crushed.basic.cobalt)
+    push(t.crusher.burner, ores.crushed.basic.copper)
+    push(t.crusher.burner, ores.crushed.basic.gold)
+    push(t.crusher.burner, ores.crushed.basic.iron)
+    push(t.crusher.burner, ores.crushed.basic.lead)
+    push(t.crusher.burner, ores.crushed.basic.nickel)
+    push(t.crusher.burner, ores.crushed.basic.silver)
+    push(t.crusher.burner, ores.crushed.basic.tin)
+    push(t.crusher.burner, ores.crushed.basic.titanium)
+    push(t.crusher.burner, ores.crushed.basic.tungsten)
+    push(t.crusher.burner, ores.crushed.basic.zinc)
+
+    push(t.crusher.burner, combat.ammo.magazine.firearm)
+
+    push(t.press.burner, product.bearing.balls.bronze)
+
+    push(t.sieve.burner, ores.enriched.basic.aluminium)
+    push(t.sieve.burner, ores.enriched.basic.cobalt)
+    push(t.sieve.burner, ores.enriched.basic.copper)
+    push(t.sieve.burner, ores.enriched.basic.gold)
+    push(t.sieve.burner, ores.enriched.basic.iron)
+    push(t.sieve.burner, ores.enriched.basic.nickel)
+    push(t.sieve.burner, ores.enriched.basic.silver)
+    push(t.sieve.burner, ores.enriched.basic.tin)
+    push(t.sieve.burner, ores.enriched.basic.lead)
+    push(t.sieve.burner, ores.enriched.basic.titanium)
+    push(t.sieve.burner, ores.enriched.basic.tungsten)
+    push(t.sieve.burner, ores.enriched.basic.zinc)
+    rm(t.sieve.steam, product.sieve.iron)
+    push(t.sieve.burner, product.sieve.iron)
+
+    rm(t.processing.zinc, bob.recipe.zinc)
+    push(t.processing.sulfur, bob.recipe.zinc)
+
+    rm(t.science.automation, recipies.frames.advanced)
+    push(t.electricity, recipies.frames.advanced)
+    push(t.electronics.basic, logic.circuit.low)
+    rm(t.electricity, frames.advanced)
+    push(t.electronics.advanced.II, frames.advanced)
+    rm(t.electronics.basic, inserters.filter.yellow)
+    push(t.automation, inserters.filter.yellow)
+
+    rm(t.processing.sulfur, recipies.chemistry.petroleum.gas.sweetening)
+    push(t.processing.oil.basic, recipies.chemistry.petroleum.gas.sweetening)
+
+    push(t.electrolysis.II, recipies.chemistry.plastic.old)
+
+    rm(t.processing.titanium, product.gearwheel.titanium)
+    push(t.processing.titaniumAlloy, product.gearwheel.titanium)
+    rm(t.processing.titanium, product.bearing.titanium)
+    push(t.processing.titaniumAlloy, product.bearing.titanium)
+    rm(t.processing.titaniumAlloy, product.bearing.ball.titanium)
+
+    free(bob.tech.automation.basic)
+    free('apm_burner_long_inserter')
+    free('bob-area-drills-4')
+    free('bob-area-drills-3')
+    free('bob-area-drills-2')
+    free('bob-area-drills-1')
+    free('water-miner-4')
+    free('water-miner-3')
+    free('water-miner-2')
+    free('water-miner-1')
+
     if settings.startup['apm_bob_rework_experimental_tech_tree_rebuilder'].value == true then
-        apm.bob_rework.lib.utils.tech.rebuild('apm_crusher_machine_0', 'apm_industrial_science_pack')
+        -- apm.bob_rework.lib.utils.tech.rebuild('apm_crusher_machine_0', 'apm_industrial_science_pack')
+        apm.bob_rework.lib.utils.tech.tree.rebuild(t.crusher.burner)
     end
 end

@@ -1,3 +1,4 @@
+local product = require "lib.entities.product"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
@@ -5,6 +6,7 @@ require('lib.entities.fluids')
 require('lib.entities.gearingAndBearings')
 
 local alloy = require('lib.entities.alloys')
+local fluids = require('lib.entities.fluids')
 
 apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
     local ico = {
@@ -32,8 +34,8 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
     recipe.normal.energy_required = 0.5
     recipe.normal.ingredients = {
             {type="item", name=base, amount=1},
-            {type="item", name=ball, amount=16},
-            {type="fluid", name=apm.bob_rework.lib.entities.chem.lubricant, amount=10}
+            {type="item", name=ball, amount=1},
+            {type="fluid", name=fluids.lubricant, amount=10}
         }
     recipe.normal.results = { 
             {type='item', name=name, amount=2}
@@ -44,17 +46,19 @@ apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
     recipe.normal.always_show_made_in = true
     recipe.expensive = table.deepcopy(recipe.normal)
     recipe.expensive.ingredients = {
-            {type="item", name=base, amount=2}
-        }
+        {type="item", name=base, amount=1},
+        {type="item", name=ball, amount=2},
+        {type="fluid", name=fluids.lubricant, amount=15}
+    }
 
     data:extend({recipe})
 end
 
 apm.bob_rework.lib.entities.genBearing(
-    apm.bob_rework.lib.entities.bronzeBearing, alloy.bronze,
-    apm.bob_rework.lib.entities.bronzeBearingBall, {r=151/255, g=115/255, b=81/255}
+    product.bearing.bronze, alloy.bronze, product.bearing.balls.bronze,
+    {r=151/255, g=115/255, b=81/255}
 )
 apm.bob_rework.lib.entities.genBearing(
-    apm.bob_rework.lib.entities.brassBearing, alloy.brass,
-    apm.bob_rework.lib.entities.brassBearingBall, {r=235/255, g=244/255, b=181/255}
+    product.bearing.brass, alloy.brass, product.bearing.balls.brass,
+    {r=235/255, g=244/255, b=181/255}
 )

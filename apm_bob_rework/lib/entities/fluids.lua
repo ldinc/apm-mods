@@ -4,3 +4,11 @@ if apm.bob_rework.lib.entities.chem == nil then apm.bob_rework.lib.entities.chem
 
 apm.bob_rework.lib.entities.chem.lubricant = 'lubricant'
 apm.bob_rework.lib.entities.chem.deuterium = 'deuterium'
+
+local fluids =  {
+    lubricant = 'lubricant',
+    deuterium = 'deuterium',
+    chlorine = 'chlorine',
+}
+
+return fluids

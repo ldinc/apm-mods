@@ -1,0 +1,274 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.4.2
+Date: 2022.11.25
+  Features:
+    - Countermeasures against artificial ditches. Since labyrinths of filling with water, followed by shooting from a safe distance cause severe lags, countermeasures are taken.
+      Now, biters above 300 health, will gradually fill up the moat in places of their mass death.
+  Balancing:
+    - Unstable absorption crystal now makes nearest biters immune to damage
+  Optimisations:
+    - Changed death processing of compresses biters. Instead of dying and spawning a new biter, the "compressed" biter is healed to full health
+  Bugfixes:
+    - Fixed crash when deleting a surface with unprocessed chunks
+  Other:
+    - Non-squad compressed biters will decompress if killed from distance below 20
+---------------------------------------------------------------------------------------------------
+Version: 1.4.1
+Date: 2022.11.02
+  Bugfixes:
+    - Fixed crush, when checking lost compressed units
+---------------------------------------------------------------------------------------------------
+Version: 1.4.0
+Date: 2022.11.02
+  Features:
+    - New faction: Tier 4. Arachnids. Leave eggs after death, which must be destroyed by physical damage for a limited time
+      Faction has weakness to physical damage
+      The goal of the faction is to force the player to spend resources on ammo
+      If the Arachnids mod is installed, the biter model from this mod will be used
+    - Now you can set the duration of the peace period at the beginning of the game (map settings)
+      Set when the map is created, changes are ignored later
+  Balancing:
+    - Now, when destroying objects at ultra-long distances (90+) with electric turrets, there is a 0,5% chance to create an Unstable absorption crystal. 
+      Changed the health and resistances of all Unstable crystals
+    - Energy-chief factions: added weakness to physical damage. Removed attribute "low health"
+    - Energy-chief and electic factions: attack cooldown and damage increased by x1.5
+    - Increased low-tier armor electic resistace
+    - Removed overpopulation control. It is not needed due hives no longer spawn nests and worms
+    - Player hunting squads probability is greatly reduced
+    - Armored biters now tier 5 (up from 4). Reduced fire resistance
+    - Some factions now immune to fire stickers: Armored, fast, regenerative, suicide, nuclear and energy-chief
+  Compatibility:
+    - Compatible with Arachnids mod
+    - Compatible with "Hive Mind MitchPlay: Default".  Moved definition of spawners from data-final-fixes to data section.
+  Bugfixes:
+    - Fixed mistake due to which the player's pheromones were not processed
+    - Fixed squad compression near players
+    - Fixed invisibility of wasp drones and spawner eggs
+  Other:
+    - Changed binding of data on compressed units from a squad to a specific unit. Compressed units can now be transferred between squads or have no squad at al
+    - En locale: brutal biters name now is "armored" 
+    - En, ru locale: "Target dummies" renamed to "Unstable crystall"
+---------------------------------------------------------------------------------------------------
+Version: 1.3.5
+Date: 2022.10.07
+  Balancing:
+    - Hives. Increased health at low levels
+  Other:
+    - Ru locale: changes in resistances are included in the description of factions
+    - The concept of Hives has been changed. They will no longer spawn other nests and worms. 
+      Instead, they will spawn strong biters earlier and more often. The reason is that the possibility of spawning anything 
+      other than units is not provided by the developers and is handled differently on Linux and windows servers, 
+      which leads to desynchronization
+---------------------------------------------------------------------------------------------------
+Version: 1.3.4
+Date: 2022.09.29
+  Balancing:
+    - Fire deathcloud damage significantly increased at absolute levels 5+ (in versions 1.3.0+)
+  Bugfixes:
+    - Fixed loading error for 10th level enemies
+---------------------------------------------------------------------------------------------------
+Version: 1.3.3
+Date: 2022.09.29
+  Bugfixes:
+    - Fixed error if the dialog for disabling new enemies was somehow closed without removing the interface
+---------------------------------------------------------------------------------------------------
+Version: 1.3.2
+Date: 2022.09.29
+  Bugfixes:
+    - Fixed error with factorissimo entitities pheromones
+---------------------------------------------------------------------------------------------------
+Version: 1.3.0
+Date: 2022.09.29
+  Features:
+    - Dynamic squad compression. Long-range squads are compressed to one unit per type. 
+      At medium distances from the player's base, fully compressed squads are converted to partially compressed
+      Near the player or his buildings there is a complete decompression
+  Optimisations:
+    - Major performance improvement in endgame and after a massive artillery bombardments
+      Lags are possible, but they will only be at the moment when a large number of squads decompressed near the base at the same time
+      The limit of units that the game is able to handle without serious performance problems has been discovered.
+      The following parameters have been changed so that the number of attacking units at the same time is less than this threshold:
+      Dynamic compression is now applied to any squads, including those under the control of a standard AI
+      Setting "Attack Wave: Max number of attack groups" default and max value is 30
+      The number of attacking squads cannot exceed 70% of the maximum. 30% is reserved for other types of squads
+      The number of biters controlled by the nest is lowered and same at all levels. Biters spawn rate increased. This will weaken retaliation when attacking large settlements
+      Late game squad cost discounter can't exceed 50%. Late game squad size bonus can't exceed 50 units. 
+      Late game AI points gained is limited by 1400 per minute (for non onslaught state)
+    - Rewrited the method of counting pheromones of player buildings. The number of queries has been reduced
+    - The calculation of mutations has been changed to reduce the load on overpopulated maps. Mutations are rarer, but gene changes are potentially stronger	  
+  Balancing:
+    - Fire stream speed tripled
+    - Factorissimo buildings pheromones greatly reduced, but if destroyed biters will receive the full value of this building
+    - Added "pipe-to-ground", "storage-tank" and "container" pheromones
+    - If there are no nearby nests then AI will switch to raid state
+    - The level of evolution is included in the estimation of the number of nests. Sieges on sparsely populated maps will become more frequent
+    - Pollution attack cost at absolute levels 6+ is decreased (~ 1/3)
+    - 20% attacks in agressive AI state will be from distant nests (if raids allowed)
+    - Acid faction now immune to poison
+    - Energy-chief faction: added minor explosion resistance
+    - Added minor acid resistance to physical and laser factions
+    - Worms and buildings now immune to electric damage. Removed any electric weakness. The reason is a magic skill in RPG-mod
+  Bugfixes:
+    - Fixed the breakdown of the list of bases during a long game, as a result of which the enemy base checks did not find anything. 
+      This could lead to the creation of a new base instead of using the genes of the existing one
+    - Fixed a bug when building a new nest, in which a chunk could be assigned to a random base, instead of the nearest one
+    - Fixed a bug when checking for nests in a chunk. The bases created when they are found will now also be able to mutate
+    - "Oneshot protection" and "range-immunity" will not work if its percentage differs from the Rampant settings. This will prevent the immortality of units from other mods that are assigned these resistances.
+  Other:
+    - Retribution counter no longer increases the pheromone limit of the player's buildings. Instead, the threshold of sensitivity of biters to pheromones decreases
+    - "Base detection" pheromones are not weakened by a chunk if it passes by more than 10%
+    - "Base detection" pheromones now is maximum possible for turrets
+    - Ru locale: changed suiciders faction locale name
+---------------------------------------------------------------------------------------------------
+Version: 1.2.11
+Date: 2022.09.14
+  Optimisations:
+    - Hives spawn radius and spawning spacing are same for all levels (spawn raduis greatly reduced at high levels)
+    - Squad decompress range now ~4 chuncks from playes buildings and ignore late game modifiers
+    - Vengence squads cant exceed 0.8 * Max biter group size and ignore late game modifiers
+    - Large bases mutation threshold increased to prevent frequent changes of the same nests
+    - The calculation method of "Oneshot protection" and "range-immunity" has been changed. Events "on_script_trigger_effect" is no longer used
+---------------------------------------------------------------------------------------------------
+Version: 1.2.9
+Date: 2022.09.07
+  Balancing:
+    - Hives can spawn worms again. As soon as the limit of worms in the chunk is exceeded, only nests will appear. 
+      This will slow down the strengthening of the chunk where the hive appeared
+    - Hives spawn interval increased from 3 to 5 min
+    - Worms limit increased to 10
+    - Hives will despawn, if chunk population is half of max
+---------------------------------------------------------------------------------------------------
+Version: 1.2.8
+Date: 2022.09.07
+  Optimisations:
+    - The reason for the fall of the ups in long games was found - these are worms. The concept of worms has been changed - now they are rare, but very dangerous units. The rebalance list is below
+  Balancing:
+    - The rate of fire of worms is tripled. Reduced delay before firing. Sticker damage on time increased by 1.5 times. The health of worms at absolute levels 2-5 is increased (~ x1.5)
+    - Overpopulation control: chunk cannot contain more than 7 worms. Nests ans worm limit reduced from 60 to 40
+    - Cluster projectiles (laser/electtic worms, laser spitters) accelerated by 5%
+    - Wasp worm damage reduced reduced by ~2 times. Added DOT when hit player
+    - Fire worm damage mutiplier is 6 again
+    - Hives can no longer spawn worms. Reduced the number of spawned nests before mutation
+    - Removed randomization of attributes
+    - Laser spitters now have "QuickCooldown" ability
+  Bugfixes:
+    - Fixed missing DOT on inferno worm/spitter hit
+---------------------------------------------------------------------------------------------------
+Version: 1.2.7
+Date: 2022.08.26
+  Bugfixes
+    - fixed loading error, if gate/wall explosion resitance exist, but decrease value is nill
+---------------------------------------------------------------------------------------------------
+Version: 1.2.6
+Date: 2022.08.26
+  Balancing:
+    - Fire worm bonus range now is 7 (lowered from 8)
+    - Nuclear biters: since the explosion now occurs at a distance from the target, the explosion radius is increased by 3
+    - Nuclear biters: direct target damage has been returned due to the fact that mobile targets, such as the player, could completely avoid a nuclear explosion. Now, some of the damage will be done immediately
+    - Acid biters: acid pool damage significantly increased
+    - The probability of factions at maximum evolution is now the same
+    - Setting "Increase wall resistance to spitters". Added explosion protection (reduces explosion damage by 40). Setting renamed to "Safety; Increase acid, poison and explosion wall resistance"
+    - High-level Juggernaut healing significantly reduced
+  Other:
+    - Setting "World: Units affected by tiles" removed due to abuse of coatings that slow down movement (for example, K2 creep) in front of the defense line
+  Bugfixes:
+    - Removed setting "World: Units affected by tiles" theoretically could lead to desynchronization when playing on the server
+    - Mutation in the case when no faction is available no longer causes an error
+---------------------------------------------------------------------------------------------------
+Version: 1.2.5
+Date: 2022.08.20
+  Balancing:
+    - Setting "Safety; Increase wall resistance to spitters" increase in the resistance of walls from poison and acid, only if object had acid resistance initially
+    - To compensate for the "effective level" bugfix, the health of nests and worms at absolute levels 3-5 is reduced. Since other parameters, such as damage, are no longer reduced twice, the worms have become more dangerous with the default settings. For those playing at the maximum enemy level, levels 3-5 have 30% less health
+    - Fire worm damage mutiplier now is 5 (lowered from 6). Energy-thief worm damage mutiplier now is 3 (lowered from 4)
+    - Suicide faction: The resists of the buildings are now the same as those of the biters
+  Bugfixes:
+    - The correction for the effective level for worms and nests is now applied once, not twice. The biters and spitters didn't have this mistake, so they have not changed
+    - The presence of walls and gates with indeterminate resistance in the game now does not lead to a loading error
+    - The reason for desynchronization when playing on a multi-player server may have been fixed. Now, data on the special-protection of the biters, as well as their health, are included in the stored data. Perhaps this was the reason for desynchronization
+  Compatibility:
+    - New setting: Projectiles: replace steam attacks with blockable projectiles. Add alternative attack for fire and inferno spitters: combination of mods "K2+SE+Combat Mechanics Overhaul" breaks the steam-attacks, if Combat Mechanics Overhaul mod settings: "Spitter spit blockable" and "Worm spit blockable" enabled. In this case use an alternative attack
+  Other:
+    - En, Ru locale: A system for generating localized names from Rampant 3 has been applied. Changed Ru locale for physical faction
+---------------------------------------------------------------------------------------------------
+Version: 1.2.4
+Date: 2022.08.05
+  Compatibility:
+    - AI takes into account the settings of diplomacy, excluding from enemies the forces of allies and those with whom there is a cease-fire. 
+    - Mods such as "abandoned ruins" do not cause attacks to stop due to the fact that all units are sent to friendly buildings
+  Bugfixes:
+    - The frequency of sieges has been returned to the state up to version 1.2.3 (with the "AI migration" setting disabled). Due to insufficient sieges in the case when the nests are too far away
+  Other:
+    - Maximum lifetime of squads is 40 minutes
+    - Squads are processed regardless of the currently active map
+---------------------------------------------------------------------------------------------------
+Version: 1.2.3
+Date: 2022.08.01
+  Balancing:
+    - 10% of settlers in migrate mode now is "siege" squads
+    - Add discount on the cost of long-distance settlement squads in migration mode. The discount can reach 30% for very long distances
+    - The conditions for selecting the migrate mode have been changed. Now it will be selected less often
+    - Fast faction: "Quick cooldown" attribute no longer reduce direct dmg by 1/3. Fast spitters range reduced by 2. Fast spitter "long-range immunity" now has range 25 (up from 20)
+    - Oneshot protection now disabled at negative resistance (if there is no protection against long-range damage)
+    - Nuclear biters: the explosion now appears at the location of the biter, not its target. Direct target damage removed. The radius of additional damage in the epicenter has been increased and is 30% of the maximum radius. The radius of the nuclear explosion now takes into account the "enemy level" setting (significant nerf)
+    - "AI: Action points scaling" setting is now taken into account when calculating the dependence of temperament on the number of killed biters
+  Compatibility:
+    - Space exploration: biters reaction for rocket launch weakened (5 times)
+  Bugfixes:
+    - Now, migration mode spawn attack squads only from raid nests (any nests before)
+    - Death by mutation no longer triggers revenge on the player
+    - Now, groups that have not received new orders within 5 minutes (if building base then 10 minutes) are disbanded unconditionally
+    - Suicide biters now never survive after their attack
+  Other:
+    - Juggernaut attack cloud now rendering at floor layer(does not hide units)
+    - Redesigned changelog. I hope it will now be displayed in the game, in the list of mods
+---------------------------------------------------------------------------------------------------
+Version: 1.2.2
+Date: 2022.07.11
+  Balancing:
+    - Major resistance: decrease values decreased by 1 (1.2.1 version did not apply this change)
+  Bugfixes:
+    - Fixed deleting associated units, when units are invalid
+---------------------------------------------------------------------------------------------------
+Version: 1.2.1
+Date: 2022.07.09
+  Balancing:
+    - Major resistance: decrease values decreased by 1
+    - Poison death-cloud now ignore wind
+  Bugfixes:
+    - Fixed loading error if setting "Optimization: Remove blood particles (Reduces lag spikes)" is true
+---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 2022.07.05
+  Features:
+    - New setting "Attack Wave: The maximum wave size starts with the % of evolution". Default value is 100%.
+    - New feature: large attacking squads far away from the player, are compressed to one unit of each type
+  Optimisations:
+    - Disabled friendly fire. Setting "Safety: Disallow Friendly Fire Splash Damage" removed due to caused lags
+    - Any fire from the biters now affects "not-same" forces
+    - Maximum Fire spitters fire lifetime reduced from 30 sec to 4 sec. Doubled initial damage
+    - Maximum Inferno fire lifetime reduced from 30 sec to 10 sec
+    - Reduced the number of blood particles when taking damage. Only physical damage makes blood. Due to the fall of UPS during mass attacks (~2000 biters), blood particles on the death are left only at worms and nests
+    - The interval between processing the AI state has been increased from 7 to 60 ticks
+    - When the nests mutate, associated idle biters die
+  Balancing:
+    - Due to the cancellation of friendly fire, the changes of versions 1.1.14, 1.1.15 (fire, inderno and poison faction) has been canceled: Fire spiters - acid resistance returned, Inferno fire now have "acid" damage, Poison faction: removed major acid resistance
+    - The number of divergent rays in cluster attacks has been reduced by 25%
+    - Major resistance now 80 - 92% (65 - 90% before)  
+    - "Range-immunity efficiency" default value lowered from 98 to 95%
+    - Nuclear faction: Removed "range-immunity" from biters. Increased "oneshot protection" by 1 hit. Added major resistance to acid. Buildings now have explosion weakness (same resistances as biters)
+    - Self damage of nuclear biters and suiciders now hit them twice to kill guaranteed.
+    - Fixed mistakes in the calculation of AI action points. Added dependence of the points received on the number of far nests. The influence of nearby nests has been weakened
+    - The spawn level decreases by 2 at each death, not by 1
+    - The increase in the wave size in the late game is now limited and cannot exceed 75 of the specified maximum size
+    - Worms hitbox increased. Now, it's easier to hit them with a shotgun
+  Bugfixes:
+    - Fixed small amounts of death generator not being rounded to nil
+    - Fixed a bug where the player's pheromones were not taken into account
+    - Fixed excessive queuing of active nests for processing
+    - Now reaching the maximum number of squads does not block the creation of other types of squads
+  Other:
+    - Setting "World: Enemy Variations" now is obsolete. In the future, it is worth removing it. The existing objects will remain, but all new ones will be variant = 1
+    - Setting "AI: Temperament Rate Modifier" removed due to a different algorithm for determining the state of the AI
+    - The description of the settings "AI: Enable Migration" and "AI: Enable Peaceful" has been clarified, for a better understanding of their effect
+    - Some En, Ru locale changes

@@ -3,6 +3,10 @@ local alloys   = require "lib.entities.alloys"
 local product  = require "lib.entities.product"
 local frames   = require "lib.entities.frames"
 local energy   = require "lib.entities.buildings.energy"
+local pipes    = require "lib.entities.pipes"
+local bob      = require "lib.entities.bob"
+local logistics= require "lib.entities.logistics"
+local combat   = require "lib.entities.combat"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -39,12 +43,6 @@ local sulfur = function()
     -- bobmods.ores.sulfur.enabled = true
 end
 
-local changeSubGroupForItem = function(name, sg)
-    local itm = data.raw['item'][name]
-    if itm then
-        itm.subgroup = sg
-    end
-end
 
 local enableRecipeOnStart = function(name)
     local obj = data.raw['recipe'][name]
@@ -53,6 +51,8 @@ end
 
 apm.bob_rework.lib.override.others = function()
     local mod = apm.lib.utils.recipe.ingredient.mod
+
+    local disable = apm.lib.utils.recipe.disable
 
     local recipe = p.egenerator
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -138,7 +138,7 @@ apm.bob_rework.lib.override.others = function()
     mod(recipe, 'productivity-module-3', 4)
     -- sad hack
     local obj = data.raw.recipe[recipe]
-    -- apm.bob_rework.lib.utils.debug.object(obj)
+
     table.insert(obj.ingredients, { type = 'item', name = 'rail', amount = 40 })
     table.insert(obj.ingredients, { type = 'item', name = 'productivity-module', amount = 4 })
 
@@ -184,17 +184,6 @@ apm.bob_rework.lib.override.others = function()
     mod(recipe, plates.steel, 0)
     mod(recipe, product.stick, 8)
 
-    recipe = product.bearing.titanium
-    mod(recipe, product.bearing.balls.titanium, 0)
-    mod(recipe, product.bearing.balls.ceramic, 16)
-
-    changeSubGroupForItem(product.bearing.bronze, 'bob-bearings')
-    changeSubGroupForItem(product.bearing.brass, 'bob-bearings')
-    changeSubGroupForItem(product.bearing.balls.bronze, 'bob-bearings')
-    changeSubGroupForItem(product.bearing.balls.brass, 'bob-bearings')
-    changeSubGroupForItem(product.gearwheel.bronze, 'bob-gears')
-    changeSubGroupForItem(product.gearwheel.brass, 'bob-gears')
-
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1b', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_saw_blade_iron', 'crafting')
@@ -233,4 +222,20 @@ apm.bob_rework.lib.override.others = function()
 
     local itm = data.raw.item[frames.steam]
     itm.localised_name = { "entity-name.primitive-frame", { "entity-name.primitive-frame" } }
+
+    local recipe = product.gearwheel.titanium
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    mod(recipe, alloys.titanium, 1)
+
+    disable(pipes.base.copper)
+    disable(pipes.under.copper)
+    disable(bob.generator.burner)
+    disable(logistics.belt.slow)
+    disable(bob.product.recipe.resin)
+    disable(bob.product.recipe.rubber)
+    disable(logic.circuit.low)
+    disable(combat.disabled.turret.rifle)
+    disable(combat.ammo.magazine.firearm)
+
+    apm.lib.utils.recipe.category.change('apm_pyrolysis_charcoal_3', 'apm_coking_2')
 end
