@@ -501,10 +501,10 @@ local handleDependecies = function(target, deps)
         end
     end
 
-    for _, tech in ipairs(target.dependencies.technologies) do
-        -- log("binding to "..target.ref.name.." as dependecy tech "..tech)
-        apm.lib.utils.technology.add.prerequisites(target.ref.name, tech)
-    end
+    -- for _, tech in ipairs(target.dependencies.technologies) do
+    --     -- log("binding to "..target.ref.name.." as dependecy tech "..tech)
+    --     apm.lib.utils.technology.add.prerequisites(target.ref.name, tech)
+    -- end
 end
 
 local getNextCursor = function (tree)
@@ -626,6 +626,66 @@ local describe = function (name, tree)
     end
 end
 
+local sortDependecies = function (tree)
+    for _, tName in pairs(tree.queue) do
+        local target = tree.technologies.all[tName]
+        if target and target.dependencies and target.dependencies.technologies then
+            table.sort(target.dependencies.technologies, function (a,b)
+                local aID = tree.technologies.all[a].ID
+                local bID = tree.technologies.all[b].ID
+                return aID > bID
+            end)
+        end
+    end
+end
+
+local walkSubtree
+walkSubtree = function (tree, subrootName, fn)
+    fn(subrootName)
+    local subroot = tree.technologies.all[subrootName]
+    if subroot and subroot.dependencies and subroot.dependencies.technologies then
+        for _, depName in pairs(subroot.dependencies.technologies) do
+           walkSubtree(tree, depName, fn) 
+        end
+    end
+end
+
+local treeOptimize = function (tree)
+    -- Try to reduce graph by aggresive usage of indirect dependecies
+    sortDependecies(tree)
+
+    for _, tName in pairs(tree.queue) do
+        local target = tree.technologies.all[tName]
+        if target and target.dependencies and target.dependencies.technologies then
+            local candidates = {}
+            local dependencies = {}
+            for _, depName in pairs(target.dependencies.technologies) do
+                local ok = dependencies[depName]
+                if ok == nil then
+                    -- dependencies[depName] = {}
+                    table.insert(candidates, depName)
+                    -- TODO: mark cascade dependencies
+                    walkSubtree(tree, depName, function (name)
+                        dependencies[name] = {}
+                    end)
+                end
+            end
+            target.dependencies.technologies = candidates
+        end
+    end
+end
+
+local inGameLinkTech = function (tree)
+    for _, tName in pairs(tree.queue) do
+        local target = tree.technologies.all[tName]
+        if target and target.dependencies and target.dependencies.technologies then
+            for _, tech in ipairs(target.dependencies.technologies) do
+                apm.lib.utils.technology.add.prerequisites(target.ref.name, tech)
+            end
+        end
+    end
+end
+
 apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     local tree = emptyTree()
 
@@ -640,12 +700,14 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
 
     tree.cursor.current = startingTName
     treeWalk(tree)
+    treeOptimize(tree)
+    inGameLinkTech(tree)
 
     log(json.encode(tree))
 
-    describe('space-science-pack',tree)
-    describe('deuterium-fuel-reprocessing',tree)
+    -- describe('space-science-pack',tree)
+    -- describe('deuterium-fuel-reprocessing',tree)
     describe('bob-robots-1',tree)
 
-    log('total handled count '..tostring(tree.technologies.all[tree.cursor.current].ID))
+    log('total handled technologies count '..tostring(tree.technologies.all[tree.cursor.current].ID))
 end
