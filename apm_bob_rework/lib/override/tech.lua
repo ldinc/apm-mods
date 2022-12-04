@@ -10,6 +10,7 @@ local frames    = require "lib.entities.frames"
 local recipies  = require "lib.entities.recipies"
 local logic     = require "lib.entities.logic"
 local inserters = require "lib.entities.buildings.inserters"
+local rocket    = require "lib.entities.new.rocket"
 
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
@@ -662,7 +663,7 @@ function apm.bob_rework.lib.override.tech()
     rm(t.electricity, frames.advanced)
     push(t.electronics.advanced.II, frames.advanced)
     rm(t.electronics.basic, inserters.filter.yellow)
-    push(t.automation, inserters.filter.yellow)
+    push(t.automation.electric.basic, inserters.filter.yellow)
 
     rm(t.processing.sulfur, recipies.chemistry.petroleum.gas.sweetening)
     push(t.processing.oil.basic, recipies.chemistry.petroleum.gas.sweetening)
@@ -675,16 +676,21 @@ function apm.bob_rework.lib.override.tech()
     push(t.processing.titaniumAlloy, product.bearing.titanium)
     rm(t.processing.titaniumAlloy, product.bearing.ball.titanium)
 
+    rm(t.combat.rocket.silo, rocket.engine)
+    push(t.combat.rocketry, rocket.engine)
+
     free(bob.tech.automation.basic)
     free('apm_burner_long_inserter')
     free('bob-area-drills-4')
     free('bob-area-drills-3')
     free('bob-area-drills-2')
     free('bob-area-drills-1')
+    free('water-miner-5')
     free('water-miner-4')
     free('water-miner-3')
     free('water-miner-2')
     free('water-miner-1')
+    free('distractor-mine')
 
     if settings.startup['apm_bob_rework_experimental_tech_tree_rebuilder'].value == true then
         -- apm.bob_rework.lib.utils.tech.rebuild('apm_crusher_machine_0', 'apm_industrial_science_pack')

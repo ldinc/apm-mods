@@ -58,6 +58,15 @@ local linkedTechMap = {
     [t.battery.liio] = {t.science.chemical},
 }
 
+local reactorProductsMap = {
+    [t.nuclear.uranium] = {['apm_fuel_rod_uranium_active'] = {}, ['apm_fuel_rod_mox_active'] = {}, ['apm_fuel_rod_thorium_active'] = {}, ['apm_fuel_rod_neptunium_active'] = {}},
+    [t.nuclear.thorium] = {['apm_fuel_rod_uranium_active'] = {}, ['apm_fuel_rod_mox_active'] = {}, ['apm_fuel_rod_thorium_active'] = {}, ['apm_fuel_rod_neptunium_active'] = {}},
+    [t.nuclear.breeder] = {['used-up-thorium-fuel-cell'] = {}},
+    [t.nuclear.fuel.reprocessing] = {['apm_oxide_pellet_u238'] = {}},
+    [t.nuclear.synthesys.plutonium] = {['plutonium-239'] = {}},
+    [t.nuclear.deuterium] = {['used-up-deuterium-fuel-cell'] = {}},
+}
+
 local log = apm.bob_rework.lib.utils.debug.object
 
 -- init empty tech tree
@@ -65,6 +74,7 @@ local emptyTree = function()
     local tree = {
         technologies = {
             all = {},
+            modules = {},
         },
         cache = {
             products = {},
@@ -211,6 +221,10 @@ local setupTechnologyFlags = function (tree)
 
         tItem.isMilitary = isMilitaryTech
         tItem.isModuleBranch = isModuleTech
+
+        if tItem.isModuleBranch then
+            tree.technologies.modules[tName] = tItem
+        end
     end
 end
 
@@ -272,6 +286,12 @@ local getCraftingGroupsForProduct = function (name)
         end
     end
 
+    -- TODO: research why not worked for rocket-silo
+    -- HACK
+    if name == 'rocket-silo' then
+        groups['rocket-building'] = {}
+    end
+
     return groups
 end
 
@@ -303,13 +323,29 @@ local getDefaultCraftingGroups = function ()
     return groups
 end
 
-local calculateProductDependecies = function (tree)
+local tryHackForReactors = function (tName, list)
+    local extra = reactorProductsMap[tName]
+    if extra then
+        for key, value in pairs(extra) do
+            list[key] = value
+        end
+        log(tName..' will be enriched to :'..json.encode(list))
+    end
+
+    return list
+end
+
+local calculateProductsAndDependecies = function (tree)
     for tName, tItem in pairs(tree.technologies.all) do
-        if techIsValid(tItem) then
+        if techIsValid(tItem) or tItem.isModuleBranch then
             tItem.dependencies.craftingGroups = apm.bob_rework.lib.utils.tech.requiredCraftingGroups(tItem.ref)
             tItem.dependencies.products = getTechnologyProductDependecies(tItem.ref)
       
             local products, recipies = apm.bob_rework.lib.utils.tech.products(tItem.ref)
+
+            -- hack for reactors
+            products = tryHackForReactors(tName, products)
+
             tItem.products = products
             tItem.recipies = recipies
             tItem.craftingGroups = getCraftingGroupsForTech(tItem)
@@ -524,6 +560,27 @@ local handleScienceForCurrent = function (tree)
     end
 end
 
+local tryHandleModules = function (tree)
+    if tree.cursor.current ~= 'modules' then
+        return
+    end
+
+    local iteration = tree.technologies.all[tree.cursor.current].ID
+
+    for moduleTechName, tItem in pairs(tree.technologies.modules) do
+        tItem.isHandled = true
+        tItem.ID = iteration
+        if tItem.products then
+            for product, value in pairs(tItem.products) do
+                local itm = tree.cache.products[product]
+                if itm == nil or itm.source == nil then
+                    tree.cache.products[product] = {source = moduleTechName}
+                end
+            end
+        end
+    end
+end
+
 local treeWalk = function (tree)
     local iteration = 0
     while tree.cursor.current ~= tree.cursor.previous do
@@ -533,6 +590,7 @@ local treeWalk = function (tree)
 
         nodeSetupAvailableProductsAndCraftingGroups(tree)
         handleScienceForCurrent(tree)
+        tryHandleModules(tree)
 
         local current = tree.technologies.all[tree.cursor.current]
         current.ID = iteration
@@ -549,10 +607,21 @@ end
 
 local describe = function (name, tree)
     local tItem = tree.technologies.all[name]
+    log('describe: '..name)
+    if tItem == nil or tItem.dependencies == nil then
+        log('item or nil deps')
+        return
+    end
     for product in pairs(tItem.dependencies.products) do
         local ok = tree.cache.products[product]
         if ok == nil then
             log(product)
+        end
+    end
+    for group in pairs(tItem.dependencies.craftingGroups) do
+        local ok = tree.cache.craftingGroups[group]
+        if ok == nil then
+            log(group)
         end
     end
 end
@@ -566,7 +635,7 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     disableEmptyTechnologies(tree)
     resetTechnologies(tree)
     setupDefaultProductsAndCraftingGroups(tree)
-    calculateProductDependecies(tree)
+    calculateProductsAndDependecies(tree)
     setupResearchFlag(tree)
 
     tree.cursor.current = startingTName
@@ -574,5 +643,9 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
 
     log(json.encode(tree))
 
-    describe('rocket-control-unit', tree)
+    describe('space-science-pack',tree)
+    describe('deuterium-fuel-reprocessing',tree)
+    describe('bob-robots-1',tree)
+
+    log('total handled count '..tostring(tree.technologies.all[tree.cursor.current].ID))
 end

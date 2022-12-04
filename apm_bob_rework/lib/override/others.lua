@@ -7,6 +7,7 @@ local pipes    = require "lib.entities.pipes"
 local bob      = require "lib.entities.bob"
 local logistics= require "lib.entities.logistics"
 local combat   = require "lib.entities.combat"
+local rocket   = require "lib.entities.new.rocket"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -227,6 +228,18 @@ apm.bob_rework.lib.override.others = function()
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     mod(recipe, alloys.titanium, 1)
 
+    local recipe = rocket.engine
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    mod(recipe, plates.tungsten, 1)
+    mod(recipe, product.gearwheel.titanium, 2)
+    mod(recipe, product.bearing.titanium, 2)
+    mod(recipe, product.stick, 1)
+
+    local recipe = 'satellite'
+    mod(recipe, 'radar-5', 0)
+    mod(recipe, 'radar-2', 1)
+
+
     disable(pipes.base.copper)
     disable(pipes.under.copper)
     disable(bob.generator.burner)
@@ -236,6 +249,8 @@ apm.bob_rework.lib.override.others = function()
     disable(logic.circuit.low)
     disable(combat.disabled.turret.rifle)
     disable(combat.ammo.magazine.firearm)
+
+    apm.lib.utils.assembler.mod.category.add('electric-chemical-mixing-furnace', 'apm_electric_smelting')
 
     apm.lib.utils.recipe.category.change('apm_pyrolysis_charcoal_3', 'apm_coking_2')
 end

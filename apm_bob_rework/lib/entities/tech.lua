@@ -54,6 +54,7 @@ local t = {
 
     logistics = {
         basic = 'logistics-0',
+        yellow = 'logistics',
     },
 
     combat = {
@@ -61,6 +62,11 @@ local t = {
             gun = {
                 I = 'gun-turret',
             },
+        },
+
+        rocketry = 'rocketry',
+        rocket = {
+            silo = 'rocket-silo',
         },
     },
 
@@ -90,6 +96,20 @@ local t = {
         liio = 'battery-2',
         agzn = 'battery-3',
     },
+
+    nuclear = {
+        breeder = 'apm_nuclear_breeder',
+        uranium = 'nuclear-power',
+        thorium = 'bob-nuclear-power-2',
+        deuterium = 'bob-nuclear-power-3',
+        ultimate = 'deuterium-fuel-cell-2',
+        fuel = {
+            reprocessing = 'nuclear-fuel-reprocessing',
+        },
+        synthesys = {
+            plutonium = 'bobingabout-enrichment-process',
+        },
+    }
 }
 
 return t
