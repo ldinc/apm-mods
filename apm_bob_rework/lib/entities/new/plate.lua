@@ -10,7 +10,7 @@ apm.bob_rework.lib.entities.monel = 'monel-alloy'
 apm.bob_rework.lib.entities.genMonel = function ()
     local tint = {r=205/255, g=205/255, b=156/255}
     local ico = {
-        icon = "__apm_bob_rework_ldinc__/graphics/icons/alloy-plate.png",
+        icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/alloy-plate.png",
         icon_size = 64,
         tint = tint,
     }
@@ -62,7 +62,7 @@ apm.bob_rework.lib.entities.cobaltPlate = 'cobalt-plate'
 apm.bob_rework.lib.entities.genCobaltAlloy = function ()
     local tint = {r=50/255, g=65/255, b=56/255}
     local ico = {
-        icon = "__apm_bob_rework_ldinc__/graphics/icons/alloy-plate.png",
+        icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/alloy-plate.png",
         icon_size = 64,
         tint = tint,
     }
@@ -108,7 +108,7 @@ end
 
 apm.bob_rework.lib.entities.genEarlyZinc = function ()
     local ico = {
-        icon = "__apm_bob_rework_ldinc__/graphics/icons/zinc-plate.png",
+        icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/zinc-plate.png",
         icon_size = 32,
     }
 

@@ -329,7 +329,7 @@ local tryHackForReactors = function (tName, list)
         for key, value in pairs(extra) do
             list[key] = value
         end
-        log(tName..' will be enriched to :'..json.encode(list))
+        -- log(tName..' will be enriched to :'..json.encode(list))
     end
 
     return list
@@ -472,7 +472,7 @@ end
 
 local handleDependecies = function(target, deps)
 
-    log("handle for "..target.ref.name..":"..json.encode(deps))
+    -- log("handle for "..target.ref.name..":"..json.encode(deps))
 
     local map = {}
     if target.dependencies.technologies then
@@ -694,9 +694,11 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     treeOptimize(tree)
     inGameLinkTech(tree)
 
-    log(json.encode(tree))
+    -- log(json.encode(tree))
 
     describe('bob-robots-1',tree)
+    describe('bob-robots-2',tree)
+    describe('bob-robots-3',tree)
 
     log('total handled technologies count '..tostring(tree.technologies.all[tree.cursor.current].ID))
 end

@@ -109,7 +109,15 @@ local t = {
         synthesys = {
             plutonium = 'bobingabout-enrichment-process',
         },
-    }
+    },
+
+    ore = {
+        crushing = {advanced = 'advanced-ore-crushing'},
+        enrichment = {
+            base = 'ore-enrichment',
+            advanced = 'advanced-ore-enrichment',
+        },
+    },
 }
 
 return t

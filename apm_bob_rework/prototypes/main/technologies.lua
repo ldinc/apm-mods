@@ -29,7 +29,7 @@ newTech(
     {'apm_burner_sieve', 'apm_dry_mud', 'apm_dry_mud_sifting_iron', 'apm_sieve_copper', 'apm_dry_mud_sifting_copper'},
     {{"apm_industrial_science_pack", 1}},
     25, 10,
-    "__apm_bob_rework_ldinc__/graphics/tech/burner-sieve.png"
+    "__apm_bob_rework_resource_pack_ldinc__/graphics/tech/burner-sieve.png"
 )
 
 newTech(
@@ -39,7 +39,7 @@ newTech(
     {'kr-tesla-coil','energy-absorber'},
     {{"apm_industrial_science_pack", 1}},
     40, 10,
-    "__apm_bob_rework_ldinc__/graphics/tech/krastorio/tesla-coil.png"
+    "__apm_bob_rework_resource_pack_ldinc__/graphics/tech/krastorio/tesla-coil.png"
 )
 
 newTech(
@@ -49,7 +49,7 @@ newTech(
     {'kr-wind-turbine'},
     {{"apm_industrial_science_pack", 1}},
     40, 10,
-    "__apm_bob_rework_ldinc__/graphics/tech/krastorio/wind-turbine.png"
+    "__apm_bob_rework_resource_pack_ldinc__/graphics/tech/krastorio/wind-turbine.png"
 )
 
 newTech(
@@ -59,7 +59,7 @@ newTech(
     {'wide-beacon'},
     {{'apm_industrial_science_pack', 1}},
     200, 70,
-    '__apm_bob_rework_ldinc__/graphics/tech/se/wide-beacon-2.png'
+    '__apm_bob_rework_resource_pack_ldinc__/graphics/tech/se/wide-beacon-2.png'
 )
 
 newTech(
@@ -69,5 +69,5 @@ newTech(
     {'alt-rail'},
     {{'apm_industrial_science_pack', 1}},
     200, 70,
-    '__apm_bob_rework_ldinc__/graphics/tech/se/rail-128.png'
+    '__apm_bob_rework_resource_pack_ldinc__/graphics/tech/se/rail-128.png'
 )

@@ -5,8 +5,8 @@ local science = require('lib.entities.science')
 
 local hit_effects = require("__base__/prototypes/entity/hit-effects")
 local sounds = require("__base__/prototypes/entity/sounds")
-local kr_crash_site_icons_path = '__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/crash-site/'
-local kr_crash_site_sprites_path = '__apm_bob_rework_ldinc__/graphics/entities/krastorio/crash-site/'
+local kr_crash_site_icons_path = '__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/crash-site/'
+local kr_crash_site_sprites_path = '__apm_bob_rework_resource_pack_ldinc__/graphics/entities/krastorio/crash-site/'
 local power = '2500'
 
 data:extend({

@@ -1,8 +1,8 @@
 local hit_effects = require("__base__/prototypes/entity/hit-effects")
 
-local soundPath = "__apm_bob_rework_ldinc__/sounds/krastorio/"
-local iconPath = "__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/"
-local entityPath = "__apm_bob_rework_ldinc__/graphics/entities/krastorio/"
+local soundPath = "__apm_bob_rework_resource_pack_ldinc__/sounds/krastorio/"
+local iconPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/"
+local entityPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/entities/krastorio/"
 
 local wind_turbine_persistent_sound = {
   variations = {

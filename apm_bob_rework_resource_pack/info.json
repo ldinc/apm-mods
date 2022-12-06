@@ -1,0 +1,10 @@
+{
+    "name": "apm_bob_rework_resource_pack_ldinc",
+    "version": "0.22.66",
+    "title": "APM bob's extra compability [resource pack]",
+    "author": "ldinc",
+    "dependencies": [],
+    "description": "Graphics & sound resources for apm_bob_rework",
+    "factorio_version": "1.1",
+    "homepage": ""
+}

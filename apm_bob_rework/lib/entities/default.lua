@@ -37,6 +37,7 @@ local default = {
         ["zinc-ore"] = { } ,
         ["gold-ore"] = { } ,
         ["bauxite-ore"] = { } ,
+        ["silver-ore"] = {},
         ["rutile-ore"] = { } ,
         ["tungsten-ore"] = { } ,
         ["thorium-ore"] = { } ,

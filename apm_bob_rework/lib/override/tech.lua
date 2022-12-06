@@ -23,6 +23,35 @@ require('lib.utils.techtree')
 
 local t = require('lib.entities.tech')
 
+local function newTech(technology, t_icon, t_recipes, t_research_packs, i_research_count, i_research_time)
+    mod_name = 'apm_bob_rework'
+    new = {}
+    new.type = 'technology'
+    new.name = technology
+    if t_icon == nil then
+        new.icon = '__apm_bob_rework_resource_pack_ldinc__/graphics/technologies/' .. technology .. '.png'
+        new.icon_size = 128
+    else
+        new.icon = t_icon.icon
+        new.icon_size = t_icon.icon_size
+    end
+    new.effects = {}
+    if t_recipes ~= nil then
+        for _, name in pairs(t_recipes) do
+            table.insert(new.effects, {type = 'unlock-recipe', recipe = name})
+        end
+    end
+    -- new.prerequisites = t_prerequisites
+    new.unit = {}
+    new.unit.count = i_research_count
+    new.unit.ingredients = t_research_packs
+    new.unit.time = i_research_time
+    new.order = 'a-a-a'
+    data:extend({new})
+
+    APM_LOG_INFO(self, 'new()', 'create new technology: "' .. tostring(new.name) .. '"')
+end
+
 function apm.bob_rework.lib.override.tech()
 
 
@@ -691,6 +720,33 @@ function apm.bob_rework.lib.override.tech()
     free('water-miner-2')
     free('water-miner-1')
     free('distractor-mine')
+
+    -- Adding new tech
+    local c = ores.crushed.advance
+    local list = {c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c.tungsten, c.zinc}
+    local crushedIcoPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/ore-washed-template.png"
+    local ico = {
+        icon = crushedIcoPath,
+        icon_size = 64,
+    }
+
+    newTech(t.ore.crushing.advanced, ico, list, {}, 200, 20)
+
+    local icoPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_crushed.png"
+    local tier1Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_1.png"
+    local ico = {
+        icon = icoPath,
+        icon_size = 64,
+    }
+    local c = ores.enriched.basic
+    local list = {c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c.tungsten, c.zinc}
+    newTech(t.ore.enrichment.base, ico, list, {}, 15, 10)
+
+    local c = ores.enriched.advance
+    local list = {c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c.tungsten, c.zinc}
+    newTech(t.ore.enrichment.advanced, ico, list, {}, 150, 30)
+
+
 
     if settings.startup['apm_bob_rework_experimental_tech_tree_rebuilder'].value == true then
         -- apm.bob_rework.lib.utils.tech.rebuild('apm_crusher_machine_0', 'apm_industrial_science_pack')

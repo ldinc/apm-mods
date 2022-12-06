@@ -19,13 +19,13 @@ apm.bob_rework.lib.override.drop = function()
 
     local hide = function (name, type)
         local base = data.raw[type]
-        -- if base == nil then
-        --     return
-        -- end
+        if base == nil then
+            return
+        end
         local entity = base[name]
-        -- if entity == nil then
-        --     return
-        -- end
+        if entity == nil then
+            return
+        end
         apm.lib.utils.entity.add.flag(entity, flags.notmadein)
         apm.lib.utils.entity.add.flag(entity, flags.hidden)
     end
@@ -39,15 +39,13 @@ apm.bob_rework.lib.override.drop = function()
 
     local resetUpgrades = function (name, type)
         local base = data.raw[type]
-        -- if base == nil then
-        --     return
-        -- end
+        if base == nil then
+            return
+        end
         local entity = base[name]
-        -- if entity == nil then
-        --     return
-        -- end
-
-        entity.next_upgrade = nil
+        if entity and entity.next_upgrade then
+            entity.next_upgrade = nil
+        end
     end
 
 

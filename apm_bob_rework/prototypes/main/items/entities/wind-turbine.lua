@@ -1,4 +1,4 @@
-local iconPath = "__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/"
+local iconPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/"
 
 -- Item -----------------------------------------------------------------------
 --
@@ -7,7 +7,7 @@ local iconPath = "__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/"
 local item = {}
 item.type = 'item'
 item.name = "kr-wind-turbine"
-item.icon = "__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/wind-turbine.png"
+item.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/wind-turbine.png"
 item.icon_size = 64
 item.icon_mipmaps = 4
 item.subgroup = "energy"

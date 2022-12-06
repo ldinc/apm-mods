@@ -5,7 +5,7 @@
 local item = {}
 item.type = 'item'
 item.name = "kr-tesla-coil"
-item.icon = "__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/tesla-coil.png"
+item.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/tesla-coil.png"
 item.icon_size = 64
 item.subgroup = "energy-pipe-distribution"
 item.order = "z-a[energy]-f2[tesla-coil]"

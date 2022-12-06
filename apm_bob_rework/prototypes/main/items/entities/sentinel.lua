@@ -5,7 +5,7 @@
 local item = {}
 item.type = 'item'
 item.name = "kr-sentinel"
-item.icon = "__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/sentinel.png"
+item.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/sentinel.png"
 item.icon_size = 64
 item.icon_mipmaps = 4
 item.subgroup = "energy"

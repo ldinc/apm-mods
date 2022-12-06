@@ -5,7 +5,7 @@
 local item = {}
 item.type = 'item'
 item.name = "kr-electric-mining-drill-mk2"
-item.icon = "__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/electric-mining-drill-mk2.png"
+item.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/electric-mining-drill-mk2.png"
 item.icon_size = 64
 item.icon_mipmaps = 4
 item.subgroup = "extraction-machine"
@@ -21,7 +21,7 @@ data:extend({ item })
 local item = {}
 item.type = 'item'
 item.name = "kr-electric-mining-drill-mk3"
-item.icon = "__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/electric-mining-drill-mk3.png"
+item.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/electric-mining-drill-mk3.png"
 item.icon_size = 64
 item.icon_mipmaps = 4
 item.subgroup = "extraction-machine"

@@ -94,7 +94,7 @@ apm.lib.icons.dynamics.lable_r = {icon = '__apm_resource_pack_ldinc__/graphics/i
 apm.lib.icons.dynamics.lable_si = {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_machine_lable_si.png', icon_size=64}
 apm.lib.icons.dynamics.lable_sw = {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_machine_lable_sw.png', icon_size=64}
 apm.lib.icons.dynamics.lable_lightning = {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_machine_lable_lightning.png', icon_size=64}
-apm.lib.icons.dynamics.chemical_flame_1 = {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_chemical_flame_1.png', icon_size=64}
+apm.lib.icons.dynamics.(product.chemistry.plastic) = {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_chemical_flame_1.png', icon_size=64}
 apm.lib.icons.dynamics.chemical_flame_2 = {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_chemical_flame_2.png', icon_size=64}
 apm.lib.icons.dynamics.chemical_flame_3 = {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_chemical_flame_3.png', icon_size=64}
 apm.lib.icons.dynamics.chemical_flame_4 = {icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_chemical_flame_4.png', icon_size=64}

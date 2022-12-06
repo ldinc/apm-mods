@@ -2,7 +2,7 @@ require('lib.utils.data_util')
 
 local data_util = apm.bob_rework.lib.datautil
 
-local graphics = '__apm_bob_rework_ldinc__/graphics/'
+local graphics = '__apm_bob_rework_resource_pack_ldinc__/graphics/'
 
 local collision_floor = {
     --"item-layer", -- stops player from dropping items on belts.

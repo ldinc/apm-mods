@@ -118,16 +118,16 @@ local redrawChemicalPlant = function()
     cp3.animation = bob_chemical_plant_animation({ r = 0.1, g = 0.5, b = 0.7 })
     cp2.animation = bob_chemical_plant_animation({ r = 0.7, g = 0.2, b = 0.1 })
     cp.animation = bob_chemical_plant_animation({ r = 0.7, g = 0.7, b = 0.1 })
-    cp.icon = "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant.png"
-    cp2.icon = "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant.png"
-    cp3.icon = "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant.png"
+    cp.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/chemical-plant.png"
+    cp2.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/chemical-plant.png"
+    cp3.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/chemical-plant.png"
 
     local cp = data.raw["item"]["chemical-plant"]
     local cp2 = data.raw["item"]["chemical-plant-2"]
     local cp3 = data.raw["item"]["chemical-plant-3"]
-    buildIcon(cp, "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant-y.png")
-    buildIcon(cp2, "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant-r.png")
-    buildIcon(cp3, "__apm_bob_rework_ldinc__/graphics/icons/chemical-plant-b.png")
+    buildIcon(cp, "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/chemical-plant-y.png")
+    buildIcon(cp2, "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/chemical-plant-r.png")
+    buildIcon(cp3, "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/chemical-plant-b.png")
 end
 
 local buildChemicalPlant = function(recipe, tier)

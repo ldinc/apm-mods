@@ -53,11 +53,9 @@ local recipeSetting = {
     energyRequired = 1,
 }
 
--- local crushedIcoPath = "__apm_bob_rework_ldinc__/graphics/icons/apm_crushed.png"
--- local crushedIcoPath = "__apm_bob_rework_ldinc__/graphics/icons/ore-crushed-template.png"
-local crushedIcoPath = "__apm_bob_rework_ldinc__/graphics/icons/ore-washed-template.png"
-local tier1Ico = "__apm_bob_rework_ldinc__/graphics/icons/apm_tier_1.png"
-local tier2Ico = "__apm_bob_rework_ldinc__/graphics/icons/apm_tier_2.png"
+local crushedIcoPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/ore-washed-template.png"
+local tier1Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_1.png"
+local tier2Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_2.png"
 
 apm.bob_rework.lib.entities.crushed.ore.generate = {}
 
@@ -65,7 +63,6 @@ apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom = function(ore, tin
 
     local crushedName = crushed(ore)
 
-    -- local tint = { r = 255 / 255, g = 69 / 255, b = 0 / 255 }
     local ico = {
         icon = crushedIcoPath,
         icon_size = 64,
@@ -79,7 +76,7 @@ apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom = function(ore, tin
     local item = {}
     item.type = 'item'
     item.name = crushedName
-    item.icons = { ico }
+    item.icons = { ico, tier }
     item.stack_size = 200
     item.group = "apm_power"
     item.order = 'ab_i'
@@ -89,6 +86,7 @@ apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom = function(ore, tin
     local recipe = {}
     recipe.type = "recipe"
     recipe.name = crushedName
+    recipe.subgroup  = 'bob-resource'
     recipe.category = "apm_crusher"
     recipe.normal = {}
     recipe.normal.enabled = false
@@ -114,7 +112,6 @@ end
 
 
 apm.bob_rework.lib.entities.crushed.ore.generate.advancedCrushedFrom = function(ore, tint)
-    -- local tint = {r=255/255, g=69/255, b=0/255}
     local ico = {
         icon = crushedIcoPath,
         icon_size = 64,
@@ -133,6 +130,7 @@ apm.bob_rework.lib.entities.crushed.ore.generate.advancedCrushedFrom = function(
     recipe.type = "recipe"
     recipe.name = recipeName
     recipe.category = "apm_crusher_2"
+    recipe.subgroup  = 'bob-resource'
     recipe.icons = { ico, tier }
     recipe.normal = {}
     recipe.normal.enabled = false
@@ -144,6 +142,7 @@ apm.bob_rework.lib.entities.crushed.ore.generate.advancedCrushedFrom = function(
     }
     recipe.normal.results = {
         { type = 'item', name = target, amount = recipeSetting.amountOfResult },
+        { type = 'item', name = target, amount_min = 1, amount_max = 2, probability = 0.5 },
         { type = 'fluid', name = 'apm_dirt_water', amount = recipeSetting.amountOfDirtWater },
     }
     recipe.normal.main_product = target

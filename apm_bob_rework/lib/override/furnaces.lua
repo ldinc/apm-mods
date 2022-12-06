@@ -17,7 +17,7 @@ local bob_update = function()
         return
     end
 
-    furnace.animation.filename = '__apm_bob_rework_ldinc__/graphics/entities/bob/electric-chemical-mixing-furnace.png'
+    furnace.animation.filename = '__apm_bob_rework_resource_pack_ldinc__/graphics/entities/bob/electric-chemical-mixing-furnace.png'
 end
 
 apm.bob_rework.lib.override.furnaces = function()

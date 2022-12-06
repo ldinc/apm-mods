@@ -1,6 +1,6 @@
 require('util')
 
-local kr_crash_site_icons_path = '__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/crash-site/'
+local kr_crash_site_icons_path = '__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/crash-site/'
 
 -- Item -----------------------------------------------------------------------
 --

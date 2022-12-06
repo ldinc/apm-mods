@@ -1,7 +1,7 @@
 require('lib.utils.data_util')
 
 local blank_image = {
-    filename = "__apm_bob_rework_ldinc__/graphics/blank.png",
+    filename = "__apm_bob_rework_resource_pack_ldinc__/graphics/blank.png",
     width = 1,
     height = 1,
     frame_count = 1,
@@ -17,7 +17,7 @@ data:extend({
     {
         type = "beacon",
         name = name,
-        icon = "__apm_bob_rework_ldinc__/graphics/icons/se/wide-beacon.png",
+        icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/se/wide-beacon.png",
         icon_mipmaps = 1,
         icon_size = 64,
         flags = { "placeable-player", "player-creation" },
@@ -32,7 +32,7 @@ data:extend({
             layers = {
                 data_util.auto_sr_hr({
                     animation_speed = 0.5,
-                    filename = "__apm_bob_rework_ldinc__/graphics/entities/se/wide-beacon/hr/wide-beacon-2.png",
+                    filename = "__apm_bob_rework_resource_pack_ldinc__/graphics/entities/se/wide-beacon/hr/wide-beacon-2.png",
                     frame_count = 32,
                     width = 256,
                     height = 320,
@@ -42,7 +42,7 @@ data:extend({
                 data_util.auto_sr_hr({
                     draw_as_shadow = true,
                     animation_speed = 0.5,
-                    filename = "__apm_bob_rework_ldinc__/graphics/entities/se/wide-beacon/hr/wide-beacon-shadow.png",
+                    filename = "__apm_bob_rework_resource_pack_ldinc__/graphics/entities/se/wide-beacon/hr/wide-beacon-shadow.png",
                     frame_count = 32,
                     width = 330,
                     height = 174,

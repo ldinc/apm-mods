@@ -5,7 +5,7 @@ require('lib.entities.gearingAndBearings')
 
 apm.bob_rework.lib.entities.genGearWheel = function (name, base, tint)
     local ico = {
-        icon = "__apm_bob_rework_ldinc__/graphics/icons/gear-wheel.png",
+        icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/gear-wheel.png",
         icon_size = 32,
         tint = tint,
     }

@@ -5,7 +5,7 @@
 local item = {}
 item.type = 'item'
 item.name = "kr-antimatter-reactor"
-item.icon = "__apm_bob_rework_ldinc__/graphics/icons/krastorio/entities/antimatter-reactor.png"
+item.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/krastorio/entities/antimatter-reactor.png"
 item.icon_size = 128
 item.icon_mipmaps = 4
 item.subgroup = "energy"

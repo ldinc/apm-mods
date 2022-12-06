@@ -9,7 +9,7 @@ local product = require "lib.entities.product"
 
 apm.bob_rework.lib.entities.genBearingBalls = function (name, base, tint)
     local ico = {
-        icon = "__apm_bob_rework_ldinc__/graphics/icons/bearing-balls.png",
+        icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/bearing-balls.png",
         icon_size = 64,
         tint = tint,
     }

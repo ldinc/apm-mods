@@ -5,7 +5,7 @@
 -- local item = {}
 -- item.type = 'item'
 -- item.name = "alt-rail"
--- item.icon = "__apm_bob_rework_ldinc__/graphics/icons/se/space-rail.png"
+-- item.icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/se/space-rail.png"
 -- item.icon_size = 64
 -- item.subgroup = "module-beacon"
 -- item.order = "z-a[rail]-b"

@@ -10,7 +10,7 @@ local fluids = require('lib.entities.fluids')
 
 apm.bob_rework.lib.entities.genBearing = function (name, base, ball, tint)
     local ico = {
-        icon = "__apm_bob_rework_ldinc__/graphics/icons/bearing.png",
+        icon = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/bearing.png",
         icon_size = 32,
         tint = tint,
     }

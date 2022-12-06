@@ -30,8 +30,9 @@ apm.bob_rework.lib.entities.enriched.ore.tin = enriched(apm.bob_rework.lib.entit
 apm.bob_rework.lib.entities.enriched.ore.nickel = enriched(apm.bob_rework.lib.entities.ore.nickel)
 apm.bob_rework.lib.entities.enriched.ore.tungsten = enriched(apm.bob_rework.lib.entities.ore.tungsten)
 
-local icoPath = "__apm_bob_rework_ldinc__/graphics/icons/apm_crushed.png"
-local tier1Ico = "__apm_bob_rework_ldinc__/graphics/icons/apm_tier_1.png"
+local icoPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_crushed.png"
+local tier1Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_1.png"
+local tier2Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_2.png"
 
 local settings = {
     energyRequired = 1,
@@ -39,7 +40,7 @@ local settings = {
     crushedOreAmount = 4,
     enrichedResultAmount = {
         sieve = 2,
-        floatation = 3,
+        floatation = 2,
     },
     dryMudAmout = 2,
     sieveAmount = 1,
@@ -69,7 +70,7 @@ local generateCommonEnriched = function(ore, tint)
     local item = {}
     item.type = 'item'
     item.name = target
-    item.icons = { ico }
+    item.icons = { ico, tier }
     item.stack_size = 200
     item.group = "apm_power"
     item.order = 'ab_i'
@@ -81,8 +82,10 @@ local generateCommonEnriched = function(ore, tint)
     recipe.name = target
     recipe.category = "apm_sifting_0"
     recipe.icons = { ico, tier }
+    recipe.subgroup  = 'bob-resource'
     recipe.normal = {}
-    recipe.normal.enabled = true
+    recipe.normal.enabled = false
+    recipe.normal.hide_from_player_crafting = true
     recipe.normal.energy_required = settings.sieveEnergyRequired
     recipe.normal.ingredients = {
         { type = "item", name = crushedName, amount = settings.crushedOreAmount },
@@ -115,7 +118,7 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     }
 
     local tier = {
-        icon = tier1Ico,
+        icon = tier2Ico,
         icon_size = 64,
     }
     local recipeName = enrichedAdvanced(ore)
@@ -129,8 +132,10 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     recipe.icons = {
         ico, tier
     }
+    recipe.subgroup  = 'bob-resource'
     recipe.normal = {}
-    recipe.normal.enabled = true
+    recipe.normal.enabled = false
+    recipe.normal.hide_from_player_crafting = true
     recipe.normal.energy_required = settings.floatationEnergyRequired
     recipe.normal.ingredients = {
         { type = "item", name = crushedName, amount = settings.crushedOreAmount },
@@ -139,6 +144,7 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     }
     recipe.normal.results = {
         { type = 'item', name = target, amount = settings.enrichedResultAmount.floatation },
+        { type = 'item', name = target, amount_min = 1, amount_max = 2, probability = 0.5 },
         { type = 'fluid', name = 'apm_dirt_water', amount = settings.dirtWaterAmount },
     }
     recipe.normal.main_product = target
