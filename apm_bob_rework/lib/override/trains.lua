@@ -1,3 +1,5 @@
+local logic = require "lib.entities.logic"
+local modules = require "lib.entities.modules"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -98,31 +100,35 @@ local fixNulcearLocomotive = function(recipe)
     end
 end
 
-local buildNuclearLocomotive = function(recipe, tier, armoured)
+local buildNuclearLocomotive = function(recipe, hp, w, h)
+    setNewGridSizeAndHPToLocomotive(recipe, hp, w, h)
+
+    local tier = t.blue
+
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    if armoured then
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 40)
-    end
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 60)
+
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 400)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 200)
     apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 100)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 40)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraLogic, 40)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 16)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 36)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 20)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 6)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 50)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraLogic, 50)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 40)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 20)
     apm.lib.utils.recipe.ingredient.mod(recipe, energy.heat.pipe.extra, 50)
-    local engine = product.engine.steam
-    apm.lib.utils.recipe.ingredient.mod(recipe, engine, 20 + 5 * tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 200)
+    apm.lib.utils.recipe.ingredient.mod(recipe, modules.productivity.pure.VIII, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, modules.speed.pure.VIII, 20)
 
     fixNulcearLocomotive(recipe)
 end
 
 local buildLocomotive = function(recipe, tier, hp, w, h, armoured)
     setNewGridSizeAndHPToLocomotive(recipe, hp, w, h)
-    if recipe == 'nuclear-train-vehicle-rampant-arsenal' then
-        buildNuclearLocomotive(recipe, tier, armoured)
-        return
+
+    local t_logic = tier.logic
+    if tier.level == t.yellow.level then
+        t_logic = logic.steam
     end
 
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -130,7 +136,7 @@ local buildLocomotive = function(recipe, tier, hp, w, h, armoured)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 40)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 30)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 20)
+    apm.lib.utils.recipe.ingredient.mod(recipe, t_logic, 20)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 16)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 36)
     local engine = product.engine.basic
@@ -143,7 +149,7 @@ end
 
 buildLocomotive(transport.locomotive.basic, t.yellow, 3000, 10, 6, false)
 buildLocomotive(transport.locomotive.heavy, apm.bob_rework.lib.tier.red, 4500, 14, 8, true)
-buildLocomotive(transport.locomotive.nuclear, apm.bob_rework.lib.tier.blue, 8000, 18, 8, true)
+buildNuclearLocomotive(transport.locomotive.nuclear,  8000, 18, 8)
 
 -------------------------------------------------------------------------------
 

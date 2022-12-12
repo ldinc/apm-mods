@@ -1,3 +1,4 @@
+local plates = require "lib.entities.plates"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -16,6 +17,13 @@ local buildOverdriveMotor = function (recipe, tier, k)
 end
 
 local buildCar = function (recipe, tier, engine, count)
+    local constructionAlloy = tier.constructionAlloy
+    local extraConstructionAlloy = tier.extraConstructionAlloy
+    if tier.level == apm.bob_rework.lib.tier.yellow.level then
+        constructionAlloy = plates.iron
+        extraConstructionAlloy = plates.steel
+    end
+
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 30)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 30)

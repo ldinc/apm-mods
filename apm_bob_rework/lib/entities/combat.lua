@@ -4,6 +4,9 @@ return {
         magazine = {
             firearm = 'firearm-magazine',
         },
+        rocket = {
+            base = 'rocket',
+        },
     },
 
     gun = {
@@ -58,7 +61,12 @@ return {
     },
 
     armor = {
+        light = 'light-armor',
+        heavy = 'heavy-armor',
+        modular = 'modular-armor',
+
         power = {
+            basic = 'power-armor',
             advance = 'power-armor-mk2',
             extra = 'power-armor-mk3-armor-rampant-arsenal',
         },

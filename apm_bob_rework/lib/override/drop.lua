@@ -3,6 +3,7 @@ local bob     = require "lib.entities.bob"
 local types   = require "lib.entities.types"
 local assemblers = require "lib.entities.buildings.assemblers"
 local flags      = require "lib.entities.flags"
+local energy     = require "lib.entities.buildings.energy"
 
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
@@ -250,6 +251,8 @@ apm.bob_rework.lib.override.drop = function()
     rm(bob.valve.check)
     rm(bob.valve.overflow)
     rm(bob.valve.topup)
+
+    rm(energy.generator.steam.drop.extra)
 
     resetUpgrades(assemblers.steam, types.assemblers)
     resetUpgrades(bob.assembler.burner, types.assemblers)

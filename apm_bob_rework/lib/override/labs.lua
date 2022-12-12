@@ -15,8 +15,7 @@ local buildLaboratoryRecipe = function(recipe, tier)
 
     if tier.level > 0 then
         local inserter = tier.inserter
-        apm.lib.utils.recipe.ingredient.mod(recipe, inserter, 5)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 2 + tier.level)
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, 4 + tier.level)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
     if tier.extraConstructionAlloy then
@@ -30,7 +29,7 @@ local buildLaboratoryRecipe = function(recipe, tier)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 15 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level * 2 + 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level * 5 + 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, m.glass, 20)
 end
 

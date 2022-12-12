@@ -12,7 +12,7 @@ apm.bob_rework.lib.override.genAssembler = function(recipe, tier)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, tier.level*3)
     end
 
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engine, 2 + tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.engine, 1 + tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 8 + 3 * tier.level)
     if tier.extraConstructionAlloy then
         local count = 20
@@ -25,7 +25,7 @@ apm.bob_rework.lib.override.genAssembler = function(recipe, tier)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, count)
     end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.inserter, 4 + 2 * tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.inserter, 1 + 2 * tier.level)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, tier.level * 4 + 1)
     if tier.extraLogic then
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraLogic, tier.level * 4 + 1)

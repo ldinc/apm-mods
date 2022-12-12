@@ -46,6 +46,7 @@ local p = {
         basic = 'battery',
         LiIon = 'lithium-ion-battery',
         Z = 'silver-zinc-battery',
+        AgZn = 'silver-zinc-battery',
     },
 
     sealing = { rings = 'apm_sealing_rings' },

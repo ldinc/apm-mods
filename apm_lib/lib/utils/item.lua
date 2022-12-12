@@ -23,13 +23,13 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.item.exist(item_name)
-    local types_list = {'item', 'fluid'}
+    local types_list = {'item', 'fluid', 'module'}
     for _, type_name in pairs(types_list) do
-        if data.raw[type_name][item_name] then 
+        if data.raw[type_name][item_name] then
             return true
         end
     end
-    APM_LOG_WARN(self, 'exist()', 'item/fluid with name: "' .. tostring(item_name) .. '" dosent exist.')
+    APM_LOG_WARN(self, 'exist()', 'item/fluid/module with name: "' .. tostring(item_name) .. '" dosent exist.')
     return false
 end
 
@@ -56,17 +56,21 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.item.get_type(item_name, prefer_item)
-    local types_list = {'item', 'fluid'}
+    local types_list = {'item', 'fluid', 'module'}
     local result
     local count = 0
     for _, type_name in pairs(types_list) do
-        if data.raw[type_name][item_name] then 
+        if data.raw[type_name][item_name] then
             result = type_name
             count = count + 1
+            log('Info: '..item_name..' : '..type_name)
+            if type_name == 'module' then
+                return 'item'
+            end
         end
     end
 
-    if count == 2 then
+    if count > 1 then
         if prefer_item then
             result = 'item'
         else

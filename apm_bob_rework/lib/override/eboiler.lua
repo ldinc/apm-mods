@@ -1,3 +1,6 @@
+local logic = require "lib.entities.logic"
+local wires = require "lib.entities.wires"
+local plates= require "lib.entities.plates"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -12,7 +15,12 @@ apm.bob_rework.lib.override.eboiler = function ()
         tech.icon_size = 144
     end
 
-    apm.lib.utils.recipe.ingredient.mod(b.boiler.electric, apm.bob_rework.lib.entities.iron, 20)
+    local recipe = b.boiler.electric
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, b.boiler.advance, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic.circuit.basic, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, wires.copper, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 10)
 
     local rm = apm.lib.utils.recipe.remove
     rm('electric-boiler-2')

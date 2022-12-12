@@ -17,6 +17,7 @@ local t = {
         production = 'production-science-pack',
         automation = 'apm_power_automation_science_pack',
         chemical = 'chemical-science-pack',
+        logistics = 'logistic-science-pack',
     },
 
     boiler = {
@@ -40,6 +41,10 @@ local t = {
 
     materials = {
         ceramics = 'ceramics',
+        rubber = {
+            basic= 'apm_rubber_1',
+            vulcano = 'apm_rubber_2',
+        },
     },
 
     fluid = {
@@ -55,6 +60,16 @@ local t = {
     logistics = {
         basic = 'logistics-0',
         yellow = 'logistics',
+        rail = {
+            signals = 'rail-signals',
+        },
+        automobile = {
+            basic = 'automobilism',
+            electric = 'automobilism_electric',
+        },
+        inserters = {
+            red = 'fast-inserter',
+        },
     },
 
     combat = {

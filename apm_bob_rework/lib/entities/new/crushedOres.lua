@@ -1,3 +1,5 @@
+local ores = require "lib.entities.ores"
+local icons= require "lib.icons"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 
@@ -31,18 +33,18 @@ apm.bob_rework.lib.entities.crushed.ore = {}
 apm.bob_rework.lib.entities.crushed.ore.advanced = {}
 
 -- common tier
-apm.bob_rework.lib.entities.crushed.ore.copper = crushed(apm.bob_rework.lib.entities.ore.copper)
-apm.bob_rework.lib.entities.crushed.ore.iron = crushed(apm.bob_rework.lib.entities.ore.iron)
-apm.bob_rework.lib.entities.crushed.ore.aluminium = crushed(apm.bob_rework.lib.entities.ore.aluminium)
-apm.bob_rework.lib.entities.crushed.ore.zinc = crushed(apm.bob_rework.lib.entities.ore.zinc)
-apm.bob_rework.lib.entities.crushed.ore.lead = crushed(apm.bob_rework.lib.entities.ore.lead)
-apm.bob_rework.lib.entities.crushed.ore.gold = crushed(apm.bob_rework.lib.entities.ore.gold)
-apm.bob_rework.lib.entities.crushed.ore.cobalt = crushed(apm.bob_rework.lib.entities.ore.cobalt)
-apm.bob_rework.lib.entities.crushed.ore.titanium = crushed(apm.bob_rework.lib.entities.ore.titanium)
-apm.bob_rework.lib.entities.crushed.ore.silver = crushed(apm.bob_rework.lib.entities.ore.silver)
-apm.bob_rework.lib.entities.crushed.ore.tin = crushed(apm.bob_rework.lib.entities.ore.tin)
-apm.bob_rework.lib.entities.crushed.ore.nickel = crushed(apm.bob_rework.lib.entities.ore.nickel)
-apm.bob_rework.lib.entities.crushed.ore.tungsten = crushed(apm.bob_rework.lib.entities.ore.tungsten)
+apm.bob_rework.lib.entities.crushed.ore.copper = crushed(ores.copper)
+apm.bob_rework.lib.entities.crushed.ore.iron = crushed(ores.iron)
+apm.bob_rework.lib.entities.crushed.ore.aluminium = crushed(ores.aluminium)
+apm.bob_rework.lib.entities.crushed.ore.zinc = crushed(ores.zinc)
+apm.bob_rework.lib.entities.crushed.ore.lead = crushed(ores.lead)
+apm.bob_rework.lib.entities.crushed.ore.gold = crushed(ores.gold)
+apm.bob_rework.lib.entities.crushed.ore.cobalt = crushed(ores.cobalt)
+apm.bob_rework.lib.entities.crushed.ore.titanium = crushed(ores.titanium)
+apm.bob_rework.lib.entities.crushed.ore.silver = crushed(ores.silver)
+apm.bob_rework.lib.entities.crushed.ore.tin = crushed(ores.tin)
+apm.bob_rework.lib.entities.crushed.ore.nickel = crushed(ores.nickel)
+apm.bob_rework.lib.entities.crushed.ore.tungsten = crushed(ores.tungsten)
 
 -- recipe settings for generate functions
 local recipeSetting = {
@@ -53,10 +55,6 @@ local recipeSetting = {
     energyRequired = 1,
 }
 
-local crushedIcoPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/ore-washed-template.png"
-local tier1Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_1.png"
-local tier2Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_2.png"
-
 apm.bob_rework.lib.entities.crushed.ore.generate = {}
 
 apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom = function(ore, tint)
@@ -64,12 +62,12 @@ apm.bob_rework.lib.entities.crushed.ore.generate.crushedFrom = function(ore, tin
     local crushedName = crushed(ore)
 
     local ico = {
-        icon = crushedIcoPath,
+        icon = icons.path.ore.crushed,
         icon_size = 64,
         tint = tint,
     }
     local tier = {
-        icon = tier1Ico,
+        icon = icons.path.tier.I,
         icon_size = 64,
     }
     -- generate item
@@ -113,12 +111,12 @@ end
 
 apm.bob_rework.lib.entities.crushed.ore.generate.advancedCrushedFrom = function(ore, tint)
     local ico = {
-        icon = crushedIcoPath,
+        icon = icons.path.ore.crushed,
         icon_size = 64,
         tint = tint,
     }
     local tier = {
-        icon = tier2Ico,
+        icon = icons.path.tier.II,
         icon_size = 64,
     }
 

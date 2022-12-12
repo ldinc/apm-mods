@@ -1,3 +1,5 @@
+local plates = require "lib.entities.plates"
+local alloys = require "lib.entities.alloys"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 
@@ -62,4 +64,9 @@ apm.bob_rework.lib.override.plate = function ()
     local recipe = 'apm_steel_2'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.enriched.ore.iron, 8)
     apm.lib.utils.recipe.ingredient.mod(recipe, 'iron-ore', 0)
+    local recipe = alloys.cobalt.steel
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 7)
+    apm.lib.utils.recipe.ingredient.mod(recipe, plates.cobalt, 3)
+
 end 

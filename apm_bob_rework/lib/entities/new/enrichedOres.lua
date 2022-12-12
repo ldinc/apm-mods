@@ -1,3 +1,4 @@
+local icons = require "lib.icons"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
 if apm.bob_rework.lib.entities == nil then apm.bob_rework.lib.entities = {} end
@@ -30,10 +31,6 @@ apm.bob_rework.lib.entities.enriched.ore.tin = enriched(apm.bob_rework.lib.entit
 apm.bob_rework.lib.entities.enriched.ore.nickel = enriched(apm.bob_rework.lib.entities.ore.nickel)
 apm.bob_rework.lib.entities.enriched.ore.tungsten = enriched(apm.bob_rework.lib.entities.ore.tungsten)
 
-local icoPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_crushed.png"
-local tier1Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_1.png"
-local tier2Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_2.png"
-
 local settings = {
     energyRequired = 1,
     floatationEnergyRequired = 1,
@@ -55,13 +52,13 @@ local settings = {
 
 local generateCommonEnriched = function(ore, tint)
     local ico = {
-        icon = icoPath,
+        icon = icons.path.ore.enriched,
         icon_size = 64,
         tint = tint,
     }
 
     local tier = {
-        icon = tier1Ico,
+        icon = icons.path.tier.I,
         icon_size = 64,
     }
     local target = enriched(ore)
@@ -112,13 +109,13 @@ end
 
 local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
     local ico = {
-        icon = icoPath,
+        icon = icons.path.ore.enriched,
         icon_size = 64,
         tint = tint,
     }
 
     local tier = {
-        icon = tier2Ico,
+        icon = icons.path.tier.II,
         icon_size = 64,
     }
     local recipeName = enrichedAdvanced(ore)

@@ -8,6 +8,7 @@ local bob      = require "lib.entities.bob"
 local logistics= require "lib.entities.logistics"
 local combat   = require "lib.entities.combat"
 local rocket   = require "lib.entities.new.rocket"
+local recipies = require "lib.entities.recipies"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -141,12 +142,13 @@ apm.bob_rework.lib.override.others = function()
     local obj = data.raw.recipe[recipe]
 
     table.insert(obj.ingredients, { type = 'item', name = 'rail', amount = 40 })
-    table.insert(obj.ingredients, { type = 'item', name = 'productivity-module', amount = 4 })
+    -- table.insert(obj.ingredients, { type = 'item', name = 'productivity-module', amount = 4 })
 
     -- enabled sieve on startup
     enableRecipeOnStart('apm_sieve_iron')
-    enableRecipeOnStart(energy.pole.small)
+    -- enableRecipeOnStart(energy.pole.small)
     enableRecipeOnStart(alloys.bronze)
+    apm.lib.utils.recipe.disable(recipies.chemistry.plastic.old)
 
     recipe = 'apm_industrial_science_pack_0'
     mod(recipe, logic.mechanical, 1)
@@ -227,13 +229,6 @@ apm.bob_rework.lib.override.others = function()
     local recipe = product.gearwheel.titanium
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     mod(recipe, alloys.titanium, 1)
-
-    local recipe = rocket.engine
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, plates.tungsten, 1)
-    mod(recipe, product.gearwheel.titanium, 2)
-    mod(recipe, product.bearing.titanium, 2)
-    mod(recipe, product.stick, 1)
 
     local recipe = 'satellite'
     mod(recipe, 'radar-5', 0)

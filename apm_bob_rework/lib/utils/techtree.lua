@@ -56,6 +56,9 @@ local linkedTechMap = {
     [t.combat.turret.gun.I] = {t.crusher.burner},
     [t.processing.oil.basic] = {t.science.chemical},
     [t.battery.liio] = {t.science.chemical},
+    [t.logistics.rail.signals] = {t.science.logistics},
+    [t.logistics.automobile.basic] = {t.science.logistics},
+    [t.logistics.inserters.red] = {t.science.logistics},
 }
 
 local reactorProductsMap = {

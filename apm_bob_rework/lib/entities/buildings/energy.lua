@@ -48,7 +48,9 @@ local energy = {
         steam = {
             basic = 'steam-engine',
             advance = 'steam-engine-2',
-            extra = 'steam-engine-3',
+            drop = {
+                extra = 'steam-engine-3',
+            },
         },
         burner = 'bob-burner-generator',
         fluid = {

@@ -10,7 +10,7 @@ local pipes     = require "lib.entities.pipes"
 local pumps     = require "lib.entities.pumps"
 local energy    = require "lib.entities.buildings.energy"
 local modules   = require "lib.entities.modules"
-local chemistry = require "lib.entities.buildings.chemistry"
+
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -21,7 +21,6 @@ require('lib.entities.base')
 local t = require('lib.tier.base')
 require('lib.utils.debug')
 
-local plate = require('lib.entities.plates')
 local alloy = require('lib.entities.alloys')
 
 local buffStackSizeForArtillery = function(name)
@@ -299,7 +298,7 @@ local buildFusionReactorEq = function(recipe, level)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 30 + 20 * level)
 	apm.lib.utils.recipe.ingredient.mod(recipe, logic.PU, 100 + 50 * level)
 	apm.lib.utils.recipe.ingredient.mod(recipe, logic.APU, 100 + 50 * level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.lowDensityStructure, 30 + 20 * level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.low.density.structure, 30 + 20 * level)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_depleted_uranium_ingots', 10 + 5 * level)
 end
 
@@ -459,38 +458,6 @@ local updateWeapons = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.steel, 4)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.cobalt.steel, 4)
-
-	recipe = combat.armor.shield.I
-	local tier = t.yellow
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5*tier.level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
-
-	recipe = combat.armor.shield.II
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, combat.armor.shield.I, 1)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5*tier.level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10)
-
-	recipe = combat.armor.shield.III
-	tier = t.red
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5*tier.level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10*tier.level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, modules.productivity.pure.VI)
-	apm.lib.utils.recipe.ingredient.mod(recipe, modules.speed.pure.VI)
-
-	recipe = combat.armor.shield.IV
-	tier = t.blue
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5*tier.level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 10*tier.level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraLogic, 10*tier.level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, modules.productivity.pure.VIII)
-	apm.lib.utils.recipe.ingredient.mod(recipe, modules.speed.pure.VIII)
 end
 
 local changeRange = function(type, name, radius)
@@ -712,22 +679,6 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 2)
 	apm.lib.utils.recipe.ingredient.mod(recipe, wires.tinned, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, t.yellow.logic, 15)
-
-	local recipe = combat.armor.power.extra
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.lowDensityStructure, 150)
-	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 30)
-	apm.lib.utils.recipe.ingredient.mod(recipe, t.blue.logic, 50)
-	apm.lib.utils.recipe.ingredient.mod(recipe, t.blue.extraLogic, 50)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 50)
-	apm.lib.utils.recipe.ingredient.mod(recipe, t.blue.wire, 50)
-
-	local recipe = combat.armor.power.advance
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, t.red.constructionAlloy, 50)
-	apm.lib.utils.recipe.ingredient.mod(recipe, t.red.logic, 30)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 30)
-	apm.lib.utils.recipe.ingredient.mod(recipe, t.red.wire, 30)
 
 	local recipe = combat.equip.generator.transmitter.tesla
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)

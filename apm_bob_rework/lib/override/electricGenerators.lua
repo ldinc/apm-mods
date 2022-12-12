@@ -1,3 +1,11 @@
+local energy = require "lib.entities.buildings.energy"
+local frames = require "lib.entities.frames"
+local materials = require "lib.entities.materials"
+local pipes     = require "lib.entities.pipes"
+local alloys    = require "lib.entities.alloys"
+local logic     = require "lib.entities.logic"
+local chemistry = require "lib.entities.buildings.chemistry"
+local product   = require "lib.entities.product"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -57,17 +65,48 @@ end
 
 local buildBoiler = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 4 + 3 * tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 2 + 3 * tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 5 + 3 * tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10 * tier.basementK)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 3)
 end
 
-local buildFluidBoiler = function(recipe, base, tier)
+local buildBoilers = function ()
+    local recipe = energy.boiler.basic
+    local tier = t.steam
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.frame, 3)
+
+    local recipe = energy.boiler.advance
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, alloys.cobalt.steel, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, alloys.monel, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.steel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, materials.concrete, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, frames.basic, 3)
+
+    local recipe = energy.boiler.advance
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, alloys.cobalt.steel, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, alloys.monel, 15)
+    apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.steel, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.ceramic, 5)
+    apm.lib.utils.recipe.ingredient.mod(recipe, materials.refined.concrete, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, frames.basic, 3)
+    apm.lib.utils.recipe.ingredient.mod(recipe, logic.circuit.basic, 5)
+
+end
+
+local buildFluidBoiler = function(recipe, base, pipe, k)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, base, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatPipe, 3 + 2 * tier.level)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.heatAlloy, 2 + 2 * tier.level)
+    apm.lib.utils.recipe.ingredient.mod(recipe, pipe, 10)
+    apm.lib.utils.recipe.ingredient.mod(recipe, product.rubber, k)
 end
 
 local buildTurbine = function(recipe, tier, energyK)
@@ -91,17 +130,18 @@ apm.bob_rework.lib.override.electricGenerators = function()
     --
     buildSteamGenerator(b.generator.steam.basic, t.steam, 2)
     buildSteamGenerator(b.generator.steam.advance, t.red, 4)
-    buildSteamGenerator(b.generator.steam.extra, t.blue, 5)
+    -- buildSteamGenerator(b.generator.steam.extra, t.blue, 5)
     --
     buildFluidGenerator(b.generator.fluid.basic, t.red, 5)
     buildFluidGenerator(b.generator.fluid.hydrazine, t.blue, 12)
     --
-    buildBoiler(b.boiler.basic, t.steam)
-    buildBoiler(b.boiler.advance, t.yellow)
-    buildBoiler(b.boiler.extra, t.red)
+    buildBoilers()
+    -- buildBoiler(b.boiler.basic, t.steam)
+    -- buildBoiler(b.boiler.advance, t.yellow)
+    -- buildBoiler(b.boiler.extra, t.red)
     --
-    buildFluidBoiler(b.boiler.fluid.basic, b.boiler.advance, t.yellow)
-    buildFluidBoiler(b.boiler.fluid.advance, b.boiler.extra, t.red)
+    buildFluidBoiler(b.boiler.fluid.basic, b.boiler.advance, pipes.base.brass, 10)
+    buildFluidBoiler(b.boiler.fluid.advance, b.boiler.extra, pipes.base.ceramic, 15)
     --
     buildTurbine(b.turbine.steam, t.red, 14)
 end

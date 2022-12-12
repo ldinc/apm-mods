@@ -11,6 +11,8 @@ local recipies  = require "lib.entities.recipies"
 local logic     = require "lib.entities.logic"
 local inserters = require "lib.entities.buildings.inserters"
 local rocket    = require "lib.entities.new.rocket"
+local icons     = require "lib.icons"
+local energy    = require "lib.entities.buildings.energy"
 
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
@@ -724,18 +726,15 @@ function apm.bob_rework.lib.override.tech()
     -- Adding new tech
     local c = ores.crushed.advance
     local list = {c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c.tungsten, c.zinc}
-    local crushedIcoPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/ore-washed-template.png"
     local ico = {
-        icon = crushedIcoPath,
+        icon = icons.path.ore.crushed,
         icon_size = 64,
     }
 
     newTech(t.ore.crushing.advanced, ico, list, {}, 200, 20)
 
-    local icoPath = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_crushed.png"
-    local tier1Ico = "__apm_bob_rework_resource_pack_ldinc__/graphics/icons/apm_tier_1.png"
     local ico = {
-        icon = icoPath,
+        icon = icons.path.ore.enriched,
         icon_size = 64,
     }
     local c = ores.enriched.basic
@@ -749,7 +748,6 @@ function apm.bob_rework.lib.override.tech()
 
 
     if settings.startup['apm_bob_rework_experimental_tech_tree_rebuilder'].value == true then
-        -- apm.bob_rework.lib.utils.tech.rebuild('apm_crusher_machine_0', 'apm_industrial_science_pack')
         apm.bob_rework.lib.utils.tech.tree.rebuild(t.crusher.burner)
     end
 end

@@ -24,7 +24,7 @@ local buildBelts = function(tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.belt, 4)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
+    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 1)
 
 
     local recipe = tier.loader
@@ -33,7 +33,7 @@ local buildBelts = function(tier)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.belt, 5)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
         apm.lib.utils.recipe.ingredient.mod(recipe, tier.inserter, 5)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 1)
     end
 end
 
