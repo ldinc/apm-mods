@@ -52,12 +52,19 @@ return {
             advance = 'bob-gun-turret-2',
             sniper = 'bob-sniper-turret-1',
         },
+        launcher = {
+            capsule = 'capsule-item-rampant-arsenal',
+        },
 
     },
 
     artillery = {
         basic = 'artillery-turret',
         light = 'lite-artillery-turret-rampant-arsenal',
+
+        remote = {
+            light = 'artillery-targeting-remote-rampant-arsenal',
+        },
     },
 
     armor = {
@@ -130,5 +137,9 @@ return {
         turret = {
             rifle = 'rifle-item-rampant-arsenal',
         },
+    },
+
+    radar = {
+        sentinel = 'kr-sentinel',
     },
 }

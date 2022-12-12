@@ -123,14 +123,6 @@ local buildLaserTurret = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 200)
 end
 
-local buildShotgunTurret = function()
-	local recipe = combat.turret.shotgun
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.bearing.brass, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.brass, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, t.steam.constructionAlloy, 15)
-end
-
 local buildCanonTurret = function()
 	local recipe = combat.turret.cannon.basic
 	local tier = t.red
@@ -177,43 +169,6 @@ local buildRocketTurret = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 30)
 end
 
-local genArtillery = function(recipe, tier)
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 100)
-	if tier.extraConstructionAlloy then
-		apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 50)
-	end
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 30)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 30)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 50 * tier.level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.basic, 20 + 20 * tier.level)
-end
-
-local buildArtillery = function()
-	genArtillery(combat.artillery.light, t.red)
-	genArtillery(combat.artillery.basic, t.blue)
-end
-
-local buildGunTurret = function(recipe, tier, extraGlass)
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 4)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 2)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 2)
-	if extraGlass then
-		apm.lib.utils.recipe.ingredient.mod(recipe, tier.glass, 2)
-	end
-end
-
-local buildGunTurrets = function()
-	buildGunTurret(combat.turret.gun.basic, t.gray, false)
-	buildGunTurret(combat.turret.gun.advance, t.yellow, false)
-
-	buildGunTurret(combat.turret.gun.sniper, t.yellow, true)
-end
-
 local buildFlameTurrets = function ()
 	local recipe = 'acid-cannon-rampant-arsenal'
 	local tier = t.red
@@ -251,17 +206,6 @@ local buildFlameTurrets = function ()
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 60)
-
-	local recipe = 'capsule-item-rampant-arsenal'
-	local tier = t.red
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 30)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 20)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.engine.electric, 4)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.basement, 20)
 end
 
 local buildSolarPanel = function(recipe, tier, shell, conduct)
@@ -534,12 +478,6 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'fusion-reactor-equipment-2', 0)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'nuclear-reactor', 1)
 
-	local recipe = 'capsule-item-rampant-arsenal'
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.bearing.steel, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.steel, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, materials.concrete, 40)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.explosives, 0)
-
 	local recipe = 'mech-leg-segment'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 10)
@@ -804,11 +742,8 @@ local modify = function()
 	changeIron2GM('paralysis-capsule-rampant-arsenal', 3)
 
 	buildLaserTurret()
-	buildShotgunTurret()
 	buildCanonTurret()
 	buildRocketTurret()
-	buildArtillery()
-	buildGunTurrets()
 	buildFlameTurrets()
 	--
 	buildSolarPanel('solar-panel-equipment', apm.bob_rework.lib.tier.red, apm.bob_rework.lib.entities.glass,

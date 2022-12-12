@@ -10,7 +10,20 @@ local t = {
         lead = 'lead-processing',
         oil = {
             basic = 'oil-processing',
-        }
+            advanced = 'advanced-oil-processing',
+            extra = 'oil-processing-2'
+        },
+        coke = {
+            I = 'apm_fuel-1',
+            II = 'apm_fuel-2',
+            III = 'apm_fuel-3',
+            IV = 'apm_fuel-4',
+        },
+        planks = {
+            I = 'apm_treated_wood_planks_1',
+            II = 'apm_treated_wood_planks_2',
+            III = 'apm_treated_wood_planks_3',
+        },
     },
 
     science = {
@@ -28,10 +41,14 @@ local t = {
 
     crusher = {
         burner = 'apm_crusher_machine_0',
+        steam = 'apm_crusher_machine_1',
+        electric = 'apm_crusher_machine_2',
     },
 
     press = {
         burner = 'apm_press_machine_0',
+        steam = 'apm_press_machine_1',
+        electric = 'apm_press_machine_2',
     },
 
     sieve = {
@@ -45,6 +62,10 @@ local t = {
             basic= 'apm_rubber_1',
             vulcano = 'apm_rubber_2',
         },
+        asphalt = {
+            creosote = 'apm_asphalt_1',
+            oil = 'apm_asphalt_2',
+        }
     },
 
     fluid = {
@@ -61,7 +82,11 @@ local t = {
         basic = 'logistics-0',
         yellow = 'logistics',
         rail = {
+            ways = 'railway',
+            stop = 'automated-rail-transportation',
             signals = 'rail-signals',
+            advanced = 'alt-rail',
+            nuclear = 'rampant-arsenal-technology-nuclear-railway',
         },
         automobile = {
             basic = 'automobilism',

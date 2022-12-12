@@ -58,6 +58,7 @@ require('lib.override.titaniumAlloy')
 require('lib.override.frames')
 require('lib.override.bearings')
 require('lib.override.armor')
+require('lib.override.defense')
 require('lib.override.spawner_reskin')
 
 apm.bob_rework.lib.override.apply = function ()

@@ -3,6 +3,7 @@ local science = require "lib.entities.science"
 local t = require "lib.entities.tech"
 local default = require "lib.entities.default"
 local json    = require "lib.utils.json"
+local techtree_data = require "lib.utils.techtree_data"
 
 -- Package for tech tree rebuilding
 
@@ -61,6 +62,27 @@ local linkedTechMap = {
     [t.logistics.inserters.red] = {t.science.logistics},
 }
 
+local getLinks = function()
+    local map = table.deepcopy(linkedTechMap)
+    for _, list in ipairs(techtree_data.tiers) do
+        log(json.encode(list))
+        local prev = nil
+        for _, target in pairs(list) do
+            log('debug '.. target)
+            if prev then
+                if map[target] == nil then
+                    map[target] = {}
+                end
+                log('from '..target..' to '..prev)
+                table.insert(map[target],prev)
+            end
+            prev = target
+        end
+    end
+
+    return map
+end
+
 local reactorProductsMap = {
     [t.nuclear.uranium] = {['apm_fuel_rod_uranium_active'] = {}, ['apm_fuel_rod_mox_active'] = {}, ['apm_fuel_rod_thorium_active'] = {}, ['apm_fuel_rod_neptunium_active'] = {}},
     [t.nuclear.thorium] = {['apm_fuel_rod_uranium_active'] = {}, ['apm_fuel_rod_mox_active'] = {}, ['apm_fuel_rod_thorium_active'] = {}, ['apm_fuel_rod_neptunium_active'] = {}},
@@ -77,6 +99,7 @@ local emptyTree = function()
     local tree = {
         technologies = {
             all = {},
+            linked = {},
             modules = {},
         },
         cache = {
@@ -362,7 +385,7 @@ local calculateProductsAndDependecies = function (tree)
             end
 
             -- calculate dependencies from another technologies
-            local otherTechnologies = linkedTechMap[tName]
+            local otherTechnologies = tree.technologies.linked[tName]
             if otherTechnologies then
                 tItem.dependencies.technologies = table.deepcopy(otherTechnologies)
             end
@@ -680,10 +703,20 @@ local inGameLinkTech = function (tree)
     end
 end
 
+local sortTechnologiesSetByKeys = function (tree)
+    table.sort(tree.technologies.all, function (a,b)
+        local aName = tree.technologies.all[a].name
+        local bName = tree.technologies.all[b].name
+        return aName < bName
+    end)
+end
+
 apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     local tree = emptyTree()
 
     appendTechologiesSet(tree)
+    tree.technologies.linked = getLinks()
+    -- sortTechnologiesSetByKeys(tree)
     setupTechnologyFlags(tree)
 
     disableEmptyTechnologies(tree)
@@ -698,10 +731,7 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     inGameLinkTech(tree)
 
     -- log(json.encode(tree))
-
-    describe('bob-robots-1',tree)
-    describe('bob-robots-2',tree)
-    describe('bob-robots-3',tree)
+    -- describe('bob-robots-3',tree)
 
     log('total handled technologies count '..tostring(tree.technologies.all[tree.cursor.current].ID))
 end
