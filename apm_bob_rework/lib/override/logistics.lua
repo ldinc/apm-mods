@@ -73,7 +73,7 @@ local modify = function()
 
     local update = function (recipe, storage, m)
         apm.lib.utils.recipe.ingredient.remove_all(recipe)
-        apm.lib.utils.recipe.ingredient.mod(recipe, robo.antenna.base, 1*m)
+        apm.lib.utils.recipe.ingredient.mod(recipe, robo.port.basic, 1)
         apm.lib.utils.recipe.ingredient.mod(recipe, storage, 1)
         apm.lib.utils.recipe.ingredient.mod(recipe, t.red.logic, 5*m)
         apm.lib.utils.recipe.ingredient.mod(recipe, t.red.extraLogic, 2)

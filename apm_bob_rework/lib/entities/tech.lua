@@ -31,6 +31,7 @@ local t = {
         automation = 'apm_power_automation_science_pack',
         chemical = 'chemical-science-pack',
         logistics = 'logistic-science-pack',
+        military = 'military-science-pack',
     },
 
     boiler = {

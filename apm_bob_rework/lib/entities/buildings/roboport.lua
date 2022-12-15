@@ -1,6 +1,6 @@
 local data = {
     antenna = {
-        base = 'roboport-antenna',
+        base = 'roboport-antenna-1',
         advanced = 'roboport-antenna-2',
     },
 

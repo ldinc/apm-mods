@@ -550,6 +550,9 @@ local handleScienceForCurrent = function (tree)
 
     if tItem.isMilitary then
         tItem.science[science.military] = 1
+        if tItem.dependencies.technologies[t.science.military] == nil then
+            table.insert(tItem.dependencies.technologies, t.science.military)
+        end
     end
 
     if tItem.dependencies.technologies then
