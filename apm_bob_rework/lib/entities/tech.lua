@@ -39,6 +39,12 @@ local t = {
 
     puddling = {furnace = 'apm_puddling_furnace_0'},
 
+    greenhouse = {
+        burner = 'apm_greenhouse',
+        steam = 'apm_greenhouse-2',
+        electric = 'apm_greenhouse-3',
+    },
+
     crusher = {
         burner = 'apm_crusher_machine_0',
         steam = 'apm_crusher_machine_1',
@@ -71,16 +77,24 @@ local t = {
     fluid = {
         handling = {
             basic = 'fluid-handling',
+            advanced = 'bob-fluid-handling-2',
+            expert = 'bob-fluid-handling-3',
         },
         control = {
             basic = 'apm_water_supply-1',
             advanced = 'apm_water_supply-2',
-        }
+        },
+        pumpjack = {
+            basic = 'pumpjack',
+            advanced = 'bob-pumpjacks-1',
+        },
     },
 
     logistics = {
         basic = 'logistics-0',
         yellow = 'logistics',
+        red = 'logistics-2',
+        blue = 'logistics-3',
         rail = {
             ways = 'railway',
             stop = 'automated-rail-transportation',
@@ -94,6 +108,16 @@ local t = {
         },
         inserters = {
             red = 'fast-inserter',
+            redstack = 'stack-inserter',
+            blue = 'express-inserters',
+            bluestack = 'stack-inserter-2',
+        },
+        bots = {
+            frame = {
+                basic = 'robotics',
+                advanced = 'bob-robotics-2',
+            },
+
         },
     },
 
@@ -110,7 +134,43 @@ local t = {
         },
     },
 
+    effect = {
+        transmitter = {
+            basic = 'effect-transmission',
+            advanced = 'wide-beacon',
+        },
+        heat = {
+            pipe = {
+                basic = 'bob-heat-pipe-1',
+                advanced = 'bob-heat-pipe-2',
+                expert = 'bob-heat-pipe-3',
+            },
+        },
+    },
+
     electricity = 'apm_power_electricity',
+
+    energy = {
+        substation ={
+            basic = 'electric-energy-distribution-2',
+            advanced = 'electric-substation-2',
+        },
+        distribution = {
+            basic = 'electric-energy-distribution-1',
+            advanced = 'electric-pole-2',
+        },
+        steam = {
+            engine = {
+                basic = 'apm_steam_engine',
+                advanced = 'bob-steam-engine-2',
+            },
+        },
+        solar = {
+            basic = 'solar-energy',
+            advanced = 'bob-solar-energy-2',
+            expert = 'bob-solar-energy-3',
+        },
+    },
 
     electronics = {
         basic = 'electronics',
@@ -157,6 +217,12 @@ local t = {
             base = 'ore-enrichment',
             advanced = 'advanced-ore-enrichment',
         },
+        mining = {
+            steam = 'apm_steam_mining_drill',
+            yellow = 'apm_electric_mining_drills',
+            red = 'bob-drills-1',
+            blue = 'bob-drills-2',
+        }
     },
 }
 
