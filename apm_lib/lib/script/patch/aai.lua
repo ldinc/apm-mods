@@ -37,7 +37,7 @@ function aai.on_tick()
 	if game.tick == 2 then
 		if settings.startup['apm_power_compat_earendel'].value then
 			if game.active_mods['aai-industry'] then
-				if settings.startup['crash-sequence'].value then
+				if settings.global['crash-sequence'].value then
 					replace_aai_burner_assembling_machine()
 				end
 			end
