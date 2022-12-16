@@ -60,6 +60,24 @@ local linkedTechMap = {
     [t.logistics.rail.signals] = {t.science.logistics},
     [t.logistics.automobile.basic] = {t.science.logistics},
     [t.logistics.inserters.red] = {t.science.logistics},
+    -- red sp bindings
+    [t.electronics.advanced.I] = {t.science.logistics},
+    -- purple sp bindings
+    [t.electronics.advanced.II] = {t.science.production},
+    -- pink sp bindings
+    [t.electronics.advanced.III] = {t.science.advanced.logistics},
+    -- nuclear bindings
+    [t.nuclear.rtg] = {t.science.nuclear},
+    [t.nuclear.processing.thorium] = {t.science.nuclear},
+    [t.nuclear.breeder] = {t.science.nuclear},
+    [t.nuclear.portable.reactor] = {t.science.nuclear},
+    [t.nuclear.synthesys.plutonium] = {t.science.nuclear},
+    [t.nuclear.portable.reactor] = {t.science.nuclear},
+    [t.nuclear.thorium] = {t.science.nuclear, t.nuclear.thorium_breeder},
+    [t.nuclear.fuel.product] = {t.science.nuclear, t.nuclear.synthesys.plutonium},
+
+
+
 }
 
 local getLinks = function()

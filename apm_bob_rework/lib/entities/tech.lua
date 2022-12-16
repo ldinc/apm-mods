@@ -27,11 +27,16 @@ local t = {
     },
 
     science = {
-        production = 'production-science-pack',
-        automation = 'apm_power_automation_science_pack',
-        chemical = 'chemical-science-pack',
-        logistics = 'logistic-science-pack',
-        military = 'military-science-pack',
+        production = 'production-science-pack',                     -- purple
+        automation = 'apm_power_automation_science_pack',           -- yellow
+        chemical = 'chemical-science-pack',                         -- blue
+        logistics = 'logistic-science-pack',                        -- red
+        steam = 'apm_steam_science_pack',                           -- white
+        utility = 'utility-science-pack',                           -- green
+        advanced = { logistics = 'advanced-logistic-science-pack'}, -- pink
+        military = 'military-science-pack',                         -- black
+        nuclear = 'apm_nuclear_science_pack',                       -- nuclear
+        space = 'space-science-pack',                               -- space
     },
 
     boiler = {
@@ -102,6 +107,12 @@ local t = {
             signals = 'rail-signals',
             advanced = 'alt-rail',
             nuclear = 'rampant-arsenal-technology-nuclear-railway',
+        },
+        wagon = {
+            fluid = {
+                basic = 'fluid-wagon',
+                armoured = 'bob-armoured-fluid-wagon',
+            },
         },
         automobile = {
             basic = 'automobilism',
@@ -178,6 +189,7 @@ local t = {
         advanced = {
             I = 'advanced-electronics',
             II = 'advanced-electronics-2',
+            III = 'advanced-electronics-3',
         },
     },
 
@@ -206,9 +218,18 @@ local t = {
         ultimate = 'deuterium-fuel-cell-2',
         fuel = {
             reprocessing = 'nuclear-fuel-reprocessing',
+            product = 'apm_nuclear_fuel',
         },
+        thorium_breeder = 'apm_nuclear_breeder_thorium',
         synthesys = {
             plutonium = 'bobingabout-enrichment-process',
+        },
+        rtg = 'rtg',
+        processing = {
+            thorium = 'apm_nuclear_thorium_processing',
+        },
+        portable = {
+            reactor = 'fusion-reactor-equipment',
         },
     },
 

@@ -18,12 +18,20 @@ function apm.lib.utils.item.dummy()
     return {type='item', name='apm_dummy', amount=1}
 end
 
+local types_list = {
+    'item',
+    'fluid',
+    'module',
+    'capsule',
+    'rail-planner',
+}
+
 -- Function -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.item.exist(item_name)
-    local types_list = {'item', 'fluid', 'module'}
+    local types_list = types_list
     for _, type_name in pairs(types_list) do
         if data.raw[type_name][item_name] then
             return true
@@ -56,15 +64,14 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.item.get_type(item_name, prefer_item)
-    local types_list = {'item', 'fluid', 'module'}
+    local types_list = types_list
     local result
     local count = 0
     for _, type_name in pairs(types_list) do
         if data.raw[type_name][item_name] then
             result = type_name
             count = count + 1
-            log('Info: '..item_name..' : '..type_name)
-            if type_name == 'module' then
+            if type_name ~= 'item' and type_name ~= 'fluid' then
                 return 'item'
             end
         end

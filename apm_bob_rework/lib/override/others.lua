@@ -9,6 +9,9 @@ local logistics= require "lib.entities.logistics"
 local combat   = require "lib.entities.combat"
 local rocket   = require "lib.entities.new.rocket"
 local recipies = require "lib.entities.recipies"
+local science  = require "lib.entities.science"
+local modules  = require "lib.entities.modules"
+local furnaces = require "lib.entities.buildings.furnaces"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -234,6 +237,25 @@ apm.bob_rework.lib.override.others = function()
     mod(recipe, 'radar-5', 0)
     mod(recipe, 'radar-2', 1)
 
+    local recipe = 'waterfill'
+    mod(recipe, product.explosives, 0)
+    mod(recipe, product.cliff.explosives, 2)
+    local recipe = 'deepwaterfill'
+    mod(recipe, product.explosives, 0)
+    mod(recipe, product.cliff.explosives, 5)
+    local recipe = 'shallowwaterfill'
+    mod(recipe, product.explosives, 0)
+    mod(recipe, product.cliff.explosives, 1)
+    local recipe = 'mudwaterfill'
+    mod(recipe, product.explosives, 0)
+    mod(recipe, product.cliff.explosives, 1)
+
+    local recipe = science.production
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    mod(recipe, logistics.rail.element, 1)
+    mod(recipe, furnaces.mixing.electric, 1)
+    mod(recipe, modules.productivity.II, 4)
+    mod(recipe, modules.effectivity.II, 4)
 
     disable(pipes.base.copper)
     disable(pipes.under.copper)

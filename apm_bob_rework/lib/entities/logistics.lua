@@ -27,6 +27,10 @@ local logistics = {
         express = 'express-loader',
     },
 
+    rail = {
+        element = 'rail',
+    },
+
     -- entities for disabling later
     disabled = {
         belt = {

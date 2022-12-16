@@ -1,6 +1,6 @@
 {
         "name": "apm_lib_ldinc",
-        "version": "0.23.04",
+        "version": "0.23.05",
         "title": "Amator Phasma's Library (forked)",
         "author": "AmatorPhasma",
         "dependencies": [

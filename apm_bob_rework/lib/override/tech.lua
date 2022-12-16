@@ -13,6 +13,7 @@ local inserters = require "lib.entities.buildings.inserters"
 local rocket    = require "lib.entities.new.rocket"
 local icons     = require "lib.icons"
 local energy    = require "lib.entities.buildings.energy"
+local labs      = require "lib.entities.buildings.labs"
 
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
@@ -722,6 +723,12 @@ function apm.bob_rework.lib.override.tech()
     free('water-miner-2')
     free('water-miner-1')
     free('distractor-mine')
+
+    rm(t.science.logistics, labs.basic)
+    push(t.electronics.advanced.I, labs.basic)
+
+    -- fix yellow science pack tech icon
+    apm.lib.utils.technology.mod.icon(t.science.automation, '__base__/graphics/technology/utility-science-pack.png')
 
     -- Adding new tech
     local c = ores.crushed.advance
