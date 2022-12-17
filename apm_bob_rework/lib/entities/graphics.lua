@@ -8,6 +8,16 @@ local arahnids = {
 }
 
 local g = {
+
+    enitity = {
+        pumpjack = {
+            burner = {
+                icon = base.."icons/pumpjack.png",
+                base = base..'entities/burner-pumpjack/',
+            },
+        },
+    },
+
     arahnids = {
         spawner = {
             

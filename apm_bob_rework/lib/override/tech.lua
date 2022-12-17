@@ -14,6 +14,7 @@ local rocket    = require "lib.entities.new.rocket"
 local icons     = require "lib.icons"
 local energy    = require "lib.entities.buildings.energy"
 local labs      = require "lib.entities.buildings.labs"
+local pumpjacks = require "lib.entities.buildings.pumpjacks"
 
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
@@ -710,6 +711,8 @@ function apm.bob_rework.lib.override.tech()
 
     rm(t.combat.rocket.silo, rocket.engine)
     push(t.combat.rocketry, rocket.engine)
+
+    push(t.fluid.control.extra, pumpjacks.burner)
 
     free(bob.tech.automation.basic)
     free('apm_burner_long_inserter')

@@ -52,3 +52,7 @@ require('prototypes.main.recipes.electric-engine')
 require('prototypes.main.recipes.frame')
 
 require('prototypes.main.technologies')
+
+require('prototypes.main.entities.burner-pumpjack')
+require('prototypes.main.items.entities.burner-pumpjack')
+require('prototypes.main.recipes.entities.burner-pumpjack')

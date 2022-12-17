@@ -20,7 +20,7 @@ apm.bob_rework.lib.entities.genOldscoolPlastics = function ()
     recipe.normal.enabled = true
     recipe.normal.energy_required = 1
     recipe.normal.ingredients = {
-            {type="item", name=ores.coal, amount=2},
+            {type="fluid", name=fluids.oil.crude, amount=20},
             {type="fluid", name=fluids.chlorine, amount=20}
         }
     recipe.normal.results = {

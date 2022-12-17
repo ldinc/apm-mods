@@ -9,6 +9,9 @@ local fluids =  {
     lubricant = 'lubricant',
     deuterium = 'deuterium',
     chlorine = 'chlorine',
+    oil = {
+        crude = 'crude-oil',
+    },
 }
 
 return fluids

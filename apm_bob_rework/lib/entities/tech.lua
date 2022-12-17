@@ -88,6 +88,7 @@ local t = {
         },
         control = {
             basic = 'apm_water_supply-1',
+            extra = 'apm_fluid_control-1',
             advanced = 'apm_water_supply-2',
         },
         pumpjack = {
