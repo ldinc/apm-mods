@@ -60,6 +60,7 @@ local linkedTechMap = {
     [t.logistics.rail.signals] = {t.science.logistics},
     [t.logistics.automobile.basic] = {t.science.logistics},
     [t.logistics.inserters.red] = {t.science.logistics},
+    [t.electronics.basic] = {t.science.steam},
     -- red sp bindings
     [t.electronics.advanced.I] = {t.science.logistics},
     -- purple sp bindings
