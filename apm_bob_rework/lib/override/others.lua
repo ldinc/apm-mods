@@ -257,6 +257,8 @@ apm.bob_rework.lib.override.others = function()
     mod(recipe, modules.productivity.II, 4)
     mod(recipe, modules.effectivity.II, 4)
 
+
+    disable(frames.basic)
     disable(pipes.base.copper)
     disable(pipes.under.copper)
     disable(bob.generator.burner)

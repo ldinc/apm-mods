@@ -76,9 +76,6 @@ local linkedTechMap = {
     [t.nuclear.portable.reactor] = {t.science.nuclear},
     [t.nuclear.thorium] = {t.science.nuclear, t.nuclear.thorium_breeder},
     [t.nuclear.fuel.product] = {t.science.nuclear, t.nuclear.synthesys.plutonium},
-
-
-
 }
 
 local getLinks = function()
@@ -548,6 +545,7 @@ local handleDependecies = function(target, deps)
 
 end
 
+
 local getNextCursor = function (tree)
     local cursor = tree.cursor.current
     for tName, tItem in pairs(tree.technologies.all) do
@@ -653,15 +651,16 @@ local describe = function (name, tree)
     for product in pairs(tItem.dependencies.products) do
         local ok = tree.cache.products[product]
         if ok == nil then
-            log(product)
+            log('product:  '..product)
         end
     end
     for group in pairs(tItem.dependencies.craftingGroups) do
         local ok = tree.cache.craftingGroups[group]
         if ok == nil then
-            log(group)
+            log('craftingGroups:  '..group)
         end
     end
+    log(json.encode(tItem))
 end
 
 local sortDependecies = function (tree)
@@ -753,7 +752,7 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     inGameLinkTech(tree)
 
     -- log(json.encode(tree))
-    -- describe('bob-robots-3',tree)
+    describe('bob-steam-engine-2',tree)
 
     log('total handled technologies count '..tostring(tree.technologies.all[tree.cursor.current].ID))
 end

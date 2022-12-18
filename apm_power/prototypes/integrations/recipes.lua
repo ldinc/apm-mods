@@ -1486,6 +1486,7 @@ local apm_power_compat_realistic_reactors = settings.startup["apm_power_compat_r
 local apm_power_compat_reverse_factory = settings.startup["apm_power_compat_reverse_factory"].value
 local apm_power_compat_arcitos = settings.startup["apm_power_compat_arcitos"].value
 local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
+local apm_power_compat_bob_rework = settings.startup["apm_power_bob_rework"].value
 
 APM_LOG_SETTINGS(self, 'apm_power_overhaul_machine_frames', apm_power_overhaul_machine_frames)
 APM_LOG_SETTINGS(self, 'apm_power_steam_assembler_craftin_with_fluids', apm_power_steam_assembler_craftin_with_fluids)
@@ -2406,11 +2407,7 @@ end
 if mods.angelsbioprocessing and mods.angelsrefining and apm_power_compat_angel then
 end
 
--- bob only: steel fix --------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-if mods.bobplates and not mods.angelssmelting and apm_power_compat_bob then
+local unlock_steel_with_oxy = function ()
 	if mods.bobelectronics then
 		apm.lib.utils.recipe.ingredient.replace('apm_steelworks_0', 'electronic-circuit', 'basic-circuit-board')
 	end
@@ -2465,6 +2462,18 @@ if mods.bobplates and not mods.angelssmelting and apm_power_compat_bob then
 	--recipe.expensive.results = {}
 	data:extend({recipe})
 	apm.lib.utils.technology.add.recipe_for_unlock('advanced-material-processing', recipe.name)
+end
+
+if apm_power_compat_bob_rework then
+	unlock_steel_with_oxy()
+end
+
+-- bob only: steel fix --------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+if mods.bobplates and not mods.angelssmelting and apm_power_compat_bob then
+	unlock_steel_with_oxy()
 end
 
 -- Valves ---------------------------------------------------------------------

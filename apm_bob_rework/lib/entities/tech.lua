@@ -71,8 +71,8 @@ local t = {
     materials = {
         ceramics = 'ceramics',
         rubber = {
-            basic= 'apm_rubber_1',
-            vulcano = 'apm_rubber_2',
+            basic= 'apm_rubber-1',
+            vulcano = 'apm_rubber-2',
         },
         asphalt = {
             creosote = 'apm_asphalt_1',
@@ -95,6 +95,7 @@ local t = {
             basic = 'pumpjack',
             advanced = 'bob-pumpjacks-1',
         },
+        barrel = 'fluid-barrel-processing',
     },
 
     logistics = {

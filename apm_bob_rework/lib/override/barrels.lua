@@ -1,3 +1,5 @@
+local alloys = require "lib.entities.alloys"
+local plates = require "lib.entities.plates"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -31,12 +33,22 @@ local up = function (name)
     itm.emissions_multiplier = emissions_multiplier
     itm.burnt_result = 'empty-barrel'
     itm.fuel_category = 'apm_refined_chemical'
+
+    local target = 'fill-'..name.item
+    local recipe = 'apm_'..target
+
+    apm.lib.utils.recipe.clone(target, recipe)
+    apm.lib.utils.recipe.overwrite.group(recipe, 'apm_power', 'apm_power_intermediates', 'ak_a')
+    apm.lib.utils.recipe.category.change(recipe, 'crafting-with-fluid')
 end
 
 local update = function ()
-    for key, values in pairs(names) do
+    for _, values in pairs(names) do
         up(values)
     end
+
+    local recipe = 'empty-barrel'
+    apm.lib.utils.recipe.ingredient.replace(recipe, plates.steel, plates.iron, 2)
 end
 
 apm.bob_rework.lib.override.barrels = update

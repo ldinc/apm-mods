@@ -648,6 +648,7 @@ function apm.bob_rework.lib.override.tech()
     push(t.processing.titaniumAlloy, 'engine-unit-3')
     push(t.processing.titaniumAlloy, 'apm_egen_unit-3')
     push(t.science.automation, 'apm_machine_frame_steam-2')
+    push(t.electronics.advanced.I, frames.basic)
     rm(product.sieve)
     on(product.sieve)
 
@@ -712,8 +713,19 @@ function apm.bob_rework.lib.override.tech()
     rm(t.combat.rocket.silo, rocket.engine)
     push(t.combat.rocketry, rocket.engine)
 
-    push(t.fluid.control.extra, pumpjacks.burner)
+    rm(t.electricity, energy.pole.small)
+    push(t.materials.rubber.basic, energy.pole.small)
 
+
+    rm(t.fluid.barrel, 'empty-barrel')
+    push(t.fluid.control.extra, pumpjacks.burner)
+    push(t.fluid.control.extra, 'empty-barrel')
+    push(t.fluid.control.extra, 'apm_fill-crude-oil-barrel')
+    push(t.processing.oil.basic, 'apm_fill-heavy-oil-barrel')
+    push(t.processing.oil.basic, 'apm_fill-light-oil-barrel')
+
+
+    free('fluid-canister-processing')
     free(bob.tech.automation.basic)
     free('apm_burner_long_inserter')
     free('bob-area-drills-4')
