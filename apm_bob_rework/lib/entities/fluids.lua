@@ -12,6 +12,10 @@ local fluids =  {
     oil = {
         crude = 'crude-oil',
     },
+
+    tank = {
+        small = 'abr_small_tank',
+    },
 }
 
 return fluids

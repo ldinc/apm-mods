@@ -7,6 +7,20 @@ return {
         rocket = {
             base = 'rocket',
         },
+        capsule = {
+            grenade = 'grenade-capsule-ammo-rampant-arsenal',
+            bio = 'bio-grenade-capsule-ammo-rampant-arsenal',
+            incendiary = 'incendiary-grenade-capsule-ammo-rampant-arsenal',
+            cluster = 'cluster-grenade-capsule-ammo-rampant-arsenal',
+            poison= 'poison-capsule-ammo-rampant-arsenal',
+            toxic = 'toxic-capsule-ammo-rampant-arsenal',
+            slowdown = 'slowdown-capsule-ammo-rampant-arsenal',
+            paralysis = 'paralysis-capsule-ammo-rampant-arsenal',
+            landmine = 'landmine-capsule-ammo-rampant-arsenal',
+            biomine = 'bio-landmine-capsule-ammo-rampant-arsenal',
+            hemine = 'he-landmine-capsule-ammo-rampant-arsenal',
+            incendiarymine = 'incendiary-landmine-capsule-ammo-rampant-arsenal',
+        },
     },
 
     gun = {

@@ -12,7 +12,7 @@ local storages = {
         provider = {
             active = 'storehouse-active-provider',
             passive = 'storehouse-passive-provider',
-            storage = 'storehpuse-storage',
+            storage = 'storehouse-storage',
             buffer = 'storehouse-buffer',
             requester = 'storehouse-requester',
         },

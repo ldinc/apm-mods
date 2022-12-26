@@ -252,6 +252,11 @@ apm.bob_rework.lib.override.drop = function()
     rm(bob.valve.overflow)
     rm(bob.valve.topup)
 
+    rm('apm_boiler_2')
+    rm('apm_steam_engine_2')
+    rm('boiler-3')
+    rm('steam-mining-drill')
+
     rm(energy.generator.steam.drop.extra)
 
     resetUpgrades(assemblers.steam, types.assemblers)

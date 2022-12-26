@@ -1,4 +1,35 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.22.77
+Date: 25. 12. 2022
+  Balanced:
+    - Some grenade launcher ammo with landmine
+---------------------------------------------------------------------------------------------------
+Version: 0.22.76
+Date: 25. 12. 2022
+  Fixed:
+    - Changelog format
+---------------------------------------------------------------------------------------------------
+Version: 0.22.75
+Date: 25. 12. 2022
+  Fixed:
+    - Transport science pack (gray belt->yellow belt)
+    - Flying robots desc & recipies
+  Balanced:
+    - Pistions use only iron plates
+    - Some missing frames for buildings
+    - For logistic chests using antenna instead roboports
+    - Recipe for loaders: remove inserters, add engines
+    - Rocket engine
+    - Grenade launcher ammos
+  Deleted:
+    - Advanced boilers & steam engine
+    - Bob's boiler 3 & steam mining drill
+---------------------------------------------------------------------------------------------------
+Version: 0.22.74
+Date: 20. 12. 2022
+  Changes:
+    - fixed: returned burner generator from bob
+---------------------------------------------------------------------------------------------------
 Version: 0.22.72
 Date: 18. 12. 2022
   Changes:
@@ -40,4 +71,3 @@ Version: 0.22.51
 Date: 09.01.2022
   Changes:
     - dropped: bob vehicle plasma turrets 
----------------------------------------------------------------------------------------------------

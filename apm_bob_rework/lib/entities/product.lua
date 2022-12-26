@@ -55,7 +55,7 @@ local p = {
     lamp = 'small-lamp',
     stick = 'iron-stick',
     magnet = 'apm_electromagnet',
-    pistons = 'apm_pistions',
+    pistions = 'apm_pistions',
 
     sieve = {
         iron = 'apm_sieve_iron',

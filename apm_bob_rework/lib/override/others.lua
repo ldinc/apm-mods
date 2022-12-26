@@ -76,7 +76,7 @@ apm.bob_rework.lib.override.others = function()
 
     recipe = 'engine-unit'
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, p.pistons, 8)
+    mod(recipe, p.pistions, 8)
     mod(recipe, plates.iron, 4)
     mod(recipe, p.stick, 4)
     mod(recipe, p.gearwheel.brass, 10)
@@ -250,12 +250,16 @@ apm.bob_rework.lib.override.others = function()
     mod(recipe, product.explosives, 0)
     mod(recipe, product.cliff.explosives, 1)
 
-    local recipe = science.production
+    recipe = science.production
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     mod(recipe, logistics.rail.element, 1)
     mod(recipe, furnaces.mixing.electric, 1)
     mod(recipe, modules.productivity.II, 4)
     mod(recipe, modules.effectivity.II, 4)
+
+    recipe = science.logistics
+    mod(recipe, logistics.belt.basic, 0)
+    mod(recipe, logistics.belt.yellow, 1)
 
 
     disable(frames.basic)

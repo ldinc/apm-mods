@@ -6,34 +6,38 @@ local t = require('lib.tier.base')
 local p = require('lib.entities.product')
 
 local buildBelts = function(tier)
-    local recipe = tier.belt
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, p.rubber, 2)
-    apm.lib.utils.recipe.result.mod(recipe, recipe, 2)
+    local recipe = ''
+    local clear = function () apm.lib.utils.recipe.ingredient.remove_all(recipe) end
+    local add = function (itm, cnt) apm.lib.utils.recipe.ingredient.mod(recipe, itm, cnt) end
 
-    local recipe = tier.underBelt
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.belt, 5)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
+    recipe = tier.belt
+    clear()
+    add(tier.gearWheel, 1)
+    add(tier.bearing, 2)
+    add(tier.constructionAlloy, 1)
+    add(p.rubber, 2)
+    add(recipe, 2)
 
-    local recipe = tier.splitter
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.belt, 4)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 1)
+    recipe = tier.underBelt
+    clear()
+    add(tier.belt, 5)
+    add(tier.constructionAlloy, 2)
+
+    recipe = tier.splitter
+    clear()
+    add(tier.belt, 4)
+    add(tier.constructionAlloy, 1)
+    add(tier.gearWheel, 2)
+    add(tier.logic, 1)
 
 
-    local recipe = tier.loader
+    recipe = tier.loader
     if recipe then
-        apm.lib.utils.recipe.ingredient.remove_all(recipe)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.belt, 5)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 2)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.inserter, 5)
-        apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 1)
+        clear()
+        add(tier.belt, 4)
+        add(tier.constructionAlloy, 2)
+        add(tier.engine, 1)
+        add(tier.logic, 1)
     end
 end
 

@@ -21,7 +21,6 @@ local names = {
         fuel_value = '50MJ',
     },
 }
-local m = 50
 
 local up = function (name)
     local itm = data.raw.item[name.item]

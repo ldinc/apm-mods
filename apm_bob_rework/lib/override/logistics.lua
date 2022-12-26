@@ -68,12 +68,34 @@ local genParts = function (brain, tool, tier)
     apm.lib.utils.recipe.ingredient.mod(tool, tier.constructionAlloy, 1)
 end
 
-local modify = function()
+local updateDescriptions = function ()
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.construction.red, "Construction robot")
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.logistic.red, "Logistic robot")
 
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.construction.blue, "Construction robot MK 2")
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.logistic.blue, "Logistic robot MK 2")
+
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.construction.nuclear, "Fusion powered robot")
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.logistic.nuclear, "Fusion powered robot")
+
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.construction.part.brain.red, "Construction robot brain")
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.logistic.part.brain.red, "Logistic robot brain")
+
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.construction.part.brain.blue, "Construction robot brain MK 2")
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.logistic.part.brain.blue, "Logistic robot brain MK 2")
+
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.construction.part.tool.red, "Construction robot tools")
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.logistic.part.tool.red, "Logistic robot tools")
+
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.construction.part.tool.blue, "Construction robot tools MK 2")
+    apm.lib.utils.item.overwrite.localised_name(robo.bots.logistic.part.tool.blue, "Logistic robot tools MK 2")
+end
+
+local modify = function()
 
     local update = function (recipe, storage, m)
         apm.lib.utils.recipe.ingredient.remove_all(recipe)
-        apm.lib.utils.recipe.ingredient.mod(recipe, robo.port.basic, 1)
+        apm.lib.utils.recipe.ingredient.mod(recipe, robo.antenna.base, m*3)
         apm.lib.utils.recipe.ingredient.mod(recipe, storage, 1)
         apm.lib.utils.recipe.ingredient.mod(recipe, t.red.logic, 5*m)
         apm.lib.utils.recipe.ingredient.mod(recipe, t.red.extraLogic, 2)
@@ -91,7 +113,8 @@ local modify = function()
         update(recipe, store.chest.steel, 1)
     end
 
-    local recipies = {store.storehouse.provider.active,
+    recipies = {
+        store.storehouse.provider.active,
         store.storehouse.provider.passive,
         store.storehouse.provider.storage,
         store.storehouse.provider.requester,
@@ -101,7 +124,7 @@ local modify = function()
         update(recipe, store.storehouse.basic, 3)
     end
 
-    local recipies = {
+    recipies = {
         store.warehouse.provider.active,
         store.warehouse.provider.passive,
         store.warehouse.provider.storage,
@@ -139,6 +162,12 @@ local modify = function()
     genParts(robo.bots.construction.part.brain.blue, robo.bots.construction.part.tool.blue, t.blue)
     genParts(robo.bots.logistic.part.brain.blue, robo.bots.logistic.part.tool.blue, t.blue)
 
+    local recipe = robo.bots.construction.red
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, robo.frame.basic, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.construction.part.brain.red, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.construction.part.tool.red, 1)
+
     local recipe = robo.bots.construction.blue
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.frame.advanced, 1)
@@ -151,6 +180,12 @@ local modify = function()
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.construction.part.brain.blue, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.construction.part.tool.blue, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.rtg, 1)
+
+    local recipe = robo.bots.logistic.red
+    apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    apm.lib.utils.recipe.ingredient.mod(recipe, robo.frame.basic, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.logistic.part.brain.red, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.logistic.part.tool.red, 1)
 
     local recipe = robo.bots.logistic.blue
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -165,7 +200,7 @@ local modify = function()
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.logistic.part.tool.blue, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.rtg, 1)
 
-
+    updateDescriptions()
     change2Tier()
 end
 

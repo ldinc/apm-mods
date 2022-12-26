@@ -1,6 +1,6 @@
 {
     "name": "apm_bob_rework_ldinc",
-    "version": "0.22.73",
+    "version": "0.22.77",
     "title": "APM bob's extra compability",
     "author": "ldinc",
     "dependencies": [
@@ -31,6 +31,7 @@
         "?Flare Stack >= 2.2.10",
         "?LogisticTrainNetwork >= 1.16.0",
         "?Rampant >= 1.0.9",
+        "?RampantFixed >= 1.4.4",
         "?RampantArsenal >= 1.0.8",
         "?electricboiler >= 1.1.0"
     ],

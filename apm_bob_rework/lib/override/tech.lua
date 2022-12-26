@@ -741,7 +741,8 @@ function apm.bob_rework.lib.override.tech()
 
     rm(t.science.logistics, labs.basic)
     push(t.electronics.advanced.I, labs.basic)
-
+    push(t.electricity, energy.generator.burner)
+    
     -- fix yellow science pack tech icon
     apm.lib.utils.technology.mod.icon(t.science.automation, '__base__/graphics/technology/utility-science-pack.png')
 
