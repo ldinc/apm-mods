@@ -588,15 +588,15 @@ function biterFunctions.makeWorm(attributes)
         preparing_speed = attributes.preparingSpeed or 0.024,
         preparing_animation = wormPreparingAnimation(attributes.scale, attributes.tint, "forward", attributes.tint2 or attributes.tint),
         preparing_sound = sounds.worm_standup(0.4 + (0.05 * attributes.effectiveLevel)),
-        prepared_speed = 0.024,
-        prepared_speed_secondary = 0.012,		--0.012,
+        prepared_speed = 1,		-- 0.024
+--        prepared_speed_secondary = 0.012,		--0.012,
         prepared_animation = wormPreparedAnimation(attributes.scale, attributes.tint, attributes.tint2 or attributes.tint),
         prepared_sound = sounds.worm_breath(0.2 + (0.05 * attributes.effectiveLevel)),
-        prepared_alternative_speed = 0.5,	--0.014,
-        prepared_alternative_speed_secondary = 0.5,	--0.010,
-        prepared_alternative_chance = 0.2,
-        prepared_alternative_animation = wormPreparedAlternativeAnimation(attributes.scale, attributes.tint, attributes.tint2 or attributes.tint),
-        prepared_alternative_sound = sounds.worm_roar_alternative(0.2 + (0.05 * attributes.effectiveLevel)),
+        -- prepared_alternative_speed = 0.5,	--0.014,
+        -- prepared_alternative_speed_secondary = 0.5,	--0.010,
+        -- prepared_alternative_chance = 0.2,
+        -- prepared_alternative_animation = wormPreparedAlternativeAnimation(attributes.scale, attributes.tint, attributes.tint2 or attributes.tint),
+        -- prepared_alternative_sound = sounds.worm_roar_alternative(0.2 + (0.05 * attributes.effectiveLevel)),
 
 
         starting_attack_speed = 0.1,	--0.034,
@@ -1268,7 +1268,10 @@ function biterFunctions.makeSchallAlienLootTables()
 		return lootTables
 	end
 	
-	local itemname = "alien-artifact"
+	local alienOre1 = "alien-ore-1"
+	local alienOre2 = "alien-ore-2"
+	local alienOre3 = "alien-ore-3"
+	local alienArtifact = "alien-artifact"
 	local tierMultipliers = {}
 	for i = 1, 4 do
 		tierMultipliers[i] = tierMultiplier^(i-1)
@@ -1282,51 +1285,98 @@ function biterFunctions.makeSchallAlienLootTables()
 	
 	if artifact_table[artifactDrop].mover then
         lootTables.biterLoot = {
-            [1] = {  item = itemname,  count_min = 1,  count_max = count_max,  probability = 0.05 },
-            [2] = {  item = itemname,  count_min = 1,  count_max = count_max,  probability = 0.10 },
-            [3] = {  item = itemname,  count_min = 1,  count_max = count_max,  probability = 0.15 },
-            [4] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[2],  probability = 0.20 },
-            [5] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[2],  probability = 0.25 },
-            [6] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[2],  probability = 0.30 },
-            [7] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[3],  probability = 0.35 },
-            [8] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[3],  probability = 0.40 },
-            [9] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[3],  probability = 0.45 },
-            [10] = { item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[4],  probability = 0.50 }
-        }
+            [1] = {{ item = alienOre1,  count_min = 1,  count_max = count_max,  probability = 0.5 }},
+            [2] = {{ item = alienOre1,  count_min = 1,  count_max = count_max,  probability = 1}},
+            [3] = {{ item = alienOre1,  count_min = 1,  count_max = count_max,  probability = 1}, 	{ item = alienOre2,  count_min = 1,  count_max = count_max,  probability = 0.25}},
+            [4] = {{ item = alienOre1,  count_min = 1,  count_max = count_max,  probability = 1}, 	{ item = alienOre2,  count_min = 1,  count_max = count_max,  probability = 0.5}},
+            [5] = {{ item = alienOre1,  count_min = 1,  count_max = count_max,  probability = 0.5}, { item = alienOre2,  count_min = 1,  count_max = count_max,  probability = 1}},
+            [6] = {{ item = alienOre2,  count_min = 1,  count_max = count_max,  probability = 1}, 	{ item = alienOre3,  count_min = 1,  count_max = count_max,  probability = 0.25}},
+            [7] = {{ item = alienOre2,  count_min = 1,  count_max = count_max,  probability = 0.5}, { item = alienOre3,  count_min = 1,  count_max = count_max,  probability = 0.5}},
+            [8] = {{ item = alienOre3,  count_min = 1,  count_max = count_max,  probability = 1}, 	{ item = alienArtifact,  count_min = 1,  count_max = count_max,  probability = 0.25}},
+            [9] = {{ item = alienOre3,  count_min = 1,  count_max = count_max,  probability = 0.5}, { item = alienArtifact,  count_min = 1,  count_max = count_max,  probability = 0.5}},
+            [10] ={{ item = alienOre3,  count_min = 1,  count_max = count_max,  probability = 0.5},{ item = alienArtifact,  count_min = 1,  count_max = count_max,  probability = 1}},
+       }
 	end	
 	if artifact_table[artifactDrop].worm then
         lootTables.wormLoot = {
-            [1] = {  item = itemname,  count_min = 1,  count_max = count_max,  probability = 0.25 },
-            [2] = {  item = itemname,  count_min = 1,  count_max = count_max,  probability = 0.30 },
-            [3] = {  item = itemname,  count_min = 1,  count_max = count_max,  probability = 0.35 },
-            [4] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[2],  probability = 0.40 },
-            [5] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[2],  probability = 0.45 },
-            [6] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[2],  probability = 0.50 },
-            [7] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[3],  probability = 0.55 },
-            [8] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[3],  probability = 0.60 },
-            [9] = {  item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[3],  probability = 0.65 },
-            [10] = { item = itemname,  count_min = 1,  count_max = count_max * tierMultipliers[4],  probability = 0.70 }
+            [1] = {{   item = alienArtifact,  count_min = 1,  count_max = count_max,  probability = 0.25 }},
+            [2] = {{   item = alienArtifact,  count_min = 1,  count_max = count_max,  probability = 0.30 }},
+            [3] = {{   item = alienArtifact,  count_min = 1,  count_max = count_max,  probability = 0.35 }},
+            [4] = {{   item = alienArtifact,  count_min = 1,  count_max = count_max * tierMultipliers[2],  probability = 0.40 }},
+            [5] = {{   item = alienArtifact,  count_min = 1,  count_max = count_max * tierMultipliers[2],  probability = 0.45 }},
+            [6] = {{   item = alienArtifact,  count_min = 1,  count_max = count_max * tierMultipliers[2],  probability = 0.50 }},
+            [7] = {{   item = alienArtifact,  count_min = 1,  count_max = count_max * tierMultipliers[3],  probability = 0.55 }},
+            [8] = {{   item = alienArtifact,  count_min = 1,  count_max = count_max * tierMultipliers[3],  probability = 0.60 }},
+            [9] = {{   item = alienArtifact,  count_min = 1,  count_max = count_max * tierMultipliers[3],  probability = 0.65 }},
+            [10] = {{  item = alienArtifact,  count_min = 1,  count_max = count_max * tierMultipliers[4],  probability = 0.70 }}
         }
 	end	
-	if artifact_table[artifactDrop].worm then
+	if artifact_table[artifactDrop].spawner then
         lootTables.spawnerLoot = {
-            [1] = {  item = itemname,  count_min = 1,  count_max = artifactAmountSpawner,  probability = 0.65 },
-            [2] = {  item = itemname,  count_min = 1,  count_max = artifactAmountSpawner,  probability = 0.70 },
-            [3] = {  item = itemname,  count_min = 1,  count_max = artifactAmountSpawner,  probability = 0.75 },
-            [4] = {  item = itemname,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[2],  probability = 0.80 },
-            [5] = {  item = itemname,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[2],  probability = 0.85 },
-            [6] = {  item = itemname,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[2],  probability = 0.90 },
-            [7] = {  item = itemname,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[3],  probability = 0.95 },
-            [8] = {  item = itemname,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[3],  probability = 1.00 },
-            [9] = {  item = itemname,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[3],  probability = 1.00 },
-            [10] = { item = itemname,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[4],  probability = 1.00 }
+            [1] = {{  item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner,  probability = 0.65 }},
+            [2] = {{  item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner,  probability = 0.70 }},
+            [3] = {{  item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner,  probability = 0.75 }},
+            [4] = {{  item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[2],  probability = 0.80 }},
+            [5] = {{  item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[2],  probability = 0.85 }},
+            [6] = {{  item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[2],  probability = 0.90 }},
+            [7] = {{  item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[3],  probability = 0.95 }},
+            [8] = {{ item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[3],  probability = 1.00 }},
+            [9] = {{  item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[3],  probability = 1.00 }},
+            [10] = {{ item = alienArtifact,  count_min = 1,  count_max = artifactAmountSpawner * tierMultipliers[4],  probability = 1.00 }}
         }
 	end	
 	return lootTables	
 end
 -------
-
-
+------- alien-module mod (aka Alien Loot Economy).
+function biterFunctions.makeAlienLootEconomyTables()
+    local lootTables = {}	
+	if not settings.startup["alien-module-drop-amount"] then
+		return lootTables
+	end	
+	local kf = settings.startup["alien-module-drop-amount"].value / 100
+	
+	local alienOre = "artifact-ore"
+	
+	lootTables.biterLoot = {
+		[1] = {{ item = alienOre,   count_min = kf,  count_max = kf,  probability = 0.2}},
+		[2] = {{ item = alienOre,   count_min = kf,  count_max = kf,  probability = 0.3}},
+		[3] = {{ item = alienOre,   count_min = kf,  count_max = kf,  probability = 0.4}},
+		[4] = {{ item = alienOre,   count_min = kf,  count_max = kf,  probability = 0.5}},
+		[5] = {{ item = alienOre,   count_min = kf,  count_max = kf,  probability = 0.6}},
+		[6] = {{ item = alienOre,   count_min = kf,  count_max = kf,  probability = 0.7}},
+		[7] = {{ item = alienOre,   count_min = kf,  count_max = kf,  probability = 0.8}},
+		[8] = {{ item = alienOre,   count_min = kf,  count_max = kf,  probability = 0.9}},
+		[9] = {{ item = alienOre,  count_min = kf,  count_max = kf,  probability = 1}},
+		[10] ={{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 1}},
+   }
+	lootTables.wormLoot = {
+		[1] = {{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 0.2}},
+		[2] = {{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 0.3}},
+		[3] = {{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 0.4}},
+		[4] = {{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 0.5}},
+		[5] = {{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 0.6}},
+		[6] = {{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 0.7}},
+		[7] = {{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 0.8}},
+		[8] = {{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 0.9}},
+		[9] = {{ item = alienOre,  count_min = kf,  count_max = 2*kf,  probability = 1}},
+		[10] ={{ item = alienOre,  count_min = 2*kf,  count_max = 3*kf,  probability = 1}},
+	}
+	lootTables.spawnerLoot = {
+		[1] = {{ item = alienOre,  count_min = 2*kf,  count_max = 3*kf,  probability = 1}},
+		[2] = {{ item = alienOre,  count_min = 3*kf,  count_max = 4*kf,  probability = 1}},
+		[3] = {{ item = alienOre,  count_min = 4*kf,  count_max = 5*kf,  probability = 1}},
+		[4] = {{ item = alienOre,  count_min = 5*kf,  count_max = 6*kf,  probability = 1}},
+		[5] = {{ item = alienOre,  count_min = 6*kf,  count_max = 7*kf,  probability = 1}},
+		[6] = {{ item = alienOre,  count_min = 7*kf,  count_max = 8*kf,  probability = 1}},
+		[7] = {{ item = alienOre,  count_min = 8*kf,  count_max = 9*kf,  probability = 1}},
+		[8] = {{ item = alienOre,  count_min = 9*kf,  count_max = 10*kf,  probability = 1}},
+		[9] = {{ item = alienOre,  count_min = 10*kf,  count_max = 12*kf,  probability = 1}},
+		[10] ={{ item = alienOre,  count_min = 12*kf,  count_max = 15*kf,  probability = 1}},
+	}
+	return lootTables	
+end
+-------
 function biterFunctions.findRange(entity)
     return entity.attack_parameters.range
 end

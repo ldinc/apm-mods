@@ -2,6 +2,18 @@ local util = require ("util")
 
 local droneUtils = {}
 
+------------
+local flying_layer
+local collision_mask_util_extended 
+if mods["combat-mechanics-overhaul"] then
+	collision_mask_util_extended = require("__combat-mechanics-overhaul__/collision-mask-util-extended/data/collision-mask-util-extended")
+else
+	collision_mask_util_extended = require("collision-mask-util-extended/data/collision-mask-util-extended")		
+end
+flying_layer = collision_mask_util_extended.get_make_named_collision_mask("flying-layer")
+------------
+
+
 function droneUtils.makeDrone(attributes)
     local n = attributes.name .. "-drone-rampant"
     local resistances = {}
@@ -206,7 +218,11 @@ function droneUtils.makeDrone(attributes)
 			drone.flags[#drone.flags+1] = attributes.additionalFlags[i]
 		end
 	end
-
+	
+	if flying_layer then
+		drone.collision_mask = {flying_layer, "not-colliding-with-itself"}
+		drone.collision_box = {{0, 0}, {0, 0}}
+	end
     return drone
 end
 

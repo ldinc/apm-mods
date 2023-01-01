@@ -191,6 +191,14 @@ local function queueNestSpawners(map, chunk, tick)
     end
 end
 
+
+local xyVector = {{-1, -1}, {-1, 1}, {1, -1}, {1, 1}}
+local huntingChance = {}
+huntingChance[0] = 1
+huntingChance[32] = 0.5
+huntingChance[64] = 0.1
+huntingChance[96] = 0.02
+huntingChance[128] = 0.004
 --[[
     Localized player radius were processing takes place in realtime, doesn't store state
     between calls.
@@ -228,42 +236,45 @@ function mapProcessor.processPlayers(players, universe, tick)
 				if map then
 					local playerChunk = getChunkByPosition(map, playerCharacter.position)
 					if (playerChunk ~= -1) then
+						local roll = mRandom() 
 						local allowingAttacks = canAttack(map, tick)
-						local vengence = allowingAttacks and
-							(map.points >= AI_VENGENCE_SQUAD_COST) and
-							((getEnemyStructureCount(map, playerChunk) > 0) or
-								(mRandom() < 0.002))
+						local allowingVengence = (allowingAttacks or settings.global["rampantFixed--allowDaytimePlayerHunting"].value) and (map.points >= AI_VENGENCE_SQUAD_COST)
+						local forceVengence = (getEnemyStructureCount(map, playerChunk) > 0)
 
-						for x=playerChunk.x - PROCESS_PLAYER_BOUND, playerChunk.x + PROCESS_PLAYER_BOUND, 32 do
-							for y=playerChunk.y - PROCESS_PLAYER_BOUND, playerChunk.y + PROCESS_PLAYER_BOUND, 32 do
-								local chunk = getChunkByXY(map, x, y)
+						for dx= 0, PROCESS_PLAYER_BOUND, 32 do
+							for dy= 0, PROCESS_PLAYER_BOUND, 32 do
+								local vengence = allowingVengence and (forceVengence or (roll < (huntingChance[mMax(dx, dy)] or 0.002)))
+								for _, vector in pairs(xyVector) do									
+									local x = playerChunk.x + dx*vector[1]
+									local y = playerChunk.y - dy*vector[2]
+									local chunk = getChunkByXY(map, x, y)
+									if (chunk ~= -1) and (chunk[CHUNK_TICK] ~= tick) then
+										chunk[CHUNK_TICK] = tick
+										processPheromone(map, chunk, true)
 
-								if (chunk ~= -1) and (chunk[CHUNK_TICK] ~= tick) then
-									chunk[CHUNK_TICK] = tick
-									processPheromone(map, chunk, true)
-
-									if (getNestCount(map, chunk) > 0) then
-										 processNestActiveness(map, chunk)
-										 --queueNestSpawners(map, chunk, tick)		-- + !КДА too high cost. Lets just set "active"
-
-										if vengence then
-											local count = map.vengenceQueue[chunk]
-											if not count then
-												count = 0
-												map.vengenceQueue[chunk] = count
+										if (getNestCount(map, chunk) > 0) then
+											 processNestActiveness(map, chunk)
+											 --queueNestSpawners(map, chunk, tick)		-- + !КДА too high cost. Lets just set "active"
+											 
+											if vengence then
+												local count = map.vengenceQueue[chunk]
+												if not count then
+													count = 0
+													map.vengenceQueue[chunk] = count
+												end
+												map.vengenceQueue[chunk] = count + 1
 											end
-											map.vengenceQueue[chunk] = count + 1
 										end
-									end
-									
-									--- compressed squads
-									for _,squad in pairs(getSquadsOnChunk(map, chunk)) do
-										local unitGroup = squad.group
-										if squad.compressed and unitGroup and unitGroup.valid then
-											squadDecompress(map, squad)
+										
+										--- compressed squads
+										for _,squad in pairs(getSquadsOnChunk(map, chunk)) do
+											local unitGroup = squad.group
+											if squad.compressed and unitGroup and unitGroup.valid then
+												squadDecompress(map, squad)
+											end
 										end
+										
 									end
-									
 								end
 							end
 						end

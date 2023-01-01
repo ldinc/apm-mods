@@ -302,7 +302,7 @@ function aiAttackWave.formVengenceSquad(map, chunk)
                                                                       true)
             if squadPosition then
                 local squad = createSquad(squadPosition, map)
-
+				squad.vengence = true
                 squad.rabid = mRandom() < 0.03
 
                 local scaledWaveSize = mMin(attackWaveScaling(universe), universe.attackWaveMaxSize*0.8)
@@ -358,7 +358,13 @@ function aiAttackWave.formSquads(map, chunk, tick)
                                                                       true)
             if squadPosition then
                 local squad = createSquad(squadPosition, map)
-
+				if (universe.undergroundAttackProbability > 0) and (mRandom() < universe.undergroundAttackProbability)  then
+					if mRandom() < 0.2 then
+						squad.undergoundAttack = "randomTarget"	-- look at undergroundAttack.createUndergroudAttack
+					else
+						squad.undergoundAttack = "common"
+					end		
+				end
                 squad.rabid = mRandom() < 0.03
 
                 local scaledWaveSize = attackWaveScaling(universe)
@@ -382,6 +388,7 @@ function aiAttackWave.formSquads(map, chunk, tick)
 						if universe.aiPointsScaler > 1 then
 							chanceForAdditionalSquad = chanceForAdditionalSquad + universe.aiPointsScaler - 1
 						end
+						chanceForAdditionalSquad = chanceForAdditionalSquad + map.points / 5000
 						
 						local needMoreSuads 
 						if chanceForAdditionalSquad<=0 then

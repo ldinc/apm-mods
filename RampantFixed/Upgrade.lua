@@ -418,7 +418,7 @@ function upgrade.attempt(universe)
         --     end
         -- end
 
-        game.print("Rampant - Version 1.1.0, Rampant")
+        --game.print("Rampant - Version 1.1.0, Rampant")
     end
 	if global.version < 118 then
 		local BASE_DETECTION_PHEROMONE = constants.BASE_DETECTION_PHEROMONE
@@ -495,7 +495,7 @@ function upgrade.attempt(universe)
 					game.print("update, "..basesProcessed.." bases processed")
 				end
 			end	
-			game.print("Rampant fixed, Version 1.0.8")
+			--game.print("Rampant fixed, Version 1.0.8")
 		end	
 		
 	end	
@@ -523,7 +523,7 @@ function upgrade.attempt(universe)
 			universe.builderCount = builderCount
 			universe.squadCount = squadCount
 		end
-		game.print("Rampant fixed, Version 1.0.13. Recaclulate active squads")
+		--game.print("Rampant fixed, Version 1.0.13. Recaclulate active squads")
 	end
 	
 	if global.version < 121 then
@@ -898,6 +898,12 @@ function upgrade.attempt(universe)
 	if global.version < 144  then	-- Version 1.4.2
 		global.version = 144
 		universe.protectedUnits = {}
+	end	
+	
+	if global.version < 150  then	-- Version 1.5
+		global.version = 150
+		universe.undergroundSquads = {}
+		universe.undergroundAttackProbability = 0
 	end	
 
 	

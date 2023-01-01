@@ -57,3 +57,68 @@ smokeUtils.makeNewCloud(
             }
     }
 )
+
+smokeUtils.makeNewCloud(
+    {
+        name = "undeground-dust",
+        wind = false,
+		flags = {},
+		scale = 4,
+        duration = 200,
+        cooldown = 20,
+        tint = { r=0.5, g=0.25, b=0.05, a=0.3}
+    },
+    {
+        type = "area",
+        radius = 4,
+        force = "not-same",
+        action_delivery =
+            {
+                type = "instant",
+                target_effects =
+                    {
+                        {
+                            type = "damage",
+                            damage = { amount = 1, type = "acid"}
+                        }
+                     }
+            }
+    }
+)
+
+smokeUtils.makeNewCloud(
+    {
+        name = "digOut-dust",
+        wind = false,
+        scale = 4,
+        duration = 600,
+        cooldown = 20,
+        tint = { r=0.7, g=0.4, b=0.1, a=0.1}
+    },
+    {
+        type = "area",
+        radius = 4,
+        force = "not-same",
+        action_delivery =
+            {
+                type = "instant",
+                target_effects =
+                    {
+                        {
+                            type = "damage",
+                            damage = { amount = 1, type = "acid"}
+                        }
+                     }
+            }
+    }
+ )
+
+smokeUtils.makeNonTriggerCloud(
+    {
+        name = "digIn-dust",
+        wind = false,
+        scale = 1,
+        duration = 30,
+        tint = { r=0.5, g=0.25, b=0.05, a=0.5}
+    }
+)

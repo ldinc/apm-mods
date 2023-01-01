@@ -1,6 +1,7 @@
 local vanillaBuildings = require("prototypes/buildings/UpdatesVanilla")
 local immunityUpdates = require("prototypes/utils/UpdateImmunities")	
 
+
 -- if settings.startup["rampantFixed--removeBloodParticles"].value then
     -- local explosions = data.raw["explosion"]
 
@@ -69,10 +70,19 @@ end
 if settings.startup["rampantFixed--enableShrinkNestsAndWorms"].value then
     for k, unit in pairs(data.raw["unit-spawner"]) do
         if (string.find(k, "biter") or string.find(k, "spitter") or string.find(k, "hive")) and unit.collision_box then
-            unit.collision_box = {
-                {unit.collision_box[1][1] * 0.50, unit.collision_box[1][2] * 0.50},
-                {unit.collision_box[2][1] * 0.50, unit.collision_box[2][2] * 0.50}
-            }
+			local minDxDy = math.min(unit.collision_box[2][1] - unit.collision_box[1][1], unit.collision_box[2][2] - unit.collision_box[1][2]) 
+			if minDxDy >= 3 then
+				unit.collision_box = {
+					{unit.collision_box[1][1] * 0.50, unit.collision_box[1][2] * 0.50},
+					{unit.collision_box[2][1] * 0.50, unit.collision_box[2][2] * 0.50}
+				}
+			else
+				local k = 1 - (0.5 * minDxDy / 3)
+				unit.collision_box = {
+					{unit.collision_box[1][1] * k, unit.collision_box[1][2] * k},
+					{unit.collision_box[2][1] * k, unit.collision_box[2][2] * k}
+				}				
+			end
         end
     end
 
@@ -101,4 +111,29 @@ end
 
 if settings.startup["rampantFixed--addWallResistanceAcid"].value then
     vanillaBuildings.addWallResistance()
+end
+
+
+--------- assign flying_layer to projectiles
+local function table_contains(table, check)
+  for k,v in pairs(table) do if v == check then return true end end
+  return false
+end
+
+
+if not mods["combat-mechanics-overhaul"] then
+	local collision_mask_util_extended = require("collision-mask-util-extended/data/collision-mask-util-extended")		
+	flying_layer = collision_mask_util_extended.get_make_named_collision_mask("flying-layer")
+	
+	for _, prototype in pairs(data.raw.projectile) do	
+		if prototype.collision_box then
+			if not prototype.hit_collision_mask then
+				prototype.hit_collision_mask = collision_mask_util_extended.get_default_hit_mask("projectile")
+			else
+				if not table_contains(prototype.hit_collision_mask, flying_layer) then
+				  table.insert(prototype.hit_collision_mask, flying_layer)
+				end		
+			end
+		end	
+	end
 end

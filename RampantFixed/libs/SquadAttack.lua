@@ -481,6 +481,7 @@ function squadAttack.squadDispatch(map, squad)
         elseif (status == SQUAD_SETTLING) then
             settleMove(map, squad)
         elseif (status == SQUAD_RETREATING) then
+			squad.compressed = true		-- some compressed units can join while retreating
             if squad.settlers then
                 squad.status = SQUAD_SETTLING
                 settleMove(map, squad)

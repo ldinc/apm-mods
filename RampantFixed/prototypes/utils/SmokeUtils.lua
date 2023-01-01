@@ -9,7 +9,7 @@ function smokeUtils.makeNewCloud(attributes, attack)
             {
                 type = "smoke-with-trigger",
                 name = "dummy-" .. name,
-                flags = {"not-on-map"},
+                flags = attributes.flags or {"not-on-map"},
                 show_when_smoke_off = true,
                 particle_count = 24,
                 particle_spread = { 3.6 * 1.05, 3.6 * 0.6 * 1.05 },
@@ -137,6 +137,40 @@ function smokeUtils.makeNewCloud(attributes, attack)
             }
     })
 
+    return name
+end
+
+function smokeUtils.makeNonTriggerCloud(attributes)
+    local name = attributes.name .. "-nonTriggerCloud-rampant"
+
+    data:extend({
+            {
+				type = "trivial-smoke",
+                name = name,
+                flags = {"not-on-map"},
+                show_when_smoke_off = true,
+                animation =
+                    {
+                        filename = "__base__/graphics/entity/cloud/cloud-45-frames.png",
+                        flags = { "compressed" },
+                        priority = "low",
+                        width = 256,
+                        height = 256,
+                        frame_count = 45,
+                        animation_speed = 0.5,
+                        line_length = 7,
+                        scale = attributes.scale or 3,
+                    },
+				render_layer = attributes.render_layer,
+                slow_down_factor = attributes.slowdown or 0,
+                affected_by_wind = attributes.wind,
+                cyclic = true,
+                duration = attributes.duration or 60 * 20,
+                fade_away_duration = attributes.outDuration or (attributes.duration and attributes.duration * 0.25) or 2 * 60,
+                spread_duration = attributes.inDuration or (attributes.duration and attributes.duration * 0.25) or 10,
+                color = attributes.tint or { r = 0.2, g = 0.9, b = 0.2 },
+            }
+    })
     return name
 end
 

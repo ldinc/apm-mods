@@ -51,6 +51,20 @@ function mapUtils.positionToChunkXY(position)
     return chunkX, chunkY
 end
 
+function mapUtils.getChunkListInRange(map, x, y, range)
+	local chunkList = {}
+	for dx = -range * CHUNK_SIZE, range * CHUNK_SIZE, CHUNK_SIZE do
+		local xChunks = map[x + dx]
+		if xChunks then
+			for dy = -range * CHUNK_SIZE, range * CHUNK_SIZE, CHUNK_SIZE do
+				if not ((dx == 0) and (dy == 0)) and xChunks[y + dy] then
+					chunkList[#chunkList+1] = xChunks[y + dy]
+				end
+			end
+		end
+	end
+	return chunkList
+end
 --[[
     1 2 3
     \|/

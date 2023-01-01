@@ -26,6 +26,7 @@ local pheromoneUtils = require("libs/PheromoneUtils")
 local squadDefense = require("libs/SquadDefense")
 local squadAttack = require("libs/SquadAttack")
 local squadCompression = require("libs/SquadCompression")
+local undergroundAttack = require("libs/UndergroundAttack")
 
 local aiAttackWave = require("libs/AIAttackWave")
 local aiPlanning = require("libs/AIPlanning")
@@ -72,6 +73,8 @@ local processDecompressQueue = squadCompression.processDecompressQueue
 local processNonRampantSquads = squadCompression.processNonRampantSquads
 local removeOneTickImmunity = squadCompression.removeOneTickImmunity
 local onUnitPreKilled = squadCompression.onUnitPreKilled
+
+local createUndergroudAttack = undergroundAttack.createUndergroudAttack
 
 local cleanUpMapTables = mapProcessor.cleanUpMapTables
 
@@ -703,8 +706,12 @@ local function onDeath(event)
 							rallyUnits(chunk, map, tick)
 						end
 					end
-					squadCompression.onUnitKilled(universe, surface, entity, event.force, cause)
-				end	
+					if artilleryBlast then
+						undergroundAttack.onUnitKilled_DigIn(map, entity, cause)
+					else	
+						squadCompression.onUnitKilled(universe, surface, entity, event.force, cause)
+					end	
+				end
             elseif event.force and (event.force.name ~= "enemy") and
                 ((entityType == "unit-spawner") or (entityType == "turret"))
             then
@@ -742,7 +749,7 @@ local function onDeath(event)
                 if (chunk ~= -1) then
                     rallyUnits(chunk, map, tick)
 
-                    if (not artilleryBlast) and cause and cause.valid then
+                    if cause and cause.valid then
                         retreatUnits(chunk,
                                      cause,
                                      map,
@@ -1068,7 +1075,7 @@ local function onGroupFinishedGathering(event)
 		return		
 	end
 	local squad = universe.groupNumberToSquad[group.group_number]
-	if (not group.is_script_driven) or squad then
+	if (not group.is_script_driven) or (squad and not squad.vengence) then
 		if (map.state == constants.AI_STATE_PEACEFUL) or (universe.aiNocturnalMode and (group.surface.darkness <= 0.65)) then
 			group.destroy()
 			return		
@@ -1076,7 +1083,11 @@ local function onGroupFinishedGathering(event)
 	end
 	
 	if squad then
-		processCompression(map, squad, getChunkByPosition(map, group.position), true)
+		if not squad.undergoundAttack then
+			processCompression(map, squad, getChunkByPosition(map, group.position), true)
+		else
+			createUndergroudAttack(map, squad)
+		end
 	elseif (#group.members > 70) and group.position and not group.is_script_driven then
 		local nonRampantSquad = createSquad(group.position, map, group, false)
 		nonRampantSquad.nonRampantSquad = true
@@ -1087,7 +1098,8 @@ local function onGroupFinishedGathering(event)
 		end	
 	end
 	
-	if squad and group.is_script_driven then
+	-- group can be destroyed after createUndergroudAttack()
+	if squad and group.valid and group.is_script_driven then
 		squadDispatch(map, squad)
 	end
 end
@@ -1195,16 +1207,17 @@ local function onSectorScanned(event)
 	local entity = event.radar
 	if entity.valid then
 		if targetDummyArray[entity.name] then
-			if entity.name == "targetDummyPlasma-rampant" then
-				protectedAreaUnitsQuery.position = entity.position
-				local protectedEntities = entity.surface.find_entities_filtered(protectedAreaUnitsQuery)
-				for i = 1, #protectedEntities do
-					local protectedEntity = protectedEntities[i]
-					protectedEntity.destructible = false
-					universe.protectedUnits[protectedEntity.unit_number] = {entity = protectedEntity, tick = game.tick + 120}
-					--game.print("tick:"..game.tick.. " add protection to "..universe.protectedUnits[protectedEntity.unit_number].tick)
-				end	
-			end
+			-- canceled since 1.5.0
+			-- if entity.name == "targetDummyPlasma-rampant" then
+				-- protectedAreaUnitsQuery.position = entity.position
+				-- local protectedEntities = entity.surface.find_entities_filtered(protectedAreaUnitsQuery)
+				-- for i = 1, #protectedEntities do
+					-- local protectedEntity = protectedEntities[i]
+					-- protectedEntity.destructible = false
+					-- universe.protectedUnits[protectedEntity.unit_number] = {entity = protectedEntity, tick = game.tick + 120}
+					-- --game.print("tick:"..game.tick.. " add protection to "..universe.protectedUnits[protectedEntity.unit_number].tick)
+				-- end	
+			-- end
 			entity.damage(30, "neutral")
 		elseif entity.name == "test-rampant" then
 			onEntitySpawned(event)
@@ -1233,12 +1246,19 @@ end
 -- this variables reset after reloading (player can change/disable protecion at startup settings)
 -- as practice has shown, local variables do not lead to desynchronization, unless it leads to different results
 local unitsProtection = {}
-local OP_Efficiency = settings.startup["rampantFixed--oneshotProtection_efficiency"].value
-local LR_Efficiency = settings.startup["rampantFixed--longRangeImmunity_efficiency"].value 
-local OP_efficienty = OP_Efficiency * 0.01
-local LR_DamagePercent = 1 - LR_Efficiency * 0.01
+local OP_EfficiencyPercent = settings.startup["rampantFixed--oneshotProtection_efficiency"].value
+local LR_EfficiencyPercent = settings.startup["rampantFixed--longRangeImmunity_efficiency"].value 
+local OP_efficienty = OP_EfficiencyPercent * 0.01
+local LR_Efficiency = LR_EfficiencyPercent * 0.01
+local LR_DamageKf = 1 - LR_Efficiency
 local allowOneshotProtection = settings.startup["rampantFixed--allowOneshotProtection"]
 local allowLongRangeImmunity = settings.startup["rampantFixed--allowLongRangeImmunity"]
+
+local LR_exceptions = {}
+LR_exceptions["fluid-turret"] = true
+LR_exceptions["artillery-turret"] = true
+LR_exceptions["artillery-wagon"] = true
+local LR_exceptions_DamageKf = 0.5
  
 
 local function fillAndReturnUnitProtections(entity)
@@ -1249,19 +1269,20 @@ local function fillAndReturnUnitProtections(entity)
 		local overdamageProtection
 		if entity.prototype.resistances then
 			for resistance, values in pairs(entity.prototype.resistances) do
+				-- some checks, becouse mods can assign there resistances to their own units. And make them almost immortal
 				if resistance == "rampant-longRangeImmunity" then
-					if values.percent and (values.percent == LR_Efficiency) and (values.decrease > 5) then
+					if values.percent and (math.floor(100*values.percent+0.1) == LR_EfficiencyPercent) and (values.decrease > 10) then	-- 	-- bug: sometimes percent can differ (ex: 0.949000049)
 						longRangeImmunity = values.decrease
 					end	
 				elseif resistance == "rampant-overdamageProtection" then
-					if values.percent and (values.percent == OP_efficienty) and (values.decrease > 5) then 
+					if values.percent and (math.floor(100*values.percent+0.1) == OP_EfficiencyPercent) and (values.decrease > 5) then 
 						overdamageProtection = values.decrease
 					end	
-				end	
-				
+				end					
 			end
 		end	
 		unitsProtection[entity.name] = {longRangeImmunity = longRangeImmunity, overdamageProtection = overdamageProtection}
+		-- game.print("LRI = "..tostring(longRangeImmunity).." , OP = "..tostring(overdamageProtection))	-- debug
 		return unitsProtection[entity.name]
 	end
 end	
@@ -1276,21 +1297,30 @@ local function onEntityDamaged(event)
 		local unitProtection = fillAndReturnUnitProtections(event.entity)
 		if (event.final_damage_amount > 0) and event.cause and (event.cause ~= event.entity) then
 			-----------------
-			if allowLongRangeImmunity and unitProtection.longRangeImmunity then					
+			if allowLongRangeImmunity and unitProtection.longRangeImmunity then
 				local incomingRange = 0
 				if event.cause and event.cause.valid then
-					 incomingRange = mathUtils.euclideanDistancePoints(entity.position.x, entity.position.y, event.cause.position.x, event.cause.position.y)
-				end	
-				if incomingRange>unitProtection.longRangeImmunity then
-					local startHP = universe.unitProtectionData.unitCurrentHP[entity.unit_number] or (entity.prototype.max_health)
-					if LR_DamagePercent > 0 then
-						event.final_damage_amount = event.final_damage_amount * LR_DamagePercent
-					else
-						event.final_damage_amount =	0
+					if LR_exceptions[event.cause.type] then
+						incomingRange = -1
+					else	
+						incomingRange = mathUtils.euclideanDistancePoints(entity.position.x, entity.position.y, event.cause.position.x, event.cause.position.y)
 					end	
-					entity.health = startHP - event.final_damage_amount					
-					event.final_health = entity.health					
-					--game.print("LRI:"..startHP.."-("..event.original_damage_amount.."->"..event.final_damage_amount..")="..entity.health)	-- DEBUG
+					if incomingRange == - 1 then
+						local startHP = universe.unitProtectionData.unitCurrentHP[entity.unit_number] or (entity.prototype.max_health)
+						event.final_damage_amount = event.final_damage_amount * LR_exceptions_DamageKf
+						entity.health = startHP - event.final_damage_amount					
+						event.final_health = entity.health					
+					elseif incomingRange>unitProtection.longRangeImmunity then
+						local startHP = universe.unitProtectionData.unitCurrentHP[entity.unit_number] or (entity.prototype.max_health)
+						if LR_DamageKf > 0 then
+							event.final_damage_amount = event.final_damage_amount * LR_DamageKf
+						else
+							event.final_damage_amount =	0
+						end	
+						entity.health = startHP - event.final_damage_amount					
+						event.final_health = entity.health					
+						-- game.print("LRI:"..startHP.."-("..event.original_damage_amount.."->"..event.final_damage_amount..")="..entity.health)	-- DEBUG
+					end	
 				end	
 			end
 			-----------------
@@ -1310,12 +1340,14 @@ local function onEntityDamaged(event)
 			end
 		end
 		
-		if entity.health<=0 then 
-			local compressedUnit = universe.compressedUnits[entity.unit_number]
-			if compressedUnit and (compressedUnit.count > 1) then
-				onUnitPreKilled(universe, entity.surface, entity, event.force, event.cause)
-			end	
-		end	
+		-- canceled since 1.5.0
+		-- if entity.health<=0 then 
+			-- local compressedUnit = universe.compressedUnits[entity.unit_number]
+			-- if compressedUnit and (compressedUnit.count > 1) then
+				-- onUnitPreKilled(universe, entity.surface, entity, event.force, event.cause)
+			-- end	
+		-- end	
+		
 		if unitProtection.longRangeImmunity or unitProtection.overdamageProtection then
 			if entity.health<=0 then
 				universe.unitProtectionData.unitCurrentHP[entity.unit_number] = nil
@@ -1428,12 +1460,28 @@ script.on_nth_tick(30000,
 	end
 )
 
---- copressed squads
+--- copressed and underground squads
 script.on_nth_tick(60, 
 	function()
-		if universe and universe.nonRampantCompressedSquads then
-			processNonRampantSquads(universe)
+		if universe then
+			if universe.nonRampantCompressedSquads then
+				processNonRampantSquads(universe)
+			end
 		end
+	end
+)
+
+script.on_nth_tick(30, 
+	function()
+		if universe then
+			undergroundAttack.processUndergroundSquads(universe)
+		end
+	end
+)
+
+script.on_nth_tick(3600,
+	function()
+		undergroundAttack.updateUndergroundAttackProbability(universe)
 	end
 )
 

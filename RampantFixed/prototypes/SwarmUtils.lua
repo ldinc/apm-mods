@@ -85,6 +85,7 @@ local makeWormAlienLootTable = biterUtils.makeWormAlienLootTable
 local makeUnitAlienLootTable = biterUtils.makeUnitAlienLootTable
 local makeSpawnerAlienLootTable = biterUtils.makeSpawnerAlienLootTable
 local makeSchallAlienLootTables = biterUtils.makeSchallAlienLootTables
+local makeAlienLootEconomyTables = biterUtils.makeAlienLootEconomyTables
 
 local createSuicideAttack = biterUtils.createSuicideAttack
 
@@ -207,7 +208,7 @@ local beamAttackNumeric = {
 -- + !КДА 2021.11
 beamAttackNumeric["damage"] = calculateValuesForLevels(beamAttackNumeric["damage"], TIER_UPGRADE_SET_10_AS_IS, 1)	
 beamAttackNumeric["duration"] = calculateValuesForLevels(beamAttackNumeric["duration"], TIER_UPGRADE_SET_10_AS_IS, 1)
-beamAttackNumeric["damageInterval"] = calculateValuesForLevels(beamAttackNumeric["damageInterval"], TIER_UPGRADE_SET_10_AS_IS, 1)
+--beamAttackNumeric["damageInterval"] = calculateValuesForLevels(beamAttackNumeric["damageInterval"], TIER_UPGRADE_SET_10_AS_IS, 0)
 -- - !КДА 2021.11
 
 
@@ -352,11 +353,11 @@ eggsAttributeNumeric["health"] = calculateValuesForLevels(eggsAttributeNumeric["
 local unitSpawnerAttributeNumeric = {
     ["health"] = { 350, 500, 750, 1000, 1500, 3500, 11000, 20000, 30000, 45000 },
     ["healing"] = { 0.02, 0.02, 0.022, 0.024, 0.026, 0.028, 0.03, 0.032, 0.034, 0.036 },
-    ["spawningCooldownStart"] = { 800, 800, 800, 800, 800, 800, 800, 800, 800, 800 },
-    ["spawningCooldownEnd"] = { 250, 250, 250, 250, 250, 250, 250, 250, 250, 250 },
-    ["unitsToSpawn"] = { 12, 12, 12, 12, 12, 12, 12, 12, 12, 12 },
+    ["spawningCooldownStart"] = { 1080, 1075, 1070, 1065, 1060, 1055, 1050, 1045, 1040, 1035 },
+    ["spawningCooldownEnd"] = { 350, 345, 340, 335, 330, 325, 320, 315, 310, 305 },
+    ["unitsToSpawn"] = { 11, 11, 12, 12, 13, 13, 14, 14, 15, 15 },
     ["scale"] = { 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8 },
-    ["unitsOwned"] = { 8, 8, 8, 8, 8, 8, 8, 8, 8, 8 },
+    ["unitsOwned"] = { 9, 9, 10, 10, 11, 11, 12, 12, 13, 13 },
     ["physicalDecrease"] = { 1, 2, 3, 4, 6, 6, 8, 10, 12, 14 },
     ["physicalPercent"] = { 15, 15, 17, 17, 18, 18, 19, 19, 20, 20 },
     ["explosionDecrease"] = { 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 },
@@ -382,7 +383,7 @@ local hiveAttributeNumeric = {
     ["spawningCooldownEnd"] = { 60, 60, 60, 60, 60, 60, 60, 60, 60, 60 },
     ["unitsToSpawn"] = { 12, 12, 12, 12, 12, 12, 12, 12, 12, 12 },
     ["scale"] = { 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1 },
-    ["unitsOwned"] = { 5, 5, 5, 6, 6, 6, 6, 6, 6, 7 },
+    ["unitsOwned"] = { 9, 9, 10, 10, 11, 11, 12, 12, 12, 12 },
     ["physicalDecrease"] = { 1, 2, 3, 4, 6, 6, 8, 10, 12, 14 },
     ["physicalPercent"] = { 15, 15, 17, 17, 18, 18, 19, 19, 20, 20 },
     ["explosionDecrease"] = { 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 },
@@ -408,9 +409,9 @@ local wormAttributeNumeric = {
     ["damagePerTick"] = { 0.15, 0.3, 0.4, 0.6, 0.7, 0.8, 1, 1.2, 1.5, 2 },		-- { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 }
     ["range"] = { 25, 27, 31, 33, 35, 36, 37, 38, 39, 40 },
 --    ["cooldown"] = { 70, 70, 68, 66, 64, 62, 60, 58, 56, 54 },
-    ["cooldown"] = { 30, 30, 28, 26, 24, 22, 21, 20, 20, 20 },
+    ["cooldown"] = { 60, 55, 50, 48, 44, 40, 36, 34, 32, 30 },
     ["damage"] = { 12, 22.5, 33.75, 45, 67.5, 82.5, 97.5, 112.5, 127.5, 142.5 },
-    ["scale"] = { 0.50, 0.80, 0.90, 1, 1.1, 1.2, 1.3, 1.4, 1.6, 1.8 },	--{ 0.40, 0.50, 0.60, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8 }
+    ["scale"] = { 0.60, 0.80, 0.90, 1, 1.1, 1.2, 1.3, 1.4, 1.6, 1.8 },	--{ 0.40, 0.50, 0.60, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.8 }
     ["radius"] = { 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.3, 2.5, 3.0 },
     ["stickerDamagePerTick"] = { 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5 },
     ["particleVerticalAcceleration"] = { 0.01, 0.01, 0.02, 0.02, 0.03, 0.03, 0.04, 0.04, 0.05, 0.05 },
@@ -528,8 +529,8 @@ local function unitSetToHiveProbabilityTable(unitSet)		-- +1 lvl
     fillUnitTable(result, unitSet, 5, {{0.38, 0}, {0.47, 0.5}, {0.65, 0.0}})
     fillUnitTable(result, unitSet, 6, {{0.47, 0}, {0.65, 0.5}, {0.74, 0.0}})
     fillUnitTable(result, unitSet, 7, {{0.65, 0}, {0.74, 0.5}, {0.80, 0.0}})
-    fillUnitTable(result, unitSet, 8, {{0.74, 0}, {0.80, 0.5}, {0.85, 0.0}})
-    fillUnitTable(result, unitSet, 9, {{0.80, 0}, {0.85, 0.5}, {0.91, 0.0}})
+    fillUnitTable(result, unitSet, 8, {{0.74, 0}, {0.80, 0.5}, {0.90, 0.0}})
+    fillUnitTable(result, unitSet, 9, {{0.80, 0}, {0.85, 0.5}, {0.95, 0.0}})
     fillUnitTable(result, unitSet, 10, {{0.85, 0}, {1, 1.0}})
     return result
 	
@@ -640,7 +641,9 @@ end
 --     return roundToNearest(gaussianRandomRangeRG(num, num * 0.15, min, max, xorRandom), 0.01)
 -- end
 
-local schallAlienLootTables = makeSchallAlienLootTables()
+local lootTables = {}
+lootTables[1] = makeSchallAlienLootTables()
+lootTables[2] = makeAlienLootEconomyTables()
 
 local function fillEntityTemplate(entity)
     local tier = entity.effectiveLevel
@@ -866,7 +869,6 @@ local function fillEntityTemplate(entity)
                     entity.distancePerFrame = 0
 				elseif (attribute == "egg") then
 					for key,value in pairs(eggsAttributeNumeric) do
-						log("egg key:"..key)
 						entity[key] = value[tier]
 					end
 				
@@ -1027,6 +1029,20 @@ local function generateApperance(unit)
     end
 end
 
+local function addEntityLoot(entity, lootType, effectiveLevel)
+	for _, lootTable in pairs(lootTables) do
+		local entityLoot = lootTable[lootType] and lootTable[lootType][effectiveLevel]
+		if entityLoot then
+			if not entity.loot then
+				entity.loot = {}
+			end	
+			for lootIndex = 1, #entityLoot do
+				entity.loot[#entity.loot+1] = entityLoot[lootIndex]
+			end		
+		end
+	end		
+end
+
 function swarmUtils.buildUnits(template, dyingEffects)
     local unitSet = {}
 
@@ -1052,20 +1068,14 @@ function swarmUtils.buildUnits(template, dyingEffects)
             local entity
             if (unit.type == "spitter") then
                 entity = makeSpitter(unit)
-				if (not entity.noLoot) and schallAlienLootTables.biterLoot and schallAlienLootTables.biterLoot[effectiveLevel] then
-					if not entity.loot then
-						entity.loot = {}
-					end	
-					entity.loot[#entity.loot+1] = schallAlienLootTables.biterLoot[effectiveLevel]
-				end
+				if (not entity.noLoot) then
+					addEntityLoot(entity, "biterLoot", effectiveLevel)
+				end	
             elseif (unit.type == "biter") then
                 entity = makeBiter(unit)
-				if (not entity.noLoot) and schallAlienLootTables.biterLoot and schallAlienLootTables.biterLoot[effectiveLevel] then
-					if not entity.loot then
-						entity.loot = {}
-					end						
-					entity.loot[#entity.loot+1] = schallAlienLootTables.biterLoot[effectiveLevel]
-				end
+				if (not entity.noLoot) then
+					addEntityLoot(entity, "biterLoot", effectiveLevel)
+				end	
             elseif (unit.type == "drone") then
                 -- if not unit.death then
                 --     unit.death = {
@@ -1125,11 +1135,8 @@ function swarmUtils.buildEntitySpawner(template, factionBuildings)
             generateApperance(unitSpawner)
             fillEntityTemplate(unitSpawner)
 			
-			if (not unitSpawner.noLoot) and schallAlienLootTables.spawnerLoot and schallAlienLootTables.spawnerLoot[effectiveLevel] then
-				if not unitSpawner.loot then
-					unitSpawner.loot = {}
-				end	
-				unitSpawner.loot[#unitSpawner.loot+1] = schallAlienLootTables.spawnerLoot[effectiveLevel]
+			if (not unitSpawner.noLoot) then				
+				addEntityLoot(unitSpawner, "spawnerLoot", effectiveLevel)
 			end
 			
 
@@ -1162,11 +1169,8 @@ function swarmUtils.buildUnitSpawner(template)
             generateApperance(unitSpawner)
             fillEntityTemplate(unitSpawner)
 			
-			if (not unitSpawner.noLoot) and schallAlienLootTables.spawnerLoot and schallAlienLootTables.spawnerLoot[effectiveLevel] then
-				if not unitSpawner.loot then
-					unitSpawner.loot = {}
-				end	
-				unitSpawner.loot[#unitSpawner.loot+1] = schallAlienLootTables.spawnerLoot[effectiveLevel]
+			if (not unitSpawner.noLoot) then
+				addEntityLoot(unitSpawner, "spawnerLoot", effectiveLevel)
 			end
 
             if unitSpawner.autoplace then
@@ -1196,11 +1200,8 @@ function swarmUtils.buildWorm(template)
             generateApperance(worm)
             fillEntityTemplate(worm)
 			
-			if (not worm.noLoot) and schallAlienLootTables.wormLoot and schallAlienLootTables.wormLoot[effectiveLevel] then
-				if not worm.loot then
-					worm.loot = {}
-				end	
-				worm.loot[#worm.loot+1] = schallAlienLootTables.wormLoot[effectiveLevel]
+			if (not worm.noLoot) then
+				addEntityLoot(worm, "wormLoot", effectiveLevel)
 			end            
 			
 			worm.attack = worm.attackGenerator(worm)

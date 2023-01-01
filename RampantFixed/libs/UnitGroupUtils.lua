@@ -88,13 +88,15 @@ function unitGroupUtils.createSquad(position, map, group, settlers)
         settlers = settlers or false,
         siege = false,
         kamikaze = false,
+		vengence = false,
         frenzyPosition = {x = 0,
                           y = 0},
         maxDistance = 0,
         groupNumber = unitGroup.group_number,
         originPosition = {x = 0,
                           y = 0},
-		prevChunk = -1,	-- + !КДА 2021.11
+		prevChunk = -1,	
+		undergoundAttack = nil,	-- if true then it will be converted to underground attack when finish gathering
         chunk = -1
     }
 

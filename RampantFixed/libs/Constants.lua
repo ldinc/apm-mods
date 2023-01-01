@@ -178,7 +178,7 @@ constants.BASE_DEADZONE_TTL = constants.TICKS_A_MINUTE * 18
 
 constants.BASE_COLLECTION_THRESHOLD = constants.TICKS_A_MINUTE * 2
 
-constants.BASE_DISTANCE_TO_EVO_INDEX = 1 / 9600
+constants.BASE_DISTANCE_TO_EVO_INDEX = 1 / settings.startup["rampant--max-evo-dist"].value
 
 constants.BASE_SPAWNER_UPGRADE = 30*60*60	-- 30min	-- 250			
 constants.BASE_WORM_UPGRADE = 20*60*60	-- 20min	-- 200
@@ -714,7 +714,7 @@ if settings.startup["rampantFixed--acidEnemy"].value then
                 immunity = {"acid", "poison", "electric"},
                 acceptRate = {1, 10, 0.3, 0.5},
                 attributes = {},
-                drops = {"greenArtifact"},
+                drops = {"nilArtifact"},
                 buildSets = {
                     {"spitter", 1, 10}
                 }
@@ -725,7 +725,7 @@ if settings.startup["rampantFixed--acidEnemy"].value then
                 immunity = {"acid", "poison", "electric"},
                 acceptRate = {1, 10, 0.3, 0.5},
                 attributes = {},
-                drops = {"greenArtifact"},
+                drops = {"nilArtifact"},
                 buildSets = {
                     {"biter", 1, 10}
                 }
@@ -745,7 +745,7 @@ if settings.startup["rampantFixed--acidEnemy"].value then
                 immunity = {"acid", "poison", "electric"},
                 acceptRate = {2, 10, 0.001, 0.0175},
                 attributes = {},
-                drops = {"greenArtifact"},
+                drops = {"nilArtifact"},
                 buildSets = {
                     {"spitter", 1, 10},
                     {"biter", 1, 10}
@@ -770,7 +770,7 @@ if settings.startup["rampantFixed--laserEnemy"].value then
                 majorResistances = {"laser", "electric"},
                 minorResistances = {"fire", "acid"},
                 attributes = {{"overdamageProtection", 1.5}},		
-                drops = {"nilArtifact"}
+                drops = {"blueArtifact"}
             },
             {
                 type = "spitter",
@@ -779,7 +779,7 @@ if settings.startup["rampantFixed--laserEnemy"].value then
                 majorResistances = {"laser", "electric"},
                 minorResistances = {"fire", "acid"},
                 attributes = {"quickCooldown", {"overdamageProtection", 1.5}},		
-                drops = {"nilArtifact"}
+                drops = {"blueArtifact"}
             }
         },
         buildings = {
@@ -826,7 +826,7 @@ if settings.startup["rampantFixed--laserEnemy"].value then
                 minorResistances = {"fire"},
                 attributes = {},
                 acceptRate = {2, 10, 0.001, 0.0175},
-                drops = {"nilArtifact"},
+                drops = {"blueArtifact"},
                 buildSets = {
                     {"spitter", 1, 10},
                     {"biter", 1, 10}
@@ -853,7 +853,7 @@ if settings.startup["rampantFixed--fireEnemy"].value then
                 minorResistances = {"physical"},
                 minorWeaknesses = {"laser"},
                 attributes = {"fireDeathCloud"},
-                drops = {"nilArtifact"}
+                drops = {"redArtifact"}
             },
             {
                 type = "spitter",
@@ -864,7 +864,7 @@ if settings.startup["rampantFixed--fireEnemy"].value then
                 minorResistances = {"physical"},
                 majorWeaknesses = {"laser"},
                 attributes = {},
-                drops = {"nilArtifact"}
+                drops = {"redArtifact"}
             }
         },
         buildings = {
@@ -944,7 +944,7 @@ if settings.startup["rampantFixed--infernoEnemy"].value then
                 minorWeaknesses = {"poison"},
                 majorWeaknesses = {"laser"},
                 attributes = {},
-                drops = {"nilArtifact"}
+                drops = {"orangeArtifact"}
             }
         },
         buildings = {
@@ -1005,7 +1005,7 @@ if settings.startup["rampantFixed--waspEnemy"].value then
                 attackAttributes = {"spit", "acid"},
                 name = "wasp",
                 attributes = {"followsPlayer", "notInKillStatistics"},
-                drops = {}
+                drops = {"purpleArtifact"}
             },
             {
                 type = "drone",
@@ -1019,7 +1019,7 @@ if settings.startup["rampantFixed--waspEnemy"].value then
                 attackAttributes = {"capsule", {"drone", "wasp"}},
                 name = "spitter",
                 attributes = {},
-                drops = {"nilArtifact"}
+                drops = {"purpleArtifact"}
             }
         },
         buildings = {
@@ -1092,7 +1092,7 @@ if settings.startup["rampantFixed--spawnerEnemy"].value then
                 attackAttributes = {{"spawnSpit", "egg", 0, 1, "drone"}},			--{"capsule", {"drone", "egg"}}
                 name = "spitter",
                 attributes = {"selfDamaging", {"spawnOnDeath", "spawn", 0, 3}, {"longRangeImmunity", 30}},	
-                drops = {"nilArtifact"}
+                drops = {"purpleArtifact"}
             }
         },
         buildings = {
@@ -1101,7 +1101,7 @@ if settings.startup["rampantFixed--spawnerEnemy"].value then
                 name = "spitter-spawner",
 				immunity = {"electric"},	
                 attributes = {},
-                drops = {"orangeArtifact"},
+                drops = {"purpleArtifact"},
                 acceptRate = {1, 10, 0.4, 0.6},
                 buildSets = {
                     {"spitter", 1, 10}
@@ -1114,7 +1114,7 @@ if settings.startup["rampantFixed--spawnerEnemy"].value then
                 attackAttributes = {"capsule", {"drone", "worm-egg"}},
                 acceptRate = {1, 10, 0.8, 0.6},
                 attributes = {},
-                drops = {"orangeArtifact"}
+                drops = {"purpleArtifact"}
             },
             {
                 type = "hive",
@@ -1122,7 +1122,7 @@ if settings.startup["rampantFixed--spawnerEnemy"].value then
 				immunity = {"electric"},	
                 attributes = {},
                 acceptRate = {2, 10, 0.001, 0.0175},
-                drops = {"orangeArtifact"},
+                drops = {"purpleArtifact"},
                 buildSets = {
                     {"spitter", 1, 10}
                 }
@@ -1146,7 +1146,7 @@ if settings.startup["rampantFixed--electricEnemy"].value then
 				immunity = {"electric"},	
                 minorResistances = {"laser"},
                 attributes = {"slowCooldown","lowHealth"},
-                drops = {"nilArtifact"}
+                drops = {"blueArtifact"}
             }
         },
         buildings = {
@@ -1205,7 +1205,7 @@ if settings.startup["rampantFixed--physicalEnemy"].value then
                 lesserResistances = {"fire"},
                 minorWeaknesses = {"laser"},
                 attributes = {"highHealth", "longReach", "big", "slowMovement", "altBiterArmored", "not-flammable", {"overdamageProtection", 2}},
-                drops = {"nilArtifact"}
+                drops = {"redArtifact"}
             }
         },
         buildings = {
@@ -1270,7 +1270,7 @@ if settings.startup["rampantFixed--trollEnemy"].value then
                 majorWeaknesses = {"fire"},
                 attributes = {"highestHealth", "longReach", "bigger",
                               "highestRegen", "slowMovement", "altBiterArmored", "not-flammable", {"overdamageProtection", 5}},
-                drops = {"nilArtifact"}
+                drops = {"redArtifact"}
             }
         },
         buildings = {
@@ -1282,7 +1282,7 @@ if settings.startup["rampantFixed--trollEnemy"].value then
                 majorWeaknesses = {"fire"},
                 acceptRate = {1, 10, 0.4, 0.6},
                 attributes = {"highestHealth", "bigger", "highestRegen"},
-                drops = {"greenArtifact"},
+                drops = {"redArtifact"},
                 buildSets = {
                     {"biter", 1, 10}
                 }
@@ -1296,7 +1296,7 @@ if settings.startup["rampantFixed--trollEnemy"].value then
                 attackAttributes = {"spit", "physical"},
                 acceptRate = {1, 10, 0.8, 0.6},
                 attributes = {"highestHealth", "bigger", "highestRegen"},
-                drops = {"greenArtifact"}
+                drops = {"redArtifact"}
             },
             {
                 type = "hive",
@@ -1306,7 +1306,7 @@ if settings.startup["rampantFixed--trollEnemy"].value then
                 majorWeaknesses = {"fire"},
                 attributes = {"highestHealth", "bigger", "highRegen"},
                 acceptRate = {2, 10, 0.001, 0.0175},
-                drops = {"greenArtifact"},
+                drops = {"redArtifact"},
                 buildSets = {
                     {"biter", 1, 10}
                 }
@@ -1333,7 +1333,7 @@ if settings.startup["rampantFixed--poisonEnemy"].value then
                 majorWeaknesses = {"laser"},
                 minorWeaknesses = {"explosion"},
                 attributes = {"poisonDeathCloud"},
-                drops = {"nilArtifact"}
+                drops = {"greenArtifact"}
             }
         },
         buildings = {
@@ -1397,7 +1397,7 @@ if settings.startup["rampantFixed--suicideEnemy"].value then
                 minorResistances = {"poison"},
                 majorWeaknesses = {"explosion"},
                 attributes = {"lowestHealth", "quickSpawning", "quickMovement", "killsSelf", "lowestCollision", "not-flammable", {"longRangeImmunity", 18}, {"overdamageProtection", 4}},
-                drops = {"nilArtifact"}
+                drops = {"yellowArtifact"}
             }
         },
         buildings = {
@@ -1461,7 +1461,7 @@ if settings.startup["rampantFixed--nuclearEnemy"].value then
                 majorResistances = {"fire", "acid"},
                 majorWeaknesses = {"explosion"},
                 attributes = {"lowestHealth", "quickMovement", "quickSpawning", "killsSelf", "not-flammable", {"overdamageProtection", 5}},
-                drops = {"nilArtifact"}
+                drops = {"yellowArtifact"}
             }
         },
         buildings = {
@@ -1472,8 +1472,8 @@ if settings.startup["rampantFixed--nuclearEnemy"].value then
                 majorResistances = {"fire", "acid"},
                 majorWeaknesses = {"explosion"},
                 acceptRate = {1, 10, 0.4, 0.6},
-                attributes = {},				
-                drops = {"yellowArtifact", "quickSpawning", "lowUnits"},
+                attributes = {"quickSpawning"},				
+                drops = {"yellowArtifact"},
                 buildSets = {
                     {"biter", 1, 10}
                 }
@@ -1522,7 +1522,7 @@ if settings.startup["rampantFixed--energyThiefEnemy"].value then
                 minorResistances = {"explosion"},
                 minorWeaknesses = {"physical"},
                 attributes = {"slowCooldown", "not-flammable", {"overdamageProtection", 1}},
-                drops = {"nilArtifact"}
+                drops = {"blueArtifact"}
             }
         },
         buildings = {
@@ -1582,7 +1582,7 @@ if settings.startup["rampantFixed--fastEnemy"].value then
                 majorResistances = {},
                 minorResistances = {"explosion"},
                 attributes = {"quickCooldown", "quickMovement", "not-flammable", {"longRangeImmunity", 20}},			
-                drops = {"nilArtifact"}
+                drops = {"purpleArtifact"}
             },
             {
                 type = "spitter",
@@ -1591,7 +1591,7 @@ if settings.startup["rampantFixed--fastEnemy"].value then
                 majorResistances = {},
                 minorResistances = {"explosion"},
                 attributes = {"quickCooldown", "quickMovement", "not-flammable", {"longRangeImmunity", 25}, {"bonusRange", -2}},			
-                drops = {"nilArtifact"}
+                drops = {"purpleArtifact"}
             }
         },
         buildings = {
@@ -1667,7 +1667,7 @@ if settings.startup["rampantFixed--JuggernautEnemy"].value then
                 minorResistances = {"acid"},
                 attributes = {"highestHealth", "longReach", "bigger",
                               {"movement", 0.8}, "altBiterArmored", "poisonDeathCloud"},	
-                drops = {"nilArtifact"}
+                drops = {"greenArtifact"}
             }
         },
         buildings = {
@@ -1728,7 +1728,7 @@ if settings.startup["rampantFixed--ArachnidsEnemy"].value then
                 attackAttributes = {"melee", "acid", "acidPool"},
                 name = "biter",
                 immunity = {"acid", "poison"},
-                minorResistances = {"fire"},
+                minorResistances = {"laser", "fire"},
                 majorWeaknesses = {"physical"},
                 attributes = {"highestHealth", {"movement", 0.8}, "altBiterArachnid", {"spawnOnDeath", "egg", 0, 1, "drone"}},	
                 drops = {"nilArtifact"}
@@ -1738,8 +1738,8 @@ if settings.startup["rampantFixed--ArachnidsEnemy"].value then
                 attackAttributes = {"touch", "acid"},
                 name = "egg",
                 immunity = {"acid", "poison"},
-				majorResistances = {"laser", "explosion"}, 
-                minorResistances = {"fire", "electric"},
+				majorResistances = {"laser", "explosion", "fire"}, 
+                minorResistances = {"electric"},
                 majorWeaknesses = {"physical"},
                 attributes = {"egg", "notInKillStatistics", {"clusterDeath", "biter", 1}},			--{"clusterDeath", "biter", 2}
                 drops = {}
@@ -1750,10 +1750,10 @@ if settings.startup["rampantFixed--ArachnidsEnemy"].value then
                 type = "biter-spawner",
                 name = "biter-spawner",
 				immunity = {"electric", "acid", "poison"},	
-                minorResistances = {"fire"},
+                minorResistances = {"laser","fire"},
                 attributes = {},
                 acceptRate = {1, 10, 0.4, 0.6},
-                drops = {"purpleArtifact"},
+                drops = {"nilArtifact"},
                 buildSets = {
                     {"biter", 1, 10}
                 }
@@ -1762,20 +1762,22 @@ if settings.startup["rampantFixed--ArachnidsEnemy"].value then
                 type = "turret",
                 name = "worm",
 				immunity = {"electric", "acid", "poison"},	
-                minorResistances = {"fire"},
+                minorResistances = {"laser","fire"},
+                majorWeaknesses = {"physical"},
                 acceptRate = {1, 10, 0.4, 0.6},
                 attackAttributes = {"spit", "acidPool"},
                 attributes = {},
-                drops = {"purpleArtifact"}
+                drops = {"nilArtifact"}
             },
             {
                 type = "hive",
                 name = "hive",
 				immunity = {"electric", "acid", "poison"},	
-                minorResistances = {"fire"},
+                minorResistances = {"laser","fire"},
+                majorWeaknesses = {"physical"},
                 attributes = {},
                 acceptRate = {2, 10, 0.001, 0.0175},
-                drops = {"purpleArtifact"},
+                drops = {"nilArtifact"},
                 buildSets = {
                     {"biter", 1, 10}
                 }

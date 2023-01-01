@@ -540,12 +540,33 @@ data:extend({
         },
 
         {
+            type = "double-setting",
+            name = "rampantFixed--undergroundAttackProbability",
+            setting_type = "runtime-global",
+            minimum_value = 0.01,
+            maximum_value = 0.50,
+            default_value = 0.15,
+            order = "m[total]-c5[ai]",
+            per_user = false
+        },
+
+        {
             type = "bool-setting",
             name = "rampantFixed--permanentNocturnal",
             description = "rampantFixed--permanentNocturnal",
             setting_type = "runtime-global",
             default_value = false,
             order = "m[total]-a[ai]",
+            per_user = false
+        },
+		
+        {
+            type = "bool-setting",
+            name = "rampantFixed--allowDaytimePlayerHunting",
+            description = "rampantFixed--allowDaytimePlayerHunting",
+            setting_type = "runtime-global",
+            default_value = false,
+            order = "m[total]-a[ai]2",
             per_user = false
         },
 
@@ -1040,6 +1061,17 @@ data:extend({
             minimum_value = 0,
             default_value = 20,
             order = "b[modifier]-c[threshold]",
+            per_user = false
+        },
+
+        {
+            type = "int-setting",
+            name = "rampant--max-evo-dist",
+            setting_type = "startup",
+            default_value = 9600,
+            minimum_value = 1000,
+            maximum_value = 1000000,
+            order = "c[max]-k[evolution]",
             per_user = false
         }
 
