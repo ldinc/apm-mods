@@ -15,6 +15,7 @@ local icons     = require "lib.icons"
 local energy    = require "lib.entities.buildings.energy"
 local labs      = require "lib.entities.buildings.labs"
 local pumpjacks = require "lib.entities.buildings.pumpjacks"
+local storages  = require "lib.entities.buildings.storages"
 
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
@@ -742,6 +743,10 @@ function apm.bob_rework.lib.override.tech()
     rm(t.science.logistics, labs.basic)
     push(t.electronics.advanced.I, labs.basic)
     push(t.electricity, energy.generator.burner)
+
+    rm(t.fluid.control.basic, storages.tank.small.basic)
+    rm(t.fluid.control.basic, storages.tank.small.inline)
+    push('minibuffer', 'minibuffer-allcorners')
     
     -- fix yellow science pack tech icon
     apm.lib.utils.technology.mod.icon(t.science.automation, '__base__/graphics/technology/utility-science-pack.png')

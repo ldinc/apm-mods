@@ -20,6 +20,10 @@ local bob = {
 
     generator = {
         burner = 'bob-burner-generator',
+        steam = {
+            basic = '',
+            advanced = '',
+        },
     },
 
     valve = {

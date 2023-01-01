@@ -1,4 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.22.80
+Date: 31. 12. 2022
+  Fixed:
+    - All corners Minibuffer: pipe behavior (passing liquid...)
+---------------------------------------------------------------------------------------------------
+Version: 0.22.79
+Date: 31. 12. 2022
+  Added:
+    - All corners Minibuffer as small inline tank (WARNING: in progress, work in progress)
+---------------------------------------------------------------------------------------------------
+Version: 0.22.78
+Date: 28. 12. 2022
+  Balanced:
+    - Recipies for small storage tanks
+  Added:
+    - Minibuffer as small inline tank (good graphics, maybe later bob's small storage tanks will be droped)
+  Fixed:
+    - Recipies for boilers (invalid ingredients)
+---------------------------------------------------------------------------------------------------
 Version: 0.22.77
 Date: 25. 12. 2022
   Balanced:

@@ -175,7 +175,6 @@ local t = {
         },
         steam = {
             engine = {
-                basic = 'apm_steam_engine',
                 advanced = 'bob-steam-engine-2',
             },
         },

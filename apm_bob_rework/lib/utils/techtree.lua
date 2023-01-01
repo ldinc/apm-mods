@@ -460,16 +460,16 @@ local isTechResearchable = function (tree, tItem)
         return nil
     end
 
-    for product in pairs(requirements.products) do
+    for product, v in pairs(requirements.products) do
         local value = tree.cache.products[product]
-        if value ~= nil then
-            requirements.products[product].source = value.source
+        if value then
+            requirements.products[product] = {source = value.source}
         end
     end
 
-    for craftingGroup in pairs(requirements.craftingGroups) do
+    for craftingGroup, v in pairs(requirements.craftingGroups) do
         local value = tree.cache.craftingGroups[craftingGroup]
-        if value ~= nil then
+        if value then
             requirements.craftingGroups[craftingGroup].source = value.source
         end
     end
@@ -748,6 +748,9 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
 
     tree.cursor.current = startingTName
     treeWalk(tree)
+
+    -- log(json.encode(tree))
+
     treeOptimize(tree)
     inGameLinkTech(tree)
 

@@ -16,6 +16,19 @@ local g = {
                 base = base..'entities/burner-pumpjack/',
             },
         },
+        minibuffer = {
+            allcorners = {
+                icon = {icon=base.."icons/all-corners-tank.png", icon_size=64},
+                base = {
+                    lr = base.."entities/all-corners-tank/lr-base.png",
+                    hr = base.."entities/all-corners-tank/base.png",
+                },
+                shadow = {
+                    lr = base.."entities/all-corners-tank/lr-shadow.png",
+                    hr = base.."entities/all-corners-tank/shadow.png",
+                },
+            },
+        },
     },
 
     arahnids = {

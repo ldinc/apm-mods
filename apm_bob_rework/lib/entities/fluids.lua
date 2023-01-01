@@ -14,7 +14,11 @@ local fluids =  {
     },
 
     tank = {
-        small = 'abr_small_tank',
+        minibuffer = 'minibuffer',
+        small = {
+            inline = 'bob-small-inline-storage-tank',
+            cross = 'bob-small-storage-tank',
+        },
     },
 }
 
