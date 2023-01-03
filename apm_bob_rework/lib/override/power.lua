@@ -92,9 +92,9 @@ apm.bob_rework.lib.override.power = function ()
     boiler("heat-exchanger-3", 0.9,  "32000kW")
 
     reactor("burner-reactor", 0.8, "15000kW", 0.2)
-    reactor("burner-reactor-2", 0.85, "21000kW", 0.4)
-    reactor("burner-reactor-3", 0.9, "25000kW", 0.6)
+    -- reactor("burner-reactor-2", 0.85, "21000kW", 0.4)
+    -- reactor("burner-reactor-3", 0.9, "25000kW", 0.6)
     reactor("fluid-reactor", 0.8, "15000kW", 0.2)
-    reactor("fluid-reactor-2", 0.85, "21000kW", 0.4)
-    reactor("fluid-reactor-3", 0.9, "25000  kW", 0.6)
+    -- reactor("fluid-reactor-2", 0.85, "21000kW", 0.4)
+    -- reactor("fluid-reactor-3", 0.9, "25000  kW", 0.6)
 end

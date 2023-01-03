@@ -250,8 +250,8 @@ if mods.bobtech and apm_power_compat_bob then
 end
 
 if mods.bobwarfare and apm_power_compat_bob then
-	apm.lib.utils.technology.remove.prerequisites('radars', 'military')
-	apm.lib.utils.technology.add.prerequisites('radars', 'military-2')
+	apm.lib.utils.technology.remove.prerequisites('radar-1', 'military')
+	apm.lib.utils.technology.add.prerequisites('radar-1', 'military-2')
 end
 
 if mods.bobpower and apm_power_compat_bob then
