@@ -616,7 +616,6 @@ function apm.bob_rework.lib.override.tech()
     free('bob-laser-turrets-3')
     free('bob-artillery-turret-3')
     free('bob-artillery-turret-2')
-    free('radars-2')
 
     free('personal-roboport-mk4-equipment')
     free('personal-roboport-mk3-equipment')

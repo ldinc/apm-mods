@@ -755,7 +755,13 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     inGameLinkTech(tree)
 
     -- log(json.encode(tree))
-    describe('bob-steam-engine-2',tree)
+    local why = function (name)
+        describe(name, tree)
+    end
+    -- describe('bob-steam-engine-2', tree)
+    why('space-science-pack')
+    why('bob-nuclear-power-3')
+    why('deuterium-fuel-reprocessing')
 
     log('total handled technologies count '..tostring(tree.technologies.all[tree.cursor.current].ID))
 end

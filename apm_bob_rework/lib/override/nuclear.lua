@@ -1,3 +1,4 @@
+local energy = require "lib.entities.buildings.energy"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -52,6 +53,7 @@ local buildNuclearRecipies = function()
     mod(recipe, m.refined.concrete, 1250)
     mod(recipe, t.red.frame, 25)
     mod(recipe, alloys.tungstenCarbide, 1250)
+    apm.lib.utils.recipe.ingredient.replace(recipe, 'heat-pipe-4', energy.heat.pipe.extra)
 
     recipe = nuclear.rtg
     mod(recipe, 'apm_oxide_pellet_pu239', 2)
