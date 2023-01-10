@@ -79,7 +79,7 @@ apm.lib.utils.technology.add.prerequisites('logistic-science-pack', 'automation'
 --apm.lib.utils.technology.add.science_pack('logistic-science-pack', 'apm_industrial_science_pack', 1)
 apm.lib.utils.technology.force.recipe_for_unlock('logistic-science-pack', 'lab')
 
--- apm.lib.utils.technology.force.recipe_for_unlock('military-2', 'radar')
+apm.lib.utils.technology.force.recipe_for_unlock('military-2', 'radar')
 
 apm.lib.utils.technology.add.prerequisites('heavy-armor', 'apm_puddling_furnace_0')
 apm.lib.utils.technology.remove.prerequisites('heavy-armor', 'steel-processing')
