@@ -1,8 +1,8 @@
 require('util')
 require('__apm_lib_ldinc__.lib.log')
-local graphics = require('lib.entities.graphics')
+local inline_storage_tank = require('graphics.inline_storage_tank')
 
-local sprites = graphics.enitity.minibuffer.allcorners
+local sprites = inline_storage_tank
 
 local empty = {
     filename = "__core__/graphics/empty.png",
@@ -11,16 +11,25 @@ local empty = {
         height = 1
 }
 
-local pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
+local ppPath = '__apm_resource_pack_ldinc__/graphics/entities/'
+
+local pipe_picture =
+{
+    north = empty,
+    east = empty,
+    south = sprites.pipe_picture.south,
+    west = empty
+}
+
 
 local tank = {}
 tank.type = "storage-tank"
-tank.name = "minibuffer-allcorners"
+tank.name = "apm_inline_storage_tank"
 tank.icons = {sprites.icon}
-tank.localised_description = { "entity-description.minibuffer-allcorners" }
+tank.localised_description = { "entity-description.apm_inline_storage_tank" }
 --sinkhole.icon_size = 32
 tank.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-tank.minable = { mining_time = 0.2, result = "minibuffer-allcorners" }
+tank.minable = { mining_time = 0.2, result = "apm_inline_storage_tank" }
 tank.max_health = 400
 tank.corpse = "small-remnants"
 tank.dying_explosion = "medium-explosion"
@@ -42,36 +51,36 @@ tank.selection_box = { { -0.5, -0.5 }, { 0.5, 0.5 } }
 local pic = {
     layers = {
         {
-            filename = sprites.base.lr,
+            filename = sprites.base.lr.path,
             priority = "high",
-            width = 144,
-            height = 128,
-            scale = 0.2,
-            shift = {0.71875, -0.1875},
+            width = sprites.base.lr.w,
+            height = sprites.base.lr.h,
+            scale = sprites.base.lr.scale,
+            shift = sprites.base.lr.shift,
             hr_version = {
-                filename = sprites.base.hr,
+                filename = sprites.base.hr.path,
                 priority = "high",
-                width = 576,
-                height = 512,
-                scale = 0.2,
-                shift = {0.71875, -0.1875},
+                width = sprites.base.hr.w,
+                height = sprites.base.hr.h,
+                scale = sprites.base.hr.scale,
+                shift = sprites.base.hr.shift,
             },
         },
         {
-            filename = sprites.shadow.lr,
+            filename = sprites.shadow.lr.path,
             priority = "high",
-            width = 144,
-            height = 128,
-            scale = 0.2,
-            shift = {0.71875, -0.1875},
+            width = sprites.shadow.lr.w,
+            height = sprites.shadow.lr.h,
+            scale = sprites.shadow.lr.scale,
+            shift = sprites.shadow.lr.shift,
             draw_as_shadow = true,
             hr_version = {
-                filename = sprites.shadow.hr,
+                filename = sprites.shadow.hr.path,
                 priority = "high",
-                width = 576,
-                height = 512,
-                scale = 0.2,
-                shift = {0.71875, -0.1875},
+                width = sprites.shadow.hr.w,
+                height = sprites.shadow.hr.h,
+                scale = sprites.shadow.hr.scale,
+                shift = sprites.shadow.hr.shift,
                 draw_as_shadow = true,
             },
         },
@@ -97,12 +106,13 @@ local base_area = 30
 
 tank.two_direction_only = false
 tank.fluid_box = {}
--- tank.fluid_box.production_type = "input"
--- sinkhole.fluid_boxes[1].pipe_picture = pipe_picture
-tank.fluid_box.pipe_covers = pipe_covers
+tank.fluid_box.pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
+tank.fluid_box.pipe_picture = pipe_picture
 tank.fluid_box.base_area = base_area
 tank.fluid_box.base_level = 0
 tank.fluid_box.filter = ""
+-- tank.fluid_box.pipe_covers = pipecoverspictures()
+tank.hide_connection_info = true
 tank.fluid_box.pipe_connections = {
     {
         type = "input-output",
@@ -121,13 +131,13 @@ tank.fluid_box.pipe_connections = {
         position = {-1, 0},
     }
 }
-tank.fluid_box.secondary_draw_orders = { north = -1, south = 1, west = -1, east = 1 }
+-- tank.fluid_box.secondary_draw_orders = { north = -1, south = 1, west = -1, east = 1 }
 
 tank.window_bounding_box = {util.by_pixel(-3, -5), util.by_pixel(3, 11)}
 
 tank.flow_length_in_ticks = 360
 
-circuit_connector_definitions["minibuffer-allcorners"] = circuit_connector_definitions.create
+circuit_connector_definitions["apm_inline_storage_tank"] = circuit_connector_definitions.create
 (
   universal_connector_template,
   {

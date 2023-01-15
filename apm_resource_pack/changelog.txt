@@ -1,10 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.23.06
+Date: 12.01.2023
+  Changes:
+    - fixed: inline storage tank pipe_picture
+---------------------------------------------------------------------------------------------------
+Version: 0.23.05
+Date: 12.01.2023
+  Changes:
+    - added: inline storage tank
+---------------------------------------------------------------------------------------------------
 Version: 0.23.02
 Date: 06.09.2022
   Changes:
     - fixed: low resolution atlas for asphalt
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.02
+Version: 0.23.01
 Date: 07.05.2022
   Changes:
     - added: sinkhole for fluids
@@ -15,12 +25,12 @@ Date: 11.01.2022
     - reworked: personal energy transmitter
     - synced: with other mods
 ---------------------------------------------------------------------------------------------------
-Version: 0.21.02
+Version: 0.21.01
 Date: 13. 6. 2021
   Changes:
     - added: accumulator discharger equipment icon & entity graphics
 ---------------------------------------------------------------------------------------------------
-Version: 0.21.02
+Version: 0.21.00
 Date: 13. 6. 2021
   Changes:
     - added electric air cleaner (w\ new entity animation)

@@ -56,7 +56,3 @@ require('prototypes.main.technologies')
 require('prototypes.main.entities.burner-pumpjack')
 require('prototypes.main.items.entities.burner-pumpjack')
 require('prototypes.main.recipes.entities.burner-pumpjack')
-
-require('prototypes.main.entities.all-corners-minibuffer')
-require('prototypes.main.items.entities.all-corners-minibuffer')
-require('prototypes.main.recipes.entities.all-corners-minibuffer')

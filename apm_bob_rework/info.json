@@ -1,11 +1,11 @@
 {
     "name": "apm_bob_rework_ldinc",
-    "version": "0.22.81",
+    "version": "0.22.82",
     "title": "APM bob's extra compability",
     "author": "ldinc",
     "dependencies": [
         "base >= 0.18.26",
-        "apm_bob_rework_resource_pack_ldinc >= 0.22.70",
+        "apm_bob_rework_resource_pack_ldinc >= 0.22.71",
         "apm_resource_pack_ldinc >= 0.21.00",
         "apm_lib_ldinc >= 0.22.05",
         "apm_power_ldinc >= 0.22.07",
@@ -27,12 +27,10 @@
         "bobtech >= 1.1.3",
         "bobvehicleequipment >= 1.1.2",
         "bobwarfare >= 1.1.3",
-        "extra-storage-tank-minibuffer >= 0.1.4",
         "?AtomicArtillery >= 0.2.3",
         "?Flare Stack >= 2.2.10",
         "?LogisticTrainNetwork >= 1.16.0",
         "?Rampant >= 1.0.9",
-        "?RampantFixed >= 1.4.4",
         "?RampantArsenal >= 1.0.8",
         "?electricboiler >= 1.1.0"
     ],

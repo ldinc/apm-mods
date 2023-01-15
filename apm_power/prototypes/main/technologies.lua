@@ -284,7 +284,7 @@ apm.lib.utils.technology.new('apm_power',
 apm.lib.utils.technology.new('apm_power',
     'apm_fluid_control-1',
     {'apm_water_supply-1'}, 
-    {'apm_pump_0', 'apm_valve_0', 'apm_valve_1', 'apm_valve_2'},
+    {'apm_pump_0', 'apm_valve_0', 'apm_valve_1', 'apm_valve_2', 'apm_inline_storage_tank'},
     {{"apm_industrial_science_pack", 1}},
     50, 15)
 

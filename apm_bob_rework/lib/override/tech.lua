@@ -750,8 +750,7 @@ function apm.bob_rework.lib.override.tech()
 
     rm(t.fluid.control.basic, storages.tank.small.basic)
     rm(t.fluid.control.basic, storages.tank.small.inline)
-    push('minibuffer', 'minibuffer-allcorners')
-    
+
     -- fix yellow science pack tech icon
     apm.lib.utils.technology.mod.icon(t.science.automation, '__base__/graphics/technology/utility-science-pack.png')
 
