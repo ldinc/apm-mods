@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/integrations/recipe-categories.lua'
@@ -12,7 +12,8 @@ local apm_power_always_show_made_in = settings.startup["apm_power_always_show_ma
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
 local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"].value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
-local apm_power_compat_angel_overhaul_machine_frames = settings.startup["apm_power_compat_angel_overhaul_machine_frames"].value
+local apm_power_compat_angel_overhaul_machine_frames = settings.startup["apm_power_compat_angel_overhaul_machine_frames"
+    ].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
 local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"].value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
@@ -75,7 +76,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.Bio_Industries and apm_power_compat_bio_industries then
-	apm.lib.utils.recipe.category.overwrite_all('biofarm-mod-crushing', 'apm_crusher')
+    apm.lib.utils.recipe.category.overwrite_all('biofarm-mod-crushing', 'apm_crusher')
     apm.lib.utils.recipe.category.change('bi_recipe_woodpulp', 'apm_crusher')
     if apm_power_always_show_made_in then
         apm.lib.utils.recipe.set.always_show_made_in('bi_recipe_woodpulp', true)
@@ -96,9 +97,14 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_0', 'ore-sorting-t1')
-    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'ore-sorting-t1')
-    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting-t1')
+    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_0', 'ore-sorting')
+
+    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'ore-sorting')
+    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'ore-sorting-2')
+
+    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting')
+    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting-2')
+    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting-3')
 
     apm.lib.utils.assembler.mod.category.add('burner-ore-crusher', 'apm_crusher')
     apm.lib.utils.assembler.mod.category.add('ore-crusher', 'apm_crusher')

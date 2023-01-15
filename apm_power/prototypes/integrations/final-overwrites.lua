@@ -102,8 +102,15 @@ if mods.angelsrefining and apm_power_compat_angel then
 	-- unification of mud items:
 	apm.lib.utils.recipe.result.replace_all('solid-mud', 'apm_wet_mud')
 	apm.lib.utils.recipe.ingredient.replace_all('solid-mud', 'apm_dry_mud')
+	local crusher = data.raw["assembling-machine"]['burner-ore-crusher']
+	if crusher then
+		crusher.next_upgrade = ''
+	end
+
 
 	apm.lib.utils.item.remove('apm_crushed_stone')
+
+
 end
 
 if mods.angelspetrochem and apm_power_compat_angel then
