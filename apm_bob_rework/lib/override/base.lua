@@ -64,6 +64,8 @@ require('lib.override.barrels')
 require('lib.override.storage-tanks')
 require('lib.override.ammo')
 
+require('lib.override.wood')
+
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.crushers()
     apm.bob_rework.lib.override.simpleEngines()

@@ -16,7 +16,6 @@ local buildBelts = function(tier)
     add(tier.bearing, 2)
     add(tier.constructionAlloy, 1)
     add(p.rubber, 2)
-    add(recipe, 2)
 
     recipe = tier.underBelt
     clear()
