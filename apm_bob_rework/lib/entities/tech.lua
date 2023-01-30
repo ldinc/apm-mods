@@ -41,6 +41,17 @@ local t = {
 
     boiler = {
         electric = 'electric-boiler',
+        burner = {
+            advanced = 'bob-boiler-2',
+        },
+    },
+
+    coking ={
+        plant = {
+            basic = 'apm_coking_plant_0',
+            advanced = 'apm_coking_plant_1',
+            extra = 'apm_coking_plant_2',
+        },
     },
 
     puddling = {furnace = 'apm_puddling_furnace_0'},
@@ -182,6 +193,12 @@ local t = {
             basic = 'solar-energy',
             advanced = 'bob-solar-energy-2',
             expert = 'bob-solar-energy-3',
+        },
+        heat = {
+            exchanger = 'bob-heat-exchanger-1',
+            pipe = {
+                basic = 'bob-heat-pipe-1',
+            },
         },
     },
 

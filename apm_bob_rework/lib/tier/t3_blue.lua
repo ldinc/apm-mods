@@ -39,6 +39,7 @@ local blueTier = {
     underBelt = delivery.underground.belt.blue,
     splitter = delivery.splitter.blue,
     loader = delivery.loader.blue,
+    stacker = delivery.stacker.blue,
     pump = pump.blue,
     wire = wire.gilded.copper,
     battery = p.battery.Z,

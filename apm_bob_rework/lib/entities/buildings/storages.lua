@@ -3,7 +3,6 @@ local storages = {
         wooden = 'wooden-chest',
         iron = 'iron-chest',
         steel = 'steel-chest',
-        brass = 'brass-chest',
         titanium = 'titanium-chest',
     },
 

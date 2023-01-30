@@ -35,8 +35,17 @@ local buildGreenhousesRecipe = function(recipe, tier)
     end
 end
 
+local next = function (target, next_upgrade)
+    local itm = data.raw["assembling-machine"][target]
+    if itm then itm.next_upgrade = next_upgrade end
+end
+
 apm.bob_rework.lib.override.greenhouses = function()
     buildGreenhousesRecipe(g.burner, t.gray)
     buildGreenhousesRecipe(g.steam, t.steam)
     buildGreenhousesRecipe(g.basic, t.red)
+
+    -- fix next_upgrade
+    next(g.burner, g.steam)
+    next(g.steam, g.basic)
 end

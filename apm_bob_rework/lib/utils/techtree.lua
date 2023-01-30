@@ -58,7 +58,8 @@ local linkedTechMap = {
     [t.processing.oil.basic] = {t.science.chemical},
     [t.battery.liio] = {t.science.chemical},
     [t.logistics.rail.signals] = {t.science.logistics},
-    [t.logistics.automobile.basic] = {t.science.logistics},
+    -- [t.logistics.automobile.basic] = {t.science.logistics},
+    [t.logistics.automobile.basic] = {t.materials.rubber.vulcano},
     [t.logistics.inserters.red] = {t.science.logistics},
     [t.electronics.basic] = {t.science.steam},
     -- red sp bindings
@@ -76,6 +77,7 @@ local linkedTechMap = {
     [t.nuclear.portable.reactor] = {t.science.nuclear},
     [t.nuclear.thorium] = {t.science.nuclear, t.nuclear.thorium_breeder},
     [t.nuclear.fuel.product] = {t.science.nuclear, t.nuclear.synthesys.plutonium},
+    [t.energy.heat.pipe.basic] = {t.boiler.burner.advanced},
 }
 
 local getLinks = function()
@@ -235,6 +237,13 @@ local setupResearchFlag = function (tree)
     end
 end
 
+local specialTechBufs = {}
+specialTechBufs['long-inserters-1'] = true
+specialTechBufs['long-inserters-2'] = true
+specialTechBufs['near-inserters'] = true
+specialTechBufs['more-inserters-1'] = true
+specialTechBufs['more-inserters-2'] = true
+
 local setupTechnologyFlags = function (tree)
 
     local modulesHashMap = modulesHashMap()
@@ -244,6 +253,10 @@ local setupTechnologyFlags = function (tree)
         tItem.isEmpty = technologyIsEmpty(tItem.ref)
 
         if technologyHasRecipeToUnlock(tItem.ref) == false and tItem.isEmpty == false then
+            tItem.isBuff = true
+        end
+        local isSpecial = specialTechBufs[tItem.ref.name]
+        if isSpecial then
             tItem.isBuff = true
         end
 
@@ -286,7 +299,7 @@ end
 
 local disableEmptyTechnologies = function (tree)
     for tName, tItem in pairs(tree.technologies.all) do
-        if tItem.isEmpty then
+        if tItem.isEmpty and not tItem.isBuff then
             log('technology ['..tName..'] was disabled (empty)')
             apm.lib.utils.technology.disable(tItem.ref)
             tItem.ref.hidden = true
@@ -759,9 +772,9 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
         describe(name, tree)
     end
     -- describe('bob-steam-engine-2', tree)
-    why('space-science-pack')
-    why('bob-nuclear-power-3')
-    why('deuterium-fuel-reprocessing')
-
+    -- why('space-science-pack')
+    -- why('bob-nuclear-power-3')
+    -- why('deuterium-fuel-reprocessing')
+-- 
     log('total handled technologies count '..tostring(tree.technologies.all[tree.cursor.current].ID))
 end

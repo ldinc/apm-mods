@@ -38,6 +38,7 @@ local yellowTier = {
     underBelt = delivery.underground.belt.yellow,
     splitter = delivery.splitter.yellow,
     loader = delivery.loader.yellow,
+    stacker = delivery.stacker.yellow,
     pump = pump.yellow,
     wire = wire.copper,
     battery = p.battery.basic,

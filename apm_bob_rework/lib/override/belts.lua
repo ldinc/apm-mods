@@ -24,7 +24,7 @@ local buildBelts = function(tier)
 
     recipe = tier.splitter
     clear()
-    add(tier.belt, 4)
+    add(tier.belt, 2)
     add(tier.constructionAlloy, 1)
     add(tier.gearWheel, 2)
     add(tier.logic, 1)
@@ -33,11 +33,21 @@ local buildBelts = function(tier)
     recipe = tier.loader
     if recipe then
         clear()
-        add(tier.belt, 4)
-        add(tier.constructionAlloy, 2)
-        add(tier.engine, 1)
+        add(tier.belt, 1)
+        add(tier.constructionAlloy, 1)
         add(tier.logic, 1)
     end
+end
+
+local buildStacker = function (tier)
+    local recipe = tier.stacker
+    local clear = function () apm.lib.utils.recipe.ingredient.remove_all(recipe) end
+    local add = function (itm, cnt) apm.lib.utils.recipe.ingredient.mod(recipe, itm, cnt) end
+    clear()
+    add(tier.constructionAlloy, 10)
+    add(tier.gearWheel, 4)
+    add(tier.belt, 2)
+    add(tier.logic, 2)
 end
 
 apm.bob_rework.lib.override.belts = function()
@@ -45,4 +55,8 @@ apm.bob_rework.lib.override.belts = function()
     buildBelts(t.yellow)
     buildBelts(t.red)
     buildBelts(t.blue)
+
+    buildStacker(t.yellow)
+    buildStacker(t.red)
+    buildStacker(t.blue)
 end

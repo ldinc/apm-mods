@@ -63,6 +63,9 @@ require('lib.override.spawner_reskin')
 require('lib.override.barrels')
 require('lib.override.storage-tanks')
 require('lib.override.ammo')
+require('lib.override.chests')
+
+-- require('lib.override.deadlock')
 
 require('lib.override.wood')
 

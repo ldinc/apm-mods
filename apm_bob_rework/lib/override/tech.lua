@@ -744,12 +744,48 @@ function apm.bob_rework.lib.override.tech()
     free('bob-heat-pipe-4')
     -- free('radars')
 
+    local tname = 'long-inserters-1'
+    local spdrop = function (sp)
+        apm.lib.utils.technology.remove.science_pack(tname, sp)
+    end
+    local rbind = function (from, to)
+        apm.lib.utils.technology.remove.prerequisites(tname, from)
+        apm.lib.utils.technology.add.prerequisites(tname, to)
+    end
+    spdrop('automation-science-pack')
+    spdrop('apm_steam_science_pack')
+    rbind('logistics', 'logistics-0')
+
+    tname = 'near-inserters'
+    spdrop('automation-science-pack')
+    spdrop('apm_steam_science_pack')
+    rbind('logistics', 'logistics-0')
+
+    tname = 'more-inserters-1'
+    spdrop('logistic-science-pack')
+    rbind('logistics-2', 'logistics')
+
+    tname = 'more-inserters-2'
+    spdrop('chemical-science-pack')
+    spdrop('advanced-logistic-science-pack')
+    bind(tname, 'logistics-2')
+
+    tname = 'long-inserters-2'
+    spdrop('chemical-science-pack')
+    rbind('logistics-3', 'logistics-2')
+
+    
     rm(t.science.logistics, labs.basic)
     push(t.electronics.advanced.I, labs.basic)
     push(t.electricity, energy.generator.burner)
 
     rm(t.fluid.control.basic, storages.tank.small.basic)
     rm(t.fluid.control.basic, storages.tank.small.inline)
+
+    push(t.sieve.burner, 'apm_dry_mud_util')
+
+    free('basic-transport-belt-beltbox')
+    free('deadlock-stacking-0')
 
     -- fix yellow science pack tech icon
     apm.lib.utils.technology.mod.icon(t.science.automation, '__base__/graphics/technology/utility-science-pack.png')

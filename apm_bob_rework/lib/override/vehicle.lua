@@ -1,4 +1,6 @@
 local plates = require "lib.entities.plates"
+local product = require "lib.entities.product"
+
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -31,6 +33,7 @@ local buildCar = function (recipe, tier, engine, count)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 15)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.extraConstructionAlloy, 10)
     apm.lib.utils.recipe.ingredient.mod(recipe, engine, count)
+    apm.lib.utils.recipe.ingredient.mod(recipe, product.rubber, 40)
 end
 
 local buildTank = function (recipe, tier, engine, count)
@@ -46,7 +49,7 @@ end
 local update = function ()
     buildOverdriveMotor('vehicle-motor', apm.bob_rework.lib.tier.red, 1)
     buildOverdriveMotor('vehicle-engine', apm.bob_rework.lib.tier.blue, 2)
-    buildCar('car', apm.bob_rework.lib.tier.yellow, apm.bob_rework.lib.entities.engineUnit, 1)
+    buildCar('car', apm.bob_rework.lib.tier.gray, 'apm_simple_engine', 2)
     buildCar('apm_electric_car', apm.bob_rework.lib.tier.red, apm.bob_rework.lib.entities.electricEngineUnit, 4)
     --
     buildTank('tank', apm.bob_rework.lib.tier.red, apm.bob_rework.lib.entities.engineUnit, 32)

@@ -33,6 +33,11 @@ apm.bob_rework.lib.override.genAssembler = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.rubber, 5 + tier.level * 2)
 end
 
+local next = function (target, next_upgrade)
+    local itm = data.raw["assembling-machine"][target]
+    if itm then itm.next_upgrade = next_upgrade end
+end
+
 apm.bob_rework.lib.override.assemblers = function()
     local gen = apm.bob_rework.lib.override.genAssembler
     gen(asmbl.burner, t.gray)
@@ -40,4 +45,9 @@ apm.bob_rework.lib.override.assemblers = function()
     gen(asmbl.yellow, t.yellow)
     gen(asmbl.red, t.red)
     gen(asmbl.blue, t.blue)
+
+    -- fix next_upgrade
+    next(asmbl.steam, asmbl.yellow)
+    next(asmbl.yellow, asmbl.red)
+    next(asmbl.red, asmbl.blue)
 end

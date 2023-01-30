@@ -32,11 +32,11 @@ sieve.icons = {
 sieve.localised_description = {"entity-description.apm_burner_sieve"}
 --sieve.icon_size = 32
 sieve.flags = {"placeable-neutral", "placeable-player", "player-creation"}
-sieve.minable = {mining_time = 0.2, result = "apm_sieve_0"}
+sieve.minable = {mining_time = 0.2, result = "apm_burner_sieve"}
 sieve.crafting_categories = {"apm_sifting_0"}
 sieve.crafting_speed = 0.75
 sieve.fast_replaceable_group = "apm_sieve"
-sieve.next_upgrade = nil
+sieve.next_upgrade = "apm_sieve_0"
 sieve.max_health = 250
 sieve.corpse = "big-remnants"
 sieve.dying_explosion = "medium-explosion"

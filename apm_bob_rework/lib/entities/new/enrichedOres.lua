@@ -74,35 +74,35 @@ local generateCommonEnriched = function(ore, tint)
     data:extend({ item })
 
     -- recipe
-    local recipe = {}
-    recipe.type = "recipe"
-    recipe.name = target
-    recipe.category = "apm_sifting_0"
-    recipe.icons = { ico, tier }
-    recipe.subgroup  = 'bob-resource'
-    recipe.normal = {}
-    recipe.normal.enabled = false
-    recipe.normal.hide_from_player_crafting = true
-    recipe.normal.energy_required = settings.sieveEnergyRequired
-    recipe.normal.ingredients = {
+    local recipe                             = {}
+    recipe.type                              = "recipe"
+    recipe.name                              = target
+    recipe.category                          = "apm_sifting_0"
+    recipe.icons                             = { ico, tier }
+    recipe.subgroup                          = 'bob-resource'
+    recipe.normal                            = {}
+    recipe.normal.enabled                    = false
+    recipe.normal.hide_from_player_crafting  = true
+    recipe.normal.energy_required            = settings.sieveEnergyRequired
+    recipe.normal.ingredients                = {
         { type = "item", name = crushedName, amount = settings.crushedOreAmount },
         { type = "item", name = 'apm_sieve_iron', amount = settings.sieveAmount },
     }
-    recipe.normal.results = {
+    recipe.normal.results                    = {
         { type = 'item', name = target, amount = settings.enrichedResultAmount.sieve },
         { type = 'item', name = 'apm_dry_mud', amount = settings.dryMudAmout },
         { type = "item", name = 'apm_sieve_iron', amount = settings.sieveAmount, probability = settings.sieveProbability },
     }
-    recipe.normal.main_product = target
+    recipe.normal.main_product               = target
     recipe.normal.requester_paste_multiplier = 4
-    recipe.normal.always_show_products = true
-    recipe.normal.always_show_made_in = true
-    recipe.expensive = table.deepcopy(recipe.normal)
-    recipe.expensive.ingredients = {
+    recipe.normal.always_show_products       = true
+    recipe.normal.always_show_made_in        = true
+    recipe.expensive                         = table.deepcopy(recipe.normal)
+    recipe.expensive.ingredients             = {
         { type = "item", name = crushedName, amount = settings.crushedOreAmount + 2 },
         { type = "item", name = 'apm_sieve_iron', amount = settings.sieveAmount },
     }
-    recipe.allow_decomposition = false
+    recipe.allow_decomposition               = false
     data:extend({ recipe })
 
 end
@@ -122,39 +122,39 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     local target = enriched(ore)
     local crushedName = crushed(ore)
 
-    local recipe = {}
-    recipe.type = "recipe"
-    recipe.name = recipeName
-    recipe.category = "chemistry"
-    recipe.icons = {
+    local recipe                             = {}
+    recipe.type                              = "recipe"
+    recipe.name                              = recipeName
+    recipe.category                          = "chemistry"
+    recipe.icons                             = {
         ico, tier
     }
-    recipe.subgroup  = 'bob-resource'
-    recipe.normal = {}
-    recipe.normal.enabled = false
-    recipe.normal.hide_from_player_crafting = true
-    recipe.normal.energy_required = settings.floatationEnergyRequired
-    recipe.normal.ingredients = {
+    recipe.subgroup                          = 'bob-resource'
+    recipe.normal                            = {}
+    recipe.normal.enabled                    = false
+    recipe.normal.hide_from_player_crafting  = true
+    recipe.normal.energy_required            = settings.floatationEnergyRequired
+    recipe.normal.ingredients                = {
         { type = "item", name = crushedName, amount = settings.crushedOreAmount },
         { type = "fluid", name = liquid, amount = liquidAmount },
         { type = "fluid", name = extraLiquid, amount = extraLiquidAmount },
     }
-    recipe.normal.results = {
+    recipe.normal.results                    = {
         { type = 'item', name = target, amount = settings.enrichedResultAmount.floatation },
         { type = 'item', name = target, amount_min = 1, amount_max = 2, probability = 0.5 },
         { type = 'fluid', name = 'apm_dirt_water', amount = settings.dirtWaterAmount },
     }
-    recipe.normal.main_product = target
+    recipe.normal.main_product               = target
     recipe.normal.requester_paste_multiplier = 4
-    recipe.normal.always_show_products = true
-    recipe.normal.always_show_made_in = true
-    recipe.expensive = table.deepcopy(recipe.normal)
-    recipe.expensive.ingredients = {
+    recipe.normal.always_show_products       = true
+    recipe.normal.always_show_made_in        = true
+    recipe.expensive                         = table.deepcopy(recipe.normal)
+    recipe.expensive.ingredients             = {
         { type = "item", name = crushedName, amount = settings.crushedOreAmount + 2 },
         { type = "fluid", name = liquid, amount = liquidAmount + 10 },
         { type = "fluid", name = extraLiquid, amount = extraLiquidAmount },
     }
-    recipe.allow_decomposition = true
+    recipe.allow_decomposition               = true
     data:extend({ recipe })
 end
 
@@ -223,3 +223,43 @@ gen(ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
 local tint = { r = 150 / 255, g = 101 / 255, b = 59 / 255 }
 local ore = apm.bob_rework.lib.entities.ore.tungsten
 gen(ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
+
+-- generate new recipe for dry mud
+local recipe = 'apm_dry_mud_util'
+
+local r = {
+    type                = 'recipe',
+    name                = recipe,
+    category            = 'apm_sifting_0',
+    icons               =
+    apm.lib.utils.icon.merge({
+        apm.lib.utils.icon.get.from_item('apm_crushed_stone'),
+        { apm.lib.icons.dynamics.t2 },
+    }),
+    normal              = {
+        enabled                    = false,
+        energy_required            = 4,
+        ingredients                = {
+            { type = 'item', name = 'apm_dry_mud', amount = 36 },
+            { type = 'item', name = 'apm_sieve_iron', amount = 1 },
+        },
+        results                    = {
+            { type = 'item', name = 'apm_crushed_stone', amount = 5 },
+            { type = 'item', name = 'apm_crushed_stone', amount_min = 1, amount_max = 4, probability = 0.4 },
+            { type = 'item', name = 'apm_sieve_iron', amount = 1, probability = 0.95 },
+        },
+        main_product               = 'apm_crushed_stone',
+        requester_paste_multiplier = 6,
+        always_show_products       = true,
+        always_show_made_in        = true,
+    },
+    allow_decomposition = true,
+    expensive           = {},
+}
+r.expensive = table.deepcopy(r.normal)
+r.expensive.ingredients = {
+    { type = 'item', name = 'apm_dry_mud', amount = 42 },
+    { type = 'item', name = 'apm_sieve_iron', amount = 1 },
+}
+
+data:extend({ r })

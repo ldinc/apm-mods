@@ -21,7 +21,15 @@ local buildPumpjack = function(recipe, tier)
     apm.lib.utils.recipe.ingredient.mod(recipe, product.stick, 12)
 end
 
+local next = function (target, next_upgrade)
+    local itm = data.raw["mining-drill"][target]
+    if itm then itm.next_upgrade = next_upgrade end
+end
+
 apm.bob_rework.lib.override.pumpjacks = function ()
     buildPumpjack(pjacks.basic, t.red)
     buildPumpjack(pjacks.advanced, t.blue)
+
+    next(pjacks.burner, pjacks.basic)
+    next(pjacks.basic, pjacks.advanced)
 end

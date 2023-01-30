@@ -41,6 +41,7 @@ local redTier = {
     underBelt              = delivery.underground.belt.red,
     splitter               = delivery.splitter.red,
     loader                 = delivery.loader.red,
+    stacker                = delivery.stacker.red,
     pump                   = pump.red,
     wire                   = wire.unsulated,
     battery                = p.battery.LiIon,
