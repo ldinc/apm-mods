@@ -62,6 +62,10 @@ local pipes = {
         copperTungsten = 'copper-tungsten-pipe-to-ground',
         nitinol = 'nitinol-pipe-to-ground',
     },
+    sinkhole = {
+        small = 'apm_small_sinkhole',
+        large = 'apm_sinkhole',
+    },
 }
 
 return pipes

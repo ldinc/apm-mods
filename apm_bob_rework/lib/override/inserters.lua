@@ -5,11 +5,13 @@ if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list
 local ins = require('lib.entities.buildings.inserters')
 local t = require('lib.tier.base')
 
-local genInserterts = function (tier, eK)
+local genInserterts = function (tier, eK, isExpensive)
     local recipe = tier.inserter
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.engineUnit, eK)
-    apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 1)
+    if isExpensive then
+        apm.lib.utils.recipe.ingredient.mod(recipe, tier.gearWheel, 1)
+    end
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.bearing, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 1)
@@ -43,9 +45,9 @@ local genInserterts = function (tier, eK)
 end
 
 apm.bob_rework.lib.override.inserters = function ()
-    genInserterts(t.gray, 1)
-    genInserterts(t.steam, 1)
-    genInserterts(t.yellow, 1)
-    genInserterts(t.red, 2)
-    genInserterts(t.blue, 3)
+    genInserterts(t.gray, 1, false)
+    genInserterts(t.steam, 1, true)
+    genInserterts(t.yellow, 1, true)
+    genInserterts(t.red, 2, true)
+    genInserterts(t.blue, 3, true)
 end

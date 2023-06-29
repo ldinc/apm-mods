@@ -774,6 +774,7 @@ function apm.bob_rework.lib.override.tech()
     spdrop('chemical-science-pack')
     rbind('logistics-3', 'logistics-2')
 
+    rm(t.processing.alloy, alloys.brass)
     
     rm(t.science.logistics, labs.basic)
     push(t.electronics.advanced.I, labs.basic)
@@ -786,6 +787,16 @@ function apm.bob_rework.lib.override.tech()
 
     free('basic-transport-belt-beltbox')
     free('deadlock-stacking-0')
+
+    repush('ironclad', 'military-2', combat.turret.mortar.base)
+    repush('military-2', 'military-3', combat.radar.base)
+    repush('military-3', 'military-4', 'fire-capsule')
+    -- repush('military-2', 'military-3', combat.turret.mortar.portable)
+    free('ironclad')
+    free('ironclad-gunboat')
+
+    push('concrete', pipes.sinkhole.small)
+
 
     -- fix yellow science pack tech icon
     apm.lib.utils.technology.mod.icon(t.science.automation, '__base__/graphics/technology/utility-science-pack.png')

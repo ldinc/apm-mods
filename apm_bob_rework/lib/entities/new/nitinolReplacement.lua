@@ -153,12 +153,18 @@ local generateTitaniumAlloyPipes = function()
   if target then
     local item = table.deepcopy(target)
     item.name = pipe.base.titaniumAlloy
+    if item.minable then
+      item.minable.result = pipe.base.titaniumAlloy
+    end
     data:extend({ item })
   end
   local target = data.raw["pipe-to-ground"][pipe.under.nitinol]
   if target then
     local item = table.deepcopy(target)
     item.name = pipe.under.titaniumAlloy
+    if item.minable then
+      item.minable.result = pipe.under.titaniumAlloy
+    end
     data:extend({ item })
   end
 end

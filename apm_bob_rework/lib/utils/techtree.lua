@@ -54,6 +54,7 @@ local modulesHashMap = function ()
 end
 
 local linkedTechMap = {
+    [t.science.steam] = {t.energy.steam.boiler.basic},
     [t.combat.turret.gun.I] = {t.crusher.burner},
     [t.processing.oil.basic] = {t.science.chemical},
     [t.battery.liio] = {t.science.chemical},
@@ -78,6 +79,13 @@ local linkedTechMap = {
     [t.nuclear.thorium] = {t.science.nuclear, t.nuclear.thorium_breeder},
     [t.nuclear.fuel.product] = {t.science.nuclear, t.nuclear.synthesys.plutonium},
     [t.energy.heat.pipe.basic] = {t.boiler.burner.advanced},
+    [t.logistics.wagon.fluid.basic] = {t.logistics.rail.ways},
+    [t.device.lamp] = {t.electricity},
+    [t.energy.solar.basic] = {t.electricity},
+    [t.network.basic] = {t.electricity},
+    [t.network.ltn] = {t.network.basic},
+    [t.equipment.shield.basic] = {t.electricity},
+    [t.boiler.oil.basic] = {t.fluid.control.extra},
 }
 
 local getLinks = function()

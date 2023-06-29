@@ -20,7 +20,7 @@ recipe.normal.ingredients = {
     { type = "item", name = materials.stone, amount = 20 },
     { type = "item", name = materials.wood, amount = 10 },
     { type = "item", name = product.sieve.iron, amount = 5 },
-    { type = "item", name = product.engine.burner, amount = 2 },
+    { type = "item", name = product.engine.burner, amount = 1 },
     { type = "item", name = product.gearwheel.bronze, amount = 4 },
     { type = "item", name = product.bearing.bronze, amount = 2 },
     { type = "item", name = logic.mechanical, amount = 2 },

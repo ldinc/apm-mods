@@ -7,6 +7,16 @@ return {
         rocket = {
             base = 'rocket',
         },
+        cannon = {
+            base = 'cannon-shell',
+            explosive = 'explosive-cannon-shell',
+            bio = 'bio-cannon-shell-ammo-rampant-arsenal',
+            he = 'he-cannon-shell-ammo-rampant-arsenal',
+            incendiary = 'incendiary-cannon-shell-ammo-rampant-arsenal',
+            scatter = 'scatter-cannon-shell',
+            uranium = 'uranium-cannon-shell',
+            explosive_uranium = 'explosive-uranium-cannon-shell',
+        },
         capsule = {
             grenade = 'grenade-capsule-ammo-rampant-arsenal',
             bio = 'bio-grenade-capsule-ammo-rampant-arsenal',
@@ -21,6 +31,9 @@ return {
             hemine = 'he-landmine-capsule-ammo-rampant-arsenal',
             incendiarymine = 'incendiary-landmine-capsule-ammo-rampant-arsenal',
         },
+        artillery = {
+            bio = 'bio-artillery-ammo-rampant-arsenal',
+        }
     },
 
     gun = {
@@ -69,7 +82,10 @@ return {
         launcher = {
             capsule = 'capsule-item-rampant-arsenal',
         },
-
+        mortar = {
+            base = 'mortar-turret',
+            portable = 'mortar-gun-rampant-arsenal'
+        }
     },
 
     artillery = {
@@ -155,5 +171,6 @@ return {
 
     radar = {
         sentinel = 'kr-sentinel',
+        base = 'radar',
     },
 }

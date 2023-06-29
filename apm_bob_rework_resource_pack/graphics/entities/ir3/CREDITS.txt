@@ -1,0 +1,32 @@
+Industrial Revolution 3 by Deadlock989
+Copyright (C) Deadlock989 2018-2022
+
+CREDITS
+
+All code by Deadlock989.
+
+All graphics created by Deadlock989, with these exceptions:
+
+- Generator equipment and pump unit icons based on a model by MarioVk1987 on blendswap.com.
+- Battery discharge equipment icon based on a model by Jarmynt on blendswap.com.
+- Tarmac texture by FabooGuy on DeviantArt.
+- Inserter icons are derived from Factorio base mod 1.1 sprites.
+
+The assets listed above were public domain or free for non-commercial use with attribution
+and were re-textured or otherwise edited for this mod. The inserter icons were edited and
+redistributed under the acceptable use terms of the Factorio EULA. 
+
+Sounds are all based on samples from freesound.org. Past and present clips provided by:
+
+- scivirus, acclivity, FoolBoyMedia, SomeoneCool14, Halleck, OllieOllie, Dominik_W, 
+- E330, juskiddink, Greg Baumont, mickeyman5000, AnLorenzo, ivolipa, JanzComposer, 
+- BMacZero, Deganoth, drzhnn, IanStarGem, JavierZumer, yawfle, Joao_Janz, Resaural,
+- ruidostudios, SilverIllusionist, jobro, michalwa2003, Autistic Lucario,
+- Hybrid_V, viznoman, beerbelly38, RunnerPack, newlocknew, The Baron, EverHeat,
+- InfamousLazure, isteak, hullum, Timbre, LloydEvans09.
+
+These sound files were public domain or free for non-commercial use with attribution and
+were edited or remixed for this mod.
+
+All other graphics and code are the original work of the mod author and are covered by the
+terms of the mod's CC BY-NC-ND 4.0 license: see LICENSE.TXT.

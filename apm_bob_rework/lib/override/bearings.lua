@@ -6,7 +6,7 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
-local genBearing = function (recipe, mat, balls)
+local genBearing = function(recipe, mat, balls)
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, mat, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, balls, 1)
@@ -18,6 +18,10 @@ local changeSubGroupForItem = function(name, sg)
     if itm then
         itm.subgroup = sg
     end
+end
+
+local updateGearing = function(name)
+    apm.lib.utils.recipe.result.mod(name, name, 2)
 end
 
 apm.bob_rework.lib.override.bearings = function()
@@ -39,4 +43,10 @@ apm.bob_rework.lib.override.bearings = function()
     changeSubGroupForItem(product.bearing.balls.cobalt.steel, 'bob-bearings')
     changeSubGroupForItem(product.gearwheel.bronze, 'bob-gears')
     changeSubGroupForItem(product.gearwheel.brass, 'bob-gears')
+
+    updateGearing(product.gearwheel.bronze)
+    updateGearing(product.gearwheel.brass)
+    updateGearing(product.gearwheel.iron)
+    updateGearing(product.gearwheel.cobaltSteel)
+    updateGearing(product.gearwheel.titanium)
 end

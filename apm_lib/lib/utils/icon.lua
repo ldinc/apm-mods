@@ -62,6 +62,10 @@ local function get_icon(object_name, type_name)
             if object.icon then
                 local icon_size = get_icon_size(object)
 				local icon_mipmaps = get_icon_mipmaps(object)
+				if object.icon == nil or object.icon == '' then
+					return {apm.lib.icons.dummy}
+				end
+
                 return {{icon=object.icon, icon_size=icon_size, icon_mipmaps=icon_mipmaps}}
             end
             if object.icons then

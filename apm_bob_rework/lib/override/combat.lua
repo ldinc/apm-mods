@@ -15,6 +15,8 @@ if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
 
+local mod = apm.lib.utils.recipe.ingredient.mod
+
 --TODO: rework
 
 require('lib.entities.base')
@@ -29,6 +31,32 @@ local buffStackSizeForArtillery = function(name)
 		item.stack_size = 20
 	end
 end
+
+local changeRange = function(type, name, radius)
+	local typed = data.raw[type]
+	if typed == nil then
+		return
+	end
+	local turret = typed[name]
+	if turret and turret.attack_parameters then
+		turret.attack_parameters.range = radius
+	end
+end
+
+local changeAmmo = function (type, name, new)
+	local typed = data.raw[type]
+	if typed == nil then
+		return
+	end
+	local turret = typed[name]
+	if turret and turret.attack_parameters then
+		turret.attack_parameters.ammo_categories = new
+	end
+end
+
+local ammoTurretType = 'ammo-turret'
+local gunType = 'gun'
+local electricTurretType = 'electric-turret'
 
 local drop = function()
 	local rm = apm.lib.utils.recipe.remove
@@ -323,6 +351,24 @@ local changeIron2GM = function(recipe, count)
 	apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.gunMetal, count)
 end
 
+local changeIron2Steel = function(recipe, count)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.iron, 0)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, count)
+end
+
+local changeIronCladMortar = function()
+	local recipe = combat.turret.mortar.base
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.steel, 4)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.cobalt.steel, 4)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.cobaltSteel, 8)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.bearing.cobaltSteel, 2)
+
+	changeRange(ammoTurretType, recipe, 55)
+	changeAmmo(ammoTurretType, recipe, {[0]='capsule-launcher'})
+end
+
 local updateWeapons = function()
 	local recipe = combat.gun.pistol
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -402,17 +448,8 @@ local updateWeapons = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.steel, 4)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.cobalt.steel, 4)
-end
 
-local changeRange = function(type, name, radius)
-	local typed = data.raw[type]
-	if typed == nil then
-		return
-	end
-	local turret = typed[name]
-	if turret and turret.attack_parameters then
-		turret.attack_parameters.range = radius
-	end
+	changeIronCladMortar()
 end
 
 local buildBattery = function (recipe, tier)
@@ -570,8 +607,9 @@ local modify = function()
 	local recipe = 'poison-capsule'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.iron, 2)
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_creosote', 20)
-	apm.lib.utils.recipe.category.change(recipe, 'crafting-with-fluid')
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'coal', 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'sulfur', 2)
+	-- apm.lib.utils.recipe.category.change(recipe, 'crafting-with-fluid')
 
 	local recipe = 'toxic-capsule-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -648,9 +686,6 @@ local modify = function()
 	buildBattery(combat.equip.battery.III, t.red)
 	buildBattery(combat.equip.battery.IV, t.blue)
 
-	local ammoTurretType = 'ammo-turret'
-	local gunType = 'gun'
-	local electricTurretType = 'electric-turret'
 	changeRange(ammoTurretType, 'rapid-cannon-ammo-turret-rampant-arsenal', 50)
 	changeRange(ammoTurretType, 'cannon-ammo-turret-rampant-arsenal', 50)
 	changeRange(ammoTurretType, 'rocket-ammo-turret-rampant-arsenal', 70)
@@ -716,7 +751,8 @@ local modify = function()
 		end
 	end
 
-
+	recipe = combat.ammo.artillery.bio
+	mod(recipe, 'toxic-capsule-rampant-arsenal', 1)
 
 	changeIron2GM('grenade-capsule-ammo-rampant-arsenal', 2)
 	changeIron2GM('bio-grenade-capsule-ammo-rampant-arsenal', 2)
@@ -740,6 +776,10 @@ local modify = function()
 	changeIron2GM('incendiary-cannon-shell-ammo-rampant-arsenal', 0)
 	changeIron2GM('toxic-capsule-rampant-arsenal', 1)
 	changeIron2GM('paralysis-capsule-rampant-arsenal', 3)
+
+	changeIron2Steel(combat.ammo.cannon.bio, 1)
+	changeIron2Steel(combat.ammo.cannon.he, 1)
+	changeIron2Steel(combat.ammo.cannon.incendiary, 1)
 
 	buildLaserTurret()
 	buildCanonTurret()

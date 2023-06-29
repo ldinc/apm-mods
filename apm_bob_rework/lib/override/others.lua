@@ -55,92 +55,100 @@ local enableRecipeOnStart = function(name)
 end
 
 apm.bob_rework.lib.override.others = function()
-    local mod = apm.lib.utils.recipe.ingredient.mod
+    local recipe = ''
+
+    local mod = function (itm, cnt)
+        apm.lib.utils.recipe.ingredient.mod(recipe, itm, cnt)
+    end
+
+    local clear = function ()
+        apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    end
 
     local disable = apm.lib.utils.recipe.disable
 
-    local recipe = p.egenerator
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, plates.iron, 2)
-    mod(recipe, p.stick, 1)
-    mod(recipe, p.bearing.brass, 2)
-    mod(recipe, wire.copper, 2)
-    mod(recipe, p.magnet, 10)
+    recipe = p.egenerator
+    clear()
+    mod(plates.iron, 2)
+    mod(p.stick, 1)
+    mod(p.bearing.brass, 2)
+    mod(wire.copper, 2)
+    mod(p.magnet, 10)
 
     recipe = 'train-stop'
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, plates.iron, 10)
-    mod(recipe, p.stick, 2)
-    mod(recipe, logic.steam, 5)
-    mod(recipe, materials.brick, 5)
+    clear()
+    mod(plates.iron, 10)
+    mod(p.stick, 2)
+    mod(logic.steam, 5)
+    mod(materials.brick, 5)
 
     recipe = 'engine-unit'
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, p.pistions, 8)
-    mod(recipe, plates.iron, 4)
-    mod(recipe, p.stick, 4)
-    mod(recipe, p.gearwheel.brass, 10)
-    mod(recipe, p.bearing.brass, 2)
+    clear()
+    mod(p.pistions, 8)
+    mod(plates.iron, 4)
+    mod(p.stick, 4)
+    mod(p.gearwheel.brass, 10)
+    mod(p.bearing.brass, 2)
 
     recipe = 'electric-engine-unit'
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, p.stick, 1)
-    mod(recipe, plates.iron, 2)
-    mod(recipe, wire.copper, 4)
-    mod(recipe, p.magnet, 12)
-    mod(recipe, p.bearing.brass, 2)
+    clear()
+    mod(p.stick, 1)
+    mod(plates.iron, 2)
+    mod(wire.copper, 4)
+    mod(p.magnet, 12)
+    mod(p.bearing.brass, 2)
 
     recipe = 'small-lamp'
-    mod(recipe, materials.glass, 1)
+    mod(materials.glass, 1)
 
     recipe = p.stick
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, plates.steel, 1)
+    clear()
+    mod(plates.steel, 1)
 
     recipe = 'automation-science-pack'
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, p.magnet, 2)
-    mod(recipe, p.gearwheel.brass, 2)
-    mod(recipe, materials.planks, 2)
+    clear()
+    mod(p.magnet, 2)
+    mod(p.gearwheel.brass, 2)
+    mod(materials.planks, 2)
 
     recipe = 'advanced-logistic-science-pack'
-    mod(recipe, storages.chest.brass, 0)
-    mod(recipe, materials.plastic, 5)
+    mod(storages.chest.brass, 0)
+    mod(materials.plastic, 5)
 
     recipe = 'rocket-fuel'
-    mod(recipe, materials.plastic, 5)
-    mod(recipe, p.rubber, 2)
-    mod(recipe, plates.steel, 2)
+    mod(materials.plastic, 5)
+    mod(p.rubber, 2)
+    mod(plates.steel, 2)
 
     recipe = 'explosives'
-    mod(recipe, 'water', 0)
-    mod(recipe, 'nitric-acid', 20)
+    mod('water', 0)
+    mod('nitric-acid', 20)
 
     recipe = 'apm_filter_charcoal'
-    mod(recipe, plates.steel, 0)
-    mod(recipe, alloys.brass, 1)
+    mod(plates.steel, 0)
+    mod(alloys.brass, 1)
     if settings.startup['apm_bob_rework_replace_filter'].value == true then
-        mod(recipe, 'apm_charcoal_brick', 0)
-        mod(recipe, 'apm_coal_briquette', 1)
+        mod('apm_charcoal_brick', 0)
+        mod('apm_coal_briquette', 1)
 
-        local recipe = 'apm_filter_charcoal_used_recycling'
-        mod(recipe, 'apm_charcoal_brick', 0)
-        mod(recipe, 'apm_coal_briquette', 3)
+        recipe = 'apm_filter_charcoal_used_recycling'
+        mod('apm_charcoal_brick', 0)
+        mod('apm_coal_briquette', 3)
     end
 
 
     recipe = 'apm_lubricant_1'
-    mod(recipe, 'apm_resin', 2)
+    mod('apm_resin', 2)
 
     recipe = 'rail'
-    mod(recipe, plates.steel, 2)
+    mod(plates.steel, 2)
 
     recipe = 'production-science-pack'
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, 'rail', 40)
-    mod(recipe, 'electric-mixing-furnace', 1)
-    mod(recipe, 'productivity-module', 4)
-    mod(recipe, 'productivity-module-3', 4)
+    clear()
+    mod('rail', 40)
+    mod('electric-mixing-furnace', 1)
+    mod('productivity-module', 4)
+    mod('productivity-module-3', 4)
     -- sad hack
     local obj = data.raw.recipe[recipe]
 
@@ -148,47 +156,50 @@ apm.bob_rework.lib.override.others = function()
     -- table.insert(obj.ingredients, { type = 'item', name = 'productivity-module', amount = 4 })
 
     -- enabled sieve on startup
-    enableRecipeOnStart('apm_sieve_iron')
+    recipe = product.sieve.iron
+    enableRecipeOnStart(recipe)
+    mod(plates.iron, 1)
+
     -- enableRecipeOnStart(energy.pole.small)
     enableRecipeOnStart(alloys.bronze)
-    apm.lib.utils.recipe.disable(recipies.chemistry.plastic.old)
+    disable(recipies.chemistry.plastic.old)
 
     recipe = 'apm_industrial_science_pack_0'
-    mod(recipe, logic.mechanical, 1)
-    mod(recipe, materials.stone, 5)
+    mod(logic.mechanical, 1)
+    mod(materials.stone, 5)
 
     --#
     recipe = 'apm_crusher_machine_2'
-    mod(recipe, alloys.invar, 0)
-    mod(recipe, plates.steel, 15)
+    mod(alloys.invar, 0)
+    mod(plates.steel, 15)
 
     recipe = 'apm_greenhouse_2'
-    mod(recipe, alloys.invar, 0)
-    mod(recipe, plates.steel, 15)
+    mod(alloys.invar, 0)
+    mod(plates.steel, 15)
 
     recipe = 'apm_press_machine_2'
-    mod(recipe, alloys.invar, 0)
-    mod(recipe, plates.steel, 15)
+    mod(alloys.invar, 0)
+    mod(plates.steel, 15)
 
     recipe = 'apm_coking_plant_2'
-    mod(recipe, alloys.invar, 0)
-    mod(recipe, plates.steel, 15)
+    mod(alloys.invar, 0)
+    mod(plates.steel, 15)
 
     recipe = 'apm_centrifuge_2'
-    mod(recipe, alloys.invar, 0)
-    mod(recipe, plates.steel, 15)
+    mod(alloys.invar, 0)
+    mod(plates.steel, 15)
 
     recipe = 'apm_steelworks_0'
-    mod(recipe, alloys.invar, 0)
-    mod(recipe, plates.steel, 15)
+    mod(alloys.invar, 0)
+    mod(plates.steel, 15)
 
     recipe = 'apm_stone_brick_raw_with_wed_mud'
-    mod(recipe, materials.mud.wet, 5)
-    mod(recipe, product.crushed.stone, 0)
+    mod(materials.mud.wet, 5)
+    mod(product.crushed.stone, 0)
 
     recipe = materials.refined.concrete
-    mod(recipe, plates.steel, 0)
-    mod(recipe, product.stick, 8)
+    mod(plates.steel, 0)
+    mod(product.stick, 8)
 
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1b', 'crafting-with-fluid')
@@ -229,38 +240,40 @@ apm.bob_rework.lib.override.others = function()
     local itm = data.raw.item[frames.steam]
     itm.localised_name = { "entity-name.primitive-frame", { "entity-name.primitive-frame" } }
 
-    local recipe = product.gearwheel.titanium
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, alloys.titanium, 1)
+    recipe = product.gearwheel.titanium
+    clear()
+    mod(alloys.titanium, 1)
 
-    local recipe = 'satellite'
-    mod(recipe, 'radar-5', 0)
-    mod(recipe, 'radar-2', 1)
+    recipe = 'satellite'
+    mod('radar-5', 0)
+    mod('radar-2', 1)
 
-    local recipe = 'waterfill'
-    mod(recipe, product.explosives, 0)
-    mod(recipe, product.cliff.explosives, 2)
-    local recipe = 'deepwaterfill'
-    mod(recipe, product.explosives, 0)
-    mod(recipe, product.cliff.explosives, 5)
-    local recipe = 'shallowwaterfill'
-    mod(recipe, product.explosives, 0)
-    mod(recipe, product.cliff.explosives, 1)
-    local recipe = 'mudwaterfill'
-    mod(recipe, product.explosives, 0)
-    mod(recipe, product.cliff.explosives, 1)
+    recipe = 'waterfill'
+    mod(product.explosives, 0)
+    mod(product.cliff.explosives, 2)
+
+    recipe = 'deepwaterfill'
+    mod(product.explosives, 0)
+    mod(product.cliff.explosives, 5)
+
+    recipe = 'shallowwaterfill'
+    mod(product.explosives, 0)
+    mod(product.cliff.explosives, 1)
+
+    recipe = 'mudwaterfill'
+    mod(product.explosives, 0)
+    mod(product.cliff.explosives, 1)
 
     recipe = science.production
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    mod(recipe, logistics.rail.element, 1)
-    mod(recipe, furnaces.mixing.electric, 1)
-    mod(recipe, modules.productivity.II, 4)
-    mod(recipe, modules.effectivity.II, 4)
+    clear()
+    mod(logistics.rail.element, 1)
+    mod(furnaces.mixing.electric, 1)
+    mod(modules.productivity.II, 4)
+    mod(modules.effectivity.II, 4)
 
     recipe = science.logistics
-    mod(recipe, logistics.belt.basic, 0)
-    mod(recipe, logistics.belt.yellow, 1)
-
+    mod(logistics.belt.basic, 0)
+    mod(logistics.belt.yellow, 1)
 
     disable(frames.basic)
     disable(pipes.base.copper)
@@ -272,6 +285,12 @@ apm.bob_rework.lib.override.others = function()
     disable(logic.circuit.low)
     disable(combat.disabled.turret.rifle)
     disable(combat.ammo.magazine.firearm)
+
+    recipe = pipes.sinkhole.large
+    mod(pipes.base.iron, 100)
+    mod(materials.refined.concrete, 80)
+    mod(materials.concrete, 0)
+    mod(product.rubber, 20)
 
     apm.lib.utils.assembler.mod.category.add('electric-chemical-mixing-furnace', 'apm_electric_smelting')
 

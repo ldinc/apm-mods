@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.23.07
+Date: 23.06.2023
+  Changes:
+    - modified: get_icon fn: return dummy icon if icon from entity was found, but invalid
+---------------------------------------------------------------------------------------------------
+Version: 0.23.06
+Date: 23.06.2023
+  Changes:
+    - modified: get_icon fn: return dummy icon if icon from entity was found, but invalid
+---------------------------------------------------------------------------------------------------
 Version: 0.23.05
 Date: 11.12.2022
   Changes:

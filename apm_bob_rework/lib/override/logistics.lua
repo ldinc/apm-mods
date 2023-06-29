@@ -202,6 +202,9 @@ local modify = function()
 
     updateDescriptions()
     change2Tier()
+
+    local recipe = 'apm_zx80_construction_robot'
+    apm.lib.utils.item.mod.stack_size(recipe, 50)
 end
 
 modify()

@@ -68,6 +68,7 @@ require('lib.override.chests')
 -- require('lib.override.deadlock')
 
 require('lib.override.wood')
+require('lib.override.ir3-air-compressor')
 
 apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.crushers()
@@ -116,6 +117,8 @@ apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.combat()
 
     apm.bob_rework.lib.override.grid()
+
+    apm.bob_rework.lib.override.ir3_air_compressor()
 
     apm.bob_rework.lib.override.drop()
 

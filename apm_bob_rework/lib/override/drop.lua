@@ -248,9 +248,9 @@ apm.bob_rework.lib.override.drop = function()
     rm('ceramic-bearing-ball')
     rm('titanium-bearing-ball')
 
-    rm(bob.valve.check)
-    rm(bob.valve.overflow)
-    rm(bob.valve.topup)
+    -- rm(bob.valve.check)
+    -- rm(bob.valve.overflow)
+    -- rm(bob.valve.topup)
 
     rm('apm_boiler_2')
     rm('apm_steam_engine_2')

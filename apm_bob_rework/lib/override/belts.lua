@@ -10,6 +10,8 @@ local buildBelts = function(tier)
     local clear = function () apm.lib.utils.recipe.ingredient.remove_all(recipe) end
     local add = function (itm, cnt) apm.lib.utils.recipe.ingredient.mod(recipe, itm, cnt) end
 
+    local isExpensive = tier ~= t.gray
+
     recipe = tier.belt
     clear()
     add(tier.gearWheel, 1)

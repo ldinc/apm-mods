@@ -31,7 +31,7 @@ apm.bob_rework.lib.entities.genBearingBalls = function (name, base, tint)
     recipe.normal.enabled = true
     recipe.normal.energy_required = 0.5
     recipe.normal.ingredients = {{type="item", name=base, amount=1}}
-    recipe.normal.results = {{type='item', name=name, amount=1}}
+    recipe.normal.results = {{type='item', name=name, amount=2}}
     recipe.normal.main_product = name
     recipe.normal.requester_paste_multiplier = 4
     recipe.normal.always_show_products = true

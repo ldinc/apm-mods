@@ -44,6 +44,9 @@ local t = {
         burner = {
             advanced = 'bob-boiler-2',
         },
+        oil = {
+            basic = 'bob-oil-boiler-1',
+        },
     },
 
     coking ={
@@ -185,6 +188,9 @@ local t = {
             advanced = 'electric-pole-2',
         },
         steam = {
+            boiler = {
+                basic = 'apm_power_steam',
+            },
             engine = {
                 advanced = 'bob-steam-engine-2',
             },
@@ -200,6 +206,21 @@ local t = {
                 basic = 'bob-heat-pipe-1',
             },
         },
+    },
+
+    device = {
+        lamp = 'optics',
+    },
+
+    equipment = {
+        shield = {
+            basic = 'energy-shield-equipment',
+        },
+    },
+
+    network = {
+        basic = 'circuit-network',
+        ltn = 'circuit-network-2',
     },
 
     electronics = {

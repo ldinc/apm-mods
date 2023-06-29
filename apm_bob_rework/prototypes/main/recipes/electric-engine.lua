@@ -138,11 +138,11 @@ recipe.normal = {}
 recipe.normal.enabled = true
 recipe.normal.energy_required = 4
 recipe.normal.ingredients = {
-    { type = "item", name = alloys.bronze, amount = 3 },
+    { type = "item", name = alloys.bronze, amount = 4 },
     { type = "item", name = materials.wood, amount = 1 },
 }
 recipe.normal.results = {
-    { type = 'item', name = product.bearing.bronze, amount = 1 }
+    { type = 'item', name = product.bearing.bronze, amount = 3 }
 }
 recipe.normal.main_product = product.bearing.bronze
 recipe.normal.requester_paste_multiplier = 4
