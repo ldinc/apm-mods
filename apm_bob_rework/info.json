@@ -1,6 +1,6 @@
 {
     "name": "apm_bob_rework_ldinc",
-    "version": "0.22.112",
+    "version": "0.22.121",
     "title": "APM bob's extra compability",
     "author": "ldinc",
     "dependencies": [
@@ -28,10 +28,11 @@
         "electricboiler >= 1.1.0",
         "deadlock-beltboxes-loaders >= 2.4.2",
         "ironclad-gunboat-and-mortar-turret >= 0.1.4",
-        "?Flare Stack >= 2.2.10",
-        "?Rampant >= 1.0.9",
-        "?LogisticTrainNetwork >= 1.16.0",
-        "?RampantArsenal >= 1.0.8"
+        "flib >= 0.12.9",
+        "Rampant >= 1.0.9",
+        "Flare Stack >= 2.2.10",
+        "RampantArsenal >= 1.0.8",
+        "?LogisticTrainNetwork >= 1.16.0"
     ],
     "description": "Rework APM recipies wuth bob's mods.",
     "factorio_version": "1.1",

@@ -140,7 +140,7 @@ function DIR.get_multi_sprite_def(name, files, frame_count, line_length, shadow,
 	}
 end
 
--- patched for  local needs
+-- patched for local needs
 local fluids = '__apm_bob_rework_resource_pack_ldinc__/graphics/entities/ir3/fluids/'
 local path_map = {
 	['air-compressor-base'] = fluids,
@@ -148,6 +148,13 @@ local path_map = {
 	['air-compressor-working'] = fluids,
 	['air-compressor-shadow'] = fluids,
 	['air-compressor-status'] = fluids,
+	['barrelling-machine-base'] = fluids,
+	['barrelling-machine-shadow'] = fluids,
+	['barrelling-machine-barrel'] = fluids,
+	['barrelling-machine-barrel-shadow'] = fluids,
+	['barrelling-machine-canister'] = fluids,
+	['barrelling-machine-canister-shadow'] = fluids,
+	['barrelling-machine-status'] = fluids,
 }
 
 function DIR.get_sprites_path_from_name(name)

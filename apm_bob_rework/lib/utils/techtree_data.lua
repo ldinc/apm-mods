@@ -34,4 +34,12 @@ data.tiers = {
     t.energy.solar,
 }
 
+data.recalculate = {}
+-- change cost for technology
+data.recalculate.tech_cost = {
+    ["long-inserters-1"] = {count = 10, time = 10},
+    ["near-inserters-1"] = {count = 10, time = 10},
+    ["more-inserters-1"] = {count = 10, time = 10},
+}
+
 return data

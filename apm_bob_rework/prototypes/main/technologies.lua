@@ -56,7 +56,8 @@ newTech(
     'apm_power',
     'wide-beacon',
     {'effect-transmission'},
-    {'wide-beacon'},
+    -- {'wide-beacon'},
+    {'beacon-3'},
     {{'apm_industrial_science_pack', 1}},
     200, 70,
     '__apm_bob_rework_resource_pack_ldinc__/graphics/tech/se/wide-beacon-2.png'

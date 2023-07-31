@@ -18,5 +18,6 @@ end
 
 apm.bob_rework.lib.override.beacon = function()
     gen(b.basic, tier.red, 9)
-    gen(b.extra, tier.blue, 16)
+    -- gen(b.extra, tier.blue, 16)
+    gen(b.advance, tier.blue, 16)
 end

@@ -86,6 +86,24 @@ local linkedTechMap = {
     [t.network.ltn] = {t.network.basic},
     [t.equipment.shield.basic] = {t.electricity},
     [t.boiler.oil.basic] = {t.fluid.control.extra},
+    [t.nuclear.processing.heavy_water] = {t.nuclear.uranium},
+    [t.processing.low_density_structure] = {t.nuclear.uranium},
+    [t.nuclear.processing.uranium] = {t.science.production},
+    [t.combat.shield.II] = {t.combat.shield.I},
+    [t.combat.shield.III] = {t.combat.shield.II},
+    [t.combat.shield.IV] = {t.combat.shield.III},
+    [t.processing.gold] = {t.science.logistics},
+    [t.processing.grinding] = {t.science.logistics},
+    [t.processing.titanium] = {t.science.production},
+    [t.processing.tungsten] = {t.science.production},
+    [t.buff.hp] = {t.military.II},
+    [t.nuclear.deuterium] = {t.science.advanced.logistics},
+    [t.combat.tank.electric] = {t.combat.tank.base},
+    [t.combat.car.electric] = {t.combat.car.base},
+    [t.effect.heat.pipe.advanced] = {t.science.production},
+    [t.effect.heat.pipe.expert] = {t.science.nuclear},
+    [t.nuclear.processing.deuterium] = {t.science.nuclear},
+
 }
 
 local getLinks = function()
@@ -131,6 +149,7 @@ local emptyTree = function()
         cache = {
             products = {},
             craftingGroups = {},
+            depth = {},
         },
         cursor = {
             current = nil,
@@ -753,6 +772,80 @@ local sortTechnologiesSetByKeys = function (tree)
     end)
 end
 
+local function getTechDepth (tree, tName)
+    local value = tree.cache.depth[tName]
+    if value then
+        return value
+    end
+    
+    local depth = 1
+
+    local target = tree.technologies.all[tName]
+    if target and target.dependencies and target.dependencies.technologies then
+        local max = 0
+        for _, depName in pairs(target.dependencies.technologies) do
+            local depDepth = getTechDepth(tree, depName)
+            if depDepth > max then
+                max = depDepth
+            end
+        end
+        depth = depth + max
+    end
+
+    tree.cache.depth[tName] = depth
+
+    return depth
+end
+
+local getSciencePackCount = function(technology_name)
+    local count = 0
+    
+    if not apm.lib.utils.technology.exist(technology_name) then return end
+
+    local technology = data.raw.technology[technology_name]
+
+    if not technology.unit then return false end
+    if not technology.unit.ingredients then return false end
+
+    for _, ingredient in pairs(technology.unit.ingredients) do
+        count = count + 1
+    end
+
+    return count
+end
+
+local updateCosts = function (tree, data)
+    -- try auto inherit
+
+    local cCount = 5
+    local cTime = 5
+
+    for _, tName in pairs(tree.queue) do
+        local target = tree.technologies.all[tName]
+        if target.isModuleBranch == false then
+            local depth = getTechDepth(tree, tName)
+            local sciencePacksCount = getSciencePackCount(tName)
+            apm.lib.utils.technology.mod.unit_count(tName, (depth+sciencePacksCount)*cCount)
+
+            local utime = math.ceil(depth/3)*cTime
+
+            apm.lib.utils.technology.mod.unit_time(tName, utime)
+        end
+    end
+    -- manual fixes
+    for tName, cost in pairs(data) do
+        local tech = tree.technologies[tName]
+        if tech then
+            if cost and cost.count then
+                apm.lib.utils.technology.mod.unit_count(tName, cost.count)
+            end
+            if cost and cost.time then
+                apm.lib.utils.technology.mod.unit_time(tName, cost.time)
+            end
+        end
+    end
+end
+
 apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     local tree = emptyTree()
 
@@ -774,6 +867,8 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
 
     treeOptimize(tree)
     inGameLinkTech(tree)
+
+    updateCosts(tree, techtree_data.recalculate.tech_cost)
 
     -- log(json.encode(tree))
     local why = function (name)

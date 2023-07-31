@@ -332,6 +332,19 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+function apm.lib.utils.technology.remove.prerequisites_all(technology_name)
+    if not apm.lib.utils.technology.exist(technology_name) then return end
+
+    local technology = data.raw.technology[technology_name]
+    if not technology.prerequisites then return end
+
+    technology.prerequisites = {}
+end
+
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
 function apm.lib.utils.technology.disable(technology_name)
     if not apm.lib.utils.technology.exist(technology_name) then return end
 

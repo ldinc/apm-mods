@@ -797,6 +797,21 @@ function apm.bob_rework.lib.override.tech()
 
     push('concrete', pipes.sinkhole.small)
 
+    free('rampant-arsenal-technology-lite-artillery')
+
+    push('apm_stone_bricks', 'apm_dry_to_wet_mud')
+
+    apm.lib.utils.technology.remove.prerequisites_all('long-inserters-1')
+    apm.lib.utils.technology.remove.prerequisites_all('near-inserters')
+    apm.lib.utils.technology.remove.prerequisites_all('more-inserters-1')
+
+    apm.lib.utils.technology.remove.science_pack('more-inserters-1', 'automation-science-pack')
+    apm.lib.utils.technology.remove.science_pack('more-inserters-1', 'apm_steam_science_pack')
+
+    bind('long-inserters-1', 'apm_crusher_machine_0')
+    bind('near-inserters', 'apm_crusher_machine_0')
+    bind('more-inserters-1', 'apm_crusher_machine_0')
+
 
     -- fix yellow science pack tech icon
     apm.lib.utils.technology.mod.icon(t.science.automation, '__base__/graphics/technology/utility-science-pack.png')
@@ -808,6 +823,12 @@ function apm.bob_rework.lib.override.tech()
         icon = icons.path.ore.crushed,
         icon_size = 64,
     }
+
+    -- fix rampantcharacter hp bonus tech
+    apm.lib.utils.technology.remove.prerequisites('rampant-arsenal-technology-character-health-1', 'rampant-arsenal-technology-regeneration')
+    apm.lib.utils.technology.add.prerequisites('rampant-arsenal-technology-character-health-1', 'military-2')
+    apm.lib.utils.technology.add.prerequisites('rampant-arsenal-technology-character-health-1', 'logistic-science-pack')
+    apm.lib.utils.technology.add.prerequisites('rampant-arsenal-technology-character-health-1', 'military-science-pack')
 
     newTech(t.ore.crushing.advanced, ico, list, {}, 200, 20)
 
@@ -822,8 +843,6 @@ function apm.bob_rework.lib.override.tech()
     local c = ores.enriched.advance
     local list = {c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c.tungsten, c.zinc}
     newTech(t.ore.enrichment.advanced, ico, list, {}, 150, 30)
-
-
 
     if settings.startup['apm_bob_rework_experimental_tech_tree_rebuilder'].value == true then
         apm.bob_rework.lib.utils.tech.tree.rebuild(t.crusher.burner)

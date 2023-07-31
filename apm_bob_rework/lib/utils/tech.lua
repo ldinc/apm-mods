@@ -70,6 +70,7 @@ local buffList = {
     ['laser-shooting-speed-5'] = {},
     ['laser-shooting-speed-6'] = {},
     ['laser-shooting-speed-7'] = {},
+    ['rampant-arsenal-technology-regeneration'] = {},
     ['rampant-arsenal-technology-character-health-1'] = {deps = {['advanced-electronics']={}}},
     ['rampant-arsenal-technology-character-health-2'] = {},
     ['rampant-arsenal-technology-character-health-3'] = {},

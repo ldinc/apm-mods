@@ -1,4 +1,57 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.23.121
+Date: 28. 07. 2023
+  Changed:
+    - Tech tree time & amount depends now on level & science pack types [experimental]
+---------------------------------------------------------------------------------------------------
+Version: 0.23.120
+Date: 27. 07. 2023
+  Added:
+    - New recipe for wet mud (from dry mud - mirroring recipe)
+---------------------------------------------------------------------------------------------------
+Version: 0.22.119
+Date: 26. 07. 2023
+  Changed:
+    - Wide beacon now based on bob's beacon 3
+---------------------------------------------------------------------------------------------------
+Version: 0.22.118
+Date: 26. 07. 2023
+  Changed:
+    - Water barreling pump 2x2 -> 1x1
+    - Deuterium tech locked over high tier
+    - Electric cars/tanks locked by it's burning fuel analogue
+---------------------------------------------------------------------------------------------------
+Version: 0.22.117
+Date: 25. 07. 2023
+  Fixed:
+    - Character hp bonus tech
+---------------------------------------------------------------------------------------------------
+Version: 0.22.116
+Date: 21. 07. 2023
+  Changed:
+    - Mortar recipe (use brass tier materials)
+  Fixed:
+    - Wind turbine technology localization
+    - Personal shields deps
+    - Titanum & tungsten processing moved to high tier
+    - Gold processing moved to high tier (used at similar tech age with modules)
+    - Heavy water & nuclear tech moved to higher tier
+---------------------------------------------------------------------------------------------------
+Version: 0.22.115
+Date: 18. 07. 2023
+  Changed:
+    - Burner inserters now use 'void' energy source (too buggy original behaviour ....)
+---------------------------------------------------------------------------------------------------
+Version: 0.22.114
+Date: 05. 07. 2023
+  Changed:
+    - From optional deps to must be installed (rampant mods + flare stacks)
+---------------------------------------------------------------------------------------------------
+Version: 0.22.113
+Date: 04. 07. 2023
+  Added:
+    - Flib dependency (by raiguard, Optera, justarandomgeek, Nexela)
+---------------------------------------------------------------------------------------------------
 Version: 0.22.112
 Date: 29. 06. 2023
   Added:

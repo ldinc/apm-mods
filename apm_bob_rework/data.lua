@@ -60,3 +60,5 @@ require('prototypes.main.recipes.entities.burner-pumpjack')
 require('prototypes.main.entities.small-sinkhole')
 require('prototypes.main.items.entities.small-sinkhole')
 require('prototypes.main.recipes.entities.small-sinkhole')
+
+require('prototypes.main.recipes.mud')

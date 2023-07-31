@@ -1,13 +1,26 @@
 local t = {
+    buff = {
+        hp = {
+            I = 'rampant-arsenal-technology-character-health-1',
+        },
+    },
+
+    military = {
+        I = 'military',
+        II = 'military-2',
+    },
+
     processing = {
         alloy = 'alloy-processing',
         cobalt = 'cobalt-processing',
         titanium = 'titanium-processing',
+        tungsten = 'tungsten-processing',
         aluminium = 'aluminium-processing',
         titaniumAlloy = 'titanium-alloy-processing',
         zinc = 'zinc-processing',
         sulfur = 'sulfur-processing',
         lead = 'lead-processing',
+        gold = 'gold-processing',
         oil = {
             basic = 'oil-processing',
             advanced = 'advanced-oil-processing',
@@ -24,6 +37,8 @@ local t = {
             II = 'apm_treated_wood_planks_2',
             III = 'apm_treated_wood_planks_3',
         },
+        low_density_structure = 'low-density-structure',
+        grinding = 'grinding',
     },
 
     science = {
@@ -160,6 +175,23 @@ local t = {
         rocket = {
             silo = 'rocket-silo',
         },
+
+        shield = {
+            I = 'energy-shield-equipment',
+            II = 'energy-shield-mk2-equipment',
+            III = 'bob-energy-shield-equipment-3',
+            IV = 'bob-energy-shield-equipment-4',
+        },
+
+        tank = {
+            base = 'tank',
+            electric = 'tanks_electric-1',
+        },
+
+        car = {
+            base = 'automobilism',
+            electric = 'automobilism_electric-1',
+        },
     },
 
     effect = {
@@ -266,6 +298,9 @@ local t = {
         rtg = 'rtg',
         processing = {
             thorium = 'apm_nuclear_thorium_processing',
+            uranium = 'uranium-processing',
+            heavy_water = 'heavy-water-processing',
+            deuterium = 'deuterium-processing',
         },
         portable = {
             reactor = 'fusion-reactor-equipment',

@@ -91,6 +91,19 @@ local updateDescriptions = function ()
     apm.lib.utils.item.overwrite.localised_name(robo.bots.logistic.part.tool.blue, "Logistic robot tools MK 2")
 end
 
+
+local updateBurnerInserter = function (recipe)
+    local obj = data.raw['inserter'][recipe]
+
+    if obj then
+        obj.energy_source = {
+            type = "void",
+            emissions_per_minute = 5,
+            fluid_box = {}
+        }
+    end
+end
+
 local modify = function()
 
     local update = function (recipe, storage, m)
@@ -205,6 +218,9 @@ local modify = function()
 
     local recipe = 'apm_zx80_construction_robot'
     apm.lib.utils.item.mod.stack_size(recipe, 50)
+
+    updateBurnerInserter('burner-inserter')
+    updateBurnerInserter('apm_burner_filter_inserter')
 end
 
 modify()
