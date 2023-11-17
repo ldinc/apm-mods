@@ -1,11 +1,11 @@
 {
     "name": "apm_bob_rework_ldinc",
-    "version": "0.22.121",
+    "version": "0.22.122",
     "title": "APM bob's extra compability",
     "author": "ldinc",
     "dependencies": [
         "base >= 0.18.26",
-        "apm_bob_rework_resource_pack_ldinc >= 0.22.73",
+        "apm_bob_rework_resource_pack_ldinc >= 0.22.74",
         "apm_resource_pack_ldinc >= 0.21.00",
         "apm_lib_ldinc >= 0.22.05",
         "apm_power_ldinc >= 0.22.07",

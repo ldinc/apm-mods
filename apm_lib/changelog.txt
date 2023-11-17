@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.23.09
 Date: 28.07.2023
+  Added:
+    - New: apm.lib.utils.recipe.overwrite.localised_name
+    - New: apm.lib.utils.recipe.overwrite.localised_description
+---------------------------------------------------------------------------------------------------
+Version: 0.23.09
+Date: 28.07.2023
   Fixed:
     - apm.lib.utils.technology.remove.prerequisites_all
 ---------------------------------------------------------------------------------------------------

@@ -1244,3 +1244,25 @@ function apm.lib.utils.recipe.overwrite.group(recipe_name, group, subgroup, orde
 
     APM_LOG_INFO(self, 'overwrite.group()', 'item with name: "' .. tostring(recipe_name) .. '" changed.')
 end
+
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+function apm.lib.utils.recipe.overwrite.localised_name(recipe_name, localised_name)
+    if not apm.lib.utils.recipe.exist(recipe_name) then return end
+    local recipe = data.raw.recipe[recipe_name]
+
+    recipe.localised_name = localised_name
+end
+
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+function apm.lib.utils.recipe.overwrite.localised_description(recipe_name, localised_description)
+    if not apm.lib.utils.item.exist(recipe_name) then return end
+    local recipe = data.raw.recipe[recipe_name]
+
+    recipe.localised_description = localised_description
+end

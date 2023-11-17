@@ -12,9 +12,11 @@ local t = {
 
     processing = {
         alloy = 'alloy-processing',
+        invar = 'invar-processing',
         cobalt = 'cobalt-processing',
         titanium = 'titanium-processing',
         tungsten = 'tungsten-processing',
+        tungstenAlloy = 'tungsten-alloy-processing',
         aluminium = 'aluminium-processing',
         titaniumAlloy = 'titanium-alloy-processing',
         zinc = 'zinc-processing',

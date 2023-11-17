@@ -787,6 +787,16 @@ function apm.bob_rework.lib.override.tech()
 
     free('basic-transport-belt-beltbox')
     free('deadlock-stacking-0')
+    free('deadlock-stacking-1')
+    free('deadlock-stacking-2')
+    free('deadlock-stacking-3')
+
+    -- push('logistics', 'transport-belt-beltbox-loader')
+    -- push('logistics-2', 'fast-transport-belt-beltbox-loader')
+    -- push('logistics-3', 'express-transport-belt-beltbox-loader')
+    -- push('logistics', 'transport-belt-beltbox-beltbox')
+    -- push('logistics-2', 'fast-transport-belt-beltbox-loader')
+    -- push('logistics-3', 'express-transport-belt-beltbox-loader')
 
     repush('ironclad', 'military-2', combat.turret.mortar.base)
     repush('military-2', 'military-3', combat.radar.base)
