@@ -14,6 +14,8 @@ if apm.bob_rework.lib.utils == nil then apm.bob_rework.lib.utils = {} end
 if apm.bob_rework.lib.utils.tech == nil then apm.bob_rework.lib.utils.tech = {} end
 if apm.bob_rework.lib.utils.tech.tree == nil then apm.bob_rework.lib.utils.tech.tree = {} end
 
+local DBG = true
+
 local sciencePacks = {
     [science.industrial] = {},
     [science.steam] = {},
@@ -401,6 +403,8 @@ local getDefaultCraftingGroups = function ()
             groups[k] = v
         end
     end
+
+    groups['apm_handcrafting_only'] = {}
 
     return groups
 end
@@ -846,6 +850,29 @@ local updateCosts = function (tree, data)
     end
 end
 
+local dropDuplEffects = function (tree)
+    for tName, tItem in pairs(tree.technologies.all) do
+        local handled = {}
+        local tech = tItem.ref
+        local changed = false
+
+        if tech and tech.effects then
+            for k, v in pairs(tech.effects) do
+                if tech[k] == nil then
+                    handled[k] = v    
+                else
+                    changed = true
+                end
+            end
+        end
+
+        if changed then
+            tech.effects = handled
+        end
+    
+    end
+end
+
 apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     local tree = emptyTree()
 
@@ -858,6 +885,7 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     resetTechnologies(tree)
     setupDefaultProductsAndCraftingGroups(tree)
     calculateProductsAndDependecies(tree)
+    -- dropDuplEffects(tree)
     setupResearchFlag(tree)
 
     tree.cursor.current = startingTName
@@ -874,6 +902,9 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
     local why = function (name)
         describe(name, tree)
     end
+
+    why('logistics-0')
+
     -- describe('bob-steam-engine-2', tree)
     -- why('space-science-pack')
     -- why('bob-nuclear-power-3')

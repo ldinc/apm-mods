@@ -35,7 +35,7 @@ deadlock.add_tier({
 	colour              = {r=210, g=180, b=80},
 	underground_belt    = "underground-belt",
 	splitter            = "splitter",
-	-- technology          = "logistics",
+	technology          = "logistics",
 	order               = "a",
 	loader_ingredients  = {
 		{t.yellow.belt, 1},
@@ -48,7 +48,7 @@ deadlock.add_tier({
 		{t.yellow.gearWheel, 2},
 		{t.yellow.logic, 4},
 	},
-	-- beltbox_technology  = "logistics",
+	beltbox_technology  = "logistics",
 })
 if data.raw["loader-1x1"]["transport-belt-loader"] then
 	data.raw["loader-1x1"]["transport-belt-loader"].next_upgrade = "fast-transport-belt-loader"
@@ -63,7 +63,7 @@ deadlock.add_tier({
 	colour              = {r=210, g=60, b=60},
 	underground_belt    = "fast-underground-belt",
 	splitter            = "fast-splitter",
-	-- technology          = "logistics-2",
+	technology          = "logistics-2",
 	order               = "b",
 	loader_ingredients  = {
 		{t.red.belt, 1},
@@ -76,7 +76,7 @@ deadlock.add_tier({
 		{t.red.gearWheel, 2},
 		{t.red.logic, 4},
 	},
-	-- beltbox_technology  = "logistics-2",
+	beltbox_technology  = "logistics-2",
 })
 if data.raw.technology["deadlock-stacking-2"] then
 	table.insert(data.raw.technology["deadlock-stacking-2"].prerequisites, "deadlock-stacking-1")
@@ -94,7 +94,7 @@ deadlock.add_tier({
 	colour              = {r=80, g=180, b=210},
 	underground_belt    = "express-underground-belt",
 	splitter            = "express-splitter",
-	-- technology          = "logistics-3",
+	technology          = "logistics-3",
 	order               = "c",
 	loader_ingredients  = {
 		{t.blue.belt, 1},
@@ -107,7 +107,7 @@ deadlock.add_tier({
 		{t.blue.gearWheel, 2},
 		{t.blue.logic, 4},
 	},
-	-- beltbox_technology  = "logistics-3",
+	beltbox_technology  = "logistics-3",
 })
 if data.raw.technology["deadlock-stacking-3"] then
 	table.insert(data.raw.technology["deadlock-stacking-3"].prerequisites, "deadlock-stacking-2")
@@ -135,13 +135,13 @@ up('express-transport-belt-beltbox', 0, 4)
 
 local push = apm.lib.utils.technology.add.recipe_for_unlock
 
-push('logistics', 'transport-belt-beltbox')
-push('logistics-2', 'fast-transport-belt-beltbox')
-push('logistics-3', 'express-transport-belt-beltbox')
+-- push('logistics', 'transport-belt-beltbox')
+-- push('logistics-2', 'fast-transport-belt-beltbox')
+-- push('logistics-3', 'express-transport-belt-beltbox')
 
-push('logistics', 'transport-belt-loader')
-push('logistics-2', 'fast-transport-belt-loader')
-push('logistics-3', 'express-transport-belt-loader')
+-- push('logistics', 'transport-belt-loader')
+-- push('logistics-2', 'fast-transport-belt-loader')
+-- push('logistics-3', 'express-transport-belt-loader')
 
 local categoryMap = {
 	["stacking"] = true,
@@ -176,6 +176,10 @@ local makeStackAndUnstack = function (product, tech, localised_name)
 	}
 
 	local name = "apm_"..product.."_stack"
+	if product == 'apm_dry_mud' then
+		name = 'apm_dry_mud_stack'
+	end
+
 
 	local item = {}
     item.type = 'item'
@@ -269,7 +273,7 @@ local makeStackAndUnstack = function (product, tech, localised_name)
 	end
 
 
-	apm.lib.utils.item.overwrite.localised_name(name, "Stack of "..product)
+	apm.lib.utils.item.overwrite.localised_name(name, "Stack of "..localised_name)
 	apm.lib.utils.recipe.overwrite.localised_name(pack.name, "Pack to stack "..localised_name)
 	apm.lib.utils.recipe.overwrite.localised_name(unpack.name, "Unpack from stack "..localised_name)
 	apm.lib.utils.recipe.overwrite.localised_name(unpackByHands.name, "Unpack from stack "..localised_name.." by hands")
@@ -313,3 +317,6 @@ makeStackAndUnstack(alloys.cobalt.steel, tech.processing.cobalt, "cobalt steel")
 makeStackAndUnstack(alloys.invar, tech.processing.invar, "invar")
 
 makeStackAndUnstack(alloys.tungstenCarbide, tech.processing.tungstenAlloy, "tungsten alloys")
+
+-- make stacks for dty mud
+makeStackAndUnstack(materials.mud.dry, tech.sieve.burner, "dry mud")

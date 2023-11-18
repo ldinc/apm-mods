@@ -784,6 +784,7 @@ function apm.bob_rework.lib.override.tech()
     rm(t.fluid.control.basic, storages.tank.small.inline)
 
     push(t.sieve.burner, 'apm_dry_mud_util')
+    push(t.sieve.burner, 'apm_dry_mud_util_stacked')
 
     free('basic-transport-belt-beltbox')
     free('deadlock-stacking-0')

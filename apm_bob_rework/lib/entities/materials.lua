@@ -12,6 +12,7 @@ local m = {
     plastic = 'plastic-bar',
     mud = {
         wet = 'apm_wet_mud',
+        dry = 'apm_dry_mud',
     },
 }
 

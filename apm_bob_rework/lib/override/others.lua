@@ -201,6 +201,9 @@ apm.bob_rework.lib.override.others = function()
     mod(plates.steel, 0)
     mod(product.stick, 8)
 
+    recipe = product.sieve.iron
+    apm.lib.utils.recipe.result.mod(recipe, recipe, 20)
+
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_treated_wood_planks_1b', 'crafting-with-fluid')
     apm.lib.utils.recipe.category.change('apm_saw_blade_iron', 'crafting')

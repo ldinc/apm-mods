@@ -263,3 +263,43 @@ r.expensive.ingredients = {
 }
 
 data:extend({ r })
+
+-- Alternative recipe for stacked pack of dry mud
+local recipe = 'apm_dry_mud_util_stacked'
+
+local r = {
+    type                = 'recipe',
+    name                = recipe,
+    category            = 'apm_sifting_0',
+    icons               =
+    apm.lib.utils.icon.merge({
+        apm.lib.utils.icon.get.from_item('apm_crushed_stone'),
+        { apm.lib.icons.dynamics.t3 },
+    }),
+    normal              = {
+        enabled                    = false,
+        energy_required            = 8,
+        ingredients                = {
+            { type = 'item', name = 'apm_dry_mud_stack', amount = 5 },
+            { type = 'item', name = 'apm_sieve_iron', amount = 1 },
+        },
+        results                    = {
+            { type = 'item', name = 'apm_crushed_stone', amount = 14 },
+            { type = 'item', name = 'apm_crushed_stone', amount_min = 0, amount_max = 4, probability = 0.5 },
+            { type = 'item', name = 'apm_sieve_iron', amount = 1, probability = 0.8 },
+        },
+        main_product               = 'apm_crushed_stone',
+        requester_paste_multiplier = 6,
+        always_show_products       = true,
+        always_show_made_in        = true,
+    },
+    allow_decomposition = true,
+    expensive           = {},
+}
+r.expensive = table.deepcopy(r.normal)
+r.expensive.ingredients = {
+    { type = 'item', name = 'apm_dry_mud', amount = 42 },
+    { type = 'item', name = 'apm_sieve_iron', amount = 1 },
+}
+
+data:extend({ r })
