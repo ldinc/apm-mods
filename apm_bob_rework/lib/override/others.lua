@@ -143,17 +143,17 @@ apm.bob_rework.lib.override.others = function()
     recipe = 'rail'
     mod(plates.steel, 2)
 
-    recipe = 'production-science-pack'
-    clear()
-    mod('rail', 40)
-    mod('electric-mixing-furnace', 1)
-    mod('productivity-module', 4)
-    mod('productivity-module-3', 4)
+    -- recipe = 'production-science-pack'
+    -- clear()
+    -- mod('rail', 40)
+    -- mod('electric-mixing-furnace', 1)
+    -- mod('productivity-module', 4)
+    -- mod('productivity-module-3', 4)
     -- sad hack
-    local obj = data.raw.recipe[recipe]
+    -- local obj = data.raw.recipe[recipe]
 
-    table.insert(obj.ingredients, { type = 'item', name = 'rail', amount = 40 })
-    -- table.insert(obj.ingredients, { type = 'item', name = 'productivity-module', amount = 4 })
+    -- table.insert(obj.ingredients, { type = 'item', name = 'rail', amount = 40 })
+    -- -- table.insert(obj.ingredients, { type = 'item', name = 'productivity-module', amount = 4 })
 
     -- enabled sieve on startup
     recipe = product.sieve.iron
@@ -267,16 +267,16 @@ apm.bob_rework.lib.override.others = function()
     mod(product.explosives, 0)
     mod(product.cliff.explosives, 1)
 
-    recipe = science.production
-    clear()
-    mod(logistics.rail.element, 1)
-    mod(furnaces.mixing.electric, 1)
-    mod(modules.productivity.II, 4)
-    mod(modules.effectivity.II, 4)
+    -- recipe = science.production
+    -- clear()
+    -- mod(logistics.rail.element, 1)
+    -- mod(furnaces.mixing.electric, 1)
+    -- mod(modules.productivity.II, 4)
+    -- mod(modules.effectivity.II, 4)
 
-    recipe = science.logistics
-    mod(logistics.belt.basic, 0)
-    mod(logistics.belt.yellow, 1)
+    -- recipe = science.logistics
+    -- mod(logistics.belt.basic, 0)
+    -- mod(logistics.belt.yellow, 1)
 
     disable(frames.basic)
     disable(pipes.base.copper)

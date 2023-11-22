@@ -3,12 +3,14 @@ return {
         I = 'effectivity-module',
         II = 'effectivity-module-2',
         IV = 'effectivity-module-4',
+        VI = 'effectivity-module-6',
         VIII = 'effectivity-module-8',
     },
     productivity = {
         I = 'productivity-module',
         II = 'productivity-module-2',
         IV = 'productivity-module-4',
+        VI = 'productivity-module-6',
         VIII = 'productivity-module-8',
         pure = {
             IV = 'raw-productivity-module-4',

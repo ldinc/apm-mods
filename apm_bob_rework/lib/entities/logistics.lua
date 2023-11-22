@@ -21,14 +21,15 @@ local logistics = {
     },
 
     loader = {
-        slow = 'basic-loader',
-        basic = 'loader',
-        fast = 'fast-loader',
-        express = 'express-loader',
+        slow = 'basic-transport-belt-loader',
+        basic = 'transport-belt-loader',
+        fast = 'fast-transport-belt-loader',
+        express = 'express-transport-belt-loader',
     },
 
     rail = {
         element = 'rail',
+        advanced = 'alt-rail',
     },
 
     -- entities for disabling later

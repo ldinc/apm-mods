@@ -64,6 +64,7 @@ require('lib.override.barrels')
 require('lib.override.storage-tanks')
 require('lib.override.ammo')
 require('lib.override.chests')
+require('lib.override.science')
 
 -- require('lib.override.deadlock')
 
@@ -111,6 +112,7 @@ apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.barrels()
     apm.bob_rework.lib.override.storage.tank()
     apm.bob_rework.lib.override.ammo()
+    apm.bob_rework.lib.override.science()
 
     apm.bob_rework.lib.override.others()
     apm.bob_rework.lib.override.power()
