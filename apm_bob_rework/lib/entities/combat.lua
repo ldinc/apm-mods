@@ -36,6 +36,10 @@ return {
         }
     },
 
+    capsule = {
+        toxic = 'toxic-capsule-rampant-arsenal',
+    },
+
     gun = {
         pistol = 'pistol',
         submachine = 'submachine-gun',

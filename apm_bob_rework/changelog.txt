@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.23.128
+Date: 26. 11. 2023
+  Balanced:
+    - Steel plates production
+---------------------------------------------------------------------------------------------------
+Version: 0.23.127
+Date: 24. 11. 2023
+  Changed:
+    - Deuterium tech locked by space science packs
+    - Deuterium fuel cell II bind w\ deuterium reactor tech
+    - Recepies results for many plates increased up to 10x (w\ energy required)
+    - Sieving & crushing recepies tuned to be more stacked (10x)
+---------------------------------------------------------------------------------------------------
 Version: 0.23.126
 Date: 23. 11. 2023
   Changed:

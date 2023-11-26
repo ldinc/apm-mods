@@ -464,6 +464,69 @@ local buildBattery = function (recipe, tier)
 	end
 end
 
+local tuneAtomicBomb = function ()
+	local recipe = 'atomic-bomb'
+	local set = function(item, count)
+		if count == nil then
+			count = 1
+		end
+
+		apm.lib.utils.recipe.ingredient.mod(recipe, item, count)
+	end
+
+	set('apm_oxide_pellet_pu239', 2)
+
+	local item = data.raw.projectile['atomic-rocket']
+	if item ~= nil then
+		-- modify attack result
+		apm.bob_rework.lib.utils.debug.object(item)
+		-- item.ammo_type.action = nil
+		-- item.ammo_type.action = {
+		-- 	action = {
+		-- 		type = "direct",
+		-- 		action_delivery = {
+		-- 		  type = "instant",
+		-- 		  target_effects = {
+		-- 			{
+		-- 			  type = "create-entity",
+		-- 			  entity_name = "plasma-explosion",
+		-- 			},
+		-- 			{
+		-- 			  type = "damage",
+		-- 			  damage = { amount = 1200, type = "plasma" },
+		-- 			},
+		-- 			{
+		-- 			  type = "nested-result",
+		-- 			  action = {
+		-- 				type = "area",
+		-- 				radius = 3.5,
+		-- 				action_delivery = {
+		-- 				  type = "instant",
+		-- 				  target_effects = {
+		-- 					{
+		-- 					  type = "damage",
+		-- 					  damage = { amount = 1800, type = "plasma" },
+		-- 					},
+		-- 					{
+		-- 					  type = "create-sticker",
+		-- 					  sticker = "plasma-sticker",
+		-- 					},
+		-- 				  },
+		-- 				},
+		-- 			  },
+		-- 			},
+		-- 			{
+		-- 			  type = "create-entity",
+		-- 			  entity_name = "small-scorchmark",
+		-- 			  check_buildability = true,
+		-- 			},
+		-- 		  },
+		-- 		},
+		-- 	  },
+		-- }
+	end
+end
+
 local modify = function()
 	local recipe = product.chemistry.cordite
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'gun-cotton', 6)
@@ -772,13 +835,18 @@ local modify = function()
 	changeIron2GM('he-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
 	changeIron2GM('incendiary-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
 	changeIron2GM('incendiary-landmine-grenade-capsule-ammo-rampant-arsenal', 2)
-	changeIron2GM('bio-cannon-shell-ammo-rampant-arsenal', 0)
+	-- changeIron2GM('bio-cannon-shell-ammo-rampant-arsenal', 0)
 	changeIron2GM('he-cannon-shell-ammo-rampant-arsenal', 0)
 	changeIron2GM('incendiary-cannon-shell-ammo-rampant-arsenal', 0)
 	changeIron2GM('toxic-capsule-rampant-arsenal', 1)
 	changeIron2GM('paralysis-capsule-rampant-arsenal', 3)
 
-	changeIron2Steel(combat.ammo.cannon.bio, 1)
+	recipe = combat.ammo.cannon.bio
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, combat.capsule.toxic, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, combat.ammo.cannon.explosive, 1)
+
 	changeIron2Steel(combat.ammo.cannon.he, 1)
 	changeIron2Steel(combat.ammo.cannon.incendiary, 1)
 
@@ -823,6 +891,8 @@ local modify = function()
 	buffStackSizeForArtillery('he-artillery-ammo-rampant-arsenal')
 	buffStackSizeForArtillery('incendiary-artillery-ammo-rampant-arsenal')
 	buffStackSizeForArtillery('nuclear-artillery-ammo-rampant-arsenal')
+
+	tuneAtomicBomb()
 end
 
 apm.bob_rework.lib.override.combat = function()

@@ -24,6 +24,7 @@ local types_list = {
     'module',
     'capsule',
     'rail-planner',
+    'ammo',
 }
 
 -- Function -------------------------------------------------------------------

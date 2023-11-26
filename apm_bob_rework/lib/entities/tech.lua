@@ -292,6 +292,11 @@ local t = {
         fuel = {
             reprocessing = 'nuclear-fuel-reprocessing',
             product = 'apm_nuclear_fuel',
+            deuterium = {
+                cell = {
+                    advanced = 'deuterium-fuel-cell-2',
+                },
+            },
         },
         thorium_breeder = 'apm_nuclear_breeder_thorium',
         synthesys = {

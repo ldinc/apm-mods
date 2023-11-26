@@ -1,5 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.09
+Version: 0.23.11
+Date: 23.11.2023
+  Changed:
+    - internal type logic extended w\ 'ammo' entity type
+---------------------------------------------------------------------------------------------------
+Version: 0.23.10
 Date: 28.07.2023
   Added:
     - New: apm.lib.utils.recipe.overwrite.localised_name

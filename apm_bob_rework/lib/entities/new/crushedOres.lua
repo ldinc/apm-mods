@@ -48,11 +48,12 @@ apm.bob_rework.lib.entities.crushed.ore.tungsten = crushed(ores.tungsten)
 
 -- recipe settings for generate functions
 local recipeSetting = {
-    amountOfOre = 4,
+    amountOfOre = 40,
     amountOfWater = 40,
-    amountOfResult = 6,
+    amountOfResult = 60,
     amountOfDirtWater = 20,
-    energyRequired = 1,
+    energyRequired = 10,
+    k = 10,
 }
 
 apm.bob_rework.lib.entities.crushed.ore.generate = {}
@@ -140,7 +141,7 @@ apm.bob_rework.lib.entities.crushed.ore.generate.advancedCrushedFrom = function(
     }
     recipe.normal.results = {
         { type = 'item', name = target, amount = recipeSetting.amountOfResult },
-        { type = 'item', name = target, amount_min = 1, amount_max = 2, probability = 0.5 },
+        { type = 'item', name = target, amount_min = 1*recipeSetting.k, amount_max = 2*recipeSetting.k, probability = 0.5 },
         { type = 'fluid', name = 'apm_dirt_water', amount = recipeSetting.amountOfDirtWater },
     }
     recipe.normal.main_product = target

@@ -24,7 +24,7 @@ local logistics = {
         slow = 'basic-transport-belt-loader',
         basic = 'transport-belt-loader',
         fast = 'fast-transport-belt-loader',
-        express = 'express-transport-belt-loader',
+        express = 'express-transport-belt-beltloader',
     },
 
     rail = {

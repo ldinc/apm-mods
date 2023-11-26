@@ -104,7 +104,8 @@ local linkedTechMap = {
     [t.combat.car.electric] = {t.combat.car.base},
     [t.effect.heat.pipe.advanced] = {t.science.production},
     [t.effect.heat.pipe.expert] = {t.science.nuclear},
-    [t.nuclear.processing.deuterium] = {t.science.nuclear},
+    [t.nuclear.processing.deuterium] = {t.science.nuclear, t.science.space},
+    [t.nuclear.fuel.deuterium.cell.advanced] = {t.nuclear.deuterium},
 
 }
 

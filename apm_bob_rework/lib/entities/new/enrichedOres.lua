@@ -32,20 +32,23 @@ apm.bob_rework.lib.entities.enriched.ore.nickel = enriched(apm.bob_rework.lib.en
 apm.bob_rework.lib.entities.enriched.ore.tungsten = enriched(apm.bob_rework.lib.entities.ore.tungsten)
 
 local settings = {
-    energyRequired = 1,
-    floatationEnergyRequired = 1,
-    crushedOreAmount = 4,
+    energyRequired = 10,
+    floatationEnergyRequired = 10,
+    crushedOreAmount = 40,
     enrichedResultAmount = {
-        sieve = 2,
-        floatation = 2,
+        sieve = 20,
+        floatation = 20,
     },
-    dryMudAmout = 2,
+    min = 5,
+    max = 15,
+    k = 10,
+    dryMudAmout = 20,
     sieveAmount = 1,
-    sieveEnergyRequired = 1,
+    sieveEnergyRequired = 10,
     sieveProbability = 0.95,
-    airAmount = 20,
-    waterAmount = 20,
-    dirtWaterAmount = 20,
+    airAmount = 120,
+    waterAmount = 40,
+    dirtWaterAmount = 40,
     sulphuricAcidAmount = 20,
     lubricantAmount = 20,
 }
@@ -141,7 +144,7 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     }
     recipe.normal.results                    = {
         { type = 'item', name = target, amount = settings.enrichedResultAmount.floatation },
-        { type = 'item', name = target, amount_min = 1, amount_max = 2, probability = 0.5 },
+        { type = 'item', name = target, amount_min = settings.min, amount_max = settings.max, probability = 0.5 },
         { type = 'fluid', name = 'apm_dirt_water', amount = settings.dirtWaterAmount },
     }
     recipe.normal.main_product               = target

@@ -1,3 +1,5 @@
+local product = require "lib.entities.product"
+local category= require "lib.entities.category"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -22,4 +24,10 @@ end
 apm.bob_rework.lib.override.simpleEngines = function ()
     buildSimpleEngine(apm.bob_rework.lib.tier.gray, false)
     buildSimpleEngine(apm.bob_rework.lib.tier.steam, true)
+
+    local recipe = product.egenerator
+    local crafftingCategory = category.crafting.with.fluid
+    apm.lib.utils.recipe.category.change(recipe, crafftingCategory)
+    apm.lib.utils.recipe.category.change(recipe..'-2', crafftingCategory)
+    apm.lib.utils.recipe.category.change(recipe..'-3', crafftingCategory)
 end
