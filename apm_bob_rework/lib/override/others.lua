@@ -73,7 +73,7 @@ apm.bob_rework.lib.override.others = function()
     mod(p.stick, 1)
     mod(p.bearing.brass, 2)
     mod(wire.copper, 2)
-    mod(p.magnet, 10)
+    mod(p.magnet, 8)
 
     recipe = 'train-stop'
     clear()
@@ -95,7 +95,7 @@ apm.bob_rework.lib.override.others = function()
     mod(p.stick, 1)
     mod(plates.iron, 2)
     mod(wire.copper, 4)
-    mod(p.magnet, 12)
+    mod(p.magnet, 6)
     mod(p.bearing.brass, 2)
 
     recipe = 'small-lamp'
@@ -169,29 +169,29 @@ apm.bob_rework.lib.override.others = function()
     mod(materials.stone, 5)
 
     --#
-    recipe = 'apm_crusher_machine_2'
-    mod(alloys.invar, 0)
-    mod(plates.steel, 15)
+    -- recipe = 'apm_crusher_machine_2'
+    -- mod(alloys.invar, 0)
+    -- mod(plates.steel, 15)
 
-    recipe = 'apm_greenhouse_2'
-    mod(alloys.invar, 0)
-    mod(plates.steel, 15)
+    -- recipe = 'apm_greenhouse_2'
+    -- mod(alloys.invar, 0)
+    -- mod(plates.steel, 15)
 
-    recipe = 'apm_press_machine_2'
-    mod(alloys.invar, 0)
-    mod(plates.steel, 15)
+    -- recipe = 'apm_press_machine_2'
+    -- mod(alloys.invar, 0)
+    -- mod(plates.steel, 15)
 
-    recipe = 'apm_coking_plant_2'
-    mod(alloys.invar, 0)
-    mod(plates.steel, 15)
+    -- recipe = 'apm_coking_plant_2'
+    -- mod(alloys.invar, 0)
+    -- mod(plates.steel, 15)
 
-    recipe = 'apm_centrifuge_2'
-    mod(alloys.invar, 0)
-    mod(plates.steel, 15)
+    -- recipe = 'apm_centrifuge_2'
+    -- mod(alloys.invar, 0)
+    -- mod(plates.steel, 15)
 
-    recipe = 'apm_steelworks_0'
-    mod(alloys.invar, 0)
-    mod(plates.steel, 15)
+    -- recipe = 'apm_steelworks_0'
+    -- mod(alloys.invar, 0)
+    -- mod(plates.steel, 15)
 
     recipe = 'apm_stone_brick_raw_with_wed_mud'
     mod(materials.mud.wet, 5)

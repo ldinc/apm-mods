@@ -126,8 +126,8 @@ apm.bob_rework.lib.override.electricGenerators = function()
     buildSteamGenerator(energy.generator.steam.basic, t.steam, 2)
     buildSteamGenerator(energy.generator.steam.advance, t.red, 4)
     --
-    buildFluidGenerator(energy.generator.fluid.basic, t.red, 5)
-    buildFluidGenerator(energy.generator.fluid.hydrazine, t.blue, 12)
+    buildFluidGenerator(energy.generator.fluid.basic, t.red, 4)
+    buildFluidGenerator(energy.generator.fluid.hydrazine, t.red, 10)
     --
     buildBoilers()
     --

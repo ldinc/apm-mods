@@ -7,6 +7,8 @@ local materials = require('lib.entities.materials')
 
 local apm_power_always_show_made_in = true
 
+local magnetCount = 6
+
 local dup = function(origin, new, normal, hard, level)
     local base = apm.lib.utils.icon.get.from_item(origin)
     local item_icon_II = { apm.lib.icons.dynamics.t1 }
@@ -38,12 +40,12 @@ local dup = function(origin, new, normal, hard, level)
 end
 
 dup(product.engine.electric, 'electric-engine-unit-2',
-    { { type = "item", name = product.magnet, amount = 12 },
+    { { type = "item", name = product.magnet, amount = magnetCount },
         { type = "item", name = product.stick, amount = 1 },
         { type = "item", name = wires.copper, amount = 12 },
         { type = "item", name = product.bearing.cobaltSteel, amount = 2 },
         { type = "item", name = plates.iron, amount = 2 }, },
-    { { type = "item", name = product.magnet, amount = 16 },
+    { { type = "item", name = product.magnet, amount = magnetCount + 2 },
         { type = "item", name = product.stick, amount = 1 },
         { type = "item", name = wires.copper, amount = 24 },
         { type = "item", name = product.bearing.cobaltSteel, amount = 2 },
@@ -52,12 +54,12 @@ dup(product.engine.electric, 'electric-engine-unit-2',
 )
 
 dup(product.engine.electric, 'electric-engine-unit-3',
-    { { type = "item", name = product.magnet, amount = 12 },
+    { { type = "item", name = product.magnet, amount = magnetCount },
         { type = "item", name = product.stick, amount = 1 },
         { type = "item", name = wires.copper, amount = 12 },
         { type = "item", name = product.bearing.titanium, amount = 2 },
         { type = "item", name = plates.iron, amount = 2 }, },
-    { { type = "item", name = product.magnet, amount = 16 },
+    { { type = "item", name = product.magnet, amount = magnetCount + 2 },
         { type = "item", name = product.stick, amount = 1 },
         { type = "item", name = wires.copper, amount = 24 },
         { type = "item", name = product.bearing.titanium, amount = 2 },
@@ -66,12 +68,12 @@ dup(product.engine.electric, 'electric-engine-unit-3',
 )
 
 dup(product.egenerator, product.egenerator .. '-2',
-    { { type = "item", name = product.magnet, amount = 10 },
+    { { type = "item", name = product.magnet, amount = magnetCount + 2},
         { type = "item", name = wires.copper, amount = 2 },
         { type = "item", name = product.stick, amount = 1 },
         { type = "item", name = product.bearing.cobaltSteel, amount = 2 },
         { type = "item", name = plates.iron, amount = 2 }, },
-    { { type = "item", name = product.magnet, amount = 14 },
+    { { type = "item", name = product.magnet, amount = magnetCount + 4 },
         { type = "item", name = wires.copper, amount = 4 },
         { type = "item", name = product.stick, amount = 1 },
         { type = "item", name = product.bearing.cobaltSteel, amount = 2 },
@@ -80,12 +82,12 @@ dup(product.egenerator, product.egenerator .. '-2',
 )
 
 dup(product.egenerator, product.egenerator .. '-3',
-    { { type = "item", name = product.magnet, amount = 10 },
+    { { type = "item", name = product.magnet, amount = magnetCount + 2 },
         { type = "item", name = wires.copper, amount = 2 },
         { type = "item", name = product.stick, amount = 1 },
         { type = "item", name = product.bearing.titanium, amount = 2 },
         { type = "item", name = plates.iron, amount = 2 }, },
-    { { type = "item", name = product.magnet, amount = 14 },
+    { { type = "item", name = product.magnet, amount = magnetCount + 4 },
         { type = "item", name = wires.copper, amount = 4 },
         { type = "item", name = product.stick, amount = 1 },
         { type = "item", name = product.bearing.titanium, amount = 2 },

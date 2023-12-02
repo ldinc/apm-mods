@@ -64,7 +64,7 @@ local generateTitaniumAlloyRecipe = function()
     },
     results =
     {
-      { type = "item", name = alloy.titanium, amount = 5 }
+      { type = "item", name = alloy.titanium, amount = 10 }
     },
     allow_decomposition = false
   }

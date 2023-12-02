@@ -88,13 +88,13 @@ local generateCommonEnriched = function(ore, tint)
     recipe.normal.hide_from_player_crafting  = true
     recipe.normal.energy_required            = settings.sieveEnergyRequired
     recipe.normal.ingredients                = {
-        { type = "item", name = crushedName, amount = settings.crushedOreAmount },
+        { type = "item", name = crushedName,      amount = settings.crushedOreAmount },
         { type = "item", name = 'apm_sieve_iron', amount = settings.sieveAmount },
     }
     recipe.normal.results                    = {
-        { type = 'item', name = target, amount = settings.enrichedResultAmount.sieve },
-        { type = 'item', name = 'apm_dry_mud', amount = settings.dryMudAmout },
-        { type = "item", name = 'apm_sieve_iron', amount = settings.sieveAmount, probability = settings.sieveProbability },
+        { type = 'item', name = target,           amount = settings.enrichedResultAmount.sieve },
+        { type = 'item', name = 'apm_dry_mud',    amount = settings.dryMudAmout },
+        { type = "item", name = 'apm_sieve_iron', amount = settings.sieveAmount,               probability = settings.sieveProbability },
     }
     recipe.normal.main_product               = target
     recipe.normal.requester_paste_multiplier = 4
@@ -102,28 +102,27 @@ local generateCommonEnriched = function(ore, tint)
     recipe.normal.always_show_made_in        = true
     recipe.expensive                         = table.deepcopy(recipe.normal)
     recipe.expensive.ingredients             = {
-        { type = "item", name = crushedName, amount = settings.crushedOreAmount + 2 },
+        { type = "item", name = crushedName,      amount = settings.crushedOreAmount + 2 },
         { type = "item", name = 'apm_sieve_iron', amount = settings.sieveAmount },
     }
     recipe.allow_decomposition               = false
     data:extend({ recipe })
-
 end
 
 local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
-    local ico = {
+    local ico                                = {
         icon = icons.path.ore.enriched,
         icon_size = 64,
         tint = tint,
     }
 
-    local tier = {
+    local tier                               = {
         icon = icons.path.tier.II,
         icon_size = 64,
     }
-    local recipeName = enrichedAdvanced(ore)
-    local target = enriched(ore)
-    local crushedName = crushed(ore)
+    local recipeName                         = enrichedAdvanced(ore)
+    local target                             = enriched(ore)
+    local crushedName                        = crushed(ore)
 
     local recipe                             = {}
     recipe.type                              = "recipe"
@@ -138,13 +137,13 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     recipe.normal.hide_from_player_crafting  = true
     recipe.normal.energy_required            = settings.floatationEnergyRequired
     recipe.normal.ingredients                = {
-        { type = "item", name = crushedName, amount = settings.crushedOreAmount },
-        { type = "fluid", name = liquid, amount = liquidAmount },
+        { type = "item",  name = crushedName, amount = settings.crushedOreAmount },
+        { type = "fluid", name = liquid,      amount = liquidAmount },
         { type = "fluid", name = extraLiquid, amount = extraLiquidAmount },
     }
     recipe.normal.results                    = {
-        { type = 'item', name = target, amount = settings.enrichedResultAmount.floatation },
-        { type = 'item', name = target, amount_min = settings.min, amount_max = settings.max, probability = 0.5 },
+        { type = 'item',  name = target,           amount = settings.enrichedResultAmount.floatation },
+        { type = 'item',  name = target,           amount_min = settings.min,                        amount_max = settings.max, probability = 0.5 },
         { type = 'fluid', name = 'apm_dirt_water', amount = settings.dirtWaterAmount },
     }
     recipe.normal.main_product               = target
@@ -153,8 +152,8 @@ local generateAdvancedEnriched = function(ore, tint, liquid, liquidAmount, extra
     recipe.normal.always_show_made_in        = true
     recipe.expensive                         = table.deepcopy(recipe.normal)
     recipe.expensive.ingredients             = {
-        { type = "item", name = crushedName, amount = settings.crushedOreAmount + 2 },
-        { type = "fluid", name = liquid, amount = liquidAmount + 10 },
+        { type = "item",  name = crushedName, amount = settings.crushedOreAmount + 2 },
+        { type = "fluid", name = liquid,      amount = liquidAmount + 10 },
         { type = "fluid", name = extraLiquid, amount = extraLiquidAmount },
     }
     recipe.allow_decomposition               = true
@@ -171,8 +170,8 @@ local tint = { r = 192 / 255, g = 90 / 255, b = 55 / 255 }
 local ore = apm.bob_rework.lib.entities.ore.copper
 local liquid = 'water'
 local extraLiquid = 'liquid-air'
-local liquidAmount = 20
-local extraLiquidAmount = 20
+local liquidAmount = settings.waterAmount
+local extraLiquidAmount = settings.airAmount
 -- TODO: get liquid amount from settings about
 
 -- water + air separater
@@ -205,6 +204,8 @@ local tint = { r = 48 / 255, g = 126 / 255, b = 112 / 255 }
 local ore = apm.bob_rework.lib.entities.ore.zinc
 local liquid = 'sulfuric-acid'
 local extraLiquid = apm.bob_rework.lib.entities.chem.lubricant
+local liquidAmount = 20
+local extraLiquidAmount = 20
 gen(ore, tint, liquid, liquidAmount, extraLiquid, extraLiquidAmount)
 
 local tint = { r = 54 / 255, g = 54 / 255, b = 53 / 255 }
@@ -235,21 +236,21 @@ local r = {
     name                = recipe,
     category            = 'apm_sifting_0',
     icons               =
-    apm.lib.utils.icon.merge({
-        apm.lib.utils.icon.get.from_item('apm_crushed_stone'),
-        { apm.lib.icons.dynamics.t2 },
-    }),
+        apm.lib.utils.icon.merge({
+            apm.lib.utils.icon.get.from_item('apm_crushed_stone'),
+            { apm.lib.icons.dynamics.t2 },
+        }),
     normal              = {
         enabled                    = false,
         energy_required            = 4,
         ingredients                = {
-            { type = 'item', name = 'apm_dry_mud', amount = 36 },
+            { type = 'item', name = 'apm_dry_mud',    amount = 36 },
             { type = 'item', name = 'apm_sieve_iron', amount = 1 },
         },
         results                    = {
             { type = 'item', name = 'apm_crushed_stone', amount = 5 },
-            { type = 'item', name = 'apm_crushed_stone', amount_min = 1, amount_max = 4, probability = 0.4 },
-            { type = 'item', name = 'apm_sieve_iron', amount = 1, probability = 0.95 },
+            { type = 'item', name = 'apm_crushed_stone', amount_min = 1, amount_max = 4,    probability = 0.4 },
+            { type = 'item', name = 'apm_sieve_iron',    amount = 1,     probability = 0.95 },
         },
         main_product               = 'apm_crushed_stone',
         requester_paste_multiplier = 6,
@@ -261,7 +262,7 @@ local r = {
 }
 r.expensive = table.deepcopy(r.normal)
 r.expensive.ingredients = {
-    { type = 'item', name = 'apm_dry_mud', amount = 42 },
+    { type = 'item', name = 'apm_dry_mud',    amount = 42 },
     { type = 'item', name = 'apm_sieve_iron', amount = 1 },
 }
 
@@ -275,21 +276,21 @@ local r = {
     name                = recipe,
     category            = 'apm_sifting_0',
     icons               =
-    apm.lib.utils.icon.merge({
-        apm.lib.utils.icon.get.from_item('apm_crushed_stone'),
-        { apm.lib.icons.dynamics.t3 },
-    }),
+        apm.lib.utils.icon.merge({
+            apm.lib.utils.icon.get.from_item('apm_crushed_stone'),
+            { apm.lib.icons.dynamics.t3 },
+        }),
     normal              = {
         enabled                    = false,
         energy_required            = 8,
         ingredients                = {
             { type = 'item', name = 'apm_dry_mud_stack', amount = 5 },
-            { type = 'item', name = 'apm_sieve_iron', amount = 1 },
+            { type = 'item', name = 'apm_sieve_iron',    amount = 1 },
         },
         results                    = {
             { type = 'item', name = 'apm_crushed_stone', amount = 14 },
-            { type = 'item', name = 'apm_crushed_stone', amount_min = 0, amount_max = 4, probability = 0.5 },
-            { type = 'item', name = 'apm_sieve_iron', amount = 1, probability = 0.8 },
+            { type = 'item', name = 'apm_crushed_stone', amount_min = 0, amount_max = 4,   probability = 0.5 },
+            { type = 'item', name = 'apm_sieve_iron',    amount = 1,     probability = 0.8 },
         },
         main_product               = 'apm_crushed_stone',
         requester_paste_multiplier = 6,
@@ -301,7 +302,7 @@ local r = {
 }
 r.expensive = table.deepcopy(r.normal)
 r.expensive.ingredients = {
-    { type = 'item', name = 'apm_dry_mud', amount = 42 },
+    { type = 'item', name = 'apm_dry_mud',    amount = 42 },
     { type = 'item', name = 'apm_sieve_iron', amount = 1 },
 }
 

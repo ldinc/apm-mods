@@ -2442,7 +2442,7 @@ local unlock_steel_with_oxy = function ()
 	}
 	recipe.normal.results = {
 		{type='item', name='steel-plate', amount=4},
-		{type="fluid", name="steam", amount=180, temperature=280}
+		{type="fluid", name="steam", amount=100, temperature=280}
 	}
 	recipe.normal.main_product = ''
 	recipe.normal.requester_paste_multiplier = 4

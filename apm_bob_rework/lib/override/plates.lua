@@ -1,6 +1,9 @@
-local plates = require "lib.entities.plates"
-local alloys = require "lib.entities.alloys"
-local ores   = require "lib.entities.ores"
+local plates    = require "lib.entities.plates"
+local alloys    = require "lib.entities.alloys"
+local ores      = require "lib.entities.ores"
+local materials = require "lib.entities.materials"
+local product   = require "lib.entities.product"
+local fluids    = require "lib.entities.fluids"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 
@@ -8,7 +11,7 @@ require('lib.entities.base')
 require('lib.tier.base')
 
 apm.bob_rework.lib.override.plate = function()
-    local setResult = function (recipe, item, count)
+    local setResult = function(recipe, item, count)
         if count == nil then
             count = 1
         end
@@ -16,8 +19,8 @@ apm.bob_rework.lib.override.plate = function()
         apm.lib.utils.recipe.result.mod(recipe, item, count)
     end
 
-    local update = function(recipe, item, count, energy, energy_exp, milti)
-        if milti == nil then
+    local update = function(recipe, item, count, energy, energy_exp, result, clearAll)
+        if clearAll == true then
             apm.lib.utils.recipe.ingredient.remove_all(recipe)
         end
         if count == nil then
@@ -27,7 +30,9 @@ apm.bob_rework.lib.override.plate = function()
         apm.lib.utils.recipe.ingredient.mod(recipe, item, count)
 
         local v = data.raw.recipe[recipe]
-        local result = v.result
+        if result == nil then
+            result = v.result
+        end
 
         if result == nil then
             -- apm.lib.utils.debug.object(v)
@@ -45,23 +50,27 @@ apm.bob_rework.lib.override.plate = function()
         end
 
         apm.lib.utils.recipe.energy_required.mod(recipe, energy, energy_exp)
+
         apm.lib.utils.recipe.set.always_show_products(recipe, true)
     end
 
-    update(plates.copper, apm.bob_rework.lib.entities.enriched.ore.copper, 10, 32)
-    update(plates.iron, apm.bob_rework.lib.entities.enriched.ore.iron, 10, 32)
-    update(plates.tin, apm.bob_rework.lib.entities.enriched.ore.tin, 10, 32)
-    update(plates.lead, apm.bob_rework.lib.entities.enriched.ore.lead, 10, 32)
-    update('bob-zinc-plate', apm.bob_rework.lib.entities.enriched.ore.zinc, 10, 32)
-    update(plates.silver, apm.bob_rework.lib.entities.enriched.ore.silver, 10, 32)
-    update('bob-gold-plate', apm.bob_rework.lib.entities.enriched.ore.gold, 10, 32)
-    update('cobalt-oxide', apm.bob_rework.lib.entities.enriched.ore.cobalt, 10, 32)
-    update(plates.cobalt, 'cobalt-oxide', 10, 32)
+    update(plates.copper, apm.bob_rework.lib.entities.enriched.ore.copper, 10, 32, 32, plates.copper, true)
+    update(plates.iron, apm.bob_rework.lib.entities.enriched.ore.iron, 10, 32, 32, plates.iron, true)
+    update(plates.tin, apm.bob_rework.lib.entities.enriched.ore.tin, 10, 32, 32, plates.tin, true)
+    update(plates.lead, apm.bob_rework.lib.entities.enriched.ore.lead, 10, 32, 32, plates.lead, true)
+    -- update('bob-zinc-plate', apm.bob_rework.lib.entities.enriched.ore.zinc, 10, 32)
+    -- update(plates.silver, apm.bob_rework.lib.entities.enriched.ore.silver, 10, 32)
+    -- update('bob-gold-plate', apm.bob_rework.lib.entities.enriched.ore.gold, 10, 32)
+    -- update('cobalt-oxide', apm.bob_rework.lib.entities.enriched.ore.cobalt, 10, 32)
+    -- update(plates.cobalt, 'cobalt-oxide', 10, 32)
     update('lithium', 'lithium-chloride', 10, 32)
-    update('bob-aluminium-plate', apm.bob_rework.lib.entities.enriched.ore.aluminium, 10, 32)
-    update('bob-titanium-plate', apm.bob_rework.lib.entities.enriched.ore.titanium, 10, 32)
+    -- update('bob-aluminium-plate', apm.bob_rework.lib.entities.enriched.ore.aluminium, 10, 32)
+    -- update('bob-titanium-plate', apm.bob_rework.lib.entities.enriched.ore.titanium, 10, 32)
 
     local recipe = ''
+    local rm = function()
+        apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    end
     local set = function(item, count)
         if count == nil then
             count = 1
@@ -112,11 +121,105 @@ apm.bob_rework.lib.override.plate = function()
     -- update(recipe, apm.bob_rework.lib.entities.enriched.ore.iron, 10, 7.5, 7.5, false)
     -- setEnergy(7.5)
 
-    local recipe = 'cobalt-oxide'
-    apm.lib.utils.recipe.ingredient.mod(recipe, 'limestone', 10)
-    local recipe = plates.cobalt
-    apm.lib.utils.recipe.ingredient.mod(recipe, 'sulfuric-acid', 10)
+    recipe = 'alumina'
+    set(apm.bob_rework.lib.entities.enriched.ore.aluminium, 10)
+    set('sodium-hydroxide', 10)
+    set('bauxite-ore', 0)
+    setResult(recipe, recipe, 10)
+    setEnergy(10)
 
+    recipe = 'bob-titanium-plate'
+    set(apm.bob_rework.lib.entities.enriched.ore.titanium, 10)
+    set('rutile-ore', 0)
+    set(materials.carbon, 5)
+    set('calcium-chloride', 10)
+    setResult(recipe, plates.titanium, 10)
+    setEnergy(32)
+
+    recipe = 'bob-aluminium-plate'
+    set(materials.carbon, 5)
+    set('alumina', 10)
+    setResult(recipe, plates.aluminium, 10)
+    setEnergy(32)
+
+    recipe = 'bob-gold-plate'
+    rm()
+    set(apm.bob_rework.lib.entities.enriched.ore.gold, 10)
+    set(fluids.chlorine, 30)
+    setResult(recipe, plates.gold, 10)
+    setEnergy(32)
+
+    recipe = 'bob-zinc-plate'
+    rm()
+    set(apm.bob_rework.lib.entities.enriched.ore.zinc, 10)
+    set(fluids.acid.sulfuric, 100)
+    setResult(recipe, plates.zinc, 10)
+    setEnergy(32)
+
+    recipe = plates.cobalt
+    set('cobalt-oxide', 10)
+    set(fluids.acid.sulfuric, 100)
+    setResult(recipe, plates.cobalt, 10)
+    setEnergy(32)
+
+    recipe = 'powdered-tungsten'
+    set('tungsten-oxide', 10)
+    set(fluids.hydrogen, 150)
+    setResult(recipe, recipe, 10)
+    setEnergy(35)
+
+    recipe = 'salt'
+    set(fluids.water, 250)
+    setResult(recipe, recipe, 10)
+    setEnergy(5)
+
+    recipe = 'silicon-carbide'
+    set(materials.carbon, 10)
+    set('silicon-powder', 10)
+    setResult(recipe, recipe, 10)
+    setEnergy(70)
+
+    recipe = 'silicon-nitride'
+    set('silicon-powder', 10)
+    set(fluids.nitrogen, 125)
+    setResult(recipe, recipe, 10)
+    setEnergy(75)
+
+    recipe = 'tungsten-oxide'
+    set('tungsten-acid', 100)
+    setResult(recipe, recipe, 10)
+    setEnergy(20)
+
+    recipe = 'tungsten-carbide'
+    set(materials.carbon, 5)
+    set('tungsten-oxide', 5)
+    setResult(recipe, recipe, 10)
+    setEnergy(64)
+
+    recipe = 'tungsten-carbide-2'
+    set(materials.carbon, 5)
+    set('powdered-tungsten', 5)
+    setResult(recipe, 'tungsten-carbide', 10)
+    setEnergy(128)
+
+    recipe = 'quartz-glass'
+    set(ores.quartz, 10)
+    setResult(recipe, materials.glass, 10)
+    setEnergy(32)
+
+    recipe = plates.silver
+    rm()
+    set(apm.bob_rework.lib.entities.enriched.ore.silver, 10)
+    setResult(recipe, recipe, 10)
+    setEnergy(32)
+
+    recipe = 'cobalt-oxide'
+    rm()
+    set(apm.bob_rework.lib.entities.enriched.ore.cobalt, 10)
+    set('limestone', 10)
+    setResult(recipe, recipe, 10)
+    setEnergy(70)
+    
     local recipe = 'lead-oxide'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.enriched.ore.lead, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, 'lead-ore', 0)
@@ -133,13 +236,6 @@ apm.bob_rework.lib.override.plate = function()
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.enriched.ore.copper, 7)
     apm.lib.utils.recipe.ingredient.mod(recipe, 'copper-ore', 0)
 
-    local recipe = 'alumina'
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.enriched.ore.aluminium, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, 'bauxite-ore', 0)
-
-    local recipe = 'bob-titanium-plate'
-    apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.enriched.ore.titanium, 2)
-    apm.lib.utils.recipe.ingredient.mod(recipe, 'rutile-ore', 0)
 
     local recipe = 'tungstic-acid'
     apm.lib.utils.recipe.ingredient.mod(recipe, apm.bob_rework.lib.entities.enriched.ore.tungsten, 2)

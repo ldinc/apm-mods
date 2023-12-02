@@ -68,6 +68,6 @@ end
 
 apm.bob_rework.lib.override.electricPoles = function()
     buildEPole(e.pole.medium.basic, e.pole.big.basic, e.sub.station.basic, t.red, 9, product.rubber)
-    buildEPole(e.pole.medium.advance, e.pole.big.advance, e.sub.station.advance, t.blue, 18, materials.glass)
+    buildEPole(e.pole.medium.advance, e.pole.big.advance, e.sub.station.advance, t.blue, 12, materials.glass)
     buildSmallEpole()
 end

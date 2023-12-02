@@ -9,6 +9,12 @@ local fluids =  {
     lubricant = 'lubricant',
     deuterium = 'deuterium',
     chlorine = 'chlorine',
+    hydrogen = 'hydrogen',
+    water = 'water',
+    nitrogen = 'nitrogen',
+    acid = {
+        sulfuric = 'sulfuric-acid',
+    }, 
     oil = {
         crude = 'crude-oil',
     },

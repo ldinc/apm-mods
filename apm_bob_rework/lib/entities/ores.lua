@@ -12,6 +12,8 @@ local ores = {
     nickel = 'nickel-ore',
     tungsten = 'tungsten-ore',
 
+    quartz = 'quartz',
+
     coal = 'coal',
 
     crushed = {
