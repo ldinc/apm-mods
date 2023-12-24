@@ -1,6 +1,83 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.23.149
+Date: 24. 12. 2023
+  Changed:
+    - Mod dependecy: bob's mods 1.1.x -> 1.2 (with fixes)
+---------------------------------------------------------------------------------------------------
+Version: 0.23.148
+Date: 24. 12. 2023
+  Balanced:
+    - Water centrifuging result: 195->200 water (nice ratio now)
+    - Power generators changed with efficency & target production
+  Fixed:
+    - Added missing napalm for shotgun's fire ammo 
+---------------------------------------------------------------------------------------------------
+Version: 0.23.147
+Date: 19. 12. 2023
+  Changed:
+    - Fire capsule
+---------------------------------------------------------------------------------------------------
+Version: 0.23.146
+Date: 19. 12. 2023
+  Changed:
+    - Incendiary products now with napalm
+---------------------------------------------------------------------------------------------------
+Version: 0.23.145
+Date: 19. 12. 2023
+  Changed:
+    - Rocket napalm warheade recipe
+---------------------------------------------------------------------------------------------------
+Version: 0.23.144
+Date: 17. 12. 2023
+  Balanced:
+    - Rocket engine recipe: dropped steel stick
+---------------------------------------------------------------------------------------------------
+Version: 0.23.143
+Date: 17. 12. 2023
+  Balanced:
+    - Amethyst gems usage in modules
+---------------------------------------------------------------------------------------------------
+Version: 0.23.142
+Date: 07. 12. 2023
+  Balanced:
+    - Ash production from wood pellets
+---------------------------------------------------------------------------------------------------
+Version: 0.23.141
+Date: 05. 12. 2023
+  Balanced:
+    - Gun powder recipies
+---------------------------------------------------------------------------------------------------
+Version: 0.23.140
+Date: 05. 12. 2023
+  Balanced:
+    - Gun powder recipies
+---------------------------------------------------------------------------------------------------
+Version: 0.23.139
+Date: 05. 12. 2023
+  Fixed:
+    - Wood stacks
+---------------------------------------------------------------------------------------------------
+Version: 0.23.138
+Date: 03. 12. 2023
+  Fixed:
+    - Beacons
+  Updated:
+    - Dependencies version & some mod lock
+---------------------------------------------------------------------------------------------------
+Version: 0.23.137
+Date: 03. 12. 2023
+  Changed:
+    - Chemical filters: brass plate instaead iron plate
+    - Change to apm_valve instead bob's valve
+---------------------------------------------------------------------------------------------------
+Version: 0.23.136
+Date: 03. 12. 2023
+  Changed:
+    - Rocket recipe (using gun powder instead explosives)
+    - Chemical filters now using coke instead coal briquette
+---------------------------------------------------------------------------------------------------
 Version: 0.23.135
-Date: 01. 12. 2023
+Date: 03. 12. 2023
   Balanced:
     - Electric engines recipe
   Update:

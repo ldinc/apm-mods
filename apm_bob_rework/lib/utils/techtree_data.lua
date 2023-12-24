@@ -25,7 +25,7 @@ data.tiers = {
     t.ore.mining,
     t.energy.substation,
     t.logistics.inserters,
-    t.fluid.pumpjack,
+    -- t.fluid.pumpjack,
     t.energy.distribution,
     t.logistics.bots.frame,
     t.effect.transmitter,

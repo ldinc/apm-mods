@@ -150,7 +150,7 @@ local modify = function()
 
     local recipe = p.cliff.explosives
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, p.gun.powder, 200)
+    apm.lib.utils.recipe.ingredient.mod(recipe, p.gun.powder, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, plates.iron, 10)
 
     --change bots

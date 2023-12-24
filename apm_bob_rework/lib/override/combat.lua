@@ -10,6 +10,7 @@ local pipes     = require "lib.entities.pipes"
 local pumps     = require "lib.entities.pumps"
 local energy    = require "lib.entities.buildings.energy"
 local modules   = require "lib.entities.modules"
+local fluids    = require "lib.entities.fluids"
 
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
@@ -43,7 +44,7 @@ local changeRange = function(type, name, radius)
 	end
 end
 
-local changeAmmo = function (type, name, new)
+local changeAmmo = function(type, name, new)
 	local typed = data.raw[type]
 	if typed == nil then
 		return
@@ -197,7 +198,7 @@ local buildRocketTurret = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.pipe, 30)
 end
 
-local buildFlameTurrets = function ()
+local buildFlameTurrets = function()
 	local recipe = 'acid-cannon-rampant-arsenal'
 	local tier = t.red
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -367,7 +368,7 @@ local changeIronCladMortar = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.bearing.brass, 2)
 
 	changeRange(ammoTurretType, recipe, 55)
-	changeAmmo(ammoTurretType, recipe, {[0]='capsule-launcher'})
+	changeAmmo(ammoTurretType, recipe, { [0] = 'capsule-launcher' })
 end
 
 local updateWeapons = function()
@@ -453,10 +454,10 @@ local updateWeapons = function()
 	changeIronCladMortar()
 end
 
-local buildBattery = function (recipe, tier)
+local buildBattery = function(recipe, tier)
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.constructionAlloy, 1)
-	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5*tier.level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, tier.battery, 5 * tier.level)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.wire, 5)
 	apm.lib.utils.recipe.ingredient.mod(recipe, tier.logic, 5)
 	if tier.extraLogic then
@@ -464,7 +465,7 @@ local buildBattery = function (recipe, tier)
 	end
 end
 
-local tuneAtomicBomb = function ()
+local tuneAtomicBomb = function()
 	local recipe = 'atomic-bomb'
 	local set = function(item, count)
 		if count == nil then
@@ -537,12 +538,12 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 3)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 1)
 
 	local recipe = 'firearm-magazine'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 2)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 1)
 
 	local recipe = 'apm_ammonium_sulfate_chem'
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_coal_saturated_wastewater', 0)
@@ -551,12 +552,13 @@ local modify = function()
 	local recipe = 'shotgun-shell'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 1)
+
 	local recipe = 'piercing-shotgun-shell'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 3)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 1)
 
 	local recipe = 'artillery-shell'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -614,7 +616,7 @@ local modify = function()
 	local recipe = 'grenade'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.iron, 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 40)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 5)
 
 	local recipe = 'rifle-item-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -625,24 +627,29 @@ local modify = function()
 
 	local rbody = 'rocket-body'
 	local rhead = 'rocket-warhead'
+
 	local recipe = 'rocket'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 2)
 	apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.steel, 1)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.explosives, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 10)
+
 	local recipe = 'explosive-rocket'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, rbody, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosive-rocket-warhead', 1)
+
 	local recipe = 'bio-rocket-ammo-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, rbody, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'poison-rocket-warhead', 1)
+
 	local recipe = 'he-rocket-ammo-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, rbody, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosives', 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosive-rocket-warhead', 1)
+
 	local recipe = 'incendiary-rocket-ammo-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, rbody, 1)
@@ -662,7 +669,7 @@ local modify = function()
 
 	local recipe = 'grenade-capsule-ammo-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'explosives', 0)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 2)
 
 	local recipe = 'he-artillery-ammo-rampant-arsenal'
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'cluster-grenade', 0)
@@ -747,6 +754,11 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, t.yellow.logic, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, t.yellow.wire, 10)
 
+	recipe = 'flame-rocket-warhead'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, fluids.napalm, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 1)
+
 	buildBattery(combat.equip.battery.III, t.red)
 	buildBattery(combat.equip.battery.IV, t.blue)
 
@@ -795,9 +807,14 @@ local modify = function()
 	generator.shape.height = 2
 
 	local shells = {
-		[1] = 'cannon-shell', [2] = 'explosive-cannon-shell', [3] = 'bio-cannon-shell-ammo-rampant-arsenal',
-		[4] = 'he-cannon-shell-ammo-rampant-arsenal', [5] = 'incendiary-cannon-shell-ammo-rampant-arsenal',
-		[6] = 'scatter-cannon-shell', [7] = 'uranium-cannon-shell', [8] = 'explosive-uranium-cannon-shell'
+		[1] = 'cannon-shell',
+		[2] = 'explosive-cannon-shell',
+		[3] = 'bio-cannon-shell-ammo-rampant-arsenal',
+		[4] = 'he-cannon-shell-ammo-rampant-arsenal',
+		[5] = 'incendiary-cannon-shell-ammo-rampant-arsenal',
+		[6] = 'scatter-cannon-shell',
+		[7] = 'uranium-cannon-shell',
+		[8] = 'explosive-uranium-cannon-shell'
 	}
 	for _, shell in ipairs(shells) do
 		local ammo = data.raw.ammo[shell]
@@ -849,6 +866,25 @@ local modify = function()
 
 	changeIron2Steel(combat.ammo.cannon.he, 1)
 	changeIron2Steel(combat.ammo.cannon.incendiary, 1)
+	apm.lib.utils.recipe.ingredient.replace(combat.ammo.cannon.incendiary, fluids.oil.light, fluids.napalm, 1)
+	apm.lib.utils.recipe.ingredient.mod(combat.ammo.cannon.incendiary, fluids.napalm, 40)
+
+	apm.lib.utils.recipe.ingredient.replace(combat.ammo.shotgun.incendiary, fluids.oil.light, fluids.napalm, 1)
+	apm.lib.utils.recipe.ingredient.replace(combat.ammo.shotgun.incendiary, fluids.oil.heavy, fluids.napalm, 1)
+	apm.lib.utils.recipe.ingredient.mod(combat.ammo.shotgun.incendiary, fluids.napalm, 5)
+
+	apm.lib.utils.recipe.ingredient.replace(combat.grenade.incendiary, fluids.oil.light, fluids.napalm, 1)
+	apm.lib.utils.recipe.ingredient.replace(combat.grenade.incendiary, fluids.oil.heavy, fluids.napalm, 1)
+	apm.lib.utils.recipe.ingredient.mod(combat.grenade.incendiary, fluids.napalm, 20)
+
+	apm.lib.utils.recipe.ingredient.replace(combat.projectiles.bullet.flame, fluids.oil.light, fluids.napalm, 1)
+	apm.lib.utils.recipe.ingredient.replace(combat.projectiles.bullet.flame, fluids.oil.heavy, fluids.napalm, 1)
+	apm.lib.utils.recipe.ingredient.mod(combat.projectiles.bullet.flame, fluids.napalm, 5)
+
+	apm.lib.utils.recipe.ingredient.remove_all(combat.capsule.fire)
+	apm.lib.utils.recipe.ingredient.mod(combat.capsule.fire, fluids.napalm, 50)
+	apm.lib.utils.recipe.ingredient.mod(combat.capsule.fire, materials.plastic, 3)
+	apm.lib.utils.recipe.ingredient.mod(combat.capsule.fire, alloy.gunmetal, 3)
 
 	buildLaserTurret()
 	buildCanonTurret()

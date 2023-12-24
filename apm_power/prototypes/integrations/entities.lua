@@ -193,7 +193,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 if (mods.boblogistics and apm_power_compat_bob) or (mods.angelspetrochem and apm_power_compat_angel) then
-	apm.lib.utils.storage_tank.set.hidden('apm_valve_0')
-	apm.lib.utils.storage_tank.set.hidden('apm_valve_1')
-	apm.lib.utils.storage_tank.set.hidden('apm_valve_2')
+	if (mods.apm_bob_rework_ldinc == nil) then
+		apm.lib.utils.storage_tank.set.hidden('apm_valve_0')
+		apm.lib.utils.storage_tank.set.hidden('apm_valve_1')
+		apm.lib.utils.storage_tank.set.hidden('apm_valve_2')
+	end
 end

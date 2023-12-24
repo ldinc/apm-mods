@@ -12,11 +12,14 @@ local fluids =  {
     hydrogen = 'hydrogen',
     water = 'water',
     nitrogen = 'nitrogen',
+    napalm = 'napalm-fluid-rampant-arsenal',
     acid = {
         sulfuric = 'sulfuric-acid',
     }, 
     oil = {
         crude = 'crude-oil',
+        light = 'light-oil',
+        heavy = 'heavy-oil',
     },
 
     tank = {
@@ -25,6 +28,10 @@ local fluids =  {
             inline = 'bob-small-inline-storage-tank',
             cross = 'bob-small-storage-tank',
         },
+    },
+
+    liquid = {
+        fuel = 'liquid-fuel',
     },
 }
 

@@ -12,6 +12,7 @@ local recipies = require "lib.entities.recipies"
 local science  = require "lib.entities.science"
 local modules  = require "lib.entities.modules"
 local furnaces = require "lib.entities.buildings.furnaces"
+local fluids   = require "lib.entities.fluids"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -125,35 +126,21 @@ apm.bob_rework.lib.override.others = function()
     mod('nitric-acid', 20)
 
     recipe = 'apm_filter_charcoal'
-    mod(plates.steel, 0)
+    clear()
     mod(alloys.brass, 1)
-    if settings.startup['apm_bob_rework_replace_filter'].value == true then
-        mod('apm_charcoal_brick', 0)
-        mod('apm_coal_briquette', 1)
+    mod(materials.coke, 1)
 
-        recipe = 'apm_filter_charcoal_used_recycling'
-        mod('apm_charcoal_brick', 0)
-        mod('apm_coal_briquette', 3)
-    end
-
+    recipe = 'apm_filter_charcoal_used_recycling'
+    clear()
+    mod('apm_filter_charcoal_used', 3)
+    mod(materials.coke, 2)
+    mod('water', 30)
 
     recipe = 'apm_lubricant_1'
     mod('apm_resin', 2)
 
     recipe = 'rail'
     mod(plates.steel, 2)
-
-    -- recipe = 'production-science-pack'
-    -- clear()
-    -- mod('rail', 40)
-    -- mod('electric-mixing-furnace', 1)
-    -- mod('productivity-module', 4)
-    -- mod('productivity-module-3', 4)
-    -- sad hack
-    -- local obj = data.raw.recipe[recipe]
-
-    -- table.insert(obj.ingredients, { type = 'item', name = 'rail', amount = 40 })
-    -- -- table.insert(obj.ingredients, { type = 'item', name = 'productivity-module', amount = 4 })
 
     -- enabled sieve on startup
     recipe = product.sieve.iron
@@ -221,21 +208,13 @@ apm.bob_rework.lib.override.others = function()
 
     -- buf personal egen
 
-    local modify = settings.startup['apm_bob_rework_replace_filter'].value == true
-
     local target = 'apm_equipment_burner_generator_basic'
     local itm = data.raw["generator-equipment"][target]
     itm.power = "500kW"
-    if modify then
-        itm.burner.effectivity = "0.1"
-    end
 
     target = 'apm_equipment_burner_generator_advanced'
     itm = data.raw["generator-equipment"][target]
     itm.power = "1000kW"
-    if modify then
-        itm.burner.effectivity = "0.14"
-    end
 
     recipe = data.raw.recipe['apm_machine_frame_steam']
     recipe.localised_name = { "entity-name.primitive-frame", { "entity-name.primitive-frame" } }
@@ -294,6 +273,12 @@ apm.bob_rework.lib.override.others = function()
     mod(materials.refined.concrete, 80)
     mod(materials.concrete, 0)
     mod(product.rubber, 20)
+
+    recipe = 'apm_seawater_centrifuging'
+    apm.lib.utils.recipe.energy_required.mod(recipe, 1)
+    apm.lib.utils.recipe.result.mod(recipe, fluids.water, 200)
+
+    apm.lib.utils.recipe.energy_required.mod('apm_wood_ash_production', 0.5)
 
     apm.lib.utils.assembler.mod.category.add('electric-chemical-mixing-furnace', 'apm_electric_smelting')
 

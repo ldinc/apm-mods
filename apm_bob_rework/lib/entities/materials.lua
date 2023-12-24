@@ -9,6 +9,7 @@ local m = {
     },
     glass = 'glass',
     carbon = 'carbon',
+    coke = 'apm_coke',
     plastic = 'plastic-bar',
     mud = {
         wet = 'apm_wet_mud',

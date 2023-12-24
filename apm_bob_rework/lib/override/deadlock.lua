@@ -320,3 +320,5 @@ makeStackAndUnstack(alloys.tungstenCarbide, tech.processing.tungstenAlloy, "tung
 
 -- make stacks for dty mud
 makeStackAndUnstack(materials.mud.dry, tech.sieve.burner, "dry mud")
+
+makeStackAndUnstack(materials.wood, tech.logistics.basic, "wood")

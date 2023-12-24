@@ -66,6 +66,11 @@ local pipes = {
         small = 'apm_small_sinkhole',
         large = 'apm_sinkhole',
     },
+    valve = {
+        check = 'apm_valve_2', -- обратный клапан =)
+        overflow = 'apm_valve_1',
+        topup = 'apm_valve_0',
+    },
 }
 
 return pipes

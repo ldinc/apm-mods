@@ -11,6 +11,10 @@ local t = {
     },
 
     processing = {
+        grinding = 'grinding',
+        gem = {
+            I = 'gem-processing-1',
+        },
         alloy = 'alloy-processing',
         invar = 'invar-processing',
         cobalt = 'cobalt-processing',

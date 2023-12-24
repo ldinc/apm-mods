@@ -4,6 +4,9 @@ return {
         magazine = {
             firearm = 'firearm-magazine',
         },
+        shotgun = {
+            incendiary = 'shotgun-flame-shell',
+        },
         rocket = {
             base = 'rocket',
         },
@@ -38,6 +41,11 @@ return {
 
     capsule = {
         toxic = 'toxic-capsule-rampant-arsenal',
+        fire = 'fire-capsule',
+    },
+
+    grenade = {
+        incendiary = 'incendiary-grenade-capsule-rampant-arsenal',
     },
 
     gun = {
@@ -176,5 +184,11 @@ return {
     radar = {
         sentinel = 'kr-sentinel',
         base = 'radar',
+    },
+
+    projectiles = {
+        bullet = {
+            flame = 'flame-bullet-projectile',
+        },
     },
 }

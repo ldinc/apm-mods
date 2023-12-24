@@ -49,8 +49,8 @@ local buildEPole = function(medium, big, substation, tier, r, diel)
 
     -- change poles area & wire square
     local entity = data.raw["electric-pole"][substation]
-    entity.maximum_wire_distance = r * 2
-    entity.supply_area_distance = r
+    entity.maximum_wire_distance = r * 3
+    entity.supply_area_distance = r * 3 / 2
     local entity = data.raw["electric-pole"][medium]
     entity.maximum_wire_distance = r * 2
     entity.supply_area_distance = r * 2 / 3

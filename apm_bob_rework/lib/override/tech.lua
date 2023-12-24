@@ -342,6 +342,10 @@ function apm.bob_rework.lib.override.tech()
     bind('vehicle-motor-equipment', 'ceramics')
     bind('rampant-arsenal-technology-rocket-turret-1', 'ceramics')
 
+    push(tech.fluid.control.extra, pipes.valve.check)
+    push(tech.fluid.control.extra, pipes.valve.overflow)
+    push(tech.fluid.control.extra, pipes.valve.topup)
+
     bind('bob-fluid-handling-3', 'tungsten-processing')
     bind('bob-fluid-handling-2', 'ceramics')
     bind('chemical-plant-2', 'bob-fluid-handling-2')
@@ -420,6 +424,8 @@ function apm.bob_rework.lib.override.tech()
     free('bob-plasma-turrets-5')
 
     rm(t.puddling.furnace, 'apm_burner_miner_drill_2')
+
+    free('bob-wood-processing')
 
     free('bob-greenhouse')
     free('bob-fertiliser')
@@ -807,6 +813,9 @@ function apm.bob_rework.lib.override.tech()
     free('ironclad-gunboat')
 
     push('concrete', pipes.sinkhole.small)
+
+    push(tech.processing.coke.I, 'apm_gun_powder_from_crhushed_coke')
+    push(tech.processing.coke.I, 'apm_gun_powder_from_charcoal')
 
     free('rampant-arsenal-technology-lite-artillery')
 

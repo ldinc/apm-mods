@@ -56,6 +56,8 @@ local modulesHashMap = function ()
 end
 
 local linkedTechMap = {
+    [t.processing.gem.I] = {t.processing.grinding},
+    ['bob-pumpjacks-1'] = {t.processing.oil.basic},
     [t.science.steam] = {t.energy.steam.boiler.basic},
     [t.combat.turret.gun.I] = {t.crusher.burner},
     [t.processing.oil.basic] = {t.science.chemical},

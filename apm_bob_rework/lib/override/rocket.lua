@@ -22,7 +22,6 @@ local update = function ()
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
     apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, plates.aluminium, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, product.stick, 1)
 
     local recipe = combat.ammo.rocket.base
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
