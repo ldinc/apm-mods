@@ -1,10 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.149
+Version: 0.23.04
+Date: 25. 12. 2023
+  Balanced:
+    - Energy consumption
+---------------------------------------------------------------------------------------------------
+Version: 0.23.03
+Date: 25. 12. 2023
+  Balanced:
+    - Energy consumption
+---------------------------------------------------------------------------------------------------
+Version: 0.23.02
+Date: 25. 12. 2023
+  Balanced:
+    - Energy consumption
+---------------------------------------------------------------------------------------------------
+Version: 0.23.01
+Date: 25. 12. 2023
+  Balanced:
+    - Energy consumption (beacons)
+---------------------------------------------------------------------------------------------------
+Version: 0.23.00
+Date: 25. 12. 2023
+  Balanced:
+    - Energy consumption
+---------------------------------------------------------------------------------------------------
+Version: 0.22.149
 Date: 24. 12. 2023
   Changed:
     - Mod dependecy: bob's mods 1.1.x -> 1.2 (with fixes)
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.148
+Version: 0.22.148
 Date: 24. 12. 2023
   Balanced:
     - Water centrifuging result: 195->200 water (nice ratio now)
@@ -12,108 +37,108 @@ Date: 24. 12. 2023
   Fixed:
     - Added missing napalm for shotgun's fire ammo 
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.147
+Version: 0.22.147
 Date: 19. 12. 2023
   Changed:
     - Fire capsule
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.146
+Version: 0.22.146
 Date: 19. 12. 2023
   Changed:
     - Incendiary products now with napalm
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.145
+Version: 0.22.145
 Date: 19. 12. 2023
   Changed:
     - Rocket napalm warheade recipe
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.144
+Version: 0.22.144
 Date: 17. 12. 2023
   Balanced:
     - Rocket engine recipe: dropped steel stick
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.143
+Version: 0.22.143
 Date: 17. 12. 2023
   Balanced:
     - Amethyst gems usage in modules
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.142
+Version: 0.22.142
 Date: 07. 12. 2023
   Balanced:
     - Ash production from wood pellets
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.141
+Version: 0.22.141
 Date: 05. 12. 2023
   Balanced:
     - Gun powder recipies
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.140
+Version: 0.22.140
 Date: 05. 12. 2023
   Balanced:
     - Gun powder recipies
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.139
+Version: 0.22.139
 Date: 05. 12. 2023
   Fixed:
     - Wood stacks
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.138
+Version: 0.22.138
 Date: 03. 12. 2023
   Fixed:
     - Beacons
   Updated:
     - Dependencies version & some mod lock
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.137
+Version: 0.22.137
 Date: 03. 12. 2023
   Changed:
     - Chemical filters: brass plate instaead iron plate
     - Change to apm_valve instead bob's valve
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.136
+Version: 0.22.136
 Date: 03. 12. 2023
   Changed:
     - Rocket recipe (using gun powder instead explosives)
     - Chemical filters now using coke instead coal briquette
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.135
+Version: 0.22.135
 Date: 03. 12. 2023
   Balanced:
     - Electric engines recipe
   Update:
     - Optional dependencies
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.134
+Version: 0.22.134
 Date: 30. 11. 2023
   Balanced:
     - Turbine & steam engines
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.132
+Version: 0.22.132
 Date: 29. 11. 2023
   Balanced:
     - Crafting speeds for assemblers
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.131
+Version: 0.22.131
 Date: 29. 11. 2023
   Fixed:
     - Broken recipies for plates
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.130
+Version: 0.22.130
 Date: 27. 11. 2023
   Balanced:
     - Enriched air & water ore recipies
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.129
+Version: 0.22.129
 Date: 27. 11. 2023
   Balanced:
     - Refined ores
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.128
+Version: 0.22.128
 Date: 26. 11. 2023
   Balanced:
     - Steel plates production
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.127
+Version: 0.22.127
 Date: 24. 11. 2023
   Changed:
     - Deuterium tech locked by space science packs
@@ -121,39 +146,39 @@ Date: 24. 11. 2023
     - Recepies results for many plates increased up to 10x (w\ energy required)
     - Sieving & crushing recepies tuned to be more stacked (10x)
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.126
+Version: 0.22.126
 Date: 23. 11. 2023
   Changed:
     - Recipies for science packs 
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.125
+Version: 0.22.125
 Date: 18. 11. 2023
   Changed:
     - Iron sieve from iron 1->20, to 1->5  
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.124
+Version: 0.22.124
 Date: 18. 11. 2023
   Changed:
     - Iron sieve from iron 1->1, to 1->20  
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.123
+Version: 0.22.123
 Date: 18. 11. 2023
   Fixed:
     - Tech tree missing 'apm_handcrafting_only' category
   Changed:
     - Stacking recipies for dry mud [experimental]
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.122
+Version: 0.22.122
 Date: 11. 08. 2023
   Changed:
     - Stacking recipies for metal plates [experimental]
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.121
+Version: 0.22.121
 Date: 28. 07. 2023
   Changed:
     - Tech tree time & amount depends now on level & science pack types [experimental]
 ---------------------------------------------------------------------------------------------------
-Version: 0.23.120
+Version: 0.22.120
 Date: 27. 07. 2023
   Added:
     - New recipe for wet mud (from dry mud - mirroring recipe)

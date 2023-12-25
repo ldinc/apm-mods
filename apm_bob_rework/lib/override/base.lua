@@ -71,6 +71,7 @@ require('lib.override.deadlocklamps')
 require('lib.override.valve')
 require('lib.override.gunpowder')
 require('lib.override.modules')
+require('lib.override.energyUsage')
 
 -- require('lib.override.deadlock')
 
@@ -135,6 +136,8 @@ apm.bob_rework.lib.override.apply = function ()
 
     apm.bob_rework.lib.override.ir3_air_compressor()
     apm.bob_rework.lib.override.ir3_barreling()
+
+    apm.bob_rework.lib.override.updateEnergyUsage()
 
     apm.bob_rework.lib.override.drop()
 
