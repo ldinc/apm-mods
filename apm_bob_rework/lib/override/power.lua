@@ -80,6 +80,7 @@ end
 
 local steamK = 200 --J
 local tick = 60    -- 60 ticks in 1s
+local extraKW = 100 -- extra consumption for boilers (fix math rounds)
 
 -- expected output in kW
 function buildConfig(output, genEff, boilerEff, perBoiler, temp)
@@ -95,7 +96,7 @@ function buildConfig(output, genEff, boilerEff, perBoiler, temp)
         fpt = steamPerTick,
         boiler = {
             eff = boilerEff,
-            output = targetEnergy,
+            output = targetEnergy + extraKW,
             temp = temp,
         },
     }

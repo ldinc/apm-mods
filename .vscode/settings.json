@@ -2,8 +2,7 @@
     "factorio.versions": [
         {
             "name": "latest",
-            "factorioPath": "e:\\steam\\steamapps\\common\\Factorio\\bin\\x64\\factorio.exe",
-            "active": true
+            "factorioPath": "e:\\steam\\steamapps\\common\\Factorio\\bin\\x64\\factorio.exe"
         }
     ],
     "Lua.workspace.library": [
