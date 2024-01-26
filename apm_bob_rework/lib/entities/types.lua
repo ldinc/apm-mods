@@ -5,6 +5,10 @@ local types = {
     lab = 'lab',
     rocket = {silo = 'rocket-silo'},
     beacon = 'beacon',
+    pipe = {
+        base = 'pipe',
+        underground = 'pipe-to-ground',
+    },
 }
 
 return types

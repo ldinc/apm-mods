@@ -27,6 +27,7 @@ local logics = {
         const = 'constant-combinator'
     },
 
+    rocket = 'rocket-control-unit',
 }
 
 return logics

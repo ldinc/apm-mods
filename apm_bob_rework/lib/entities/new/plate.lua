@@ -154,7 +154,7 @@ apm.bob_rework.lib.entities.genStartingPlate = function (name, ore)
     recipe.category = "mixing-furnace"
     recipe.normal = {}
     recipe.normal.enabled = true
-    recipe.normal.energy_required = 15
+    recipe.normal.energy_required = 5
     recipe.normal.ingredients = {
         {type="item", name=ore, amount=1},
     }

@@ -1,8 +1,8 @@
-local bob = require "lib.entities.bob"
-local science = require "lib.entities.science"
-local t = require "lib.entities.tech"
-local default = require "lib.entities.default"
-local json    = require "lib.utils.json"
+local bob           = require "lib.entities.bob"
+local science       = require "lib.entities.science"
+local t             = require "lib.entities.tech"
+local default       = require "lib.entities.default"
+local json          = require "lib.utils.json"
 local techtree_data = require "lib.utils.techtree_data"
 
 -- Package for tech tree rebuilding
@@ -30,7 +30,7 @@ local sciencePacks = {
     [science.space] = {},
 }
 
-local modulesHashMap = function ()
+local modulesHashMap = function()
     local hashmap = {}
     hashmap[bob.modules.part.board.main] = {}
     hashmap[bob.modules.part.board.basic] = {}
@@ -56,58 +56,58 @@ local modulesHashMap = function ()
 end
 
 local linkedTechMap = {
-    [t.processing.gem.I] = {t.processing.grinding},
-    ['bob-pumpjacks-1'] = {t.processing.oil.basic},
-    [t.science.steam] = {t.energy.steam.boiler.basic},
-    [t.combat.turret.gun.I] = {t.crusher.burner},
-    [t.processing.oil.basic] = {t.science.chemical},
-    [t.battery.liio] = {t.science.chemical},
-    [t.logistics.rail.signals] = {t.science.logistics},
+    [t.processing.gem.I] = { t.processing.grinding },
+    ['bob-pumpjacks-1'] = { t.processing.oil.basic },
+    [t.science.steam] = { t.energy.steam.boiler.basic },
+    [t.combat.turret.gun.I] = { t.crusher.burner },
+    [t.processing.oil.basic] = { t.science.chemical },
+    [t.battery.liio] = { t.science.chemical },
+    [t.logistics.rail.signals] = { t.science.logistics },
     -- [t.logistics.automobile.basic] = {t.science.logistics},
-    [t.logistics.automobile.basic] = {t.materials.rubber.vulcano},
-    [t.logistics.inserters.red] = {t.science.logistics},
-    [t.electronics.basic] = {t.science.steam},
+    [t.logistics.automobile.basic] = { t.materials.rubber.vulcano },
+    [t.logistics.inserters.red] = { t.science.logistics },
+    [t.electronics.basic] = { t.science.steam },
     -- red sp bindings
-    [t.electronics.advanced.I] = {t.science.logistics},
+    [t.electronics.advanced.I] = { t.science.logistics },
     -- purple sp bindings
-    [t.electronics.advanced.II] = {t.science.production},
+    [t.electronics.advanced.II] = { t.science.production },
     -- pink sp bindings
-    [t.electronics.advanced.III] = {t.science.advanced.logistics},
+    [t.electronics.advanced.III] = { t.science.advanced.logistics },
     -- nuclear bindings
-    [t.nuclear.rtg] = {t.science.nuclear},
-    [t.nuclear.processing.thorium] = {t.science.nuclear},
-    [t.nuclear.breeder] = {t.science.nuclear},
-    [t.nuclear.portable.reactor] = {t.science.nuclear},
-    [t.nuclear.synthesys.plutonium] = {t.science.nuclear},
-    [t.nuclear.portable.reactor] = {t.science.nuclear},
-    [t.nuclear.thorium] = {t.science.nuclear, t.nuclear.thorium_breeder},
-    [t.nuclear.fuel.product] = {t.science.nuclear, t.nuclear.synthesys.plutonium},
-    [t.energy.heat.pipe.basic] = {t.boiler.burner.advanced},
-    [t.logistics.wagon.fluid.basic] = {t.logistics.rail.ways},
-    [t.device.lamp] = {t.electricity},
-    [t.energy.solar.basic] = {t.electricity},
-    [t.network.basic] = {t.electricity},
-    [t.network.ltn] = {t.network.basic},
-    [t.equipment.shield.basic] = {t.electricity},
-    [t.boiler.oil.basic] = {t.fluid.control.extra},
-    [t.nuclear.processing.heavy_water] = {t.nuclear.uranium},
-    [t.processing.low_density_structure] = {t.nuclear.uranium},
-    [t.nuclear.processing.uranium] = {t.science.production},
-    [t.combat.shield.II] = {t.combat.shield.I},
-    [t.combat.shield.III] = {t.combat.shield.II},
-    [t.combat.shield.IV] = {t.combat.shield.III},
-    [t.processing.gold] = {t.science.logistics},
-    [t.processing.grinding] = {t.science.logistics},
-    [t.processing.titanium] = {t.science.production},
-    [t.processing.tungsten] = {t.science.production},
-    [t.buff.hp] = {t.military.II},
-    [t.nuclear.deuterium] = {t.science.advanced.logistics},
-    [t.combat.tank.electric] = {t.combat.tank.base},
-    [t.combat.car.electric] = {t.combat.car.base},
-    [t.effect.heat.pipe.advanced] = {t.science.production},
-    [t.effect.heat.pipe.expert] = {t.science.nuclear},
-    [t.nuclear.processing.deuterium] = {t.science.nuclear, t.science.space},
-    [t.nuclear.fuel.deuterium.cell.advanced] = {t.nuclear.deuterium},
+    [t.nuclear.rtg] = { t.science.nuclear },
+    [t.nuclear.processing.thorium] = { t.science.nuclear },
+    [t.nuclear.breeder] = { t.science.nuclear },
+    [t.nuclear.portable.reactor] = { t.science.nuclear },
+    [t.nuclear.synthesys.plutonium] = { t.science.nuclear },
+    [t.nuclear.portable.reactor] = { t.science.nuclear },
+    [t.nuclear.thorium] = { t.science.nuclear, t.nuclear.thorium_breeder },
+    [t.nuclear.fuel.product] = { t.science.nuclear, t.nuclear.synthesys.plutonium },
+    [t.energy.heat.pipe.basic] = { t.boiler.burner.advanced },
+    [t.logistics.wagon.fluid.basic] = { t.logistics.rail.ways },
+    [t.device.lamp] = { t.electricity },
+    [t.energy.solar.basic] = { t.electricity },
+    [t.network.basic] = { t.electricity },
+    [t.network.ltn] = { t.network.basic },
+    [t.equipment.shield.basic] = { t.electricity },
+    [t.boiler.oil.basic] = { t.fluid.control.extra },
+    [t.nuclear.processing.heavy_water] = { t.nuclear.uranium },
+    [t.processing.low_density_structure] = { t.nuclear.uranium },
+    [t.nuclear.processing.uranium] = { t.science.production },
+    [t.combat.shield.II] = { t.combat.shield.I },
+    [t.combat.shield.III] = { t.combat.shield.II },
+    [t.combat.shield.IV] = { t.combat.shield.III },
+    [t.processing.gold] = { t.science.logistics },
+    [t.processing.grinding] = { t.science.logistics },
+    [t.processing.titanium] = { t.science.production },
+    [t.processing.tungsten] = { t.science.production },
+    [t.buff.hp] = { t.military.II },
+    [t.nuclear.deuterium] = { t.science.advanced.logistics },
+    [t.combat.tank.electric] = { t.combat.tank.base },
+    [t.combat.car.electric] = { t.combat.car.base },
+    [t.effect.heat.pipe.advanced] = { t.science.production },
+    [t.effect.heat.pipe.expert] = { t.science.nuclear },
+    [t.nuclear.processing.deuterium] = { t.science.nuclear, t.science.space },
+    [t.nuclear.fuel.deuterium.cell.advanced] = { t.nuclear.deuterium },
 
 }
 
@@ -117,13 +117,13 @@ local getLinks = function()
         log(json.encode(list))
         local prev = nil
         for _, target in pairs(list) do
-            log('debug '.. target)
+            log('debug ' .. target)
             if prev then
                 if map[target] == nil then
                     map[target] = {}
                 end
-                log('from '..target..' to '..prev)
-                table.insert(map[target],prev)
+                log('from ' .. target .. ' to ' .. prev)
+                table.insert(map[target], prev)
             end
             prev = target
         end
@@ -133,12 +133,12 @@ local getLinks = function()
 end
 
 local reactorProductsMap = {
-    [t.nuclear.uranium] = {['apm_fuel_rod_uranium_active'] = {}, ['apm_fuel_rod_mox_active'] = {}, ['apm_fuel_rod_thorium_active'] = {}, ['apm_fuel_rod_neptunium_active'] = {}},
-    [t.nuclear.thorium] = {['apm_fuel_rod_uranium_active'] = {}, ['apm_fuel_rod_mox_active'] = {}, ['apm_fuel_rod_thorium_active'] = {}, ['apm_fuel_rod_neptunium_active'] = {}},
-    [t.nuclear.breeder] = {['used-up-thorium-fuel-cell'] = {}},
-    [t.nuclear.fuel.reprocessing] = {['apm_oxide_pellet_u238'] = {}},
-    [t.nuclear.synthesys.plutonium] = {['plutonium-239'] = {}},
-    [t.nuclear.deuterium] = {['used-up-deuterium-fuel-cell'] = {}},
+    [t.nuclear.uranium] = { ['apm_fuel_rod_uranium_active'] = {}, ['apm_fuel_rod_mox_active'] = {}, ['apm_fuel_rod_thorium_active'] = {}, ['apm_fuel_rod_neptunium_active'] = {} },
+    [t.nuclear.thorium] = { ['apm_fuel_rod_uranium_active'] = {}, ['apm_fuel_rod_mox_active'] = {}, ['apm_fuel_rod_thorium_active'] = {}, ['apm_fuel_rod_neptunium_active'] = {} },
+    [t.nuclear.breeder] = { ['used-up-thorium-fuel-cell'] = {} },
+    [t.nuclear.fuel.reprocessing] = { ['apm_oxide_pellet_u238'] = {} },
+    [t.nuclear.synthesys.plutonium] = { ['plutonium-239'] = {} },
+    [t.nuclear.deuterium] = { ['used-up-deuterium-fuel-cell'] = {} },
 }
 
 local log = apm.bob_rework.lib.utils.debug.object
@@ -168,7 +168,7 @@ local emptyTree = function()
 end
 
 -- fill tree by technologies
-local appendTechologiesSet = function (tree)
+local appendTechologiesSet = function(tree)
     for _, tech in pairs(data.raw.technology) do
         local tName = tech.name
         tree.technologies.all[tName] = {
@@ -206,15 +206,15 @@ local appendTechologiesSet = function (tree)
     end
 end
 
-local techIsValid = function (tItem)
-    if tItem.isEmpty == true or tItem.isModuleBranch == true or tItem.isBuff == true  then
+local techIsValid = function(tItem)
+    if tItem.isEmpty == true or tItem.isModuleBranch == true or tItem.isBuff == true then
         return false
     end
 
     return true
 end
 
-local extractResearchUnits = function (tech)
+local extractResearchUnits = function(tech)
     if tech == nil or tech.unit == nil or tech.unit.ingredients == nil then
         return nil
     end
@@ -230,7 +230,7 @@ local extractResearchUnits = function (tech)
     return list
 end
 
-local technologyIsEmpty = function (tech)
+local technologyIsEmpty = function(tech)
     if tech.effects == nil then
         return true
     end
@@ -242,7 +242,7 @@ local technologyIsEmpty = function (tech)
     return true
 end
 
-local technologyHasRecipeToUnlock = function (tech)
+local technologyHasRecipeToUnlock = function(tech)
     if tech.effects == nil then
         return false
     end
@@ -256,7 +256,7 @@ local technologyHasRecipeToUnlock = function (tech)
     return false
 end
 
-local setupResearchFlag = function (tree)
+local setupResearchFlag = function(tree)
     for tName, tItem in pairs(tree.technologies.all) do
         if tItem.products then
             for product, value in pairs(tItem.products) do
@@ -276,12 +276,10 @@ specialTechBufs['near-inserters'] = true
 specialTechBufs['more-inserters-1'] = true
 specialTechBufs['more-inserters-2'] = true
 
-local setupTechnologyFlags = function (tree)
-
+local setupTechnologyFlags = function(tree)
     local modulesHashMap = modulesHashMap()
 
     for tName, tItem in pairs(tree.technologies.all) do
-
         tItem.isEmpty = technologyIsEmpty(tItem.ref)
 
         if technologyHasRecipeToUnlock(tItem.ref) == false and tItem.isEmpty == false then
@@ -315,11 +313,11 @@ local setupTechnologyFlags = function (tree)
     end
 end
 
-local resetTechnologies = function (tree)
+local resetTechnologies = function(tree)
     for tName, tItem in pairs(tree.technologies.all) do
         if tItem.ref ~= nil and tItem.isModuleBranch == false and tItem.isEmpty == false then
             if tItem.isBuff then
-               -- TODO: mb do smth 
+                -- TODO: mb do smth
             else
                 local tech = tItem.ref
                 apm.bob_rework.lib.utils.tech.dropAllPrerequisites(tech)
@@ -329,10 +327,10 @@ local resetTechnologies = function (tree)
     end
 end
 
-local disableEmptyTechnologies = function (tree)
+local disableEmptyTechnologies = function(tree)
     for tName, tItem in pairs(tree.technologies.all) do
         if tItem.isEmpty and not tItem.isBuff then
-            log('technology ['..tName..'] was disabled (empty)')
+            log('technology [' .. tName .. '] was disabled (empty)')
             apm.lib.utils.technology.disable(tItem.ref)
             tItem.ref.hidden = true
             tree.technologies.all[tName] = nil
@@ -340,11 +338,11 @@ local disableEmptyTechnologies = function (tree)
     end
 end
 
-local getTechnologyProductDependecies = function (tech)
+local getTechnologyProductDependecies = function(tech)
     if tech and tech.effects then
         local list = {}
         for _, effect in pairs(tech.effects) do
-            if effect.type == 'unlock-recipe' and effect.recipe  then
+            if effect.type == 'unlock-recipe' and effect.recipe then
                 local ingredients = apm.bob_rework.lib.utils.recipe.getIngredients(effect.recipe)
                 for _, ingredient in ipairs(ingredients) do
                     list[ingredient] = {}
@@ -357,7 +355,7 @@ local getTechnologyProductDependecies = function (tech)
     return nil
 end
 
-local getCraftingGroupsForProduct = function (name)
+local getCraftingGroupsForProduct = function(name)
     local groups = {}
 
     local assembler = data.raw['assembling-machine'][name]
@@ -382,7 +380,7 @@ local getCraftingGroupsForProduct = function (name)
     return groups
 end
 
-local getCraftingGroupsForTech = function (tItem)
+local getCraftingGroupsForTech = function(tItem)
     local groups = {}
 
     for product in pairs(tItem.products) do
@@ -395,7 +393,7 @@ local getCraftingGroupsForTech = function (tItem)
     return groups
 end
 
-local getDefaultCraftingGroups = function ()
+local getDefaultCraftingGroups = function()
     local groups = {}
 
     local products = default.list
@@ -412,7 +410,7 @@ local getDefaultCraftingGroups = function ()
     return groups
 end
 
-local tryHackForReactors = function (tName, list)
+local tryHackForReactors = function(tName, list)
     local extra = reactorProductsMap[tName]
     if extra then
         for key, value in pairs(extra) do
@@ -424,12 +422,12 @@ local tryHackForReactors = function (tName, list)
     return list
 end
 
-local calculateProductsAndDependecies = function (tree)
+local calculateProductsAndDependecies = function(tree)
     for tName, tItem in pairs(tree.technologies.all) do
         if techIsValid(tItem) or tItem.isModuleBranch then
             tItem.dependencies.craftingGroups = apm.bob_rework.lib.utils.tech.requiredCraftingGroups(tItem.ref)
             tItem.dependencies.products = getTechnologyProductDependecies(tItem.ref)
-      
+
             local products, recipies = apm.bob_rework.lib.utils.tech.products(tItem.ref)
 
             -- hack for reactors
@@ -456,7 +454,7 @@ local calculateProductsAndDependecies = function (tree)
     end
 end
 
-local isEmptyList = function (list)
+local isEmptyList = function(list)
     if list == nil then
         return true
     end
@@ -468,7 +466,7 @@ local isEmptyList = function (list)
     return true
 end
 
-local nodeSetupAvailableProductsAndCraftingGroups = function (tree)
+local nodeSetupAvailableProductsAndCraftingGroups = function(tree)
     local tItem = tree.technologies.all[tree.cursor.current]
     local tName = tItem.ref.name
 
@@ -484,7 +482,7 @@ local nodeSetupAvailableProductsAndCraftingGroups = function (tree)
         tItem.allAvailable.products[product] = value
         local itm = tree.cache.products[product]
         if itm == nil or itm.source == nil then
-            tree.cache.products[product] = {source = tName}
+            tree.cache.products[product] = { source = tName }
         end
     end
 
@@ -492,13 +490,12 @@ local nodeSetupAvailableProductsAndCraftingGroups = function (tree)
         tItem.allAvailable.craftingGroups[craftingGroup] = value
         local itm = tree.cache.craftingGroups[craftingGroup]
         if itm == nil or itm.source == nil then
-            tree.cache.craftingGroups[craftingGroup] = {source = tName}
+            tree.cache.craftingGroups[craftingGroup] = { source = tName }
         end
     end
-
 end
 
-local isTechResearchable = function (tree, tItem)
+local isTechResearchable = function(tree, tItem)
     local requirements = {
         products = table.deepcopy(tItem.dependencies.products),
         craftingGroups = table.deepcopy(tItem.dependencies.craftingGroups),
@@ -510,7 +507,7 @@ local isTechResearchable = function (tree, tItem)
     for product, v in pairs(requirements.products) do
         local value = tree.cache.products[product]
         if value then
-            requirements.products[product] = {source = value.source}
+            requirements.products[product] = { source = value.source }
         end
     end
 
@@ -524,7 +521,7 @@ local isTechResearchable = function (tree, tItem)
     -- check with current available products & tech groups
     local missing = 0
     for product, req in pairs(requirements.products) do
-        if req and req.source == nil  then
+        if req and req.source == nil then
             if tree.cache.products[product] then
                 requirements.products[product].source = 'global'
             else
@@ -560,7 +557,6 @@ local isTechResearchable = function (tree, tItem)
 end
 
 local handleDependecies = function(target, deps)
-
     -- log("handle for "..target.ref.name..":"..json.encode(deps))
 
     local map = {}
@@ -589,11 +585,10 @@ local handleDependecies = function(target, deps)
             end
         end
     end
-
 end
 
 
-local getNextCursor = function (tree)
+local getNextCursor = function(tree)
     local cursor = tree.cursor.current
     for tName, tItem in pairs(tree.technologies.all) do
         if techIsValid(tItem) and tItem.isHandled == false then
@@ -608,7 +603,7 @@ local getNextCursor = function (tree)
     return cursor
 end
 
-local handleScienceForCurrent = function (tree)
+local handleScienceForCurrent = function(tree)
     local tItem = tree.technologies.all[tree.cursor.current]
     local name = tItem.ref.name
 
@@ -643,7 +638,7 @@ local handleScienceForCurrent = function (tree)
     end
 end
 
-local tryHandleModules = function (tree)
+local tryHandleModules = function(tree)
     if tree.cursor.current ~= 'modules' then
         return
     end
@@ -657,14 +652,14 @@ local tryHandleModules = function (tree)
             for product, value in pairs(tItem.products) do
                 local itm = tree.cache.products[product]
                 if itm == nil or itm.source == nil then
-                    tree.cache.products[product] = {source = moduleTechName}
+                    tree.cache.products[product] = { source = moduleTechName }
                 end
             end
         end
     end
 end
 
-local treeWalk = function (tree)
+local treeWalk = function(tree)
     local iteration = 0
     while tree.cursor.current ~= tree.cursor.previous do
         table.insert(tree.queue, tree.cursor.current)
@@ -683,38 +678,46 @@ local treeWalk = function (tree)
     end
 end
 
-local setupDefaultProductsAndCraftingGroups = function (tree)
+local setupDefaultProductsAndCraftingGroups = function(tree)
     tree.cache.products = table.deepcopy(default.list)
     tree.cache.craftingGroups = table.deepcopy(getDefaultCraftingGroups())
 end
 
-local describe = function (name, tree)
+local describe = function(name, tree)
     local tItem = tree.technologies.all[name]
-    log('describe: '..name)
-    if tItem == nil or tItem.dependencies == nil then
-        log('item or nil deps')
+
+    log('describe: ' .. name)
+
+    if tItem == nil then
+        log('nil item')
+        return
+    end
+
+    if tItem.dependencies == nil then
+        log('nil deps')
         return
     end
     for product in pairs(tItem.dependencies.products) do
         local ok = tree.cache.products[product]
         if ok == nil then
-            log('product:  '..product)
+            log('product:  ' .. product)
         end
     end
     for group in pairs(tItem.dependencies.craftingGroups) do
         local ok = tree.cache.craftingGroups[group]
         if ok == nil then
-            log('craftingGroups:  '..group)
+            log('craftingGroups:  ' .. group)
         end
     end
+
     log(json.encode(tItem))
 end
 
-local sortDependecies = function (tree)
+local sortDependecies = function(tree)
     for _, tName in pairs(tree.queue) do
         local target = tree.technologies.all[tName]
         if target and target.dependencies and target.dependencies.technologies then
-            table.sort(target.dependencies.technologies, function (a,b)
+            table.sort(target.dependencies.technologies, function(a, b)
                 local aID = tree.technologies.all[a].ID
                 local bID = tree.technologies.all[b].ID
                 return aID > bID
@@ -724,17 +727,17 @@ local sortDependecies = function (tree)
 end
 
 local walkSubtree
-walkSubtree = function (tree, subrootName, fn)
+walkSubtree = function(tree, subrootName, fn)
     fn(subrootName)
     local subroot = tree.technologies.all[subrootName]
     if subroot and subroot.dependencies and subroot.dependencies.technologies then
         for _, depName in pairs(subroot.dependencies.technologies) do
-           walkSubtree(tree, depName, fn) 
+            walkSubtree(tree, depName, fn)
         end
     end
 end
 
-local treeOptimize = function (tree)
+local treeOptimize = function(tree)
     -- Try to reduce graph by aggresive usage of indirect dependecies
     -- sort dependecies by research iteration
     -- expecting more late technology has more inderect dependencies for current
@@ -750,7 +753,7 @@ local treeOptimize = function (tree)
                 local ok = dependencies[depName]
                 if ok == nil then
                     table.insert(candidates, depName)
-                    walkSubtree(tree, depName, function (name)
+                    walkSubtree(tree, depName, function(name)
                         dependencies[name] = {}
                     end)
                 end
@@ -760,7 +763,7 @@ local treeOptimize = function (tree)
     end
 end
 
-local inGameLinkTech = function (tree)
+local inGameLinkTech = function(tree)
     for _, tName in pairs(tree.queue) do
         local target = tree.technologies.all[tName]
         if target and target.dependencies and target.dependencies.technologies then
@@ -771,20 +774,20 @@ local inGameLinkTech = function (tree)
     end
 end
 
-local sortTechnologiesSetByKeys = function (tree)
-    table.sort(tree.technologies.all, function (a,b)
+local sortTechnologiesSetByKeys = function(tree)
+    table.sort(tree.technologies.all, function(a, b)
         local aName = tree.technologies.all[a].name
         local bName = tree.technologies.all[b].name
         return aName < bName
     end)
 end
 
-local function getTechDepth (tree, tName)
+local function getTechDepth(tree, tName)
     local value = tree.cache.depth[tName]
     if value then
         return value
     end
-    
+
     local depth = 1
 
     local target = tree.technologies.all[tName]
@@ -806,7 +809,7 @@ end
 
 local getSciencePackCount = function(technology_name)
     local count = 0
-    
+
     if not apm.lib.utils.technology.exist(technology_name) then return end
 
     local technology = data.raw.technology[technology_name]
@@ -821,7 +824,7 @@ local getSciencePackCount = function(technology_name)
     return count
 end
 
-local updateCosts = function (tree, data)
+local updateCosts = function(tree, data)
     -- try auto inherit
 
     local cCount = 5
@@ -832,9 +835,9 @@ local updateCosts = function (tree, data)
         if target.isModuleBranch == false then
             local depth = getTechDepth(tree, tName)
             local sciencePacksCount = getSciencePackCount(tName)
-            apm.lib.utils.technology.mod.unit_count(tName, (depth+sciencePacksCount)*cCount)
+            apm.lib.utils.technology.mod.unit_count(tName, (depth + sciencePacksCount) * cCount)
 
-            local utime = math.ceil(depth/3)*cTime
+            local utime = math.ceil(depth / 3) * cTime
 
             apm.lib.utils.technology.mod.unit_time(tName, utime)
         end
@@ -853,7 +856,7 @@ local updateCosts = function (tree, data)
     end
 end
 
-local dropDuplEffects = function (tree)
+local dropDuplEffects = function(tree)
     for tName, tItem in pairs(tree.technologies.all) do
         local handled = {}
         local tech = tItem.ref
@@ -862,7 +865,7 @@ local dropDuplEffects = function (tree)
         if tech and tech.effects then
             for k, v in pairs(tech.effects) do
                 if tech[k] == nil then
-                    handled[k] = v    
+                    handled[k] = v
                 else
                     changed = true
                 end
@@ -872,14 +875,89 @@ local dropDuplEffects = function (tree)
         if changed then
             tech.effects = handled
         end
-    
     end
 end
 
-apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
+local calculateEvolution = function(tree)
+    local sp = {
+        [science.industrial] = 1.0,
+        [science.steam] = 1.0,
+        [science.automation] = 1.0,
+        [science.logistics] = 1.0,
+        [science.military] = 1.0,
+        [science.chemical] = 1.0,
+        [science.advanced.logistics] = 1.0,
+        [science.production] = 1.0,
+        [science.utility] = 1.0,
+        [science.space] = 1.0,
+    }
+
+    local totalCost = 0.0
+    local totalHandled = 0
+
+    for _, tName in pairs(tree.queue) do
+        local target = tree.technologies.all[tName]
+
+        if target and not target.isBuff and not target.willBeIgnored then
+            local cost = 0.0
+            for key, _ in pairs(target.science) do
+                if key and sp[key] then
+                    cost = cost + sp[key]
+                end
+            end
+
+            target.evolution = cost 
+            totalCost = totalCost + cost
+            totalHandled = totalHandled + 1
+        end
+    end
+
+    local k = totalCost / 100
+    
+    -- write custom effects
+
+    for _, tName in pairs(tree.queue) do
+        local target = tree.technologies.all[tName]
+
+        if target and target.evolution > 0 then
+            local v = target.evolution / k
+
+            v = math.ceil(v*1000) / 1000
+
+            if target.ref.name == 'nuclear-fuel-reprocessing' then
+                v = v + 1.0
+            end
+
+            local effect = {
+                type               = "nothing",
+                effect_description = { "research-causes-evolution-effect", v }
+            }
+
+            if target.ref.effects then
+                table.insert(target.ref.effects, effect)
+            else
+                target.ref.effects = { effect }
+            end
+        end
+    end
+end
+
+local cleanupItems = function (tree)
+    for tName, tech in pairs(tree.technologies.all) do
+        if  not tech.isHandled and not tech.isBuff then
+            apm.lib.utils.debug.object(tName)
+            apm.lib.utils.debug.object(tech.ref.effects)
+        end
+    end
+end
+
+apm.bob_rework.lib.utils.tech.tree.rebuild = function(startingTName)
     local tree = emptyTree()
 
     appendTechologiesSet(tree)
+
+    -- log(apm.lib.utils.debug.object(data.raw.technology))
+
     tree.technologies.linked = getLinks()
     -- sortTechnologiesSetByKeys(tree)
     setupTechnologyFlags(tree)
@@ -901,17 +979,25 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function (startingTName)
 
     updateCosts(tree, techtree_data.recalculate.tech_cost)
 
-    -- log(json.encode(tree))
-    local why = function (name)
+    -- log(json.encode(tree.technologies.all))
+
+    local why = function(name)
         describe(name, tree)
     end
 
-    why('logistics-0')
+    -- why('logistics-0')
+    -- why('bob-plasma-rocket')
 
     -- describe('bob-steam-engine-2', tree)
     -- why('space-science-pack')
     -- why('bob-nuclear-power-3')
     -- why('deuterium-fuel-reprocessing')
--- 
-    log('total handled technologies count '..tostring(tree.technologies.all[tree.cursor.current].ID))
+    --
+    log('total handled technologies count ' .. tostring(tree.technologies.all[tree.cursor.current].ID))
+
+    if settings.startup["apm_bob_rework_tech_to_evo_enabled"].value then
+        calculateEvolution(tree)
+    end
+
+    cleanupItems(tree)
 end

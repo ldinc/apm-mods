@@ -50,4 +50,5 @@ end
 apm.bob_rework.lib.override.solarPanels = function ()
     buildSolarPanel('solar-panel-small', 'solar-panel', 'solar-panel-large', t.yellow, nil, plates.copper)
     buildSolarPanel('solar-panel-small-2', 'solar-panel-2', 'solar-panel-large-2', t.red, nil, plates.silver)
+    buildSolarPanel('solar-panel-small-3', 'solar-panel-3', 'solar-panel-large-3', t.blue, 'silicon-wafer', plates.gold)
 end

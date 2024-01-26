@@ -64,14 +64,17 @@ local energy = {
         high = {
             basic = 'large-accumulator',
             advance = 'large-accumulator-2',
+            extra = 'large-accumulator-3',
         },
         fast = {
             basic = 'fast-accumulator',
             advance = 'fast-accumulator-2',
+            extra = 'fast-accumulator-3',
         },
         slow = {
             basic = 'slow-accumulator',
             advance = 'slow-accumulator-2',
+            extra = 'slow-accumulator-3',
         },
     },
 
@@ -88,6 +91,7 @@ local energy = {
             large = {
                 basic = 'solar-panel-large',
                 advance = 'solar-panel-large-2',
+                extra = 'solar-panel-large-3',
             },
         }
     },

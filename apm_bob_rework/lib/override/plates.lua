@@ -200,7 +200,7 @@ apm.bob_rework.lib.override.plate = function()
     set(materials.carbon, 5)
     set('powdered-tungsten', 5)
     setResult(recipe, 'tungsten-carbide', 10)
-    setEnergy(128)
+    setEnergy(32)
 
     recipe = 'quartz-glass'
     set(ores.quartz, 10)

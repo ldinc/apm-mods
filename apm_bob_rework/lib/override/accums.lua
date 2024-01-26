@@ -40,6 +40,7 @@ end
 apm.bob_rework.lib.override.accums = function ()
     buildAccum(e.accum.fast.basic, e.accum.high.basic, e.accum.slow.basic, tier.yellow)
     buildAccum(e.accum.fast.advance, e.accum.high.advance, e.accum.slow.advance, tier.red)
+    buildAccum(e.accum.fast.extra, e.accum.high.extra, e.accum.slow.extra, tier.blue)
 
     apm.lib.utils.recipe.ingredient.mod(e.accum.basic, plate.iron, 0)
     apm.lib.utils.recipe.ingredient.mod(e.accum.basic, alloy.brass, 2)

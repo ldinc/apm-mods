@@ -33,11 +33,11 @@ apm.bob_rework.lib.entities.enriched.ore.tungsten = enriched(apm.bob_rework.lib.
 
 local settings = {
     energyRequired = 10,
-    floatationEnergyRequired = 10,
+    floatationEnergyRequired = 4.5,
     crushedOreAmount = 40,
     enrichedResultAmount = {
-        sieve = 20,
-        floatation = 20,
+        sieve = 25,
+        floatation = 15,
     },
     min = 5,
     max = 15,

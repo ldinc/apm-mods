@@ -1,4 +1,5 @@
 local product = require "lib.entities.product"
+local combat  = require "lib.entities.combat"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -54,7 +55,7 @@ local genFrame = function(recipe, tier)
     end
 end
 
-local genParts = function (brain, tool, tier)
+local genParts = function(brain, tool, tier)
     apm.lib.utils.recipe.ingredient.remove_all(brain)
     apm.lib.utils.recipe.ingredient.mod(brain, tier.wire, 5)
     apm.lib.utils.recipe.ingredient.mod(brain, tier.logic, 5)
@@ -68,7 +69,7 @@ local genParts = function (brain, tool, tier)
     apm.lib.utils.recipe.ingredient.mod(tool, tier.constructionAlloy, 1)
 end
 
-local updateDescriptions = function ()
+local updateDescriptions = function()
     apm.lib.utils.item.overwrite.localised_name(robo.bots.construction.red, "Construction robot")
     apm.lib.utils.item.overwrite.localised_name(robo.bots.logistic.red, "Logistic robot")
 
@@ -92,7 +93,7 @@ local updateDescriptions = function ()
 end
 
 
-local updateBurnerInserter = function (recipe)
+local updateBurnerInserter = function(recipe)
     local obj = data.raw['inserter'][recipe]
 
     if obj then
@@ -105,12 +106,11 @@ local updateBurnerInserter = function (recipe)
 end
 
 local modify = function()
-
-    local update = function (recipe, storage, m)
+    local update = function(recipe, storage, m)
         apm.lib.utils.recipe.ingredient.remove_all(recipe)
-        apm.lib.utils.recipe.ingredient.mod(recipe, robo.antenna.base, m*3)
+        apm.lib.utils.recipe.ingredient.mod(recipe, robo.antenna.base, m * 3)
         apm.lib.utils.recipe.ingredient.mod(recipe, storage, 1)
-        apm.lib.utils.recipe.ingredient.mod(recipe, t.red.logic, 5*m)
+        apm.lib.utils.recipe.ingredient.mod(recipe, t.red.logic, 5 * m)
         apm.lib.utils.recipe.ingredient.mod(recipe, t.red.extraLogic, 2)
     end
 
@@ -153,16 +153,18 @@ local modify = function()
     apm.lib.utils.recipe.ingredient.mod(recipe, p.gun.powder, 5)
     apm.lib.utils.recipe.ingredient.mod(recipe, plates.iron, 10)
 
-    --change bots
-    local recipe = robo.bots.construction.nuclear
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.construction.blue, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.rtg, 1)
+    -- --change bots
+    -- local recipe = robo.bots.construction.nuclear
+    -- apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    -- apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.construction.blue, 1)
+    -- apm.lib.utils.recipe.ingredient.mod(recipe, combat.equip.generator.nuclear, 1)
+    -- apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.deuterium.cell.I, 1)
 
-    local recipe = robo.bots.logistic.nuclear
-    apm.lib.utils.recipe.ingredient.remove_all(recipe)
-    apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.logistic.blue, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.rtg, 1)
+    -- local recipe = robo.bots.logistic.nuclear
+    -- apm.lib.utils.recipe.ingredient.remove_all(recipe)
+    -- apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.logistic.blue, 1)
+    -- apm.lib.utils.recipe.ingredient.mod(recipe, combat.equip.generator.nuclear, 1)
+    -- apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.deuterium.cell.I, 1)
 
     genAntenna(robo.antenna.base, t.red)
     genAntenna(robo.antenna.advanced, t.blue)
@@ -192,7 +194,8 @@ local modify = function()
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.frame.advanced, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.construction.part.brain.blue, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.construction.part.tool.blue, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.rtg, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, combat.equip.generator.nuclear.advance, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.deuterium.cell.I, 1)
 
     local recipe = robo.bots.logistic.red
     apm.lib.utils.recipe.ingredient.remove_all(recipe)
@@ -211,7 +214,8 @@ local modify = function()
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.frame.advanced, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.logistic.part.brain.blue, 1)
     apm.lib.utils.recipe.ingredient.mod(recipe, robo.bots.logistic.part.tool.blue, 1)
-    apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.rtg, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, combat.equip.generator.nuclear.advance, 1)
+    apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.deuterium.cell.I, 1)
 
     updateDescriptions()
     change2Tier()

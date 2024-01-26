@@ -1,8 +1,8 @@
-local tech = require "lib.entities.tech"
-local product = require "lib.entities.product"
-local alloys  = require "lib.entities.alloys"
-local pipes   = require "lib.entities.pipes"
-local bob     = require "lib.entities.bob"
+local tech      = require "lib.entities.tech"
+local product   = require "lib.entities.product"
+local alloys    = require "lib.entities.alloys"
+local pipes     = require "lib.entities.pipes"
+local bob       = require "lib.entities.bob"
 local logistics = require "lib.entities.logistics"
 local ores      = require "lib.entities.ores"
 local combat    = require "lib.entities.combat"
@@ -43,7 +43,7 @@ local function newTech(technology, t_icon, t_recipes, t_research_packs, i_resear
     new.effects = {}
     if t_recipes ~= nil then
         for _, name in pairs(t_recipes) do
-            table.insert(new.effects, {type = 'unlock-recipe', recipe = name})
+            table.insert(new.effects, { type = 'unlock-recipe', recipe = name })
         end
     end
     -- new.prerequisites = t_prerequisites
@@ -52,14 +52,12 @@ local function newTech(technology, t_icon, t_recipes, t_research_packs, i_resear
     new.unit.ingredients = t_research_packs
     new.unit.time = i_research_time
     new.order = 'a-a-a'
-    data:extend({new})
+    data:extend({ new })
 
     APM_LOG_INFO(self, 'new()', 'create new technology: "' .. tostring(new.name) .. '"')
 end
 
 function apm.bob_rework.lib.override.tech()
-
-
     local off = apm.lib.utils.recipe.disable
     local on = apm.lib.utils.recipe.enable
     local push = apm.lib.utils.technology.add.recipe_for_unlock
@@ -270,7 +268,7 @@ function apm.bob_rework.lib.override.tech()
         apm.bob_rework.lib.entities.gunMetal,
         apm.bob_rework.lib.entities.brassBearing, apm.bob_rework.lib.entities.brassBearingBall,
         apm.bob_rework.lib.entities.brassGearWheel, apm.bob_rework.lib.entities.brassPipe,
-        apm.bob_rework.lib.entities.brassUnderPipe, 'brass-chest',
+        apm.bob_rework.lib.entities.brassUnderPipe,
     })
     bind('electrolysis-1', 'apm_air_cleaner_machine')
 
@@ -405,23 +403,25 @@ function apm.bob_rework.lib.override.tech()
     repush('military-2', 'military-3', 'poison-capsule-ammo-rampant-arsenal')
     repush('military-2', 'military-3', 'slowdown-capsule-ammo-rampant-arsenal')
 
+    repush('military-3', 'military-2', combat.ammo.shotgun.piercing)
+
     -- free('nitinol-processing')
-    free('bob-plasma-rocket')
+    -- free('bob-plasma-rocket')
     free('electric-rocket')
-    free('bob-shotgun-plasma-shells')
+    -- free('bob-shotgun-plasma-shells')
     free('bob-shotgun-electric-shells')
     free('bob-electric-bullets')
-    free('bob-plasma-bullets')
+    -- free('bob-plasma-bullets')
     free('bob-atomic-artillery-shell')
     free('rampant-arsenal-technology-regeneration-walls')
     free('bob-electric-rocket')
-    free('bob-plasma-turrets-1')
+    -- free('bob-plasma-turrets-1')
     free('reinforced-wall')
     free('rampant-arsenal-technology-regeneration-turrets')
-    free('bob-plasma-turrets-2')
-    free('bob-plasma-turrets-3')
-    free('bob-plasma-turrets-4')
-    free('bob-plasma-turrets-5')
+    -- free('bob-plasma-turrets-2')
+    -- free('bob-plasma-turrets-3')
+    -- free('bob-plasma-turrets-4')
+    -- free('bob-plasma-turrets-5')
 
     rm(t.puddling.furnace, 'apm_burner_miner_drill_2')
 
@@ -434,6 +434,7 @@ function apm.bob_rework.lib.override.tech()
     free('bob-robot-plasma-drones')
     rm('apm_nuclear_rtg', 'apm_rtg_radioisotope_thermoelectric_generator')
     free('thorium-plutonium-fuel-cell')
+    free('rtg')
 
     free('effect-transmission-3')
     free('effect-transmission-2')
@@ -751,10 +752,10 @@ function apm.bob_rework.lib.override.tech()
     -- free('radars')
 
     local tname = 'long-inserters-1'
-    local spdrop = function (sp)
+    local spdrop = function(sp)
         apm.lib.utils.technology.remove.science_pack(tname, sp)
     end
-    local rbind = function (from, to)
+    local rbind = function(from, to)
         apm.lib.utils.technology.remove.prerequisites(tname, from)
         apm.lib.utils.technology.add.prerequisites(tname, to)
     end
@@ -781,7 +782,7 @@ function apm.bob_rework.lib.override.tech()
     rbind('logistics-3', 'logistics-2')
 
     rm(t.processing.alloy, alloys.brass)
-    
+
     rm(t.science.logistics, labs.basic)
     push(t.electronics.advanced.I, labs.basic)
     push(t.electricity, energy.generator.burner)
@@ -819,6 +820,13 @@ function apm.bob_rework.lib.override.tech()
 
     free('rampant-arsenal-technology-lite-artillery')
 
+    free('apm_nuclear_fuel')
+    rm('rocket-fuel', 'rocket-fuel')
+
+    free('apm_particle_filter-3')
+    free('apm_particle_filter-2')
+    free('apm_particle_filter')
+
     push('apm_stone_bricks', 'apm_dry_to_wet_mud')
 
     apm.lib.utils.technology.remove.prerequisites_all('long-inserters-1')
@@ -838,14 +846,16 @@ function apm.bob_rework.lib.override.tech()
 
     -- Adding new tech
     local c = ores.crushed.advance
-    local list = {c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c.tungsten, c.zinc}
+    local list = { c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c
+        .tungsten, c.zinc }
     local ico = {
         icon = icons.path.ore.crushed,
         icon_size = 64,
     }
 
     -- fix rampantcharacter hp bonus tech
-    apm.lib.utils.technology.remove.prerequisites('rampant-arsenal-technology-character-health-1', 'rampant-arsenal-technology-regeneration')
+    apm.lib.utils.technology.remove.prerequisites('rampant-arsenal-technology-character-health-1',
+        'rampant-arsenal-technology-regeneration')
     apm.lib.utils.technology.add.prerequisites('rampant-arsenal-technology-character-health-1', 'military-2')
     apm.lib.utils.technology.add.prerequisites('rampant-arsenal-technology-character-health-1', 'logistic-science-pack')
     apm.lib.utils.technology.add.prerequisites('rampant-arsenal-technology-character-health-1', 'military-science-pack')
@@ -857,11 +867,13 @@ function apm.bob_rework.lib.override.tech()
         icon_size = 64,
     }
     local c = ores.enriched.basic
-    local list = {c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c.tungsten, c.zinc}
+    local list = { c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c
+        .tungsten, c.zinc }
     newTech(t.ore.enrichment.base, ico, list, {}, 15, 10)
 
     local c = ores.enriched.advance
-    local list = {c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c.tungsten, c.zinc}
+    local list = { c.aluminium, c.cobalt, c.copper, c.gold, c.iron, c.lead, c.nickel, c.silver, c.tin, c.titanium, c
+        .tungsten, c.zinc }
     newTech(t.ore.enrichment.advanced, ico, list, {}, 150, 30)
 
     if settings.startup['apm_bob_rework_experimental_tech_tree_rebuilder'].value == true then

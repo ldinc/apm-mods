@@ -50,9 +50,9 @@ apm.bob_rework.lib.entities.crushed.ore.tungsten = crushed(ores.tungsten)
 local recipeSetting = {
     amountOfOre = 40,
     amountOfWater = 40,
-    amountOfResult = 60,
+    amountOfResult = 80,
     amountOfDirtWater = 20,
-    energyRequired = 10,
+    energyRequired = 6,
     k = 10,
 }
 

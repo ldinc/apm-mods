@@ -226,9 +226,6 @@ apm.bob_rework.lib.override.others = function()
     clear()
     mod(alloys.titanium, 1)
 
-    recipe = 'satellite'
-    mod('radar-5', 0)
-    mod('radar-2', 1)
 
     recipe = 'waterfill'
     mod(product.explosives, 0)
@@ -265,7 +262,7 @@ apm.bob_rework.lib.override.others = function()
     disable(bob.product.recipe.resin)
     disable(bob.product.recipe.rubber)
     disable(logic.circuit.low)
-    disable(combat.disabled.turret.rifle)
+    -- disable(combat.disabled.turret.rifle)
     disable(combat.ammo.magazine.firearm)
 
     recipe = pipes.sinkhole.large
@@ -277,6 +274,9 @@ apm.bob_rework.lib.override.others = function()
     recipe = 'apm_seawater_centrifuging'
     apm.lib.utils.recipe.energy_required.mod(recipe, 1)
     apm.lib.utils.recipe.result.mod(recipe, fluids.water, 200)
+
+    recipe = 'apm_coal_saturated_wastewater_seperation'
+    apm.lib.utils.recipe.energy_required.mod(recipe, 0.5)
 
     apm.lib.utils.recipe.energy_required.mod('apm_wood_ash_production', 0.5)
 

@@ -14,16 +14,13 @@ local update = function ()
     recipe = combat.turret.gun.basic
     reset()
     add(materials.wood, 5)
-    add(plates.bronze, 4)
-    add(product.bearing.bronze, 2)
-    add(product.gearwheel.bronze, 1)
+    add(alloys.bronze, 2)
     add(logic.mechanical, 1)
 
     recipe = combat.turret.gun.advance
     reset()
     add(materials.planks, 5)
-    add(alloys.brass, 4)
-    add(product.bearing.brass, 2)
+    add(alloys.brass, 2)
     add(product.gearwheel.brass, 1)
     add(logic.steam, 1)
 
@@ -36,8 +33,7 @@ local update = function ()
     recipe = combat.turret.shotgun
     reset()
     add(materials.planks, 5)
-    add(alloys.brass, 10)
-    add(product.bearing.brass, 2)
+    add(alloys.brass, 2)
     add(product.gearwheel.brass, 1)
     add(logic.steam, 2)
 

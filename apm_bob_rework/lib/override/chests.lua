@@ -5,7 +5,7 @@ if chest then
     chest.next_upgrade = storages.chest.titanium
 end
 
-chest = data.raw.container['brass-chest']
-if chest then
-    chest.next_upgrade = nil
-end
+-- chest = data.raw.container['brass-chest']
+-- if chest then
+--     chest.next_upgrade = nil
+-- end

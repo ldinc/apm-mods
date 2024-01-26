@@ -143,7 +143,7 @@ local function updateTurbine(name, config)
     g.max_power_output     = kW(config.output)
     g.fluid_usage_per_tick = config.fpt
     g.maximum_temperature = config.boiler.temp
-    apm.lib.utils.debug.object(g)
+    -- apm.lib.utils.debug.object(g)
 end
 
 local function tuneHeatExchanger(name, min, max)

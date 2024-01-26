@@ -1,6 +1,6 @@
 {
     "name": "apm_bob_rework_ldinc",
-    "version": "0.23.05",
+    "version": "0.23.18",
     "title": "APM bob's extra compability",
     "author": "ldinc",
     "dependencies": [
@@ -40,7 +40,8 @@
         "light-overhaul >= 0.1.3",
         "classic-beacon >= 1.1.0",
         "WideChests >= 4.2.0",
-        "?rso-mod >= 6.2.22"
+        "?rso-mod >= 6.2.22",
+        "?cogmas >= 0.1.1"
     ],
     "description": "Rework APM recipies wuth bob's mods.",
     "factorio_version": "1.1",

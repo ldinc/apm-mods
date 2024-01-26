@@ -11,6 +11,7 @@ local pumps     = require "lib.entities.pumps"
 local energy    = require "lib.entities.buildings.energy"
 local modules   = require "lib.entities.modules"
 local fluids    = require "lib.entities.fluids"
+local nuclear   = require "lib.entities.nuclear"
 
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
@@ -78,14 +79,14 @@ local drop = function()
 	rm('electric-bullet-magazine')
 	rm('electric-bullet')
 	rm('electric-bullet-projectile')
-	rm('plasma-bullet')
-	rm('plasma-bullet-projectile')
-	rm('plasma-rocket-warhead')
+	-- rm('plasma-bullet')
+	-- rm('plasma-bullet-projectile')
+	-- rm('plasma-rocket-warhead')
 	rm('electric-rocket-warhead')
 	rm('shotgun-electric-shell')
-	rm('plasma-bullet-magazine')
-	rm('plasma-rocket')
-	rm('shotgun-plasma-shell')
+	-- rm('plasma-bullet-magazine')
+	-- rm('plasma-rocket')
+	-- rm('shotgun-plasma-shell')
 	rm('bob-plasma-turret')
 	rm('bob-plasma-turret-1')
 	rm('bob-plasma-turret-2')
@@ -268,20 +269,20 @@ end
 
 local buildFusionReactorEq = function(recipe, level)
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 30 + 20 * level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, logic.PU, 100 + 50 * level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, logic.APU, 100 + 50 * level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.low.density.structure, 30 + 20 * level)
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_depleted_uranium_ingots', 10 + 5 * level)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 30)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic.PU, 40)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic.APU, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.low.density.structure, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_depleted_uranium_ingots', 10)
 end
 
 local buildEqReactors = function()
 	buildFusionReactorEq(combat.equip.generator.nuclear.basic, 1)
 	local recipe = combat.equip.generator.nuclear.advance
-	buildFusionReactorEq(recipe, 5)
+	buildFusionReactorEq(recipe, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_depleted_uranium_ingots', 0)
-	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 50)
-	apm.lib.utils.recipe.ingredient.mod(recipe, energy.heat.pipe.extra, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, energy.heat.pipe.extra, 10)
 end
 
 local buildPersonalLaser = function(recipe, tier, optics)
@@ -447,9 +448,8 @@ local updateWeapons = function()
 
 	recipe = combat.gun.mortar
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.steel, 4)
-	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.cobalt.steel, 4)
 
 	changeIronCladMortar()
 end
@@ -480,7 +480,8 @@ local tuneAtomicBomb = function()
 	local item = data.raw.projectile['atomic-rocket']
 	if item ~= nil then
 		-- modify attack result
-		apm.bob_rework.lib.utils.debug.object(item)
+		-- apm.bob_rework.lib.utils.debug.object(item)
+
 		-- item.ammo_type.action = nil
 		-- item.ammo_type.action = {
 		-- 	action = {
@@ -537,7 +538,7 @@ local modify = function()
 	local recipe = 'piercing-rounds-magazine'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 3)
-	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 2)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 1)
 
 	local recipe = 'firearm-magazine'
@@ -551,13 +552,14 @@ local modify = function()
 
 	local recipe = 'shotgun-shell'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 1)
 
 	local recipe = 'piercing-shotgun-shell'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 3)
-	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.copper, 2)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 3)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.gun.powder, 1)
 
 	local recipe = 'artillery-shell'
@@ -565,6 +567,7 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 5)
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.tungsten, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.chemistry.cordite, 50)
+
 	local recipe = 'cannon-shell'
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.chemistry.cordite, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.explosives, 0)
@@ -577,17 +580,14 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.explosives, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 4)
 
-	local recipe = combat.equip.generator.nuclear.advance
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'fusion-reactor-equipment-2', 0)
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'nuclear-reactor', 1)
+	-- local recipe = combat.equip.generator.nuclear.advance
+	-- apm.lib.utils.recipe.ingredient.mod(recipe, 'fusion-reactor-equipment-2', 0)
+	-- apm.lib.utils.recipe.ingredient.mod(recipe, 'nuclear-reactor', 1)
 
 	local recipe = 'mech-leg-segment'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.titaniumAlloy, 10)
-
-	local recipe = 'firearm-magazine'
-	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 5)
 
 	local recipe = 'cannon-shell'
 	apm.lib.utils.recipe.ingredient.mod(recipe, alloy.gunmetal, 2)
@@ -624,6 +624,12 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, plates.tin, 15)
 	apm.lib.utils.recipe.ingredient.mod(recipe, materials.wood, 5)
 	apm.lib.utils.recipe.ingredient.mod(recipe, t.gray.logic, 2)
+
+	local recipe = combat.turret.rifle
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, materials.wood, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.bronze, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.bronze, 1)
 
 	local rbody = 'rocket-body'
 	local rhead = 'rocket-warhead'
@@ -886,6 +892,37 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.mod(combat.capsule.fire, materials.plastic, 3)
 	apm.lib.utils.recipe.ingredient.mod(combat.capsule.fire, alloy.gunmetal, 3)
 
+	recipe = 'plasma-rocket-warhead'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.fusion.catalyst, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, fluids.deuterium, 200)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 1)
+
+	recipe = 'bob-plasma-rocket'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic.rocket, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'plasma-rocket-warhead', 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'rocket-body', 1)
+
+	recipe = 'plasma-bullet-projectile'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.fusion.catalyst, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, fluids.deuterium, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic.PU, 2)
+
+	recipe = 'shotgun-plasma-shell'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, nuclear.fusion.catalyst, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, fluids.deuterium, 5)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.lead, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.titanium, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, product.chemistry.cordite, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, 'shotgun-shell-casing', 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, logic.PU, 2)
+
 	buildLaserTurret()
 	buildCanonTurret()
 	buildRocketTurret()
@@ -929,6 +966,12 @@ local modify = function()
 	buffStackSizeForArtillery('nuclear-artillery-ammo-rampant-arsenal')
 
 	tuneAtomicBomb()
+
+	local recipe = combat.ammo.shotgun.basic
+	local turret = data.raw['ammo-turret'][recipe]
+	if turret then
+		turret.attack_parameters.damage_modifier = 3.5
+	end
 end
 
 apm.bob_rework.lib.override.combat = function()

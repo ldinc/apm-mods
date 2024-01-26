@@ -33,6 +33,9 @@ local fluids =  {
     liquid = {
         fuel = 'liquid-fuel',
     },
+
+    hydrazine = 'hydrazine',
+    dinitrogen = {tetroxide = 'dinitrogen-tetroxide'},
 }
 
 return fluids

@@ -11,7 +11,7 @@ function apm.lib.utils.debug.table(t)
 end
 
 function apm.lib.utils.dump(obj)
-    return apm.lib.utils.render(obj, '')
+    return apm.lib.utils.render(obj, '  ')
 end
 
 function apm.lib.utils.render(obj, indent)

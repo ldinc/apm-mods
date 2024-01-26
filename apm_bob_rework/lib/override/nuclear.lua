@@ -1,4 +1,5 @@
 local energy = require "lib.entities.buildings.energy"
+local plates = require "lib.entities.plates"
 if apm.bob_rework.lib == nil then apm.bob_rework.lib = {} end
 if apm.bob_rework.lib.override == nil then apm.bob_rework.lib.override = {} end
 if apm.bob_rework.lib.override.list == nil then apm.bob_rework.lib.override.list = {} end
@@ -10,6 +11,7 @@ local m = require('lib.entities.materials')
 local t = require('lib.tier.base')
 
 local buildNuclearRecipies = function()
+    local reset = apm.lib.utils.recipe.ingredient.remove_all
     local mod = apm.lib.utils.recipe.ingredient.mod
     local recipe = 'apm_fuel_rod_container'
     mod(recipe, m.carbon, 5)
@@ -56,14 +58,11 @@ local buildNuclearRecipies = function()
     apm.lib.utils.recipe.ingredient.replace(recipe, 'heat-pipe-4', energy.heat.pipe.extra)
 
     recipe = nuclear.rtg
-    mod(recipe, 'apm_oxide_pellet_pu239', 2)
-    mod(recipe, 'apm_depleted_uranium_ingots', 10)
-    mod(recipe, alloys.lead, 20)
-    mod(recipe, logic.PU, 20)
-
-    mod('satellite', 'apm_rtg_radioisotope_thermoelectric_generator', 0)
-    mod('satellite', recipe, 25)
-    apm.lib.utils.recipe.remove('apm_rtg_radioisotope_thermoelectric_generator')
+    reset(recipe)
+    mod(recipe, plates.aluminium, 5)
+    mod(recipe, plates.lead, 4)
+    mod(recipe, logic.APU, 10)
+    -- mod(nuclear.deuterium.cell.II, 1)
 
     -- change deuterium fuel cell 2 for super reactor
     recipe = nuclear.deuterium.cell.II

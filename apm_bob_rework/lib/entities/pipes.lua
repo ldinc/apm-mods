@@ -49,6 +49,7 @@ local pipes = {
         ceramic = 'ceramic-pipe',
         copperTungsten = 'copper-tungsten-pipe',
         nitinol = 'nitinol-pipe',
+        tungsten = 'tungsten-pipe',
     },
     under = {
         brass = 'brass-pipe-to-ground',
@@ -60,6 +61,7 @@ local pipes = {
         titaniumAlloy = 'titanium-alloy-pipe-to-ground',
         ceramic = 'ceramic-pipe-to-ground',
         copperTungsten = 'copper-tungsten-pipe-to-ground',
+        tungsten = 'tungsten-pipe-to-ground',
         nitinol = 'nitinol-pipe-to-ground',
     },
     sinkhole = {

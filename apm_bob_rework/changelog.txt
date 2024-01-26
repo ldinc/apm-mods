@@ -1,4 +1,71 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.23.18
+Date: 26. 01. 2023
+  Cleanup:
+    - Some unused items
+---------------------------------------------------------------------------------------------------
+Version: 0.23.17
+Date: 26. 01. 2023
+  Balanced:
+    - Combat: shotgun & gun turrets recipies
+    - Buff shotgun shells
+  Changed:
+    - Experimental tech to evolution logic (higher tech level - more painfull enemies) 
+---------------------------------------------------------------------------------------------------
+Version: 0.23.16
+Date: 24. 01. 2023
+  Balanced:
+    - Weapon: shotgun shells, bullets
+---------------------------------------------------------------------------------------------------
+Version: 0.23.15
+Date: 14. 01. 2023
+  Balanced:
+    - Deuterium (plasma) weapon: shotgun shells, bullets & rocket
+---------------------------------------------------------------------------------------------------
+Version: 0.23.14
+Date: 13. 01. 2023
+  Added:
+    - Deuterium (plasma) weapon: shotgun shells, bullets & rocket
+---------------------------------------------------------------------------------------------------
+Version: 0.23.13
+Date: 13. 01. 2023
+  Balanced:
+    - Deuterium reprocessing (removed lithium & change fusion catalyst extraction 1->100)
+    - Metal plates production (melting time set to 5s)
+    - Ore enrichment process buffed (more efficient II tier technology & more products from raw ores)
+---------------------------------------------------------------------------------------------------
+Version: 0.23.12
+Date: 04. 01. 2023
+  Balanced:
+    - Coal saturated water recipe energy reqiered field (6.5->0.5)
+---------------------------------------------------------------------------------------------------
+Version: 0.23.11
+Date: 04. 01. 2023
+  Balanced:
+    - Coal saturated water recipe energy reqiered field (6.5->0.5)
+---------------------------------------------------------------------------------------------------
+Version: 0.23.10
+Date: 04. 01. 2023
+  Balanced:
+    - Personal portable nuclear rectors
+---------------------------------------------------------------------------------------------------
+Version: 0.23.08
+Date: 03. 01. 2023
+  Added:
+    - Pipes throughput increased with high tier matrerials
+---------------------------------------------------------------------------------------------------
+Version: 0.23.07
+Date: 02. 01. 2023
+  Fixed:
+    - Accumulator tier 3 recipies
+---------------------------------------------------------------------------------------------------
+Version: 0.23.06
+Date: 02. 01. 2023
+  Changed:
+    - Removed: rocket & nuclear fuel
+    - Added fluidbox & fluids to rocket-silo
+    - Removed: rtg (now used portable nuclear generator)
+---------------------------------------------------------------------------------------------------
 Version: 0.23.05
 Date: 26. 12. 2023
   Fixed:

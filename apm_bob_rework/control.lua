@@ -83,3 +83,35 @@ event.on_script_trigger_effect(function(e)
         tesla_coil.process_turret_fire(e.target_entity, e.source_entity)
     end
 end)
+
+local evolution = function(event)
+    local force = event.research.force
+
+    local evolution = 0.0
+
+    for _, tech in pairs(force.technologies) do
+        if tech.researched and tech.effects then
+            for _, effect in pairs(tech.effects) do
+                if effect.type == "nothing" and effect.effect_description then
+                    if effect.effect_description[1] == "research-causes-evolution-effect" then
+                        local value = effect.effect_description[2]
+                        evolution = evolution + value
+                    end
+                end
+            end
+        end
+        for _, force in pairs(game.forces) do
+            if force.ai_controllable or force == game.forces.enemy then
+                -- force.evolution_factor = evolution / 100.0
+                local technologies_evolution = evolution / 100.0
+                local current_evolution = force.evolution_factor
+                force.evolution_factor = math.max(technologies_evolution, current_evolution)
+            end
+        end
+    end
+end
+
+script.on_event(
+    defines.events.on_research_finished,
+    evolution
+)

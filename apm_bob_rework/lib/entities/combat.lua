@@ -5,6 +5,8 @@ return {
             firearm = 'firearm-magazine',
         },
         shotgun = {
+            basic = 'shotgun-shell',
+            piercing = 'piercing-shotgun-shell',
             incendiary = 'shotgun-flame-shell',
         },
         rocket = {
@@ -97,7 +99,8 @@ return {
         mortar = {
             base = 'mortar-turret',
             portable = 'mortar-gun-rampant-arsenal'
-        }
+        },
+        rifle = 'rifle-item-rampant-arsenal',
     },
 
     artillery = {
@@ -184,6 +187,7 @@ return {
     radar = {
         sentinel = 'kr-sentinel',
         base = 'radar',
+        advance = 'radar-2',
     },
 
     projectiles = {
