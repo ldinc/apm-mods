@@ -12,7 +12,7 @@ APM_LOG_HEADER(self)
 local item = {}
 item.type = 'item'
 item.name = 'apm_dummy'
-item.flags  = {'hidden'}
+item.hidden = true
 item.icons = {apm.lib.icons.dummy}
 item.stack_size = 2000
 item.group = "other"
@@ -27,7 +27,9 @@ data:extend({item})
 local item = {}
 item.type = 'item'
 item.name = 'apm_hidden_fuel'
-item.flags  = {'hidden', 'hide-from-fuel-tooltip', 'hide-from-bonus-gui'}
+item.hidden = true
+
+item.flags  = {'hide-from-fuel-tooltip', 'hide-from-bonus-gui'}
 item.icons = {apm.lib.icons.dummy}
 item.stack_size = 2000
 item.group = "other"

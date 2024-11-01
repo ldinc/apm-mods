@@ -15,7 +15,7 @@ require('lib.script.interfaces')
 --
 -- ----------------------------------------------------------------------------
 local function event_on_init()
-    global.startupEquipment = {}
+    storage.startupEquipment = {}
     initial.run()
 	inserter.on_init()
     radiation.on_init()

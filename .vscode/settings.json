@@ -1,14 +1,15 @@
 {
     "factorio.versions": [
         {
-            "name": "latest",
-            "factorioPath": "e:\\steam\\steamapps\\common\\Factorio\\bin\\x64\\factorio.exe"
+            "name": "spaceage",
+            "factorioPath": "d:\\Games\\Factorio\\bin\\x64\\factorio.exe",
+            "active": true
         }
-    ],
-    "Lua.workspace.library": [
-        "e:\\steam\\steamapps\\common\\Factorio\\data"
     ],
     "Lua.workspace.userThirdParty": [
         "c:\\Users\\ldinc\\AppData\\Roaming\\Code\\User\\workspaceStorage\\e4ac3c67804131e66a78bbe71e35af40\\justarandomgeek.factoriomod-debug\\sumneko-3rd"
-    ]
+    ],
+    "Lua.workspace.checkThirdParty": "ApplyInMemory",
+    "editor.useTabStops": true,
+    "editor.tabSize": 2 
 }
