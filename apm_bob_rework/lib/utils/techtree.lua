@@ -62,11 +62,11 @@ local linkedTechMap = {
     [t.combat.turret.gun.I] = { t.crusher.burner },
     [t.processing.oil.basic] = { t.science.chemical },
     [t.battery.liio] = { t.science.chemical },
-    [t.logistics.rail.signals] = { t.science.logistics },
+    -- [t.logistics.rail.signals] = { t.science.logistics },
     -- [t.logistics.automobile.basic] = {t.science.logistics},
     [t.logistics.automobile.basic] = { t.materials.rubber.vulcano },
     [t.logistics.inserters.red] = { t.science.logistics },
-    [t.electronics.basic] = { t.science.steam },
+    [t.electronics.basic] = { t.science.automation },
     -- red sp bindings
     [t.electronics.advanced.I] = { t.science.logistics },
     -- purple sp bindings
@@ -879,6 +879,20 @@ local dropDuplEffects = function(tree)
 end
 
 local calculateEvolution = function(tree)
+    -- extra evo in %
+    local special = {
+        [t.science.military] = 3,
+        [t.science.steam] = 5,
+        [t.science.automation] = 10,
+        
+        [t.science.nuclear] = 8.0,
+    }
+
+    local specialSum = 0.0
+    for _, v in pairs(special) do
+        specialSum = specialSum + v
+    end
+
     local sp = {
         [science.industrial] = 1.0,
         [science.steam] = 1.0,
@@ -912,7 +926,8 @@ local calculateEvolution = function(tree)
         end
     end
 
-    local k = totalCost / 100
+    -- local k = totalCost / 100
+    local k = (totalCost-specialSum*0.9) / 100
     
     -- write custom effects
 
@@ -924,9 +939,14 @@ local calculateEvolution = function(tree)
 
             v = math.ceil(v*1000) / 1000
 
-            if target.ref.name == 'nuclear-fuel-reprocessing' then
-                v = v + 1.0
+            local extra = special[target.ref.name]
+            if extra then
+                v = v + extra
             end
+
+            -- if target.ref.name == 'nuclear-fuel-reprocessing' then
+            --     v = v + 1.0
+            -- end
 
             local effect = {
                 type               = "nothing",
@@ -942,11 +962,116 @@ local calculateEvolution = function(tree)
     end
 end
 
+-- Rampant fixed tier mapping ...
+-- local evoToTierMapping={}
+-- for i=1,10 do
+--     evoToTierMapping[#evoToTierMapping+1] = (((i - 1) * 0.1) ^ 0.8) - 0.01
+--     print(evoToTierMapping[i])
+-- end
+--1 -0.01
+--2  0.14848931924611
+--3  0.26594593229224
+--4  0.37167789096182
+--5  0.47044977359257
+--6  0.56434917749852
+--7  0.65453980594897
+--8  0.74175864665005
+--9  0.82651164207302
+--10 0.90916611884012
+
+local rampantFixedCost = {16, 14, 13, 11, 13, 13, 16, 20}
+
+local experimentalEvo = function (tree)
+    local sp = {
+        [science.industrial] = 1.0,
+        [science.steam] = 1.0,
+        [science.automation] = 1.0,
+        [science.logistics] = 1.0,
+        -- [science.military] = 0.0, -- ignore military as tier lvl
+        [science.chemical] = 1.0,
+        [science.advanced.logistics] = 1.0,
+        [science.production] = 1.0,
+        [science.utility] = 1.0,
+        [science.space] = 1.0,
+    }
+
+    local techTier = {0,0,0,0,0,0,0,0} -- max 8
+    local totalHandled = 0
+
+    for _, tName in pairs(tree.queue) do
+        local target = tree.technologies.all[tName]
+
+        if target and not target.isBuff and not target.willBeIgnored then
+            local tier = 0
+            for key, _ in pairs(target.science) do
+                if key and sp[key] then
+                    tier = tier + 1
+                end
+            end
+
+            target.tier = tier
+            totalHandled = totalHandled + 1
+            techTier[tier] = techTier[tier] + 1
+        end
+    end
+
+    local techTierCost = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0}
+    -- local w = 100/8
+    for index, value in ipairs(techTier) do
+        -- techTierCost[index] = w/(value + 1)
+        techTierCost[index] = rampantFixedCost[index]/(value + 1)
+    end
+
+    -- build evo
+
+    for _, tName in pairs(tree.queue) do
+        local target = tree.technologies.all[tName]
+
+        if target and target.tier then
+            target.evolution = techTierCost[target.tier]
+
+            if sp[target.ref.name] then
+                target.evolution = techTierCost[target.tier]*2.2
+            end
+
+             if target.ref.name == 'nuclear-fuel-reprocessing' then
+                target.evolution = target.evolution + 8.0
+            end
+        end
+
+        if target and target.evolution > 0 then
+            local v = target.evolution
+
+            v = math.ceil(v*1000) / 1000
+
+            -- local extra = special[target.ref.name]
+            -- if extra then
+                -- v = v + extra
+            -- end
+            
+
+            local effect = {
+                type               = "nothing",
+                effect_description = { "research-causes-evolution-effect", v }
+            }
+
+            if target.ref.effects then
+                table.insert(target.ref.effects, effect)
+            else
+                target.ref.effects = { effect }
+            end
+        end
+    end
+
+    -- apm.lib.utils.debug.object(techTier)
+    -- apm.lib.utils.debug.object(techTierCost)
+end
+
 local cleanupItems = function (tree)
     for tName, tech in pairs(tree.technologies.all) do
         if  not tech.isHandled and not tech.isBuff then
-            apm.lib.utils.debug.object(tName)
-            apm.lib.utils.debug.object(tech.ref.effects)
+            -- apm.lib.utils.debug.object(tName)
+            -- apm.lib.utils.debug.object(tech.ref.effects)
         end
     end
 end
@@ -996,7 +1121,8 @@ apm.bob_rework.lib.utils.tech.tree.rebuild = function(startingTName)
     log('total handled technologies count ' .. tostring(tree.technologies.all[tree.cursor.current].ID))
 
     if settings.startup["apm_bob_rework_tech_to_evo_enabled"].value then
-        calculateEvolution(tree)
+        -- calculateEvolution(tree)
+        experimentalEvo(tree)
     end
 
     cleanupItems(tree)

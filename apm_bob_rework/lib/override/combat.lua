@@ -361,10 +361,9 @@ end
 local changeIronCladMortar = function()
 	local recipe = combat.turret.mortar.base
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.gunmetal, 20)
 	apm.lib.utils.recipe.ingredient.mod(recipe, pipes.base.iron, 10)
-	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 20)
-	apm.lib.utils.recipe.ingredient.mod(recipe, materials.concrete, 20)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.steel, 10)
+	apm.lib.utils.recipe.ingredient.mod(recipe, materials.brick, 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.brass, 8)
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.bearing.brass, 2)
 
@@ -627,9 +626,8 @@ local modify = function()
 
 	local recipe = combat.turret.rifle
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, materials.wood, 5)
-	apm.lib.utils.recipe.ingredient.mod(recipe, alloys.bronze, 1)
-	apm.lib.utils.recipe.ingredient.mod(recipe, product.gearwheel.bronze, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, materials.wood, 3)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.iron, 1)
 
 	local rbody = 'rocket-body'
 	local rhead = 'rocket-warhead'
@@ -922,6 +920,11 @@ local modify = function()
 	apm.lib.utils.recipe.ingredient.mod(recipe, product.chemistry.cordite, 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'shotgun-shell-casing', 1)
 	apm.lib.utils.recipe.ingredient.mod(recipe, logic.PU, 2)
+
+	recipe = 'land-mine'
+	apm.lib.utils.recipe.ingredient.remove_all(recipe)
+	apm.lib.utils.recipe.ingredient.mod(recipe, plates.iron, 1)
+	apm.lib.utils.recipe.ingredient.mod(recipe, combat.grenade.base, 2)
 
 	buildLaserTurret()
 	buildCanonTurret()

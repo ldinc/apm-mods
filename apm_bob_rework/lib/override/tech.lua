@@ -283,6 +283,8 @@ function apm.bob_rework.lib.override.tech()
     bind('pumpjack', 'electric-engine')
     drop('pumpjack', 'logistic-science-pack')
 
+    rm(t.electricity, 'basic-circuit-board')
+
     bind('oil-processing', 'invar-processing')
     unbind('apm_coking_plant_2', 'oil-processing')
     bind('apm_coking_plant_2', 'invar-processing')
@@ -440,6 +442,8 @@ function apm.bob_rework.lib.override.tech()
     free('effect-transmission-2')
     -- rm('effect-transmission-2', 'beacon-2')
     -- push('effect-transmission-2', 'beacon-3')
+
+    free('rampant-arsenal-technology-capsule-turret')
 
     free('turbo-inserter')
     free('ultimate-inserter')

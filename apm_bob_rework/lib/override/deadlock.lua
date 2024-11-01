@@ -40,13 +40,13 @@ deadlock.add_tier({
 	loader_ingredients  = {
 		{t.yellow.belt, 1},
 		{t.yellow.constructionAlloy, 1},
-		{t.yellow.logic, 1},
+		{t.steam.logic, 1},
 	},
 	beltbox_ingredients = {
 		{t.yellow.belt, 2},
 		{t.yellow.constructionAlloy, 2},
 		{t.yellow.gearWheel, 2},
-		{t.yellow.logic, 4},
+		{t.steam.logic, 4},
 	},
 	beltbox_technology  = "logistics",
 })

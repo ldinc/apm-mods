@@ -226,6 +226,8 @@ apm.bob_rework.lib.override.others = function()
     clear()
     mod(alloys.titanium, 1)
 
+    recipe = 'apm_landfill'
+    apm.lib.utils.recipe.category.change(recipe, 'crafting')
 
     recipe = 'waterfill'
     mod(product.explosives, 0)
@@ -242,6 +244,11 @@ apm.bob_rework.lib.override.others = function()
     recipe = 'mudwaterfill'
     mod(product.explosives, 0)
     mod(product.cliff.explosives, 1)
+
+    recipe = 'rail-chain-signal'
+    clear()
+    mod(plates.iron, 5)
+    mod(logic.circuit.low, 1) 
 
     -- recipe = science.production
     -- clear()
@@ -283,4 +290,12 @@ apm.bob_rework.lib.override.others = function()
     apm.lib.utils.assembler.mod.category.add('electric-chemical-mixing-furnace', 'apm_electric_smelting')
 
     apm.lib.utils.recipe.category.change('apm_pyrolysis_charcoal_3', 'apm_coking_2')
+
+    recipe = 'fcpu'
+    clear()
+    mod(logic.circuit.basic, 24)
+    mod(wire.copper, 10)
+    mod('red-wire', 5)
+    mod('green-wire', 5)
+    mod('apm_machine_frame_steam', 1)
 end

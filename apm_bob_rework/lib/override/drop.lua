@@ -13,11 +13,29 @@ require('lib.entities.base')
 
 local hidden = {}
 
+local find = function (name)
+    for key, container in pairs(data.raw) do
+    local prototype = container[name]
+    local short = string.sub(key, 1, 4)
+    if key ~= 'recipe' and  short ~= 'item' and prototype then
+        return prototype
+    end
+end
+
+return nil
+end
+
 local hide = function(name)
     local item = data.raw.item[name]
+
     if item then
-        -- item.flags = { 'hidden', 'hide-from-bonus-gui', 'hide-from-fuel-tooltip' }
-        hidden[name] = true
+        hidden[name] = 'item'
+    else
+        item = find(name)
+
+        if item and item.type then
+            hidden[name] = item.type
+        end
     end
 end
 
@@ -29,17 +47,7 @@ local hardDrop = function(recipe)
     -- apm.lib.utils.item.delete_hard(recipe)
 end
 
-local find = function (name)
-        for key, container in pairs(data.raw) do
-        local prototype = container[name]
-        local short = string.sub(key, 1, 4)
-        if short ~= 'item' and prototype then
-            return prototype
-        end
-    end
 
-    return nil
-end
 
 apm.bob_rework.lib.override.drop = function()
     -- local rm = apm.lib.utils.recipe.remove
@@ -461,6 +469,19 @@ apm.bob_rework.lib.override.drop = function()
     rm('shotgun-electric-shell')
     rm('self-repair-capsule-ammo-rampant-arsenal')
 
+    rm('heat-exchanger-2')
+    rm('heat-exchanger-3')
+    rm('steam-turbine-2')
+    rm('steam-turbine-3')
+    rm('uranium-235')
+    rm('uranium-238')
+    rm('uranium-fuel-cell')
+    rm('plutonium-fuel-cell')
+    rm('used-up-uranium-fuel-cell')
+    rm('thorium-plutonium-fuel-cell')
+    -- rm('empty-nuclear-fuel-cell')
+    rm('mech-brain')
+
     rm('bob-artillery-wagon-2')
     rm('bob-artillery-wagon-3')
 
@@ -483,29 +504,42 @@ apm.bob_rework.lib.override.drop = function()
     -- hd('fluid-generator-2')
     -- hd('electric-furnace-2')
 
-    apm.lib.utils.debug.object(hid)
+    -- apm.lib.utils.debug.object(hidden)
+    -- apm.lib.utils.debug.object(find('mortar-bomb'))
+    -- apm.lib.utils.debug.object(find('bob-artillery-wagon-2'))
+    
 
     for _, item in pairs(data.raw.item) do
-        apm.lib.utils.debug.object(item)
 
         if item.place_result then
             local place_result = find(item.place_result)
-            apm.lib.utils.debug.object(place_result)
             if place_result and place_result.next_upgrade then
                 if hidden[place_result.next_upgrade] or hidden[item.name] then
-                    
-                    apm.lib.utils.debug.object(place_result.next_upgrade)
-    
                     place_result.next_upgrade = nil
                 end
             end
         end
     end
 
-    for name, _ in pairs(hidden) do
-        local item = data.raw.item[name]
+
+    local blacklist = {
+        ['car'] = {},
+        ['artillery-wagon'] = {},
+        ['fluid-wagon'] = {},
+    }
+
+    for name, type in pairs(hidden) do
+        local item = data.raw[type][name]
         if item then
-            item.flags = { 'hidden', 'hide-from-bonus-gui', 'hide-from-fuel-tooltip' }
+            if blacklist[type] then
+                item.flags = { 'hidden' }
+                local target = data.raw['item-with-entity-data']
+                if target then
+                    item.flags = { 'hidden' }
+                end
+            else
+                item.flags = { 'hidden', 'hide-from-bonus-gui', 'hide-from-fuel-tooltip' }
+            end
         end
     end
 end

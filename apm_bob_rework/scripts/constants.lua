@@ -71,6 +71,14 @@ constants.freeplay_crash_site_parts = {
   --   angle_deviation = 0.8,
   --   max_distance = 10,
   -- },
+  {
+    name = "radar-4",
+    repeat_count = 1,
+    angle_deviation = 0.1,
+    max_distance = 10,
+    min_separation = 3,
+    fire_count = 1,
+  },
 }
 
 return constants

@@ -47,6 +47,7 @@ return {
     },
 
     grenade = {
+        base = 'grenade',
         incendiary = 'incendiary-grenade-capsule-rampant-arsenal',
     },
 
@@ -135,6 +136,7 @@ return {
     },
 
     wall = {
+        wooden = 'wooden-wall',
         basic = 'stone-wall',
         red = 'reinforced-wall-rampant-arsenal',
         blue = 'heavy-wall-rampant-arsenal',

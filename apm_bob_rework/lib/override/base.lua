@@ -75,6 +75,7 @@ require('lib.override.energyUsage')
 require('lib.override.cogmas')
 require('lib.override.pipes')
 require('lib.override.deuterium')
+require('lib.override.walls')
 
 -- require('lib.override.deadlock')
 
@@ -137,6 +138,7 @@ apm.bob_rework.lib.override.apply = function ()
     apm.bob_rework.lib.override.power()
     apm.bob_rework.lib.override.buff()
     apm.bob_rework.lib.override.combat()
+    apm.bob_rework.lib.override.walls()
 
     apm.bob_rework.lib.override.grid()
 
