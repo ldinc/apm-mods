@@ -28,3 +28,10 @@ function apm.lib.utils.prototypes.item.get(name)
 	return prototypes.item[name]
 end
 
+function apm.lib.utils.prototypes.equipment.get(name)
+	return prototypes.equipment[name]
+end
+
+function apm.lib.utils.prototypes.all()
+	return prototypes
+end

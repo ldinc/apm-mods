@@ -9,7 +9,7 @@ data:extend({
         name = "apm_lib_player_items",
         setting_type = "startup",
         allow_blank  = true,
-        default_value = 'apm_assembling_machine_0:10 burner-mining-drill:10 apm_coke:400 wood:200 stone:100 burner-inserter:10 apm_burner_filter_inserter:10 personal-roboport-equipment:1 battery-equipment:1 apm_zx80_construction_robot:5 modular-armor:1 apm_equipment_burner_generator_basic:1',
+        default_value = 'apm_assembling_machine_0:10 burner-mining-drill:10 apm_coke:400 wood:200 stone:100 burner-inserter:10 personal-roboport-equipment:1 battery-equipment:1 apm_zx80_construction_robot:5 modular-armor:1 apm_equipment_burner_generator_basic:1',
         order='aa_a'}
 })
 

@@ -90,7 +90,7 @@ local function calc_item_count(want_pickup_item_count, t_object)
 	if want_pickup_item_count == 1 then return 1 end
 
 	local inserter_stack_bonus = 0
-	if t_object.stack then
+	if t_object.bulk then
 		-- is stack inserter
 		inserter_stack_bonus = t_object.entity.force.stack_inserter_capacity_bonus
 	else
@@ -273,12 +273,12 @@ end
 local function add_inserter(inserter)
 	if not inserter_ids[inserter.unit_number] then
 		local fuel_inventory = inserter.get_fuel_inventory()
-		local stack = inserter.prototype.stack
+		local bulk = inserter.prototype.bulk
 		local id = inserter.unit_number
 
-		global.inserter_01746_ids[id] = true
-		table.insert(global.inserter_01746, { id = id, entity = inserter, fuel_inventory = fuel_inventory, stack = stack, err = 0 })
-		inserter_size = #global.inserter_01746
+		storage.inserter_01746_ids[id] = true
+		table.insert(storage.inserter_01746, { id = id, entity = inserter, fuel_inventory = fuel_inventory, bulk = bulk, err = 0 })
+		inserter_size = #storage.inserter_01746
 	end
 end
 

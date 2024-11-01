@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.1
+Date: 01.11.2024
+  Changed:
+    - fixed changed game events
+    - move from `global` to `storage` variables
+  Updated:
+    - incompatibilities
+---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 01.11.2024
+  Changed:
+    - minimal bootstrap adaptation for factorio 2.0
+---------------------------------------------------------------------------------------------------
 Version: 0.23.11
 Date: 23.11.2023
   Changed:

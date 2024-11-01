@@ -41,14 +41,14 @@ local function generate_burnt_fuel_stack_size_table()
 
 					if not lud_item_to_burnt_result[item.name] then
 						log('Info: added "' ..
-						tostring(item.name) .. '" with result: "' .. tostring(burnt_item.name) .. '" to lookup table')
+							tostring(item.name) .. '" with result: "' .. tostring(burnt_item.name) .. '" to lookup table')
 						lud_item_to_burnt_result[item.name] = { result = burnt_item.name }
 					end
 
 					if not lud_burnt_result_to_stack_size[burnt_item.name] then
 						log('Info: added "' ..
-						tostring(burnt_item.name) ..
-						'" with stack size: "' .. tostring(burnt_item.stack_size) .. '" to lookup table')
+							tostring(burnt_item.name) ..
+							'" with stack size: "' .. tostring(burnt_item.stack_size) .. '" to lookup table')
 						lud_burnt_result_to_stack_size[burnt_item.name] = burnt_item.stack_size
 					end
 				elseif item.burnt_result == nil then
@@ -83,7 +83,7 @@ local function add_burner_equipment(equipment_name)
 
 	if storage.burner_equipment[equipment_name] then
 		log('Info: equipment.remote.add_burner_equipment(): equipment: "' ..
-		tostring(equipment_name) .. '" is already on the list.')
+			tostring(equipment_name) .. '" is already on the list.')
 		return true
 	end
 
@@ -96,11 +96,11 @@ local function add_burner_equipment(equipment_name)
 			--end
 			storage.burner_equipment[equipment_name] = true
 			log('Info: equipment.remote.add_burner_equipment(): add equipment: "' ..
-			tostring(equipment_name) .. '" to the list.')
+				tostring(equipment_name) .. '" to the list.')
 			return true
 		end
 		log('Warning: equipment.remote.add_burner_equipment(): equipment: "' ..
-		tostring(equipment_name) .. '" does not exist.')
+			tostring(equipment_name) .. '" does not exist.')
 		return false
 	end
 end
@@ -117,12 +117,12 @@ local function del_burner_equipment(equipment_name)
 	if storage.burner_equipment[equipment_name] then
 		storage.burner_equipment[equipment_name] = nil
 		log('Info: equipment.remote.del_burner_equipment(): equipment: "' ..
-		tostring(equipment_name) .. '" removed from the list.')
+			tostring(equipment_name) .. '" removed from the list.')
 		return true
 	end
 
 	log('Warning: equipment.remote.del_burner_equipment(): equipment: "' ..
-	tostring(equipment_name) .. '" is not on the list.')
+		tostring(equipment_name) .. '" is not on the list.')
 	return false
 end
 
@@ -151,7 +151,7 @@ local function get_burner(player)
 				if not burner then
 					-- failsafe, if a equipment without burner was registred
 					log('Error: equipment.check_fuel(): equipment: "' ..
-					tostring(equipment.name) .. '" has no burner propperty, will be removed.')
+						tostring(equipment.name) .. '" has no burner propperty, will be removed.')
 					del_burner_equipment(equipment.name)
 				else
 					table.insert(results, equipment)
@@ -222,7 +222,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function generate_alerts(player, equipment, alerts, fuel_is_empty, burnt_fuel_inventory_is_blocked,
-							   burnt_fuel_inventory_is_full)
+															 burnt_fuel_inventory_is_full)
 	if fuel_is_empty or burnt_fuel_inventory_is_blocked or burnt_fuel_inventory_is_full then
 		local i_string = equipment.name
 		if equipment.prototype.take_result then
@@ -591,8 +591,8 @@ function itemsFromSettings(player)
 				ind = ind + 1
 			end
 			if pcall(function()
-					player.insert { name = name, count = count }
-				end) == false then
+						player.insert { name = name, count = count }
+					end) == false then
 				log("APM_LIB:: invalid item recipe in settings for starting items: " .. name)
 			end
 		end
@@ -608,7 +608,6 @@ function equipment_default_startup(player)
 	player.insert { name = "apm_coke", count = 600 }
 	player.insert { name = "wood", count = 400 }
 	player.insert { name = "burner-inserter", count = 5 }
-	player.insert { name = "apm_burner_filter_inserter", count = 5 }
 	player.insert { name = "stone-furnace", count = 10 }
 	player.insert { name = "personal-roboport-equipment", count = 1 }
 	player.insert { name = "battery-equipment", count = 1 }
@@ -642,8 +641,10 @@ remote.add_interface("apm_equipment", {
 	del_burner_equipment = function(equipment_name) return del_burner_equipment(equipment_name) end,
 	check_equipment_manager = function(player) return check_equipment_manager(player) end,
 	event_on_burner_equipment_low_fuel = function() return on_burner_equipment_low_fuel end,
-	event_on_burner_equipment_burnt_result_inventory_full = function() return
-		on_burner_equipment_burnt_result_inventory_full end
+	event_on_burner_equipment_burnt_result_inventory_full = function()
+		return
+				on_burner_equipment_burnt_result_inventory_full
+	end
 })
 
 -- Register script event -------------------------------------------------------
