@@ -21,35 +21,35 @@ boiler.icons = {
     apm.lib.icons.dynamics.t2
 }
 --boiler.icon_size = apm.power.icons.boiler.icon_size
-boiler.minable = {mining_time = 0.2, result = "apm_boiler_2"}
+boiler.minable = { mining_time = 0.2, result = "apm_boiler_2" }
 boiler.fast_replaceable_group = 'boiler'
 boiler.max_health = 250
 boiler.energy_consumption = '3.6MW'
 boiler.target_temperature = 240
+
 boiler.energy_source.fuel_inventory_size = 1
 boiler.energy_source.burnt_inventory_size = 1
-boiler.energy_source.fuel_category = nil
-boiler.energy_source.fuel_categories = {'apm_refined_chemical'}
-boiler.energy_source.emissions_per_minute = 20
-boiler.structure.north.layers[3] = table.deepcopy(boiler.structure.north.layers[1])
-boiler.structure.north.layers[3].filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/boiler-N-idle.png'
-boiler.structure.north.layers[3].tint = apm.power.color.boiler_tier_2
-boiler.structure.north.layers[3].hr_version.filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/hr-boiler-N-idle.png'
-boiler.structure.north.layers[3].hr_version.tint = apm.power.color.boiler_tier_2
-boiler.structure.east.layers[3] = table.deepcopy(boiler.structure.east.layers[1])
-boiler.structure.east.layers[3].filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/boiler-E-idle.png'
-boiler.structure.east.layers[3].tint = apm.power.color.boiler_tier_2
-boiler.structure.east.layers[3].hr_version.filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/hr-boiler-E-idle.png'
-boiler.structure.east.layers[3].hr_version.tint = apm.power.color.boiler_tier_2
-boiler.structure.south.layers[3] = table.deepcopy(boiler.structure.south.layers[1])
-boiler.structure.south.layers[3].filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/boiler-S-idle.png'
-boiler.structure.south.layers[3].tint = apm.power.color.boiler_tier_2
-boiler.structure.south.layers[3].hr_version.filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/hr-boiler-S-idle.png'
-boiler.structure.south.layers[3].hr_version.tint = apm.power.color.boiler_tier_2
-boiler.structure.west.layers[3] = table.deepcopy(boiler.structure.west.layers[1])
-boiler.structure.west.layers[3].filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/boiler-W-idle.png'
-boiler.structure.west.layers[3].tint = apm.power.color.boiler_tier_2
-boiler.structure.west.layers[3].hr_version.filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/hr-boiler-W-idle.png'
-boiler.structure.west.layers[3].hr_version.tint = apm.power.color.boiler_tier_2
+boiler.energy_source.fuel_categories = { 'apm_refined_chemical' }
+boiler.energy_source.emissions_per_minute = { pollution = 20 }
 
-data:extend({boiler})
+local layer = table.deepcopy(boiler.pictures.north.structure.layers[1])
+layer.filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/hr-boiler-N-idle.png'
+layer.tint = apm.power.color.boiler_tier_2
+table.insert(boiler.pictures.north.structure.layers, layer)
+
+layer = table.deepcopy(boiler.pictures.east.structure.layers[1])
+layer.filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/hr-boiler-E-idle.png'
+layer.tint = apm.power.color.boiler_tier_2
+table.insert(boiler.pictures.east.structure.layers, layer)
+
+layer = table.deepcopy(boiler.pictures.south.structure.layers[1])
+layer.filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/hr-boiler-S-idle.png'
+layer.tint = apm.power.color.boiler_tier_2
+table.insert(boiler.pictures.south.structure.layers, layer)
+
+layer = table.deepcopy(boiler.pictures.west.structure.layers[1])
+layer.filename = '__apm_resource_pack_ldinc__/graphics/masks/boiler/hr-boiler-W-idle.png'
+layer.tint = apm.power.color.boiler_tier_2
+table.insert(boiler.pictures.west.structure.layers, layer)
+
+data:extend({ boiler })
