@@ -33,21 +33,21 @@ local concrete_to_out_of_map_transition =
 
 -- copied from base (concrete tile)
 local sound_deconstruct_bricks = function(volume)
-  return
-  {
-    switch_vibration_data =
-    {
-      gain = 0.32,
-      filename = "__core__/sound/deconstruct-bricks.bnvib"
-    },
-    variations =
-    {
-      {
-        filename = "__base__/sound/deconstruct-bricks.ogg",
-        volume = volume
-      }
-    }
-  }
+	return
+	{
+		switch_vibration_data =
+		{
+			gain = 0.32,
+			filename = "__core__/sound/deconstruct-bricks.bnvib"
+		},
+		variations =
+		{
+			{
+				filename = "__base__/sound/deconstruct-bricks.ogg",
+				volume = volume
+			}
+		}
+	}
 end
 
 local concrete_transitions =
@@ -73,56 +73,105 @@ local concrete_transitions =
 }
 
 function sound_variations(filename_string, variations, volume_parameter, modifiers_parameter)
-  local result = {}
-  for i = 1,variations do
-    result[i] = { filename = filename_string .. "-" .. i .. ".ogg", volume = volume_parameter or 0.5 }
-    if modifiers_parameter then
-      result[i].modifiers = modifiers_parameter
-    end
-  end
-  return result
+	local result = {}
+	for i = 1, variations do
+		result[i] = { filename = filename_string .. "-" .. i .. ".ogg", volume = volume_parameter or 0.5 }
+		if modifiers_parameter then
+			result[i].modifiers = modifiers_parameter
+		end
+	end
+	return result
 end
 
 local concrete_sounds = sound_variations("__base__/sound/walking/concrete", 11, 0.5)
 local concrete_driving_sound =
 {
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-concrete.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
+	sound =
+	{
+		filename = "__base__/sound/driving/vehicle-surface-concrete.ogg",
+		volume = 0.8,
+		advanced_volume_control = { fades = { fade_in = { curve_type = "cosine", from = { control = 0.5, volume_percentage = 0.0 }, to = { 1.5, 100.0 } } } }
+	},
+	fade_ticks = 6
 }
 local concrete_tile_build_sounds =
 {
-  small =
-  {
-    switch_vibration_data =
-    {
-      gain = 0.25,
-      filename = "__core__/sound/build-concrete-small.bnvib"
-    },
-    variations = sound_variations("__core__/sound/build-concrete-small", 6, 0.4)
-  },
-  medium =
-  {
-    switch_vibration_data =
-    {
-      gain = 0.15,
-      filename = "__core__/sound/build-concrete-medium.bnvib"
-    },
-    variations = sound_variations("__core__/sound/build-concrete-medium", 6, 0.5)
-  },
-  large =
-  {
-    switch_vibration_data =
-    {
-      gain = 0.15,
-      filename = "__core__/sound/build-concrete-large.bnvib"
-    },
-    variations = sound_variations("__core__/sound/build-concrete-large", 6, 0.5)
-  }
+	small =
+	{
+		switch_vibration_data =
+		{
+			gain = 0.25,
+			filename = "__core__/sound/build-concrete-small.bnvib"
+		},
+		variations = sound_variations("__core__/sound/build-concrete-small", 6, 0.4)
+	},
+	medium =
+	{
+		switch_vibration_data =
+		{
+			gain = 0.15,
+			filename = "__core__/sound/build-concrete-medium.bnvib"
+		},
+		variations = sound_variations("__core__/sound/build-concrete-medium", 6, 0.5)
+	},
+	large =
+	{
+		switch_vibration_data =
+		{
+			gain = 0.15,
+			filename = "__core__/sound/build-concrete-large.bnvib"
+		},
+		variations = sound_variations("__core__/sound/build-concrete-large", 6, 0.5)
+	}
 }
+
+default_transition_group_id = default_transition_group_id or 0
+
+local concrete_transitions_between_transitions =
+{
+	{
+		transition_group1 = default_transition_group_id,
+		transition_group2 = water_transition_group_id,
+
+		spritesheet = "__base__/graphics/terrain/water-transitions/concrete-transitions.png",
+		layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+		background_enabled = false,
+		effect_map_layout =
+		{
+			spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-land-mask.png",
+			o_transition_count = 0
+		}
+	},
+	{
+		transition_group1 = default_transition_group_id,
+		transition_group2 = out_of_map_transition_group_id,
+
+		background_layer_offset = 1,
+		background_layer_group = "zero",
+		offset_background_layer_by_tile_layer = true,
+
+		spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition-b.png",
+		layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+	},
+	{
+		transition_group1 = water_transition_group_id,
+		transition_group2 = out_of_map_transition_group_id,
+
+		background_layer_offset = 1,
+		background_layer_group = "zero",
+		offset_background_layer_by_tile_layer = true,
+
+		spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-shore-out-of-map-transition.png",
+		layout = tile_spritesheet_layout.transition_3_3_3_1_0,
+		effect_map_layout =
+		{
+			spritesheet = "__base__/graphics/terrain/effect-maps/water-stone-to-out-of-map-mask.png",
+			u_transition_count = 0,
+			o_transition_count = 0
+		}
+	}
+}
+
 
 local tile_asphalt = {
 	type = "tile",
@@ -158,136 +207,77 @@ local tile_asphalt = {
 			}
 		},
 
-		inner_corner =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-inner-corner.png",
-			count = 16,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-inner-corner.png",
-				count = 16,
-				scale = 0.5
-			}
+		transition = {
+			overlay_layout = {
+				inner_corner = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-inner-corner.png",
+					count = 16,
+					scale = 0.5
+				},
+
+				outer_corner = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-outer-corner.png",
+					count = 8,
+					scale = 0.5
+				},
+
+				side = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-side.png",
+					count = 16,
+					scale = 0.5
+
+				},
+
+				u_transition = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-u.png",
+					count = 8,
+					scale = 0.5
+				},
+
+				o_transition = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-o.png",
+					count = 4,
+					scale = 0.5
+				},
+			},
+
+			mask_layout = {
+				inner_corner = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-inner-corner-mask.png",
+					count = 16,
+					scale = 0.5
+				},
+
+				outer_corner_mask = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-outer-corner-mask.png",
+					count = 8,
+					scale = 0.5
+				},
+
+				side = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-side-mask.png",
+					count = 16,
+					scale = 0.5
+				},
+
+				u_transition_mask = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-u-mask.png",
+					count = 8,
+					scale = 0.5
+				},
+
+				o_transition_mask = {
+					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-o-mask.png",
+					count = 4,
+					scale = 0.5
+				},
+			},
 		},
 
-		inner_corner_mask =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-inner-corner-mask.png",
-			count = 16,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-inner-corner-mask.png",
-				count = 16,
-				scale = 0.5
-			}
-		},
-
-		outer_corner =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-outer-corner.png",
+		material_background = {
+			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt.png",
 			count = 8,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-outer-corner.png",
-				count = 8,
-				scale = 0.5
-			}
-		},
-
-		outer_corner_mask =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-outer-corner-mask.png",
-			count = 8,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-outer-corner-mask.png",
-				count = 8,
-				scale = 0.5
-			}
-		},
-
-		side =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-side.png",
-			count = 16,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-side.png",
-				count = 16,
-				scale = 0.5
-			}
-		},
-
-		side_mask =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-side-mask.png",
-			count = 16,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-side-mask.png",
-				count = 16,
-				scale = 0.5
-			}
-		},
-
-		u_transition =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-u.png",
-			count = 8,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-u.png",
-				count = 8,
-				scale = 0.5
-			}
-		},
-
-		u_transition_mask =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-u-mask.png",
-			count = 8,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-u-mask.png",
-				count = 8,
-				scale = 0.5
-			}
-		},
-
-		o_transition =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-o.png",
-			count = 4,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-o.png",
-				count = 4,
-				scale = 0.5
-			}
-		},
-
-		o_transition_mask =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-o-mask.png",
-			count = 4,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-o-mask.png",
-				count = 4,
-				scale = 0.5
-			}
-		},
-
-		material_background =
-		{
-			picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt.png",
-			count = 8,
-			hr_version =
-			{
-				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt.png",
-				count = 8,
-				scale = 0.5
-			}
+			scale = 0.5
 		}
 	},
 	transitions = concrete_transitions,
