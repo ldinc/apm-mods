@@ -10,8 +10,8 @@ apm.lib.utils.technology.add.prerequisites('stone-walls', 'apm_stone_bricks')
 
 apm.lib.utils.technology.force.recipe_for_unlock('landfill', 'apm_landfill')
 
-apm.lib.utils.technology.add.science_pack('logistics', 'apm_industrial_science_pack', 1)
-apm.lib.utils.technology.remove.science_pack('logistics', 'automation-science-pack', 1)
+apm.lib.utils.technology.add.science_pack('logistics', 'apm_industrial_science_pack')
+apm.lib.utils.technology.remove.science_pack('logistics', 'automation-science-pack')
 apm.lib.utils.technology.force.recipe_for_unlock('logistics', 'transport-belt')
 apm.lib.utils.technology.mod.unit_count('logistics', 10)
 apm.lib.utils.technology.force.prerequisites('logistics', 'apm_rubber-1')
@@ -23,15 +23,15 @@ apm.lib.utils.technology.force.recipe_for_unlock('apm_stone_bricks', 'storage-ta
 
 apm.lib.utils.technology.force.recipe_for_unlock('apm_power_steam', 'boiler')
 
-apm.lib.utils.technology.add.science_pack('turrets', 'apm_industrial_science_pack', 1)
-apm.lib.utils.technology.remove.science_pack('turrets', 'automation-science-pack', 1)
+apm.lib.utils.technology.add.science_pack('turrets', 'apm_industrial_science_pack')
+apm.lib.utils.technology.remove.science_pack('turrets', 'automation-science-pack')
 
 apm.lib.utils.technology.add.science_pack('stone-walls', 'apm_industrial_science_pack', 1)
-apm.lib.utils.technology.remove.science_pack('stone-walls', 'automation-science-pack', 1)
+apm.lib.utils.technology.remove.science_pack('stone-walls', 'automation-science-pack')
 apm.lib.utils.technology.mod.unit_count('stone-walls', 20)
 
 apm.lib.utils.technology.add.science_pack('military', 'apm_industrial_science_pack', 1)
-apm.lib.utils.technology.remove.science_pack('military', 'automation-science-pack', 1)
+apm.lib.utils.technology.remove.science_pack('military', 'automation-science-pack')
 
 apm.lib.utils.technology.add.prerequisites('steel-processing', 'apm_puddling_furnace_0')
 apm.lib.utils.technology.add.prerequisites('steel-processing', 'apm_power_automation_science_pack')
@@ -45,7 +45,8 @@ apm.lib.utils.technology.add.science_pack('railway', 'apm_industrial_science_pac
 apm.lib.utils.technology.add.science_pack('railway', 'apm_steam_science_pack', 1)
 apm.lib.utils.technology.remove.science_pack('railway', 'automation-science-pack')
 apm.lib.utils.technology.remove.science_pack('railway', 'logistic-science-pack')
-apm.lib.utils.technology.force.prerequisites('railway', {'apm_puddling_furnace_0', 'apm_power_steam', 'apm_treated_wood_planks-1'})
+apm.lib.utils.technology.force.prerequisites('railway',
+	{ 'apm_puddling_furnace_0', 'apm_power_steam', 'apm_treated_wood_planks-1' })
 
 apm.lib.utils.technology.add.science_pack('automated-rail-transportation', 'apm_industrial_science_pack', 1)
 apm.lib.utils.technology.add.science_pack('automated-rail-transportation', 'apm_steam_science_pack', 1)
@@ -84,7 +85,7 @@ apm.lib.utils.technology.force.recipe_for_unlock('military-2', 'radar')
 apm.lib.utils.technology.add.prerequisites('heavy-armor', 'apm_puddling_furnace_0')
 apm.lib.utils.technology.remove.prerequisites('heavy-armor', 'steel-processing')
 apm.lib.utils.technology.add.science_pack('heavy-armor', 'apm_industrial_science_pack', 1)
-apm.lib.utils.technology.remove.science_pack('heavy-armor', 'automation-science-pack', 1)
+apm.lib.utils.technology.remove.science_pack('heavy-armor', 'automation-science-pack')
 
 apm.lib.utils.technology.add.science_pack('weapon-shooting-speed-1', 'apm_industrial_science_pack', 1)
 apm.lib.utils.technology.remove.science_pack('weapon-shooting-speed-1', 'automation-science-pack')
