@@ -2,7 +2,6 @@ require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/tiles.lua'
-local sounds = require("prototypes.entity.sounds")
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
 
 APM_LOG_HEADER(self)
@@ -31,6 +30,25 @@ local concrete_to_out_of_map_transition =
 	spritesheet = "__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition.png",
 	layout = tile_spritesheet_layout.transition_4_4_8_1_1,
 }
+
+-- copied from base (concrete tile)
+local sound_deconstruct_bricks = function(volume)
+  return
+  {
+    switch_vibration_data =
+    {
+      gain = 0.32,
+      filename = "__core__/sound/deconstruct-bricks.bnvib"
+    },
+    variations =
+    {
+      {
+        filename = "__base__/sound/deconstruct-bricks.ogg",
+        volume = volume
+      }
+    }
+  }
+end
 
 local concrete_transitions =
 {
@@ -115,7 +133,7 @@ local tile_asphalt = {
 	subgroup = "artificial-tiles",
 	decorative_removal_probability = 0.95,
 	minable = { mining_time = 0.1, result = "apm_asphalt" },
-	mined_sound = sounds.deconstruct_bricks(0.6),
+	mined_sound = sound_deconstruct_bricks(0.6),
 	collision_mask = tile_collision_masks.ground,
 	walking_speed_modifier = 1.4,
 	variants = {
