@@ -1,3 +1,5 @@
+local json = require('json')
+
 local loglevel_setting = settings.startup["apm_lib_log_level"].value
 
 local loglevel = 0
@@ -10,9 +12,9 @@ if loglevel_setting == '2: Info' then loglevel = 2 end
 --
 -- ----------------------------------------------------------------------------
 function APM_LOG_ERR(caller, func, msg)
-    if loglevel >= 0 then
-        log('Error: ' ..caller.. ' -> ' ..func.. ': ' ..msg)
-    end
+	if loglevel >= 0 then
+		log('Error: ' .. caller .. ' -> ' .. func .. ': ' .. msg)
+	end
 end
 
 -- Function -------------------------------------------------------------------
@@ -20,9 +22,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 function APM_LOG_DEPR(caller, func, msg)
-    if loglevel >= 0 then
-        log('Deprecated: ' ..caller.. ' -> ' ..func.. ': ' ..msg)
-    end
+	if loglevel >= 0 then
+		log('Deprecated: ' .. caller .. ' -> ' .. func .. ': ' .. msg)
+	end
 end
 
 -- Function -------------------------------------------------------------------
@@ -30,9 +32,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 function APM_LOG_WARN(caller, func, msg)
-    if loglevel >= 1 then
-        log('Warning: ' ..caller.. ' -> ' ..func.. ': ' ..msg)
-    end
+	if loglevel >= 1 then
+		log('Warning: ' .. caller .. ' -> ' .. func .. ': ' .. msg)
+	end
 end
 
 -- Function -------------------------------------------------------------------
@@ -40,9 +42,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 function APM_LOG_INFO(caller, func, msg)
-    if loglevel >= 2 then
-        log('Info: ' ..caller.. ' -> ' ..func.. ': ' ..msg)
-    end
+	if loglevel >= 2 then
+		log('Info: ' .. caller .. ' -> ' .. func .. ': ' .. msg)
+	end
 end
 
 -- Function -------------------------------------------------------------------
@@ -50,19 +52,31 @@ end
 --
 -- ----------------------------------------------------------------------------
 function APM_LOG_HEADER(path)
-    if loglevel >= 2 then
-        log('- Info ------------------------------------------------')
-        log(tostring(path))
-        log('-------------------------------------------------------')
-    end
+	if loglevel >= 2 then
+		log('- Info ------------------------------------------------')
+		log(tostring(path))
+		log('-------------------------------------------------------')
+	end
 end
 
 -- Function -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-function APM_LOG_SETTINGS(caller, name,  value)
-    if loglevel >= 2 then
-        log('Setting: ' ..caller.. ': ' ..name.. ' -> ' ..tostring(value))
-    end
+function APM_LOG_SETTINGS(caller, name, value)
+	if loglevel >= 2 then
+		log('Setting: ' .. caller .. ': ' .. name .. ' -> ' .. tostring(value))
+	end
+end
+
+function APM_LOG_JSON(caller, name, value)
+	if loglevel >= 2 then
+		log('Json: ' .. caller .. ':' .. name .. ' = ' .. json.encode(value))
+	end
+end
+
+function APM_LOG_JSON_ERROR(caller, name, value)
+	if loglevel >= 0 then
+		log('Error with json: ' .. caller .. ':' .. name .. ' = ' .. json.encode(value))
+	end
 end
