@@ -98,10 +98,8 @@ steam_mining_drill.graphics_set = {
 	circuit_connector_secondary_draw_order = { north = 14, east = 30, south = 30, west = 30 },
 
 	animation = {
-		north =
-		{
-			layers =
-			{
+		north = {
+			layers = {
 				{
 					priority = "high",
 					filename = "__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-N.png",
@@ -165,411 +163,207 @@ steam_mining_drill.graphics_set = {
 				}
 			}
 		},
+
+		east = {
+			layers = {
+				{
+					priority = "high",
+					filename = "__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-E.png",
+					line_length = 8,
+					width = 211,
+					height = 197,
+					animation_speed = 0.5,
+					shift = util.by_pixel(3.75, -1.25),
+					repeat_count = 5,
+					scale = 0.5,
+					frame_count = 64,
+					direction_count = 1,
+					run_mode = "forward-then-backward",
+				},
+				{
+					priority = "high",
+					filename =
+					"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-E-patch.png",
+					line_length = 8,
+					width = 200,
+					height = 219,
+					frame_count = 64,
+					animation_speed = 0.5,
+					shift = util.by_pixel(0, -5.75),
+					scale = 0.5,
+					direction_count = 1,
+					run_mode = "forward-then-backwar",
+
+				},
+				{
+					priority = "high",
+					filename =
+					"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-E-drill-shadow.png",
+					line_length = 8,
+					width = 221,
+					height = 195,
+					animation_speed = 0.5,
+					draw_as_shadow = true,
+					shift = util.by_pixel(6.25, -0.25),
+					repeat_count = 5,
+					scale = 0.5,
+					frame_count = 64,
+					direction_count = 1,
+					run_mode = "forward-then-backward"
+				},
+				{
+					priority = "high",
+					filename =
+					"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-E-patch-shadow.png",
+					line_length = 8,
+					width = 221,
+					height = 195,
+					animation_speed = 0.5,
+					draw_as_shadow = true,
+					shift = util.by_pixel(6.25, -0.25),
+					repeat_count = 5,
+					scale = 0.5,
+					frame_count = 64,
+					direction_count = 1,
+					run_mode = "forward-then-backward"
+				}
+			},
+		},
+	},
+
+	south = {
+		layers = {
+			{
+				priority = "high",
+				filename = "__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-S.png",
+				line_length = 8,
+				width = 196,
+				height = 219,
+				animation_speed = 0.5,
+				shift = util.by_pixel(0, -1.25),
+				repeat_count = 5,
+				scale = 0.5,
+				frame_count = 64,
+				direction_count = 1,
+				run_mode = "forward-then-backward",
+			},
+			{
+				priority = "high",
+				filename =
+				"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-S-patch.png",
+				line_length = 8,
+				width = 200,
+				height = 226,
+				frame_count = 64,
+				animation_speed = 0.5,
+				shift = util.by_pixel(-0.5, -7.5),
+				scale = 0.5,
+				direction_count = 1,
+				run_mode = "forward-then-backwar",
+
+			},
+			{
+				priority = "high",
+				filename =
+				"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-S-drill-shadow.png",
+				line_length = 8,
+				width = 200,
+				height = 195,
+				animation_speed = 0.5,
+				draw_as_shadow = true,
+				shift = util.by_pixel(6.25, -0.25),
+				repeat_count = 5,
+				scale = 0.5,
+				frame_count = 64,
+				direction_count = 1,
+				run_mode = "forward-then-backward"
+			},
+			{
+				priority = "high",
+				filename =
+				"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-S-patch-shadow.png",
+				line_length = 8,
+				width = 221,
+				height = 195,
+				animation_speed = 0.5,
+				draw_as_shadow = true,
+				shift = util.by_pixel(6.25, -0.25),
+				repeat_count = 5,
+				scale = 0.5,
+				frame_count = 64,
+				direction_count = 1,
+				run_mode = "forward-then-backward"
+			}
+		},
+	},
+
+	west = {
+		layers = {
+			{
+				priority = "high",
+				filename = "__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-W.png",
+				line_length = 8,
+				width = 211,
+				height = 197,
+				animation_speed = 0.5,
+				shift = util.by_pixel(-3.75, -0.75),
+				repeat_count = 5,
+				scale = 0.5,
+				frame_count = 64,
+				direction_count = 1,
+				run_mode = "forward-then-backward",
+			},
+			{
+				priority = "high",
+				filename =
+				"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-W-patch.png",
+				line_length = 8,
+				width = 200,
+				height = 220,
+				frame_count = 64,
+				animation_speed = 0.5,
+				shift = util.by_pixel(-0.5, -6),
+				scale = 0.5,
+				direction_count = 1,
+				run_mode = "forward-then-backwar",
+
+			},
+			{
+				priority = "high",
+				filename =
+				"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-W-drill-shadow.png",
+				line_length = 8,
+				width = 201,
+				height = 223,
+				animation_speed = 0.5,
+				draw_as_shadow = true,
+				shift = util.by_pixel(1.25, -7.25),
+				repeat_count = 5,
+				scale = 0.5,
+				frame_count = 64,
+				direction_count = 1,
+				run_mode = "forward-then-backward"
+			},
+			{
+				priority = "high",
+				filename =
+				"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-W-patch-shadow.png",
+				line_length = 8,
+				width = 220,
+				height = 197,
+				animation_speed = 0.5,
+				draw_as_shadow = true,
+				shift = util.by_pixel(5, -0.25),
+				repeat_count = 5,
+				scale = 0.5,
+				frame_count = 64,
+				direction_count = 1,
+				run_mode = "forward-then-backward"
+			}
+		},
 	},
 }
 
-
-steam_mining_drill.animations.east = {}
-steam_mining_drill.animations.east.layers = {}
-steam_mining_drill.animations.east.layers[1] = {}
-steam_mining_drill.animations.east.layers[1].priority = "high"
-steam_mining_drill.animations.east.layers[1].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/electric-mining-drill-E.png"
-steam_mining_drill.animations.east.layers[1].line_length = 8
-steam_mining_drill.animations.east.layers[1].width = 105
-steam_mining_drill.animations.east.layers[1].height = 98
-steam_mining_drill.animations.east.layers[1].frame_count = 64
-steam_mining_drill.animations.east.layers[1].animation_speed = 0.5
-steam_mining_drill.animations.east.layers[1].direction_count = 1
-steam_mining_drill.animations.east.layers[1].shift = util.by_pixel(3.5, -1)
-steam_mining_drill.animations.east.layers[1].run_mode = "forward-then-backward"
-steam_mining_drill.animations.east.layers[1].hr_version = {}
-steam_mining_drill.animations.east.layers[1].hr_version.priority = "high"
-steam_mining_drill.animations.east.layers[1].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-E.png"
-steam_mining_drill.animations.east.layers[1].hr_version.line_length = 8
-steam_mining_drill.animations.east.layers[1].hr_version.width = 211
-steam_mining_drill.animations.east.layers[1].hr_version.height = 197
-steam_mining_drill.animations.east.layers[1].hr_version.frame_count = 64
-steam_mining_drill.animations.east.layers[1].hr_version.animation_speed = 0.5
-steam_mining_drill.animations.east.layers[1].hr_version.direction_count = 1
-steam_mining_drill.animations.east.layers[1].hr_version.shift = util.by_pixel(3.75, -1.25)
-steam_mining_drill.animations.east.layers[1].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.animations.east.layers[1].hr_version.scale = 0.5
-steam_mining_drill.animations.east.layers[2] = {}
-steam_mining_drill.animations.east.layers[2].priority = "extra-high"
-steam_mining_drill.animations.east.layers[2].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/electric-mining-drill-E-patch.png"
-steam_mining_drill.animations.east.layers[2].line_length = 8
-steam_mining_drill.animations.east.layers[2].width = 100
-steam_mining_drill.animations.east.layers[2].height = 110
-steam_mining_drill.animations.east.layers[2].frame_count = 64
-steam_mining_drill.animations.east.layers[2].animation_speed = 0.5
-steam_mining_drill.animations.east.layers[2].direction_count = 1
-steam_mining_drill.animations.east.layers[2].shift = util.by_pixel(0, -6)
-steam_mining_drill.animations.east.layers[2].run_mode = "forward-then-backward"
-steam_mining_drill.animations.east.layers[2].hr_version = {}
-steam_mining_drill.animations.east.layers[2].hr_version.priority = "high"
-steam_mining_drill.animations.east.layers[2].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-E-patch.png"
-steam_mining_drill.animations.east.layers[2].hr_version.line_length = 8
-steam_mining_drill.animations.east.layers[2].hr_version.width = 200
-steam_mining_drill.animations.east.layers[2].hr_version.height = 219
-steam_mining_drill.animations.east.layers[2].hr_version.frame_count = 64
-steam_mining_drill.animations.east.layers[2].hr_version.animation_speed = 0.5
-steam_mining_drill.animations.east.layers[2].hr_version.direction_count = 1
-steam_mining_drill.animations.east.layers[2].hr_version.shift = util.by_pixel(0, -5.75)
-steam_mining_drill.animations.east.layers[2].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.animations.east.layers[2].hr_version.scale = 0.5
-steam_mining_drill.animations.south = {}
-steam_mining_drill.animations.south.layers = {}
-steam_mining_drill.animations.south.layers[1] = {}
-steam_mining_drill.animations.south.layers[1].priority = "high"
-steam_mining_drill.animations.south.layers[1].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/electric-mining-drill-S.png"
-steam_mining_drill.animations.south.layers[1].line_length = 8
-steam_mining_drill.animations.south.layers[1].width = 98
-steam_mining_drill.animations.south.layers[1].height = 109
-steam_mining_drill.animations.south.layers[1].frame_count = 64
-steam_mining_drill.animations.south.layers[1].animation_speed = 0.5
-steam_mining_drill.animations.south.layers[1].direction_count = 1
-steam_mining_drill.animations.south.layers[1].shift = util.by_pixel(0, -1.5)
-steam_mining_drill.animations.south.layers[1].run_mode = "forward-then-backward"
-steam_mining_drill.animations.south.layers[1].hr_version = {}
-steam_mining_drill.animations.south.layers[1].hr_version.priority = "high"
-steam_mining_drill.animations.south.layers[1].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-S.png"
-steam_mining_drill.animations.south.layers[1].hr_version.line_length = 8
-steam_mining_drill.animations.south.layers[1].hr_version.width = 196
-steam_mining_drill.animations.south.layers[1].hr_version.height = 219
-steam_mining_drill.animations.south.layers[1].hr_version.frame_count = 64
-steam_mining_drill.animations.south.layers[1].hr_version.animation_speed = 0.5
-steam_mining_drill.animations.south.layers[1].hr_version.direction_count = 1
-steam_mining_drill.animations.south.layers[1].hr_version.shift = util.by_pixel(0, -1.25)
-steam_mining_drill.animations.south.layers[1].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.animations.south.layers[1].hr_version.scale = 0.5
-steam_mining_drill.animations.south.layers[2] = {}
-steam_mining_drill.animations.south.layers[2].priority = "extra-high"
-steam_mining_drill.animations.south.layers[2].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/electric-mining-drill-S-patch.png"
-steam_mining_drill.animations.south.layers[2].line_length = 8
-steam_mining_drill.animations.south.layers[2].width = 100
-steam_mining_drill.animations.south.layers[2].height = 113
-steam_mining_drill.animations.south.layers[2].frame_count = 64
-steam_mining_drill.animations.south.layers[2].animation_speed = 0.5
-steam_mining_drill.animations.south.layers[2].direction_count = 1
-steam_mining_drill.animations.south.layers[2].shift = util.by_pixel(0, -7.5)
-steam_mining_drill.animations.south.layers[2].run_mode = "forward-then-backward"
-steam_mining_drill.animations.south.layers[2].hr_version = {}
-steam_mining_drill.animations.south.layers[2].hr_version.priority = "high"
-steam_mining_drill.animations.south.layers[2].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-S-patch.png"
-steam_mining_drill.animations.south.layers[2].hr_version.line_length = 8
-steam_mining_drill.animations.south.layers[2].hr_version.width = 200
-steam_mining_drill.animations.south.layers[2].hr_version.height = 226
-steam_mining_drill.animations.south.layers[2].hr_version.frame_count = 64
-steam_mining_drill.animations.south.layers[2].hr_version.animation_speed = 0.5
-steam_mining_drill.animations.south.layers[2].hr_version.direction_count = 1
-steam_mining_drill.animations.south.layers[2].hr_version.shift = util.by_pixel(-0.5, -7.5)
-steam_mining_drill.animations.south.layers[2].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.animations.south.layers[2].hr_version.scale = 0.5
-steam_mining_drill.animations.west = {}
-steam_mining_drill.animations.west.layers = {}
-steam_mining_drill.animations.west.layers[1] = {}
-steam_mining_drill.animations.west.layers[1].priority = "high"
-steam_mining_drill.animations.west.layers[1].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/electric-mining-drill-W.png"
-steam_mining_drill.animations.west.layers[1].line_length = 8
-steam_mining_drill.animations.west.layers[1].width = 105
-steam_mining_drill.animations.west.layers[1].height = 98
-steam_mining_drill.animations.west.layers[1].frame_count = 64
-steam_mining_drill.animations.west.layers[1].animation_speed = 0.5
-steam_mining_drill.animations.west.layers[1].direction_count = 1
-steam_mining_drill.animations.west.layers[1].shift = util.by_pixel(-3.5, -1)
-steam_mining_drill.animations.west.layers[1].run_mode = "forward-then-backward"
-steam_mining_drill.animations.west.layers[1].hr_version = {}
-steam_mining_drill.animations.west.layers[1].hr_version.priority = "high"
-steam_mining_drill.animations.west.layers[1].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-W.png"
-steam_mining_drill.animations.west.layers[1].hr_version.line_length = 8
-steam_mining_drill.animations.west.layers[1].hr_version.width = 211
-steam_mining_drill.animations.west.layers[1].hr_version.height = 197
-steam_mining_drill.animations.west.layers[1].hr_version.frame_count = 64
-steam_mining_drill.animations.west.layers[1].hr_version.animation_speed = 0.5
-steam_mining_drill.animations.west.layers[1].hr_version.direction_count = 1
-steam_mining_drill.animations.west.layers[1].hr_version.shift = util.by_pixel(-3.75, -0.75)
-steam_mining_drill.animations.west.layers[1].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.animations.west.layers[1].hr_version.scale = 0.5
-steam_mining_drill.animations.west.layers[2] = {}
-steam_mining_drill.animations.west.layers[2].priority = "extra-high"
-steam_mining_drill.animations.west.layers[2].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/electric-mining-drill-W-patch.png"
-steam_mining_drill.animations.west.layers[2].line_length = 8
-steam_mining_drill.animations.west.layers[2].width = 100
-steam_mining_drill.animations.west.layers[2].height = 108
-steam_mining_drill.animations.west.layers[2].frame_count = 64
-steam_mining_drill.animations.west.layers[2].animation_speed = 0.5
-steam_mining_drill.animations.west.layers[2].direction_count = 1
-steam_mining_drill.animations.west.layers[2].shift = util.by_pixel(0, -5)
-steam_mining_drill.animations.west.layers[2].run_mode = "forward-then-backward"
-steam_mining_drill.animations.west.layers[2].hr_version = {}
-steam_mining_drill.animations.west.layers[2].hr_version.priority = "high"
-steam_mining_drill.animations.west.layers[2].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-W-patch.png"
-steam_mining_drill.animations.west.layers[2].hr_version.line_length = 8
-steam_mining_drill.animations.west.layers[2].hr_version.width = 200
-steam_mining_drill.animations.west.layers[2].hr_version.height = 220
-steam_mining_drill.animations.west.layers[2].hr_version.frame_count = 64
-steam_mining_drill.animations.west.layers[2].hr_version.animation_speed = 0.5
-steam_mining_drill.animations.west.layers[2].hr_version.direction_count = 1
-steam_mining_drill.animations.west.layers[2].hr_version.shift = util.by_pixel(-0.5, -6)
-steam_mining_drill.animations.west.layers[2].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.animations.west.layers[2].hr_version.scale = 0.5
-steam_mining_drill.shadow_animations = {}
-steam_mining_drill.shadow_animations.north = {}
-steam_mining_drill.shadow_animations.north.layers = {}
-steam_mining_drill.shadow_animations.north.layers[1] = {}
-steam_mining_drill.shadow_animations.north.layers[1].priority = "high"
-steam_mining_drill.shadow_animations.north.layers[1].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/electric-mining-drill-N-drill-shadow.png"
-steam_mining_drill.shadow_animations.north.layers[1].flags = { "shadow" }
-steam_mining_drill.shadow_animations.north.layers[1].line_length = 8
-steam_mining_drill.shadow_animations.north.layers[1].width = 101
-steam_mining_drill.shadow_animations.north.layers[1].height = 111
-steam_mining_drill.shadow_animations.north.layers[1].frame_count = 64
-steam_mining_drill.shadow_animations.north.layers[1].animation_speed = 0.5
-steam_mining_drill.shadow_animations.north.layers[1].direction_count = 1
-steam_mining_drill.shadow_animations.north.layers[1].shift = util.by_pixel(1.5, -7.5)
-steam_mining_drill.shadow_animations.north.layers[1].draw_as_shadow = true
-steam_mining_drill.shadow_animations.north.layers[1].run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.north.layers[1].hr_version = {}
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.priority = "high"
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-N-drill-shadow.png"
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.flags = { "shadow" }
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.line_length = 8
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.width = 201
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.height = 223
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.frame_count = 64
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.animation_speed = 0.5
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.direction_count = 1
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.shift = util.by_pixel(1.25, -7.25)
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.draw_as_shadow = true
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.north.layers[1].hr_version.scale = 0.5
-steam_mining_drill.shadow_animations.north.layers[2] = {}
-steam_mining_drill.shadow_animations.north.layers[2].priority = "extra-high"
-steam_mining_drill.shadow_animations.north.layers[2].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/electric-mining-drill-N-patch-shadow.png"
-steam_mining_drill.shadow_animations.north.layers[2].flags = { "shadow" }
-steam_mining_drill.shadow_animations.north.layers[2].line_length = 8
-steam_mining_drill.shadow_animations.north.layers[2].width = 110
-steam_mining_drill.shadow_animations.north.layers[2].height = 98
-steam_mining_drill.shadow_animations.north.layers[2].frame_count = 64
-steam_mining_drill.shadow_animations.north.layers[2].animation_speed = 0.5
-steam_mining_drill.shadow_animations.north.layers[2].direction_count = 1
-steam_mining_drill.shadow_animations.north.layers[2].shift = util.by_pixel(5, 0)
-steam_mining_drill.shadow_animations.north.layers[2].draw_as_shadow = true
-steam_mining_drill.shadow_animations.north.layers[2].run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.north.layers[2].hr_version = {}
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.priority = "extra-high"
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-N-patch-shadow.png"
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.flags = { "shadow" }
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.line_length = 8
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.width = 220
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.height = 197
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.frame_count = 64
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.animation_speed = 0.5
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.direction_count = 1
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.shift = util.by_pixel(5, -0.25)
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.draw_as_shadow = true
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.north.layers[2].hr_version.scale = 0.5
-steam_mining_drill.shadow_animations.east = {}
-steam_mining_drill.shadow_animations.east.layers = {}
-steam_mining_drill.shadow_animations.east.layers[1] = {}
-steam_mining_drill.shadow_animations.east.layers[1].priority = "high"
-steam_mining_drill.shadow_animations.east.layers[1].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/electric-mining-drill-E-drill-shadow.png"
-steam_mining_drill.shadow_animations.east.layers[1].flags = { "shadow" }
-steam_mining_drill.shadow_animations.east.layers[1].line_length = 8
-steam_mining_drill.shadow_animations.east.layers[1].width = 110
-steam_mining_drill.shadow_animations.east.layers[1].height = 97
-steam_mining_drill.shadow_animations.east.layers[1].frame_count = 64
-steam_mining_drill.shadow_animations.east.layers[1].animation_speed = 0.5
-steam_mining_drill.shadow_animations.east.layers[1].direction_count = 1
-steam_mining_drill.shadow_animations.east.layers[1].shift = util.by_pixel(6, -0.5)
-steam_mining_drill.shadow_animations.east.layers[1].draw_as_shadow = true
-steam_mining_drill.shadow_animations.east.layers[1].run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.east.layers[1].hr_version = {}
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.priority = "high"
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-E-drill-shadow.png"
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.flags = { "shadow" }
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.line_length = 8
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.width = 221
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.height = 195
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.frame_count = 64
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.animation_speed = 0.5
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.direction_count = 1
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.shift = util.by_pixel(6.25, -0.25)
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.draw_as_shadow = true
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.east.layers[1].hr_version.scale = 0.5
-steam_mining_drill.shadow_animations.east.layers[2] = {}
-steam_mining_drill.shadow_animations.east.layers[2].priority = "extra-high"
-steam_mining_drill.shadow_animations.east.layers[2].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/electric-mining-drill-E-patch-shadow.png"
-steam_mining_drill.shadow_animations.east.layers[2].flags = { "shadow" }
-steam_mining_drill.shadow_animations.east.layers[2].line_length = 8
-steam_mining_drill.shadow_animations.east.layers[2].width = 112
-steam_mining_drill.shadow_animations.east.layers[2].height = 98
-steam_mining_drill.shadow_animations.east.layers[2].frame_count = 64
-steam_mining_drill.shadow_animations.east.layers[2].animation_speed = 0.5
-steam_mining_drill.shadow_animations.east.layers[2].direction_count = 1
-steam_mining_drill.shadow_animations.east.layers[2].shift = util.by_pixel(6, 0)
-steam_mining_drill.shadow_animations.east.layers[2].draw_as_shadow = true
-steam_mining_drill.shadow_animations.east.layers[2].run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.east.layers[2].hr_version = {}
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.priority = "extra-high"
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-E-patch-shadow.png"
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.flags = { "shadow" }
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.line_length = 8
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.width = 224
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.height = 198
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.frame_count = 64
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.animation_speed = 0.5
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.direction_count = 1
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.shift = util.by_pixel(6, 0)
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.draw_as_shadow = true
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.east.layers[2].hr_version.scale = 0.5
-steam_mining_drill.shadow_animations.south = {}
-steam_mining_drill.shadow_animations.south.layers = {}
-steam_mining_drill.shadow_animations.south.layers[1] = {}
-steam_mining_drill.shadow_animations.south.layers[1].priority = "high"
-steam_mining_drill.shadow_animations.south.layers[1].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/electric-mining-drill-S-drill-shadow.png"
-steam_mining_drill.shadow_animations.south.layers[1].flags = { "shadow" }
-steam_mining_drill.shadow_animations.south.layers[1].line_length = 8
-steam_mining_drill.shadow_animations.south.layers[1].width = 100
-steam_mining_drill.shadow_animations.south.layers[1].height = 103
-steam_mining_drill.shadow_animations.south.layers[1].frame_count = 64
-steam_mining_drill.shadow_animations.south.layers[1].animation_speed = 0.5
-steam_mining_drill.shadow_animations.south.layers[1].direction_count = 1
-steam_mining_drill.shadow_animations.south.layers[1].shift = util.by_pixel(1, 2.5)
-steam_mining_drill.shadow_animations.south.layers[1].draw_as_shadow = true
-steam_mining_drill.shadow_animations.south.layers[1].run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.south.layers[1].hr_version = {}
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.priority = "high"
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-S-drill-shadow.png"
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.flags = { "shadow" }
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.line_length = 8
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.width = 200
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.height = 206
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.frame_count = 64
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.animation_speed = 0.5
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.direction_count = 1
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.shift = util.by_pixel(1, 2.5)
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.draw_as_shadow = true
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.south.layers[1].hr_version.scale = 0.5
-steam_mining_drill.shadow_animations.south = {}
-steam_mining_drill.shadow_animations.south.layers = {}
-steam_mining_drill.shadow_animations.south.layers[2] = {}
-steam_mining_drill.shadow_animations.south.layers[2].priority = "extra-high"
-steam_mining_drill.shadow_animations.south.layers[2].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/electric-mining-drill-S-patch-shadow.png"
-steam_mining_drill.shadow_animations.south.layers[2].flags = { "shadow" }
-steam_mining_drill.shadow_animations.south.layers[2].line_length = 8
-steam_mining_drill.shadow_animations.south.layers[2].width = 110
-steam_mining_drill.shadow_animations.south.layers[2].height = 98
-steam_mining_drill.shadow_animations.south.layers[2].frame_count = 64
-steam_mining_drill.shadow_animations.south.layers[2].animation_speed = 0.5
-steam_mining_drill.shadow_animations.south.layers[2].direction_count = 1
-steam_mining_drill.shadow_animations.south.layers[2].shift = util.by_pixel(5, 0)
-steam_mining_drill.shadow_animations.south.layers[2].draw_as_shadow = true
-steam_mining_drill.shadow_animations.south.layers[2].run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.south.layers[2].hr_version = {}
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.priority = "extra-high"
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-S-patch-shadow.png"
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.flags = { "shadow" }
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.line_length = 8
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.width = 220
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.height = 197
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.frame_count = 64
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.animation_speed = 0.5
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.direction_count = 1
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.shift = util.by_pixel(5, -0.25)
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.draw_as_shadow = true
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.south.layers[2].hr_version.scale = 0.5
-steam_mining_drill.shadow_animations.west = {}
-steam_mining_drill.shadow_animations.west.layers = {}
-steam_mining_drill.shadow_animations.west.layers[1] = {}
-steam_mining_drill.shadow_animations.west.layers[1].priority = "high"
-steam_mining_drill.shadow_animations.west.layers[1].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/electric-mining-drill-W-drill-shadow.png"
-steam_mining_drill.shadow_animations.west.layers[1].flags = { "shadow" }
-steam_mining_drill.shadow_animations.west.layers[1].line_length = 8
-steam_mining_drill.shadow_animations.west.layers[1].width = 114
-steam_mining_drill.shadow_animations.west.layers[1].height = 97
-steam_mining_drill.shadow_animations.west.layers[1].frame_count = 64
-steam_mining_drill.shadow_animations.west.layers[1].animation_speed = 0.5
-steam_mining_drill.shadow_animations.west.layers[1].direction_count = 1
-steam_mining_drill.shadow_animations.west.layers[1].shift = util.by_pixel(1, -0.5)
-steam_mining_drill.shadow_animations.west.layers[1].draw_as_shadow = true
-steam_mining_drill.shadow_animations.west.layers[1].run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.west.layers[1].hr_version = {}
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.priority = "high"
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/electric-mining-drill/hr-electric-mining-drill-W-drill-shadow.png"
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.flags = { "shadow" }
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.line_length = 8
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.width = 229
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.height = 195
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.frame_count = 64
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.animation_speed = 0.5
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.direction_count = 1
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.shift = util.by_pixel(1.25, -0.25)
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.draw_as_shadow = true
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.west.layers[1].hr_version.scale = 0.5
-steam_mining_drill.shadow_animations.west = {}
-steam_mining_drill.shadow_animations.west.layers = {}
-steam_mining_drill.shadow_animations.west.layers[2] = {}
-steam_mining_drill.shadow_animations.west.layers[2].priority = "extra-high"
-steam_mining_drill.shadow_animations.west.layers[2].filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/electric-mining-drill-W-patch-shadow.png"
-steam_mining_drill.shadow_animations.west.layers[2].flags = { "shadow" }
-steam_mining_drill.shadow_animations.west.layers[2].line_length = 8
-steam_mining_drill.shadow_animations.west.layers[2].width = 110
-steam_mining_drill.shadow_animations.west.layers[2].height = 98
-steam_mining_drill.shadow_animations.west.layers[2].frame_count = 64
-steam_mining_drill.shadow_animations.west.layers[2].animation_speed = 0.5
-steam_mining_drill.shadow_animations.west.layers[2].direction_count = 1
-steam_mining_drill.shadow_animations.west.layers[2].shift = util.by_pixel(5, 0)
-steam_mining_drill.shadow_animations.west.layers[2].draw_as_shadow = true
-steam_mining_drill.shadow_animations.west.layers[2].run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.west.layers[2].hr_version = {}
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.priority = "extra-high"
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.filename =
-"__apm_resource_pack_ldinc__/graphics/entities/steam_mining_drill/hr-electric-mining-drill-W-patch-shadow.png"
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.flags = { "shadow" }
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.line_length = 8
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.width = 220
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.height = 197
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.frame_count = 64
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.animation_speed = 0.5
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.direction_count = 1
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.shift = util.by_pixel(5, -0.25)
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.draw_as_shadow = true
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.run_mode = "forward-then-backward"
-steam_mining_drill.shadow_animations.west.layers[2].hr_version.scale = 0.5
 steam_mining_drill.mining_speed = 0.55
 steam_mining_drill.energy_source = {}
 steam_mining_drill.energy_source.type = "fluid"
@@ -602,9 +396,10 @@ steam_mining_drill.energy_source.smoke[1].starting_vertical_speed = 0.08
 steam_mining_drill.energy_source.smoke[1].starting_frame_deviation = 60
 steam_mining_drill.energy_source.smoke[1].slow_down_factor = 1
 steam_mining_drill.energy_usage = apm.power.constants.energy_usage.steam_miner
+
 steam_mining_drill.resource_searching_radius = 2.49
 steam_mining_drill.vector_to_place_result = { 0, -1.85 }
-steam_mining_drill.module_specification = apm.power.constants.modules.specification_1
+steam_mining_drill.module_slots = apm.power.constants.modules.specification_1
 steam_mining_drill.allowed_effects = apm.power.constants.modules.allowed_effects_1
 steam_mining_drill.radius_visualisation_picture = {
 	filename =
