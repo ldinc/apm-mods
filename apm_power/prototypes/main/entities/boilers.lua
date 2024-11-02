@@ -14,7 +14,11 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
+local original = data.raw.boiler['boiler']
+original.energy_source.emissions_per_minute = { pollution = 4 }
+
 local boiler = table.deepcopy(data.raw.boiler['boiler'])
+
 boiler.name = 'apm_boiler_2'
 boiler.icons = {
     apm.power.icons.boiler,
