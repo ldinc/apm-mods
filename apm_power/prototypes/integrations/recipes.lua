@@ -556,16 +556,56 @@ function updateGenerators()
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'copper-cable', 6)
 end
 
-local ironTier = { alloy = iron, gearing = ironG, bearing = ironB, logic = 'basic-circuit-board', frame = basicFr, pipe =
-'pipe', pump = 'apm_pump_0' }
-local steelTier = { alloy = steel, gearing = steelG, bearing = steelB, logic = logic1, frame = basicFr, pipe =
-'steel-pipe', pump = 'pump' }
-local cobaltSteelTier = { alloy = cobaltSteel, gearing = cobaltSteelG, bearing = cobaltSteelB, logic = logic2, frame =
-advFr, pipe = 'plastic-pipe', pump = 'bob-pump-2' }
-local titaniumTier = { alloy = titanium, gearing = titaniumG, bearing = titaniumB, logic = logic3, frame = advFr, pipe =
-'titanium-pipe', pump = 'bob-pump-3' }
-local heavyTier = { alloy = heavy, gearing = heavyG, bearing = heavyB, logic = logic4, frame = advFr, pipe = heavyPipe, pump =
-'bob-pump-4' }
+local ironTier = {
+	alloy = iron,
+	gearing = ironG,
+	bearing = ironB,
+	logic = 'basic-circuit-board',
+	frame = basicFr,
+	pipe =
+	'pipe',
+	pump = 'apm_pump_0'
+}
+local steelTier = {
+	alloy = steel,
+	gearing = steelG,
+	bearing = steelB,
+	logic = logic1,
+	frame = basicFr,
+	pipe =
+	'steel-pipe',
+	pump = 'pump'
+}
+local cobaltSteelTier = {
+	alloy = cobaltSteel,
+	gearing = cobaltSteelG,
+	bearing = cobaltSteelB,
+	logic = logic2,
+	frame =
+			advFr,
+	pipe = 'plastic-pipe',
+	pump = 'bob-pump-2'
+}
+local titaniumTier = {
+	alloy = titanium,
+	gearing = titaniumG,
+	bearing = titaniumB,
+	logic = logic3,
+	frame = advFr,
+	pipe =
+	'titanium-pipe',
+	pump = 'bob-pump-3'
+}
+local heavyTier = {
+	alloy = heavy,
+	gearing = heavyG,
+	bearing = heavyB,
+	logic = logic4,
+	frame = advFr,
+	pipe = heavyPipe,
+	pump =
+	'bob-pump-4'
+}
 
 local techTiers = { ironTier, steelTier, cobaltSteel, titaniumTier, heavyTier }
 
@@ -1117,7 +1157,6 @@ function genOilRefinery(recipe, tier, tech, walls, mat)
 	apm.lib.utils.recipe.ingredient.mod(recipe, walls, 8 + tier * 2)
 end
 
-
 function genRadars()
 	genRadar('radar', 1, ironTier)
 	genRadar('radar-2', 2, steelTier)
@@ -1191,18 +1230,18 @@ end
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
 local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
-.value
+		.value
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
 local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
-.value
+		.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
 local apm_power_compat_angel_overhaul_machine_frames = settings.startup
-["apm_power_compat_angel_overhaul_machine_frames"].value
+		["apm_power_compat_angel_overhaul_machine_frames"].value
 local apm_power_compat_angel_overwrite_crystal_saw_blades = settings.startup
-["apm_power_compat_angel_overwrite_crystal_saw_blades"].value
+		["apm_power_compat_angel_overwrite_crystal_saw_blades"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
 local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
-.value
+		.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -2002,20 +2041,20 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 		recipe.subgroup = "apm_power_intermediates"
 		recipe.order = 'ac_b'
 		recipe.icons = icons
-		recipe.normal = {}
-		recipe.normal.enabled = false
-		recipe.normal.energy_required = 1
-		recipe.normal.ingredients = {
+
+		recipe.enabled = false
+		recipe.energy_required = 1
+		recipe.ingredients = {
 			{ type = "item", name = "solid-paper", amount = 6 }
 		}
-		recipe.normal.results = {
+		recipe.results = {
 			{ type = 'item', name = 'apm_wood_board', amount = 3 }
 		}
-		recipe.normal.main_product = ''
-		recipe.normal.requester_paste_multiplier = 4
-		recipe.normal.always_show_products = true
-		recipe.normal.always_show_made_in = apm_power_always_show_made_in
-		recipe.expensive = table.deepcopy(recipe.normal)
+		recipe.main_product = ''
+		recipe.requester_paste_multiplier = 4
+		recipe.always_show_products = true
+		recipe.always_show_made_in = apm_power_always_show_made_in
+
 		data:extend({ recipe })
 		apm.lib.utils.technology.add.recipe_for_unlock('bio-paper-1', 'apm_wooden_board_from_paper')
 	end
@@ -2041,10 +2080,10 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 	recipe.group = "apm_power"
 	recipe.subgroup = "apm_power_wood"
 	recipe.order = 'ac_b'
-	recipe.normal.ingredients = {
+	recipe.ingredients = {
 		{ type = "item", name = "cellulose-fiber", amount = 8 },
 	}
-	recipe.expensive.results = recipe.normal.results
+
 	data:extend({ recipe })
 	apm.lib.utils.technology.add.recipe_for_unlock('bio-processing-brown', 'apm_wood_pellets_cellulose')
 
@@ -2158,35 +2197,27 @@ local unlock_steel_with_oxy = function()
 		tertiary = { r = 0.800, g = 0.800, b = 0.800, a = 1.000 },
 		quaternary = { r = 0.850, g = 0.850, b = 0.850, a = 1.000 },
 	}
-	recipe.normal = {}
-	recipe.normal.enabled = false
-	recipe.normal.energy_required = 15
-	recipe.normal.ingredients = {
-		{ type = "item", name = "apm_stone_crucible", amount = 4 },
-		{ type = "item", name = "iron-ore",        amount = 8 },
-		{ type = "fluid", name = "water",          amount = 100, fluidbox_index = 1 },
-		{ type = "fluid", name = "oxygen",         amount = 40, fluidbox_index = 2 }
+
+	recipe.enabled = false
+	recipe.energy_required = 15
+	recipe.ingredients = {
+		{ type = "item",  name = "apm_stone_crucible", amount = 4 },
+		{ type = "item",  name = "iron-ore",           amount = 8 },
+		{ type = "fluid", name = "water",              amount = 100, fluidbox_index = 1 },
+		{ type = "fluid", name = "oxygen",             amount = 40,  fluidbox_index = 2 }
 	}
-	recipe.normal.results = {
-		{ type = 'item', name = 'steel-plate', amount = 4 },
-		{ type = "fluid", name = "steam",   amount = 100, temperature = 280 }
+	recipe.results = {
+		{ type = 'item',  name = 'steel-plate', amount = 4 },
+		{ type = "fluid", name = "steam",       amount = 100, temperature = 280 }
 	}
-	recipe.normal.main_product = ''
-	recipe.normal.requester_paste_multiplier = 4
-	recipe.normal.always_show_products = true
-	recipe.normal.always_show_made_in = apm_power_always_show_made_in
-	--recipe.normal.allow_decomposition = false
-	--recipe.normal.allow_as_intermediate = false
-	--recipe.normal.allow_intermediates = false
-	recipe.expensive = table.deepcopy(recipe.normal)
-	recipe.expensive.energy_required = 25
-	recipe.expensive.ingredients = {
-		{ type = "item", name = "apm_stone_crucible", amount = 4 },
-		{ type = "item", name = "iron-ore",        amount = 10 },
-		{ type = "fluid", name = "water",          amount = 100, fluidbox_index = 1 },
-		{ type = "fluid", name = "oxygen",         amount = 50, fluidbox_index = 2 }
-	}
-	--recipe.expensive.results = {}
+	recipe.main_product = ''
+	recipe.requester_paste_multiplier = 4
+	recipe.always_show_products = true
+	recipe.always_show_made_in = apm_power_always_show_made_in
+	--recipe.allow_decomposition = false
+	--recipe.allow_as_intermediate = false
+	--recipe.allow_intermediates = false
+
 	data:extend({ recipe })
 	apm.lib.utils.technology.add.recipe_for_unlock('advanced-material-processing', recipe.name)
 end

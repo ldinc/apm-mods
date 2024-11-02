@@ -14,8 +14,8 @@ APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_ma
 -- ----------------------------------------------------------------------------
 local item_icon_b = apm.lib.utils.icon.get.from_item('apm_asphalt')
 local item_icon_c = apm.lib.utils.icon.get.from_item('apm_generic_ash')
-item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, {-8, -8})
-local icons = apm.lib.utils.icon.merge({item_icon_b, item_icon_c})
+item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, { -8, -8 })
+local icons = apm.lib.utils.icon.merge({ item_icon_b, item_icon_c })
 
 local recipe = {}
 recipe.type = "recipe"
@@ -25,27 +25,22 @@ recipe.group = "apm_power"
 recipe.subgroup = "apm_power_ash"
 recipe.order = 'bb_a'
 recipe.icons = icons
-recipe.normal = {}
-recipe.normal.enabled = false
-recipe.normal.energy_required = 4.5
-recipe.normal.ingredients = {
-        {type="item", name='apm_generic_ash', amount=30},
-        {type="fluid", name="apm_creosote", amount=25}
-    }
-recipe.normal.results = { 
-        {type='item', name='apm_asphalt', amount=2}
-    }
-recipe.normal.main_product = ''
-recipe.normal.requester_paste_multiplier = 4
-recipe.normal.always_show_products = true
-recipe.normal.always_show_made_in = apm_power_always_show_made_in
-recipe.expensive = table.deepcopy(recipe.normal)
 
---recipe.expensive.energy_required =
---recipe.expensive.ingredients = {}
---recipe.expensive.results = {}
+recipe.enabled = false
+recipe.energy_required = 4.5
+recipe.ingredients = {
+	{ type = "item", name = 'apm_generic_ash', amount = 30 },
+	{ type = "fluid", name = "apm_creosote", amount = 25 }
+}
+recipe.results = {
+	{ type = 'item', name = 'apm_asphalt', amount = 2 }
+}
+recipe.main_product = ''
+recipe.requester_paste_multiplier = 4
+recipe.always_show_products = true
+recipe.always_show_made_in = apm_power_always_show_made_in
 
-data:extend({recipe})
+data:extend({ recipe })
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -53,8 +48,8 @@ data:extend({recipe})
 -- ----------------------------------------------------------------------------
 local item_icon_b = apm.lib.utils.icon.get.from_item('apm_asphalt')
 local item_icon_c = apm.lib.utils.icon.get.from_item('apm_crushed_stone')
-item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, {-8, -8})
-local icons = apm.lib.utils.icon.merge({item_icon_b, item_icon_c})
+item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, { -8, -8 })
+local icons = apm.lib.utils.icon.merge({ item_icon_b, item_icon_c })
 
 local recipe = {}
 recipe.type = "recipe"
@@ -64,27 +59,22 @@ recipe.group = "apm_power"
 recipe.subgroup = "apm_power_ash"
 recipe.order = 'bb_b'
 recipe.icons = icons
-recipe.normal = {}
-recipe.normal.enabled = false
-recipe.normal.energy_required = 4.5
-recipe.normal.ingredients = {
-        {type="item", name="apm_crushed_stone", amount=16},
-        {type="fluid", name="apm_creosote", amount=25}
-    }
-recipe.normal.results = { 
-        {type='item', name='apm_asphalt', amount=2}
-    }
-recipe.normal.main_product = ''
-recipe.normal.requester_paste_multiplier = 4
-recipe.normal.always_show_products = true
-recipe.normal.always_show_made_in = apm_power_always_show_made_in
-recipe.expensive = table.deepcopy(recipe.normal)
 
---recipe.expensive.energy_required =
---recipe.expensive.ingredients = {}
---recipe.expensive.results = {}
+recipe.enabled = false
+recipe.energy_required = 4.5
+recipe.ingredients = {
+	{ type = "item", name = "apm_crushed_stone", amount = 16 },
+	{ type = "fluid", name = "apm_creosote",  amount = 25 }
+}
+recipe.results = {
+	{ type = 'item', name = 'apm_asphalt', amount = 2 }
+}
+recipe.main_product = ''
+recipe.requester_paste_multiplier = 4
+recipe.always_show_products = true
+recipe.always_show_made_in = apm_power_always_show_made_in
 
-data:extend({recipe})
+data:extend({ recipe })
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -92,8 +82,8 @@ data:extend({recipe})
 -- ----------------------------------------------------------------------------
 local item_icon_b = apm.lib.utils.icon.get.from_item('apm_asphalt')
 local item_icon_c = apm.lib.utils.icon.get.from_item('apm_generic_ash')
-item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, {-8, -8})
-local icons = apm.lib.utils.icon.merge({item_icon_b, item_icon_c})
+item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, { -8, -8 })
+local icons = apm.lib.utils.icon.merge({ item_icon_b, item_icon_c })
 
 local recipe = {}
 recipe.type = "recipe"
@@ -103,28 +93,23 @@ recipe.group = "apm_power"
 recipe.subgroup = "apm_power_ash"
 recipe.order = 'bb_c'
 recipe.icons = icons
-recipe.normal = {}
-recipe.normal.enabled = false
-recipe.normal.energy_required = 4.5
-recipe.normal.ingredients = {
-        {type="item", name='apm_generic_ash', amount=30},
-        {type="fluid", name="crude-oil", amount=10},
-        {type="fluid", name="heavy-oil", amount=10}
-    }
-recipe.normal.results = {
-        {type='item', name='apm_asphalt', amount=2}
-    }
-recipe.normal.main_product = ''
-recipe.normal.requester_paste_multiplier = 4
-recipe.normal.always_show_products = true
-recipe.normal.always_show_made_in = apm_power_always_show_made_in
-recipe.expensive = table.deepcopy(recipe.normal)
 
---recipe.expensive.energy_required =
---recipe.expensive.ingredients = {}
---recipe.expensive.results = {}
+recipe.enabled = false
+recipe.energy_required = 4.5
+recipe.ingredients = {
+	{ type = "item", name = 'apm_generic_ash', amount = 30 },
+	{ type = "fluid", name = "crude-oil",   amount = 10 },
+	{ type = "fluid", name = "heavy-oil",   amount = 10 }
+}
+recipe.results = {
+	{ type = 'item', name = 'apm_asphalt', amount = 2 }
+}
+recipe.main_product = ''
+recipe.requester_paste_multiplier = 4
+recipe.always_show_products = true
+recipe.always_show_made_in = apm_power_always_show_made_in
 
-data:extend({recipe})
+data:extend({ recipe })
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -132,8 +117,8 @@ data:extend({recipe})
 -- ----------------------------------------------------------------------------
 local item_icon_b = apm.lib.utils.icon.get.from_item('apm_asphalt')
 local item_icon_c = apm.lib.utils.icon.get.from_item('apm_crushed_stone')
-item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, {-8, -8})
-local icons = apm.lib.utils.icon.merge({item_icon_b, item_icon_c})
+item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, { -8, -8 })
+local icons = apm.lib.utils.icon.merge({ item_icon_b, item_icon_c })
 
 local recipe = {}
 recipe.type = "recipe"
@@ -143,25 +128,20 @@ recipe.group = "apm_power"
 recipe.subgroup = "apm_power_ash"
 recipe.order = 'bb_d'
 recipe.icons = icons
-recipe.normal = {}
-recipe.normal.enabled = false
-recipe.normal.energy_required = 4.5
-recipe.normal.ingredients = {
-        {type="item", name="apm_crushed_stone", amount=16},
-        {type="fluid", name="crude-oil", amount=10},
-        {type="fluid", name="heavy-oil", amount=10}
-    }
-recipe.normal.results = {
-        {type='item', name='apm_asphalt', amount=2}
-    }
-recipe.normal.main_product = ''
-recipe.normal.requester_paste_multiplier = 4
-recipe.normal.always_show_products = true
-recipe.normal.always_show_made_in = apm_power_always_show_made_in
-recipe.expensive = table.deepcopy(recipe.normal)
 
---recipe.expensive.energy_required =
---recipe.expensive.ingredients = {}
---recipe.expensive.results = {}
+recipe.enabled = false
+recipe.energy_required = 4.5
+recipe.ingredients = {
+	{ type = "item", name = "apm_crushed_stone", amount = 16 },
+	{ type = "fluid", name = "crude-oil",     amount = 10 },
+	{ type = "fluid", name = "heavy-oil",     amount = 10 }
+}
+recipe.results = {
+	{ type = 'item', name = 'apm_asphalt', amount = 2 }
+}
+recipe.main_product = ''
+recipe.requester_paste_multiplier = 4
+recipe.always_show_products = true
+recipe.always_show_made_in = apm_power_always_show_made_in
 
-data:extend({recipe})
+data:extend({ recipe })

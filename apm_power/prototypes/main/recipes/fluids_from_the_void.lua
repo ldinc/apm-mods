@@ -20,9 +20,9 @@ recipe.enabled = true
 recipe.hidden = true
 recipe.energy_required = 1
 recipe.ingredients = {}
-recipe.results = {{type='fluid', name='apm_sea_water', amount=150}}
+recipe.results = { { type = 'fluid', name = 'apm_sea_water', amount = 150 } }
 recipe.main_product = 'apm_sea_water'
-data:extend({recipe})
+data:extend({ recipe })
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -36,6 +36,6 @@ recipe.enabled = true
 recipe.hidden = true
 recipe.energy_required = 1
 recipe.ingredients = {}
-recipe.results = {{type='fluid', name='apm_sea_water', amount=400}}
+recipe.results = { { type = 'fluid', name = 'apm_sea_water', amount = 400 } }
 recipe.main_product = 'apm_sea_water'
-data:extend({recipe})
+data:extend({ recipe })

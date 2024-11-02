@@ -7,7 +7,7 @@ APM_LOG_HEADER(self)
 
 local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
 APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_made_in)
-local reusable =  apm.lib.utils.setting.get.starup('apm_power_machine_reusable_recipies')
+local reusable = apm.lib.utils.setting.get.starup('apm_power_machine_reusable_recipies')
 APM_LOG_SETTINGS(self, 'apm_power_machine_reusable_recipies', reusable)
 
 
@@ -18,30 +18,23 @@ APM_LOG_SETTINGS(self, 'apm_power_machine_reusable_recipies', reusable)
 local recipe = {}
 recipe.type = "recipe"
 recipe.name = "apm_greenhouse_0"
-recipe.normal = {}
-recipe.normal.enabled = false
-recipe.normal.energy_required = 2
-recipe.normal.ingredients = {
-        {type="item", name="stone-furnace", amount=1},
-        {type="item", name="apm_machine_frame_basic", amount=6},
-        {type="item", name="stone-brick", amount=15}
-    }
-recipe.normal.results = {
-        {type='item', name='apm_greenhouse_0', amount=1}
-    }
-recipe.normal.main_product = 'apm_greenhouse_0'
-recipe.normal.requester_paste_multiplier = 4
-recipe.normal.always_show_products = true
-recipe.normal.always_show_made_in = apm_power_always_show_made_in
-recipe.expensive = table.deepcopy(recipe.normal)
---recipe.expensive.energy_required =
-recipe.expensive.ingredients = {
-        {type="item", name="stone-furnace", amount=1},
-        {type="item", name="apm_machine_frame_basic", amount=12},
-        {type="item", name="stone-brick", amount=30}
-    }
---recipe.expensive.results = {}
-data:extend({recipe})
+
+recipe.enabled = false
+recipe.energy_required = 2
+recipe.ingredients = {
+	{ type = "item", name = "stone-furnace",       amount = 1 },
+	{ type = "item", name = "apm_machine_frame_basic", amount = 6 },
+	{ type = "item", name = "stone-brick",         amount = 15 }
+}
+recipe.results = {
+	{ type = 'item', name = 'apm_greenhouse_0', amount = 1 }
+}
+recipe.main_product = 'apm_greenhouse_0'
+recipe.requester_paste_multiplier = 4
+recipe.always_show_products = true
+recipe.always_show_made_in = apm_power_always_show_made_in
+
+data:extend({ recipe })
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -50,37 +43,28 @@ data:extend({recipe})
 local recipe = {}
 recipe.type = "recipe"
 recipe.name = "apm_greenhouse_1"
-recipe.normal = {}
-recipe.normal.enabled = false
-recipe.normal.energy_required = 4
-recipe.normal.ingredients = {
-        -- {type="item", name="apm_greenhouse_0", amount=1},
-        {type="item", name="stone-brick", amount=10},
-        {type="item", name="apm_steam_engine", amount=2},
-        {type="item", name="apm_machine_frame_steam", amount=6}
-    }
-recipe.normal.results = {
-        {type='item', name='apm_greenhouse_1', amount=1}
-    }
-recipe.normal.main_product = 'apm_greenhouse_1'
-recipe.normal.requester_paste_multiplier = 4
-recipe.normal.always_show_products = true
-recipe.normal.always_show_made_in = apm_power_always_show_made_in
-recipe.expensive = table.deepcopy(recipe.normal)
---recipe.expensive.energy_required =
-recipe.expensive.ingredients = {
-        -- {type="item", name="apm_greenhouse_0", amount=1},
-        {type="item", name="apm_steam_engine", amount=4},
-        {type="item", name="apm_machine_frame_steam", amount=12}
-    }
---recipe.expensive.results = {}
+
+recipe.enabled = false
+recipe.energy_required = 4
+recipe.ingredients = {
+	-- {type="item", name="apm_greenhouse_0", amount=1},
+	{ type = "item", name = "stone-brick",         amount = 10 },
+	{ type = "item", name = "apm_steam_engine",    amount = 2 },
+	{ type = "item", name = "apm_machine_frame_steam", amount = 6 }
+}
+recipe.results = {
+	{ type = 'item', name = 'apm_greenhouse_1', amount = 1 }
+}
+recipe.main_product = 'apm_greenhouse_1'
+recipe.requester_paste_multiplier = 4
+recipe.always_show_products = true
+recipe.always_show_made_in = apm_power_always_show_made_in
 
 if reusable then
-    table.insert(recipe.normal.ingredients, 'apm_greenhouse_0')
-    table.insert(recipe.expensive.ingredients, 'apm_greenhouse_0')
+	table.insert(recipe.ingredients, 'apm_greenhouse_0')
 end
 
-data:extend({recipe})
+data:extend({ recipe })
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -89,37 +73,27 @@ data:extend({recipe})
 local recipe = {}
 recipe.type = "recipe"
 recipe.name = "apm_greenhouse_2"
-recipe.normal = {}
-recipe.normal.enabled = false
-recipe.normal.energy_required = 6
-recipe.normal.ingredients = {
-        -- {type="item", name="apm_greenhouse_1", amount=1},
-        {type="item", name="stone-brick", amount=10},
-        {type="item", name='small-lamp', amount=10},
-        {type="item", name="electric-engine-unit", amount=5},
-        {type="item", name="electronic-circuit", amount=5},
-        {type="item", name="apm_machine_frame_advanced", amount=3}
-    }
-recipe.normal.results = {
-        {type='item', name='apm_greenhouse_2', amount=1}
-    }
-recipe.normal.main_product = 'apm_greenhouse_2'
-recipe.normal.requester_paste_multiplier = 4
-recipe.normal.always_show_products = true
-recipe.normal.always_show_made_in = apm_power_always_show_made_in
-recipe.expensive = table.deepcopy(recipe.normal)
---recipe.expensive.energy_required =
-recipe.expensive.ingredients = {
-        {type="item", name="apm_greenhouse_2", amount=1},
-        {type="item", name="electric-engine-unit", amount=10},
-        {type="item", name="electronic-circuit", amount=10},
-        {type="item", name="apm_machine_frame_advanced", amount=6}
-    }
---recipe.expensive.results = {}
+
+recipe.enabled = false
+recipe.energy_required = 6
+recipe.ingredients = {
+	-- {type="item", name="apm_greenhouse_1", amount=1},
+	{ type = "item", name = "stone-brick",            amount = 10 },
+	{ type = "item", name = 'small-lamp',             amount = 10 },
+	{ type = "item", name = "electric-engine-unit",   amount = 5 },
+	{ type = "item", name = "electronic-circuit",     amount = 5 },
+	{ type = "item", name = "apm_machine_frame_advanced", amount = 3 }
+}
+recipe.results = {
+	{ type = 'item', name = 'apm_greenhouse_2', amount = 1 }
+}
+recipe.main_product = 'apm_greenhouse_2'
+recipe.requester_paste_multiplier = 4
+recipe.always_show_products = true
+recipe.always_show_made_in = apm_power_always_show_made_in
 
 if reusable then
-    table.insert(recipe.normal.ingredients, 'apm_greenhouse_1')
-    table.insert(recipe.expensive.ingredients, 'apm_greenhouse_1')
+	table.insert(recipe.ingredients, 'apm_greenhouse_1')
 end
 
-data:extend({recipe})
+data:extend({ recipe })
