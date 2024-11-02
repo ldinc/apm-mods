@@ -12,16 +12,17 @@ APM_LOG_HEADER(self)
 local item = {}
 item.type = 'item'
 item.name = 'apm_equipment_roboport_small'
-item.flags = {'hidden', 'hide-from-bonus-gui'}
+item.hidden = true
+item.flags = { 'hide-from-bonus-gui' }
 item.icons = {
-    apm.power.icons.equipment_roboport_small
+	apm.power.icons.equipment_roboport_small
 }
 item.stack_size = 20
 item.group = "apm_other"
 item.subgroup = "apm_starter_armor"
 item.order = "aa_d"
 item.placed_as_equipment_result = "apm_equipment_roboport_small"
-data:extend({item})
+data:extend({ item })
 
 -- Equipment ------------------------------------------------------------------
 --
@@ -30,7 +31,8 @@ data:extend({item})
 local equipment = {}
 equipment.type = "roboport-equipment"
 equipment.name = "apm_equipment_roboport_small"
-equipment.flags = {'hidden', 'hide-from-bonus-gui'}
+equipment.hidden = true
+equipment.flags = { 'hide-from-bonus-gui' }
 equipment.sprite = {}
 equipment.sprite.filename = "__base__/graphics/equipment/personal-roboport-equipment.png"
 equipment.sprite.width = 64
@@ -61,11 +63,11 @@ equipment.recharging_animation.height = 35
 equipment.recharging_animation.frame_count = 16
 equipment.recharging_animation.scale = 1.5
 equipment.recharging_animation.animation_speed = 0.5
-equipment.recharging_light = {intensity = 0.4, size = 5}
-equipment.stationing_offset = {0, -0.6}
-equipment.charging_station_shift = {0, 0.5}
+equipment.recharging_light = { intensity = 0.4, size = 5 }
+equipment.stationing_offset = { 0, -0.6 }
+equipment.charging_station_shift = { 0, 0.5 }
 equipment.charging_station_count = 5
 equipment.charging_distance = 1.6
 equipment.charging_threshold_distance = 5
-equipment.categories = {"apm_starter_equipment"}
-data:extend({equipment})
+equipment.categories = { "apm_starter_equipment" }
+data:extend({ equipment })

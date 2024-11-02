@@ -12,16 +12,17 @@ APM_LOG_HEADER(self)
 local item = {}
 item.type = 'item'
 item.name = 'apm_equipment_battery_tiny'
-item.flags = {'hidden', 'hide-from-bonus-gui'}
+item.hidden = true
+item.flags = { 'hide-from-bonus-gui' }
 item.icons = {
-    apm.power.icons.equipment_battery_tiny
+	apm.power.icons.equipment_battery_tiny
 }
 item.stack_size = 20
 item.group = "apm_other"
 item.subgroup = "apm_starter_armor"
 item.order = "aa_c"
 item.placed_as_equipment_result = "apm_equipment_battery_tiny"
-data:extend({item})
+data:extend({ item })
 
 -- Equipment ------------------------------------------------------------------
 --
@@ -30,7 +31,8 @@ data:extend({item})
 local equipment = {}
 equipment.type = "battery-equipment"
 equipment.name = "apm_equipment_battery_tiny"
-equipment.flags = {'hidden', 'hide-from-bonus-gui'}
+equipment.hidden = true
+equipment.flags = { 'hide-from-bonus-gui' }
 equipment.sprite = {}
 equipment.sprite.filename = apm.power.icons.equipment_battery_tiny.icon
 equipment.sprite.width = apm.power.icons.equipment_battery_tiny.icon_size
@@ -44,5 +46,5 @@ equipment.energy_source = {}
 equipment.energy_source.type = "electric"
 equipment.energy_source.buffer_capacity = "2.5MJ"
 equipment.energy_source.usage_priority = "tertiary"
-equipment.categories = {"apm_starter_equipment"}
-data:extend({equipment})
+equipment.categories = { "apm_starter_equipment" }
+data:extend({ equipment })

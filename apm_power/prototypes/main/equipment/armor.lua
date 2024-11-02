@@ -13,10 +13,11 @@ local armor = {}
 armor.type = "armor"
 armor.name = "apm_armor_starter"
 armor.icons = {
-    apm.power.icons.starter_armor
+	apm.power.icons.starter_armor
 }
 --armor.icon_size = apm.power.icons.starter_armor.icon_size
-armor.flags = {'hidden', 'hide-from-bonus-gui'}
+armor.hidden = true
+armor.flags = { 'hide-from-bonus-gui' }
 armor.group = "apm_other"
 armor.subgroup = "apm_starter_armor"
 armor.order = "aa_a"
@@ -40,4 +41,4 @@ armor.resistances[4].percent = 15
 armor.stack_size = 1
 armor.infinite = true
 armor.equipment_grid = "apm_equipment_grid_starter"
-data:extend({armor})
+data:extend({ armor })
