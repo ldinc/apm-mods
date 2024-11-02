@@ -13,12 +13,12 @@ local item = {}
 item.type = 'item'
 item.name = 'apm_asphalt'
 item.icons = {
-    {icon=apm.power.icons.asphalt.filename, icon_size=apm.power.icons.asphalt.icon_size}
+	{ icon = apm.power.icons.asphalt.filename, icon_size = apm.power.icons.asphalt.icon_size }
 }
 item.icon_mipmaps = apm.power.icons.asphalt.icon_mipmaps
 item.pictures = {
-      apm.power.icons.asphalt,
-      apm.power.icons.asphalt_1
+	apm.power.icons.asphalt,
+	apm.power.icons.asphalt_1
 }
 item.stack_size = 200
 item.group = "apm_power"
@@ -27,8 +27,8 @@ item.order = 'ae_a'
 --item.fuel_category = 'chemical'
 --item.fuel_value = "1MJ"
 item.place_as_tile = {
-  result = "apm_asphalt",
-  condition_size = 1,
-  condition = { "water-tile" }
+	result = "apm_asphalt",
+	condition_size = 1,
+	condition = { layers = { water_tile = true } }
 }
-data:extend({item})
+data:extend({ item })
