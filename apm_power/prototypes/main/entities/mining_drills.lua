@@ -1,5 +1,6 @@
 require('util')
 require('__apm_lib_ldinc__.lib.log')
+require('__apm_lib_ldinc__.lib.utils')
 
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
@@ -365,36 +366,45 @@ steam_mining_drill.graphics_set = {
 }
 
 steam_mining_drill.mining_speed = 0.55
-steam_mining_drill.energy_source = {}
-steam_mining_drill.energy_source.type = "fluid"
-steam_mining_drill.energy_source.fluid_box = {}
-steam_mining_drill.energy_source.fluid_box.production_type = "input-output"
-steam_mining_drill.energy_source.fluid_box.pipe_covers = pipecoverspictures()
-steam_mining_drill.energy_source.fluid_box.base_area = 1
-steam_mining_drill.energy_source.fluid_box.pipe_connections = {
-	{ type = "input-output", position = { 2, 0 } },
-	{ type = "input-output", position = { 0, 2 } },
-	{ type = "input-output", position = { -2, 0 } }
-}
-steam_mining_drill.energy_source.fluid_box.filter = "steam"
-steam_mining_drill.energy_source.minimum_temperature = 100.0
-steam_mining_drill.energy_source.maximum_temperature = 1000.0
-steam_mining_drill.energy_source.burns_fluid = false
-steam_mining_drill.energy_source.scale_fluid_usage = true
-steam_mining_drill.energy_source.emissions_per_minute = apm.power.constants.emissions.steam_miner
-steam_mining_drill.energy_source.smoke = {}
-steam_mining_drill.energy_source.smoke[1] = {}
-steam_mining_drill.energy_source.smoke[1].name = "light-smoke"
-steam_mining_drill.energy_source.smoke[1].deviation = { 0.1, 0.1 }
-steam_mining_drill.energy_source.smoke[1].frequency = 8
-steam_mining_drill.energy_source.smoke[1].position = nil
-steam_mining_drill.energy_source.smoke[1].north_position = { 0, 1 }
-steam_mining_drill.energy_source.smoke[1].south_position = { 0, -1 }
-steam_mining_drill.energy_source.smoke[1].east_position = { -1, 0 }
-steam_mining_drill.energy_source.smoke[1].west_position = { 1, 0 }
-steam_mining_drill.energy_source.smoke[1].starting_vertical_speed = 0.08
-steam_mining_drill.energy_source.smoke[1].starting_frame_deviation = 60
-steam_mining_drill.energy_source.smoke[1].slow_down_factor = 1
+
+steam_mining_drill.energy_source = apm.lib.utils.builders.energy_source.new_steam(
+	apm.power.constants.emissions.steam_miner,
+	apm.lib.utils.builders.smoke.light,
+	apm.lib.utils.builders.fluid_box.new_steam_input_3way(
+		apm.power.constants.emissions.steam_miner
+	)
+)
+
+-- steam_mining_drill.energy_source.type = "fluid"
+-- steam_mining_drill.energy_source.fluid_box = {}
+-- steam_mining_drill.energy_source.fluid_box.production_type = "input-output"
+-- steam_mining_drill.energy_source.fluid_box.pipe_covers = pipecoverspictures()
+-- steam_mining_drill.energy_source.fluid_box.base_area = 1
+-- steam_mining_drill.energy_source.fluid_box.pipe_connections = {
+-- 	{ type = "input-output", position = { 2, 0 } },
+-- 	{ type = "input-output", position = { 0, 2 } },
+-- 	{ type = "input-output", position = { -2, 0 } }
+-- }
+-- steam_mining_drill.energy_source.fluid_box.filter = "steam"
+-- steam_mining_drill.energy_source.minimum_temperature = 100.0
+-- steam_mining_drill.energy_source.maximum_temperature = 1000.0
+-- steam_mining_drill.energy_source.burns_fluid = false
+-- steam_mining_drill.energy_source.scale_fluid_usage = true
+-- steam_mining_drill.energy_source.emissions_per_minute = apm.power.constants.emissions.steam_miner
+-- steam_mining_drill.energy_source.smoke = {}
+-- steam_mining_drill.energy_source.smoke[1] = {}
+-- steam_mining_drill.energy_source.smoke[1].name = "light-smoke"
+-- steam_mining_drill.energy_source.smoke[1].deviation = { 0.1, 0.1 }
+-- steam_mining_drill.energy_source.smoke[1].frequency = 8
+-- steam_mining_drill.energy_source.smoke[1].position = nil
+-- steam_mining_drill.energy_source.smoke[1].north_position = { 0, 1 }
+-- steam_mining_drill.energy_source.smoke[1].south_position = { 0, -1 }
+-- steam_mining_drill.energy_source.smoke[1].east_position = { -1, 0 }
+-- steam_mining_drill.energy_source.smoke[1].west_position = { 1, 0 }
+-- steam_mining_drill.energy_source.smoke[1].starting_vertical_speed = 0.08
+-- steam_mining_drill.energy_source.smoke[1].starting_frame_deviation = 60
+-- steam_mining_drill.energy_source.smoke[1].slow_down_factor = 1
+
 steam_mining_drill.energy_usage = apm.power.constants.energy_usage.steam_miner
 
 steam_mining_drill.resource_searching_radius = 2.49
