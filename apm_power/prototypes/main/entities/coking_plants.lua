@@ -180,7 +180,7 @@ coking_plant.fluid_boxes[4].base_area = 10
 coking_plant.fluid_boxes[4].base_level = 1
 coking_plant.fluid_boxes[4].pipe_connections = {{ type="output", position = {-2, 0} }}
 coking_plant.fluid_boxes[4].secondary_draw_orders = { north = -1, south = 1  }
-coking_plant.fluid_boxes.off_when_no_fluid_recipe = true
+coking_plant.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({coking_plant})
 
 local coking_plant = table.deepcopy(coking_plant)

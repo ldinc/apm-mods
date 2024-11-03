@@ -124,7 +124,7 @@ centrifuge.fluid_boxes[2].base_area = 1
 centrifuge.fluid_boxes[2].base_level = 1
 centrifuge.fluid_boxes[2].pipe_connections = {{ type="output", position = {2, 0} }}
 centrifuge.fluid_boxes[2].secondary_draw_orders = { north = -1 }
-centrifuge.fluid_boxes.off_when_no_fluid_recipe = true
+centrifuge.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({centrifuge})
 
 

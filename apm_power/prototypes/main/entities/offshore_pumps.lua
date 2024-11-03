@@ -132,7 +132,7 @@ offshore_pump.fluid_boxes[1].pipe_connections = {}
 offshore_pump.fluid_boxes[1].pipe_connections[1] = {}
 offshore_pump.fluid_boxes[1].pipe_connections[1].position = {0, 1}
 offshore_pump.fluid_boxes[1].pipe_connections[1].type = "output"
-offshore_pump.fluid_boxes[1].off_when_no_fluid_recipe = false
+offshore_pump.fluid_boxes_off_when_no_fluid_recipe = false
 offshore_pump.tile_width = 1
 offshore_pump.tile_height = 1
 offshore_pump.vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }

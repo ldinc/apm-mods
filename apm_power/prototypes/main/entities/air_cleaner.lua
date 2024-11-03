@@ -132,7 +132,7 @@ air_cleaner.fluid_boxes[2].base_area = 1
 air_cleaner.fluid_boxes[2].base_level = -1
 air_cleaner.fluid_boxes[2].pipe_connections = { { type = "input", position = { 2, 0 } } }
 air_cleaner.fluid_boxes[2].secondary_draw_orders = { north = -1 }
-air_cleaner.fluid_boxes.off_when_no_fluid_recipe = true
+air_cleaner.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ air_cleaner })
 
 
@@ -253,5 +253,5 @@ air_cleaner.fluid_boxes[2].base_area = 1
 air_cleaner.fluid_boxes[2].base_level = -1
 air_cleaner.fluid_boxes[2].pipe_connections = { { type = "input", position = { 2, 0 } } }
 air_cleaner.fluid_boxes[2].secondary_draw_orders = { north = -1 }
-air_cleaner.fluid_boxes.off_when_no_fluid_recipe = true
+air_cleaner.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ air_cleaner })

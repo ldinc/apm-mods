@@ -115,7 +115,7 @@ greenhouse.fluid_boxes[1].base_area = 1
 greenhouse.fluid_boxes[1].base_level = -1
 greenhouse.fluid_boxes[1].pipe_connections = {{ type="input", position = {2, 0} }}
 greenhouse.fluid_boxes[1].secondary_draw_orders = { north = -1 }
-greenhouse.fluid_boxes.off_when_no_fluid_recipe = true
+greenhouse.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({greenhouse})
 
 local greenhouse = table.deepcopy(greenhouse)

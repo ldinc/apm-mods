@@ -161,7 +161,7 @@ puddling_furnace.fluid_boxes[1].base_area = 1
 puddling_furnace.fluid_boxes[1].base_level = -1
 puddling_furnace.fluid_boxes[1].pipe_connections = {{ type="input", position = {0, 2} }}
 puddling_furnace.fluid_boxes[1].secondary_draw_orders = { north = -1 }
-puddling_furnace.fluid_boxes.off_when_no_fluid_recipe = true
+puddling_furnace.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({puddling_furnace})
 
 -- Entity ---------------------------------------------------------------------
@@ -326,7 +326,7 @@ steelworks.fluid_boxes[4].base_area = 1
 steelworks.fluid_boxes[4].base_level = -1
 steelworks.fluid_boxes[4].pipe_connections = {{ type="input", position = {0, 2} }}
 steelworks.fluid_boxes[4].secondary_draw_orders = { north = -1 }
-steelworks.fluid_boxes.off_when_no_fluid_recipe = true
+steelworks.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({steelworks})
 
 -- Entity ---------------------------------------------------------------------
