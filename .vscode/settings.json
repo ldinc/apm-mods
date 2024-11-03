@@ -11,5 +11,6 @@
     ],
     "Lua.workspace.checkThirdParty": "ApplyInMemory",
     "editor.useTabStops": true,
-    "editor.tabSize": 2 
+    "editor.tabSize": 2,
+    "Lua.diagnostics.workspaceDelay": 30000
 }
