@@ -4,7 +4,7 @@ require('lib.utils.builders.fluid_box')
 
 local self = 'lib.utils.builders.energy_source'
 
-function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, volume, min_t, max_t)
+function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, fluid_box, volume, min_t, max_t)
 	if emmisions_pm == nil then
 		emmisions_pm = apm.power.constants.emissions.t1
 	end
@@ -25,9 +25,13 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, vol
 		max_t = 1000.0
 	end
 
+	if not fluid_box then
+		fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(emmisions_pm, volume, min_t, max_t)
+	end
+
 	return {
 		type = "fluid",
-		fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(emmisions_pm, volume, min_t, max_t),
+		fluid_box = fluid_box,
 		smoke = smoke,
 	}
 end

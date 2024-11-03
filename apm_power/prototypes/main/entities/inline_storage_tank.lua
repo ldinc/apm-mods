@@ -1,5 +1,9 @@
 require('util')
 require('__apm_lib_ldinc__.lib.log')
+require('__apm_lib_ldinc__.lib.utils')
+
+local default_circuit_wire_max_distance = 9
+
 local inline_storage_tank = require('graphics.inline_storage_tank')
 
 local sprites = inline_storage_tank
@@ -110,6 +114,7 @@ tank.fluid_box.base_level = 0
 tank.fluid_box.filter = ""
 -- tank.fluid_box.pipe_covers = pipecoverspictures()
 tank.hide_connection_info = true
+
 tank.fluid_box.pipe_connections = {
 	{
 		type = "input-output",
@@ -133,6 +138,7 @@ tank.fluid_box.pipe_connections = {
 tank.window_bounding_box = { util.by_pixel(-3, -5), util.by_pixel(3, 11) }
 
 tank.flow_length_in_ticks = 360
+
 
 circuit_connector_definitions["apm_inline_storage_tank"] = circuit_connector_definitions.create_vector
 	(
