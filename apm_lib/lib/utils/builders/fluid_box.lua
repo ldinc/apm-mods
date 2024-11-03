@@ -21,7 +21,6 @@ function apm.lib.utils.builders.fluid_box.new_steam_input(emmisions_pm, volume, 
 	end
 
 	return {
-		type = 'fluid',
 		volume = volume,
 		production_type = "input",
 		filter = "steam",

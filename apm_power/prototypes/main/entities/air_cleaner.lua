@@ -41,7 +41,7 @@ air_cleaner.energy_usage = apm.power.constants.energy_usage.air_cleaner_0
 air_cleaner.module_specification = apm.power.constants.modules.air_cleaner.specification_0
 air_cleaner.allowed_effects = apm.power.constants.modules.air_cleaner.allowed_effects_0
 
-air_cleaner.energy_source = apm.lib.utils.builders.fluid_box.new_steam_input(apm.power.constants.emissions.air_cleaner_0)
+air_cleaner.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.air_cleaner_0)
 
 air_cleaner.graphics_set = {
 	animation_progress = 1.0666667, -- mb 1.0 or 0.5 better?
@@ -115,7 +115,7 @@ air_cleaner.energy_usage = apm.power.constants.energy_usage.air_cleaner_1
 air_cleaner.module_specification = apm.power.constants.modules.air_cleaner.specification_1
 air_cleaner.allowed_effects = apm.power.constants.modules.air_cleaner.allowed_effects_1
 
-air_cleaner.energy_usage = apm.lib.utils.builders.energy_source.new_electric(
+air_cleaner.energy_source = apm.lib.utils.builders.energy_source.new_electric(
 	apm.power.constants.emissions.air_cleaner_1,
 	apm.power.constants.engery_drain.electric
 )

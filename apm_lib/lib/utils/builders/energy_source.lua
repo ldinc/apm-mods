@@ -27,10 +27,7 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, vol
 
 	return {
 		type = "fluid",
-		fluid_box = {
-			type = "fluid",
-			fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(emmisions_pm, volume, min_t, max_t),
-		},
+		fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(emmisions_pm, volume, min_t, max_t),
 		smoke = smoke,
 	}
 end

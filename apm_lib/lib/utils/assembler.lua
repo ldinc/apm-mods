@@ -44,6 +44,7 @@ function apm.lib.utils.assembler.get.fuel_categories(assembler_name)
 			return rc
 		end
 	elseif assembler.energy_source.type == 'fluid' then
+
 		if assembler.energy_source.fluid_box.filter ~= nil then
 			if assembler.energy_source.fluid_box.filter == 'steam' then
 				return nil
