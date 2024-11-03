@@ -1,24 +1,10 @@
 require('util')
 require('__apm_lib_ldinc__.lib.log')
+require('__apm_lib_ldinc__.lib.utils')
 
 local self = 'apm_power/prototypes/main/air_cleaner.lua'
 
 APM_LOG_HEADER(self)
-
-local smoke = {}
-local smoke_position = { -0.65, -2.15 }
-smoke[1] = {}
-smoke[1].name = "light-smoke"
-smoke[1].deviation = { 0.1, 0.1 }
-smoke[1].frequency = 8
-smoke[1].position = nil
-smoke[1].north_position = smoke_position
-smoke[1].south_position = smoke_position
-smoke[1].east_position = smoke_position
-smoke[1].west_position = smoke_position
-smoke[1].starting_vertical_speed = 0.08
-smoke[1].starting_frame_deviation = 60
-smoke[1].slow_down_factor = 1
 
 local air_cleaner = {}
 air_cleaner.type = "assembling-machine"
@@ -55,31 +41,7 @@ air_cleaner.energy_usage = apm.power.constants.energy_usage.air_cleaner_0
 air_cleaner.module_specification = apm.power.constants.modules.air_cleaner.specification_0
 air_cleaner.allowed_effects = apm.power.constants.modules.air_cleaner.allowed_effects_0
 
-air_cleaner.energy_source = {
-	type = "fluid",
-	fluid_box = {
-		volume = 1000,
-		production_type = "input",
-		filter = "steam",
-		minimum_temperature = 100.0,
-		maximum_temperature = 1000.0,
-		burns_fluid = false,
-		scale_fluid_usage = true,
-		emissions_per_minute = apm.power.constants.emissions.air_cleaner_0,
-		smoke = smoke,
-
-		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-		pipe_connections = {
-			{
-				flow_direction = "input",
-				direction = defines.direction.north,
-				position = { 0, -1 },
-			},
-		},
-		secondary_draw_orders = { north = -1 },
-	},
-}
+air_cleaner.energy_source = apm.lib.utils.builders.fluid_box.new_steam_input(apm.power.constants.emissions.air_cleaner_0)
 
 air_cleaner.graphics_set = {
 	animation_progress = 1.0666667, -- mb 1.0 or 0.5 better?
@@ -110,28 +72,9 @@ air_cleaner.graphics_set = {
 	},
 }
 
-air_cleaner.fluid_boxes = {
-	{
-		volume = 1000,
-		production_type = "output",
-		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-		pipe_connections = {
-			{ flow_direction = "output", direction = defines.direction.west, position = { -1, 0 } },
-		},
-		secondary_draw_orders = { north = -1 },
-	},
-	{
-		volume = 1000,
-		production_type = "input",
-		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-		pipe_connections = {
-			{ flow_direction = "input", direction = defines.direction.east, position = { 1, 0 } },
-		},
-		secondary_draw_orders = { north = -1 },
-	},
-}
+air_cleaner.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
+	apm.lib.utils.pipecovers.assembler2pipepictures()
+)
 
 air_cleaner.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ air_cleaner })
@@ -172,12 +115,10 @@ air_cleaner.energy_usage = apm.power.constants.energy_usage.air_cleaner_1
 air_cleaner.module_specification = apm.power.constants.modules.air_cleaner.specification_1
 air_cleaner.allowed_effects = apm.power.constants.modules.air_cleaner.allowed_effects_1
 
-air_cleaner.energy_source = {
-	type = 'electric',
-	usage_priority = "secondary-input",
-	emissions_per_minute = apm.power.constants.emissions.air_cleaner_1,
-	drain = apm.power.constants.engery_drain.electric,
-}
+air_cleaner.energy_usage = apm.lib.utils.builders.energy_source.new_electric(
+	apm.power.constants.emissions.air_cleaner_1,
+	apm.power.constants.engery_drain.electric
+)
 
 -- TODO: change recipe to use steam or water...
 
@@ -228,30 +169,9 @@ air_cleaner.graphics_set = {
 	},
 }
 
-air_cleaner.fluid_boxes = {
-	{
-		volume = 1000,
-		production_type = "output",
-		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-		pipe_connections = {
-			{ flow_direction = "output", direction = defines.direction.west, position = { -1, 0 } },
-		},
-		secondary_draw_orders = { north = -1 },
-	},
-	{
-		volume = 1000,
-		production_type = "input",
-		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-		pipe_connections = {
-			{ flow_direction = "input", direction = defines.direction.east, position = { 1, 0 } },
-		},
-		secondary_draw_orders = { north = -1 },
-	},
-}
-
-air_cleaner.fluid_boxes[2].secondary_draw_orders = { north = -1 }
+air_cleaner.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
+	apm.lib.utils.pipecovers.assembler3pipepictures()
+)
 
 air_cleaner.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ air_cleaner })

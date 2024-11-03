@@ -122,4 +122,14 @@ require 'lib.utils.recycling'
 
 if not apm.lib.utils.patch then apm.lib.utils.patch = {} end
 require 'lib.utils.patch.aai'
-require 'lib.utils.patch.space_exploration'
+-- require 'lib.utils.patch.space_exploration'
+
+if not apm.lib.utils.builders then apm.lib.utils.builders = {} end
+if not apm.lib.utils.builders.smoke then apm.lib.utils.builders.smoke = {} end
+if not apm.lib.utils.builders.fluid_box then apm.lib.utils.builders.fluid_box = {} end
+if not apm.lib.utils.builders.fluid_boxes then apm.lib.utils.builders.fluid_boxes = {} end
+if not apm.lib.utils.builders.energy_source then apm.lib.utils.builders.energy_source = {} end
+require 'lib.utils.builders.smoke'
+require 'lib.utils.builders.fluid_box'
+require 'lib.utils.builders.fluid_boxes'
+require 'lib.utils.builders.energy_source'

@@ -1,33 +1,10 @@
 require('util')
 require('__apm_lib_ldinc__.lib.log')
+require('__apm_lib_ldinc__.lib.utils')
 
 local self = 'apm_power/prototypes/main/assembling_machines.lua'
 
 APM_LOG_HEADER(self)
-
--- Smoke definitions ----------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local smoke_burner = {}
---local smoke_position = {-0.77, -1.95}
-local smoke_position = { -0.65, -2.15 }
-smoke_burner[1] = {}
-smoke_burner[1].name = "apm_dark_smoke"
-smoke_burner[1].deviation = { 0.1, 0.1 }
-smoke_burner[1].frequency = 10
-smoke_burner[1].position = nil
-smoke_burner[1].north_position = smoke_position
-smoke_burner[1].south_position = smoke_position
-smoke_burner[1].east_position = smoke_position
-smoke_burner[1].west_position = smoke_position
-smoke_burner[1].starting_vertical_speed = 0.08
-smoke_burner[1].starting_frame_deviation = 60
-smoke_burner[1].slow_down_factor = 1
-
-local smoke_steam = table.deepcopy(smoke_burner)
-smoke_steam[1].name = "light-smoke"
-smoke_steam[1].frequency = 8
 
 -- Entity ---------------------------------------------------------------------
 --
@@ -68,15 +45,7 @@ assembling_machine.energy_usage = apm.power.constants.energy_usage.burner
 assembling_machine.module_specification = apm.power.constants.modules.specification_0
 assembling_machine.allowed_effects = apm.power.constants.modules.allowed_effects_0
 
-assembling_machine.energy_source = {
-	type = "burner",
-	fuel_categories = { 'chemical', 'apm_refined_chemical' },
-	effectivity = 1,
-	fuel_inventory_size = 1,
-	burnt_inventory_size = 1,
-	emissions_per_minute = apm.power.constants.emissions.t0,
-	smoke = smoke_burner,
-}
+assembling_machine.energy_source = apm.lib.utils.builders.energy_source.new_burner({ 'chemical', 'apm_refined_chemical' })
 
 assembling_machine.graphics_set = {
 	animation_progress = 1.0666667,
@@ -107,22 +76,21 @@ assembling_machine.graphics_set = {
 	},
 }
 
-assembling_machine.fluid_boxes = {
-	{
-		volume = 1000,
-		production_type = "input",
-		pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures(),
-		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-		pipe_connections = {
-			{
-				flow_direction = "input",
-				direction = defines.direction.south,
-				position = { 0, 1 },
-			},
-		},
-		secondary_draw_orders = { north = -1 }
-	}
-}
+assembling_machine.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_input_s()
+	-- {
+	-- 	volume = 1000,
+	-- 	production_type = "input",
+	-- 	pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures(),
+	-- 	pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
+	-- 	pipe_connections = {
+	-- 		{
+	-- 			flow_direction = "input",
+	-- 			direction = defines.direction.south,
+	-- 			position = { 0, 1 },
+	-- 		},
+	-- 	},
+	-- 	secondary_draw_orders = { north = -1 }
+	-- }
 
 assembling_machine.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ assembling_machine })
@@ -147,56 +115,32 @@ assembling_machine.fast_replaceable_group = "assembling-machine"
 assembling_machine.next_upgrade = "assembling-machine-1"
 assembling_machine.light = nil
 
-assembling_machine.energy_source = {
-	type = "fluid",
-	fluid_box = {
-		volume = 1000,
-		production_type = "input",
-
-		filter = "steam",
-		minimum_temperature = 100.0,
-		maximum_temperature = 1000.0,
-		burns_fluid = false,
-		scale_fluid_usage = true,
-		emissions_per_minute = apm.power.constants.emissions.t1,
-		smoke = smoke_steam,
-
-
-		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-		pipe_connections = {
-			{
-				flow_direction = "input",
-				direction = defines.direction.north,
-				position = { 0, -1 },
-			},
-		},
-		secondary_draw_orders = { north = -1 },
-	},
-}
+assembling_machine.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.t1)
 
 -- patch animation
 assembling_machine.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/assembling_machine/hr_assembling_machine_1.png"
 
-assembling_machine.fluid_boxes = {
-	{
-		production_type = "output",
-		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-		volume = 1000,
-		pipe_connections = { { flow_direction = "output", direction = defines.direction.east, position = { 1, 0 } } },
-		secondary_draw_orders = { north = -1 },
-	},
-	{
-		production_type = "input",
-		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-		volume = 1000,
-		pipe_connections = { { flow_direction = "output", direction = defines.direction.west, position = { -1, 0 } } },
-		secondary_draw_orders = { north = -1 },
-	},
-}
+assembling_machine.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
+	apm.lib.utils.pipecovers.assembler2pipepictures()
+)
+
+	-- {
+	-- 	production_type = "output",
+	-- 	pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
+	-- 	pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
+	-- 	volume = 1000,
+	-- 	pipe_connections = { { flow_direction = "output", direction = defines.direction.east, position = { 1, 0 } } },
+	-- 	secondary_draw_orders = { north = -1 },
+	-- },
+	-- {
+	-- 	production_type = "input",
+	-- 	pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
+	-- 	pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
+	-- 	volume = 1000,
+	-- 	pipe_connections = { { flow_direction = "output", direction = defines.direction.west, position = { -1, 0 } } },
+	-- 	secondary_draw_orders = { north = -1 },
+	-- },
 
 assembling_machine.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ assembling_machine })
