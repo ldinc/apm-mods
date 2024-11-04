@@ -21,7 +21,7 @@ local smoke_burner = {
 
 local smoke_steam = {
 	apm.lib.utils.builders.smoke.new(
-		"apm_steam_smoke",
+		"light-smoke",
 		{ 0.1, 0.1 },
 		8,
 		{ -0.65, -2.15 },

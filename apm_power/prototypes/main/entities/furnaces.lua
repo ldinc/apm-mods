@@ -16,7 +16,7 @@ local smoke_puddling_furnace_position_c = { 0, -1.75 }
 
 local smoke_puddling_furnace = {
 	apm.lib.utils.builders.smoke.new(
-		"apm_dark_light_smoke_a",
+		"light-smoke",
 		{ 0.1, 0.1 },
 		nil,
 		4,
@@ -27,7 +27,7 @@ local smoke_puddling_furnace = {
 	),
 
 	apm.lib.utils.builders.smoke.new(
-		"apm_dark_light_smoke_b",
+		"light-smoke",
 		{ 0.1, 0.1 },
 		nil,
 		3.4,
@@ -38,7 +38,7 @@ local smoke_puddling_furnace = {
 	),
 
 	apm.lib.utils.builders.smoke.new(
-		"apm_dark_light_smoke_c",
+		"light-smoke",
 		{ 0.1, 0.1 },
 		nil,
 		2.8,

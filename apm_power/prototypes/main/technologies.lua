@@ -186,7 +186,7 @@ apm.lib.utils.technology.new('apm_power',
 -- Better Steel
 apm.lib.utils.technology.new('apm_power',
     'apm_steelworks-2',
-    {'apm_steelworks-1', 'advanced-electronics-2', 'low-density-structure'},
+    {'apm_steelworks-1', 'processing-unit', 'low-density-structure'},
     {'apm_steelworks_1'},
     {{"automation-science-pack", 1}, {"logistic-science-pack", 1}, {"chemical-science-pack", 1}},
     300, 30)
