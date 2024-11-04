@@ -109,7 +109,7 @@ steam_mining_drill.graphics_set = {
 					height = 226,
 					animation_speed = 0.5,
 					shift = util.by_pixel(0, -8),
-					repeat_count = 5,
+					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
 					direction_count = 1,
@@ -127,7 +127,7 @@ steam_mining_drill.graphics_set = {
 					shift = util.by_pixel(-0.5, -6.5),
 					scale = 0.5,
 					direction_count = 1,
-					run_mode = "forward-then-backwar",
+					run_mode = "forward-then-backward",
 
 				},
 				{
@@ -140,7 +140,7 @@ steam_mining_drill.graphics_set = {
 					animation_speed = 0.5,
 					draw_as_shadow = true,
 					shift = util.by_pixel(1.25, -7.25),
-					repeat_count = 5,
+					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
 					direction_count = 1,
@@ -156,7 +156,7 @@ steam_mining_drill.graphics_set = {
 					animation_speed = 0.5,
 					draw_as_shadow = true,
 					shift = util.by_pixel(5, -0.25),
-					repeat_count = 5,
+					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
 					direction_count = 1,
@@ -175,7 +175,7 @@ steam_mining_drill.graphics_set = {
 					height = 197,
 					animation_speed = 0.5,
 					shift = util.by_pixel(3.75, -1.25),
-					repeat_count = 5,
+					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
 					direction_count = 1,
@@ -193,7 +193,7 @@ steam_mining_drill.graphics_set = {
 					shift = util.by_pixel(0, -5.75),
 					scale = 0.5,
 					direction_count = 1,
-					run_mode = "forward-then-backwar",
+					run_mode = "forward-then-backward",
 
 				},
 				{
@@ -206,7 +206,7 @@ steam_mining_drill.graphics_set = {
 					animation_speed = 0.5,
 					draw_as_shadow = true,
 					shift = util.by_pixel(6.25, -0.25),
-					repeat_count = 5,
+					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
 					direction_count = 1,
@@ -222,7 +222,7 @@ steam_mining_drill.graphics_set = {
 					animation_speed = 0.5,
 					draw_as_shadow = true,
 					shift = util.by_pixel(6.25, -0.25),
-					repeat_count = 5,
+					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
 					direction_count = 1,
@@ -242,7 +242,7 @@ steam_mining_drill.graphics_set = {
 				height = 219,
 				animation_speed = 0.5,
 				shift = util.by_pixel(0, -1.25),
-				repeat_count = 5,
+				-- repeat_count = 5,
 				scale = 0.5,
 				frame_count = 64,
 				direction_count = 1,
@@ -260,7 +260,7 @@ steam_mining_drill.graphics_set = {
 				shift = util.by_pixel(-0.5, -7.5),
 				scale = 0.5,
 				direction_count = 1,
-				run_mode = "forward-then-backwar",
+				run_mode = "forward-then-backward",
 
 			},
 			{
@@ -273,7 +273,7 @@ steam_mining_drill.graphics_set = {
 				animation_speed = 0.5,
 				draw_as_shadow = true,
 				shift = util.by_pixel(6.25, -0.25),
-				repeat_count = 5,
+				-- repeat_count = 5,
 				scale = 0.5,
 				frame_count = 64,
 				direction_count = 1,
@@ -289,7 +289,7 @@ steam_mining_drill.graphics_set = {
 				animation_speed = 0.5,
 				draw_as_shadow = true,
 				shift = util.by_pixel(6.25, -0.25),
-				repeat_count = 5,
+				-- repeat_count = 5,
 				scale = 0.5,
 				frame_count = 64,
 				direction_count = 1,
@@ -308,7 +308,7 @@ steam_mining_drill.graphics_set = {
 				height = 197,
 				animation_speed = 0.5,
 				shift = util.by_pixel(-3.75, -0.75),
-				repeat_count = 5,
+				-- repeat_count = 5,
 				scale = 0.5,
 				frame_count = 64,
 				direction_count = 1,
@@ -326,7 +326,7 @@ steam_mining_drill.graphics_set = {
 				shift = util.by_pixel(-0.5, -6),
 				scale = 0.5,
 				direction_count = 1,
-				run_mode = "forward-then-backwar",
+				run_mode = "forward-then-backward",
 
 			},
 			{
@@ -339,7 +339,7 @@ steam_mining_drill.graphics_set = {
 				animation_speed = 0.5,
 				draw_as_shadow = true,
 				shift = util.by_pixel(1.25, -7.25),
-				repeat_count = 5,
+				-- repeat_count = 5,
 				scale = 0.5,
 				frame_count = 64,
 				direction_count = 1,
@@ -355,7 +355,7 @@ steam_mining_drill.graphics_set = {
 				animation_speed = 0.5,
 				draw_as_shadow = true,
 				shift = util.by_pixel(5, -0.25),
-				repeat_count = 5,
+				-- repeat_count = 5,
 				scale = 0.5,
 				frame_count = 64,
 				direction_count = 1,
@@ -369,7 +369,7 @@ steam_mining_drill.mining_speed = 0.55
 
 steam_mining_drill.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 	apm.power.constants.emissions.steam_miner,
-	apm.lib.utils.builders.smoke.light,
+	{apm.lib.utils.builders.smoke.light},
 	apm.lib.utils.builders.fluid_box.new_steam_input_3way(
 		apm.power.constants.emissions.steam_miner
 	)
@@ -409,7 +409,7 @@ steam_mining_drill.energy_usage = apm.power.constants.energy_usage.steam_miner
 
 steam_mining_drill.resource_searching_radius = 2.49
 steam_mining_drill.vector_to_place_result = { 0, -1.85 }
-steam_mining_drill.module_slots = apm.power.constants.modules.specification_1
+steam_mining_drill.module_slots = apm.power.constants.modules.specification_1.module_slots
 steam_mining_drill.allowed_effects = apm.power.constants.modules.allowed_effects_1
 steam_mining_drill.radius_visualisation_picture = {
 	filename =
