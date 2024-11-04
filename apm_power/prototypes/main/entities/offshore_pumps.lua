@@ -40,6 +40,14 @@ offshore_pump_base.name = "apm_offshore_pump_0"
 offshore_pump_base.minable = { mining_time = 0.1, result = "apm_offshore_pump_0" }
 offshore_pump_base.localised_description = { "entity-description.apm_offshore_pump" }
 
+offshore_pump_base.fluid_box = apm.lib.utils.builders.fluid_box.new(
+	"output",
+	100,
+	nil,
+	defines.direction.south,
+	{ 0, 0 },
+	nil
+)
 
 
 -- offshore_pump_base.module = { module_slots = 1 }
@@ -97,8 +105,7 @@ offshore_pump_base.fluid_box = apm.lib.utils.builders.fluid_box.new(
 	nil,
 	defines.direction.south,
 	{ 0, 0 },
-	nil,
-	"apm_sea_water"
+	nil
 )
 
 
