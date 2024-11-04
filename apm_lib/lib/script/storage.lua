@@ -79,8 +79,8 @@ local function container(entity, cause)
     local entity_force = get_force(entity) -- will return nil if apm_lib_storage_spit_out_mark_deconstruct == false
 
     local increment_counter = 0
-	for item, count in pairs(content) do
-		game.surfaces[surface].spill_item_stack(position, {name=item, count=count}, false, entity_force)
+	for _, item in ipairs(content) do
+		game.surfaces[surface].spill_item_stack(position, {name=item.name, count=item.count}, false, entity_force)
 
         increment_counter = increment_counter + 1
         if increment_counter >= apm_lib_storage_spit_out_iterations then -- this sould prevent too much lag on modded storages. (48: steel-chest / default)

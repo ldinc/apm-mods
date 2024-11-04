@@ -173,10 +173,10 @@ local function burner_inserter_leech(entity, pickup_target, drop_target)
 	if not target_inventory then return false end
 
 	local target_inventory_contents = target_inventory.get_contents()
-	for item_name, item_count in pairs(target_inventory_contents) do
-		if item_count >= 2 then
-			local stack_size = math.min(item_count - 1, 5)
-			local item_stack = { name = item_name, count = stack_size }
+	for _, item in ipairs(target_inventory_contents) do
+		if item.count >= 2 then
+			local stack_size = math.min(item.count - 1, 5)
+			local item_stack = { name = item.name, count = stack_size }
 			return transfer_leeching(entity, target_inventory, item_stack)
 		end
 		return false
@@ -189,9 +189,9 @@ end
 -- ----------------------------------------------------------------------------
 local function inserter_chain_fuel(t_object, pickup_inventory, drop_target)
 	local pickup_inventory_contents = pickup_inventory.get_contents()
-	for item_name, item_count in pairs(pickup_inventory_contents) do
-		local stack_size = calc_item_count((item_count), t_object)
-		local item_stack = { name = item_name, count = stack_size }
+	for _, item in ipairs(pickup_inventory_contents) do
+		local stack_size = calc_item_count((item.count), t_object)
+		local item_stack = { name = item.name, count = stack_size }
 		if drop_target.can_insert(item_stack) then
 			return transfer_leeching(t_object.entity, pickup_inventory, item_stack)
 		end
@@ -252,10 +252,10 @@ local function inserter_work(t_object, pickup_target, drop_target)
 	end
 
 	local pickup_target_inventory_contents = pickup_target_burnt_result_inventory.get_contents()
-	for item_name, item_count in pairs(pickup_target_inventory_contents) do
-		if item_count >= 1 and check_filter(t_object.entity, item_name) then
+	for _, item in ipairs(pickup_target_inventory_contents) do
+		if item.count >= 1 and check_filter(t_object.entity, item.name) then
 			local stack_size = calc_item_count(item_count, t_object)
-			local item_stack = { name = item_name, count = stack_size }
+			local item_stack = { name = item.name, count = stack_size }
 			if check_drop_target(drop_target, item_stack) then
 				if t_object.entity.held_stack.transfer_stack(item_stack) then
 					pickup_target_burnt_result_inventory.remove(item_stack)
@@ -277,7 +277,8 @@ local function add_inserter(inserter)
 		local id = inserter.unit_number
 
 		storage.inserter_01746_ids[id] = true
-		table.insert(storage.inserter_01746, { id = id, entity = inserter, fuel_inventory = fuel_inventory, bulk = bulk, err = 0 })
+		table.insert(storage.inserter_01746,
+			{ id = id, entity = inserter, fuel_inventory = fuel_inventory, bulk = bulk, err = 0 })
 		inserter_size = #storage.inserter_01746
 	end
 end
@@ -339,7 +340,7 @@ local function get_config()
 
 	local apm_lib_inserter_valid_targets = settings.global['apm_lib_inserter_valid_targets'].value
 	log('Info: get_config(): settings.global.apm_lib_inserter_valid_targets is: ' ..
-	tostring(apm_lib_inserter_valid_targets))
+		tostring(apm_lib_inserter_valid_targets))
 
 	valid_targets_string = split(apm_lib_inserter_valid_targets, ',')
 	valid_targets = {}

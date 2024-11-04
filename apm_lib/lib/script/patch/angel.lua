@@ -13,7 +13,7 @@ local created_player_list={}
 local function replace_angel_burner_crusher(player)
     local inventory_type = defines.inventory.character_main
     if not inventory_type then
-        inventory_type = defines.inventory.player_main
+       return
     end
 	local player_inventrory = player.get_inventory(inventory_type)
 	local player_content = player_inventrory.get_contents()

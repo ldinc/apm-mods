@@ -55,6 +55,10 @@ local function encode_nil(val)
   return "null"
 end
 
+local function encode_userdata(val)
+  return "userdata_ignore_this"
+end
+
 
 local function encode_table(val, stack)
   local res = {}
@@ -118,6 +122,7 @@ local type_func_map = {
   [ "string"  ] = encode_string,
   [ "number"  ] = encode_number,
   [ "boolean" ] = tostring,
+  [ "userdata" ]= encode_userdata,
 }
 
 

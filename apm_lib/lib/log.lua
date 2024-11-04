@@ -80,3 +80,22 @@ function APM_LOG_JSON_ERROR(caller, name, value)
 		log('Error with json: ' .. caller .. ':' .. name .. ' = ' .. json.encode(value))
 	end
 end
+
+function render(obj, indent)
+    if type(obj) == 'table' then
+        local s = '{ '
+        for k,v in pairs(obj) do
+            if type(k) ~= 'number' then k = '"'..k..'"' end
+            s = s .. '['..k..'] = ' .. apm.bob_rework.lib.utils.render(v, indent .. '\t') .. ',\n' .. indent
+        end
+        return s .. '} '
+    else
+        return tostring(obj)
+    end
+end
+
+function APM_LOG_OBJECT_ERROR(caller, name, value)
+	if loglevel >= 0 then
+		log('Error with object: ' .. caller .. ':' .. name .. ' = \n' .. render(value, '  '))
+	end
+end

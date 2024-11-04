@@ -11,17 +11,17 @@ local function replace_aai_burner_assembling_machine()
 	for _, container in pairs(containers) do
 		local inventory = container.get_inventory(defines.inventory.chest)
 		local content = inventory.get_contents()
-		for item_name, item_count in pairs(content) do
-			if item_name == 'burner-ore-crusher' then
+		for _, item in pairs(content) do
+			if item.name == 'burner-ore-crusher' then
 				if settings.startup['apm_power_compat_angel'].value then
-					if game.active_mods['angelsrefining'] then
-						inventory.remove({name = item_name, count = item_count})
-						inventory.insert({name="apm_crusher_machine_0", count=item_count*2})
+					if script.active_mods['angelsrefining'] then
+						inventory.remove({name = item.name, count = item.count})
+						inventory.insert({name="apm_crusher_machine_0", count=item.count*2})
 					end
 				end
 			end
-			if item_name == 'burner-assembling-machine' then
-				inventory.remove({name = item_name, count = item_count})
+			if item.name == 'burner-assembling-machine' then
+				inventory.remove({name = item.name, count = item.count})
 				inventory.insert({name = 'apm_assembling_machine_0', count = 1})
 			end
 		end
@@ -36,7 +36,7 @@ function aai.on_tick()
 	if game.tick > 2 then return end
 	if game.tick == 2 then
 		if settings.startup['apm_power_compat_earendel'].value then
-			if game.active_mods['aai-industry'] then
+			if script.active_mods['aai-industry'] then
 				if settings.global['crash-sequence'].value then
 					replace_aai_burner_assembling_machine()
 				end
