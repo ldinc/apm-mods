@@ -209,9 +209,9 @@ end
 apm.lib.utils.description.entities.update()
 
 -- fix offshore-pump
-local apm_offshore_pump_0 = data.raw['offshore-pump']['apm_offshore_pump_0']
-local apm_offshore_pump_burner = data.raw['assembling-machine']['apm_offshore_pump_burner']
-apm_offshore_pump_0.localised_description = apm_offshore_pump_burner.localised_description
+-- local apm_offshore_pump_0 = data.raw['offshore-pump']['apm_offshore_pump_0']
+-- local apm_offshore_pump_burner = data.raw['assembling-machine']['apm_offshore_pump_burner']
+-- apm_offshore_pump_0.localised_description = apm_offshore_pump_burner.localised_description
 
 -- science packs --------------------------------------------------------------
 --

@@ -56,7 +56,7 @@ crusher.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.
 crusher.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
 crusher.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
 crusher.working_sound = {}
-crusher.working_sound.sound = { { filename = "__base__/sound/burner-mining-drill.ogg", volume = 1.0 } }
+crusher.working_sound.sound = { { filename = "__base__/sound/burner-mining-drill-1.ogg", volume = 1.0 } }
 crusher.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 crusher.working_sound.apparent_volume = 1.5
 crusher.energy_usage = apm.power.constants.energy_usage.burner

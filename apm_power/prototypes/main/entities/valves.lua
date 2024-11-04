@@ -7,7 +7,7 @@ local self = 'apm_power/prototypes/main/valves.lua'
 APM_LOG_HEADER(self)
 
 local pipe_straight_vertical = {
-	filename = "__base__/graphics/entity/pipe/hr-pipe-straight-vertical.png",
+	filename = "__base__/graphics/entity/pipe/pipe-straight-vertical.png",
 	priority = "extra-high",
 	width = 128,
 	height = 128,
@@ -15,7 +15,7 @@ local pipe_straight_vertical = {
 }
 
 local pipe_straight_horizontal = {
-	filename = "__base__/graphics/entity/pipe/hr-pipe-straight-horizontal.png",
+	filename = "__base__/graphics/entity/pipe/pipe-straight-horizontal.png",
 	priority = "extra-high",
 	width = 128,
 	height = 128,
