@@ -16,7 +16,6 @@ local function get_starter_items()
     local item_list =   {}
     item_list["burner-mining-drill"] = 2
     item_list["burner-inserter"] = 4
-    item_list["apm_burner_filter_inserter"] = 2
     item_list["wood"] = 15
     item_list["stone-furnace"] = 2
     return item_list

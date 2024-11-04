@@ -1,5 +1,6 @@
 require('util')
 require('__apm_lib_ldinc__.lib.log')
+require('__apm_lib_ldinc__.lib.utils')
 
 local self = 'apm_power/prototypes/main/equipment/roboport.lua'
 
@@ -42,12 +43,14 @@ equipment.shape = {}
 equipment.shape.width = 2
 equipment.shape.height = 2
 equipment.shape.type = "full"
+
 equipment.energy_source = {}
-equipment.energy_sourcetype = "electric"
+equipment.energy_source.type = "electric"
 equipment.energy_source.buffer_capacity = "12.5MJ"
-equipment.energy_source.input_flow_limit = "150KW"
-equipment.energy_source.drain = "10KW"
+equipment.energy_source.input_flow_limit = "150kW"
+equipment.energy_source.drain = "10kW"
 equipment.energy_source.usage_priority = "secondary-input"
+
 equipment.charging_energy = "750kW"
 equipment.robot_limit = 5
 equipment.construction_radius = 15

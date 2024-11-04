@@ -53,7 +53,6 @@ apm.lib.utils.furnace.overhaul('steel-furnace', nil, true)
 -- Burner inserter
 apm.lib.utils.inserter.burner.overhaul('burner-inserter')
 apm.lib.utils.item.overwrite.group('burner-inserter', 'apm_power', 'apm_power_inserter', 'ab_a')
-apm.lib.utils.inserter.burner.overhaul('apm_burner_filter_inserter')
 apm.lib.utils.inserter.burner.overhaul('apm_burner_long_inserter')
 
 -- Assembler

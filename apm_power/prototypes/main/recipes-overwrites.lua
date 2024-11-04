@@ -76,11 +76,6 @@ APM_LOG_HEADER(self)
     apm.lib.utils.recipe.ingredient.replace('long-handed-inserter', 'iron-gear-wheel', 'apm_gearing', 2)
     apm.lib.utils.recipe.ingredient.replace('long-handed-inserter', 'inserter', 'apm_burner_long_inserter')
 
-    -- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_burner_filter_inserter', 1)
-    -- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'fast-inserter', 0)
-    -- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'iron-plate', 1)
-    -- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_gearing', 1)
-
     apm.lib.utils.recipe.ingredient.mod('transport-belt', 'apm_rubber', 1)
     apm.lib.utils.recipe.ingredient.mod('transport-belt', 'iron-stick', 2)
     apm.lib.utils.recipe.ingredient.mod('transport-belt', 'iron-plate', 0)

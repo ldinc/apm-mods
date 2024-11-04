@@ -1677,8 +1677,6 @@ if mods.boblogistics and apm_power_compat_bob then
 		-- apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'apm_gearing', 0)
 		-- apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'inserter', 1)
 		-- apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'inserter', 0)
-		-- apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'apm_burner_filter_inserter', 1)
-		-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_burner_filter_inserter', 0)
 		-- apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'fast-inserter', 1)
 	end
 	if apm.lib.utils.setting.get.starup('bobmods-logistics-inserterrequireprevious') then

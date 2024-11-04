@@ -167,7 +167,6 @@ apm.power.icons.path.saw_blade_iron_used                 = '__apm_resource_pack_
 apm.power.icons.path.saw_blade_steel                     = '__apm_resource_pack_ldinc__/graphics/icons/apm_saw_blade_steel.png'
 apm.power.icons.path.saw_blade_steel_used                = '__apm_resource_pack_ldinc__/graphics/icons/apm_saw_blade_steel_used.png'
 apm.power.icons.path.particle_filter_module              = '__apm_resource_pack_ldinc__/graphics/icons/apm_particle_filter_'
-apm.power.icons.path.burner_filter_inserter              = '__apm_resource_pack_ldinc__/graphics/icons/apm_burner_filter_inserter.png'
 apm.power.icons.path.burner_long_inserter                = '__apm_resource_pack_ldinc__/graphics/icons/apm_burner_long_inserter.png'
 apm.power.icons.path.crushed_stone                       = "__apm_resource_pack_ldinc__/graphics/icons/mip/apm_crushed_stone.png"
 apm.power.icons.path.crushed_stone_1                     = "__apm_resource_pack_ldinc__/graphics/icons/mip/apm_crushed_stone_1.png"
