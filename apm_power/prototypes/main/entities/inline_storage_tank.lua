@@ -106,33 +106,48 @@ tank.pictures = {
 local base_area = 30
 
 tank.two_direction_only = false
-tank.fluid_box = {}
-tank.fluid_box.pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
-tank.fluid_box.pipe_picture = pipe_picture
-tank.fluid_box.base_area = base_area
-tank.fluid_box.base_level = 0
-tank.fluid_box.filter = ""
+
+tank.fluid_box =
+{
+	volume = 25000,
+	pipe_covers =apm.lib.utils.pipecovers.pipecoverspictures(),
+	pipe_picture = pipe_picture,
+	pipe_connections =
+	{
+		{ direction = defines.direction.north, position = {0, -0.445} },
+		{ direction = defines.direction.east, position = {0.445, 0} },
+		{ direction = defines.direction.south, position = {0, 0.445} },
+		{ direction = defines.direction.west, position = {-0.445, 0} }
+	},
+	hide_connection_info = true
+}
+-- tank.fluid_box = {volume = 1000}
+-- tank.fluid_box.pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
+-- tank.fluid_box.pipe_picture = pipe_picture
+-- tank.fluid_box.base_area = base_area
+-- tank.fluid_box.base_level = 0
+-- tank.fluid_box.filter = ""
 -- tank.fluid_box.pipe_covers = pipecoverspictures()
 tank.hide_connection_info = true
 
-tank.fluid_box.pipe_connections = {
-	{
-		type = "input-output",
-		position = { 0, 1 }
-	},
-	{
-		type = "input-output",
-		position = { 0, -1 },
-	},
-	{
-		type = "input-output",
-		position = { 1, 0 }
-	},
-	{
-		type = "input-output",
-		position = { -1, 0 },
-	}
-}
+-- tank.fluid_box.pipe_connections = {
+-- 	{
+-- 		type = "input-output",
+-- 		position = { 0, 1 }
+-- 	},
+-- 	{
+-- 		type = "input-output",
+-- 		position = { 0, -1 },
+-- 	},
+-- 	{
+-- 		type = "input-output",
+-- 		position = { 1, 0 }
+-- 	},
+-- 	{
+-- 		type = "input-output",
+-- 		position = { -1, 0 },
+-- 	}
+-- }
 -- tank.fluid_box.secondary_draw_orders = { north = -1, south = 1, west = -1, east = 1 }
 
 tank.window_bounding_box = { util.by_pixel(-3, -5), util.by_pixel(3, 11) }
