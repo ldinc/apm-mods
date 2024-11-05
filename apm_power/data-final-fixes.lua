@@ -40,7 +40,7 @@ for k, v in pairs(data.raw.fluid) do
         subgroup = "fluid-recipes",
         enabled = true,
         hidden = true,
-        energy_required = 1,
+        energy_required = 20,
         ingredients =
         {
           {type="fluid", name=v.name, amount=amount}
