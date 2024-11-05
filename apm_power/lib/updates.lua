@@ -6,7 +6,7 @@ local updates = {}
 -- ----------------------------------------------------------------------------
 local function realistic_reactors()
     if not settings.startup['apm_power_compat_realistic_reactors'].value then return end
-    if not game.active_mods['RealisticReactors'] then return end
+    if not script.active_mods['RealisticReactors'] then return end
 
     log('---------------------------------------------')
     log('Running update script for "RealisticReactors"')
