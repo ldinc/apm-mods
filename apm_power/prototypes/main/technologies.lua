@@ -819,7 +819,8 @@ new_tech(
 		count = 125,
 		time = 30,
 	},
-	'__base__/graphics/technology/oil-processing.png'
+	'__base__/graphics/technology/oil-processing.png',
+	256
 )
 
 -- Boiler
