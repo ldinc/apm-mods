@@ -70,6 +70,7 @@ function apm.lib.utils.technology.has.science_pack(technology_name, science_pack
 	local technology = data.raw.technology[technology_name]
 
 	if not technology.unit then return false end
+
 	if not technology.unit.ingredients then return false end
 
 	for _, ingredient in pairs(technology.unit.ingredients) do
@@ -112,26 +113,93 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-function apm.lib.utils.technology.new(mod_name, technology, t_prerequisites, t_recipes, t_research_packs,
-									  i_research_count, i_research_time)
-	new = {}
-	new.type = 'technology'
-	new.name = technology
-	new.icon = '__apm_resource_pack_ldinc__/graphics/technologies/' .. technology .. '.png'
-	new.icon_size = 128
-	new.effects = {}
-	if t_recipes ~= nil then
-		for _, name in pairs(t_recipes) do
-			table.insert(new.effects, { type = 'unlock-recipe', recipe = name })
-		end
+
+--- Construct new unit for technology
+---@param ingredients string[]
+---@param count uint64
+---@param time double
+---@param formula? data.MathExpression
+---@return data.TechnologyUnit
+function apm.lib.utils.technology.new_unit(ingredients, count, time, formula)
+	---@type data.TechnologyUnit
+	local unit = {
+		ingredients = ingredients,
+		count = count,
+		count_formula = formula,
+		time = time,
+	}
+
+	return unit
+end
+
+--- Adding new technology to game
+---@param mod_name string
+---@param technology string
+---@param t_prerequisites data.TechnologyID[]
+---@param t_recipes string[]
+---@param t_trigger? data.TechnologyTrigger
+---@param t_unit?  data.TechnologyUnit
+---@paran t_icon? string
+---@param t_icon_size? uint64
+---@param t_is_essential? boolean
+function apm.lib.utils.technology.new(
+		mod_name,
+		technology,
+		t_prerequisites,
+		t_recipes,
+		t_trigger,
+		t_unit,
+		t_icon,
+		t_icon_size,
+		t_is_essential
+)
+	if not mod_name then
+		mod_name = "undefined_mod_name"
 	end
-	new.prerequisites = t_prerequisites
-	new.unit = {}
-	new.unit.count = i_research_count
-	new.unit.ingredients = t_research_packs
-	new.unit.time = i_research_time
-	new.order = 'a-a-a'
-	data:extend({ new })
+
+	if not t_is_essential then
+		t_is_essential = true
+	end
+
+	if not t_icon then
+		t_icon = "__apm_resource_pack_ldinc__/graphics/technologies/" .. technology .. ".png"
+	end
+
+	if not t_icon_size then
+		t_icon_size = 128
+	end
+
+	if not t_unit and not t_trigger then
+		APM_LOG_ERR(self, "apm.lib.utils.technology.new", "technology '" .. technology .. "' without any trigger or units")
+
+		return
+	end
+
+	if t_unit then
+		t_trigger = nil
+	end
+
+	local effects = {}
+
+	for _, name in ipairs(t_recipes) do
+		table.insert(effects, { type = 'unlock-recipe', recipe = name })
+	end
+
+	---@type data.TechnologyPrototype
+	local new = {
+		type = "technology",
+		name = technology,
+		icon = t_icon,
+		icon_size = t_icon_size,
+		prerequisites = t_prerequisites,
+		effects = effects,
+		essential = t_is_essential,
+		unit = t_unit,
+		research_trigger = t_trigger,
+		order = "a-a-a",
+	}
+
+	data:extend({new})
 
 	APM_LOG_INFO(self, 'new()', 'create new technology: "' .. tostring(new.name) .. '"')
 end
@@ -328,7 +396,8 @@ function apm.lib.utils.technology.remove.science_pack(technology_name, science_p
 
 	if technology.unit == nil then
 		-- TODO: can be with "research_trigger"
-		APM_LOG_WARN(self, "remove.science_pack()", 'technology "'..technology_name..'" skipped due to empty "unit" field')
+		APM_LOG_WARN(self, "remove.science_pack()", 'technology "' .. technology_name ..
+			'" skipped due to empty "unit" field')
 
 		return
 	end
