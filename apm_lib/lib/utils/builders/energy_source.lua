@@ -22,17 +22,20 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, flu
 	end
 
 	if max_t == nil then
-		max_t = 1000.0
+		max_t = 550.0
 	end
 
 	if not fluid_box then
-		fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(emmisions_pm, volume, min_t, max_t)
+		fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(volume, min_t, max_t)
 	end
 
 	return {
 		type = "fluid",
 		fluid_box = fluid_box,
 		smoke = smoke,
+		burns_fluid = false,
+		scale_fluid_usage = true,
+		maximum_temperature = max_t,
 	}
 end
 

@@ -32,6 +32,8 @@ local smoke_steam = {
 	)
 }
 
+local base_animation_progress = 1.0666667
+
 local crusher = {}
 crusher.type = "assembling-machine"
 crusher.name = "apm_crusher_machine_0"
@@ -60,7 +62,8 @@ crusher.working_sound.sound = { { filename = "__base__/sound/burner-mining-drill
 crusher.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 crusher.working_sound.apparent_volume = 1.5
 crusher.energy_usage = apm.power.constants.energy_usage.burner
-crusher.module_specification = apm.power.constants.modules.specification_0
+
+crusher.module_slots = apm.power.constants.modules.specification_0.module_slots
 crusher.allowed_effects = apm.power.constants.modules.allowed_effects_0
 
 crusher.energy_source = apm.lib.utils.builders.energy_source.new_burner(
@@ -69,8 +72,10 @@ crusher.energy_source = apm.lib.utils.builders.energy_source.new_burner(
 	smoke_burner
 )
 
+-- crusher.match_animation_speed_to_activity = false
+
 crusher.graphics_set = {
-	animation_progress = 1.0666667,
+	animation_progress = base_animation_progress / crusher.crafting_speed,
 	animation = {
 		layers = {
 			{
@@ -117,32 +122,16 @@ crusher.crafting_speed = 1
 crusher.fast_replaceable_group = "apm_power_crusher_machine"
 crusher.next_upgrade = 'apm_crusher_machine_2'
 crusher.energy_usage = apm.power.constants.energy_usage.steam
-crusher.module_specification = apm.power.constants.modules.specification_1
+
+crusher.module_slots = apm.power.constants.modules.specification_1.module_slots
 crusher.allowed_effects = apm.power.constants.modules.allowed_effects_1
 
 crusher.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 	apm.power.constants.emissions.t1,
 	smoke_steam
 )
--- crusher.energy_source.type = "fluid"
--- crusher.energy_source.fluid_box = {}
--- crusher.energy_source.fluid_box.production_type = "input"
--- crusher.energy_source.fluid_box.pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
--- crusher.energy_source.fluid_box.pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- crusher.energy_source.fluid_box.base_area = 1
--- crusher.energy_source.fluid_box.pipe_connections = { { type = "input", position = { 0, -2 } },
--- 	--{ type="input-output", position = {2, 0}},
--- 	--{ type="input-output", position = {0, 2}},
--- 	--{ type="input-output", position = {-2, 0}}
--- }
--- crusher.energy_source.fluid_box.secondary_draw_orders = { north = -1 }
--- crusher.energy_source.fluid_box.filter = "steam"
--- crusher.energy_source.minimum_temperature = 100.0
--- crusher.energy_source.maximum_temperature = 1000.0
--- crusher.energy_source.burns_fluid = false
--- crusher.energy_source.scale_fluid_usage = true
--- crusher.energy_source.emissions_per_minute = apm.power.constants.emissions.t1
--- crusher.energy_source.smoke = smoke_steam
+
+crusher.graphics_set.animation_progress = base_animation_progress / crusher.crafting_speed
 
 crusher.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/crusher/hr_crusher_1.png"
@@ -166,13 +155,16 @@ crusher.crafting_speed = 1.5
 crusher.fast_replaceable_group = "apm_power_crusher_machine"
 crusher.next_upgrade = nil
 crusher.energy_usage = apm.power.constants.energy_usage.electric
-crusher.module_specification = apm.power.constants.modules.specification_2
+
+crusher.module_slots = apm.power.constants.modules.specification_2.module_slots
 crusher.allowed_effects = apm.power.constants.modules.allowed_effects_2
 
 crusher.energy_source = apm.lib.utils.builders.energy_source.new_electric(
 	apm.power.constants.emissions.t2,
 	apm.power.constants.engery_drain.electric
 )
+
+crusher.graphics_set.animation_progress = base_animation_progress / crusher.crafting_speed
 
 crusher.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/crusher/hr_crusher_2.png"

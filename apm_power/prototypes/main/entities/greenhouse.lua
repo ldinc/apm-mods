@@ -6,6 +6,8 @@ local self = 'apm_power/prototypes/main/greenhouse.lua'
 
 APM_LOG_HEADER(self)
 
+local base_animation_progress = 0.5333334
+
 local smoke_burner = {
 	apm.lib.utils.builders.smoke.new(
 		"apm_dark_smoke",
@@ -69,7 +71,7 @@ greenhouse.energy_source = apm.lib.utils.builders.energy_source.new_burner(
 )
 
 greenhouse.graphics_set = {
-	animation_progress = 0.5333334,
+	animation_progress = base_animation_progress / greenhouse.crafting_speed,
 	animation = {
 		layers = {
 			{
@@ -99,14 +101,6 @@ greenhouse.graphics_set = {
 
 greenhouse.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_input_s()
 
--- greenhouse.fluid_boxes[1] = {}
--- greenhouse.fluid_boxes[1].production_type = "input"
--- greenhouse.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
--- greenhouse.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- greenhouse.fluid_boxes[1].base_area = 1
--- greenhouse.fluid_boxes[1].base_level = -1
--- greenhouse.fluid_boxes[1].pipe_connections = { { type = "input", position = { 2, 0 } } }
--- greenhouse.fluid_boxes[1].secondary_draw_orders = { north = -1 }
 greenhouse.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ greenhouse })
 
@@ -131,22 +125,8 @@ greenhouse.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 	apm.power.constants.emissions.gh_1,
 	smoke_steam
 )
--- greenhouse.energy_source.type = "fluid"
--- greenhouse.energy_source.fluid_box = {}
--- greenhouse.energy_source.fluid_box.production_type = "input"
--- greenhouse.energy_source.fluid_box.pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
--- greenhouse.energy_source.fluid_box.pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- greenhouse.energy_source.fluid_box.base_area = 1
--- greenhouse.energy_source.fluid_box.base_level = -1
--- greenhouse.energy_source.fluid_box.pipe_connections = { { type = "input", position = { 0, -2 } } }
--- greenhouse.energy_source.fluid_box.secondary_draw_orders = { north = -1 }
--- greenhouse.energy_source.fluid_box.filter = "steam"
--- greenhouse.energy_source.minimum_temperature = 100.0
--- greenhouse.energy_source.maximum_temperature = 1000.0
--- greenhouse.energy_source.burns_fluid = false
--- greenhouse.energy_source.scale_fluid_usage = true
--- greenhouse.energy_source.emissions_per_minute = apm.power.constants.emissions.gh_1
--- greenhouse.energy_source.smoke = smoke_steam
+
+animation_progress = base_animation_progress / greenhouse.crafting_speed
 
 greenhouse.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/hr_greenhouse_1.png"
@@ -173,10 +153,12 @@ greenhouse.energy_usage = apm.power.constants.energy_usage.greenhouse_2
 greenhouse.module_specification = apm.power.constants.modules.greenhouse.specification_2
 greenhouse.allowed_effects = apm.power.constants.modules.greenhouse.allowed_effects_2
 
-greenhouse.energy_source =apm.lib.utils.builders.energy_source.new_electric(
+greenhouse.energy_source = apm.lib.utils.builders.energy_source.new_electric(
 	apm.power.constants.emissions.gh_2,
 	apm.power.constants.engery_drain.electric
 )
+
+animation_progress = base_animation_progress / greenhouse.crafting_speed
 
 greenhouse.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/hr_greenhouse_2.png"

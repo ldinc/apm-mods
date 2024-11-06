@@ -3,13 +3,9 @@ require('lib.log')
 
 local self = 'lib.utils.builders.fluid_box'
 
-function apm.lib.utils.builders.fluid_box.new_steam_input(emmisions_pm, volume, min_t, max_t)
-	if emmisions_pm == nil then
-		emmisions_pm = {pollution = 5}
-	end
-
+function apm.lib.utils.builders.fluid_box.new_steam_input(volume, min_t, max_t)
 	if volume == nil then
-		volume = 1000
+		volume = 100
 	end
 
 	if min_t == nil then
@@ -17,20 +13,15 @@ function apm.lib.utils.builders.fluid_box.new_steam_input(emmisions_pm, volume, 
 	end
 
 	if max_t == nil then
-		max_t = 1000.0
+		max_t = 550.0
 	end
 
-	return {
+	return 
+	{
 		volume = volume,
-		production_type = "input",
 		filter = "steam",
 		minimum_temperature = min_t,
 		maximum_temperature = max_t,
-		burns_fluid = false,
-		scale_fluid_usage = true,
-		emissions_per_minute = emmisions_pm,
-		smoke = apm.lib.utils.builders.smoke.light,
-
 		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
 		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
 		pipe_connections = {
@@ -45,11 +36,7 @@ function apm.lib.utils.builders.fluid_box.new_steam_input(emmisions_pm, volume, 
 end
 
 
-function apm.lib.utils.builders.fluid_box.new_steam_input_3way(emmisions_pm, volume, min_t, max_t)
-	if emmisions_pm == nil then
-		emmisions_pm = {pollution = 5}
-	end
-
+function apm.lib.utils.builders.fluid_box.new_steam_input_3way(volume, min_t, max_t)
 	if volume == nil then
 		volume = 1000
 	end
@@ -68,9 +55,7 @@ function apm.lib.utils.builders.fluid_box.new_steam_input_3way(emmisions_pm, vol
 		filter = "steam",
 		minimum_temperature = min_t,
 		maximum_temperature = max_t,
-		burns_fluid = false,
-		scale_fluid_usage = true,
-		emissions_per_minute = emmisions_pm,
+
 		smoke = apm.lib.utils.builders.smoke.light,
 
 		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
@@ -96,10 +81,7 @@ function apm.lib.utils.builders.fluid_box.new_steam_input_3way(emmisions_pm, vol
 	}
 end
 
-function apm.lib.utils.builders.fluid_box.new_steam_input_4way(emmisions_pm, volume, min_t, max_t)
-	if emmisions_pm == nil then
-		emmisions_pm = {pollution = 5}
-	end
+function apm.lib.utils.builders.fluid_box.new_steam_input_4way(volume, min_t, max_t)
 
 	if volume == nil then
 		volume = 1000
@@ -121,7 +103,6 @@ function apm.lib.utils.builders.fluid_box.new_steam_input_4way(emmisions_pm, vol
 		maximum_temperature = max_t,
 		burns_fluid = false,
 		scale_fluid_usage = true,
-		emissions_per_minute = emmisions_pm,
 		smoke = apm.lib.utils.builders.smoke.light,
 
 		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),

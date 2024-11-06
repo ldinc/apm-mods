@@ -6,6 +6,8 @@ local self = 'apm_power/prototypes/main/labs.lua'
 
 APM_LOG_HEADER(self)
 
+local base_animation_progress = 0.5333334
+
 local smoke_burner = {
 	apm.lib.utils.builders.smoke.new(
 		"apm_dark_smoke",
@@ -85,7 +87,7 @@ lab.on_animation = {
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
 			run_mode = 'forward-then-backward',
-			animation_speed = 0.5333334,
+			animation_speed = base_animation_progress / lab.researching_speed,
 		},
 		{
 			filename = "__apm_resource_pack_ldinc__/graphics/entities/lab/hr_lab_shadow.png",
@@ -98,7 +100,7 @@ lab.on_animation = {
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
 			run_mode = 'forward-then-backward',
-			animation_speed = 0.5333334,
+			animation_speed = base_animation_progress / lab.researching_speed,
 		}
 	},
 }
@@ -115,7 +117,7 @@ lab.off_animation = {
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
 			run_mode = 'forward-then-backward',
-			animation_speed = 0.5333334,
+			animation_speed = base_animation_progress / lab.researching_speed,
 		},
 		{
 			filename = "__apm_resource_pack_ldinc__/graphics/entities/lab/hr_lab_shadow.png",
@@ -128,7 +130,7 @@ lab.off_animation = {
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
 			run_mode = 'forward-then-backward',
-			animation_speed = 0.5333334,
+			animation_speed = base_animation_progress / lab.researching_speed,
 		}
 	},
 }
@@ -163,29 +165,8 @@ lab.inputs = {
 lab.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 	apm.power.constants.emissions.lab_1,
 	smoke_steam,
-	apm.lib.utils.builders.fluid_box.new_steam_input_4way(apm.power.constants.emissions.lab_1)
+	apm.lib.utils.builders.fluid_box.new_steam_input_4way()
 )
-
--- lab.energy_source = {}
--- lab.energy_source.type = "fluid"
--- lab.energy_source.fluid_box = {}
--- lab.energy_source.fluid_box.production_type = "input-output"
--- lab.energy_source.fluid_box.pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
--- lab.energy_source.fluid_box.pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- lab.energy_source.fluid_box.base_area = 1
--- lab.energy_source.fluid_box.pipe_connections = { { type = "input-output", position = { 0, -2 } },
--- 	{ type = "input-output", position = { 2, 0 } },
--- 	{ type = "input-output", position = { 0, 2 } },
--- 	{ type = "input-output", position = { -2, 0 } }
--- }
--- lab.energy_source.fluid_box.secondary_draw_orders = { north = -1 }
--- lab.energy_source.fluid_box.filter = "steam"
--- lab.energy_source.minimum_temperature = 100.0
--- lab.energy_source.maximum_temperature = 1000.0
--- lab.energy_source.burns_fluid = false
--- lab.energy_source.scale_fluid_usage = true
--- lab.energy_source.emissions_per_minute = apm.power.constants.emissions.lab_1
--- lab.energy_source.smoke = smoke_steam
 
 lab.on_animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/lab/hr_lab_1.png"
 

@@ -6,6 +6,8 @@ local self = 'apm_power/prototypes/main/centrifuges.lua'
 
 APM_LOG_HEADER(self)
 
+local base_animation_progress = 1.0666667
+
 local smoke_burner = {}
 --local smoke_position = {-0.77, -1.95}
 local smoke_position = { -0.65, -2.15 }
@@ -63,7 +65,7 @@ centrifuge.allowed_effects = apm.power.constants.modules.allowed_effects_0
 centrifuge.energy_source = apm.lib.utils.builders.energy_source.new_burner({ 'chemical', 'apm_refined_chemical' })
 
 centrifuge.graphics_set = {
-	animation_progress = 1.0666667,
+	animation_progress = base_animation_progress / centrifuge.crafting_speed,
 	animation = {
 		layers = {
 			{
@@ -93,36 +95,6 @@ centrifuge.graphics_set = {
 
 centrifuge.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way()
 
-	-- {
-	-- 	volume = 1000,
-	-- 	production_type = "input",
-	-- 	pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures(),
-	-- 	pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-	-- 	pipe_connections = {
-	-- 		{
-	-- 			flow_direction = "input",
-	-- 			direction = defines.direction.west,
-	-- 			position = { -1, 0 },
-	-- 		},
-	-- 	},
-	-- 	secondary_draw_orders = { north = -1 },
-	-- },
-	-- {
-	-- 	volume = 1000,
-	-- 	production_type = "output",
-	-- 	pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures(),
-	-- 	pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-	-- 	pipe_connections = {
-	-- 		{
-	-- 			flow_direction = "output",
-	-- 			direction = defines.direction.east,
-	-- 			position = { 1, 0 },
-	-- 		},
-	-- 	},
-	-- 	secondary_draw_orders = { north = -1 },
-	-- },
-
-
 centrifuge.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ centrifuge })
 
@@ -145,6 +117,8 @@ centrifuge.module_specification = apm.power.constants.modules.specification_1
 centrifuge.allowed_effects = apm.power.constants.modules.allowed_effects_1
 
 centrifuge.energy_source = apm.lib.utils.builders.energy_source.new_steam()
+
+centrifuge.graphics_set.animation_progress = base_animation_progress / centrifuge.crafting_speed
 
 centrifuge.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/centrifuge/hr_centrifuge_1.png"
@@ -178,7 +152,8 @@ centrifuge.energy_source = apm.lib.utils.builders.energy_source.new_electric(
 	apm.power.constants.engery_drain.electric
 )
 
-centrifuge.graphics_set.animation.animation_progress = 0.53333335
+centrifuge.graphics_set.animation_progress = base_animation_progress / centrifuge.crafting_speed
+
 centrifuge.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/centrifuge/hr_centrifuge_2.png"
 

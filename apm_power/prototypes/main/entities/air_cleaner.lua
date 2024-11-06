@@ -6,6 +6,8 @@ local self = 'apm_power/prototypes/main/air_cleaner.lua'
 
 APM_LOG_HEADER(self)
 
+local base_animation_progress = 1.0666667
+
 local air_cleaner = {}
 air_cleaner.type = "assembling-machine"
 air_cleaner.name = "apm_air_cleaner_machine_0"
@@ -44,7 +46,7 @@ air_cleaner.allowed_effects = apm.power.constants.modules.air_cleaner.allowed_ef
 air_cleaner.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.air_cleaner_0)
 
 air_cleaner.graphics_set = {
-	animation_progress = 1.0666667, -- mb 1.0 or 0.5 better?
+	animation_progress = base_animation_progress / air_cleaner.crafting_speed,
 	animation = {
 		layers = {
 			{
@@ -120,28 +122,8 @@ air_cleaner.energy_source = apm.lib.utils.builders.energy_source.new_electric(
 	apm.power.constants.engery_drain.electric
 )
 
--- TODO: change recipe to use steam or water...
-
--- air_cleaner.energy_source.fluid_box = {}
--- air_cleaner.energy_source.type = "fluid"
--- air_cleaner.energy_source.fluid_box = {}
--- air_cleaner.energy_source.fluid_box.production_type = "input"
--- air_cleaner.energy_source.fluid_box.pipe_picture = apm.lib.utils.pipecovers.assembler3pipepictures()
--- air_cleaner.energy_source.fluid_box.pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- air_cleaner.energy_source.fluid_box.base_area = 1
--- air_cleaner.energy_source.fluid_box.base_level = -1
--- air_cleaner.energy_source.fluid_box.pipe_connections = { { type = "input", position = { 0, -2 } } }
--- air_cleaner.energy_source.fluid_box.secondary_draw_orders = { north = -1 }
--- air_cleaner.energy_source.fluid_box.filter = "steam"
--- air_cleaner.energy_source.minimum_temperature = 100.0
--- air_cleaner.energy_source.maximum_temperature = 1000.0
--- air_cleaner.energy_source.burns_fluid = false
--- air_cleaner.energy_source.scale_fluid_usage = true
-
--- air_cleaner.energy_source.smoke = smoke
-
 air_cleaner.graphics_set = {
-	animation_progress = 1.0666667,
+	animation_progress = base_animation_progress / air_cleaner.crafting_speed,
 	animation = {
 		layers = {
 			{

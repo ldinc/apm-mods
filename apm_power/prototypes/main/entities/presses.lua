@@ -32,6 +32,8 @@ local smoke_steam = {
 	)
 }
 
+local base_animation_progress = 1.0666667
+
 local press = {}
 press.type = "assembling-machine"
 press.name = "apm_press_machine_0"
@@ -76,7 +78,7 @@ press.energy_source = apm.lib.utils.builders.energy_source.new_burner(
 )
 
 press.graphics_set = {
-	animation_progress = 1.0666667,
+	animation_progress = base_animation_progress / press.crafting_speed,
 	animation = {
 		layers = {
 			{
@@ -92,7 +94,7 @@ press.graphics_set = {
 			{
 				filename = "__apm_resource_pack_ldinc__/graphics/entities/press/hr_press_shadow.png",
 				priority = "high",
-				raw_as_shadow = true,
+				draw_as_shadow = true,
 				width = 320,
 				height = 256,
 				frame_count = 64,
@@ -106,22 +108,6 @@ press.graphics_set = {
 
 press.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way()
 
--- press.fluid_boxes[1] = {}
--- press.fluid_boxes[1].production_type = "input"
--- press.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
--- press.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- press.fluid_boxes[1].base_area = 1
--- press.fluid_boxes[1].base_level = -1
--- press.fluid_boxes[1].pipe_connections = { { type = "input", position = { 2, 0 } } }
--- press.fluid_boxes[1].secondary_draw_orders = { north = -1 }
--- press.fluid_boxes[2] = {}
--- press.fluid_boxes[2].production_type = "output"
--- press.fluid_boxes[2].pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
--- press.fluid_boxes[2].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- press.fluid_boxes[2].base_area = 1
--- press.fluid_boxes[2].base_level = 1
--- press.fluid_boxes[2].pipe_connections = { { type = "output", position = { -2, 0 } } }
--- press.fluid_boxes[2].secondary_draw_orders = { north = -1 }
 press.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ press })
 
@@ -146,25 +132,8 @@ press.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 	apm.power.constants.emissions.t1,
 	smoke_steam
 )
--- press.energy_source.type = "fluid"
--- press.energy_source.fluid_box = {}
--- press.energy_source.fluid_box.production_type = "input"
--- press.energy_source.fluid_box.pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
--- press.energy_source.fluid_box.pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- press.energy_source.fluid_box.base_area = 1
--- press.energy_source.fluid_box.pipe_connections = { { type = "input", position = { 0, -2 } },
--- 	--{ type="input-output", position = {2, 0}},
--- 	--{ type="input-output", position = {0, 2}},
--- 	--{ type="input-output", position = {-2, 0}}
--- }
--- press.energy_source.fluid_box.secondary_draw_orders = { north = -1 }
--- press.energy_source.fluid_box.filter = "steam"
--- press.energy_source.minimum_temperature = 100.0
--- press.energy_source.maximum_temperature = 1000.0
--- press.energy_source.burns_fluid = false
--- press.energy_source.scale_fluid_usage = true
--- press.energy_source.emissions_per_minute = apm.power.constants.emissions.t1
--- press.energy_source.smoke = smoke_steam
+
+press.graphics_set.animation_progress = base_animation_progress / press.crafting_speed
 
 press.graphics_set.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/press/hr_press_1.png"
 
@@ -195,6 +164,8 @@ press.energy_source = apm.lib.utils.builders.energy_source.new_electric(
 	apm.power.constants.emissions.t2,
 	apm.power.constants.engery_drain.electric
 )
+
+press.graphics_set.animation_progress = base_animation_progress / press.crafting_speed
 
 press.graphics_set.animation.layers[1].filename = "__apm_resource_pack_ldinc__/graphics/entities/press/hr_press_2.png"
 

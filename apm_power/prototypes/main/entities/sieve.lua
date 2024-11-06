@@ -6,18 +6,18 @@ local self = 'apm_power/prototypes/main/sieve.lua'
 
 APM_LOG_HEADER(self)
 
-local smoke_burner = {
-	apm.lib.utils.builders.smoke.new(
-		"apm_dark_smoke",
-		{ 0.1, 0.1 },
-		10,
-		{ -0.70, -2.15 },
-		nil,
-		0.08,
-		60,
-		1
-	)
-}
+-- local smoke_burner = {
+-- 	apm.lib.utils.builders.smoke.new(
+-- 		"apm_dark_smoke",
+-- 		{ 0.1, 0.1 },
+-- 		10,
+-- 		{ -0.70, -2.15 },
+-- 		nil,
+-- 		0.08,
+-- 		60,
+-- 		1
+-- 	)
+-- }
 
 local smoke_steam = {
 	apm.lib.utils.builders.smoke.new(
@@ -31,6 +31,8 @@ local smoke_steam = {
 		1
 	)
 }
+
+local base_animation_progress = 1.0666667
 
 local sieve = {}
 sieve.type = "assembling-machine"
@@ -69,7 +71,7 @@ sieve.allowed_effects = apm.power.constants.modules.allowed_effects_2
 sieve.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.t2, smoke_steam)
 
 sieve.graphics_set = {
-	animation_progress = 1.0666667,
+	animation_progress = base_animation_progress / sieve.crafting_speed,
 	animation = {
 		layers = {
 			{
@@ -97,15 +99,4 @@ sieve.graphics_set = {
 	},
 }
 
---[[
-sieve.fluid_boxes = {}
-sieve.fluid_boxes[1] = {}
-sieve.fluid_boxes[1].production_type = "output"
-sieve.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
-sieve.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
-sieve.fluid_boxes[1].base_area = 1
-sieve.fluid_boxes[1].base_level = 1
-sieve.fluid_boxes[1].pipe_connections = {{ type="output", position = {0, 2} }}
-sieve.fluid_boxes[1].secondary_draw_orders = { north = -1 }
-]] --
 data:extend({ sieve })

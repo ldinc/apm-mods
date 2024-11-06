@@ -6,6 +6,8 @@ local self = 'apm_power/prototypes/main/coking_plants.lua'
 
 APM_LOG_HEADER(self)
 
+local base_animation_progress =  0.26666667
+
 local coking_plant = {}
 coking_plant.type = "assembling-machine"
 coking_plant.name = "apm_coking_plant_0"
@@ -43,7 +45,7 @@ coking_plant.energy_source = apm.lib.utils.builders.energy_source.new_burner(
 )
 
 coking_plant.graphics_set = {
-	animation_progress = 0.26666667,
+	animation_progress = base_animation_progress / coking_plant.crafting_speed,
 	animation = {
 		layers = {
 			{
@@ -98,41 +100,10 @@ coking_plant.graphics_set = {
 
 coking_plant.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_4way()
 
--- oking_plant.fluid_boxes[1] = {}
--- coking_plant.fluid_boxes[1].production_type = "input"
--- coking_plant.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
--- coking_plant.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- coking_plant.fluid_boxes[1].base_area = 10
--- coking_plant.fluid_boxes[1].base_level = -1
--- coking_plant.fluid_boxes[1].pipe_connections = { { type = "input", position = { 0, 2 } } }
--- coking_plant.fluid_boxes[1].secondary_draw_orders = { north = -1, south = 1 }
--- coking_plant.fluid_boxes[2] = {}
--- coking_plant.fluid_boxes[2].production_type = "output"
--- coking_plant.fluid_boxes[2].pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
--- coking_plant.fluid_boxes[2].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- coking_plant.fluid_boxes[2].base_area = 10
--- coking_plant.fluid_boxes[2].base_level = 1
--- coking_plant.fluid_boxes[2].pipe_connections = { { type = "output", position = { 0, -2 } } }
--- coking_plant.fluid_boxes[2].secondary_draw_orders = { north = -1, south = 1 }
--- coking_plant.fluid_boxes[3] = {}
--- coking_plant.fluid_boxes[3].production_type = "output"
--- coking_plant.fluid_boxes[3].pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
--- coking_plant.fluid_boxes[3].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- coking_plant.fluid_boxes[3].base_area = 10
--- coking_plant.fluid_boxes[3].base_level = 1
--- coking_plant.fluid_boxes[3].pipe_connections = { { type = "output", position = { 2, 0 } } }
--- coking_plant.fluid_boxes[3].secondary_draw_orders = { north = -1, south = 1 }
--- coking_plant.fluid_boxes[4] = {}
--- coking_plant.fluid_boxes[4].production_type = "output"
--- coking_plant.fluid_boxes[4].pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
--- coking_plant.fluid_boxes[4].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- coking_plant.fluid_boxes[4].base_area = 10
--- coking_plant.fluid_boxes[4].base_level = 1
--- coking_plant.fluid_boxes[4].pipe_connections = { { type = "output", position = { -2, 0 } } }
--- coking_plant.fluid_boxes[4].secondary_draw_orders = { north = -1, south = 1 }
-
 coking_plant.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ coking_plant })
+
+------
 
 local coking_plant = table.deepcopy(coking_plant)
 coking_plant.name = "apm_coking_plant_1"
@@ -153,6 +124,8 @@ coking_plant.energy_source = apm.lib.utils.builders.energy_source.new_burner(
 	apm.power.constants.emissions.cp_1,
 	apm.lib.utils.builders.smoke.burner.t1
 )
+
+coking_plant.graphics_set.animation_progress = base_animation_progress / coking_plant.crafting_speed
 
 coking_plant.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/coking_plant/hr_coking_plant_1.png"
@@ -184,6 +157,8 @@ coking_plant.energy_source = apm.lib.utils.builders.energy_source.new_burner(
 	apm.power.constants.emissions.cp_2,
 	apm.lib.utils.builders.smoke.burner.t12
 )
+
+coking_plant.graphics_set.animation_progress = base_animation_progress / coking_plant.crafting_speed
 
 coking_plant.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/coking_plant/hr_coking_plant_2.png"

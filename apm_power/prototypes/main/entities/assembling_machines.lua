@@ -6,6 +6,8 @@ local self = 'apm_power/prototypes/main/assembling_machines.lua'
 
 APM_LOG_HEADER(self)
 
+local base_animation_progress = 1.0666667
+
 -- Entity ---------------------------------------------------------------------
 --
 --
@@ -48,7 +50,7 @@ assembling_machine.allowed_effects = apm.power.constants.modules.allowed_effects
 assembling_machine.energy_source = apm.lib.utils.builders.energy_source.new_burner({ 'chemical', 'apm_refined_chemical' })
 
 assembling_machine.graphics_set = {
-	animation_progress = 1.0666667,
+	animation_progress = base_animation_progress / assembling_machine.crafting_speed,
 	animation = {
 		layers = {
 			{
@@ -77,20 +79,6 @@ assembling_machine.graphics_set = {
 }
 
 assembling_machine.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_input_s()
-	-- {
-	-- 	volume = 1000,
-	-- 	production_type = "input",
-	-- 	pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures(),
-	-- 	pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-	-- 	pipe_connections = {
-	-- 		{
-	-- 			flow_direction = "input",
-	-- 			direction = defines.direction.south,
-	-- 			position = { 0, 1 },
-	-- 		},
-	-- 	},
-	-- 	secondary_draw_orders = { north = -1 }
-	-- }
 
 assembling_machine.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ assembling_machine })
@@ -117,6 +105,8 @@ assembling_machine.light = nil
 
 assembling_machine.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.t1)
 
+assembling_machine.graphics_set.animation_progress = base_animation_progress / assembling_machine.crafting_speed
+
 -- patch animation
 assembling_machine.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/assembling_machine/hr_assembling_machine_1.png"
@@ -124,23 +114,6 @@ assembling_machine.graphics_set.animation.layers[1].filename =
 assembling_machine.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 	apm.lib.utils.pipecovers.assembler2pipepictures()
 )
-
-	-- {
-	-- 	production_type = "output",
-	-- 	pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-	-- 	pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-	-- 	volume = 1000,
-	-- 	pipe_connections = { { flow_direction = "output", direction = defines.direction.east, position = { 1, 0 } } },
-	-- 	secondary_draw_orders = { north = -1 },
-	-- },
-	-- {
-	-- 	production_type = "input",
-	-- 	pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
-	-- 	pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-	-- 	volume = 1000,
-	-- 	pipe_connections = { { flow_direction = "output", direction = defines.direction.west, position = { -1, 0 } } },
-	-- 	secondary_draw_orders = { north = -1 },
-	-- },
 
 assembling_machine.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ assembling_machine })
