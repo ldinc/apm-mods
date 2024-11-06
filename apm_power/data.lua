@@ -28,7 +28,6 @@ require('prototypes.main.entities.small_sinkhole')
 require('prototypes.main.entities.steam_engines')
 require('prototypes.main.entities.inline_storage_tank')
 --require('prototypes.main.entities.transport_belts')
-require('prototypes.main.entities.valves')
 
 require('prototypes.main.tiles')
 
@@ -50,7 +49,6 @@ require('prototypes.main.items.entities.sieve')
 require('prototypes.main.items.entities.sinkhole')
 require('prototypes.main.items.entities.steam_engines')
 --require('prototypes.main.items.entities.transport_belts')
-require('prototypes.main.items.entities.valves')
 require('prototypes.main.items.entities.inline_storage_tank')
 
 require('prototypes.main.items.intermediates')
@@ -88,7 +86,6 @@ require('prototypes.main.recipes.entities.sieve')
 require('prototypes.main.recipes.entities.sinkhole')
 require('prototypes.main.recipes.entities.steam_engines')
 --require('prototypes.main.recipes.entities.transport_belts')
-require('prototypes.main.recipes.entities.valves')
 require('prototypes.main.recipes.entities.inline_storage_tank')
 
 require('prototypes.main.recipes.intermediates')

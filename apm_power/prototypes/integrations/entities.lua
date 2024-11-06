@@ -187,15 +187,3 @@ if mods.RealisticReactors and apm_power_compat_realistic_reactors then
 	--patch hidden cooling-tower
     apm.lib.utils.furnace.overhaul('rr-cooling-tower-steam', nil, false)
 end
-
--- Valves ---------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-if (mods.boblogistics and apm_power_compat_bob) or (mods.angelspetrochem and apm_power_compat_angel) then
-	if (mods.apm_bob_rework_ldinc == nil) then
-		apm.lib.utils.storage_tank.set.hidden('apm_valve_0')
-		apm.lib.utils.storage_tank.set.hidden('apm_valve_1')
-		apm.lib.utils.storage_tank.set.hidden('apm_valve_2')
-	end
-end

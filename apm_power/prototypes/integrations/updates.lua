@@ -67,23 +67,6 @@ if mods.apm_recycling then
     apm.lib.utils.recycling.scrap.add({recipe='apm_machine_frame_basic', metal='copper'})
     apm.lib.utils.recycling.scrap.add({recipe='apm_machine_frame_steam', metal='steel'})
     apm.lib.utils.recycling.scrap.add({recipe='apm_machine_frame_advanced', metal='steel'})
-
-    --[[
-    if (mods.boblogistics and apm_power_compat_bob) or (mods.angelspetrochem and apm_power_compat_angel) then
-        if not mods.angelspetrochem then
-            apm.lib.utils.recycling.scrap.add(recipe='bob-valve', metal='iron')
-            apm.lib.utils.recycling.scrap.add(recipe='bob-topup-valve', metal='iron')
-            apm.lib.utils.recycling.scrap.add(recipe='bob-overflow-valve', metal='iron')
-        elseif mods.angelspetrochem then
-            apm.lib.utils.recycling.scrap.add(recipe='valve-check', metal='iron')
-            apm.lib.utils.recycling.scrap.add(recipe='valve-overflow', metal='iron')
-            apm.lib.utils.recycling.scrap.add(recipe='valve-return', metal='iron')
-            apm.lib.utils.recycling.scrap.add(recipe='valve-underflow', metal='iron')
-            apm.lib.utils.recycling.scrap.add(recipe='valve-converter', metal='iron')
-        end
-    end
-    ]]--
-
 end
 
 -- Reverse Factory ------------------------------------------------------------

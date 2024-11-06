@@ -179,9 +179,6 @@ apm.power.icons.path.crushed_stone_3                     = "__apm_resource_pack_
 apm.power.icons.path.stone_brick_raw                     = "__apm_resource_pack_ldinc__/graphics/icons/apm_stone_brick_raw.png"
 apm.power.icons.path.asphalt                             = "__apm_resource_pack_ldinc__/graphics/icons/mip/apm_asphalt.png"
 apm.power.icons.path.asphalt_1                           = "__apm_resource_pack_ldinc__/graphics/icons/mip/apm_asphalt_1.png"
-apm.power.icons.path.valve_0                             = '__apm_resource_pack_ldinc__/graphics/icons/apm_valve_0.png'
-apm.power.icons.path.valve_1                             = '__apm_resource_pack_ldinc__/graphics/icons/apm_valve_1.png'
-apm.power.icons.path.valve_2                             = '__apm_resource_pack_ldinc__/graphics/icons/apm_valve_2.png'
 apm.power.icons.path.coke_oven_gas_symbol                = '__apm_resource_pack_ldinc__/graphics/icons/apm_coke_oven_gas.png'
 apm.power.icons.path.pistions                            = '__apm_resource_pack_ldinc__/graphics/icons/apm_pistions.png'
 apm.power.icons.path.simple_engine                       = '__apm_resource_pack_ldinc__/graphics/icons/apm_simple_engine.png'
@@ -427,9 +424,7 @@ apm.power.icons.asphalt_1                                = {
 	icon_mipmaps = 2,
 	icon_size = 64
 }
-apm.power.icons.valve_0                                  = { icon = apm.power.icons.path.valve_0, icon_size = 64 }
-apm.power.icons.valve_1                                  = { icon = apm.power.icons.path.valve_1, icon_size = 64 }
-apm.power.icons.valve_2                                  = { icon = apm.power.icons.path.valve_2, icon_size = 64 }
+
 apm.power.icons.coke_oven_gas_symbol                     = { icon = apm.power.icons.path.coke_oven_gas_symbol, icon_size = 64 }
 apm.power.icons.zx80_construction_robot                  = { icon = apm.power.icons.path.zx80_construction_robot, icon_size = 64, tint = { r = 0.689, g = 0.571, b = 0.377 }, icon_mipmaps = 4 }
 apm.power.icons.equipment_battery_tiny                   = { icon = apm.power.icons.path.equipment_battery_tiny, icon_size = 64 }

@@ -342,27 +342,6 @@ if mods.bobplates and not mods.angelssmelting and apm_power_compat_bob then
 	apm.lib.utils.technology.add.science_pack('apm_steelworks-1', 'apm_industrial_science_pack')
 end
 
--- Valves ---------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-if (mods.boblogistics and apm_power_compat_bob) or (mods.angelspetrochem and apm_power_compat_angel) then
-	apm.lib.utils.technology.remove.recipe_from_unlock('apm_fluid_control-1', 'apm_valve_0')
-	apm.lib.utils.technology.remove.recipe_from_unlock('apm_fluid_control-1', 'apm_valve_1')
-
-	if not mods.angelspetrochem then
-		apm.lib.utils.technology.force.recipe_for_unlock('apm_fluid_control-1', 'bob-valve')
-		apm.lib.utils.technology.force.recipe_for_unlock('apm_fluid_control-1', 'bob-topup-valve')
-		apm.lib.utils.technology.force.recipe_for_unlock('apm_fluid_control-1', 'bob-overflow-valve')
-	elseif mods.angelspetrochem then
-		apm.lib.utils.technology.force.recipe_for_unlock('apm_fluid_control-1', 'valve-check')
-		apm.lib.utils.technology.force.recipe_for_unlock('apm_fluid_control-1', 'valve-overflow')
-		apm.lib.utils.technology.force.recipe_for_unlock('apm_fluid_control-1', 'valve-return')
-		apm.lib.utils.technology.force.recipe_for_unlock('apm_fluid_control-1', 'valve-underflow')
-		apm.lib.utils.technology.force.recipe_for_unlock('apm_fluid_control-1', 'valve-converter')
-	end
-end
-
 -- Greenhouse -----------------------------------------------------------------
 --
 --

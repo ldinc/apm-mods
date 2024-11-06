@@ -440,7 +440,7 @@ new_tech(
 	}
 )
 
--- Fluid control (pumps and valves)
+-- Fluid control (pumps)
 new_tech(
 	'apm_fluid_control-1',
 	{ 'apm_water_supply-1' },
