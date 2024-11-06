@@ -4,13 +4,21 @@ require('lib.utils.builders.fluid_box')
 
 local self = 'lib.utils.builders.energy_source'
 
+--- Construct new energy source instance
+--- @param emmisions_pm? data.AirbornePollutantID
+--- @param smoke? data.SmokePrototype[]
+--- @param fluid_box? data.FluidBox
+--- @param volume? float
+--- @param min_t? float
+--- @param max_t? float
+--- @return data.EnergySource
 function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, fluid_box, volume, min_t, max_t)
 	if emmisions_pm == nil then
 		emmisions_pm = apm.power.constants.emissions.t1
 	end
 
 	if not smoke then
-		smoke = {apm.lib.utils.builders.smoke.light}
+		smoke = { apm.lib.utils.builders.smoke.light }
 	end
 
 	if volume == nil then
@@ -36,6 +44,17 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, flu
 		burns_fluid = false,
 		scale_fluid_usage = true,
 		maximum_temperature = max_t,
+	}
+end
+
+function apm.lib.utils.builders.energy_source.new_void(emmisions_pm)
+	if emmisions_pm == nil then
+		emmisions_pm = apm.power.constants.emissions.t2
+	end
+
+	return {
+		type = 'void',
+		emissions_per_minute = emmisions_pm,
 	}
 end
 
@@ -65,8 +84,8 @@ function apm.lib.utils.builders.energy_source.new_burner(fuel_categories, emmisi
 		eff = 1
 	end
 
-	if not smoke then 
-		smoke = {apm.lib.utils.builders.smoke.dark}
+	if not smoke then
+		smoke = { apm.lib.utils.builders.smoke.dark }
 	end
 
 	return {

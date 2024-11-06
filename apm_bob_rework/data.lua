@@ -57,7 +57,7 @@ require('prototypes.main.entities.burner-pumpjack')
 require('prototypes.main.items.entities.burner-pumpjack')
 require('prototypes.main.recipes.entities.burner-pumpjack')
 
-require('prototypes.main.entities.small-sinkhole')
+require('apm_power.prototypes.main.entities.small_sinkhole')
 require('prototypes.main.items.entities.small-sinkhole')
 require('prototypes.main.recipes.entities.small-sinkhole')
 

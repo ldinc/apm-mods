@@ -107,3 +107,4 @@ apm.lib.icons.signal.info = {icon=apm.lib.icons.path.signal_info, icon_size=64}
 apm.lib.icons.signal.warning = {icon=apm.lib.icons.path.signal_warning, icon_size=64}
 apm.lib.icons.signal.bullet_point = {icon=apm.lib.icons.path.signal_bullet_point, icon_size=64}
 apm.lib.icons.static.sinkhole = {icon=staticP..'apm_sinkhole.png', icon_size=64}
+apm.lib.icons.static.sinkhole_small = {icon=staticP..'apm_sinkhole.png', icon_size=64}

@@ -58,6 +58,8 @@ local pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
 pipe_covers.east = empty
 pipe_covers.west = empty
 
+local rate = settings.startup["apm_sinkhole_fluid_rate"].value / 10
+
 local sinkhole = {}
 sinkhole.type = "furnace"
 sinkhole.name = "apm_sinkhole"
@@ -71,18 +73,18 @@ sinkhole.corpse = "medium-remnants"
 sinkhole.dying_explosion = "medium-explosion"
 
 sinkhole.impact_category = "metal"
-sinkhole.working_sound =
-{
-	sound = {
-		filename = "__base__/sound/offshore-pump.ogg",
-		volume = 0.5,
-	},
-	match_volume_to_activity = true,
-	audible_distance_modifier = 0.7,
-	max_sounds_per_type = 3,
-	fade_in_ticks = 4,
-	fade_out_ticks = 20
-}
+-- sinkhole.working_sound =
+-- {
+-- 	sound = {
+-- 		filename = "__base__/sound/offshore-pump.ogg",
+-- 		volume = 0.5,
+-- 	},
+-- 	match_volume_to_activity = true,
+-- 	audible_distance_modifier = 0.7,
+-- 	max_sounds_per_type = 3,
+-- 	fade_in_ticks = 4,
+-- 	fade_out_ticks = 20
+-- }
 sinkhole.repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" }
 sinkhole.mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" }
 sinkhole.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
@@ -93,7 +95,7 @@ sinkhole.source_inventory_size = 0
 sinkhole.result_inventory_size = 0
 sinkhole.next_upgrade = nil
 sinkhole.crafting_categories = { "apm_sinkhole" }
-sinkhole.crafting_speed = 4
+sinkhole.crafting_speed = rate
 sinkhole.fast_replaceable_group = "apm_power_sinkhole"
 sinkhole.resistances = { { type = "fire", percent = 95 } }
 
@@ -101,6 +103,7 @@ sinkhole.collision_box = { { -1.45, -1.45 }, { 1.45, 1.45 } }
 sinkhole.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
 
 sinkhole.energy_usage = apm.power.constants.energy_usage.electric
+
 sinkhole.energy_source = {
 	type = "void",
 	emissions_per_minute = { pollution = 5 },
@@ -121,8 +124,8 @@ sinkhole.working_sound.sound = {
 -- sinkhole.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 sinkhole.working_sound.apparent_volume = 1.5
 
-sinkhole.module_specification = apm.power.constants.modules.specification_2
-sinkhole.allowed_effects = apm.power.constants.modules.allowed_effects_2
+-- sinkhole.module_specification = apm.power.constants.modules.specification_2
+-- sinkhole.allowed_effects = apm.power.constants.modules.allowed_effects_2
 
 sinkhole.resistances = {
 	{
@@ -167,17 +170,13 @@ sinkhole.graphics_set = {
 	},
 }
 
-local base_area = settings.startup["apm_sinkhole_fluid_rate"].value / 10
-
 sinkhole.fluid_boxes = {}
 sinkhole.fluid_boxes[1] = {}
 sinkhole.fluid_boxes[1].production_type = "input"
 sinkhole.fluid_boxes[1].pipe_picture = pipe_picture
 sinkhole.fluid_boxes[1].pipe_covers = pipe_covers
-sinkhole.fluid_boxes[1].base_area = base_area
-sinkhole.fluid_boxes[1].base_level = -1
 sinkhole.fluid_boxes[1].filter = ""
-sinkhole.fluid_boxes[1].volume = 1000
+sinkhole.fluid_boxes[1].volume = rate * 2
 sinkhole.fluid_boxes[1].pipe_connections = {
 	{
 		flow_direction = "input",

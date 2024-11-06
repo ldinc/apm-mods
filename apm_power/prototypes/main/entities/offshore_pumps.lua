@@ -19,19 +19,6 @@ local smoke_burner = {
 	)
 }
 
-local smoke_steam = {
-	apm.lib.utils.builders.smoke.new(
-		"apm_light_smoke",
-		{ 0.1, 0.1 },
-		8,
-		{ 0, 0 },
-		nil,
-		0.08,
-		60,
-		1
-	)
-}
-
 local item_icon_a = apm.lib.utils.icon.get.from_item('offshore-pump')
 
 local offshore_pump_base = table.deepcopy(data.raw['offshore-pump']['offshore-pump'])
@@ -48,7 +35,6 @@ offshore_pump_base.fluid_box = apm.lib.utils.builders.fluid_box.new(
 	{ 0, 0 },
 	nil
 )
-
 
 offshore_pump_base.pumping_speed = 2.5
 offshore_pump_base.fast_replaceable_group = "apm_offshore_pump"

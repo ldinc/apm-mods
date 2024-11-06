@@ -51,7 +51,9 @@ apm.power.color.starter_set                                       = { r = 0.689,
 --
 --
 -- ----------------------------------------------------------------------------
+--- @type table<string, data.AirbornePollutantID>
 apm.power.constants.emissions                                     = {}
+
 apm.power.constants.emissions.t0                                  = { pollution = 5 }
 apm.power.constants.emissions.t1                                  = { pollution = 3 }
 apm.power.constants.emissions.t2                                  = { pollution = 4 }
@@ -73,6 +75,7 @@ apm.power.constants.emissions.steam_miner                         = { pollution 
 apm.power.constants.emissions.equipment_burner_generator_basic    = { pollution = 3.5 }
 apm.power.constants.emissions.equipment_burner_generator_advanced = { pollution = 2.5 }
 
+--- @type { [string]: data.Energy }
 apm.power.constants.energy_usage                                  = {}
 apm.power.constants.energy_usage.burner                           = '150kW'
 apm.power.constants.energy_usage.steam                            = '200kW'
@@ -92,6 +95,7 @@ apm.power.constants.energy_usage.puddling_furnace_0               = '490kW'
 apm.power.constants.energy_usage.steelworks_0                     = '910kW'
 apm.power.constants.energy_usage.steelworks_1                     = '1092kW'
 
+--- @type { [string]: data.Energy }
 apm.power.constants.engery_drain                                  = {}
 apm.power.constants.engery_drain.electric                         = '30kW'
 apm.power.constants.engery_drain.steelworks_0                     = '300kW'
@@ -219,10 +223,20 @@ apm.power.icons.path.equipment_energy_transmitter        =
 apm.power.icons.offshore_pump                            = { icon = apm.power.icons.path.offshore_pump, icon_size = 64, icon_mipmaps = 4 }
 apm.power.icons.burner_mining_drill                      = { icon = apm.power.icons.path.burner_mining_drill, icon_size = 64, icon_mipmaps = 4 }
 apm.power.icons.electric_mining_drill                    = { icon = apm.power.icons.path.electric_mining_drill, icon_size = 64, icon_mipmaps = 4 }
-apm.power.icons.starter_armor                            = { icon = apm.power.icons.path.starter_armor, icon_size = 64, tint =
-apm.power.color.starter_set, icon_mipmaps = 4 }
-apm.power.icons.equipment_roboport_small                 = { icon = apm.power.icons.path.equipment_roboport_small, icon_size = 64, tint =
-apm.power.color.starter_set, icon_mipmaps = 4 }
+apm.power.icons.starter_armor                            = {
+	icon = apm.power.icons.path.starter_armor,
+	icon_size = 64,
+	tint =
+			apm.power.color.starter_set,
+	icon_mipmaps = 4
+}
+apm.power.icons.equipment_roboport_small                 = {
+	icon = apm.power.icons.path.equipment_roboport_small,
+	icon_size = 64,
+	tint =
+			apm.power.color.starter_set,
+	icon_mipmaps = 4
+}
 apm.power.icons.boiler                                   = { icon = apm.power.icons.path.boiler, icon_size = 64, icon_mipmaps = 4 }
 apm.power.icons.steam_engine                             = { icon = apm.power.icons.path.steam_engine, icon_size = 64, icon_mipmaps = 4 }
 
@@ -239,39 +253,91 @@ apm.power.icons.sciencepack_1                            = { icon = apm.power.ic
 apm.power.icons.sciencepack_2                            = { icon = apm.power.icons.path.sciencepack_2, icon_size = 64 }
 apm.power.icons.resin                                    = { icon = apm.power.icons.path.resin, icon_size = 64 }
 apm.power.icons.rubber                                   = { icon = apm.power.icons.path.rubber, icon_size = 64 }
-apm.power.icons.coal_crushed                             = { icon = apm.lib.icons.path.crushed, icon_size = 64, tint =
-apm.power.color.coal }
-apm.power.icons.wood_crushed                             = { icon = apm.lib.icons.path.crushed, icon_size = 64, tint =
-apm.power.color.wood }
-apm.power.icons.coke_crushed                             = { icon = apm.lib.icons.path.crushed, icon_size = 64, tint =
-apm.power.color.coke }
-apm.power.icons.coke_chunk                               = { icon = apm.lib.icons.path.chunk, icon_size = 64, tint = apm
-.power.color.coke }
-apm.power.icons.charcoal_chunk                           = { icon = apm.lib.icons.path.chunk, icon_size = 64, tint = apm
-.power.color.charcoal }
-apm.power.icons.coal_brick                               = { icon = apm.lib.icons.path.briquette, icon_size = 64, tint =
-apm.power.color.coal }
-apm.power.icons.coke_brick                               = { icon = apm.lib.icons.path.briquette, icon_size = 64, tint =
-apm.power.color.coke }
-apm.power.icons.wood_brick                               = { icon = apm.lib.icons.path.briquette, icon_size = 64, tint =
-apm.power.color.wood }
-apm.power.icons.charcoal_brick                           = { icon = apm.lib.icons.path.briquette, icon_size = 64, tint =
-apm.power.color.charcoal }
-apm.power.icons.generic_ash                              = { icon = apm.lib.icons.path.dust, icon_size = 64, tint = apm
-.power.color.generic_ash }
+apm.power.icons.coal_crushed                             = {
+	icon = apm.lib.icons.path.crushed,
+	icon_size = 64,
+	tint =
+			apm.power.color.coal
+}
+apm.power.icons.wood_crushed                             = {
+	icon = apm.lib.icons.path.crushed,
+	icon_size = 64,
+	tint =
+			apm.power.color.wood
+}
+apm.power.icons.coke_crushed                             = {
+	icon = apm.lib.icons.path.crushed,
+	icon_size = 64,
+	tint =
+			apm.power.color.coke
+}
+apm.power.icons.coke_chunk                               = {
+	icon = apm.lib.icons.path.chunk,
+	icon_size = 64,
+	tint = apm
+			.power.color.coke
+}
+apm.power.icons.charcoal_chunk                           = {
+	icon = apm.lib.icons.path.chunk,
+	icon_size = 64,
+	tint = apm
+			.power.color.charcoal
+}
+apm.power.icons.coal_brick                               = {
+	icon = apm.lib.icons.path.briquette,
+	icon_size = 64,
+	tint =
+			apm.power.color.coal
+}
+apm.power.icons.coke_brick                               = {
+	icon = apm.lib.icons.path.briquette,
+	icon_size = 64,
+	tint =
+			apm.power.color.coke
+}
+apm.power.icons.wood_brick                               = {
+	icon = apm.lib.icons.path.briquette,
+	icon_size = 64,
+	tint =
+			apm.power.color.wood
+}
+apm.power.icons.charcoal_brick                           = {
+	icon = apm.lib.icons.path.briquette,
+	icon_size = 64,
+	tint =
+			apm.power.color.charcoal
+}
+apm.power.icons.generic_ash                              = {
+	icon = apm.lib.icons.path.dust,
+	icon_size = 64,
+	tint = apm
+			.power.color.generic_ash
+}
 apm.power.icons.filter_charcoal                          = { icon = apm.power.icons.path.filter_charcoal, icon_size = 64 }
 apm.power.icons.filter_charcoal_used                     = { icon = apm.power.icons.path.filter_charcoal_used, icon_size = 64 }
-apm.power.icons.mud_wet                                  = { icon = apm.lib.icons.path.heap, icon_size = 64, tint = apm
-.power.color.mud_wet }
-apm.power.icons.mud_dry                                  = { icon = apm.lib.icons.path.heap, icon_size = 64, tint = apm
-.power.color.mud_dry }
+apm.power.icons.mud_wet                                  = {
+	icon = apm.lib.icons.path.heap,
+	icon_size = 64,
+	tint = apm
+			.power.color.mud_wet
+}
+apm.power.icons.mud_dry                                  = {
+	icon = apm.lib.icons.path.heap,
+	icon_size = 64,
+	tint = apm
+			.power.color.mud_dry
+}
 apm.power.icons.crucible_raw                             = { icon = apm.power.icons.path.crucible_raw, icon_size = 64 }
 apm.power.icons.crucible                                 = { icon = apm.power.icons.path.crucible, icon_size = 64 }
 apm.power.icons.tree_seeds                               = { icon = apm.power.icons.path.tree_seeds, icon_size = 64 }
 apm.power.icons.fertiliser_1                             = { icon = apm.power.icons.path.fertiliser_1, icon_size = 64 }
 apm.power.icons.fertiliser_2                             = { icon = apm.power.icons.path.fertiliser_2, icon_size = 64 }
-apm.power.icons.ammonium_sulfate                         = { icon = apm.lib.icons.path.dust, icon_size = 64, tint = apm
-.power.color.ammonium_sulfate }
+apm.power.icons.ammonium_sulfate                         = {
+	icon = apm.lib.icons.path.dust,
+	icon_size = 64,
+	tint = apm
+			.power.color.ammonium_sulfate
+}
 apm.power.icons.gearing                                  = { icon = apm.power.icons.path.gearing, icon_size = 64 }
 apm.power.icons.wood_board                               = { icon = apm.power.icons.path.wood_board, icon_size = 64 }
 apm.power.icons.mechanical_relay                         = { icon = apm.power.icons.path.mechanical_relay, icon_size = 64 }
@@ -279,10 +345,18 @@ apm.power.icons.steam_relay                              = { icon = apm.power.ic
 apm.power.icons.sealing_rings                            = { icon = apm.power.icons.path.sealing_rings, icon_size = 64 }
 apm.power.icons.treated_wood_planks                      = { icon = apm.power.icons.path.treated_wood_planks, icon_size = 64 }
 apm.power.icons.electromagnet                            = { icon = apm.power.icons.path.electromagnet, icon_size = 32 } --todo: take new item.
-apm.power.icons.sieve_iron                               = { icon = apm.power.icons.path.sieve, icon_size = 64, tint =
-apm.power.color.sieve_iron }
-apm.power.icons.sieve_copper                             = { icon = apm.power.icons.path.sieve, icon_size = 64, tint =
-apm.power.color.sieve_copper }
+apm.power.icons.sieve_iron                               = {
+	icon = apm.power.icons.path.sieve,
+	icon_size = 64,
+	tint =
+			apm.power.color.sieve_iron
+}
+apm.power.icons.sieve_copper                             = {
+	icon = apm.power.icons.path.sieve,
+	icon_size = 64,
+	tint =
+			apm.power.color.sieve_copper
+}
 apm.power.icons.sieve_handel                             = { icon = apm.power.icons.path.sieve_handel, icon_size = 64 }
 apm.power.icons.crusher_drums                            = { icon = apm.power.icons.path.crusher_drums, icon_size = 64 }
 apm.power.icons.crusher_drums_used                       = { icon = apm.power.icons.path.crusher_drums_used, icon_size = 64 }
@@ -294,19 +368,65 @@ apm.power.icons.saw_blade_steel                          = { icon = apm.power.ic
 apm.power.icons.saw_blade_steel_used                     = { icon = apm.power.icons.path.saw_blade_steel_used, icon_size = 64 }
 apm.power.icons.burner_filter_inserter                   = { icon = apm.power.icons.path.burner_filter_inserter, icon_size = 64, icon_mipmaps = 4 }
 apm.power.icons.burner_long_inserter                     = { icon = apm.power.icons.path.burner_long_inserter, icon_size = 64, icon_mipmaps = 4 }
-apm.power.icons.crushed_stone                            = { size = 64, icon = apm.power.icons.path.crushed_stone, filename =
-apm.power.icons.path.crushed_stone, scale = 0.25, icon_mipmaps = 4, tint = apm.power.color.crushed_stone, icon_size = 64 }
-apm.power.icons.crushed_stone_1                          = { size = 64, icon = apm.power.icons.path.crushed_stone_1, filename =
-apm.power.icons.path.crushed_stone_1, scale = 0.25, icon_mipmaps = 4, tint = apm.power.color.crushed_stone, icon_size = 64 }
-apm.power.icons.crushed_stone_2                          = { size = 64, icon = apm.power.icons.path.crushed_stone_2, filename =
-apm.power.icons.path.crushed_stone_2, scale = 0.25, icon_mipmaps = 4, tint = apm.power.color.crushed_stone, icon_size = 64 }
-apm.power.icons.crushed_stone_3                          = { size = 64, icon = apm.power.icons.path.crushed_stone_3, filename =
-apm.power.icons.path.crushed_stone_3, scale = 0.25, icon_mipmaps = 4, tint = apm.power.color.crushed_stone, icon_size = 64 }
+apm.power.icons.crushed_stone                            = {
+	size = 64,
+	icon = apm.power.icons.path.crushed_stone,
+	filename =
+			apm.power.icons.path.crushed_stone,
+	scale = 0.25,
+	icon_mipmaps = 4,
+	tint = apm.power.color.crushed_stone,
+	icon_size = 64
+}
+apm.power.icons.crushed_stone_1                          = {
+	size = 64,
+	icon = apm.power.icons.path.crushed_stone_1,
+	filename =
+			apm.power.icons.path.crushed_stone_1,
+	scale = 0.25,
+	icon_mipmaps = 4,
+	tint = apm.power.color.crushed_stone,
+	icon_size = 64
+}
+apm.power.icons.crushed_stone_2                          = {
+	size = 64,
+	icon = apm.power.icons.path.crushed_stone_2,
+	filename =
+			apm.power.icons.path.crushed_stone_2,
+	scale = 0.25,
+	icon_mipmaps = 4,
+	tint = apm.power.color.crushed_stone,
+	icon_size = 64
+}
+apm.power.icons.crushed_stone_3                          = {
+	size = 64,
+	icon = apm.power.icons.path.crushed_stone_3,
+	filename =
+			apm.power.icons.path.crushed_stone_3,
+	scale = 0.25,
+	icon_mipmaps = 4,
+	tint = apm.power.color.crushed_stone,
+	icon_size = 64
+}
 apm.power.icons.stone_brick_raw                          = { icon = apm.power.icons.path.stone_brick_raw, icon_size = 64 }
-apm.power.icons.asphalt                                  = { size = 64, icon = apm.power.icons.path.asphalt, filename =
-apm.power.icons.path.asphalt, scale = 0.25, icon_mipmaps = 2, icon_size = 64 }
-apm.power.icons.asphalt_1                                = { size = 64, icon = apm.power.icons.path.asphalt_1, filename =
-apm.power.icons.path.asphalt_1, scale = 0.25, icon_mipmaps = 2, icon_size = 64 }
+apm.power.icons.asphalt                                  = {
+	size = 64,
+	icon = apm.power.icons.path.asphalt,
+	filename =
+			apm.power.icons.path.asphalt,
+	scale = 0.25,
+	icon_mipmaps = 2,
+	icon_size = 64
+}
+apm.power.icons.asphalt_1                                = {
+	size = 64,
+	icon = apm.power.icons.path.asphalt_1,
+	filename =
+			apm.power.icons.path.asphalt_1,
+	scale = 0.25,
+	icon_mipmaps = 2,
+	icon_size = 64
+}
 apm.power.icons.valve_0                                  = { icon = apm.power.icons.path.valve_0, icon_size = 64 }
 apm.power.icons.valve_1                                  = { icon = apm.power.icons.path.valve_1, icon_size = 64 }
 apm.power.icons.valve_2                                  = { icon = apm.power.icons.path.valve_2, icon_size = 64 }
@@ -316,17 +436,30 @@ apm.power.icons.equipment_battery_tiny                   = { icon = apm.power.ic
 
 apm.power.icons.item_burner_generator_basic              = { icon = apm.power.icons.path.item_burner_generator_basic, icon_size = 64 }
 apm.power.icons.item_burner_generator_advanced           = { icon = apm.power.icons.path.item_burner_generator_advanced, icon_size = 64 }
-apm.power.icons.item_equipment_energy_transmitter        = { icon = apm.power.icons.path
-.item_equipment_energy_transmitter, icon_size = 64 }
+apm.power.icons.item_equipment_energy_transmitter        = {
+	icon = apm.power.icons.path
+			.item_equipment_energy_transmitter,
+	icon_size = 64
+}
 
-apm.power.icons.equipment_burner_generator_basic         = { icon = apm.power.icons.path
-.equipment_burner_generator_basic, icon_size = 128 }
-apm.power.icons.equipment_burner_generator_advanced      = { icon = apm.power.icons.path
-.equipment_burner_generator_advanced, icon_size = 128 }
+apm.power.icons.equipment_burner_generator_basic         = {
+	icon = apm.power.icons.path
+			.equipment_burner_generator_basic,
+	icon_size = 128
+}
+apm.power.icons.equipment_burner_generator_advanced      = {
+	icon = apm.power.icons.path
+			.equipment_burner_generator_advanced,
+	icon_size = 128
+}
 apm.power.icons.apm_equipment_energy_transmitter         = { icon = apm.power.icons.path.equipment_energy_transmitter, icon_size = 128 }
 
 apm.power.icons.iron_bearing_ball                        = genIcon('iron_bearing_ball', 32)
 apm.power.icons.iron_bearing                             = genIcon('iron_bearing', 32)
 apm.power.icons.gun_powder                               = genIcon('gun_powder', 419)
-apm.power.icons.electric_generator_unit                  = { icon =
-'__apm_resource_pack_ldinc__/graphics/icons/electric-generator-unit.png', icon_size = 64, icon_mipmaps = 4 }
+apm.power.icons.electric_generator_unit                  = {
+	icon =
+	'__apm_resource_pack_ldinc__/graphics/icons/electric-generator-unit.png',
+	icon_size = 64,
+	icon_mipmaps = 4
+}
