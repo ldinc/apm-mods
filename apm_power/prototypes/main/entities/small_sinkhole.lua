@@ -101,7 +101,7 @@ sinkhole.graphics_set = {
 sinkhole.fluid_boxes = {
 	apm.lib.utils.builders.fluid_box.new(
 		"input",
-		rate * 2,
+		1000,
 		nil,
 		defines.direction.north,
 		{ 0, 0 },

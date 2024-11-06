@@ -176,7 +176,7 @@ sinkhole.fluid_boxes[1].production_type = "input"
 sinkhole.fluid_boxes[1].pipe_picture = pipe_picture
 sinkhole.fluid_boxes[1].pipe_covers = pipe_covers
 sinkhole.fluid_boxes[1].filter = ""
-sinkhole.fluid_boxes[1].volume = rate * 2
+sinkhole.fluid_boxes[1].volume = 2000
 sinkhole.fluid_boxes[1].pipe_connections = {
 	{
 		flow_direction = "input",
