@@ -11,32 +11,39 @@ APM_LOG_HEADER(self)
 -- ----------------------------------------------------------------------------------------------------------
 APM_LOG_INFO(self, '', 'BEGIN: basic overwrites of the fuel categories')
 -- overwrite fuel categorys on all assembling-machine if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('assembling-machine', 'chemical', {'chemical', 'apm_refined_chemical'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('assembling-machine', 'chemical',
+	{ 'chemical', 'apm_refined_chemical' })
 -- overwrite fuel categorys on all inserter if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('inserter', 'chemical', {'chemical', 'apm_refined_chemical'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('inserter', 'chemical',
+	{ 'chemical', 'apm_refined_chemical' })
 -- overwrite fuel categorys on all labs if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('lab', 'chemical', {'chemical', 'apm_refined_chemical'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('lab', 'chemical', { 'chemical', 'apm_refined_chemical' })
 -- overwrite fuel categorys on all furnace if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('furnace', 'chemical', {'chemical', 'apm_refined_chemical'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('furnace', 'chemical',
+	{ 'chemical', 'apm_refined_chemical' })
 -- overwrite fuel categorys on all generators if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('generator', 'chemical', {'chemical', 'apm_refined_chemical'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('generator', 'chemical',
+	{ 'chemical', 'apm_refined_chemical' })
 -- overwrite fuel categorys on all boiler if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('boiler', 'chemical', {'chemical', 'apm_refined_chemical'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('boiler', 'chemical',
+	{ 'chemical', 'apm_refined_chemical' })
 -- overwrite fuel categorys on all car if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('car', 'chemical', {'chemical', 'apm_refined_chemical'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('car', 'chemical', { 'chemical', 'apm_refined_chemical' })
 -- overwrite fuel categorys on all locomotive if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('locomotive', 'chemical', {'chemical','apm_refined_chemical', 'apm_rocket'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('locomotive', 'chemical',
+	{ 'chemical', 'apm_refined_chemical', 'apm_rocket' })
 -- overwrite fuel categorys on all mining-drill if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('mining-drill', 'chemical', {'chemical','apm_refined_chemical'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('mining-drill', 'chemical',
+	{ 'chemical', 'apm_refined_chemical' })
 -- overwrite fuel categorys on all pump if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('pump', 'chemical', {'chemical','apm_refined_chemical'})
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('pump', 'chemical', { 'chemical', 'apm_refined_chemical' })
 --
 APM_LOG_INFO(self, '', 'END: basic overwrites of the fuel categories')
 -- ----------------------------------------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------------------------------------
 
 -- tanks
-apm.lib.utils.car.set.fuel_category('tank', {'apm_refined_chemical'})
+apm.lib.utils.car.set.fuel_category('tank', { 'apm_refined_chemical' })
 
 -- Boilers
 apm.lib.utils.boiler.overhaul('boiler', 1)
@@ -77,6 +84,11 @@ apm.lib.utils.recipe.disable('automation-science-pack')
 -- miner
 apm.lib.utils.item.overwrite.group('burner-mining-drill', 'apm_power', 'apm_power_machines_miner', 'aa_a')
 
--- bots 
+-- bots
 apm.lib.utils.bot.logistic.overhaul('logistic-robot', 1)
 apm.lib.utils.bot.construction.overhaul('construction-robot', 1)
+
+-- offshore pump
+if not mods["space-age"] then
+	apm.lib.utils.item.remove('offshore-pump')
+end

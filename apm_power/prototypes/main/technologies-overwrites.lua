@@ -99,3 +99,10 @@ apm.lib.utils.technology.force.recipe_for_unlock('uranium-processing', 'apm_coal
 
 apm.lib.utils.technology.add.recipe_for_unlock('concrete', 'apm_sinkhole')
 apm.lib.utils.technology.add.recipe_for_unlock('apm_water_supply-1', 'apm_sinkhole_small')
+
+if not mods["space-age"] then
+	apm.lib.utils.technology.remove.recipe_from_unlock('steam-power', 'offshore-pump')
+else
+	apm.lib.utils.technology.remove.recipe_from_unlock('steam-power', 'offshore-pump')
+	apm.lib.utils.technology.add.recipe_for_unlock('tungsten-steel', 'offshore-pump')
+end
