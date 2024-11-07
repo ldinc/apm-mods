@@ -19,7 +19,7 @@ item.stack_size = 20
 --item.group = "apm_other"
 item.subgroup = "equipment"
 item.order = "a[energy-source]-b[apm-a]"
-item.placed_as_equipment_result = "apm_equipment_burner_generator_basic"
+item.place_as_equipment_result = "apm_equipment_burner_generator_basic"
 data:extend({item})
 
 -- Item -----------------------------------------------------------------------
@@ -36,7 +36,7 @@ item.stack_size = 20
 --item.group = "apm_other"
 item.subgroup = "equipment"
 item.order = "a[energy-source]-b[apm-b]"
-item.placed_as_equipment_result = "apm_equipment_burner_generator_advanced"
+item.place_as_equipment_result = "apm_equipment_burner_generator_advanced"
 data:extend({item})
 
 -- Equipment ------------------------------------------------------------------

@@ -22,7 +22,7 @@ item.stack_size = 20
 item.group = "apm_other"
 item.subgroup = "apm_starter_armor"
 item.order = "aa_d"
-item.placed_as_equipment_result = "apm_equipment_roboport_small"
+item.place_as_equipment_result = "apm_equipment_roboport_small"
 data:extend({ item })
 
 -- Equipment ------------------------------------------------------------------
