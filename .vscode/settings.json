@@ -15,5 +15,8 @@
     "Lua.diagnostics.workspaceDelay": 30000,
     "Lua.diagnostics.disable": [
         "empty-block"
+    ],
+    "Lua.diagnostics.globals": [
+        "a"
     ]
 }
