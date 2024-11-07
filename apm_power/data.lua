@@ -5,6 +5,8 @@ require('lib.data-interfaces')
 require('lib.definitions')
 require('lib.functions')
 
+require('lib.features.all')
+
 --require('lib.gui')
 require('prototypes.main.categories')
 

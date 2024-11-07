@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/integrations/fuel.lua'
@@ -6,13 +6,17 @@ local self = 'apm_power/prototypes/integrations/fuel.lua'
 APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
-local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"].value
+local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
+.value
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
-local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"].value
+local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
+.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
-local apm_power_compat_angel_overhaul_machine_frames = settings.startup["apm_power_compat_angel_overhaul_machine_frames"].value
+local apm_power_compat_angel_overhaul_machine_frames = settings.startup
+["apm_power_compat_angel_overhaul_machine_frames"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
-local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"].value
+local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
+.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -89,9 +93,9 @@ end
 if mods['aai-industry'] and apm_power_compat_earendel then
 	apm.lib.utils.fuel.overhaul(5, 'vehicle-fuel', 1, nil, 'apm_vehicle_only')
 	for _, recipe in pairs(data.raw.recipe) do
-    	if string.match(recipe.name, "vehicle%-fuel%-from%-") then
-        	apm.lib.utils.recipe.remove(recipe.name)
-    	end
+		if string.match(recipe.name, "vehicle%-fuel%-from%-") then
+			apm.lib.utils.recipe.remove(recipe.name)
+		end
 	end
 	apm.lib.utils.patch.aai.generate_vehicle_fuel()
 end
@@ -107,4 +111,21 @@ if mods.PyCoalTBaA and apm_power_compat_kingarthur then
 	apm.lib.utils.fuel.overhaul(2, 'coal-dust', 0.5, 'apm_generic_ash', 'chemical')
 	apm.lib.utils.fuel.overhaul(1, 'raw-fiber', 0.2, 'apm_generic_ash', 'chemical')
 	apm.lib.utils.fuel.overhaul(2, 'coal-briquette', 5, 'apm_generic_ash', 'chemical')
+end
+
+-- Features::burner_inserter_with_infinite_energy_source ----------------------
+--
+--
+-- ----------------------------------------------------------------------------
+if apm.lib.features.burner_inserter_with_infinite_energy_source then
+	local inserter = data.raw["inserter"]["burner-inserter"]
+
+	if inserter then
+		inserter.energy_source = apm.lib.utils.builders.energy_source.new_void()
+	end
+
+	inserter = data.raw["inserter"]["apm_burner_long_inserter"]
+	if inserter then
+		inserter.energy_source = apm.lib.utils.builders.energy_source.new_void()
+	end
 end

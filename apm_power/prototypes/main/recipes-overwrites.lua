@@ -5,8 +5,6 @@ local self = 'apm_power/prototypes/main/recipes-overwrites.lua'
 
 APM_LOG_HEADER(self)
 
--- if not apm.lib.utils.setting.get.starup('apm_power_bob_rework') then
-
 apm.lib.utils.recipe.ingredient.replace('assembling-machine-1', 'iron-gear-wheel', 'apm_gearing')
 if apm.lib.utils.setting.get.starup('apm_power_overhaul_machine_frames') then
 	apm.lib.utils.recipe.ingredient.mod('assembling-machine-1', 'iron-plate', 0)
@@ -162,7 +160,6 @@ apm.lib.utils.recipe.ingredient.replace('automation-science-pack', 'copper-plate
 apm.lib.utils.recipe.ingredient.mod('automation-science-pack', 'apm_treated_wood_planks', 2)
 
 apm.lib.utils.recipe.ingredient.mod('electronic-circuit', 'apm_wood_board', 1)
--- end
 
 if mods["space-age"] then
 	local recipe = 'offshore-pump'

@@ -1252,7 +1252,6 @@ local apm_power_compat_realistic_reactors = settings.startup["apm_power_compat_r
 local apm_power_compat_reverse_factory = settings.startup["apm_power_compat_reverse_factory"].value
 local apm_power_compat_arcitos = settings.startup["apm_power_compat_arcitos"].value
 local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
-local apm_power_compat_bob_rework = settings.startup["apm_power_bob_rework"].value
 
 APM_LOG_SETTINGS(self, 'apm_power_overhaul_machine_frames', apm_power_overhaul_machine_frames)
 APM_LOG_SETTINGS(self, 'apm_power_steam_assembler_craftin_with_fluids', apm_power_steam_assembler_craftin_with_fluids)
@@ -1774,25 +1773,25 @@ if mods.bobgreenhouse and apm_power_compat_bob then
 	apm.lib.utils.recipe.result.mod('bob-seedling', 'bob-seedling', 10)
 end
 
-if not apm.lib.utils.setting.get.starup('apm_power_bob_rework') then
-	if not mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
+
+if not mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
+	apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 0)
+elseif mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
+	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
+		apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 5)
+	else
 		apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 0)
-	elseif mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
-		if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
-			apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 5)
-		else
-			apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 0)
-		end
 	end
 end
 
-if not apm.lib.utils.setting.get.starup('apm_power_bob_rework') then
-	if mods.bobplates and apm_power_compat_bob and not mods.angelsrefining and not mods['aai-industry'] then
-		apm.lib.utils.recipe.ingredient.mod('apm_lab_0', 'glass', 5)
-		apm.lib.utils.recipe.ingredient.mod('apm_lab_1', 'glass', 10)
-		apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_0', 'glass', 25)
-	end
+
+
+if mods.bobplates and apm_power_compat_bob and not mods.angelsrefining and not mods['aai-industry'] then
+	apm.lib.utils.recipe.ingredient.mod('apm_lab_0', 'glass', 5)
+	apm.lib.utils.recipe.ingredient.mod('apm_lab_1', 'glass', 10)
+	apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_0', 'glass', 25)
 end
+
 
 if mods.bobelectronics and mods.angelsrefining and apm_power_compat_bob then
 	apm.lib.utils.recipe.ingredient.mod('clarifier', 'electronic-circuit', 0)
@@ -2218,10 +2217,6 @@ local unlock_steel_with_oxy = function()
 
 	data:extend({ recipe })
 	apm.lib.utils.technology.add.recipe_for_unlock('advanced-material-processing', recipe.name)
-end
-
-if apm_power_compat_bob_rework then
-	unlock_steel_with_oxy()
 end
 
 -- bob only: steel fix --------------------------------------------------------

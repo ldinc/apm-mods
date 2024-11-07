@@ -1,0 +1,1 @@
+require('burner_inserters')

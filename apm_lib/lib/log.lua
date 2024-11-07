@@ -81,6 +81,27 @@ function APM_LOG_JSON_ERROR(caller, name, value)
 	end
 end
 
+---@param caller string
+---@param name string
+---@param value any
+---@param options? serpent.options
+function APM_LOG_SERPENT_BLOCK_ERROR(caller, name, value, options),
+	if loglevel >= 0 then
+		log('Error with serpent: ' .. caller .. ':' .. name .. ' = \n' .. serpent.line(value, options))
+	end
+end
+
+
+---@param caller string
+---@param name string
+---@param value any
+---@param options? serpent.options
+function APM_LOG_SERPENT_LINE_ERROR(caller, name, value, options)
+	if loglevel >= 0 then
+		log('Error with serpent: ' .. caller .. ':' .. name .. ' = \n' .. serpent.block(value, options))
+	end
+end
+
 function render(obj, indent)
     if type(obj) == 'table' then
         local s = '{ '

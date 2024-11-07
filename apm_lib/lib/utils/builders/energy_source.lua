@@ -47,11 +47,10 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, flu
 	}
 end
 
+--- Construct new void energy source
+---@param emmisions_pm? table<data.AirbornePollutantID, double>
+---@return data.VoidEnergySource
 function apm.lib.utils.builders.energy_source.new_void(emmisions_pm)
-	if emmisions_pm == nil then
-		emmisions_pm = apm.power.constants.emissions.t2
-	end
-
 	return {
 		type = 'void',
 		emissions_per_minute = emmisions_pm,

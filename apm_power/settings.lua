@@ -9,12 +9,12 @@ local fuel_value_exclude_list = {['PyCoalTBaA'] = true}
 --
 -- ----------------------------------------------------------------------------
 local function is_mod_on_exclude_list()
-    for mod_name, _ in pairs(mods) do
-        if fuel_value_exclude_list[mod_name] then
-            return true
-        end
-    end
-    return false
+	for mod_name, _ in pairs(mods) do
+		if fuel_value_exclude_list[mod_name] then
+			return true
+		end
+	end
+	return false
 end
 
 -- dynamic startup settings ---------------------------------------------------
@@ -22,11 +22,11 @@ end
 --
 -- ----------------------------------------------------------------------------
 if not is_mod_on_exclude_list() then
-    data:extend({
-        {type = "double-setting", name = "apm_power_coal_value_01779", setting_type = "startup", minimum_value = 0.1, maximum_value = 50, default_value = 3.2, order='aa_a'}
-    })
+	data:extend({
+		{type = "double-setting", name = "apm_power_coal_value_01779", setting_type = "startup", minimum_value = 0.1, maximum_value = 50, default_value = 3.2, order='aa_a'}
+	})
 else
-    log('Info: settings.lua: setting for fuel values disabled, because of the present of a mod on the "fuel_value_exclude_list"')
+	log('Info: settings.lua: setting for fuel values disabled, because of the present of a mod on the "fuel_value_exclude_list"')
 end
 
 -- startup settings -----------------------------------------------------------
@@ -43,8 +43,8 @@ data:extend({
   {type = "bool-setting", name = "apm_power_always_show_made_in", setting_type = "startup", default_value = true, order='ad_a'},
   {type = "bool-setting", name = "apm_power_inherit_industrial_science", setting_type = "startup", default_value = true, order='ae_a'},
   {type = "bool-setting", name = "apm_power_inherit_steam_science", setting_type = "startup", default_value = true, order='ae_b'},
+  {type = "bool-setting", name = "apm_burner_inserter_with_infinite_energy_source", setting_type = "startup", default_value = false, order='ae_b'},
 
-  {type = "bool-setting", name = "apm_power_bob_rework", setting_type = "startup", default_value = false, order='pa_a'},
   {type = "bool-setting", name = "apm_power_compat_bob", setting_type = "startup", default_value = false, order='pa_a'},
   {type = "bool-setting", name = "apm_power_compat_bob_overhaul_machine_frames", setting_type = "startup", default_value = false, order='pa_b'},
   {type = "bool-setting", name = "apm_power_compat_angel", setting_type = "startup", default_value = false, order='pb_a'},
@@ -70,5 +70,5 @@ data:extend({
 --
 -- ----------------------------------------------------------------------------
 data:extend({
-    {type = "bool-setting", name = "apm_power_starter_armor", setting_type = "runtime-global", default_value = true, order='aa_a'},
+	{type = "bool-setting", name = "apm_power_starter_armor", setting_type = "runtime-global", default_value = true, order='aa_a'},
 })
