@@ -85,7 +85,7 @@ end
 ---@param name string
 ---@param value any
 ---@param options? serpent.options
-function APM_LOG_SERPENT_BLOCK_ERROR(caller, name, value, options),
+function APM_LOG_SERPENT_BLOCK_ERROR(caller, name, value, options)
 	if loglevel >= 0 then
 		log('Error with serpent: ' .. caller .. ':' .. name .. ' = \n' .. serpent.line(value, options))
 	end
