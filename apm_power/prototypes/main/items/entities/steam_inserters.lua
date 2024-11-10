@@ -15,7 +15,7 @@ APM_LOG_HEADER(self)
 local item = {}
 item.type = "item"
 item.name = "apm_steam_inserter"
-item.icon = icon_path .. "steam_inserter.png"
+item.icon = icon_path .. "apm_steam_inserter.png"
 item.stack_size = 50
 item.group = "apm_power"
 item.subgroup = "apm_power_inserter"
@@ -26,7 +26,7 @@ data:extend({item})
 local item = {}
 item.type = "item"
 item.name = "apm_steam_inserter_long"
-item.icon = icon_path .. "steam_inserter.png"
+item.icon = icon_path .. "apm_steam_inserter_long.png"
 item.stack_size = 50
 item.group = "apm_power"
 item.subgroup = "apm_power_inserter"

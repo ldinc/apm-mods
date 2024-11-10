@@ -11,7 +11,7 @@ local icon_path = "__apm_resource_pack_ldinc__/graphics/icons/"
 
 local inserter = table.deepcopy(data.raw.inserter['burner-inserter'])
 inserter.name = 'apm_steam_inserter'
-inserter.icon = icon_path .. "steam_inserter.png"
+inserter.icon = icon_path .. "apm_steam_inserter.png"
 inserter.minable = { mining_time = 0.1, result = "apm_steam_inserter" }
 inserter.energy_per_movement = "6kJ"
 inserter.energy_per_rotation = "60kJ"
@@ -223,7 +223,7 @@ data:extend({ inserter })
 
 local inserter = table.deepcopy(data.raw.inserter['apm_steam_inserter'])
 inserter.name = 'apm_steam_inserter_long'
-inserter.icon = icon_path .. "steam_inserter.png"
+inserter.icon = icon_path .. "apm_steam_inserter_long.png"
 inserter.minable = { mining_time = 0.1, result = "apm_steam_inserter_long" }
 inserter.energy_per_movement = "6kJ"
 inserter.energy_per_rotation = "60kJ"
