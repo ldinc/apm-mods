@@ -9,11 +9,15 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-local sound = {}
+---@type data.ExplosionPrototype
+local sound = {
+  animations = {},
+}
 sound.type = "explosion"
 sound.name = "radioactive_a_1"
 sound.flags = {"not-on-map"}
-sound.animations = {}
+sound.hidden_in_factoriopedia = true
+
 sound.animations[1] = {}
 sound.animations[1].filename = "__apm_lib_ldinc__/graphics/null.png"
 sound.animations[1].priority = "low"
@@ -23,10 +27,13 @@ sound.animations[1].frame_count = 1
 sound.animations[1].line_length = 1
 sound.animations[1].animation_speed = 1
 sound.light = {intensity = 0, size = 0}
-sound.sound = {}
-sound.sound[1] = {}
-sound.sound[1].filename = "__apm_lib_ldinc__/sounds/radiation/radioactive_a_1.ogg"
-sound.sound[1].volume = 0.9
+sound.sound = {
+  {
+    filename = "__apm_lib_ldinc__/sounds/radiation/radioactive_a_1.ogg",
+    volume = 0.9,
+  },
+}
+
 data:extend({sound})
 
 -- Sound ----------------------------------------------------------------------
