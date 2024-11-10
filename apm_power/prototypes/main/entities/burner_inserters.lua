@@ -6,7 +6,7 @@ local self = 'apm_power/prototypes/main/burner_inserters.lua'
 APM_LOG_HEADER(self)
 
 -- NOTE: With factorio 2.0 all inserters with filter
--- Clone of electric long hand inserter & original burner insterter wuth updated graphics
+-- Clone of electric long hand inserter & original burner insterter with updated graphics
 
 local burner_long_inserter = table.deepcopy(data.raw.inserter['burner-inserter'])
 burner_long_inserter.name = 'apm_burner_long_inserter'

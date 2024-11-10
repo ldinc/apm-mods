@@ -479,12 +479,14 @@ new_tech(
 	}
 )
 
--- Steam Science
+--TODO: append long inserter?
+-- Steam Science 
 new_tech(
 	'apm_steam_science_pack',
 	{ 'apm_power_steam' },
 	{ 'apm_steam_science_pack', 'apm_steam_relay', 'apm_machine_frame_steam', 'apm_machine_frame_basic_maintenance',
-		'apm_steam_engine' },
+		'apm_steam_engine',
+		"apm_steam_inserter", "apm_steam_inserter_long" },
 	nil,
 	{
 		ingredients = { { sp.industrial, 1 } },
