@@ -9,24 +9,24 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-local automation_science_pack = {}
-automation_science_pack.type = 'technology'
-automation_science_pack.name = 'apm_power_automation_science_pack'
-automation_science_pack.icon = '__base__/graphics/technology/automation-science-pack.png'
-automation_science_pack.icon_size = 256
-automation_science_pack.icon_mipmaps = 4
-automation_science_pack.effects = {
-	{ type = 'unlock-recipe', recipe = 'automation-science-pack' },
-	{ type = 'unlock-recipe', recipe = 'apm_electromagnet' },
-	{ type = 'unlock-recipe', recipe = 'apm_egen_unit' },
-}
-automation_science_pack.prerequisites = { 'apm_lab_1', 'apm_treated_wood_planks-1' }
-automation_science_pack.unit = {}
-automation_science_pack.unit.count = 100
-automation_science_pack.unit.ingredients = { { "apm_industrial_science_pack", 1 }, { "apm_steam_science_pack", 1 } }
-automation_science_pack.unit.time = 20
-automation_science_pack.order = 'aa_a'
-data:extend({ automation_science_pack })
+-- local automation_science_pack = {}
+-- automation_science_pack.type = 'technology'
+-- automation_science_pack.name = 'apm_power_automation_science_pack'
+-- automation_science_pack.icon = '__base__/graphics/technology/automation-science-pack.png'
+-- automation_science_pack.icon_size = 256
+-- automation_science_pack.icon_mipmaps = 4
+-- automation_science_pack.effects = {
+-- 	{ type = 'unlock-recipe', recipe = 'automation-science-pack' },
+-- 	{ type = 'unlock-recipe', recipe = 'apm_electromagnet' },
+-- 	{ type = 'unlock-recipe', recipe = 'apm_egen_unit' },
+-- }
+-- automation_science_pack.prerequisites = { 'apm_lab_1', 'apm_treated_wood_planks-1' }
+-- automation_science_pack.unit = {}
+-- automation_science_pack.unit.count = 100
+-- automation_science_pack.unit.ingredients = { { "apm_industrial_science_pack", 1 }, { "apm_steam_science_pack", 1 } }
+-- automation_science_pack.unit.time = 20
+-- automation_science_pack.order = 'aa_a'
+-- data:extend({ automation_science_pack })
 
 local apm_inserter_bonus = {}
 apm_inserter_bonus.type = 'technology'
@@ -67,7 +67,7 @@ apm_electric_mining_drills.type = 'technology'
 apm_electric_mining_drills.name = 'apm_electric_mining_drills'
 apm_electric_mining_drills.icon = '__base__/graphics/technology/mining-productivity.png'
 apm_electric_mining_drills.icon_size = 256
-automation_science_pack.icon_mipmaps = 4
+apm_electric_mining_drills.icon_mipmaps = 4
 apm_electric_mining_drills.effects = {
 	{ type = 'unlock-recipe', recipe = 'electric-mining-drill' },
 }
@@ -317,7 +317,7 @@ new_tech(
 -- Fuel II
 new_tech(
 	'apm_fuel-2',
-	{ 'apm_fuel-1', 'apm_coking_plant_0', 'apm_power_steam' },
+	{ 'apm_fuel-1', 'apm_coking_plant_0', "steam-power" },
 	{ 'apm_pyrolysis_charcoal_2', 'apm_pyrolysis_coke_2' },
 	nil,
 	{
@@ -444,7 +444,7 @@ new_tech(
 new_tech(
 	'apm_fluid_control-1',
 	{ 'apm_water_supply-1' },
-	{ 'apm_pump_0', 'apm_inline_storage_tank' },
+	{ 'apm_pump_0', 'apm_inline_storage_tank', 'apm_sinkhole_small' },
 	nil,
 	{
 		ingredients = { { sp.industrial, 1 } },
@@ -467,23 +467,24 @@ new_tech(
 )
 
 -- Steam
-new_tech(
-	'apm_power_steam',
-	{ 'apm_fuel-1', 'apm_puddling_furnace_0', 'apm_water_supply-1', 'apm_stone_bricks' },
-	{ 'boiler' },
-	nil,
-	{
-		ingredients = { { sp.industrial, 1 } },
-		count = 75,
-		time = 25,
-	}
-)
+-- new_tech(
+-- 	'apm_power_steam',
+-- 	{ 'apm_fuel-1', 'apm_puddling_furnace_0', 'apm_water_supply-1', 'apm_stone_bricks' },
+-- 	{ 'boiler' },
+-- 	nil,
+-- 	{
+-- 		ingredients = { { sp.industrial, 1 } },
+-- 		count = 75,
+-- 		time = 25,
+-- 	}
+-- )
 
 --TODO: append long inserter?
 -- Steam Science 
 new_tech(
 	'apm_steam_science_pack',
-	{ 'apm_power_steam' },
+	-- { 'apm_power_steam' },
+	{"steam-power"},
 	{ 'apm_steam_science_pack', 'apm_steam_relay', 'apm_machine_frame_steam', 'apm_machine_frame_basic_maintenance',
 		'apm_steam_engine',
 		"apm_steam_inserter", "apm_steam_inserter_long" },
@@ -720,8 +721,8 @@ new_tech(
 -- Electricity
 new_tech(
 	'apm_power_electricity',
-	{ 'apm_power_automation_science_pack', 'apm_fuel-3' },
-	{ 'steam-engine', 'small-electric-pole', 'electronic-circuit', 'apm_machine_frame_advanced',
+	{ "automation-science-pack", 'apm_fuel-3' },
+	{ 'steam-engine', 'small-electric-pole', 'apm_machine_frame_advanced',
 		'apm_machine_frame_steam_maintenance', 'apm_machine_frame_advanced_maintenance' },
 	nil,
 	{
@@ -828,7 +829,7 @@ new_tech(
 -- Boiler
 new_tech(
 	'apm_power_boiler',
-	{ 'apm_power_steam', 'advanced-material-processing' },
+	{ 	"steam-power"	, 'advanced-material-processing' },
 	{ 'apm_boiler_2' },
 	nil,
 	{

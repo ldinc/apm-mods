@@ -21,8 +21,6 @@ apm.lib.utils.technology.force.recipe_for_unlock('apm_water_supply-1', 'pipe-to-
 apm.lib.utils.technology.remove.recipe_from_unlock('fluid-handling', 'storage-tank')
 apm.lib.utils.technology.force.recipe_for_unlock('apm_stone_bricks', 'storage-tank')
 
-apm.lib.utils.technology.force.recipe_for_unlock('apm_power_steam', 'boiler')
-
 apm.lib.utils.technology.add.science_pack('turrets', 'apm_industrial_science_pack')
 apm.lib.utils.technology.remove.science_pack('turrets', 'automation-science-pack')
 
@@ -34,7 +32,7 @@ apm.lib.utils.technology.add.science_pack('military', 'apm_industrial_science_pa
 apm.lib.utils.technology.remove.science_pack('military', 'automation-science-pack')
 
 apm.lib.utils.technology.add.prerequisites('steel-processing', 'apm_puddling_furnace_0')
-apm.lib.utils.technology.add.prerequisites('steel-processing', 'apm_power_automation_science_pack')
+apm.lib.utils.technology.add.prerequisites('steel-processing', "automation-science-pack")
 apm.lib.utils.technology.remove.recipe_from_unlock('steel-processing', 'steel-plate')
 
 apm.lib.utils.technology.add.science_pack('steel-axe', 'apm_industrial_science_pack', 1)
@@ -98,7 +96,34 @@ apm.lib.utils.technology.add.prerequisites('physical-projectile-damage-2', 'logi
 apm.lib.utils.technology.force.recipe_for_unlock('uranium-processing', 'apm_coal_ash_washing')
 
 apm.lib.utils.technology.add.recipe_for_unlock('concrete', 'apm_sinkhole')
-apm.lib.utils.technology.add.recipe_for_unlock('apm_water_supply-1', 'apm_sinkhole_small')
+
+
+--- [steam-power]
+apm.lib.utils.technology.add.prerequisites("steam-power", "apm_fuel-1" )
+apm.lib.utils.technology.add.prerequisites("steam-power", "apm_puddling_furnace_0" )
+apm.lib.utils.technology.add.prerequisites("steam-power", "apm_water_supply-1" )
+apm.lib.utils.technology.add.prerequisites("steam-power", "apm_stone_bricks" )
+
+apm.lib.utils.technology.add.recipe_for_unlock("steam-power", "apm_fuel-1")
+apm.lib.utils.technology.add.recipe_for_unlock("steam-power", "apm_puddling_furnace_0")
+apm.lib.utils.technology.add.recipe_for_unlock("steam-power", "apm_water_supply-1")
+apm.lib.utils.technology.add.recipe_for_unlock("steam-power", "apm_stone_bricks")
+
+apm.lib.utils.technology.trigger.set.craft_item("steam-power", "steel-plate", 50)
+
+--- [automation-science-pack]
+apm.lib.utils.technology.add.prerequisites("automation-science-pack", "apm_treated_wood_planks-1" )
+apm.lib.utils.technology.add.prerequisites("automation-science-pack", "apm_lab_1" )
+
+apm.lib.utils.technology.add.recipe_for_unlock("automation-science-pack", "automation-science-pack")
+apm.lib.utils.technology.add.recipe_for_unlock("automation-science-pack", "apm_electromagnet")
+apm.lib.utils.technology.add.recipe_for_unlock("automation-science-pack", "apm_egen_unit")
+
+--- [electronics]
+apm.lib.utils.technology.add.prerequisites("electronics", "apm_lab_1" )
+
+apm.lib.utils.technology.trigger.set.craft_item("electronics", "apm_steam_science_pack", 150)
+
 
 if not mods["space-age"] then
 	apm.lib.utils.technology.remove.recipe_from_unlock('steam-power', 'offshore-pump')

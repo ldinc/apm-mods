@@ -323,7 +323,10 @@ local function scan_area_for_inserter(entity)
 	local surface = entity.surface
 	local area = { { position.x - 6, position.y - 6 }, { position.x + 6, position.y + 6 } }
 	local inserters = surface.find_entities_filtered { type = "inserter", area = area }
-	log('DBG: inserters: ' .. tostring(inserters))
+
+	APM_LOG_JSON("", "inserters", inserters)
+
+	-- log('DBG: inserters: ' .. tostring(inserters))
 	return inserters
 end
 
