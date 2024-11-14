@@ -1,5 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.3.1
+Version: 0.30.2
+Date: 14.11.2024
+  Fixed:
+    - Tech `electric-engine` was without dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.30.1
 Date: 14.11.2024
   Added:
     - Burner inserter can use void energy (available via settings)

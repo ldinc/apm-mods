@@ -54,7 +54,7 @@ function vanilaFinalUpdatesRecipe()
 	-- more early electric engine technology
 	apm.lib.utils.technology.remove.science_pack(eEngine, 'chemical-science-pack')
 	apm.lib.utils.technology.add.prerequisites(eEngine, 'apm_power_electricicty')
-	updateVanilaTechnology()
+
 	-- used frames
 	local used = apm.lib.utils.setting.get.starup('apm_power_machine_frames_recycling')
 	if not used then
@@ -163,13 +163,6 @@ function addEquipmentGrid(eType, eName, equipmentGrid)
 		log(dump(data.raw[eType][eName].equipment_grid))
 		data.raw[eType][eName].equipment_grid = equipmentGrid
 	end
-end
-
-function updateVanilaTechnology()
-	local recipe = 'electric-engine'
-	apm.lib.utils.technology.remove.prerequisites(recipe, 'lubricant')
-	apm.lib.utils.technology.add.prerequisites(recipe, 'apm_power_automation_science_pack')
-	apm.lib.utils.technology.remove.science_pack(recipe, 'logistic-science-pack')
 end
 
 function makeGrid(attributes)

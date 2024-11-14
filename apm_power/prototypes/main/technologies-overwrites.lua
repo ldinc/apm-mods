@@ -111,6 +111,12 @@ apm.lib.utils.technology.add.recipe_for_unlock("steam-power", "apm_stone_bricks"
 
 apm.lib.utils.technology.trigger.set.craft_item("steam-power", "steel-plate", 50)
 
+--- [electric-engine]
+apm.lib.utils.technology.add.prerequisites("electric-engine", "engine" )
+apm.lib.utils.technology.remove.prerequisites("electric-engine", "lubricant")
+apm.lib.utils.technology.add.prerequisites("electric-engine", "apm_power_automation_science_pack")
+
+
 --- [automation-science-pack]
 apm.lib.utils.technology.add.prerequisites("automation-science-pack", "apm_treated_wood_planks-1" )
 apm.lib.utils.technology.add.prerequisites("automation-science-pack", "apm_lab_1" )
