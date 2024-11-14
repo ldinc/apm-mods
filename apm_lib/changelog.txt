@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.2
+Date: 14.11.2024
+  Changed:
+    - Starting refactoring
+    - Added new tech triggers fns
+    - Dropped internal code for starting equipment
+    - Integrate remote API for statring equipment, provided by `freeplay_starting_equipment`
+    - Slowly adding LuaDoc support
+    - Prerelese for apm_power test
+  Fixed:
+    - Bugs with release factorio 2.0
+    - Icons function invalid size for sprites (tech, item icons, recipe icons & etc)
+    - Fixed broken part of stean inserter leechers
+---------------------------------------------------------------------------------------------------
 Version: 0.3.1
 Date: 01.11.2024
   Changed:

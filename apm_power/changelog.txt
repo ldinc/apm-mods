@@ -1,4 +1,26 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.1
+Date: 14.11.2024
+  Added:
+    - Burner inserter can use void energy (available via settings)
+  Fixed:
+    - Factirio 2.0 API changes
+    - Missing descriptions & titles
+    - Not working burner generators as equipment
+    - Invalid icon sizes
+    - Missing small storage tank signals
+  Added:
+    - Steam inserter (+ long version)
+    - Normal pump entities instead hacks
+    - Now pumps on Gleba (with DLC) give your apm_mud_water instead apm_seawater
+    - Small sinkhole
+  Updated:
+    - Tech tree with new 2.0 vanila changes
+    - All fluid boxes
+  Removed:
+    - Code for apm_bob_rework compatibilities
+    - Code for putting assembling machnine with pump texture to pump apm_seawater
+---------------------------------------------------------------------------------------------------
 Version: 0.23.12
 Date: 05.12.2023
   Changes:

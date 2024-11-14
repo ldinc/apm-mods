@@ -42,6 +42,8 @@ function apm.lib.utils.technology.trigger.set.craft_item(technology_name, trigge
 		trigger.count = trigger_count
 	end
 
+	data.raw["technology"][technology_name].unit = nil
+
 	local old_trigger = apm.lib.utils.technology.trigger.get(technology_name)
 
 	if not old_trigger then
@@ -60,4 +62,21 @@ function apm.lib.utils.technology.trigger.set.craft_item(technology_name, trigge
 	data.raw["technology"][technology_name].research_trigger.item = trigger.item
 	data.raw["technology"][technology_name].research_trigger.count = trigger.count
 	data.raw["technology"][technology_name].research_trigger.item_quality = trigger.item_quality
+end
+
+---@param technology_name data.TechnologyID
+---@param trigger_entity data.EntityID
+function apm.lib.utils.technology.trigger.set.mine(technology_name, trigger_entity)
+	if not apm.lib.utils.technology.exist(technology_name) then
+		return
+	end
+
+	---@type data.MineEntityTechnologyTrigger
+	local trigger = {
+		type = "mine-entity",
+		entity = trigger_entity,
+	}
+
+	data.raw["technology"][technology_name].unit = nil
+	data.raw["technology"][technology_name].research_trigger = trigger
 end

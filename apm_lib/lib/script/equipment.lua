@@ -453,6 +453,26 @@ end
 function equipment_script.on_init()
 	setup_environment(false, false)
 	get_config()
+
+	setup_starting_items()
+end
+
+function setup_starting_items()
+	local default_starting_items = {
+		{ name = "apm_equipment_burner_generator_basic", count = 1 },
+		{ name = "burner-mining-drill",                  count = 12 },
+		{ name = "apm_coke",                             count = 400 },
+		{ name = "burner-inserter",                      count = 10 },
+		{ name = "stone-furnace",                        count = 10 },
+		{ name = "personal-roboport-equipment",          count = 1 },
+		{ name = "battery-equipment",                    count = 2 },
+		{ name = "apm_zx80_construction_robot",          count = 10 },
+		{ name = "modular-armor",                        count = 1 },
+		{ name = "apm_assembling_machine_0",             count = 5 },
+		{ name = "firearm-magazine",                     count = 50 },
+	}
+
+	remote.call("ldinc_starting_equipment", "add_list", "apm_lib", default_starting_items)
 end
 
 -- Function -------------------------------------------------------------------
@@ -540,83 +560,6 @@ function equipment_script.on_nth_tick(event)
 		--     equipment_default_startup(t_object.player)
 		-- end
 	end
-end
-
-function equipment_script.check_starting_equipment(player)
-	check_starting_equipment(player)
-end
-
-function check_starting_equipment(player)
-	local success = player.insert { name = "wood", count = 1 } > 0
-	if success then
-		-- log("JIBRIL:: success")
-		-- usualy for multiplayer game it works
-		removeStartingItems(player)
-		itemsFromSettings(player)
-	else
-		local ctrlType = player.controller_type
-		-- log("JIBRIL:: failed::" .. tostring(player.controller_type))
-		local inventory = player.get_inventory(defines.inventory.character_main)
-		if inventory == nil then
-			inventory = player.get_inventory(defines.inventory.god_main)
-		end
-		-- log("JIB::" .. tostring(inventory))
-		if inventory then
-			removeStartingItems(inventory)
-			itemsFromSettings(inventory)
-		end
-	end
-end
-
-function removeStartingItems(player)
-	player.remove_item { name = "burner-mining-drill", count = 1 }
-	player.remove_item { name = "stone-furnace", count = 5 }
-	player.remove_item { name = "wood", count = 200 }
-end
-
-function itemsFromSettings(player)
-	local input = settings.startup["apm_lib_player_items"].value
-	if input ~= '' then
-		for i in string.gmatch(input, "%S+") do
-			local name = ''
-			local count = 0
-			local ind = 0
-			for v in string.gmatch(i, "[^:]+") do
-				if ind == 0 then
-					name = v
-				end
-				if ind == 1 then
-					count = tonumber(v)
-				end
-				ind = ind + 1
-			end
-			if pcall(function()
-						player.insert { name = name, count = count }
-					end) == false then
-				log("APM_LIB:: invalid item recipe in settings for starting items: " .. name)
-			end
-		end
-	end
-end
-
-function equipment_default_startup(player)
-	player.insert { name = "apm_equipment_burner_generator_basic", count = 1 }
-	player.insert { name = "iron-plate", count = 200 }
-	player.insert { name = "copper-plate", count = 200 }
-	player.insert { name = "burner-mining-drill", count = 12 }
-	player.insert { name = "coal", count = 200 }
-	player.insert { name = "apm_coke", count = 600 }
-	player.insert { name = "wood", count = 400 }
-	player.insert { name = "burner-inserter", count = 5 }
-	player.insert { name = "stone-furnace", count = 10 }
-	player.insert { name = "personal-roboport-equipment", count = 1 }
-	player.insert { name = "battery-equipment", count = 1 }
-	player.insert { name = "apm_zx80_construction_robot", count = 5 }
-	player.insert { name = "modular-armor", count = 1 }
-	player.insert { name = "apm_assembling_machine_0", count = 5 }
-	player.insert { name = "apm_crusher_machine_0", count = 5 }
-	player.insert { name = "apm_press_machine_0", count = 5 }
-	player.insert { name = "apm_lab_0", count = 1 }
 end
 
 -- Remote Interface -----------------------------------------------------------
