@@ -1,11 +1,11 @@
 {
         "name": "apm_lib_ldinc",
-        "version": "0.3.2",
+        "version": "0.30.4",
         "title": "Amator Phasma's Library (forked)",
         "author": "AmatorPhasma, ldinc",
         "dependencies": [
                 "base >= 2.0.13",
-                "apm_resource_pack_ldinc >= 0.3.1",
+                "apm_resource_pack_ldinc >= 0.30.2",
                 "freeplay_starting_equipment >= 0.2.3",
                 "!Burner-Leech",
                 "!Burner-Leech-Fork"

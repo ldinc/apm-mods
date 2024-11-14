@@ -183,9 +183,15 @@ function apm.lib.utils.item.remove(item_name)
     if not apm.lib.utils.item.exist(item_name) then return end
 
     local item = data.raw.item[item_name]
+
+    if not item then
+        APM_LOG_ERR(self, "remove", "item '"..item_name.."' was not found to be removed.")
+
+        return
+    end
+
     item.hidden = true
     item.hidden_in_factoriopedia = true
-
 
     item.flags = { 'hide-from-bonus-gui', 'hide-from-fuel-tooltip' }
 

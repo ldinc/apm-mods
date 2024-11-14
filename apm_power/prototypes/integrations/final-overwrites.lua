@@ -83,7 +83,7 @@ apm.lib.utils.recipe.result.replace_all('wooden-board', 'apm_wood_board')
 apm.lib.utils.recipe.ingredient.replace_all('wooden-board', 'apm_wood_board')
 apm.lib.utils.item.remove('wooden-board')
 
--- resin
+-- resin (seems be from bob?)
 apm.lib.utils.recipe.result.replace_all('resin', 'apm_resin')
 apm.lib.utils.recipe.ingredient.replace_all('resin', 'apm_resin')
 apm.lib.utils.item.remove('resin')
