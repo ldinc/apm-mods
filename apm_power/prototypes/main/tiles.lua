@@ -2,7 +2,6 @@ require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/tiles.lua'
-local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
 
 APM_LOG_HEADER(self)
 
@@ -183,7 +182,7 @@ local tile_asphalt = {
 	decorative_removal_probability = 0.95,
 	minable = { mining_time = 0.1, result = "apm_asphalt" },
 	mined_sound = sound_deconstruct_bricks(0.6),
-	collision_mask = tile_collision_masks.ground(),
+	collision_mask = {layers = {ground_tile = true}},
 	walking_speed_modifier = 1.4,
 	variants = {
 		main =
