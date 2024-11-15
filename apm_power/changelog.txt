@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.30.5
+Date: 15.11.2024
+  Changed:
+    - Set Earendel patch enabled by default 
+  Fixed:
+    - Cycles with tech tree with AAI Industry
+---------------------------------------------------------------------------------------------------
+Version: 0.30.4
+Date: 14.11.2024
+  Removed:
+    - Runtime settings for improvised armor. The feature now relies on freeplay-starting-equipment. 
+---------------------------------------------------------------------------------------------------
 Version: 0.30.3
 Date: 14.11.2024
   Changed:

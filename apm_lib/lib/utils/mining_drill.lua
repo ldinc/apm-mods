@@ -109,8 +109,12 @@ function apm.lib.utils.mining_drill.burner.overhaul(mining_drill_name, level)
 	)
 
 	mining_drill.resource_searching_radius = 0.99 + level - 1
-	mining_drill.radius_visualisation_picture = { filename =
-	"__base__/graphics/entity/electric-mining-drill/electric-mining-drill-radius-visualization.png", width = 10, height = 10 }
+	mining_drill.radius_visualisation_picture = {
+		filename =
+		"__base__/graphics/entity/electric-mining-drill/electric-mining-drill-radius-visualization.png",
+		width = 10,
+		height = 10
+	}
 
 	APM_LOG_INFO(self, 'burner.overhaul()', 'mining-drill with name: "' .. tostring(mining_drill_name) .. '" changed.')
 end
@@ -121,6 +125,8 @@ end
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.mining_drill.set.hidden(mining_drill_name)
 	if not apm.lib.utils.mining_drill.exist(mining_drill_name) then return end
+
 	local mining_drill = data.raw['mining-drill'][mining_drill_name]
-	apm.lib.utils.entity.add.flag(mining_drill, 'hidden')
+
+	mining_drill.hidden = true
 end

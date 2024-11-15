@@ -14,7 +14,11 @@ require('prototypes.integrations.patches')
 
 -- generate recipies for sinkhole
 
-local amount = settings.startup["apm_sinkhole_fluid_rate"].value
+local amount = tonumber(settings.startup["apm_sinkhole_fluid_rate"].value)
+
+if not amount then
+  amount = 1
+end
 
 
 local get_icons = function(prototype)

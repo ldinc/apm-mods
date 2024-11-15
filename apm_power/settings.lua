@@ -52,7 +52,7 @@ data:extend({
   {type = "bool-setting", name = "apm_power_compat_angel_overwrite_crystal_saw_blades", setting_type = "startup", default_value = false, order='pb_c'},
   {type = "bool-setting", name = "apm_power_compat_sctm", setting_type = "startup", default_value = false, order='pc_a'},
   {type = "bool-setting", name = "apm_power_compat_sct_overhaul_machine_frames", setting_type = "startup", default_value = false, order='pc_b'},
-  {type = "bool-setting", name = "apm_power_compat_earendel", setting_type = "startup", default_value = false, order='pd_a'},
+  {type = "bool-setting", name = "apm_power_compat_earendel", setting_type = "startup", default_value = true, order='pd_a'},
   {type = "bool-setting", name = "apm_power_compat_bio_industries", setting_type = "startup", default_value = false, order='pe_a'},
   {type = "bool-setting", name = "apm_power_compat_expensivelandfillrecipe", setting_type = "startup", default_value = false, order='pf_a'},
   {type = "bool-setting", name = "apm_power_compat_kingarthur", setting_type = "startup", default_value = false, order='pg_a'},
@@ -69,6 +69,3 @@ data:extend({
 --
 --
 -- ----------------------------------------------------------------------------
-data:extend({
-	{type = "bool-setting", name = "apm_power_starter_armor", setting_type = "runtime-global", default_value = true, order='aa_a'},
-})

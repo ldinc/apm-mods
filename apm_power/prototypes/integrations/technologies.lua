@@ -141,6 +141,8 @@ if mods['aai-vehicles-chaingunner'] and apm_power_compat_earendel then
 end
 
 if (mods['space-exploration'] or mods['aai-industry']) and apm_power_compat_earendel then
+	apm.lib.utils.technology.remove.prerequisites_all('sand-processing')
+
 	apm.lib.utils.technology.add.prerequisites('sand-processing', 'apm_stone_bricks')
 	apm.lib.utils.technology.add.science_pack('sand-processing', 'apm_industrial_science_pack', 1)
 	apm.lib.utils.technology.remove.science_pack('sand-processing', 'automation-science-pack')
@@ -149,6 +151,12 @@ if (mods['space-exploration'] or mods['aai-industry']) and apm_power_compat_eare
 	apm.lib.utils.technology.add.prerequisites('apm_greenhouse', 'glass-processing')
 	apm.lib.utils.technology.add.prerequisites('apm_lab_1', 'glass-processing')
 	apm.lib.utils.technology.add.prerequisites('fluid-handling', 'automation-2')
+
+	apm.lib.utils.technology.add.prerequisites('apm_crusher_machine_0', 'burner-mechanics')
+	apm.lib.utils.technology.force.recipe_for_unlock('apm_puddling_furnace_0', 'boiler')
+	apm.lib.utils.technology.add.prerequisites('apm_steam_science_pack', 'apm_puddling_furnace_0')
+
+	apm.lib.utils.technology.force.recipe_for_unlock('electric-lab', 'lab')
 end
 
 -- Bob ------------------------------------------------------------------------
@@ -371,7 +379,7 @@ end
 if mods.ScienceCostTweakerM and apm_power_compat_sctm then
 
 	apm.lib.utils.technology.delete('sct-lab-t1')
-	apm.lib.utils.technology.remove.recipe_from_unlock('apm_power_automation_science_pack', 'apm_electromagnet', 'apm_egen_unit')
+	apm.lib.utils.technology.remove.recipe_from_unlock('apm_power_automation_science_pack', 'apm_electromagnet')
 	apm.lib.utils.technology.delete('apm_power_automation_science_pack')
 
 	apm.lib.utils.technology.remove.prerequisites('apm_power_electricity', 'automation-science-pack')

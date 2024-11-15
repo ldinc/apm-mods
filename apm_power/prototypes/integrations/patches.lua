@@ -45,5 +45,5 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reve
 -- ----------------------------------------------------------------------------
 if mods['space-exploration'] and apm_power_compat_earendel then
     --apm.lib.utils.patch.space_exploration('prototype_type', 'prototype_name')
-    apm.lib.utils.patch.space_exploration('assembling-machine', 'apm_offshore_pump_burner')
+    -- apm.lib.utils.patch.space_exploration('assembling-machine', 'apm_offshore_pump_burner')
 end

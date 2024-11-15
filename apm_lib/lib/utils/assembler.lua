@@ -44,7 +44,6 @@ function apm.lib.utils.assembler.get.fuel_categories(assembler_name)
 			return rc
 		end
 	elseif assembler.energy_source.type == 'fluid' then
-
 		if assembler.energy_source.fluid_box.filter ~= nil then
 			if assembler.energy_source.fluid_box.filter == 'steam' then
 				return nil
@@ -262,6 +261,8 @@ end
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.assembler.set.hidden(assembler_name)
 	if not apm.lib.utils.assembler.exist(assembler_name) then return end
+
 	local assembler = data.raw['assembling-machine'][assembler_name]
-	apm.lib.utils.entity.add.flag(assembler, 'hidden')
+
+	assembler.hidden = true
 end
