@@ -29,8 +29,8 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4.5
 recipe.ingredients = {
-	{ type = "item", name = 'apm_generic_ash', amount = 30 },
-	{ type = "fluid", name = "apm_creosote", amount = 25 }
+	{ type = "item",  name = 'apm_generic_ash', amount = 30 },
+	{ type = "fluid", name = "apm_creosote",    amount = 25 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_asphalt', amount = 2 }
@@ -63,8 +63,8 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4.5
 recipe.ingredients = {
-	{ type = "item", name = "apm_crushed_stone", amount = 16 },
-	{ type = "fluid", name = "apm_creosote",  amount = 25 }
+	{ type = "item",  name = "apm_crushed_stone", amount = 16 },
+	{ type = "fluid", name = "apm_creosote",      amount = 25 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_asphalt', amount = 2 }
@@ -97,9 +97,9 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4.5
 recipe.ingredients = {
-	{ type = "item", name = 'apm_generic_ash', amount = 30 },
-	{ type = "fluid", name = "crude-oil",   amount = 10 },
-	{ type = "fluid", name = "heavy-oil",   amount = 10 }
+	{ type = "item",  name = 'apm_generic_ash', amount = 30 },
+	{ type = "fluid", name = "crude-oil",       amount = 10 },
+	{ type = "fluid", name = "heavy-oil",       amount = 10 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_asphalt', amount = 2 }
@@ -132,9 +132,9 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4.5
 recipe.ingredients = {
-	{ type = "item", name = "apm_crushed_stone", amount = 16 },
-	{ type = "fluid", name = "crude-oil",     amount = 10 },
-	{ type = "fluid", name = "heavy-oil",     amount = 10 }
+	{ type = "item",  name = "apm_crushed_stone", amount = 16 },
+	{ type = "fluid", name = "crude-oil",         amount = 10 },
+	{ type = "fluid", name = "heavy-oil",         amount = 10 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_asphalt', amount = 2 }

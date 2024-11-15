@@ -21,7 +21,7 @@ recipe.enabled = false
 recipe.energy_required = 1.25
 recipe.ingredients = {
 	{ type = "item", name = "copper-cable", amount = 3 },
-	{ type = "item", name = "iron-plate", amount = 1 }
+	{ type = "item", name = "iron-plate",   amount = 1 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_electromagnet', amount = 2 }
@@ -48,9 +48,9 @@ recipe.category = 'advanced-crafting'
 recipe.enabled = false
 recipe.energy_required = 1.25
 recipe.ingredients = {
-	{ type = "item", name = "apm_electromagnet", amount = 10 },
-	{ type = "item", name = "steel-plate",      amount = 1 },
-	{ type = "item", name = "apm_iron_bearing", amount = 2 },
+	{ type = "item", name = "apm_electromagnet",    amount = 10 },
+	{ type = "item", name = "steel-plate",          amount = 1 },
+	{ type = "item", name = "apm_iron_bearing",     amount = 2 },
 	{ type = "item", name = "apm_mechanical_relay", amount = 1 },
 }
 recipe.results = {
@@ -89,7 +89,7 @@ recipe.ingredients = {
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_wood_pellets', amount = 1, show_details_in_recipe_tooltip = false },
-	{ type = 'item', name = 'apm_resin',    amount = 2 }
+	{ type = 'item', name = 'apm_resin',        amount = 2 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 8
@@ -121,12 +121,12 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1.25
 recipe.ingredients = {
-	{ type = "item", name = "wood",          amount = 1 },
+	{ type = "item", name = "wood",              amount = 1 },
 	{ type = "item", name = "apm_crusher_drums", amount = 1 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_wood_pellets',   amount = 1, show_details_in_recipe_tooltip = false },
-	{ type = 'item', name = 'apm_resin',          amount = 4 },
+	{ type = 'item', name = 'apm_wood_pellets',       amount = 1, show_details_in_recipe_tooltip = false },
+	{ type = 'item', name = 'apm_resin',              amount = 4 },
 	{ type = 'item', name = 'apm_crusher_drums_used', amount = 1, catalyst_amount = 1 }
 }
 recipe.main_product = ''
@@ -195,7 +195,7 @@ recipe.enabled = false
 recipe.energy_required = 3
 recipe.ingredients = {
 	{ type = "item", name = "apm_resin", amount = 3 },
-	{ type = "item", name = "sulfur", amount = 2 }
+	{ type = "item", name = "sulfur",    amount = 2 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_rubber', amount = 5 }
@@ -222,7 +222,7 @@ recipe.enabled = true
 recipe.energy_required = 0.75
 recipe.ingredients = {
 	{ type = "item", name = "iron-gear-wheel", amount = 3 },
-	{ type = "item", name = "iron-stick",  amount = 1 }
+	{ type = "item", name = "iron-stick",      amount = 1 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_gearing', amount = 1 }
@@ -360,8 +360,8 @@ recipe.enabled = true
 recipe.energy_required = 1
 recipe.ingredients = {
 	{ type = "item", name = "apm_wood_board", amount = 1 },
-	{ type = "item", name = "iron-plate", amount = 1 },
-	{ type = "item", name = "copper-plate", amount = 1 }
+	{ type = "item", name = "iron-plate",     amount = 1 },
+	{ type = "item", name = "copper-plate",   amount = 1 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_mechanical_relay', amount = 1 }
@@ -389,8 +389,8 @@ recipe.enabled = false
 recipe.energy_required = 1.5
 recipe.ingredients = {
 	{ type = "item", name = "apm_wood_board", amount = 1 },
-	{ type = "item", name = "copper-plate", amount = 2 },
-	{ type = "item", name = "iron-stick", amount = 3 }
+	{ type = "item", name = "copper-plate",   amount = 2 },
+	{ type = "item", name = "iron-stick",     amount = 3 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_steam_relay', amount = 1 }
@@ -479,8 +479,8 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "apm_crushed_stone", amount = 4 },
-	{ type = "fluid", name = "water",         amount = 40 }
+	{ type = "item",  name = "apm_crushed_stone", amount = 4 },
+	{ type = "fluid", name = "water",             amount = 40 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_stone_brick_raw', amount = 1 }
@@ -516,12 +516,12 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1.25
 recipe.ingredients = {
-	{ type = "item", name = "apm_wet_mud",   amount = 2 },
+	{ type = "item", name = "apm_wet_mud",       amount = 2 },
 	{ type = "item", name = "apm_crushed_stone", amount = 2 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_stone_brick_raw', amount = 1 },
-	{ type = 'fluid', name = 'apm_dirt_water',  amount = 10, catalyst_amount = 10 }
+	{ type = 'item',  name = 'apm_stone_brick_raw', amount = 1 },
+	{ type = 'fluid', name = 'apm_dirt_water',      amount = 10, catalyst_amount = 10 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -572,8 +572,8 @@ recipe.enabled = true
 recipe.energy_required = 1.25
 recipe.ingredients = {
 	{ type = "item", name = "apm_mechanical_relay", amount = 1 },
-	{ type = "item", name = "apm_pistions",     amount = 1 },
-	{ type = "item", name = "apm_gearing",      amount = 1 }
+	{ type = "item", name = "apm_pistions",         amount = 1 },
+	{ type = "item", name = "apm_gearing",          amount = 1 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_simple_engine', amount = 1 }
@@ -600,9 +600,9 @@ recipe.category = 'basic-crafting'
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "apm_pistions", amount = 1 },
+	{ type = "item", name = "apm_pistions",    amount = 1 },
 	{ type = "item", name = "apm_steam_relay", amount = 3 },
-	{ type = "item", name = "apm_gearing", amount = 1 }
+	{ type = "item", name = "apm_gearing",     amount = 1 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_steam_engine', amount = 1 }
@@ -629,8 +629,8 @@ recipe.enabled = true
 recipe.energy_required = 1.5
 recipe.ingredients = {
 	{ type = "item", name = "apm_mechanical_relay", amount = 2 },
-	{ type = "item", name = "iron-plate",       amount = 1 },
-	{ type = "item", name = "copper-plate",     amount = 2 }
+	{ type = "item", name = "iron-plate",           amount = 1 },
+	{ type = "item", name = "copper-plate",         amount = 2 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_machine_frame_basic', amount = 2 }
@@ -658,9 +658,9 @@ recipe.enabled = false
 recipe.energy_required = 1.5
 recipe.ingredients = {
 	{ type = "item", name = "apm_machine_frame_basic", amount = 2 },
-	{ type = "item", name = "apm_steam_relay",     amount = 2 },
-	{ type = "item", name = "steel-plate",         amount = 2 },
-	{ type = "item", name = "pipe",                amount = 2 }
+	{ type = "item", name = "apm_steam_relay",         amount = 2 },
+	{ type = "item", name = "steel-plate",             amount = 2 },
+	{ type = "item", name = "pipe",                    amount = 2 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_machine_frame_steam', amount = 1 }
@@ -689,8 +689,8 @@ recipe.energy_required = 1.25
 recipe.ingredients = {
 	{ type = "item", name = "apm_machine_frame_basic", amount = 3 },
 	apm.lib.utils.builder.recipe.item.simple('APM_CIRCUIT_T2', 3),
-	{ type = "item", name = "steel-plate",         amount = 3 },
-	{ type = "item", name = "pipe",                amount = 3 }
+	{ type = "item", name = "steel-plate",             amount = 3 },
+	{ type = "item", name = "pipe",                    amount = 3 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_machine_frame_advanced', amount = 1 }
@@ -724,15 +724,15 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "apm_machine_frame_basic_used", amount = 5 },
-	{ type = "item", name = "iron-plate",                amount = 3 },
-	{ type = "item", name = "copper-plate",              amount = 3 },
-	{ type = "fluid", name = "water",                    amount = 30 }
+	{ type = "item",  name = "apm_machine_frame_basic_used", amount = 5 },
+	{ type = "item",  name = "iron-plate",                   amount = 3 },
+	{ type = "item",  name = "copper-plate",                 amount = 3 },
+	{ type = "fluid", name = "water",                        amount = 30 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_machine_frame_basic', amount = 4 },
-	{ type = "item", name = "apm_machine_frame_basic", amount_min = 1, amount_max = 1, probability = 0.5, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water",      amount = 30,  catalyst_amount = 30 }
+	{ type = 'item',  name = 'apm_machine_frame_basic', amount = 4 },
+	{ type = "item",  name = "apm_machine_frame_basic", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
+	{ type = "fluid", name = "apm_dirt_water",          amount = 30,    catalyst_amount = 30 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -764,15 +764,15 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "apm_machine_frame_steam_used", amount = 5 },
-	{ type = "item", name = "steel-plate",               amount = 2 },
-	{ type = "item", name = "copper-plate",              amount = 5 },
-	{ type = "fluid", name = "water",                    amount = 30 }
+	{ type = "item",  name = "apm_machine_frame_steam_used", amount = 5 },
+	{ type = "item",  name = "steel-plate",                  amount = 2 },
+	{ type = "item",  name = "copper-plate",                 amount = 5 },
+	{ type = "fluid", name = "water",                        amount = 30 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_machine_frame_steam', amount = 4 },
-	{ type = "item", name = "apm_machine_frame_steam", amount_min = 1, amount_max = 1, probability = 0.5, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water",      amount = 30,  catalyst_amount = 30 }
+	{ type = 'item',  name = 'apm_machine_frame_steam', amount = 4 },
+	{ type = "item",  name = "apm_machine_frame_steam", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
+	{ type = "fluid", name = "apm_dirt_water",          amount = 30,    catalyst_amount = 30 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -804,15 +804,15 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "apm_machine_frame_advanced_used", amount = 5 },
-	{ type = "item", name = "steel-plate",                  amount = 5 },
-	{ type = "item", name = "copper-plate",                 amount = 2 },
-	{ type = "fluid", name = "water",                       amount = 30 }
+	{ type = "item",  name = "apm_machine_frame_advanced_used", amount = 5 },
+	{ type = "item",  name = "steel-plate",                     amount = 5 },
+	{ type = "item",  name = "copper-plate",                    amount = 2 },
+	{ type = "fluid", name = "water",                           amount = 30 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_machine_frame_advanced', amount = 4 },
-	{ type = "item", name = "apm_machine_frame_advanced", amount_min = 1, amount_max = 1, probability = 0.5, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water",         amount = 30,  catalyst_amount = 30 }
+	{ type = 'item',  name = 'apm_machine_frame_advanced', amount = 4 },
+	{ type = "item",  name = "apm_machine_frame_advanced", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
+	{ type = "fluid", name = "apm_dirt_water",             amount = 30,    catalyst_amount = 30 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -860,9 +860,9 @@ recipe.category = 'crafting-with-fluid'
 recipe.enabled = false
 recipe.energy_required = 0.5
 recipe.ingredients = {
-	{ type = "item", name = "iron-plate",         amount = 1 },
-	{ type = "item", name = "apm_iron_bearing_ball", amount = 16 },
-	{ type = "fluid", name = "lubricant",         amount = 10 },
+	{ type = "item",  name = "iron-plate",            amount = 1 },
+	{ type = "item",  name = "apm_iron_bearing_ball", amount = 16 },
+	{ type = "fluid", name = "lubricant",             amount = 10 },
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_iron_bearing', amount = 2 }
@@ -892,7 +892,7 @@ recipe.enabled = false
 recipe.energy_required = 0.5
 recipe.ingredients = {
 	{ type = "item", name = "apm_coal_crushed", amount = 4 },
-	{ type = "item", name = 'sulfur',       amount = 1 },
+	{ type = "item", name = 'sulfur',           amount = 1 },
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_gun_powder', amount = 16 }
@@ -916,7 +916,7 @@ recipe.icons = { apm.power.icons.ammonium_sulfate }
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = 'sulfur',                     amount = 1 },
+	{ type = "item",  name = 'sulfur',                        amount = 1 },
 	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 15 }
 }
 recipe.results = {

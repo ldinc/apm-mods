@@ -6,7 +6,7 @@ local self = 'apm_power/prototypes/main/coking_plants.lua'
 
 APM_LOG_HEADER(self)
 
-local base_animation_progress =  0.26666667
+local base_animation_progress = 0.26666667
 
 local coking_plant = {}
 coking_plant.type = "assembling-machine"

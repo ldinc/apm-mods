@@ -81,7 +81,8 @@ air_cleaner.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 air_cleaner.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ air_cleaner })
 
---------------------- electrinc cleaner
+--- [electric cleaner]
+
 local air_cleaner = {}
 air_cleaner.type = "assembling-machine"
 air_cleaner.name = "apm_air_cleaner_machine_1"

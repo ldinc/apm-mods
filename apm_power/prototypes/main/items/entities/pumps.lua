@@ -10,8 +10,8 @@ APM_LOG_HEADER(self)
 --
 -- ----------------------------------------------------------------------------
 local item_icon_a = apm.lib.utils.icon.get.from_item('pump')
-local item_icon_b = {apm.lib.icons.dynamics.t1}
-local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+local item_icon_b = { apm.lib.icons.dynamics.t1 }
+local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
 local item = {}
 item.type = 'item'
@@ -22,4 +22,4 @@ item.group = "apm_power"
 item.subgroup = "apm_power_inserter"
 item.order = 'ba_a'
 item.place_result = "apm_pump_0"
-data:extend({item})
+data:extend({ item })

@@ -19,11 +19,11 @@ recipe.name = "apm_steam_inserter"
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "apm_steam_engine",    amount = 1 },
-	{ type = "item", name = "iron-plate",      amount = 1 },
-	{ type = "item", name = "iron-gear-wheel", amount = 1 },
-	{ type = "item", name = "apm_iron_bearing",    amount = 1 },
-	{ type = "item", name = "apm_steam_relay", amount = 1 },
+	{ type = "item", name = "apm_steam_engine", amount = 1 },
+	{ type = "item", name = "iron-plate",       amount = 1 },
+	{ type = "item", name = "iron-gear-wheel",  amount = 1 },
+	{ type = "item", name = "apm_iron_bearing", amount = 1 },
+	{ type = "item", name = "apm_steam_relay",  amount = 1 },
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_steam_inserter', amount = 1 }
@@ -44,11 +44,11 @@ recipe.name = "apm_steam_inserter_long"
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "apm_steam_engine",    amount = 1 },
-	{ type = "item", name = "iron-plate",      amount = 1 },
-	{ type = "item", name = "iron-gear-wheel", amount = 1 },
-	{ type = "item", name = "apm_iron_bearing",    amount = 1 },
-	{ type = "item", name = "apm_steam_relay", amount = 1 },
+	{ type = "item", name = "apm_steam_engine", amount = 1 },
+	{ type = "item", name = "iron-plate",       amount = 1 },
+	{ type = "item", name = "iron-gear-wheel",  amount = 1 },
+	{ type = "item", name = "apm_iron_bearing", amount = 1 },
+	{ type = "item", name = "apm_steam_relay",  amount = 1 },
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_steam_inserter_long', amount = 1 }

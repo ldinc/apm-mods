@@ -19,10 +19,10 @@ recipe.name = "apm_offshore_pump_0"
 recipe.enabled = false
 recipe.energy_required = 1.5
 recipe.ingredients = {
-	{ type = "item", name = "apm_rubber",    amount = 2 },
-	{ type = "item", name = "pipe",          amount = 3 },
+	{ type = "item", name = "apm_rubber",        amount = 2 },
+	{ type = "item", name = "pipe",              amount = 3 },
 	{ type = "item", name = "apm_simple_engine", amount = 2 },
-	{ type = "item", name = "iron-plate",    amount = 2 },
+	{ type = "item", name = "iron-plate",        amount = 2 },
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_offshore_pump_0', amount = 1 }
@@ -45,10 +45,10 @@ recipe.name = "apm_offshore_pump_1"
 recipe.enabled = false
 recipe.energy_required = 1.5
 recipe.ingredients = {
-	{ type = "item", name = "apm_rubber",       amount = 4 },
-	{ type = "item", name = "steel-plate",      amount = 1 },
+	{ type = "item", name = "apm_rubber",           amount = 4 },
+	{ type = "item", name = "steel-plate",          amount = 1 },
 	{ type = "item", name = "electric-engine-unit", amount = 2 },
-	{ type = "item", name = "electronic-circuit", amount = 5 }
+	{ type = "item", name = "electronic-circuit",   amount = 5 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_offshore_pump_1', amount = 1 }

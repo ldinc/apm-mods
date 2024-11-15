@@ -67,8 +67,8 @@ recipe.ingredients = {
 	{ type = "item", name = "apm_wet_mud", amount = 5 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_stone_crucible_raw', amount = 1 },
-	{ type = 'fluid', name = 'apm_dirt_water',     amount = 25, catalyst_amount = 25 }
+	{ type = 'item',  name = 'apm_stone_crucible_raw', amount = 1 },
+	{ type = 'fluid', name = 'apm_dirt_water',         amount = 25, catalyst_amount = 25 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4

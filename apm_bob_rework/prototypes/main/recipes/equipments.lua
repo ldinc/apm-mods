@@ -14,14 +14,14 @@ recipe.normal = {}
 recipe.normal.enabled = false
 recipe.normal.energy_required = 3.5
 recipe.normal.ingredients = {
-        apm.lib.utils.builder.recipe.item.simple('APM_CIRCUIT_T4', 5),
-        {type="item", name="electric-engine-unit", amount=5},
-        {type="item", name="copper-plate", amount=10},
-        {type="item", name="steel-plate", amount=5}
-    }
+	apm.lib.utils.builder.recipe.item.simple('APM_CIRCUIT_T4', 5),
+	{ type = "item", name = "electric-engine-unit", amount = 5 },
+	{ type = "item", name = "copper-plate",     amount = 10 },
+	{ type = "item", name = "steel-plate",      amount = 5 }
+}
 recipe.normal.results = {
-        {type='item', name='energy-absorber', amount=1}
-    }
+	{ type = 'item', name = 'energy-absorber', amount = 1 }
+}
 recipe.normal.main_product = 'energy-absorber'
 recipe.normal.requester_paste_multiplier = 4
 recipe.normal.always_show_products = true
@@ -30,4 +30,4 @@ recipe.expensive = table.deepcopy(recipe.normal)
 --recipe.expensive.energy_required =
 --recipe.expensive.ingredients = {}
 --recipe.expensive.results = {}
-data:extend({recipe})
+data:extend({ recipe })

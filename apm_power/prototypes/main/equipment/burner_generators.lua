@@ -13,14 +13,14 @@ local item = {}
 item.type = 'item'
 item.name = 'apm_equipment_burner_generator_basic'
 item.icons = {
-    apm.power.icons.item_burner_generator_basic
+	apm.power.icons.item_burner_generator_basic
 }
 item.stack_size = 20
 --item.group = "apm_other"
 item.subgroup = "equipment"
 item.order = "a[energy-source]-b[apm-a]"
 item.place_as_equipment_result = "apm_equipment_burner_generator_basic"
-data:extend({item})
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
@@ -30,14 +30,14 @@ local item = {}
 item.type = 'item'
 item.name = 'apm_equipment_burner_generator_advanced'
 item.icons = {
-    apm.power.icons.item_burner_generator_advanced
+	apm.power.icons.item_burner_generator_advanced
 }
 item.stack_size = 20
 --item.group = "apm_other"
 item.subgroup = "equipment"
 item.order = "a[energy-source]-b[apm-b]"
 item.place_as_equipment_result = "apm_equipment_burner_generator_advanced"
-data:extend({item})
+data:extend({ item })
 
 -- Equipment ------------------------------------------------------------------
 --
@@ -59,14 +59,14 @@ equipment.energy_source = {}
 equipment.energy_source.type = "electric"
 equipment.energy_source.usage_priority = "secondary-output"
 equipment.power = "200kW"
-equipment.categories = {'apm_starter_equipment', "armor"}
+equipment.categories = { 'apm_starter_equipment', "armor" }
 equipment.burner = {}
-equipment.burner.fuel_categories = {'chemical', 'apm_refined_chemical'}
+equipment.burner.fuel_categories = { 'chemical', 'apm_refined_chemical' }
 equipment.burner.fuel_inventory_size = 1
 equipment.burner.burnt_inventory_size = 1
 equipment.burner.emissions_per_minute = apm.power.constants.emissions.equipment_burner_generator_basic
 equipment.burner.type = "burner"
-data:extend({equipment})
+data:extend({ equipment })
 
 -- Equipment ------------------------------------------------------------------
 --
@@ -88,11 +88,11 @@ equipment.energy_source = {}
 equipment.energy_source.type = "electric"
 equipment.energy_source.usage_priority = "secondary-output"
 equipment.power = "400kW"
-equipment.categories = {"armor"}
+equipment.categories = { "armor" }
 equipment.burner = {}
-equipment.burner.fuel_categories = {'apm_refined_chemical'}
+equipment.burner.fuel_categories = { 'apm_refined_chemical' }
 equipment.burner.fuel_inventory_size = 1
 equipment.burner.burnt_inventory_size = 1
 equipment.burner.emissions_per_minute = apm.power.constants.emissions.equipment_burner_generator_advanced
 equipment.burner.type = "burner"
-data:extend({equipment})
+data:extend({ equipment })

@@ -23,8 +23,8 @@ recipe.ingredients = {
 	{ type = "item", name = "apm_wet_mud", amount = 10 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_dry_mud', amount = 5 },
-	{ type = 'fluid', name = 'steam',   amount = 50, temperature = 120 }
+	{ type = 'item',  name = 'apm_dry_mud', amount = 5 },
+	{ type = 'fluid', name = 'steam',       amount = 50, temperature = 120 }
 }
 recipe.main_product = 'apm_dry_mud'
 recipe.requester_paste_multiplier = 4
@@ -102,11 +102,11 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 3
 recipe.ingredients = {
-	{ type = "item", name = "apm_dry_mud", amount = 8 },
+	{ type = "item", name = "apm_dry_mud",    amount = 8 },
 	{ type = "item", name = "apm_sieve_iron", amount = 1 }
 }
 recipe.results = {
-	{ type = 'item', name = 'iron-ore',   amount_min = 1, amount_max = 1, probability = 0.25 },
+	{ type = 'item', name = 'iron-ore',       amount_min = 1, amount_max = 1, probability = 0.25 },
 	{ type = 'item', name = 'apm_sieve_iron', amount_min = 1, amount_max = 1, probability = 0.95, catalyst_amount = 1 }
 }
 recipe.main_product = ''
@@ -139,11 +139,11 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 3
 recipe.ingredients = {
-	{ type = "item", name = "apm_dry_mud",  amount = 8 },
+	{ type = "item", name = "apm_dry_mud",      amount = 8 },
 	{ type = "item", name = "apm_sieve_copper", amount = 1 }
 }
 recipe.results = {
-	{ type = 'item', name = 'copper-ore',   amount_min = 1, amount_max = 1, probability = 0.25 },
+	{ type = 'item', name = 'copper-ore',       amount_min = 1, amount_max = 1, probability = 0.25 },
 	{ type = 'item', name = 'apm_sieve_copper', amount_min = 1, amount_max = 1, probability = 0.95, catalyst_amount = 1 }
 }
 recipe.main_product = ''

@@ -27,7 +27,8 @@ item.pick_sound = item_sounds.mechanical_inventory_pickup
 item.drop_sound = item_sounds.mechanical_inventory_move
 data:extend({ item })
 
-------
+--- [electric aircleaner]
+
 local item = {}
 item.type = 'item'
 item.name = 'apm_air_cleaner_machine_1'

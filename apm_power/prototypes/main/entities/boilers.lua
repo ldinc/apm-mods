@@ -21,8 +21,8 @@ local boiler = table.deepcopy(data.raw.boiler['boiler'])
 
 boiler.name = 'apm_boiler_2'
 boiler.icons = {
-    apm.power.icons.boiler,
-    apm.lib.icons.dynamics.t2
+	apm.power.icons.boiler,
+	apm.lib.icons.dynamics.t2
 }
 --boiler.icon_size = apm.power.icons.boiler.icon_size
 boiler.minable = { mining_time = 0.2, result = "apm_boiler_2" }

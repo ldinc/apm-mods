@@ -183,7 +183,7 @@ local tile_asphalt = {
 	decorative_removal_probability = 0.95,
 	minable = { mining_time = 0.1, result = "apm_asphalt" },
 	mined_sound = sound_deconstruct_bricks(0.6),
-	collision_mask = tile_collision_masks.ground,
+	collision_mask = tile_collision_masks.ground(),
 	walking_speed_modifier = 1.4,
 	variants = {
 		main =

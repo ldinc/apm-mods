@@ -11,5 +11,5 @@ grid.name = "apm_equipment_grid_starter"
 grid.locked = true
 grid.width = 5
 grid.height = 2
-grid.equipment_categories = {'apm_starter_equipment'}
-data:extend({grid})
+grid.equipment_categories = { 'apm_starter_equipment' }
+data:extend({ grid })

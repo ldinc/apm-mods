@@ -19,9 +19,9 @@ recipe.name = "apm_boiler_2"
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "boiler",   amount = 1 },
+	{ type = "item", name = "boiler",       amount = 1 },
 	{ type = "item", name = "copper-plate", amount = 30 },
-	{ type = "item", name = "steel-plate", amount = 20 }
+	{ type = "item", name = "steel-plate",  amount = 20 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_boiler_2', amount = 1 }

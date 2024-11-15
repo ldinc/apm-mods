@@ -52,10 +52,10 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "sulfur",       amount = 1 },
+	{ type = "item", name = "sulfur",           amount = 1 },
 	{ type = "item", name = "apm_wood_pellets", amount = 2 },
-	{ type = "item", name = "apm_wet_mud",  amount = 5 },
-	{ type = "item", name = 'apm_generic_ash', amount = 10 }
+	{ type = "item", name = "apm_wet_mud",      amount = 5 },
+	{ type = "item", name = 'apm_generic_ash',  amount = 10 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_fertiliser_1', amount = 1 }
@@ -87,7 +87,7 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = 'item', name = 'apm_fertiliser_1', amount = 1 },
+	{ type = 'item', name = 'apm_fertiliser_1',     amount = 1 },
 	{ type = 'item', name = 'apm_ammonium_sulfate', amount = 5 }
 }
 recipe.results = {
@@ -120,9 +120,9 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 100
 recipe.ingredients = {
-	{ type = "item", name = "apm_tree_seeds", amount = 2 },
-	{ type = "item", name = "apm_wet_mud", amount = 2 },
-	{ type = "fluid", name = "water",      amount = 200 }
+	{ type = "item",  name = "apm_tree_seeds", amount = 2 },
+	{ type = "item",  name = "apm_wet_mud",    amount = 2 },
+	{ type = "fluid", name = "water",          amount = 200 }
 }
 recipe.results = {
 	{ type = 'item', name = 'wood', amount_min = 15, amount_max = 20, show_details_in_recipe_tooltip = false }
@@ -154,9 +154,9 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 250
 recipe.ingredients = {
-	{ type = "item", name = "apm_tree_seeds", amount = 4 },
-	{ type = "item", name = "apm_fertiliser_1", amount = 3 },
-	{ type = "fluid", name = "water",        amount = 200 }
+	{ type = "item",  name = "apm_tree_seeds",   amount = 4 },
+	{ type = "item",  name = "apm_fertiliser_1", amount = 3 },
+	{ type = "fluid", name = "water",            amount = 200 }
 }
 recipe.results = {
 	{ type = 'item', name = 'wood', amount = 60 }
@@ -188,9 +188,9 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 175
 recipe.ingredients = {
-	{ type = "item", name = "apm_tree_seeds", amount = 4 },
-	{ type = "item", name = "apm_fertiliser_2", amount = 4 },
-	{ type = "fluid", name = "water",        amount = 200 }
+	{ type = "item",  name = "apm_tree_seeds",   amount = 4 },
+	{ type = "item",  name = "apm_fertiliser_2", amount = 4 },
+	{ type = "fluid", name = "water",            amount = 200 }
 }
 recipe.results = {
 	{ type = 'item', name = 'wood', amount = 75 }

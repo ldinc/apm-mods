@@ -12,29 +12,29 @@ APM_LOG_HEADER(self)
 local item = {}
 item.type = 'item'
 item.name = 'apm_sinkhole'
-item.icons =  {apm.lib.icons.static.sinkhole}
+item.icons = { apm.lib.icons.static.sinkhole }
 item.stack_size = 50
 item.group = "apm_power"
 item.subgroup = "apm_power_machines_3"
 item.order = 'ad_a'
 item.place_result = "apm_sinkhole"
-data:extend({item})
+data:extend({ item })
 
 
 -- ----------------------------------------------------------------------------
 
 
 local item_icon_a = apm.lib.utils.icon.get.from_item("pipe-to-ground")
-local item_icon_b = {apm.lib.icons.dynamics.cooling}
-local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+local item_icon_b = { apm.lib.icons.dynamics.cooling }
+local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
 local item = {}
 item.type = 'item'
 item.name = 'apm_sinkhole_small'
-item.icons =  icons
+item.icons = icons
 item.stack_size = 50
 item.group = "apm_power"
 item.subgroup = "apm_power_machines_3"
 item.order = 'ad_a'
 item.place_result = "apm_sinkhole_small"
-data:extend({item})
+data:extend({ item })

@@ -21,8 +21,8 @@ recipe.name = "apm_crusher_machine_0"
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "stone-furnace",       amount = 1 },
-	{ type = "item", name = "apm_simple_engine",   amount = 2 },
+	{ type = "item", name = "stone-furnace",           amount = 1 },
+	{ type = "item", name = "apm_simple_engine",       amount = 2 },
 	{ type = "item", name = "apm_machine_frame_basic", amount = 3 },
 }
 recipe.results = {
@@ -48,9 +48,9 @@ recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
 	-- {type="item", name="apm_crusher_machine_0", amount=1},
-	{ type = "item", name = "apm_steam_engine",    amount = 2 },
+	{ type = "item", name = "apm_steam_engine",        amount = 2 },
 	{ type = "item", name = "apm_machine_frame_steam", amount = 3 },
-	{ type = "item", name = "stone-brick",         amount = 15 }
+	{ type = "item", name = "stone-brick",             amount = 15 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_crusher_machine_1', amount = 1 }
@@ -78,9 +78,9 @@ recipe.enabled = false
 recipe.energy_required = 6
 recipe.ingredients = {
 	-- {type="item", name="apm_crusher_machine_1", amount=1},
-	{ type = "item", name = "stone-brick",            amount = 20 },
-	{ type = "item", name = "electric-engine-unit",   amount = 5 },
-	{ type = "item", name = "electronic-circuit",     amount = 5 },
+	{ type = "item", name = "stone-brick",                amount = 20 },
+	{ type = "item", name = "electric-engine-unit",       amount = 5 },
+	{ type = "item", name = "electronic-circuit",         amount = 5 },
 	{ type = "item", name = "apm_machine_frame_advanced", amount = 3 }
 }
 recipe.results = {

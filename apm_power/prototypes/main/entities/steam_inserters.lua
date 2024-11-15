@@ -230,10 +230,10 @@ inserter.energy_per_rotation = "60kJ"
 inserter.hand_size = 1.0
 inserter.extension_speed = 0.019 -- electric: 0.02
 inserter.rotation_speed = 0.0149 -- electric: 0.0457
-inserter.pickup_position = {0, -2}
-inserter.insert_position = {0, 2.2}
+inserter.pickup_position = { 0, -2 }
+inserter.insert_position = { 0, 2.2 }
 
-local gpraphics_path =  "__apm_resource_pack_ldinc__/graphics/entities/burner_long_inserter/"
+local gpraphics_path = "__apm_resource_pack_ldinc__/graphics/entities/burner_long_inserter/"
 
 inserter.hand_base_picture.filename = gpraphics_path .. "hr-inserter-hand-base.png"
 

@@ -29,7 +29,7 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "coal", amount = 1 },
+	{ type = "item",  name = "coal",  amount = 1 },
 	{ type = "fluid", name = "water", amount = 35 }
 }
 recipe.results = {
@@ -96,13 +96,13 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "coal", amount = 4 },
+	{ type = "item",  name = "coal",  amount = 4 },
 	{ type = "fluid", name = "water", amount = 40 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_coal_crushed',           amount = 6 },
-	{ type = 'item', name = 'apm_coal_crushed',           amount_min = 1, amount_max = 2,  probability = 0.5, show_details_in_recipe_tooltip = false },
-	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 20, catalyst_amount = 20 }
+	{ type = 'item',  name = 'apm_coal_crushed',              amount = 6 },
+	{ type = 'item',  name = 'apm_coal_crushed',              amount_min = 1, amount_max = 2,      probability = 0.5, show_details_in_recipe_tooltip = false },
+	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 20,    catalyst_amount = 20 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 2
@@ -132,13 +132,13 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "coal",           amount = 4 },
-	{ type = "item", name = "apm_crusher_drums", amount = 2 },
-	{ type = "fluid", name = "water",         amount = 40 }
+	{ type = "item",  name = "coal",              amount = 4 },
+	{ type = "item",  name = "apm_crusher_drums", amount = 2 },
+	{ type = "fluid", name = "water",             amount = 40 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_coal_crushed',           amount = 6 },
-	{ type = 'item', name = 'apm_crusher_drums_used',     amount = 2, catalyst_amount = 1 },
+	{ type = 'item',  name = 'apm_coal_crushed',              amount = 6 },
+	{ type = 'item',  name = 'apm_crusher_drums_used',        amount = 2,  catalyst_amount = 1 },
 	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 20, catalyst_amount = 20 }
 }
 recipe.main_product = ''
@@ -200,11 +200,11 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "apm_coal_crushed", amount = 8 },
-	{ type = "fluid", name = "water",        amount = 40 }
+	{ type = "item",  name = "apm_coal_crushed", amount = 8 },
+	{ type = "fluid", name = "water",            amount = 40 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_coal_briquette',         amount = 4 },
+	{ type = 'item',  name = 'apm_coal_briquette',            amount = 4 },
 	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 20, catalyst_amount = 20 }
 }
 recipe.main_product = ''
@@ -234,13 +234,13 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "apm_coal_crushed", amount = 8 },
-	{ type = "item", name = "apm_press_plates", amount = 2 },
-	{ type = "fluid", name = "water",        amount = 40 }
+	{ type = "item",  name = "apm_coal_crushed", amount = 8 },
+	{ type = "item",  name = "apm_press_plates", amount = 2 },
+	{ type = "fluid", name = "water",            amount = 40 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_coal_briquette',         amount = 6 },
-	{ type = "item", name = "apm_press_plates_used",      amount = 2, catalyst_amount = 1 },
+	{ type = 'item',  name = 'apm_coal_briquette',            amount = 6 },
+	{ type = "item",  name = "apm_press_plates_used",         amount = 2,  catalyst_amount = 1 },
 	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 20, catalyst_amount = 20 }
 }
 recipe.main_product = ''
@@ -273,7 +273,7 @@ recipe.ingredients = {
 	{ type = "item", name = "apm_coal_briquette", amount = 2 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_coke',    amount = 2 },
+	{ type = 'item', name = 'apm_coke',        amount = 2 },
 	{ type = 'item', name = 'apm_generic_ash', amount = 3, show_details_in_recipe_tooltip = false }
 }
 recipe.main_product = ''
@@ -303,14 +303,14 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "apm_coal_briquette", amount = 2 },
-	{ type = "fluid", name = "steam",          amount = 50 }
+	{ type = "item",  name = "apm_coal_briquette", amount = 2 },
+	{ type = "fluid", name = "steam",              amount = 50 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_coke',    amount = 2 },
-	{ type = 'item', name = 'apm_coke',    amount_min = 1, amount_max = 1,                    probability = 0.3, show_details_in_recipe_tooltip = false },
-	{ type = 'item', name = 'sulfur',      amount_min = 1, amount_max = 1,                    probability = 0.35 },
-	{ type = 'item', name = 'apm_generic_ash', amount = 2, show_details_in_recipe_tooltip = false }
+	{ type = 'item', name = 'apm_coke',        amount = 2 },
+	{ type = 'item', name = 'apm_coke',        amount_min = 1, amount_max = 1,                        probability = 0.3, show_details_in_recipe_tooltip = false },
+	{ type = 'item', name = 'sulfur',          amount_min = 1, amount_max = 1,                        probability = 0.35 },
+	{ type = 'item', name = 'apm_generic_ash', amount = 2,     show_details_in_recipe_tooltip = false }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -339,15 +339,15 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 3
 recipe.ingredients = {
-	{ type = "item", name = "apm_coal_briquette", amount = 3 },
-	{ type = "fluid", name = "steam",          amount = 100 }
+	{ type = "item",  name = "apm_coal_briquette", amount = 3 },
+	{ type = "fluid", name = "steam",              amount = 100 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_coke',     amount = 3 },
-	{ type = 'item', name = 'apm_coke',     amount_min = 1, amount_max = 1,                    probability = 0.5, show_details_in_recipe_tooltip = false },
-	{ type = 'item', name = 'sulfur',       amount_min = 1, amount_max = 1,                    probability = 0.5 },
-	{ type = 'fluid', name = 'apm_creosote', amount = 15 },
-	{ type = 'item', name = 'apm_generic_ash', amount = 1, show_details_in_recipe_tooltip = false }
+	{ type = 'item',  name = 'apm_coke',        amount = 3 },
+	{ type = 'item',  name = 'apm_coke',        amount_min = 1, amount_max = 1,                        probability = 0.5, show_details_in_recipe_tooltip = false },
+	{ type = 'item',  name = 'sulfur',          amount_min = 1, amount_max = 1,                        probability = 0.5 },
+	{ type = 'fluid', name = 'apm_creosote',    amount = 15 },
+	{ type = 'item',  name = 'apm_generic_ash', amount = 1,     show_details_in_recipe_tooltip = false }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -376,14 +376,14 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 3.5
 recipe.ingredients = {
-	{ type = "item", name = "apm_coal_briquette", amount = 4 },
-	{ type = "fluid", name = "steam",          amount = 150 }
+	{ type = "item",  name = "apm_coal_briquette", amount = 4 },
+	{ type = "fluid", name = "steam",              amount = 150 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_coke',       amount = 4 },
-	{ type = 'item', name = 'apm_coke',       amount_min = 1, amount_max = 1, probability = 0.5, show_details_in_recipe_tooltip = false },
-	{ type = 'item', name = 'sulfur',         amount_min = 1, amount_max = 1, probability = 0.7 },
-	{ type = 'fluid', name = 'apm_creosote',  amount = 30 },
+	{ type = 'item',  name = 'apm_coke',          amount = 4 },
+	{ type = 'item',  name = 'apm_coke',          amount_min = 1, amount_max = 1, probability = 0.5, show_details_in_recipe_tooltip = false },
+	{ type = 'item',  name = 'sulfur',            amount_min = 1, amount_max = 1, probability = 0.7 },
+	{ type = 'fluid', name = 'apm_creosote',      amount = 30 },
 	{ type = 'fluid', name = 'apm_coke_oven_gas', amount = 30 }
 }
 recipe.main_product = ''
@@ -413,13 +413,13 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "apm_coal_briquette", amount = 4 },
-	{ type = "fluid", name = "steam",          amount = 200 }
+	{ type = "item",  name = "apm_coal_briquette", amount = 4 },
+	{ type = "fluid", name = "steam",              amount = 200 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_coke',       amount = 5 },
-	{ type = 'item', name = 'sulfur',         amount = 1 },
-	{ type = 'fluid', name = 'apm_creosote',  amount = 35 },
+	{ type = 'item',  name = 'apm_coke',          amount = 5 },
+	{ type = 'item',  name = 'sulfur',            amount = 1 },
+	{ type = 'fluid', name = 'apm_creosote',      amount = 35 },
 	{ type = 'fluid', name = 'apm_coke_oven_gas', amount = 45 }
 }
 recipe.main_product = ''
@@ -560,13 +560,13 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "wood", amount = 2 },
+	{ type = "item",  name = "wood",  amount = 2 },
 	{ type = "fluid", name = "water", amount = 40 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_wood_pellets', amount = 6 },
-	{ type = 'item', name = 'apm_wood_pellets', amount_min = 1, amount_max = 2, probability = 0.5, show_details_in_recipe_tooltip = false },
-	{ type = "fluid", name = "apm_dirt_water", amount = 20 }
+	{ type = 'item',  name = 'apm_wood_pellets', amount = 6 },
+	{ type = 'item',  name = 'apm_wood_pellets', amount_min = 1, amount_max = 2, probability = 0.5, show_details_in_recipe_tooltip = false },
+	{ type = "fluid", name = "apm_dirt_water",   amount = 20 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -595,15 +595,15 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "wood",           amount = 2 },
-	{ type = "item", name = "apm_crusher_drums", amount = 2 },
-	{ type = "fluid", name = "water",         amount = 40 }
+	{ type = "item",  name = "wood",              amount = 2 },
+	{ type = "item",  name = "apm_crusher_drums", amount = 2 },
+	{ type = "fluid", name = "water",             amount = 40 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_wood_pellets',    amount = 8 },
+	{ type = 'item',  name = 'apm_wood_pellets',       amount = 8 },
 	--{type='item', name='apm_wood_pellets', amount_min=1, amount_max=1, probability=0.5, show_details_in_recipe_tooltip=false},
-	{ type = "item", name = "apm_crusher_drums_used", amount = 2, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water",     amount = 20 }
+	{ type = "item",  name = "apm_crusher_drums_used", amount = 2, catalyst_amount = 1 },
+	{ type = "fluid", name = "apm_dirt_water",         amount = 20 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -664,12 +664,12 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "apm_wood_pellets", amount = 8 },
-	{ type = "fluid", name = "water",        amount = 40 }
+	{ type = "item",  name = "apm_wood_pellets", amount = 8 },
+	{ type = "fluid", name = "water",            amount = 40 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_wood_briquette', amount = 4 },
-	{ type = "fluid", name = "apm_dirt_water", amount = 20 }
+	{ type = 'item',  name = 'apm_wood_briquette', amount = 4 },
+	{ type = "fluid", name = "apm_dirt_water",     amount = 20 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -698,14 +698,14 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "apm_wood_pellets", amount = 8 },
-	{ type = "item", name = "apm_press_plates", amount = 2 },
-	{ type = "fluid", name = "water",        amount = 40 }
+	{ type = "item",  name = "apm_wood_pellets", amount = 8 },
+	{ type = "item",  name = "apm_press_plates", amount = 2 },
+	{ type = "fluid", name = "water",            amount = 40 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_wood_briquette', amount = 6 },
-	{ type = "item", name = "apm_press_plates_used", amount = 2, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water",    amount = 20 }
+	{ type = 'item',  name = 'apm_wood_briquette',    amount = 6 },
+	{ type = "item",  name = "apm_press_plates_used", amount = 2, catalyst_amount = 1 },
+	{ type = "fluid", name = "apm_dirt_water",        amount = 20 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -736,9 +736,9 @@ recipe.ingredients = {
 	{ type = "item", name = "apm_wood_briquette", amount = 2 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_charcoal', amount = 2 },
-	{ type = 'item', name = 'apm_charcoal', amount_min = 1, amount_max = 1,                   probability = 0.5, show_details_in_recipe_tooltip = false },
-	{ type = 'item', name = 'apm_generic_ash', amount = 3, show_details_in_recipe_tooltip = false }
+	{ type = 'item', name = 'apm_charcoal',    amount = 2 },
+	{ type = 'item', name = 'apm_charcoal',    amount_min = 1, amount_max = 1,                        probability = 0.5, show_details_in_recipe_tooltip = false },
+	{ type = 'item', name = 'apm_generic_ash', amount = 3,     show_details_in_recipe_tooltip = false }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 5
@@ -767,13 +767,13 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1.5
 recipe.ingredients = {
-	{ type = "item", name = "apm_wood_briquette", amount = 2 },
-	{ type = "fluid", name = "steam",          amount = 100 }
+	{ type = "item",  name = "apm_wood_briquette", amount = 2 },
+	{ type = "fluid", name = "steam",              amount = 100 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_charcoal', amount = 3 },
-	{ type = 'item', name = 'sulfur',      amount_min = 1, amount_max = 1,                    probability = 0.175 },
-	{ type = 'item', name = 'apm_generic_ash', amount = 2, show_details_in_recipe_tooltip = false },
+	{ type = 'item', name = 'apm_charcoal',    amount = 3 },
+	{ type = 'item', name = 'sulfur',          amount_min = 1, amount_max = 1,                        probability = 0.175 },
+	{ type = 'item', name = 'apm_generic_ash', amount = 2,     show_details_in_recipe_tooltip = false },
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 3
@@ -802,15 +802,15 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "apm_wood_briquette", amount = 3 },
-	{ type = "fluid", name = "steam",          amount = 150 }
+	{ type = "item",  name = "apm_wood_briquette", amount = 3 },
+	{ type = "fluid", name = "steam",              amount = 150 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_charcoal', amount = 4 },
-	{ type = 'item', name = 'apm_charcoal', amount_min = 1, amount_max = 1,                    probability = 0.5, show_details_in_recipe_tooltip = false },
-	{ type = 'item', name = 'sulfur',       amount_min = 1, amount_max = 1,                    probability = 0.25 },
-	{ type = 'item', name = 'apm_generic_ash', amount = 1, show_details_in_recipe_tooltip = false },
-	{ type = 'fluid', name = 'apm_creosote', amount = 25 }
+	{ type = 'item',  name = 'apm_charcoal',    amount = 4 },
+	{ type = 'item',  name = 'apm_charcoal',    amount_min = 1, amount_max = 1,                        probability = 0.5, show_details_in_recipe_tooltip = false },
+	{ type = 'item',  name = 'sulfur',          amount_min = 1, amount_max = 1,                        probability = 0.25 },
+	{ type = 'item',  name = 'apm_generic_ash', amount = 1,     show_details_in_recipe_tooltip = false },
+	{ type = 'fluid', name = 'apm_creosote',    amount = 25 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -839,13 +839,13 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 2.5
 recipe.ingredients = {
-	{ type = "item", name = "apm_wood_briquette", amount = 4 },
-	{ type = "fluid", name = "steam",          amount = 200 }
+	{ type = "item",  name = "apm_wood_briquette", amount = 4 },
+	{ type = "fluid", name = "steam",              amount = 200 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_charcoal', amount = 5 },
-	{ type = 'item', name = 'apm_charcoal', amount_min = 1, amount_max = 1, probability = 0.5, show_details_in_recipe_tooltip = false },
-	{ type = 'item', name = 'sulfur',    amount_min = 1, amount_max = 1, probability = 0.35 },
+	{ type = 'item',  name = 'apm_charcoal', amount = 5 },
+	{ type = 'item',  name = 'apm_charcoal', amount_min = 1, amount_max = 1, probability = 0.5, show_details_in_recipe_tooltip = false },
+	{ type = 'item',  name = 'sulfur',       amount_min = 1, amount_max = 1, probability = 0.35 },
 	{ type = 'fluid', name = 'apm_creosote', amount = 50 }
 }
 recipe.main_product = ''

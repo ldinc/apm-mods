@@ -19,9 +19,9 @@ recipe.name = "apm_burner_long_inserter"
 recipe.enabled = false
 recipe.energy_required = 1.5
 recipe.ingredients = {
-	{ type = "item", name = "burner-inserter",  amount = 1 },
+	{ type = "item", name = "burner-inserter",      amount = 1 },
 	{ type = "item", name = "apm_mechanical_relay", amount = 1 },
-	{ type = "item", name = "apm_gearing",      amount = 2 }
+	{ type = "item", name = "apm_gearing",          amount = 2 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_burner_long_inserter', amount = 1 }

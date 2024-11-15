@@ -29,9 +29,9 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1.5
 recipe.ingredients = {
-	{ type = "item", name = "apm_crushed_stone", amount = 2 },
-	{ type = "item", name = 'apm_generic_ash', amount = 2 },
-	{ type = "fluid", name = "water",         amount = 40 }
+	{ type = "item",  name = "apm_crushed_stone", amount = 2 },
+	{ type = "item",  name = 'apm_generic_ash',   amount = 2 },
+	{ type = "fluid", name = "water",             amount = 40 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_stone_brick_raw', amount = 1 }
@@ -64,7 +64,7 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "stone",       amount = 15 },
+	{ type = "item", name = "stone",           amount = 15 },
 	{ type = "item", name = 'apm_generic_ash', amount = 15 }
 }
 recipe.results = {
@@ -98,11 +98,11 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 10
 recipe.ingredients = {
-	{ type = "item", name = 'apm_generic_ash', amount = 100 },
-	{ type = "fluid", name = "sulfuric-acid", amount = 50 }
+	{ type = "item",  name = 'apm_generic_ash', amount = 100 },
+	{ type = "fluid", name = "sulfuric-acid",   amount = 50 }
 }
 recipe.results = {
-	{ type = 'item', name = 'uranium-ore',                amount_min = 1, amount_max = 1, probability = 0.02, show_details_in_recipe_tooltip = false },
+	{ type = 'item',  name = 'uranium-ore',                   amount_min = 1, amount_max = 1, probability = 0.02, show_details_in_recipe_tooltip = false },
 	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 50 }
 }
 recipe.main_product = ''

@@ -30,7 +30,7 @@ recipe.enabled = true
 recipe.energy_required = 10
 recipe.ingredients = {
 	{ type = "item", name = "apm_mechanical_relay", amount = 2 },
-	{ type = "item", name = "stone",            amount = 10 }
+	{ type = "item", name = "stone",                amount = 10 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_industrial_science_pack', amount = 1 }
@@ -64,7 +64,7 @@ recipe.enabled = true
 recipe.energy_required = 5
 recipe.ingredients = {
 	{ type = "item", name = "apm_mechanical_relay", amount = 1 },
-	{ type = "item", name = "stone-brick",      amount = 1 }
+	{ type = "item", name = "stone-brick",          amount = 1 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_industrial_science_pack', amount = 1 }
@@ -88,9 +88,9 @@ recipe.category = 'basic-crafting'
 recipe.enabled = true
 recipe.energy_required = 5
 recipe.ingredients = {
-	{ type = "item", name = "apm_steam_relay", amount = 1 },
-	{ type = "item", name = "apm_rubber",   amount = 1 },
-	{ type = "fluid", name = "steam",       amount = 100 }
+	{ type = "item",  name = "apm_steam_relay", amount = 1 },
+	{ type = "item",  name = "apm_rubber",      amount = 1 },
+	{ type = "fluid", name = "steam",           amount = 100 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_steam_science_pack', amount = 1 }

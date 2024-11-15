@@ -20,7 +20,7 @@ recipe.category = 'advanced-crafting'
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "iron-plate",    amount = 2 },
+	{ type = "item", name = "iron-plate",        amount = 2 },
 	{ type = "item", name = "apm_sealing_rings", amount = 2 }
 }
 recipe.results = {
@@ -45,7 +45,7 @@ recipe.category = 'advanced-crafting'
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "item", name = "steel-plate",   amount = 1 },
+	{ type = "item", name = "steel-plate",       amount = 1 },
 	{ type = "item", name = "apm_sealing_rings", amount = 2 }
 }
 recipe.results = {
@@ -78,14 +78,14 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "apm_saw_blade_iron_used", amount = 5 },
-	{ type = "fluid", name = "water",               amount = 30 },
-	{ type = "item", name = "apm_crushed_stone",    amount = 2 }
+	{ type = "item",  name = "apm_saw_blade_iron_used", amount = 5 },
+	{ type = "fluid", name = "water",                   amount = 30 },
+	{ type = "item",  name = "apm_crushed_stone",       amount = 2 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_saw_blade_iron', amount = 4 },
-	{ type = "item", name = "apm_saw_blade_iron", amount_min = 1, amount_max = 1, probability = 0.5, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water", amount = 30,  catalyst_amount = 30 }
+	{ type = 'item',  name = 'apm_saw_blade_iron', amount = 4 },
+	{ type = "item",  name = "apm_saw_blade_iron", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
+	{ type = "fluid", name = "apm_dirt_water",     amount = 30,    catalyst_amount = 30 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -117,14 +117,14 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 3
 recipe.ingredients = {
-	{ type = "item", name = "apm_saw_blade_steel_used", amount = 5 },
-	{ type = "fluid", name = "water",                amount = 30 },
-	{ type = "item", name = "apm_crushed_stone",     amount = 2 }
+	{ type = "item",  name = "apm_saw_blade_steel_used", amount = 5 },
+	{ type = "fluid", name = "water",                    amount = 30 },
+	{ type = "item",  name = "apm_crushed_stone",        amount = 2 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_saw_blade_steel', amount = 4 },
-	{ type = "item", name = "apm_saw_blade_steel", amount_min = 1, amount_max = 1, probability = 0.95, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water",  amount = 30,  catalyst_amount = 30 }
+	{ type = 'item',  name = 'apm_saw_blade_steel', amount = 4 },
+	{ type = "item",  name = "apm_saw_blade_steel", amount_min = 1, amount_max = 1,      probability = 0.95, catalyst_amount = 1 },
+	{ type = "fluid", name = "apm_dirt_water",      amount = 30,    catalyst_amount = 30 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4

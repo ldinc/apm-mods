@@ -30,9 +30,9 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "wood",            amount = 5 },
-	{ type = "item", name = "apm_saw_blade_iron", amount = 1 },
-	{ type = "fluid", name = "apm_creosote",   amount = 50 }
+	{ type = "item",  name = "wood",               amount = 5 },
+	{ type = "item",  name = "apm_saw_blade_iron", amount = 1 },
+	{ type = "fluid", name = "apm_creosote",       amount = 50 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_treated_wood_planks', amount = 10 },
@@ -67,9 +67,9 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "wood",            amount = 5 },
-	{ type = "item", name = "apm_saw_blade_iron", amount = 1 },
-	{ type = "fluid", name = "heavy-oil",      amount = 50 }
+	{ type = "item",  name = "wood",               amount = 5 },
+	{ type = "item",  name = "apm_saw_blade_iron", amount = 1 },
+	{ type = "fluid", name = "heavy-oil",          amount = 50 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_treated_wood_planks', amount = 10 },
@@ -104,12 +104,12 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "wood",             amount = 5 },
-	{ type = "item", name = "apm_saw_blade_steel", amount = 1 },
-	{ type = "fluid", name = "apm_creosote",    amount = 50 }
+	{ type = "item",  name = "wood",                amount = 5 },
+	{ type = "item",  name = "apm_saw_blade_steel", amount = 1 },
+	{ type = "fluid", name = "apm_creosote",        amount = 50 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_treated_wood_planks', amount = 15 },
+	{ type = 'item', name = 'apm_treated_wood_planks',  amount = 15 },
 	{ type = "item", name = "apm_saw_blade_steel_used", amount = 1, catalyst_amount = 1 }
 }
 recipe.main_product = ''
@@ -141,12 +141,12 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "wood",             amount = 5 },
-	{ type = "item", name = "apm_saw_blade_steel", amount = 1 },
-	{ type = "fluid", name = "heavy-oil",       amount = 50 }
+	{ type = "item",  name = "wood",                amount = 5 },
+	{ type = "item",  name = "apm_saw_blade_steel", amount = 1 },
+	{ type = "fluid", name = "heavy-oil",           amount = 50 }
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_treated_wood_planks', amount = 15 },
+	{ type = 'item', name = 'apm_treated_wood_planks',  amount = 15 },
 	{ type = "item", name = "apm_saw_blade_steel_used", amount = 1, catalyst_amount = 1 }
 }
 recipe.main_product = ''
@@ -177,11 +177,11 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 4.5
 recipe.ingredients = {
-	{ type = "item", name = "wood", amount = 10 },
+	{ type = "item",  name = "wood",  amount = 10 },
 	{ type = "fluid", name = "steam", amount = 50 }
 }
 recipe.results = {
-	{ type = 'fluid', name = 'apm_creosote',  amount = 80 },
+	{ type = 'fluid', name = 'apm_creosote',      amount = 80 },
 	{ type = "fluid", name = "apm_coke_oven_gas", amount = 20 }
 }
 recipe.main_product = ''
@@ -213,11 +213,11 @@ recipe.enabled = false
 recipe.energy_required = 4.5
 recipe.ingredients = {
 	{ type = "fluid", name = "apm_creosote", amount = 100 },
-	{ type = "fluid", name = "steam",    amount = 50 }
+	{ type = "fluid", name = "steam",        amount = 50 }
 }
 recipe.results = {
-	{ type = 'fluid', name = 'heavy-oil', amount = 25 },
-	{ type = "fluid", name = "light-oil", amount = 20 },
+	{ type = 'fluid', name = 'heavy-oil',     amount = 25 },
+	{ type = "fluid", name = "light-oil",     amount = 20 },
 	{ type = "fluid", name = "petroleum-gas", amount = 15 }
 }
 recipe.main_product = ''
@@ -246,9 +246,9 @@ recipe.subgroup = "apm_power_fluid"
 recipe.order = 'ba_c'
 recipe.icons = icons
 recipe.crafting_machine_tint = {
-	primary = { r = 0.764, g = 0.596, b = 0.780, a = 1.000 }, -- #c298c6ff
+	primary = { r = 0.764, g = 0.596, b = 0.780, a = 1.000 },   -- #c298c6ff
 	secondary = { r = 0.762, g = 0.551, b = 0.844, a = 1.000 }, -- #c28cd7ff
-	tertiary = { r = 0.895, g = 0.773, b = 0.596, a = 1.000 }, -- #e4c597ff
+	tertiary = { r = 0.895, g = 0.773, b = 0.596, a = 1.000 },  -- #e4c597ff
 	quaternary = { r = 1.000, g = 0.734, b = 0.290, a = 1.000 }, -- #ffbb49ff
 }
 

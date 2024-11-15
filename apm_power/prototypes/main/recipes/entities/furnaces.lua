@@ -21,9 +21,9 @@ recipe.name = "apm_puddling_furnace_0"
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "stone-furnace",       amount = 3 },
+	{ type = "item", name = "stone-furnace",           amount = 3 },
 	{ type = "item", name = "apm_machine_frame_basic", amount = 10 },
-	{ type = "item", name = "stone-brick",         amount = 25 }
+	{ type = "item", name = "stone-brick",             amount = 25 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_puddling_furnace_0', amount = 1 }
@@ -46,10 +46,10 @@ recipe.name = "apm_steelworks_0"
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "stone-brick",            amount = 25 },
-	{ type = "item", name = "stone-furnace",          amount = 10 },
-	{ type = "item", name = "electronic-circuit",     amount = 25 },
-	{ type = "item", name = "copper-plate",           amount = 30 },
+	{ type = "item", name = "stone-brick",                amount = 25 },
+	{ type = "item", name = "stone-furnace",              amount = 10 },
+	{ type = "item", name = "electronic-circuit",         amount = 25 },
+	{ type = "item", name = "copper-plate",               amount = 30 },
 	{ type = "item", name = "apm_machine_frame_advanced", amount = 10 }
 }
 recipe.results = {
@@ -73,12 +73,12 @@ recipe.name = "apm_steelworks_1"
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "refined-concrete",       amount = 10 },
+	{ type = "item", name = "refined-concrete",           amount = 10 },
 	-- {type="item", name="apm_steelworks_0", amount=1},
 	apm.lib.utils.builder.recipe.item.simple('APM_CIRCUIT_T5', 10),
-	{ type = "item", name = "low-density-structure",  amount = 20 },
+	{ type = "item", name = "low-density-structure",      amount = 20 },
 	{ type = "item", name = "apm_machine_frame_advanced", amount = 10 },
-	{ type = "item", name = "electric-furnace",       amount = 6 },
+	{ type = "item", name = "electric-furnace",           amount = 6 },
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_steelworks_1', amount = 1 }

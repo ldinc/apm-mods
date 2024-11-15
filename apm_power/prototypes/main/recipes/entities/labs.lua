@@ -21,8 +21,8 @@ recipe.name = "apm_lab_0"
 recipe.enabled = true
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "stone-furnace",       amount = 1 },
-	{ type = "item", name = "apm_simple_engine",   amount = 3 },
+	{ type = "item", name = "stone-furnace",           amount = 1 },
+	{ type = "item", name = "apm_simple_engine",       amount = 3 },
 	{ type = "item", name = "apm_machine_frame_basic", amount = 3 }
 }
 recipe.results = {
@@ -47,9 +47,9 @@ recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
 	-- {type="item", name="apm_lab_0", amount=1},
-	{ type = "item", name = "apm_steam_engine",    amount = 3 },
+	{ type = "item", name = "apm_steam_engine",        amount = 3 },
 	{ type = "item", name = "apm_machine_frame_steam", amount = 3 },
-	{ type = "item", name = "stone-brick",         amount = 10 }
+	{ type = "item", name = "stone-brick",             amount = 10 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_lab_1', amount = 1 }

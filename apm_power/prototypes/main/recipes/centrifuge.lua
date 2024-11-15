@@ -33,9 +33,9 @@ recipe.ingredients = {
 	{ type = "fluid", name = "apm_sea_water", amount = 200 }
 }
 recipe.results = {
-	{ type = "item", name = "apm_wet_mud", amount_min = 1, amount_max = 1, probability = 0.5 },
-	{ type = "fluid", name = "water",   amount = 195 },
-	{ type = "item", name = "raw-fish", amount_min = 1, amount_max = 1, probability = 0.0001, show_details_in_recipe_tooltip = false }
+	{ type = "item",  name = "apm_wet_mud", amount_min = 1, amount_max = 1, probability = 0.5 },
+	{ type = "fluid", name = "water",       amount = 195 },
+	{ type = "item",  name = "raw-fish",    amount_min = 1, amount_max = 1, probability = 0.0001, show_details_in_recipe_tooltip = false }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4
@@ -108,7 +108,7 @@ recipe.ingredients = {
 }
 recipe.results = {
 	{ type = "fluid", name = "water", amount = 80 },
-	{ type = "item", name = "coal", amount = 2, show_details_in_recipe_tooltip = false }
+	{ type = "item",  name = "coal",  amount = 2, show_details_in_recipe_tooltip = false }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4

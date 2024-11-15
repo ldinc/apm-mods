@@ -20,10 +20,10 @@ recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
 	-- {type="item", name="steam-engine", amount=1},
-	{ type = "item", name = "apm_gearing",   amount = 10 },
-	{ type = "item", name = "apm_steam_engine", amount = 6 },
+	{ type = "item", name = "apm_gearing",       amount = 10 },
+	{ type = "item", name = "apm_steam_engine",  amount = 6 },
 	{ type = "item", name = "apm_electromagnet", amount = 12 },
-	{ type = "item", name = "steel-plate",   amount = 10 }
+	{ type = "item", name = "steel-plate",       amount = 10 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_steam_engine_2', amount = 1 }

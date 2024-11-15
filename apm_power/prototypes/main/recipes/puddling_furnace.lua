@@ -35,10 +35,10 @@ recipe.crafting_machine_tint = {
 recipe.enabled = false
 recipe.energy_required = 35
 recipe.ingredients = {
-	{ type = "item", name = "apm_stone_crucible", amount = 4 },
-	{ type = "item", name = "apm_coke_crushed", amount = 10 },
-	{ type = "item", name = "iron-ore",        amount = 20 },
-	{ type = "fluid", name = "water",          amount = 50, fluidbox_index = 1 }
+	{ type = "item",  name = "apm_stone_crucible", amount = 4 },
+	{ type = "item",  name = "apm_coke_crushed",   amount = 10 },
+	{ type = "item",  name = "iron-ore",           amount = 20 },
+	{ type = "fluid", name = "water",              amount = 50, fluidbox_index = 1 }
 }
 recipe.results = {
 	{ type = 'item', name = 'steel-plate', amount = 4 }

@@ -19,8 +19,8 @@ recipe.name = "apm_sinkhole"
 recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
-	{ type = "item", name = "pipe",     amount = 30 },
-	{ type = "item", name = "concrete", amount = 50 },
+	{ type = "item", name = "pipe",       amount = 30 },
+	{ type = "item", name = "concrete",   amount = 50 },
 	{ type = "item", name = "apm_rubber", amount = 50 }
 }
 recipe.results = {
@@ -42,7 +42,7 @@ recipe.name = "apm_sinkhole_small"
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "pipe", amount = 20 },
+	{ type = "item", name = "pipe",       amount = 20 },
 	{ type = "item", name = "apm_rubber", amount = 20 }
 }
 recipe.results = {

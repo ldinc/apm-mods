@@ -52,14 +52,14 @@ recipe.icons = icons
 recipe.enabled = false
 recipe.energy_required = 1
 recipe.ingredients = {
-	{ type = "fluid", name = "water",             amount = 30 },
-	{ type = "item", name = "apm_press_plates_used", amount = 5 },
-	{ type = "item", name = "apm_crushed_stone",  amount = 2 }
+	{ type = "fluid", name = "water",                 amount = 30 },
+	{ type = "item",  name = "apm_press_plates_used", amount = 5 },
+	{ type = "item",  name = "apm_crushed_stone",     amount = 2 }
 }
 recipe.results = {
-	{ type = "item", name = "apm_press_plates", amount = 4, catalyst_amount = 4 },
-	{ type = "item", name = "apm_press_plates", amount_min = 1, amount_max = 1, probability = 0.95, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water", amount = 30, catalyst_amount = 30 }
+	{ type = "item",  name = "apm_press_plates", amount = 4,     catalyst_amount = 4 },
+	{ type = "item",  name = "apm_press_plates", amount_min = 1, amount_max = 1,      probability = 0.95, catalyst_amount = 1 },
+	{ type = "fluid", name = "apm_dirt_water",   amount = 30,    catalyst_amount = 30 }
 }
 recipe.main_product = ''
 recipe.requester_paste_multiplier = 4

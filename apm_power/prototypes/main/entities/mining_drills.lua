@@ -369,7 +369,7 @@ steam_mining_drill.mining_speed = 0.55
 
 steam_mining_drill.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 	apm.power.constants.emissions.steam_miner,
-	{apm.lib.utils.builders.smoke.light},
+	{ apm.lib.utils.builders.smoke.light },
 	apm.lib.utils.builders.fluid_box.new_steam_input_3way()
 )
 

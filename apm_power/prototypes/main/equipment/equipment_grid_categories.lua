@@ -12,4 +12,4 @@ APM_LOG_HEADER(self)
 local category = {}
 category.type = "equipment-category"
 category.name = "apm_starter_equipment"
-data:extend({category})
+data:extend({ category })

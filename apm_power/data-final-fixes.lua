@@ -35,7 +35,7 @@ end
 
 for k, v in pairs(data.raw.fluid) do
     local newicons = get_icons(v)
-    table.insert(newicons, no_icon)
+    -- table.insert(newicons, no_icon)
     data:extend({
       {
         type = "recipe",

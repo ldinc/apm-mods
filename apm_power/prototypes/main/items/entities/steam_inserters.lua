@@ -21,7 +21,7 @@ item.group = "apm_power"
 item.subgroup = "apm_power_inserter"
 item.order = 'aa_a'
 item.place_result = "apm_steam_inserter"
-data:extend({item})
+data:extend({ item })
 
 local item = {}
 item.type = "item"
@@ -32,4 +32,4 @@ item.group = "apm_power"
 item.subgroup = "apm_power_inserter"
 item.order = 'aa_a'
 item.place_result = "apm_steam_inserter_long"
-data:extend({item})
+data:extend({ item })

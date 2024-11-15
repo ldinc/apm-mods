@@ -19,11 +19,11 @@ recipe.name = "apm_pump_0"
 recipe.enabled = false
 recipe.energy_required = 1.5
 recipe.ingredients = {
-	{ type = "item", name = "apm_rubber",    amount = 2 },
-	{ type = "item", name = "pipe",          amount = 3 },
-	{ type = "item", name = "apm_gearing",   amount = 2 },
+	{ type = "item", name = "apm_rubber",        amount = 2 },
+	{ type = "item", name = "pipe",              amount = 3 },
+	{ type = "item", name = "apm_gearing",       amount = 2 },
 	{ type = "item", name = "apm_simple_engine", amount = 2 },
-	{ type = "item", name = "iron-plate",    amount = 1 },
+	{ type = "item", name = "iron-plate",        amount = 1 },
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_pump_0', amount = 1 }

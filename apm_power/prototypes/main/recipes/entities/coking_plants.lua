@@ -21,9 +21,9 @@ recipe.name = "apm_coking_plant_0"
 recipe.enabled = false
 recipe.energy_required = 2
 recipe.ingredients = {
-	{ type = "item", name = "stone-furnace",       amount = 5 },
+	{ type = "item", name = "stone-furnace",           amount = 5 },
 	{ type = "item", name = "apm_machine_frame_basic", amount = 6 },
-	{ type = "item", name = "stone",               amount = 10 }
+	{ type = "item", name = "stone",                   amount = 10 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_coking_plant_0', amount = 1 }
@@ -47,10 +47,10 @@ recipe.enabled = false
 recipe.energy_required = 4
 recipe.ingredients = {
 	-- {type="item", name="apm_coking_plant_0", amount=1},
-	{ type = "item", name = "stone-brick",         amount = 20 },
+	{ type = "item", name = "stone-brick",             amount = 20 },
 	{ type = "item", name = "apm_machine_frame_basic", amount = 3 },
-	{ type = "item", name = "copper-plate",        amount = 5 },
-	{ type = "item", name = "steel-plate",         amount = 10 }
+	{ type = "item", name = "copper-plate",            amount = 5 },
+	{ type = "item", name = "steel-plate",             amount = 10 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_coking_plant_1', amount = 1 }
@@ -77,11 +77,11 @@ recipe.name = "apm_coking_plant_2"
 recipe.enabled = false
 recipe.energy_required = 6
 recipe.ingredients = {
-	{ type = "item", name = "concrete",               amount = 25 },
-	{ type = "item", name = "pipe",                   amount = 25 },
+	{ type = "item", name = "concrete",                   amount = 25 },
+	{ type = "item", name = "pipe",                       amount = 25 },
 	{ type = "item", name = "apm_machine_frame_advanced", amount = 3 },
-	{ type = "item", name = "copper-plate",           amount = 25 },
-	{ type = "item", name = "steel-plate",            amount = 25 }
+	{ type = "item", name = "copper-plate",               amount = 25 },
+	{ type = "item", name = "steel-plate",                amount = 25 }
 }
 recipe.results = {
 	{ type = 'item', name = 'apm_coking_plant_2', amount = 1 }

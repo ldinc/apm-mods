@@ -7,7 +7,6 @@ require('lib.functions')
 
 require('lib.features.all')
 
---require('lib.gui')
 require('prototypes.main.categories')
 
 require('prototypes.main.entities.air_cleaner')
@@ -111,7 +110,6 @@ require('prototypes.main.recipes.modules')
 require('prototypes.main.recipes.equipments')
 require('prototypes.main.recipes.tools')
 require('prototypes.main.recipes.tiles')
-require('prototypes.main.recipes.fluids_from_the_void')
 
 require('prototypes.main.technologies')
 
