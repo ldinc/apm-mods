@@ -1,3 +1,6 @@
 {
-	"factorio": "path_to_factorio"
+	"factorio": {
+		"stable": "path_to_factorio_stable_release",
+		"unstable": "path_to_experimental_release"
+	}
 }

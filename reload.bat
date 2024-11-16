@@ -1,10 +1,24 @@
 @echo off
 
-set mod=%1
+set branch=stable
 
-call build.bat %mod%
+set target=%1
 
-for /f "tokens=* delims=" %%# in ('jq -r ".factorio" build.config.json') do @(set target=%%#)
+
+if %target%==unstable (
+  set target=%2
+  set branch=unstable
+)
+
+echo target %target%
+echo release %branch%
+
+call build.bat %target%
+
+set mp=.factorio.%branch%
+
+
+for /f "tokens=* delims=" %%# in ('jq -r %mp% build.config.json') do @(set target=%%#)
 
 echo copy to %target%
 move %modname%_%version%.zip %target%mods\

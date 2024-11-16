@@ -1,3 +1,6 @@
 {
-	"factorio": "D:\\Games\\Factorio_2.0.18\\"
+	"factorio": {
+		"stable": "D:\\Games\\Factorio\\",
+		"unstable": "D:\\Games\\Factorio_2.0.18\\"
+	}
 }
