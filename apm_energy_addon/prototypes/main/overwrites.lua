@@ -5,11 +5,11 @@ local self = 'apm_energy_addon/prototypes/main/overwrites.lua'
 
 APM_LOG_HEADER(self)
 
--- car
+--- [car]
 apm.energy_addon.overhaul('apm_electric_car')
 
--- tank
+--- [tank]
 apm.energy_addon.overhaul('apm_electric_tank')
 
--- locomotive
+--- [locomotive]
 apm.energy_addon.overhaul('apm_electric_locomotive')
