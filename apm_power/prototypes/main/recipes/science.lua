@@ -25,6 +25,8 @@ recipe.group = "apm_power"
 recipe.subgroup = "apm_power_science"
 recipe.order = 'aa_a'
 recipe.icons = icons
+recipe.allow_as_intermediate = true
+recipe.allow_intermediates  = true
 
 recipe.enabled = true
 recipe.energy_required = 10

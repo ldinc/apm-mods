@@ -7,7 +7,6 @@ APM_LOG_HEADER(self)
 
 -- player crafting
 apm.lib.utils.recipe.category.create('apm_handcrafting_only')
---apm.lib.utils.character.crafting_category.add('apm_handcrafting_only')
 apm.lib.utils.character.crafting_category.add('character', 'apm_handcrafting_only')
 
 -- general

@@ -70,6 +70,12 @@ function apm.lib.utils.builders.energy_source.new_electric(emmisions_pm, drain)
 	}
 end
 
+---@param fuel_categories? data.FuelCategoryID[]
+---@param emmisions_pm? table<string, data.AirbornePollutantID>
+---@param smoke any
+---@param fuel_inventory_size any
+---@param eff any
+---@return data.EnergySource
 function apm.lib.utils.builders.energy_source.new_burner(fuel_categories, emmisions_pm, smoke, fuel_inventory_size, eff)
 	if not emmisions_pm then
 		emmisions_pm = apm.power.constants.emissions.t0
@@ -95,5 +101,18 @@ function apm.lib.utils.builders.energy_source.new_burner(fuel_categories, emmisi
 		burnt_inventory_size = 1,
 		emissions_per_minute = emmisions_pm,
 		smoke = smoke,
+	}
+end
+
+---@return data.BurnerEnergySource
+function apm.lib.utils.builders.energy_source.new_electroaccum(fuel_inventory_size, burnt_inventory_size)
+	return {
+		type = "burner",
+		fuel_categories = {"apm_electrical"},
+		effectivity = 0.89,
+		fuel_inventory_size = fuel_inventory_size,
+		burnt_inventory_size = burnt_inventory_size,
+		emissions_per_minute = nil,
+		smoke = nil,
 	}
 end

@@ -51,9 +51,10 @@ apm.power.color.starter_set                                       = { r = 0.689,
 --
 --
 -- ----------------------------------------------------------------------------
---- @type table<string, data.AirbornePollutantID>
+--- @type table<string, table<data.AirbornePollutantID, double>>
 apm.power.constants.emissions                                     = {}
 
+---@type table<data.AirbornePollutantID, double>
 apm.power.constants.emissions.t0                                  = { pollution = 5 }
 apm.power.constants.emissions.t1                                  = { pollution = 3 }
 apm.power.constants.emissions.t2                                  = { pollution = 4 }

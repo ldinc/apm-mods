@@ -7,3 +7,8 @@ require('prototypes.main.overwrites')
 require('prototypes.main.recipes-overwrites')
 require('prototypes.main.technologies-overwrites')
 require('prototypes.integrations.updates')
+
+--- [fix for space-age hard reset categories per character...]
+if mods["space-age"] then
+	apm.lib.utils.character.crafting_category.add('character', 'apm_handcrafting_only')
+end
