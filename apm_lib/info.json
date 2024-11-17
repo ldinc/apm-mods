@@ -1,16 +1,16 @@
 {
-        "name": "apm_lib_ldinc",
-        "version": "0.30.7",
-        "title": "Amator Phasma's Library (forked)",
-        "author": "AmatorPhasma, ldinc",
-        "dependencies": [
-                "base >= 2.0.13",
-                "apm_resource_pack_ldinc >= 0.30.2",
-                "freeplay_starting_equipment >= 0.2.3",
-                "!Burner-Leech",
-                "!Burner-Leech-Fork"
-        ],
-        "description": "This is a resource and code library for my other mods.",
-        "factorio_version": "2.0",
-        "homepage": ""
+	"name": "apm_lib_ldinc",
+	"version": "0.30.8",
+	"title": "Amator Phasma's Library (forked)",
+	"author": "AmatorPhasma, ldinc",
+	"dependencies": [
+		"base >= 2.0.13",
+		"apm_resource_pack_ldinc >= 0.30.2",
+		"freeplay_starting_equipment >= 0.2.3",
+		"!Burner-Leech",
+		"!Burner-Leech-Fork"
+	],
+	"description": "This is a resource and code library for my other mods.",
+	"factorio_version": "2.0",
+	"homepage": ""
 }

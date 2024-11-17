@@ -19,8 +19,8 @@ local apm_lib_storage_spit_out_iterations = settings.global['apm_lib_storage_spi
 --
 -- ----------------------------------------------------------------------------
 local function get_config()
-    apm_lib_storage_spit_out = settings.global['apm_lib_storage_spit_out'].value
-    apm_lib_storage_spit_out_mark_deconstruct = settings.global['apm_lib_storage_spit_out_mark_deconstruct'].value
+	apm_lib_storage_spit_out = settings.global['apm_lib_storage_spit_out'].value
+	apm_lib_storage_spit_out_mark_deconstruct = settings.global['apm_lib_storage_spit_out_mark_deconstruct'].value
 	apm_lib_storage_spit_out_iterations = settings.global['apm_lib_storage_spit_out_iterations'].value
 end
 
@@ -29,7 +29,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function storage_script.on_init()
-    get_config()
+	get_config()
 end
 
 -- Function -------------------------------------------------------------------
@@ -37,7 +37,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function storage_script.on_load()
-    get_config()
+	get_config()
 end
 
 -- Function -------------------------------------------------------------------
@@ -45,7 +45,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function storage_script.on_update()
-    get_config()
+	get_config()
 end
 
 -- Function -------------------------------------------------------------------
@@ -53,11 +53,11 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function get_force(entity)
-    local force
-    if apm_lib_storage_spit_out_mark_deconstruct then
-        force = entity.force
-    end
-    return force
+	local force
+	if apm_lib_storage_spit_out_mark_deconstruct then
+		force = entity.force
+	end
+	return force
 end
 
 -- Function -------------------------------------------------------------------
@@ -69,30 +69,41 @@ local function container(entity, cause)
 	if entity.type ~= 'container' then return end
 
 	local inventory = entity.get_inventory(defines.inventory.chest)
-	
+
 	if inventory == nil then return end
 	if inventory.is_empty() then return end
 
 	local content = inventory.get_contents()
 	local surface = entity.surface.name
 	local position = entity.position
-    local entity_force = get_force(entity) -- will return nil if apm_lib_storage_spit_out_mark_deconstruct == false
+	local entity_force = get_force(entity) -- will return nil if apm_lib_storage_spit_out_mark_deconstruct == false
 
-    local increment_counter = 0
+	local increment_counter = 0
 	for _, item in ipairs(content) do
-		game.surfaces[surface].spill_item_stack(position, {name=item.name, count=item.count}, false, entity_force)
+		---@type LuaSurface.spill_item_stack_param
+		local param = {
+			position = position,
+			---@type SimpleItemStack
+			stack = {
+				name = item.name,
+				count = item.count,
+			},
+			force = entity_force,
+		}
+		
+		game.surfaces[surface].spill_item_stack(param)
 
-        increment_counter = increment_counter + 1
-        if increment_counter >= apm_lib_storage_spit_out_iterations then -- this sould prevent too much lag on modded storages. (48: steel-chest / default)
-            break
-        end
+		increment_counter = increment_counter + 1
+		if increment_counter >= apm_lib_storage_spit_out_iterations then -- this sould prevent too much lag on modded storages. (48: steel-chest / default)
+			break
+		end
 	end
 
 	if cause ~= nil then
 		if cause.type == 'character' or cause.type == 'player' then
 			local force = cause.player.force
 			local player_name = cause.player.name
-            local msg = {'apm_msg_storage_died', player_name}
+			local msg = { 'apm_msg_storage_died', player_name }
 			core.send_msg_to_force(force, msg)
 		end
 	end
@@ -113,8 +124,8 @@ end
 -- ----------------------------------------------------------------------------
 function storage_script.died(event)
 	if not apm_lib_storage_spit_out then return end
-    local entity = event.entity
-    local cause = event.cause
+	local entity = event.entity
+	local cause = event.cause
 
 	container(entity, cause)
 end
@@ -124,9 +135,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 function storage_script.pre_mined(event)
-    local entity = event.entity
-    local cause = event.cause
-    
+	local entity = event.entity
+	local cause = event.cause
+
 	tank(entity, cause)
 end
 
