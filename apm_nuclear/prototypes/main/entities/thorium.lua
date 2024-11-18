@@ -5,7 +5,9 @@ local self = "apm_nuclear/prototypes/main/entities/thorium.lua"
 
 APM_LOG_HEADER(self)
 
-local resource_autoplace = require("resource-autoplace");
+-- local resource_autoplace = require("resource-autoplace");
+
+local resource_autoplace = require("__core__.lualib.resource-autoplace")
 
 ---@type data.AutoplaceControl
 local autoplace_control = {
@@ -89,9 +91,5 @@ local resource = {
 	max_effect_alpha = 0.3,
 	map_color = { 0.310, 0.176, 0.110 },
 }
-
-
-
-
 
 data:extend({ resource })

@@ -9,6 +9,4 @@ require("prototypes.integrations.updates")
 
 if mods["space-age"] then
 	apm.lib.utils.planet.add.resource("nauvis", "thorium-ore")
-	-- local resource_autoplace = require("__core__.lualib.resource-autoplace")
-	-- resource_autoplace.initialize_patch_set("thorium-ore", false)
 end
