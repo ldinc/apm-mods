@@ -5,18 +5,14 @@ require('lib.utils.builders.fluid_box')
 local self = 'lib.utils.builders.energy_source'
 
 --- Construct new energy source instance
---- @param emmisions_pm? data.AirbornePollutantID
+--- @param emmisions_pm? {data.AirbornePollutantID: number}
 --- @param smoke? data.SmokePrototype[]
 --- @param fluid_box? data.FluidBox
 --- @param volume? float
 --- @param min_t? float
 --- @param max_t? float
---- @return data.EnergySource
+--- @return data.FluidEnergySource
 function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, fluid_box, volume, min_t, max_t)
-	if emmisions_pm == nil then
-		emmisions_pm = apm.power.constants.emissions.t1
-	end
-
 	if not smoke then
 		smoke = { apm.lib.utils.builders.smoke.light }
 	end
@@ -37,14 +33,18 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, flu
 		fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(volume, min_t, max_t)
 	end
 
-	return {
+	---@type data.FluidEnergySource
+	local result = {
 		type = "fluid",
 		fluid_box = fluid_box,
 		smoke = smoke,
 		burns_fluid = false,
 		scale_fluid_usage = true,
 		maximum_temperature = max_t,
+		emissions_per_minute = emmisions_pm,
 	}
+
+	return result
 end
 
 --- Construct new void energy source
