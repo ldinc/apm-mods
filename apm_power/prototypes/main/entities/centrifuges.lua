@@ -116,7 +116,7 @@ centrifuge.energy_usage = apm.power.constants.energy_usage.steam
 centrifuge.module_specification = apm.power.constants.modules.specification_1
 centrifuge.allowed_effects = apm.power.constants.modules.allowed_effects_1
 
-centrifuge.energy_source = apm.lib.utils.builders.energy_source.new_steam()
+centrifuge.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.t1)
 
 centrifuge.graphics_set.animation_progress = base_animation_progress / centrifuge.crafting_speed
 
