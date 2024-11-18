@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_nuclear/prototypes/main/items/entities.lua'
+local self = "apm_nuclear/prototypes/main/items/entities.lua"
 
 APM_LOG_HEADER(self)
 
@@ -9,49 +9,55 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_cooling_pond_0'
-item.icons = {
-    apm.nuclear.icons.cooling_pond
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_cooling_pond_0",
+	icons = {
+		apm.nuclear.icons.cooling_pond
+	},
+	stack_size = 10,
+	subgroup = "apm_nuclear_machines_1",
+	order = "aa_b",
+	place_result = "apm_cooling_pond_0",
 }
-item.stack_size = 10
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_machines_1"
-item.order = 'aa_b'
-item.place_result = "apm_cooling_pond_0"
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_hybrid_cooling_tower_0'
-item.icons = {
-    apm.nuclear.icons.hybrid_cooling_tower
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_hybrid_cooling_tower_0",
+	icons = {
+		apm.nuclear.icons.hybrid_cooling_tower
+	},
+	stack_size = 10,
+	subgroup = "apm_nuclear_cooling_tower",
+	order = "aa_a",
+	place_result = "apm_hybrid_cooling_tower_0",
 }
-item.stack_size = 10
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_cooling_tower"
-item.order = 'aa_a'
-item.place_result = "apm_hybrid_cooling_tower_0"
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_nuclear_breeder'
-item.icons = {
-    apm.nuclear.icons.breeder_reactor
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_nuclear_breeder",
+	icons = {
+		apm.nuclear.icons.breeder_reactor
+	},
+	stack_size = 5,
+	subgroup = "apm_nuclear_machines_2",
+	order = "ab_a",
+	place_result = "apm_nuclear_breeder",
 }
-item.stack_size = 5
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_machines_2"
-item.order = 'ab_a'
-item.place_result = "apm_nuclear_breeder"
-data:extend({item})
+
+data:extend({ item })

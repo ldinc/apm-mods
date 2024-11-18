@@ -121,9 +121,17 @@ end
 ---@param formula? data.MathExpression
 ---@return data.TechnologyUnit
 function apm.lib.utils.technology.new_unit(ingredients, count, time, formula)
+	
+	---@type data.TechnologyUnit[]
+	local list = {}
+
+	for _, value in ipairs(ingredients) do
+		table.insert(list, {value, 1})
+	end
+
 	---@type data.TechnologyUnit
 	local unit = {
-		ingredients = ingredients,
+		ingredients = list,
 		count = count,
 		count_formula = formula,
 		time = time,

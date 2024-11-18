@@ -211,47 +211,37 @@ function apm.lib.utils.assembler.centrifuge.overhaul(centrifuge_name, level)
 
 	local centrifuge = data.raw['assembling-machine'][centrifuge_name]
 	centrifuge.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-	-- centrifuge.flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"}
-	centrifuge.fluid_boxes = {}
-	centrifuge.fluid_boxes[1] = { volume = 1000 }
-	centrifuge.fluid_boxes[1].production_type = "input"
-	--centrifuge.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
-	--centrifuge.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
-	centrifuge.fluid_boxes[1].pipe_connections = { { flow_direction = "input", direction = defines.direction.north, position = { 0, -2 } } }
-	centrifuge.fluid_boxes[1].secondary_draw_orders = { north = -1 }
-	centrifuge.fluid_boxes[2] = {
-		volume = 1000,
-	}
-	centrifuge.fluid_boxes[2].production_type = "output"
-	centrifuge.fluid_boxes[2].pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
-	centrifuge.fluid_boxes[2].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
-	centrifuge.fluid_boxes[2].pipe_connections = { { flow_direction = "output", direction = defines.direction.southwest, position = { -1, 2 } } }
-	centrifuge.fluid_boxes[2].secondary_draw_orders = { north = -1 }
-	centrifuge.fluid_boxes[3] = {
-		volume = 1000,
-	}
-	centrifuge.fluid_boxes[3].production_type = "output"
-	centrifuge.fluid_boxes[3].pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
-	centrifuge.fluid_boxes[3].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
 
-	centrifuge.fluid_boxes[3].pipe_connections = { { flow_direction = "output", direction = defines.direction.southeast, position = { 1, 2 } } }
-	centrifuge.fluid_boxes[3].secondary_draw_orders = { north = -1 }
+	centrifuge.fluid_boxes = {
+		apm.lib.utils.builders.fluid_box.new(
+			"input",
+			1000,
+			apm.lib.utils.pipecovers.assembler2pipepictures(),
+			defines.direction.north,
+			{0, -1.199},
+			{ north = -1 }
+		),
+		apm.lib.utils.builders.fluid_box.new(
+			"output",
+			1000,
+			apm.lib.utils.pipecovers.assembler2pipepictures(),
+			defines.direction.southwest,
+			{-0.5, 1.199},
+			{ north = -1 }	
+		),
+		apm.lib.utils.builders.fluid_box.new(
+			"output",
+			1000,
+			apm.lib.utils.pipecovers.assembler2pipepictures(),
+			defines.direction.southeast,
+			{0.5, 1.199},
+			{ north = -1 }	
+		),
+	}
+
 	centrifuge.fast_replaceable_group = "centrifuge"
 	centrifuge.allowed_effects = { "consumption", "speed", "pollution" }
-	-- centrifuge.flags["not-rotatable"] = false
-	-- centrifuge.always_draw_idle_animation = false
-	-- move all layer to animation, otherwise the pipe_picture will overlap
-	if centrifuge.idle_animation then
-		--local new = {}
-		--for _, layer in pairs(centrifuge.idle_animation.layers) do
-		--	table.insert(new, layer)
-		--end
-		--for _, layer in pairs(centrifuge.animation.layers) do
-		--	table.insert(new, layer)
-		--end
-		--centrifuge.animation.layers = table.deepcopy(new)
-		--centrifuge.idle_animation = nil
-	end
+
 	APM_LOG_INFO(self, 'centrifuge.overhaul()', 'centrifuge with name: "' .. tostring(centrifuge_name) .. '" changed')
 end
 

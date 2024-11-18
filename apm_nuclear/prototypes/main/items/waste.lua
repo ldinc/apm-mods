@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_nuclear/prototypes/main/items/waste.lua'
+local self = "apm_nuclear/prototypes/main/items/waste.lua"
 
 APM_LOG_HEADER(self)
 
@@ -9,16 +9,16 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_radioactive_waste'
-item.icons = {
-    apm.nuclear.icons.waste_radioactive
+---@type data.ItemPrototype
+local item = {
+    type = "item",
+    name = "apm_radioactive_waste",
+    icons = {
+        apm.nuclear.icons.waste_radioactive
+    },
+    stack_size = 2000,
+    subgroup = "apm_nuclear_waste_products",
+    order = "ac_b",
 }
-item.stack_size = 2000
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_waste_products"
-item.order = 'ac_b'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })

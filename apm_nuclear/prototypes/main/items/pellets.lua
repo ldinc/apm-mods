@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_nuclear/prototypes/main/items/pellets.lua'
+local self = "apm_nuclear/prototypes/main/items/pellets.lua"
 
 APM_LOG_HEADER(self)
 
@@ -9,89 +9,89 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_oxide_pellet_u238'
-item.icons = {
-    apm.nuclear.icons.oxide_pellet_u238
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_oxide_pellet_u238",
+	icons = {
+		apm.nuclear.icons.oxide_pellet_u238
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_oxide_pellets",
+	order = "aa_a",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_oxide_pellets"
-item.order = 'aa_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_oxide_pellet_u235'
-item.icons = {
-    apm.nuclear.icons.oxide_pellet_u235
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_oxide_pellet_u235",
+	icons = {
+		apm.nuclear.icons.oxide_pellet_u235
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_oxide_pellets",
+	order = "ab_a",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_oxide_pellets"
-item.order = 'ab_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })
 
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_oxide_pellet_th232'
-item.icons = {
-    apm.nuclear.icons.oxide_pellet_th232
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_oxide_pellet_th232",
+	icons = {
+		apm.nuclear.icons.oxide_pellet_th232
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_oxide_pellets",
+	order = "ac_a",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_oxide_pellets"
-item.order = 'ac_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_oxide_pellet_np237'
-item.icons = {
-    apm.nuclear.icons.oxide_pellet_np237
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_oxide_pellet_np237",
+	icons = {
+		apm.nuclear.icons.oxide_pellet_np237
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_oxide_pellets",
+	order = "ad_a",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_oxide_pellets"
-item.order = 'ad_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_oxide_pellet_pu239'
-item.icons = {
-    apm.nuclear.icons.oxide_pellet_pu239
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_oxide_pellet_pu239",
+	icons = {
+		apm.nuclear.icons.oxide_pellet_pu239
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_oxide_pellets",
+	order = "ae_a",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_oxide_pellets"
-item.order = 'ae_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })

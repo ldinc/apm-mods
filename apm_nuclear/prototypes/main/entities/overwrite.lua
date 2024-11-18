@@ -1,9 +1,9 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_nuclear/prototypes/main/entities/overwrite.lua'
+local self = "apm_nuclear/prototypes/main/entities/overwrite.lua"
 
 APM_LOG_HEADER(self)
 
-apm.lib.utils.assembler.centrifuge.overhaul('centrifuge', 1)
-apm.lib.utils.reactor.overhaul('nuclear-reactor', 1)
+apm.lib.utils.assembler.centrifuge.overhaul("centrifuge", 1)
+apm.lib.utils.reactor.overhaul("nuclear-reactor", 1)

@@ -135,3 +135,7 @@ require 'lib.utils.builders.smoke'
 require 'lib.utils.builders.fluid_box'
 require 'lib.utils.builders.fluid_boxes'
 require 'lib.utils.builders.energy_source'
+
+if not apm.lib.utils.planet then apm.lib.utils.planet = {} end
+if not apm.lib.utils.planet.add then apm.lib.utils.planet.add = {} end
+require('lib.utils.planet')

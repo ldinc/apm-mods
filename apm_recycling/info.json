@@ -1,16 +1,23 @@
 {
-        "name": "apm_recycling_ldinc",
-        "version": "0.19.53",
-        "title": "Amator Phasma's Recycling (forked)",
-        "author": "AmatorPhasma",
-        "dependencies": [
-                "base >= 0.18.26",
-                "apm_resource_pack_ldinc >= 0.19.02",
-                "apm_lib_ldinc >= 0.19.50",
-                "? apm_power_ldinc >= 0.19.50",
-                "? apm_nuclear_ldinc >= 0.19.50"
-        ],
-        "description": "This mod adds scrap to some intermediate recipes. The scrap have to be taken into account in your logistic, at the end these can be recycled to base material.",
-        "factorio_version": "1.1",
-        "homepage": ""
+	"name": "apm_recycling_ldinc",
+	"version": "0.30.0",
+	"title": "Amator Phasma's Recycling (forked)",
+	"author": "AmatorPhasma, ldinc",
+	"dependencies": [
+		"base",
+		"? space-age",
+		"apm_resource_pack_ldinc >= 0.30.2",
+		"apm_lib_ldinc >= 0.30.7",
+		"? apm_power_ldinc >= 0.30.8",
+		"? apm_nuclear_ldinc >= 0.30.00"
+	],
+	"quality_required": false,
+	"space_travel_required": false,
+	"spoiling_required": false,
+	"freezing_required": false,
+	"segmented_units_required": false,
+	"expansion_shaders_required": false,
+	"description": "This mod adds scrap to some intermediate recipes. The scrap have to be taken into account in your logistic, at the end these can be recycled to base material.",
+	"factorio_version": "2.0",
+	"homepage": ""
 }

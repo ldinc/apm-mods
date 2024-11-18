@@ -2,7 +2,7 @@
 	"name": "apm_energy_addon_ldinc",
 	"version": "0.30.00",
 	"title": "Amator Phasma's Energy (forked Addon)",
-	"author": "AmatorPhasma",
+	"author": "AmatorPhasma, ldinc",
 	"dependencies": [
 		"base",
 		"? space-age >= 1.0.0",

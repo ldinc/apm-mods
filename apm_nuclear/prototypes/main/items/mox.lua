@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_nuclear/prototypes/main/items/mox.lua'
+local self = "apm_nuclear/prototypes/main/items/mox.lua"
 
 APM_LOG_HEADER(self)
 
@@ -9,54 +9,56 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_fuel_rod_mox'
-item.icons = {
-    apm.nuclear.icons.fuel_container_mox
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_fuel_rod_mox",
+	icons = {
+		apm.nuclear.icons.fuel_container_mox
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_fuel",
+	order = "ab_a",
+	fuel_category = "apm_nuclear_mox",
+	burnt_result = "apm_fuel_rod_mox_active",
+	fuel_value = apm.nuclear.constants.fuel_value.fuel_rod.mox,
+	fuel_glow_color = apm.nuclear.color.fuel_glow.fuel_rod.mox,
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_fuel"
-item.order = 'ab_a'
-item.fuel_category = 'apm_nuclear_mox'
-item.burnt_result = "apm_fuel_rod_mox_active"
-item.fuel_value = apm.nuclear.constants.fuel_value.fuel_rod.mox
-item.fuel_glow_color = apm.nuclear.color.fuel_glow.fuel_rod.mox
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_fuel_rod_mox_active'
-item.icons = {
-    apm.nuclear.icons.fuel_container_mox_active
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_fuel_rod_mox_active",
+	icons = {
+		apm.nuclear.icons.fuel_container_mox_active
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_used_fuel",
+	order = "ab_a",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_used_fuel"
-item.order = 'ab_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_fuel_rod_mox_cooled'
-item.icons = {
-    apm.nuclear.icons.fuel_container_mox_cooled
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_fuel_rod_mox_cooled",
+	icons = {
+		apm.nuclear.icons.fuel_container_mox_cooled
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_used_fuel_cold",
+	order = "ab_a",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_used_fuel_cold"
-item.order = 'ab_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })

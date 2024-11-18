@@ -1,7 +1,7 @@
-require ('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_nuclear/prototypes/main/items/thorium.lua'
+local self = "apm_nuclear/prototypes/main/items/thorium.lua"
 
 APM_LOG_HEADER(self)
 
@@ -9,134 +9,150 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_fuel_rod_thorium'
-item.icons = {
-    apm.nuclear.icons.fuel_container_thorium
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_fuel_rod_thorium",
+	icons = {
+		apm.nuclear.icons.fuel_container_thorium
+	},
+	fuel_category = "apm_nuclear_thorium",
+	burnt_result = "apm_fuel_rod_thorium_active",
+	stack_size = 200,
+	subgroup = "apm_nuclear_fuel",
+	order = "ad_a[thorium]",
+	fuel_value = apm.nuclear.constants.fuel_value.fuel_rod.thorium,
+	fuel_glow_color = apm.nuclear.color.fuel_glow.fuel_rod.thorium,
 }
-item.fuel_category = "apm_nuclear_thorium"
-item.burnt_result = "apm_fuel_rod_thorium_active"
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_fuel"
-item.order = 'ad_a[thorium]'
-item.fuel_value = apm.nuclear.constants.fuel_value.fuel_rod.thorium
-item.fuel_glow_color = apm.nuclear.color.fuel_glow.fuel_rod.thorium
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_fuel_rod_thorium_active'
-item.icons = {
-    apm.nuclear.icons.fuel_container_thorium_active
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_fuel_rod_thorium_active",
+	icons = {
+		apm.nuclear.icons.fuel_container_thorium_active
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_used_fuel",
+	order = "ad_a[thorium]",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_used_fuel"
-item.order = 'ad_a[thorium]'
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_fuel_rod_thorium_cooled'
-item.icons = {
-    apm.nuclear.icons.fuel_container_thorium_cooled
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_fuel_rod_thorium_cooled",
+	icons = {
+		apm.nuclear.icons.fuel_container_thorium_cooled
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_used_fuel_cold",
+	order = "ad_a[thorium]",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_used_fuel_cold"
-item.order = 'ad_a[thorium]'
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = "item"
-item.name = "apm_breeder_thorium"
-item.icons = {
-    apm.nuclear.icons.breeder_container_thorium
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_breeder_thorium",
+	icons = {
+		apm.nuclear.icons.breeder_container_thorium
+	},
+	subgroup = "apm_nuclear_breeding_thorium",
+	order = "aa_a",
+	stack_size = 200,
 }
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_breeding_thorium"
-item.order = 'aa_a'
-item.stack_size = 200
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = "item"
-item.name = "apm_breeder_thorium_loaded"
-item.icons = {
-    apm.nuclear.icons.breeder_container_thorium_loaded
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_breeder_thorium_loaded",
+	icons = {
+		apm.nuclear.icons.breeder_container_thorium_loaded
+	},
+	subgroup = "apm_nuclear_breeding_thorium",
+	fuel_category = "apm_nuclear_breeder",
+	burnt_result = "apm_breeder_thorium_active",
+	fuel_value = apm.nuclear.constants.fuel_value.breeder.thorium,
+	fuel_glow_color = apm.nuclear.color.fuel_glow.breeder.thorium,
+	order = "ab_a",
+	stack_size = 200,
 }
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_breeding_thorium"
-item.fuel_category = 'apm_nuclear_breeder'
-item.burnt_result = "apm_breeder_thorium_active"
-item.fuel_value = apm.nuclear.constants.fuel_value.breeder.thorium
-item.fuel_glow_color = apm.nuclear.color.fuel_glow.breeder.thorium
-item.order = 'ab_a'
-item.stack_size = 200
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = "item"
-item.name = "apm_breeder_thorium_active"
-item.icons = {
-    apm.nuclear.icons.breeder_container_thorium_active
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_breeder_thorium_active",
+	icons = {
+		apm.nuclear.icons.breeder_container_thorium_active
+	},
+	subgroup = "apm_nuclear_breeding_thorium",
+	order = "ac_a",
+	stack_size = 200,
 }
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_breeding_thorium"
-item.order = 'ac_a'
-item.stack_size = 200
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = "item"
-item.name = "apm_breeder_thorium_cooled"
-item.icons = {
-    apm.nuclear.icons.breeder_container_thorium_cooled
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_breeder_thorium_cooled",
+	icons = {
+		apm.nuclear.icons.breeder_container_thorium_cooled
+	},
+	subgroup = "apm_nuclear_breeding_thorium",
+	order = "bd_a",
+	stack_size = 200,
 }
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_breeding_thorium"
-item.order = 'bd_a'
-item.stack_size = 200
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = "item"
-item.name = "apm_breeder_thorium_seperated"
-item.icons = {
-    apm.nuclear.icons.breeder_container_thorium_seperated
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_breeder_thorium_seperated",
+	icons = {
+		apm.nuclear.icons.breeder_container_thorium_seperated
+	},
+	subgroup = "apm_nuclear_breeding_thorium",
+	order = "bd_a",
+	stack_size = 200,
 }
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_breeding_thorium"
-item.order = 'bd_a'
-item.stack_size = 200
-data:extend({item})
+
+data:extend({ item })

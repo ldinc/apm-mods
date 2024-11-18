@@ -37,9 +37,9 @@ apm.nuclear.color.fuel_glow.breeder.thorium = {r=1.000, g=0.500, b=0.000, a=0.50
 apm.nuclear.constants.fuel_value_exponent = 0.95
 apm.nuclear.constants.amount_of_oxide_pellets = 10
 
-apm.nuclear.constants.probability_neptunium = 1.2
-apm.nuclear.constants.probability_thorium = 0.6
-apm.nuclear.constants.probability_plutonium = 0.4
+apm.nuclear.constants. probability_neptunium = 0.012
+apm.nuclear.constants.probability_thorium = 0.006
+apm.nuclear.constants.probability_plutonium = 0.004
 
 apm.nuclear.constants.amount_of_tbp_30 = 75
 apm.nuclear.constants.amount_of_rocow = 50

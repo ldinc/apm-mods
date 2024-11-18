@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_nuclear/prototypes/main/items/hexafluoride.lua'
+local self = "apm_nuclear/prototypes/main/items/hexafluoride.lua"
 
 APM_LOG_HEADER(self)
 
@@ -9,34 +9,34 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_yellowcake'
-item.icons = {
-    apm.nuclear.icons.yellowcake
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_yellowcake",
+	icons = {
+		apm.nuclear.icons.yellowcake
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_chemistry",
+	order = "aa_a",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_chemistry"
-item.order = 'aa_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_potassium_bromide'
-item.icons = {
-    apm.nuclear.icons.potassium_bromide
+---@type data.ItemPrototype
+local item = {
+	type = "item",
+	name = "apm_potassium_bromide",
+	icons = {
+		apm.nuclear.icons.potassium_bromide
+	},
+	stack_size = 200,
+	subgroup = "apm_nuclear_chemistry",
+	order = "ab_a",
 }
-item.stack_size = 200
-item.group = "apm_nuclear"
-item.subgroup = "apm_nuclear_chemistry"
-item.order = 'ab_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
-data:extend({item})
+
+data:extend({ item })
