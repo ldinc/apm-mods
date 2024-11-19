@@ -261,7 +261,7 @@ function genInserterts(name, alloy, logic, sub, tier)
 		apm.lib.utils.recipe.ingredient.mod(recipe, bearing, 1)
 	end
 	if sfins ~= '' then
-		recipe = fsins
+		recipe = sfins
 		apm.lib.utils.recipe.ingredient.remove_all(recipe)
 		apm.lib.utils.recipe.ingredient.mod(recipe, fins, 1)
 		apm.lib.utils.recipe.ingredient.mod(recipe, alloy, 5)

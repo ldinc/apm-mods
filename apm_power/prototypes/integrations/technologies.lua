@@ -111,6 +111,11 @@ if mods['aai-industry'] and apm_power_compat_earendel then
 	apm.lib.utils.technology.delete('steam-power')
 	apm.lib.utils.technology.force.recipe_for_unlock('apm_power_steam', 'boiler')
 
+	apm.lib.utils.technology.trigger.set.craft_item("automation-science-pack", "apm_lab_1", 1)
+	apm.lib.utils.technology.add.prerequisites("lamp", "automation-science-pack")
+
+	apm.lib.utils.technology.delete("basic-logistics")
+
 	if not mods.bobelectronics then
 		apm.lib.utils.technology.force.recipe_for_unlock('apm_power_electricity', 'electronic-circuit')
 	end

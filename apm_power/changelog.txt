@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.30.11
+Date: 19.11.2024
+  Fixed:
+    - [Vanilla] Fixed automation-science-pack tech trigger
+    - [AAI Industry] Fixed automation-science-pack tech trigger
+---------------------------------------------------------------------------------------------------
+Version: 0.30.10
+Date: 19.11.2024
+  Fixed:
+    - Recipe `copper-cable` fixed to be available to craft with steam assembling machine
+---------------------------------------------------------------------------------------------------
 Version: 0.30.9
 Date: 18.11.2024
   Fixed:

@@ -120,8 +120,9 @@ apm.lib.utils.technology.add.prerequisites("electric-engine", "apm_power_automat
 --- [automation-science-pack]
 apm.lib.utils.technology.add.prerequisites("automation-science-pack", "apm_treated_wood_planks-1" )
 apm.lib.utils.technology.add.prerequisites("automation-science-pack", "apm_lab_1" )
+apm.lib.utils.technology.trigger.set.craft_item("automation-science-pack", "apm_lab_1")
 
-apm.lib.utils.technology.add.recipe_for_unlock("automation-science-pack", "automation-science-pack")
+apm.lib.utils.technology.add.recipe_for_unlock("basic-logistics", "automation-science-pack")
 apm.lib.utils.technology.add.recipe_for_unlock("automation-science-pack", "apm_electromagnet")
 apm.lib.utils.technology.add.recipe_for_unlock("automation-science-pack", "apm_egen_unit")
 

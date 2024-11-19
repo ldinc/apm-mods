@@ -161,6 +161,9 @@ apm.lib.utils.recipe.ingredient.mod('automation-science-pack', 'apm_treated_wood
 
 apm.lib.utils.recipe.ingredient.mod('electronic-circuit', 'apm_wood_board', 1)
 
+apm.lib.utils.recipe.category.change("copper-cable", "advanced-crafting")
+apm.lib.utils.recipe.remove("steel-plate")
+
 if mods["space-age"] then
 	local recipe = 'offshore-pump'
 	apm.lib.utils.recipe.ingredient.remove_all(recipe)
