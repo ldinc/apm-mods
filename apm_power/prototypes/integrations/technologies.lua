@@ -114,7 +114,14 @@ if mods['aai-industry'] and apm_power_compat_earendel then
 	apm.lib.utils.technology.trigger.set.craft_item("automation-science-pack", "apm_lab_1", 1)
 	apm.lib.utils.technology.add.prerequisites("lamp", "automation-science-pack")
 
-	apm.lib.utils.technology.delete("basic-logistics")
+	--- [electronics]
+	apm.lib.utils.technology.force.recipe_for_unlock("electronics", "copper-cable")
+	apm.lib.utils.technology.add.prerequisites("electronics", "apm_lab_1")
+	apm.lib.utils.technology.add.prerequisites("automation-science-pack", "electronics")
+
+	apm.lib.utils.technology.add.prerequisites("electric-lab", "automation")
+
+	apm.lib.utils.technology.force.recipe_for_unlock("radar", "radar")
 
 	if not mods.bobelectronics then
 		apm.lib.utils.technology.force.recipe_for_unlock('apm_power_electricity', 'electronic-circuit')

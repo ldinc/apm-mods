@@ -218,11 +218,11 @@ apm.lib.utils.description.entities.update()
 --
 -- ----------------------------------------------------------------------------
 if apm_power_inherit_industrial_science then
-	apm.lib.utils.technology.add.science_pak_conditional('apm_industrial_science_pack', 'automation-science-pack')
+	apm.lib.utils.technology.add.science_pack_conditional('apm_industrial_science_pack', 'automation-science-pack')
 end
 
 if apm_power_inherit_steam_science then
-	apm.lib.utils.technology.add.science_pak_conditional('apm_steam_science_pack', 'automation-science-pack')
+	apm.lib.utils.technology.add.science_pack_conditional('apm_steam_science_pack', 'automation-science-pack')
 end
 
 -- recipes allow productivity modules -----------------------------------------
