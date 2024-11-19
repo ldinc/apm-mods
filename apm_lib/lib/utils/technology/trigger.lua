@@ -6,7 +6,25 @@ local self = 'lib.utils.technology.trigger'
 if not apm.lib.utils.technology.trigger then apm.lib.utils.technology.trigger = {} end
 if not apm.lib.utils.technology.trigger.set then apm.lib.utils.technology.trigger.set = {} end
 
+---comment
+---@param technology_name string
+---@param set_default_sp? boolean
+function apm.lib.utils.technology.trigger.remove(technology_name, set_default_sp)
+	if not apm.lib.utils.technology.exist(technology_name) then
+		return
+	end
 
+	data.raw["technology"][technology_name].research_trigger = nil
+
+	if set_default_sp then
+		data.raw["technology"][technology_name].unit = apm.lib.utils.technology.new_unit(
+			{"apm_industrial_science_pack"},
+			1,
+			1
+		)
+	end
+
+end
 
 ---@param technology_name data.TechnologyID
 ---@return data.TechnologyTrigger?

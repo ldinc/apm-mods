@@ -121,12 +121,11 @@ end
 ---@param formula? data.MathExpression
 ---@return data.TechnologyUnit
 function apm.lib.utils.technology.new_unit(ingredients, count, time, formula)
-	
 	---@type data.TechnologyUnit[]
 	local list = {}
 
 	for _, value in ipairs(ingredients) do
-		table.insert(list, {value, 1})
+		table.insert(list, { value, 1 })
 	end
 
 	---@type data.TechnologyUnit
@@ -207,7 +206,7 @@ function apm.lib.utils.technology.new(
 		order = "a-a-a",
 	}
 
-	data:extend({new})
+	data:extend({ new })
 
 	APM_LOG_INFO(self, 'new()', 'create new technology: "' .. tostring(new.name) .. '"')
 end
@@ -461,6 +460,12 @@ function apm.lib.utils.technology.disable(technology_name)
 
 	local technology = data.raw.technology[technology_name]
 	technology.enabled = false
+	technology.hidden = true
+
+	if apm.lib.utils.technology.trigger.get(technology_name) then
+		apm.lib.utils.technology.trigger.remove(technology_name, true)
+	end
+
 	APM_LOG_INFO(self, 'disable()', 'set: enabled = false for:"' .. tostring(technology_name) .. '"')
 end
 
@@ -474,7 +479,8 @@ function apm.lib.utils.technology.delete(technology_name)
 
 	APM_LOG_INFO(self, 'delete()', 'technology: "' .. tostring(technology_name) .. '"')
 	technology.enabled = false
-	--technology.hidden = true
+	technology.hidden = true
+	technology.prerequisites = {}
 
 	-- let us find who is linked to this technology and remove the prerequisites
 	for technology, _ in pairs(data.raw.technology) do
@@ -483,6 +489,10 @@ function apm.lib.utils.technology.delete(technology_name)
 				apm.lib.utils.technology.remove.prerequisites(technology, technology_name)
 			end
 		end
+	end
+
+	if apm.lib.utils.technology.trigger.get(technology_name) then
+		apm.lib.utils.technology.trigger.remove(technology_name, true)
 	end
 end
 

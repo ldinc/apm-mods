@@ -178,23 +178,13 @@ function apm.lib.utils.recipe.remove(recipe_name)
 
 	local recipe = data.raw.recipe[recipe_name]
 	apm.lib.utils.technology.remove.recipe_recursive(recipe_name)
-	apm.lib.utils.modules.remove_recipe_from_limitations(recipe_name)
+	--- Seems broken after some updates...
+	-- apm.lib.utils.modules.remove_recipe_from_limitations(recipe_name)
 
-	if not recipe.normal and not recipe.expensive then
-		recipe.hidden = true
-		recipe.enabled = false
-		return
-	end
 
-	if recipe.normal then
-		recipe.normal.hidden = true
-		recipe.normal.enabled = false
-	end
-
-	if recipe.expensive then
-		recipe.expensive.hidden = true
-		recipe.expensive.enabled = false
-	end
+	recipe.hidden = true
+	recipe.enabled = false
+	recipe.hidden_in_factoriopedia = true
 end
 
 -- Function -------------------------------------------------------------------
