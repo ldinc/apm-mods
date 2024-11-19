@@ -521,7 +521,7 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-function apm.lib.utils.technology.add.science_pak_conditional(science_pack_name, cond_science_pack_name)
+function apm.lib.utils.technology.add.science_pack_conditional(science_pack_name, cond_science_pack_name)
 	for _, technology in pairs(data.raw.technology) do
 		if apm.lib.utils.technology.has.science_pack(technology.name, cond_science_pack_name) then
 			apm.lib.utils.technology.add.science_pack(technology.name, science_pack_name)
