@@ -116,23 +116,23 @@ local box = apm.lib.utils.builders.fluid_box.new
 cooling_pond.fluid_boxes = {
 	box(
 		"input",
-		500,
+		2000,
 		apm.lib.utils.pipecovers.assembler3pipepictures(),
 		defines.direction.south,
-		{0, 1.119},
+		{0, 1},
 		{ north = -1 }
 	),
 	box(
 		"output",
-		500,
+		2000,
 		apm.lib.utils.pipecovers.assembler3pipepictures(),
 		defines.direction.north,
-		{0, -1.119},
+		{0, -1},
 		{ north = -1 }
 	),
 	box(
 		"output",
-		500,
+		2000,
 		apm.lib.utils.pipecovers.assembler3pipepictures(),
 		defines.direction.east,
 		{1.119, 0},

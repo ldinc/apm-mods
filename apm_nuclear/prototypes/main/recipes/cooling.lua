@@ -77,7 +77,7 @@ recipe.crafting_machine_tint = {
 recipe.enabled = false
 recipe.energy_required = 3.5
 recipe.ingredients = {
-	{ type = "fluid", name = "steam", amount = 500 }
+	{ type = "fluid", name = "steam", amount = 5000 }
 }
 recipe.results = {
 	{ type = "fluid", name = "water", amount = 500 }

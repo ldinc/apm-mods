@@ -160,18 +160,18 @@ local box = apm.lib.utils.builders.fluid_box.new
 hybrid_cooling_tower.fluid_boxes = {
 	box(
 		"input",
-		500,
-		apm.lib.utils.pipecovers.assembler3pipepictures(),
+		10000,
+		apm.lib.utils.pipecovers.assembler4pipepictures(),
 		defines.direction.south,
-		{0, 1.199},
+		{0, 1},
 		{ north = -1 }
 	),
 	box(
 		"output",
-		500,
-		apm.lib.utils.pipecovers.assembler3pipepictures(),
-		defines.direction.south,
-		{0, -1.199},
+		1000,
+		apm.lib.utils.pipecovers.assembler4pipepictures(),
+		defines.direction.north,
+		{0, -1},
 		{ north = -1 }
 	),
 }
