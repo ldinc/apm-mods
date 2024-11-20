@@ -216,28 +216,30 @@ function apm.lib.utils.assembler.centrifuge.overhaul(centrifuge_name, level)
 		apm.lib.utils.builders.fluid_box.new(
 			"input",
 			1000,
-			apm.lib.utils.pipecovers.assembler2pipepictures(),
+			apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures(),
 			defines.direction.north,
-			{0, -1.199},
+			{ 0, -1 },
 			{ north = -1 }
 		),
 		apm.lib.utils.builders.fluid_box.new(
 			"output",
 			1000,
-			apm.lib.utils.pipecovers.assembler2pipepictures(),
-			defines.direction.southwest,
-			{-0.5, 1.199},
-			{ north = -1 }	
+			apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures(),
+			defines.direction.south,
+			{ -1, 1},
+			{ north = -1 }
 		),
 		apm.lib.utils.builders.fluid_box.new(
 			"output",
 			1000,
-			apm.lib.utils.pipecovers.assembler2pipepictures(),
-			defines.direction.southeast,
-			{0.5, 1.199},
-			{ north = -1 }	
+			apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures(),
+			defines.direction.south,
+			{ 1, 1 },
+			{ north = -1 }
 		),
 	}
+	
+	--- [patch for better visuals]
 
 	centrifuge.fast_replaceable_group = "centrifuge"
 	centrifuge.allowed_effects = { "consumption", "speed", "pollution" }

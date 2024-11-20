@@ -237,3 +237,42 @@ function apm.lib.utils.pipecovers.pipecoverspictures()
 		}
 	}
 end
+
+function apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures()
+	return
+	{
+		north =
+		{
+			filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/pipe-N.png",
+			width = 71,
+			height = 38,
+			shift = util.by_pixel(2.25, 13.5),
+			scale = 0.5,
+		},
+		east =
+		{
+			filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/pipe-E.png",
+			width = 42,
+			height = 76,
+			shift = util.by_pixel(-24.5, 1),
+			scale = 0.5,
+
+		},
+		south =
+		{
+			filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/pipe-S.png",
+			width = 88,
+			height = 61,
+			shift = util.by_pixel(0, -31.25),
+			scale = 0.5,
+		},
+		west =
+		{
+			filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/pipe-W.png",
+			width = 39,
+			height = 73,
+			shift = util.by_pixel(25.75, 1.25),
+			scale = 0.5,
+		}
+	}
+end
