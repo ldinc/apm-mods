@@ -34,6 +34,8 @@ local smoke_steam = {
 	)
 }
 
+--- [apm_greenhouse_0]
+---@type data.AssemblingMachinePrototype
 local greenhouse = {}
 greenhouse.type = "assembling-machine"
 greenhouse.name = "apm_greenhouse_0"
@@ -56,12 +58,15 @@ greenhouse.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
 --greenhouse.light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 1.0, g = 0.5, b = 0.0}}
 greenhouse.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 greenhouse.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-greenhouse.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-greenhouse.working_sound = {}
-greenhouse.working_sound.sound = { { filename = "__apm_resource_pack_ldinc__/sounds/ambient/greenhouse.ogg", volume = 0.8 } }
-greenhouse.working_sound.apparent_volume = 1.5
+
+greenhouse.working_sound = {
+	filename = "__apm_resource_pack_ldinc__/sounds/ambient/greenhouse.ogg",
+	volume = 0.8,
+	apparent_volume = 1.5,
+}
+
 greenhouse.energy_usage = apm.power.constants.energy_usage.greenhouse_0
-greenhouse.module_specification = apm.power.constants.modules.greenhouse.specification_0
+greenhouse.module_slots = apm.power.constants.modules.greenhouse.specification_0.module_slots
 greenhouse.allowed_effects = apm.power.constants.modules.greenhouse.allowed_effects_0
 
 greenhouse.energy_source = apm.lib.utils.builders.energy_source.new_burner(
@@ -104,6 +109,10 @@ greenhouse.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_input_s()
 greenhouse.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ greenhouse })
 
+
+
+--- [apm_greenhouse_1]
+---@type data.AssemblingMachinePrototype
 local greenhouse = table.deepcopy(greenhouse)
 greenhouse.type = "assembling-machine"
 greenhouse.name = "apm_greenhouse_1"
@@ -118,7 +127,7 @@ greenhouse.crafting_speed = 1.5
 greenhouse.next_upgrade = nil
 greenhouse.max_health = 250
 greenhouse.energy_usage = apm.power.constants.energy_usage.greenhouse_1
-greenhouse.module_specification = apm.power.constants.modules.greenhouse.specification_1
+greenhouse.module_slots = apm.power.constants.modules.greenhouse.specification_1.module_slots
 greenhouse.allowed_effects = apm.power.constants.modules.greenhouse.allowed_effects_1
 
 greenhouse.energy_source = apm.lib.utils.builders.energy_source.new_steam(
@@ -137,6 +146,10 @@ greenhouse.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_input_s(
 
 data:extend({ greenhouse })
 
+
+
+--- [apm_greenhouse_2]
+---@type data.AssemblingMachinePrototype
 local greenhouse = table.deepcopy(greenhouse)
 greenhouse.type = "assembling-machine"
 greenhouse.name = "apm_greenhouse_2"
@@ -150,7 +163,7 @@ greenhouse.crafting_speed = 2.25
 greenhouse.next_upgrade = nil
 greenhouse.max_health = 250
 greenhouse.energy_usage = apm.power.constants.energy_usage.greenhouse_2
-greenhouse.module_specification = apm.power.constants.modules.greenhouse.specification_2
+greenhouse.module_slots = apm.power.constants.modules.greenhouse.specification_2.module_slots
 greenhouse.allowed_effects = apm.power.constants.modules.greenhouse.allowed_effects_2
 
 greenhouse.energy_source = apm.lib.utils.builders.energy_source.new_electric(

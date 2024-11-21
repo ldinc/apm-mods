@@ -60,6 +60,8 @@ pipe_covers.west = empty
 
 local rate = settings.startup["apm_sinkhole_fluid_rate"].value / 10
 
+--- [apm_sinkhole]
+---@type data.FurnacePrototype
 local sinkhole = {}
 sinkhole.type = "furnace"
 sinkhole.name = "apm_sinkhole"
@@ -73,23 +75,11 @@ sinkhole.corpse = "medium-remnants"
 sinkhole.dying_explosion = "medium-explosion"
 
 sinkhole.impact_category = "metal"
--- sinkhole.working_sound =
--- {
--- 	sound = {
--- 		filename = "__base__/sound/offshore-pump.ogg",
--- 		volume = 0.5,
--- 	},
--- 	match_volume_to_activity = true,
--- 	audible_distance_modifier = 0.7,
--- 	max_sounds_per_type = 3,
--- 	fade_in_ticks = 4,
--- 	fade_out_ticks = 20
--- }
+
 sinkhole.repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" }
 sinkhole.mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" }
 sinkhole.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 sinkhole.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-sinkhole.vehicle_impact_sound = { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 }
 
 sinkhole.source_inventory_size = 0
 sinkhole.result_inventory_size = 0
@@ -107,25 +97,21 @@ sinkhole.energy_usage = apm.power.constants.energy_usage.electric
 sinkhole.energy_source = {
 	type = "void",
 	emissions_per_minute = { pollution = 5 },
-	fluid_box = {}
 }
 
 -- sinkhole.light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 1.0, g = 0.5, b = 0.0}}
 
-sinkhole.working_sound = {}
-sinkhole.working_sound.sound = {
-	{
+sinkhole.working_sound = {
 		filename                  = "__apm_power_ldinc__/sounds/entities/water-drain.ogg",
 		volume                    = 0.6,
 		audible_distance_modifier = 0.2,
 		probability               = 0.1,
-	},
 }
--- sinkhole.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
+
+sinkhole.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 sinkhole.working_sound.apparent_volume = 1.5
 
--- sinkhole.module_specification = apm.power.constants.modules.specification_2
--- sinkhole.allowed_effects = apm.power.constants.modules.allowed_effects_2
+
 
 sinkhole.resistances = {
 	{

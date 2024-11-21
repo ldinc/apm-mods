@@ -12,6 +12,8 @@ local base_animation_progress = 1.0666667
 --
 --
 -- ----------------------------------------------------------------------------
+
+---@type data.AssemblingMachinePrototype
 local assembling_machine = {}
 assembling_machine.type = "assembling-machine"
 assembling_machine.name = "apm_assembling_machine_0"
@@ -32,19 +34,21 @@ assembling_machine.dying_explosion = "medium-explosion"
 assembling_machine.resistances = { { type = "fire", percent = 90 } }
 assembling_machine.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
 assembling_machine.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-assembling_machine.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
+-- assembling_machine.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
 assembling_machine.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 assembling_machine.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-assembling_machine.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-assembling_machine.working_sound = {}
-assembling_machine.working_sound.sound = {
-	{ filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.8 },
-	{ filename = "__base__/sound/assembling-machine-t1-2.ogg", volume = 0.8 },
+
+assembling_machine.working_sound = {
+	main_sounds = {
+		{ sound = { filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.8 } },
+		{ sound = { filename = "__base__/sound/assembling-machine-t1-2.ogg", volume = 0.8 } },
+	},
 }
+
 assembling_machine.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 assembling_machine.working_sound.apparent_volume = 1.5
 assembling_machine.energy_usage = apm.power.constants.energy_usage.burner
-assembling_machine.module_specification = apm.power.constants.modules.specification_0
+assembling_machine.module_slots = apm.power.constants.modules.specification_0.module_slots
 assembling_machine.allowed_effects = apm.power.constants.modules.allowed_effects_0
 
 assembling_machine.energy_source = apm.lib.utils.builders.energy_source.new_burner({ 'chemical', 'apm_refined_chemical' })
@@ -87,6 +91,7 @@ data:extend({ assembling_machine })
 --
 --
 -- ----------------------------------------------------------------------------
+---@type data.AssemblingMachinePrototype
 local assembling_machine = table.deepcopy(assembling_machine)
 assembling_machine.name = "apm_assembling_machine_1"
 assembling_machine.icons = {
@@ -97,11 +102,10 @@ assembling_machine.minable = { mining_time = 0.2, result = "apm_assembling_machi
 assembling_machine.crafting_categories = { "crafting", "advanced-crafting", "basic-crafting" }
 assembling_machine.crafting_speed = 0.75
 assembling_machine.energy_usage = apm.power.constants.energy_usage.steam
-assembling_machine.module_specification = apm.power.constants.modules.specification_1
+assembling_machine.module_slots = apm.power.constants.modules.specification_1.module_slots
 assembling_machine.allowed_effects = apm.power.constants.modules.allowed_effects_1
 assembling_machine.fast_replaceable_group = "assembling-machine"
 assembling_machine.next_upgrade = "assembling-machine-1"
-assembling_machine.light = nil
 
 assembling_machine.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.t1)
 

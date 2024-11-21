@@ -62,13 +62,14 @@ apm.lib.utils.inserter.burner.overhaul('burner-inserter')
 apm.lib.utils.item.overwrite.group('burner-inserter', 'apm_power', 'apm_power_inserter', 'ab_a')
 apm.lib.utils.inserter.burner.overhaul('apm_burner_long_inserter')
 
--- Assembler
+--- [assemblers]
 apm.lib.utils.assembler.add.fluid_connections('assembling-machine-1', 1)
 apm.lib.utils.assembler.mod.crafting_speed('assembling-machine-1', 0.75)
 apm.lib.utils.assembler.mod.crafting_speed('assembling-machine-2', 1)
 
-apm.lib.utils.assembler.mod.module_specification('assembling-machine-1', 2)
-apm.lib.utils.assembler.mod.module_specification('assembling-machine-2', 3)
+apm.lib.utils.assembler.mod.module_specification("assembling-machine-1", 2)
+apm.lib.utils.assembler.mod.module_specification("assembling-machine-2", 3)
+apm.lib.utils.assembler.mod.module_specification("assembling-machine-3", 4)
 
 -- Miner
 apm.lib.utils.mining_drill.burner.overhaul('burner-mining-drill', 1)

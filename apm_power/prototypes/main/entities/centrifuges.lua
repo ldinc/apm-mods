@@ -28,6 +28,8 @@ local smoke_steam = table.deepcopy(smoke_burner)
 smoke_steam[1].name = "light-smoke"
 smoke_steam[1].frequency = 8
 
+--- [apm_centrifuge_0]
+---@type data.AssemblingMachinePrototype
 local centrifuge = {}
 centrifuge.type = "assembling-machine"
 centrifuge.name = "apm_centrifuge_0"
@@ -47,19 +49,21 @@ centrifuge.dying_explosion = "medium-explosion"
 centrifuge.resistances = { { type = "fire", percent = 90 } }
 centrifuge.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
 centrifuge.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-centrifuge.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
+
 centrifuge.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 centrifuge.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-centrifuge.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-centrifuge.working_sound = {}
-centrifuge.working_sound.sound = {
-	{ filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.8 },
-	{ filename = "__base__/sound/assembling-machine-t1-2.ogg", volume = 0.8 },
+
+centrifuge.working_sound = {
+	main_sounds = {
+		{ sound = { filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.8 } },
+		{ sound = { filename = "__base__/sound/assembling-machine-t1-2.ogg", volume = 0.8 } },
+	}
 }
+
 centrifuge.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 centrifuge.working_sound.apparent_volume = 1.5
 centrifuge.energy_usage = apm.power.constants.energy_usage.burner
-centrifuge.module_specification = apm.power.constants.modules.specification_0
+centrifuge.module_slots = apm.power.constants.modules.specification_0.module_slots
 centrifuge.allowed_effects = apm.power.constants.modules.allowed_effects_0
 
 centrifuge.energy_source = apm.lib.utils.builders.energy_source.new_burner({ 'chemical', 'apm_refined_chemical' })
@@ -98,7 +102,8 @@ centrifuge.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way()
 centrifuge.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ centrifuge })
 
-
+--- [apm_centrifuge_1]
+---@type data.AssemblingMachinePrototype
 local centrifuge = table.deepcopy(centrifuge)
 centrifuge.name = "apm_centrifuge_1"
 centrifuge.icons = {
@@ -113,7 +118,7 @@ centrifuge.crafting_speed = 1.5
 centrifuge.fast_replaceable_group = "apm_centrifuge"
 centrifuge.next_upgrade = 'apm_centrifuge_2'
 centrifuge.energy_usage = apm.power.constants.energy_usage.steam
-centrifuge.module_specification = apm.power.constants.modules.specification_1
+centrifuge.module_slots = apm.power.constants.modules.specification_1.module_slots
 centrifuge.allowed_effects = apm.power.constants.modules.allowed_effects_1
 
 centrifuge.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.t1)
@@ -129,7 +134,8 @@ centrifuge.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 
 data:extend({ centrifuge })
 
-
+--- [apm_centrifuge_2]
+---@type data.AssemblingMachinePrototype
 local centrifuge = table.deepcopy(centrifuge)
 centrifuge.name = "apm_centrifuge_2"
 centrifuge.icons = {
@@ -144,7 +150,7 @@ centrifuge.crafting_speed = 2
 centrifuge.fast_replaceable_group = "apm_centrifuge"
 centrifuge.next_upgrade = nil
 centrifuge.energy_usage = apm.power.constants.energy_usage.electric
-centrifuge.module_specification = apm.power.constants.modules.specification_2
+centrifuge.module_slots = apm.power.constants.modules.specification_2.module_slots
 centrifuge.allowed_effects = apm.power.constants.modules.allowed_effects_2
 
 centrifuge.energy_source = apm.lib.utils.builders.energy_source.new_electric(

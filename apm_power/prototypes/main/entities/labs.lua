@@ -34,6 +34,8 @@ local smoke_steam = {
 	)
 }
 
+--- [apm_lab_0]
+---@type data.LabPrototype
 local lab = {}
 lab.type = "lab"
 lab.name = "apm_lab_0"
@@ -53,13 +55,12 @@ lab.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
 lab.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
 lab.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 lab.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-lab.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-lab.working_sound = {}
-lab.working_sound.sound = { filename = "__base__/sound/lab.ogg", volume = 0.8 }
+
+lab.working_sound = { filename = "__base__/sound/lab.ogg", volume = 0.8 }
 lab.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 lab.working_sound.apparent_volume = 1.5
 lab.energy_usage = apm.power.constants.energy_usage.lab_0
-lab.module_specification = apm.power.constants.modules.specification_0
+lab.module_slots = apm.power.constants.modules.specification_0.module_slots
 lab.allowed_effects = apm.power.constants.modules.allowed_effects_0
 lab.researching_speed = 1
 lab.fast_replaceable_group = "lab"
@@ -137,6 +138,8 @@ lab.off_animation = {
 
 data:extend({ lab })
 
+--- [apm_lab_0]
+---@type data.LabPrototype
 local lab = table.deepcopy(lab)
 lab.name = "apm_lab_1"
 lab.icons = {
@@ -147,7 +150,7 @@ lab.localised_description = { "entity-description.apm_lab_1" }
 lab.minable = { mining_time = 0.2, result = "apm_lab_1" }
 lab.light = nil
 lab.energy_usage = apm.power.constants.energy_usage.lab_2
-lab.module_specification = apm.power.constants.modules.specification_1
+lab.module_slots = apm.power.constants.modules.specification_1.module_slots
 lab.allowed_effects = apm.power.constants.modules.allowed_effects_1
 lab.fast_replaceable_group = "lab"
 lab.next_upgrade = "lab"

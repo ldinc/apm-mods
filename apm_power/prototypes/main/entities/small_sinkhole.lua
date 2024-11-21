@@ -25,6 +25,8 @@ local entity_name = 'apm_sinkhole_small'
 
 local rate = settings.startup["apm_sinkhole_fluid_rate"].value / 100
 
+--- [apm_sinkhole_small]
+---@type data.FurnacePrototype
 local sinkhole = {}
 sinkhole.type = "furnace"
 sinkhole.name = 'apm_sinkhole_small'
@@ -38,8 +40,7 @@ sinkhole.corpse = "small-remnants"
 sinkhole.dying_explosion = "explosion"
 
 sinkhole.impact_category = "metal"
-sinkhole.working_sound = {}
-sinkhole.working_sound.sound = {
+sinkhole.working_sound = {
 	{
 		filename                  = "__apm_power_ldinc__/sounds/entities/water-drain.ogg",
 		volume                    = 0.3,
@@ -52,7 +53,7 @@ sinkhole.repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" }
 sinkhole.mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" }
 sinkhole.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 sinkhole.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-sinkhole.vehicle_impact_sound = { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 }
+
 sinkhole.source_inventory_size = 0
 sinkhole.result_inventory_size = 0
 sinkhole.next_upgrade = nil
@@ -68,10 +69,6 @@ sinkhole.selection_box = { { -0.5, -0.5 }, { 0.5, 0.5 } }
 sinkhole.energy_usage = apm.power.constants.energy_usage.electric
 
 sinkhole.energy_source = apm.lib.utils.builders.energy_source.new_void({ pollution = 5 })
-
--- sinkhole.module_specification = apm.power.constants.modules.specification_2
--- sinkhole.allowed_effects = apm.power.constants.modules.allowed_effects_2
-
 
 local gen = function(direction)
 	local animation = {
@@ -97,6 +94,8 @@ sinkhole.graphics_set = {
 		west = gen('w'),
 	},
 }
+
+sinkhole.graphics_set.animation.south.shift = util.by_pixel(3, -11)
 
 sinkhole.fluid_boxes = {
 	apm.lib.utils.builders.fluid_box.new(

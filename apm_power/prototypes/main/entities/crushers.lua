@@ -34,6 +34,8 @@ local smoke_steam = {
 
 local base_animation_progress = 1.0666667
 
+--- [apm_crusher_machine_0]
+---@type data.AssemblingMachinePrototype
 local crusher = {}
 crusher.type = "assembling-machine"
 crusher.name = "apm_crusher_machine_0"
@@ -53,12 +55,15 @@ crusher.dying_explosion = "medium-explosion"
 crusher.resistances = { { type = "fire", percent = 90 } }
 crusher.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
 crusher.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-crusher.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
+
 crusher.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 crusher.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-crusher.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-crusher.working_sound = {}
-crusher.working_sound.sound = { { filename = "__base__/sound/burner-mining-drill-1.ogg", volume = 1.0 } }
+
+crusher.working_sound = {
+	filename = "__base__/sound/burner-mining-drill-1.ogg",
+	volume = 1.0,
+}
+
 crusher.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 crusher.working_sound.apparent_volume = 1.5
 crusher.energy_usage = apm.power.constants.energy_usage.burner
@@ -103,11 +108,14 @@ crusher.graphics_set = {
 	}
 }
 
+
 crusher.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way()
 
 crusher.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ crusher })
 
+--- [apm_crusher_machine_1]
+---@type data.AssemblingMachinePrototype
 local crusher = table.deepcopy(crusher)
 crusher.name = "apm_crusher_machine_1"
 crusher.icons = {
@@ -116,7 +124,7 @@ crusher.icons = {
 }
 
 crusher.minable = { mining_time = 0.2, result = "apm_crusher_machine_1" }
-crusher.light = nil
+
 crusher.crafting_categories = { "apm_crusher", "apm_crusher_2" }
 crusher.crafting_speed = 1
 crusher.fast_replaceable_group = "apm_power_crusher_machine"
@@ -142,6 +150,8 @@ crusher.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 
 data:extend({ crusher })
 
+--- [apm_crusher_machine_2]
+---@type data.AssemblingMachinePrototype
 local crusher = table.deepcopy(crusher)
 crusher.name = "apm_crusher_machine_2"
 crusher.icons = {
@@ -149,7 +159,6 @@ crusher.icons = {
 	apm.lib.icons.dynamics.lable_c
 }
 crusher.minable = { mining_time = 0.2, result = "apm_crusher_machine_2" }
-crusher.light = nil
 crusher.crafting_categories = { "apm_crusher", "apm_crusher_2", "apm_crusher_3" }
 crusher.crafting_speed = 1.5
 crusher.fast_replaceable_group = "apm_power_crusher_machine"

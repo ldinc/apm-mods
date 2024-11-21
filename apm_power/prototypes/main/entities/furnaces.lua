@@ -49,10 +49,8 @@ local smoke_puddling_furnace = {
 	)
 }
 
--- Entity ---------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+--- [apm_puddling_furnace_0]
+---@type data.AssemblingMachinePrototype
 local puddling_furnace = {}
 puddling_furnace.type = "assembling-machine"
 puddling_furnace.name = "apm_puddling_furnace_0"
@@ -73,14 +71,16 @@ puddling_furnace.dying_explosion = "medium-explosion"
 puddling_furnace.resistances = { { type = "fire", percent = 90 } }
 puddling_furnace.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
 puddling_furnace.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-puddling_furnace.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
+
 puddling_furnace.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 puddling_furnace.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-puddling_furnace.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-puddling_furnace.working_sound = {}
-puddling_furnace.working_sound.sound = { { filename = "__base__/sound/electric-furnace.ogg" } }
+
+puddling_furnace.working_sound = {
+	filename = "__base__/sound/electric-furnace.ogg" 
+}
+
 puddling_furnace.energy_usage = apm.power.constants.energy_usage.puddling_furnace_0
-puddling_furnace.module_specification = apm.power.constants.modules.specification_0
+puddling_furnace.module_slots = apm.power.constants.modules.specification_0.module_slots
 puddling_furnace.allowed_effects = apm.power.constants.modules.allowed_effects_0
 
 puddling_furnace.energy_source = apm.lib.utils.builders.energy_source.new_burner(
@@ -88,13 +88,6 @@ puddling_furnace.energy_source = apm.lib.utils.builders.energy_source.new_burner
 	apm.power.constants.emissions.cp_0,
 	smoke_puddling_furnace
 )
--- puddling_furnace.energy_source.type = "burner"
--- puddling_furnace.energy_source.fuel_categories = { 'apm_refined_chemical' }
--- puddling_furnace.energy_source.effectivity = 1
--- puddling_furnace.energy_source.fuel_inventory_size = 1
--- puddling_furnace.energy_source.burnt_inventory_size = 1
--- puddling_furnace.energy_source.emissions_per_minute = apm.power.constants.emissions.cp_0
--- puddling_furnace.energy_source.smoke = smoke_puddling_furnace
 
 puddling_furnace.graphics_set = {
 	animation_progress = 0.26666667,
@@ -171,6 +164,9 @@ data:extend({ puddling_furnace })
 --
 --
 -- ----------------------------------------------------------------------------
+
+--- [apm_steelworks_0]
+---@type data.AssemblingMachinePrototype
 local steelworks = {}
 steelworks.type = "assembling-machine"
 steelworks.name = "apm_steelworks_0"
@@ -191,14 +187,13 @@ steelworks.dying_explosion = "medium-explosion"
 steelworks.resistances = { { type = "fire", percent = 90 } }
 steelworks.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
 steelworks.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-steelworks.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
+
 steelworks.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 steelworks.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-steelworks.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-steelworks.working_sound = {}
-steelworks.working_sound.sound = { { filename = "__base__/sound/furnace.ogg" } }
+
+steelworks.working_sound = { filename = "__base__/sound/furnace.ogg" }
 steelworks.energy_usage = apm.power.constants.energy_usage.steelworks_0
-steelworks.module_specification = apm.power.constants.modules.specification_2
+steelworks.module_slots = apm.power.constants.modules.specification_2.module_slots
 steelworks.allowed_effects = apm.power.constants.modules.allowed_effects_2
 
 steelworks.energy_source = apm.lib.utils.builders.energy_source.new_electric(
@@ -286,39 +281,6 @@ steelworks.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_4way(
 	apm.lib.utils.pipecovers.assembler3pipepictures()
 )
 
--- steelworks.fluid_boxes[1] = {}
--- steelworks.fluid_boxes[1].production_type = "input"
--- steelworks.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler3pipepictures()
--- steelworks.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- steelworks.fluid_boxes[1].base_area = 1
--- steelworks.fluid_boxes[1].base_level = -1
--- steelworks.fluid_boxes[1].pipe_connections = { { type = "input", position = { 0, -2 } } }
--- steelworks.fluid_boxes[1].secondary_draw_orders = { north = -1 }
--- steelworks.fluid_boxes[2] = {}
--- steelworks.fluid_boxes[2].production_type = "output"
--- steelworks.fluid_boxes[2].pipe_picture = apm.lib.utils.pipecovers.assembler3pipepictures()
--- steelworks.fluid_boxes[2].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- steelworks.fluid_boxes[2].base_area = 1
--- steelworks.fluid_boxes[2].base_level = 1
--- steelworks.fluid_boxes[2].pipe_connections = { { type = "output", position = { -2, 0 } } }
--- steelworks.fluid_boxes[2].secondary_draw_orders = { north = -1 }
--- steelworks.fluid_boxes[3] = {}
--- steelworks.fluid_boxes[3].production_type = "output"
--- steelworks.fluid_boxes[3].pipe_picture = apm.lib.utils.pipecovers.assembler3pipepictures()
--- steelworks.fluid_boxes[3].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- steelworks.fluid_boxes[3].base_area = 1
--- steelworks.fluid_boxes[3].base_level = 1
--- steelworks.fluid_boxes[3].pipe_connections = { { type = "output", position = { 2, 0 } } }
--- steelworks.fluid_boxes[3].secondary_draw_orders = { north = -1 }
--- steelworks.fluid_boxes[4] = {}
--- steelworks.fluid_boxes[4].production_type = "input"
--- steelworks.fluid_boxes[4].pipe_picture = apm.lib.utils.pipecovers.assembler3pipepictures()
--- steelworks.fluid_boxes[4].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- steelworks.fluid_boxes[4].base_area = 1
--- steelworks.fluid_boxes[4].base_level = -1
--- steelworks.fluid_boxes[4].pipe_connections = { { type = "input", position = { 0, 2 } } }
--- steelworks.fluid_boxes[4].secondary_draw_orders = { north = -1 }
-
 steelworks.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ steelworks })
 
@@ -326,6 +288,9 @@ data:extend({ steelworks })
 --
 --
 -- ----------------------------------------------------------------------------
+
+--- [apm_steelworks_1]
+---@type data.AssemblingMachinePrototype
 steelworks = table.deepcopy(steelworks)
 steelworks.name = "apm_steelworks_1"
 steelworks.icons = {
@@ -336,7 +301,7 @@ steelworks.minable = { mining_time = 0.2, result = "apm_steelworks_1" }
 steelworks.next_upgrade = nil
 steelworks.max_health = 350
 steelworks.energy_usage = apm.power.constants.energy_usage.steelworks_1
-steelworks.module_specification = apm.power.constants.modules.specification_3
+steelworks.module_slots = apm.power.constants.modules.specification_3.module_slots
 steelworks.allowed_effects = apm.power.constants.modules.allowed_effects_3
 
 steelworks.energy_source = apm.lib.utils.builders.energy_source.new_electric(

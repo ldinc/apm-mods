@@ -14,6 +14,8 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
+
+--- [apm_steam_engine_2]
 local steam_engine = table.deepcopy(data.raw.generator['steam-engine'])
 steam_engine.name = 'apm_steam_engine_2'
 steam_engine.icons = {

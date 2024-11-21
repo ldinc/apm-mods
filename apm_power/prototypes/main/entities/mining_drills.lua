@@ -63,7 +63,22 @@ function electric_mining_drill_status_colors()
 	}
 end
 
-local steam_mining_drill = {}
+---@type data.MiningDrillPrototype
+local steam_mining_drill = {
+	resource_categories = { "basic-solid" },
+	resource_searching_radius = 2.49,
+
+	mining_speed = 0.55,
+
+	vector_to_place_result = { 0, -1.85 },
+
+	energy_usage = apm.power.constants.energy_usage.steam_miner,
+	energy_source = apm.lib.utils.builders.energy_source.new_steam(
+		apm.power.constants.emissions.steam_miner,
+		{ apm.lib.utils.builders.smoke.light },
+		apm.lib.utils.builders.fluid_box.new_steam_input_3way()
+	),
+}
 steam_mining_drill.type = "mining-drill"
 steam_mining_drill.name = "apm_steam_mining_drill"
 steam_mining_drill.icon = nil
@@ -81,12 +96,10 @@ steam_mining_drill.working_sound = {
 steam_mining_drill.open_sound = sounds.drill_open
 steam_mining_drill.close_sound = sounds.drill_close
 
-steam_mining_drill.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-
 steam_mining_drill.flags = { "placeable-neutral", "player-creation" }
 steam_mining_drill.minable = { mining_time = 0.3, result = "apm_steam_mining_drill" }
 steam_mining_drill.max_health = 300
-steam_mining_drill.resource_categories = { "basic-solid" }
+
 steam_mining_drill.corpse = "big-remnants"
 steam_mining_drill.collision_box = { { -1.4, -1.4 }, { 1.4, 1.4 } }
 steam_mining_drill.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
@@ -365,48 +378,6 @@ steam_mining_drill.graphics_set = {
 	},
 }
 
-steam_mining_drill.mining_speed = 0.55
-
-steam_mining_drill.energy_source = apm.lib.utils.builders.energy_source.new_steam(
-	apm.power.constants.emissions.steam_miner,
-	{ apm.lib.utils.builders.smoke.light },
-	apm.lib.utils.builders.fluid_box.new_steam_input_3way()
-)
-
--- steam_mining_drill.energy_source.type = "fluid"
--- steam_mining_drill.energy_source.fluid_box = {}
--- steam_mining_drill.energy_source.fluid_box.production_type = "input-output"
--- steam_mining_drill.energy_source.fluid_box.pipe_covers = pipecoverspictures()
--- steam_mining_drill.energy_source.fluid_box.base_area = 1
--- steam_mining_drill.energy_source.fluid_box.pipe_connections = {
--- 	{ type = "input-output", position = { 2, 0 } },
--- 	{ type = "input-output", position = { 0, 2 } },
--- 	{ type = "input-output", position = { -2, 0 } }
--- }
--- steam_mining_drill.energy_source.fluid_box.filter = "steam"
--- steam_mining_drill.energy_source.minimum_temperature = 100.0
--- steam_mining_drill.energy_source.maximum_temperature = 1000.0
--- steam_mining_drill.energy_source.burns_fluid = false
--- steam_mining_drill.energy_source.scale_fluid_usage = true
--- steam_mining_drill.energy_source.emissions_per_minute = apm.power.constants.emissions.steam_miner
--- steam_mining_drill.energy_source.smoke = {}
--- steam_mining_drill.energy_source.smoke[1] = {}
--- steam_mining_drill.energy_source.smoke[1].name = "light-smoke"
--- steam_mining_drill.energy_source.smoke[1].deviation = { 0.1, 0.1 }
--- steam_mining_drill.energy_source.smoke[1].frequency = 8
--- steam_mining_drill.energy_source.smoke[1].position = nil
--- steam_mining_drill.energy_source.smoke[1].north_position = { 0, 1 }
--- steam_mining_drill.energy_source.smoke[1].south_position = { 0, -1 }
--- steam_mining_drill.energy_source.smoke[1].east_position = { -1, 0 }
--- steam_mining_drill.energy_source.smoke[1].west_position = { 1, 0 }
--- steam_mining_drill.energy_source.smoke[1].starting_vertical_speed = 0.08
--- steam_mining_drill.energy_source.smoke[1].starting_frame_deviation = 60
--- steam_mining_drill.energy_source.smoke[1].slow_down_factor = 1
-
-steam_mining_drill.energy_usage = apm.power.constants.energy_usage.steam_miner
-
-steam_mining_drill.resource_searching_radius = 2.49
-steam_mining_drill.vector_to_place_result = { 0, -1.85 }
 steam_mining_drill.module_slots = apm.power.constants.modules.specification_1.module_slots
 steam_mining_drill.allowed_effects = apm.power.constants.modules.allowed_effects_1
 steam_mining_drill.radius_visualisation_picture = {

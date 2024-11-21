@@ -34,6 +34,8 @@ local smoke_steam = {
 
 local base_animation_progress = 1.0666667
 
+--- [apm_sieve_0]
+---@type data.AssemblingMachinePrototype
 local sieve = {}
 sieve.type = "assembling-machine"
 sieve.name = "apm_sieve_0"
@@ -55,17 +57,21 @@ sieve.dying_explosion = "medium-explosion"
 sieve.resistances = { { type = "fire", percent = 90 } }
 sieve.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
 sieve.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-sieve.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
+
 sieve.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 sieve.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-sieve.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-sieve.working_sound = {}
-sieve.working_sound.sound = { { filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.8 },
-	{ filename = "__base__/sound/assembling-machine-t1-2.ogg", volume = 0.8 } }
+
+sieve.working_sound = {
+	main_sounds = {
+		{ sound = { filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.8 } },
+		{ sound = { filename = "__base__/sound/assembling-machine-t1-2.ogg", volume = 0.8 } },
+	},
+}
+
 sieve.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
 sieve.working_sound.apparent_volume = 1.5
 sieve.energy_usage = apm.power.constants.energy_usage.steam
-sieve.module_specification = apm.power.constants.modules.specification_2
+sieve.module_slots = apm.power.constants.modules.specification_2.module_slots
 sieve.allowed_effects = apm.power.constants.modules.allowed_effects_2
 
 sieve.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.t2, smoke_steam)

@@ -34,6 +34,8 @@ local smoke_steam = {
 
 local base_animation_progress = 1.0666667
 
+--- [apm_press_machine_0]
+---@type data.AssemblingMachinePrototype
 local press = {}
 press.type = "assembling-machine"
 press.name = "apm_press_machine_0"
@@ -54,21 +56,21 @@ press.dying_explosion = "medium-explosion"
 press.resistances = { { type = "fire", percent = 90 } }
 press.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
 press.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-press.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
+
 press.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 press.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-press.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
-press.working_sound = {}
-press.working_sound.sound = {}
--- press.working_sound.sound.filename = "__base__/sound/assembling-machine-t1-1.ogg"
-press.working_sound.sound.filename = "__apm_resource_pack_ldinc__/sounds/entities/press.ogg"
-press.working_sound.sound.volume = 0.8
+
+press.working_sound = {
+	filename = "__apm_resource_pack_ldinc__/sounds/entities/press.ogg",
+	volume = 0.8,
+}
+
 press.working_sound.idle_sound = {}
 press.working_sound.idle_sound.filename = "__base__/sound/idle1.ogg"
 press.working_sound.idle_sound.volume = 0.6
 press.working_sound.apparent_volume = 1.5
 press.energy_usage = apm.power.constants.energy_usage.burner
-press.module_specification = apm.power.constants.modules.specification_0
+press.module_slots = apm.power.constants.modules.specification_0.module_slots
 press.allowed_effects = apm.power.constants.modules.allowed_effects_0
 
 press.energy_source = apm.lib.utils.builders.energy_source.new_burner(
@@ -88,7 +90,7 @@ press.graphics_set = {
 				height = 256,
 				frame_count = 64,
 				line_length = 8,
-				{ 0.4375, -0.28125 },
+				shift = { 0.4375, -0.28125 },
 				scale = 0.5,
 			},
 			{
@@ -99,7 +101,7 @@ press.graphics_set = {
 				height = 256,
 				frame_count = 64,
 				line_length = 8,
-				{ 0.4375, -0.28125 },
+				shift = { 0.4375, -0.28125 },
 				scale = 0.5,
 			},
 		},
@@ -111,21 +113,23 @@ press.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way()
 press.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ press })
 
+--- [apm_press_machine_1]
+---@type data.AssemblingMachinePrototype
 local press = table.deepcopy(press)
 press.name = "apm_press_machine_1"
 press.icons = {
 	apm.lib.icons.dynamics.machine.t1,
 	apm.lib.icons.dynamics.lable_p
 }
---press.icon_size = 32
+
 press.minable = { mining_time = 0.2, result = "apm_press_machine_1" }
-press.light = nil
+
 press.crafting_categories = { "apm_press", 'apm_press_2' }
 press.crafting_speed = 1
 press.fast_replaceable_group = "apm_power_press_machine"
 press.next_upgrade = "apm_press_machine_2"
 press.energy_usage = apm.power.constants.energy_usage.steam
-press.module_specification = apm.power.constants.modules.specification_1
+press.module_slots = apm.power.constants.modules.specification_1.module_slots
 press.allowed_effects = apm.power.constants.modules.allowed_effects_1
 
 press.energy_source = apm.lib.utils.builders.energy_source.new_steam(
@@ -143,6 +147,8 @@ press.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 
 data:extend({ press })
 
+--- [apm_press_machine_2]
+---@type data.AssemblingMachinePrototype
 local press = table.deepcopy(press)
 press.name = "apm_press_machine_2"
 press.icons = {
@@ -151,13 +157,13 @@ press.icons = {
 }
 
 press.minable = { mining_time = 0.2, result = "apm_press_machine_2" }
-press.light = nil
+
 press.crafting_categories = { "apm_press", 'apm_press_2', 'apm_press_3' }
 press.crafting_speed = 1.5
 press.fast_replaceable_group = "apm_power_press_machine"
 press.next_upgrade = nil
 press.energy_usage = apm.power.constants.energy_usage.electric
-press.module_specification = apm.power.constants.modules.specification_2
+press.module_slots = apm.power.constants.modules.specification_2.module_slots
 press.allowed_effects = apm.power.constants.modules.allowed_effects_2
 
 press.energy_source = apm.lib.utils.builders.energy_source.new_electric(
