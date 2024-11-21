@@ -22,7 +22,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.storage_tank.set.hidden(storage_tank_name)
-    if not apm.lib.utils.assembler.exist(storage_tank_name) then return end
-    local storage_tank = data.raw['storage-tank'][storage_tank_name]
-    apm.lib.utils.entity.add.flag(storage_tank, 'hidden')
+	if not apm.lib.utils.assembler.exist(storage_tank_name) then return end
+	local storage_tank = data.raw['storage-tank'][storage_tank_name]
+	apm.lib.utils.entity.add.flag(storage_tank, 'hidden')
 end

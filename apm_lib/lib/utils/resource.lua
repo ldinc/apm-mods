@@ -27,8 +27,8 @@ function apm.lib.utils.resource.on_starting_zone(resource_name, value)
     local res = data.raw.resource[resource_name]
 
     if res.autoplace then
-        res.autoplace.has_starting_area_placement  = value
-        res.autoplace.starting_rq_factor_multiplier = 1
+        res.autoplace.default_enabled = value
+        -- res.autoplace.starting_rq_factor_multiplier = 1
     end
 
     local msg = '" added as starting resource point'
