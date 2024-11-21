@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_recycling/prototypes/integrations/entities.lua'
@@ -36,6 +36,6 @@ APM_LOG_SETTINGS(self, 'apm_recycler_compat_sctm', apm_recycler_compat_sctm)
 if mods['space-exploration'] and apm_recycler_compat_earendel then
 	apm.lib.utils.assembler.mod.category.add('se-space-recycling-facility', 'apm_recycling_1')
 	apm.lib.utils.assembler.mod.category.add('se-space-recycling-facility', 'apm_recycling_2')
-    apm.lib.utils.assembler.mod.category.add('se-space-recycling-facility', 'apm_recycling_3')
-    apm.lib.utils.assembler.mod.category.add('se-space-recycling-facility', 'apm_recycling_4')
+	apm.lib.utils.assembler.mod.category.add('se-space-recycling-facility', 'apm_recycling_3')
+	apm.lib.utils.assembler.mod.category.add('se-space-recycling-facility', 'apm_recycling_4')
 end

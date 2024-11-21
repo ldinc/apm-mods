@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_recycling/prototypes/integrations/technologies.lua'
