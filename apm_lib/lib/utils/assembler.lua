@@ -113,7 +113,7 @@ function apm.lib.utils.assembler.mod.module_specification(assembler_name, value,
 
 	local assembler = data.raw['assembling-machine'][assembler_name]
 
-	assembler.module_specification = { module_slots = value }
+	assembler.module_slots = value
 
 	if not assembler.allowed_effects and not allowed_effects then
 		assembler.allowed_effects = default_allowed_effects
@@ -226,7 +226,7 @@ function apm.lib.utils.assembler.centrifuge.overhaul(centrifuge_name, level)
 			1000,
 			apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures(),
 			defines.direction.south,
-			{ -1, 1},
+			{ -1, 1 },
 			{ north = -1 }
 		),
 		apm.lib.utils.builders.fluid_box.new(
@@ -238,7 +238,7 @@ function apm.lib.utils.assembler.centrifuge.overhaul(centrifuge_name, level)
 			{ north = -1 }
 		),
 	}
-	
+
 	--- [patch for better visuals]
 
 	centrifuge.fast_replaceable_group = "centrifuge"
