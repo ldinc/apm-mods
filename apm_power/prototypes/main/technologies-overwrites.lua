@@ -131,6 +131,10 @@ apm.lib.utils.technology.add.prerequisites("electronics", "apm_lab_1" )
 
 apm.lib.utils.technology.trigger.set.craft_item("electronics", "apm_steam_science_pack", 150)
 
+--- [iron-stick]
+apm.lib.utils.technology.remove.recipe_from_unlock("railway", "iron-stick")
+apm.lib.utils.recipe.enable("iron-stick")
+
 if not mods["space-age"] then
 	apm.lib.utils.technology.remove.recipe_from_unlock('steam-power', 'offshore-pump')
 else
