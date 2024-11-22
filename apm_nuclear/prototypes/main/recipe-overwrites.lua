@@ -50,3 +50,10 @@ if mods["bobplates"] then
 	local recipe = data.raw.recipe[name]
 	table.insert(recipe.results, { type = "item", name = "fusion-catalyst", amount = 1 })
 end
+
+--- [space-age]
+if mods["space-age"] then
+	local recipe_name = "apm_nuclear_breeder"
+
+	apm.lib.utils.recipe.ingredient.replace(recipe_name, "productivity-module-3", "productivity-module-2", 1)
+end
