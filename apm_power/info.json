@@ -1,6 +1,6 @@
 {
 	"name": "apm_power_ldinc",
-	"version": "0.30.16",
+	"version": "0.30.17",
 	"title": "Amator Phasma's Coal & Steam (forked)",
 	"author": "AmatorPhasma, ldinc",
 	"dependencies": [
@@ -10,8 +10,7 @@
 		"apm_lib_ldinc >= 0.30.15",
 		"(?) aai-industry >= 0.6.5",
 		"? bobwarfare >= 1.1.2",
-		"? bobores >= 1.1.0",
-		"? rso-mod >= 6.0.0"
+		"? bobores >= 1.1.0"
 	],
 	"quality_required": false,
 	"space_travel_required": false,

@@ -123,6 +123,10 @@ if mods['aai-industry'] and apm_power_compat_earendel then
 
 	apm.lib.utils.technology.force.recipe_for_unlock("radar", "radar")
 
+	apm.lib.utils.technology.delete("sand-processing")
+
+	apm.lib.utils.technology.add.prerequisites("glass-processing", "apm_stone_bricks")
+
 	if not mods.bobelectronics then
 		apm.lib.utils.technology.force.recipe_for_unlock('apm_power_electricity', 'electronic-circuit')
 	end

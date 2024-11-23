@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.30.17
+Date: 23.11.2024
+  - Changed:
+    - [AAI Industry] remove sand from tech & item list. Now used only apm_crushed_stone to be melted into glass plate. (Thx for request to depgiailamdo )
+---------------------------------------------------------------------------------------------------
 Version: 0.30.16
 Date: 22.11.2024
   Fixed:

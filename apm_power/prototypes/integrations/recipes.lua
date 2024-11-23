@@ -1401,6 +1401,8 @@ if mods['aai-industry'] and apm_power_compat_earendel then
 	apm.lib.utils.recipe.ingredient.mod('burner-mining-drill', 'stone-brick', 0)
 	apm.lib.utils.recipe.ingredient.mod('burner-mining-drill', 'stone-furnace', 1)
 
+	apm.lib.utils.recipe.ingredient.replace("glass", "sand", "apm_crushed_stone")
+
 	if not mods.bobelectronics then
 		apm.lib.utils.recipe.ingredient.mod('inserter', 'electronic-circuit', 1)
 		apm.lib.utils.recipe.ingredient.mod('apm_offshore_pump_1', 'electronic-circuit', 5)
@@ -2067,7 +2069,6 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 	recipe.name = 'apm_wood_pellets_cellulose'
 	recipe.category = 'apm_press'
 	recipe.icons = icons
-	recipe.group = "apm_power"
 	recipe.subgroup = "apm_power_wood"
 	recipe.order = 'ac_b'
 	recipe.ingredients = {

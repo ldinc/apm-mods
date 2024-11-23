@@ -64,3 +64,7 @@ if mods.bobpower and apm_power_compat_bob then
         apm.lib.utils.item.remove('apm_steam_engine_2')
     end
 end
+
+if mods['aai-industry'] and apm_power_compat_earendel then
+    apm.lib.utils.item.remove("sand")
+end
