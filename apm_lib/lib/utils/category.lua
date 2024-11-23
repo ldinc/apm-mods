@@ -63,3 +63,18 @@ function apm.lib.utils.category.change(group, subgroup, new_group, new_subgroup)
         end
     end
 end
+
+
+--- Check is category in crafting categories exists
+---@param category string
+---@param categories string[]
+---@return boolean
+function  apm.lib.utils.category.exists(category, categories)
+    for _, candidate in ipairs(categories) do
+        if candidate == category then
+            return true
+        end
+    end
+
+    return false
+end

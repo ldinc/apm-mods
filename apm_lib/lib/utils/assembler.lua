@@ -258,3 +258,22 @@ function apm.lib.utils.assembler.set.hidden(assembler_name)
 
 	assembler.hidden = true
 end
+
+--- Append crafting categoty without duplicates
+---@param assembler_name string
+---@param crafting_categories string[]
+function apm.lib.utils.assembler.add.crafting_categories(assembler_name, crafting_categories)
+	if not apm.lib.utils.assembler.exist(assembler_name) then return end
+
+	local assembler = data.raw['assembling-machine'][assembler_name]
+
+	if not assembler.crafting_categories then
+		assembler.crafting_categories = {}
+	end
+
+	for _, crafting_category in ipairs(crafting_categories) do
+		if not apm.lib.utils.category.exists(crafting_category, assembler.crafting_categories) then
+			table.insert(assembler.crafting_categories, crafting_category)
+		end
+	end
+end
