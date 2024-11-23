@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.30.4
+Date: 23.11.2024
+  Changed:
+    - fission equipment generator output from 750kW to 1MW
+    - [Space age] cryogenic-plant now can use recipies for cooling from apm_nuclear (thx to StansTheMan)
+    - [Space age] fission equipment generator use nuclear fuel. Fussion equipment generator is ultimate solution (thx to StansTheMan)
+---------------------------------------------------------------------------------------------------
+Version: 0.30.3
+Date: 23.11.2024
+  Fixed:
+    - [Space age] heating-tower used chemical & apm_refined fuel instead nuclear
+---------------------------------------------------------------------------------------------------
 Version: 0.30.2
 Date: 23.11.2024
   Changed:

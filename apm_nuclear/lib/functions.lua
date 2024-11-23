@@ -10,10 +10,14 @@ APM_LOG_HEADER(self)
 -- ----------------------------------------------------------------------------
 function apm.nuclear.icons.get_apm_hexafluoride_enrichment(enrichment)
 	local icons = {}
-	table.insert(icons, { icon = apm.lib.icons.path.chemical_flame_1, icon_size = 64, tint = { r = 0.0, g = 0.741, b = 0.0 } })
-	table.insert(icons, { icon = apm.lib.icons.path.chemical_flame_2, icon_size = 64, tint = { r = 0.0, g = 0.741, b = 0.0 } })
-	table.insert(icons, { icon = apm.lib.icons.path.chemical_flame_3, icon_size = 64, tint = { r = 0.286, g = 0.0, b = 0.878 } })
-	table.insert(icons, { icon = apm.lib.icons.path.chemical_flame_4, icon_size = 64, tint = { r = 0.0, g = 0.741, b = 0.0 } })
+	table.insert(icons,
+		{ icon = apm.lib.icons.path.chemical_flame_1, icon_size = 64, tint = { r = 0.0, g = 0.741, b = 0.0 } })
+	table.insert(icons,
+		{ icon = apm.lib.icons.path.chemical_flame_2, icon_size = 64, tint = { r = 0.0, g = 0.741, b = 0.0 } })
+	table.insert(icons,
+		{ icon = apm.lib.icons.path.chemical_flame_3, icon_size = 64, tint = { r = 0.286, g = 0.0, b = 0.878 } })
+	table.insert(icons,
+		{ icon = apm.lib.icons.path.chemical_flame_4, icon_size = 64, tint = { r = 0.0, g = 0.741, b = 0.0 } })
 	table.insert(icons, { icon = apm.nuclear.icons.path.uranium_hexafluoride, icon_size = 64 })
 	table.insert(icons,
 		{ icon = apm.nuclear.icons.path.enrichment_tier .. string.format("%03d", enrichment) .. '.png', icon_size = 64 })
@@ -89,7 +93,12 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-function apm.nuclear.update_fission_equipment(equipment_name, tier)
+
+---comment
+---@param equipment_name string
+---@param tier? uint32
+---@param power? string
+function apm.nuclear.update_fission_equipment(equipment_name, tier, power)
 	if not data.raw['generator-equipment'][equipment_name] then return end
 
 	local localised_name = { "equipment-name.apm_fission_reactor", "MK" .. tostring(tier) }
@@ -109,6 +118,10 @@ function apm.nuclear.update_fission_equipment(equipment_name, tier)
 		fuel_inventory_size = 1,
 		burnt_inventory_size = 1,
 	}
+
+	if power then
+		equipment.power = power
+	end
 end
 
 -- Function -------------------------------------------------------------------

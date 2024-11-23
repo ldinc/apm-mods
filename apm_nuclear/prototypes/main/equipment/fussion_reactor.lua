@@ -24,7 +24,7 @@ local reactor = {
 		type = "electric",
 		usage_priority = "secondary-output",
 	},
-	power = "1750kW",
+	power = "2000kW",
 	categories = { "armor" },
 	burner = {
 		type = "burner",

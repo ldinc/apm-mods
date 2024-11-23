@@ -12,7 +12,13 @@ APM_LOG_HEADER(self)
 APM_LOG_INFO(self, "", "BEGIN: basic overwrites of the fuel categories")
 
 for reactor_name, _ in pairs(data.raw.reactor) do
-	apm.lib.utils.reactor.overhaul(reactor_name)
+	if reactor_name == "heating-tower" and mods["space-age"] then
+		local fuel_categories = {"chemical", "apm_refined_chemical"}
+		
+		apm.lib.utils.reactor.set.fuel_categories(reactor_name, fuel_categories)
+	else
+		apm.lib.utils.reactor.overhaul(reactor_name)
+	end
 end
 
 APM_LOG_INFO(self, "", "END: basic overwrites of the fuel categories")
@@ -21,3 +27,13 @@ APM_LOG_INFO(self, "", "END: basic overwrites of the fuel categories")
 apm.lib.utils.furnace.mod.category.add("electric-furnace", "apm_electric_smelting")
 
 apm.lib.utils.lab.add.science_pack("lab", "apm_nuclear_science_pack")
+
+--- [space-age]
+if mods["space-age"] then
+	local categories_from_pond = {
+		"apm_fluid_cooling_0",
+		"apm_nuclear_cooling_0",
+	}
+
+	apm.lib.utils.assembler.add.crafting_categories("cryogenic-plant", categories_from_pond)
+end
