@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/integrations/entities.lua'
@@ -6,13 +6,17 @@ local self = 'apm_power/prototypes/integrations/entities.lua'
 APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
-local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"].value
+local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
+.value
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
-local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"].value
+local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
+.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
-local apm_power_compat_angel_overhaul_machine_frames = settings.startup["apm_power_compat_angel_overhaul_machine_frames"].value
+local apm_power_compat_angel_overhaul_machine_frames = settings.startup
+["apm_power_compat_angel_overhaul_machine_frames"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
-local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"].value
+local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
+.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -59,7 +63,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.AlternativeSteam then
-	apm.lib.utils.reactor.set.fuel_categories('as-chemical-fired-reactor', {'chemical','apm_refined_chemical'})
+	apm.lib.utils.reactor.set.fuel_categories('as-chemical-fired-reactor', { 'chemical', 'apm_refined_chemical' })
 end
 
 -- Earendel -------------------------------------------------------------------
@@ -99,9 +103,9 @@ if mods.bobpower and apm_power_compat_bob then
 	apm.lib.utils.generator.overhaul('steam-engine-4', 4)
 	apm.lib.utils.generator.overhaul('steam-engine-5', 5)
 	-- heat reactor
-	apm.lib.utils.reactor.set.fuel_categories('burner-reactor', {'chemical','apm_refined_chemical'})
-	apm.lib.utils.reactor.set.fuel_categories('burner-reactor-2', {'chemical','apm_refined_chemical'})
-	apm.lib.utils.reactor.set.fuel_categories('burner-reactor-3', {'chemical','apm_refined_chemical'})
+	apm.lib.utils.reactor.set.fuel_categories('burner-reactor', { 'chemical', 'apm_refined_chemical' })
+	apm.lib.utils.reactor.set.fuel_categories('burner-reactor-2', { 'chemical', 'apm_refined_chemical' })
+	apm.lib.utils.reactor.set.fuel_categories('burner-reactor-3', { 'chemical', 'apm_refined_chemical' })
 end
 
 if mods.bobplates and apm_power_compat_bob then
@@ -141,7 +145,7 @@ if mods.angelssmelting and apm_power_compat_angel then
 	apm.lib.utils.assembler.set.hidden('burner-ore-crusher')
 	apm.lib.utils.assembler.set.hidden('apm_steelworks_0')
 	apm.lib.utils.assembler.set.hidden('apm_steelworks_1')
-	
+
 	apm.lib.utils.assembler.burner.overhaul('blast-furnace', true)
 	apm.lib.utils.assembler.burner.overhaul('blast-furnace-2', true)
 	apm.lib.utils.assembler.burner.overhaul('blast-furnace-3', true)
@@ -161,7 +165,8 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.ScienceCostTweakerM and apm_power_compat_sctm then
-	apm.lib.utils.lab.inputs('apm_lab_1', {"apm_industrial_science_pack", "apm_steam_science_pack", "automation-science-pack"})
+	apm.lib.utils.lab.inputs('apm_lab_1',
+		{ "apm_industrial_science_pack", "apm_steam_science_pack", "automation-science-pack" })
 	apm.lib.utils.lab.overhaul('sct-lab-t1')
 	apm.lib.utils.lab.overhaul('sct-lab-t2')
 	apm.lib.utils.lab.overhaul('sct-lab-t3')
@@ -185,5 +190,10 @@ end
 -- ----------------------------------------------------------------------------
 if mods.RealisticReactors and apm_power_compat_realistic_reactors then
 	--patch hidden cooling-tower
-    apm.lib.utils.furnace.overhaul('rr-cooling-tower-steam', nil, false)
+	apm.lib.utils.furnace.overhaul('rr-cooling-tower-steam', nil, false)
+end
+
+--- [space age]
+if mods["space-age"] then
+	apm.lib.utils.assembler.add.crafting_categories("foundry", { "smelting" })
 end
