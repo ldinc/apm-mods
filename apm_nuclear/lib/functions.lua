@@ -40,10 +40,14 @@ function apm.nuclear.nuclear_vehicle(vehicle_name)
 	end
 
 	vehicle.localised_description = { "entity-description.apm_nuclear_vehicle" }
-	vehicle.burner.fuel_inventory_size = 1
-	vehicle.burner.burnt_inventory_size = vehicle.burner.fuel_inventory_size
-	vehicle.burner.fuel_categories = { 'apm_nuclear_uranium' }
-	vehicle.burner.emissions_per_minute = nil
+
+	if  vehicle.energy_source.type == "burner" then
+		vehicle.energy_source.fuel_inventory_size = 1
+		vehicle.energy_source.burnt_inventory_size = vehicle.energy_source.fuel_inventory_size
+		vehicle.energy_source.fuel_categories = { 'apm_nuclear_uranium' }
+		vehicle.energy_source.emissions_per_minute = nil	
+	end
+
 	vehicle.effectivity = 0.99
 end
 
