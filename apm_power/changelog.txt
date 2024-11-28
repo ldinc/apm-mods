@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.30.20
+Date: 28.11.2024
+  - Changed:
+    - [Space age] added to character crafting category "apm_light_metallurgy"
+---------------------------------------------------------------------------------------------------
+Version: 0.30.19
+Date: 28.11.2024
+  - Changed:
+    - [Space age] added to foundry crafting category "apm_light_metallurgy"
+    - [Space age] new crafting category "apm_light_metallurgy"
+    - [Space age] apm_light_metallurgy: "iron-gear-wheel", "transport-belt", "splitter", "underground-belt", "fast-underground-belt", "fast-splitter", "fast-transport-belt"
+    - [Space age] better integration recipies with foundry
+---------------------------------------------------------------------------------------------------
 Version: 0.30.18
 Date: 25.11.2024
   - Changed:

@@ -173,4 +173,36 @@ if mods["space-age"] then
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_rubber', 30)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'tungsten-plate', 10)
 	apm.lib.utils.recipe.ingredient.mod(recipe, 'processing-unit', 6)
+
+	apm.lib.utils.recipe.category.create("apm_light_metallurgy")
+
+	local foundry_indtegration = {
+		"iron-gear-wheel",
+		"transport-belt",
+		"splitter",
+		"underground-belt",
+		"fast-underground-belt",
+		"fast-splitter",
+		"fast-transport-belt",
+	}
+
+	for _, recipe_name in ipairs(foundry_indtegration) do
+		apm.lib.utils.recipe.category.change(recipe_name, "apm_light_metallurgy")
+	end
+
+	local assembling_with_light_metallurgy = {
+		"apm_assembling_machine_0",
+		"apm_assembling_machine_1",
+		"assembling-machine-1",
+		"assembling-machine-2",
+		"assembling-machine-3",
+		"foundry",
+	}
+
+	for _, assemnling_machine_name in ipairs(assembling_with_light_metallurgy) do
+		apm.lib.utils.assembler.add.crafting_categories(assemnling_machine_name, {"apm_light_metallurgy"})
+	end
+
+	apm.lib.utils.character.crafting_category.add("character", "apm_light_metallurgy")
+
 end
