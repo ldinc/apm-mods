@@ -53,18 +53,31 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-function apm.lib.utils.recipe.allow_productivity(recipe_name)
-	if not apm.lib.utils.recipe.exist(recipe_name) then return end
-	for _, p_module in pairs(data.raw["module"]) do
-		if apm.lib.utils.modules.has_productivity(p_module.name) then
-			if p_module.limitation then
-				table.insert(p_module.limitation, recipe_name)
-				APM_LOG_INFO(self, 'allow_productivity()',
-					'add recipe: "' ..
-					tostring(recipe_name) .. '" to limitations of module: "' .. tostring(p_module.name) .. '"')
-			end
-		end
+
+---@param recipe_name string
+---@return data.RecipePrototype
+---@return boolean
+function apm.lib.utils.recipe.get.by_name(recipe_name)
+	local recipe = data.raw["recipe"][recipe_name]
+
+	if recipe then
+		return recipe, true
 	end
+
+	return {}, false
+end
+
+---@param recipe_name string
+function apm.lib.utils.recipe.allow_productivity(recipe_name)
+	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
+
+	if not ok then
+		return
+	end
+
+	recipe.allow_productivity = true
+
+	apm.lib.utils.recipe.get.by_name(recipe_name)
 end
 
 -- Function -------------------------------------------------------------------
@@ -90,27 +103,8 @@ function apm.lib.utils.recipe.has.result(recipe_name, result_name)
 
 	local recipe = data.raw.recipe[recipe_name]
 
-	if recipe.result then
-		if recipe.result == result_name then return true end
-	end
-
 	if recipe.results then
 		if has_result(recipe.results, result_name) then return true end
-	end
-
-	if recipe.normal and recipe.normal.result then
-		if recipe.normal.result == result_name then return true end
-	end
-
-	if recipe.normal and recipe.normal.results then
-		if has_result(recipe.normal.results, result_name) then return true end
-	end
-
-	if recipe.expensive and recipe.expensive.result then
-		if recipe.expensive.result == result_name then return true end
-	end
-	if recipe.expensive and recipe.expensive.results then
-		if has_result(recipe.expensive.results, result_name) then return true end
 	end
 
 	return false
@@ -143,14 +137,6 @@ function apm.lib.utils.recipe.has.ingredient(recipe_name, ingredient_name)
 		if has_ingredient(recipe.ingredients, ingredient_name) then return true end
 	end
 
-	if recipe.normal and recipe.normal.ingredients then
-		if has_ingredient(recipe.normal.ingredients, ingredient_name) then return true end
-	end
-
-	if recipe.expensive and recipe.expensive.ingredients then
-		if has_ingredient(recipe.expensive.ingredients, ingredient_name) then return true end
-	end
-
 	return false
 end
 
@@ -174,13 +160,13 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.recipe.remove(recipe_name)
-	if not apm.lib.utils.recipe.exist(recipe_name) then return end
+	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
-	local recipe = data.raw.recipe[recipe_name]
+	if not ok then
+		return
+	end
+
 	apm.lib.utils.technology.remove.recipe_recursive(recipe_name)
-	--- Seems broken after some updates...
-	-- apm.lib.utils.modules.remove_recipe_from_limitations(recipe_name)
-
 
 	recipe.hidden = true
 	recipe.enabled = false
@@ -192,22 +178,13 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.recipe.disable(recipe_name)
-	if not apm.lib.utils.recipe.exist(recipe_name) then return end
+	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
-	local recipe = data.raw.recipe[recipe_name]
-
-	if not recipe.normal and not recipe.expensive then
-		recipe.enabled = false
+	if not ok then
 		return
 	end
 
-	if recipe.normal then
-		recipe.normal.enabled = false
-	end
-
-	if recipe.expensive then
-		recipe.expensive.enabled = false
-	end
+	recipe.enabled = false
 end
 
 -- Function -------------------------------------------------------------------
@@ -215,70 +192,13 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.recipe.enable(recipe_name)
-	if not apm.lib.utils.recipe.exist(recipe_name) then return end
+	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
-	local recipe = data.raw.recipe[recipe_name]
-	if not recipe.normal and not recipe.expensive then
-		recipe.enabled = true
+	if not ok then
 		return
 	end
 
-	if recipe.normal then
-		recipe.normal.enabled = true
-	end
-
-	if recipe.expensive then
-		recipe.expensive.enabled = true
-	end
-end
-
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-function apm.lib.utils.recipe.convert_simple_result_to_results(recipe_name)
-	if not apm.lib.utils.recipe.exist(recipe_name) then return end
-
-	local recipe = data.raw.recipe[recipe_name]
-
-	-- simple recipe (result to results)
-	if recipe.result then
-		recipe.results = {}
-		local type_result = apm.lib.utils.item.get_type(recipe.result)
-		local amount = 1
-		if recipe.result_count then
-			amount = recipe.result_count
-		end
-		table.insert(recipe.results, { type = type_result, name = recipe.result, amount = amount })
-		recipe.result_count = nil
-		recipe.result = nil
-	end
-
-	-- normal recipe (result to results)
-	if recipe.normal and recipe.normal.result then
-		recipe.normal.results = {}
-		local type_result = apm.lib.utils.item.get_type(recipe.normal.result)
-		local amount = 1
-		if recipe.normal.result_count then
-			amount = recipe.normal.result_count
-		end
-		table.insert(recipe.normal.results, { type = type_result, name = recipe.normal.result, amount = amount })
-		recipe.normal.result_count = nil
-		recipe.normal.result = nil
-	end
-
-	-- expensive recipe (result to results)
-	if recipe.expensive and recipe.expensive.result then
-		recipe.expensive.results = {}
-		local type_result = apm.lib.utils.item.get_type(recipe.expensive.result)
-		local amount = 1
-		if recipe.expensive.result_count then
-			amount = recipe.expensive.result_count
-		end
-		table.insert(recipe.expensive.results, { type = type_result, name = recipe.expensive.result, amount = amount })
-		recipe.expensive.result_count = nil
-		recipe.expensive.result = nil
-	end
+	recipe.enabled = true
 end
 
 -- Function -------------------------------------------------------------------
@@ -295,7 +215,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function ingredient_mod(recipe_name, base, base_name, ingredient_name, ingredient_amount,
-							  ingredient_amount_expensive)
+															ingredient_amount_expensive)
 	local ingredients_convert = convert_ingredients(base)
 	base = ingredients_convert
 	local type_name = apm.lib.utils.item.get_type(ingredient_name)
@@ -343,21 +263,14 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.recipe.ingredient.remove_all(recipe_name)
-	if not apm.lib.utils.recipe.exist(recipe_name) then return end
+	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
-	local recipe = data.raw.recipe[recipe_name]
+	if not ok then
+		return
+	end
 
-	-- simple recipe
 	if recipe.ingredients then
 		recipe.ingredients = {}
-	end
-	-- recipe.normal
-	if recipe.normal and recipe.normal.ingredients then
-		recipe.normal.ingredients = {}
-	end
-	-- recipe.expensive
-	if recipe.expensive and recipe.expensive.ingredients then
-		recipe.expensive.ingredients = {}
 	end
 end
 
@@ -366,27 +279,18 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.recipe.ingredient.mod(recipe_name, ingredient_name, ingredient_amount, ingredient_amount_expensive)
-	if not apm.lib.utils.recipe.exist(recipe_name) then return end
-	if not apm.lib.utils.item.exist(ingredient_name) then return end
+	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
-	local recipe = data.raw.recipe[recipe_name]
+	if not ok then
+		return
+	end
+
+	if not apm.lib.utils.item.exist(ingredient_name) then return end
 
 	-- simple recipe
 	if recipe.ingredients then
 		recipe.ingredients = ingredient_mod(recipe_name, recipe.ingredients, 'simple', ingredient_name, ingredient_amount,
 			ingredient_amount_expensive)
-	end
-
-	-- recipe.normal
-	if recipe.normal and recipe.normal.ingredients then
-		recipe.normal.ingredients = ingredient_mod(recipe_name, recipe.normal.ingredients, 'normal', ingredient_name,
-			ingredient_amount, ingredient_amount_expensive)
-	end
-
-	-- recipe.expensive
-	if recipe.expensive and recipe.expensive.ingredients then
-		recipe.expensive.ingredients = ingredient_mod(recipe_name, recipe.expensive.ingredients, 'expensive',
-			ingredient_name, ingredient_amount, ingredient_amount_expensive)
 	end
 end
 
@@ -395,7 +299,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function ingredient_mod_temperature(recipe_name, base, base_name, ingredient_name, condition_temperature,
-										  target_temperature)
+																					target_temperature)
 	for _, ingredient in pairs(base) do
 		if ingredient[1] == ingredient_name or ingredient.name == ingredient_name then
 			if ingredient.temperature == condition_temperature then
@@ -419,7 +323,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.recipe.ingredient.mod_temperature(recipe_name, ingredient_name, condition_temperature,
-														 target_temperature)
+																												 target_temperature)
 	if not apm.lib.utils.recipe.exist(recipe_name) then return end
 	if not apm.lib.utils.item.exist(ingredient_name) then return end
 
@@ -435,16 +339,6 @@ function apm.lib.utils.recipe.ingredient.mod_temperature(recipe_name, ingredient
 	if recipe.ingredients then
 		recipe.ingredients = ingredient_mod_temperature(recipe_name, recipe.ingredients, 'simple', ingredient_name,
 			condition_temperature, target_temperature)
-	end
-
-	if recipe.normal and recipe.normal.ingredients then
-		recipe.normal.ingredients = ingredient_mod_temperature(recipe_name, recipe.normal.ingredients, 'normal',
-			ingredient_name, condition_temperature, target_temperature)
-	end
-
-	if recipe.expensive and recipe.expensive.ingredients then
-		recipe.expensive.ingredients = ingredient_mod_temperature(recipe_name, recipe.expensive.ingredients, 'expensive',
-			ingredient_name, condition_temperature, target_temperature)
 	end
 end
 
@@ -496,7 +390,7 @@ local function replace_ingredient(recipe_name, base, base_name, ingredient_old, 
 	if already_has_ingredient_new and ingredient_old_key and ingredient_new_key then
 		if base[ingredient_old_key].amount and base[ingredient_new_key].amount then
 			base[ingredient_new_key].amount = base[ingredient_new_key].amount +
-			(base[ingredient_old_key].amount * amount_multi)
+					(base[ingredient_old_key].amount * amount_multi)
 		else
 			base[ingredient_new_key].amount = 1 + (base_amount * amount_multi)
 		end
@@ -536,18 +430,6 @@ function apm.lib.utils.recipe.ingredient.replace(recipe_name, ingredient_old, in
 		recipe.ingredients = replace_ingredient(recipe_name, recipe.ingredients, 'simple', ingredient_old, ingredient_new,
 			amount_multi)
 	end
-
-	-- recipe.normal
-	if recipe.normal and recipe.normal.ingredients then
-		recipe.normal.ingredients = replace_ingredient(recipe_name, recipe.normal.ingredients, 'normal', ingredient_old,
-			ingredient_new, amount_multi)
-	end
-
-	-- recipe.expensive
-	if recipe.expensive and recipe.expensive.ingredients then
-		recipe.expensive.ingredients = replace_ingredient(recipe_name, recipe.expensive.ingredients, 'expensive',
-			ingredient_old, ingredient_new, amount_multi)
-	end
 end
 
 -- Function -------------------------------------------------------------------
@@ -572,8 +454,6 @@ function apm.lib.utils.recipe.has.main_product(recipe_name)
 	local recipe = data.raw.recipe[recipe_name]
 
 	if recipe.main_product then return true end
-	if recipe.normal and recipe.normal.main_product then return true end
-	if recipe.expensive and recipe.expensive.main_product then return true end
 
 	return false
 end
@@ -587,8 +467,6 @@ function apm.lib.utils.recipe.get.main_product(recipe_name)
 	local recipe = data.raw.recipe[recipe_name]
 
 	if recipe.main_product then return recipe.main_product end
-	if recipe.normal and recipe.normal.main_product then return recipe.normal.main_product end
-	if recipe.expensive and recipe.expensive.main_product then return recipe.expensive.main_product end
 
 	return nil
 end
@@ -603,9 +481,7 @@ function apm.lib.utils.recipe.set.always_show_products(recipe_name, bool, catego
 
 	if category_condition and recipe.category ~= category_condition then return end
 
-	if not recipe.normal and not recipe.expensive then recipe.always_show_products = bool end
-	if recipe.normal then recipe.normal.always_show_products = true end
-	if recipe.expensive then recipe.expensive.always_show_products = true end
+	recipe.always_show_products = bool
 
 	APM_LOG_INFO(self, 'set.always_show_products()', 'set true for recipe: "' .. tostring(recipe_name) .. '"')
 end
@@ -620,9 +496,7 @@ function apm.lib.utils.recipe.set.always_show_made_in(recipe_name, bool, categor
 
 	if category_condition and recipe.category ~= category_condition then return end
 
-	if not recipe.normal and not recipe.expensive then recipe.always_show_made_in = bool end
-	if recipe.normal then recipe.normal.always_show_made_in = true end
-	if recipe.expensive then recipe.expensive.always_show_made_in = true end
+	recipe.always_show_made_in = bool
 
 	APM_LOG_INFO(self, 'set.always_show_made_in()', 'set true for recipe: "' .. tostring(recipe_name) .. '"')
 end
@@ -649,18 +523,13 @@ function apm.lib.utils.recipe.set.icon(recipe_name, icon_path)
 
 	if apm.lib.utils.recipe.has.main_product(recipe_name) then
 		local main_product_name = apm.lib.utils.recipe.get.main_product(recipe_name)
-		if not main_product then
-			APM_LOG_ERR(self, 'set.icon()', 'get mainproduct == nil for: "' .. tostring(recipe_name) .. '"')
-			return
-		end
+
 		local main_product = data.raw.item(main_product_name) or data.raw.fluid(main_product_name)
 
-		recipe.group = main_product.group
+
 		recipe.subgroup = main_product.subgroup
 		recipe.order = main_product.order
 		if recipe.main_product then recipe.main_product = nil end
-		if recipe.normal and recipe.normal.main_product then recipe.normal.main_product = nil end
-		if recipe.expensive and recipe.expensive.main_product then recipe.expensive.main_product = nil end
 	end
 
 	if not recipe.icons then
@@ -697,15 +566,6 @@ function apm.lib.utils.recipe.set.main_product(recipe_name, result_old, result_n
 		done = true
 	end
 
-	if recipe.normal and recipe.normal.main_product == result_old then
-		recipe.normal.main_product = result_new
-		done = true
-	end
-
-	if recipe.expensive and recipe.expensive.main_product == result_old then
-		recipe.expensive.main_product = result_new
-		done = true
-	end
 
 	if done then
 		APM_LOG_INFO(self, 'set.main_product()',
@@ -734,25 +594,8 @@ function apm.lib.utils.recipe.result.count(recipe_name)
 
 	if recipe.results then
 		return #recipe.results
-	elseif recipe.result then
-		return recipe.result_count
 	end
 
-	if recipe.normal then
-		if recipe.normal.results then
-			return #recipe.normal.results
-		elseif recipe.normal.result then
-			return recipe.normal.result_count
-		end
-	end
-
-	if recipe.expensive then
-		if recipe.expensive.results then
-			return #recipe.expensive.results
-		elseif recipe.expensive.result then
-			return recipe.expensive.result_count
-		end
-	end
 
 	return nil
 end
@@ -767,28 +610,6 @@ function apm.lib.utils.recipe.result.get_first_result(recipe_name)
 	if recipe.results then
 		for _, result in pairs(recipe.results) do
 			return result.name
-		end
-	elseif recipe.result then
-		return recipe.result
-	end
-
-	if recipe.normal then
-		if recipe.normal.results then
-			for _, result in pairs(recipe.normal.results) do
-				return result.name
-			end
-		elseif recipe.normal.result then
-			return recipe.normal.result
-		end
-	end
-
-	if recipe.expensive then
-		if recipe.expensive.results then
-			for _, result in pairs(recipe.expensive.results) do
-				return result.name
-			end
-		elseif recipe.expensive.result then
-			return recipe.expensive.result
 		end
 	end
 
@@ -815,22 +636,6 @@ function apm.lib.utils.recipe.result.replace(recipe_name, result_old, result_new
 		amount_multi = 1
 	end
 
-	-- simple recipe (result)
-	if recipe.result ~= nil and recipe.normal == nil and recipe.expensive == nil then
-		if recipe.result == result_old then
-			recipe.result = result_new
-			if recipe.result_count then
-				recipe.result_count = recipe.result_count * amount_multi
-			else
-				recipe.result_count = amount_multi
-			end
-			APM_LOG_INFO(self, 'result.replace()',
-				'in (simple.result): "' ..
-				tostring(recipe_name) .. '" result: "' .. tostring(result_old) .. '" -> "' .. tostring(result_new) .. '"')
-			apm.lib.utils.recipe.set.main_product(recipe_name, result_old, result_new)
-		end
-	end
-
 	-- simple recipe (results)
 	if recipe.results ~= nil and recipe.normal == nil and recipe.expensive == nil then
 		for k, v in pairs(recipe.results) do
@@ -844,72 +649,6 @@ function apm.lib.utils.recipe.result.replace(recipe_name, result_old, result_new
 				end
 				APM_LOG_INFO(self, 'result.replace()',
 					'in (simple.results): "' ..
-					tostring(recipe_name) ..
-					'" result: "' .. tostring(result_old) .. '" -> "' .. tostring(result_new) .. '"')
-				apm.lib.utils.recipe.set.main_product(recipe_name, result_old, result_new)
-			end
-		end
-	end
-
-	-- recipe.normal
-	if recipe.normal ~= nil then
-		if recipe.normal.result ~= nil then
-			recipe.normal.results = {}
-			local type_result = apm.lib.utils.item.get_type(recipe.normal.result)
-			local amount = 1
-			if recipe.normal.result_count then
-				amount = recipe.normal.result_count
-			end
-			table.insert(recipe.normal.results, { type = type_result, name = recipe.normal.result, amount = amount })
-			recipe.normal.main_product = recipe.normal.result
-			recipe.normal.result_count = nil
-			recipe.normal.result = nil
-		end
-
-		for k, v in pairs(recipe.normal.results) do
-			if v[1] == result_old or v.name == result_old then
-				recipe.normal.results[k].type = type_name
-				recipe.normal.results[k].name = result_new
-				if recipe.normal.results[k].amount then
-					recipe.normal.results[k].amount = recipe.normal.results[k].amount * amount_multi
-				else
-					recipe.normal.results[k].amount = amount_multi
-				end
-				APM_LOG_INFO(self, 'result.replace()',
-					'in (normal.results): "' ..
-					tostring(recipe_name) ..
-					'" result: "' .. tostring(result_old) .. '" -> "' .. tostring(result_new) .. '"')
-				apm.lib.utils.recipe.set.main_product(recipe_name, result_old, result_new)
-			end
-		end
-	end
-
-	-- recipe.expensive
-	if recipe.expensive ~= nil then
-		if recipe.expensive.result ~= nil then
-			recipe.expensive.results = {}
-			local type_result = apm.lib.utils.item.get_type(recipe.expensive.result)
-			local amount = 1
-			if recipe.expensive.result_count ~= nil then
-				amount = recipe.expensive.result_count
-			end
-			table.insert(recipe.expensive.results, { type = type_result, name = recipe.expensive.result, amount = amount })
-			recipe.expensive.main_product = recipe.expensive.result
-			recipe.expensive.result_count = nil
-			recipe.expensive.result = nil
-		end
-
-		for k, v in pairs(recipe.expensive.results) do
-			if v[1] == result_old or v.name == result_old then
-				recipe.expensive.results[k].type = type_name
-				recipe.expensive.results[k].name = result_new
-				if recipe.expensive.results[k].amount then
-					recipe.expensive.results[k].amount = recipe.expensive.results[k].amount * amount_multi
-				else
-					recipe.expensive.results[k].amount = amount_multi
-				end
-				APM_LOG_INFO(self, 'result.replace()',
-					'in (expensive.results): "' ..
 					tostring(recipe_name) ..
 					'" result: "' .. tostring(result_old) .. '" -> "' .. tostring(result_new) .. '"')
 				apm.lib.utils.recipe.set.main_product(recipe_name, result_old, result_new)
@@ -945,22 +684,6 @@ local function check_for_probability(base_dn, result_amount)
 	end
 end
 
-
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
---local function check_for_completness_of_the_recipe(recipe_name)
---    if apm.lib.utils.recipe.has.main_product(recipe_name) then return end
---    if apm.lib.utils.recipe.result.count(recipe_name) <= 1 then return end
---
---    local recipe = data.raw.recipe[recipe_name]
---    if (recipe.icon or recipe.icons) and not recipe.subgroup then
---        local result_item = apm.lib.utils.recipe.result.get_first_result(recipe_name)
---        recipe.subgroup = result_item.subgroup
---    end
---end
-
 -- Function -------------------------------------------------------------------
 --
 -- force_mainproduct: bool ignores the present of an icon and allways set the mainproduct
@@ -983,28 +706,6 @@ function apm.lib.utils.recipe.add_mainproduct_if_needed(recipe_name, force_mainp
 			break
 		end
 	end
-
-	if recipe.normal and recipe.normal.results then
-		for _, result in pairs(recipe.normal.results) do
-			local main_product = result.name
-			recipe.normal.main_product = main_product
-			APM_LOG_INFO(self, 'add_mainproduct_if_needed()',
-				'in (normal.results): "' ..
-				tostring(recipe_name) .. '" set main product to: "' .. tostring(main_product) .. '"')
-			break
-		end
-	end
-
-	if recipe.expensive and recipe.expensive.results then
-		for _, result in pairs(recipe.expensive.results) do
-			local main_product = result.name
-			recipe.expensive.main_product = main_product
-			APM_LOG_INFO(self, 'add_mainproduct_if_needed()',
-				'in (expensive.results): "' ..
-				tostring(recipe_name) .. '" set main product to: "' .. tostring(main_product) .. '"')
-			break
-		end
-	end
 end
 
 -- Function -------------------------------------------------------------------
@@ -1012,45 +713,26 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.recipe.result.add_with_probability(recipe_name, result_name, result_amount_min, result_amount_max,
-														  probability)
+																													probability)
 	if not apm.lib.utils.recipe.exist(recipe_name) then return end
 	if not apm.lib.utils.item.exist(result_name) then return end
 
 	local recipe = data.raw.recipe[recipe_name]
 	local type_name = apm.lib.utils.item.get_type(result_name)
 
-	-- convert result
-	apm.lib.utils.recipe.convert_simple_result_to_results(recipe_name)
-
 	-- simple recipe (results)
 	if recipe.results then
 		table.insert(recipe.results,
-			{ type = type_name, name = result_name, amount_min = result_amount_min, amount_max = result_amount_max, probability =
-			probability })
+			{
+				type = type_name,
+				name = result_name,
+				amount_min = result_amount_min,
+				amount_max = result_amount_max,
+				probability =
+						probability
+			})
 		APM_LOG_INFO(self, 'result.add_with_probability()',
 			'in (simple.results): "' ..
-			tostring(recipe_name) ..
-			'" add: "' .. tostring(result_name) .. '"  with probability: "' .. tostring(probability) .. '"')
-	end
-
-	-- recipe.normal
-	if recipe.normal and recipe.normal.results then
-		table.insert(recipe.normal.results,
-			{ type = type_name, name = result_name, amount_min = result_amount_min, amount_max = result_amount_max, probability =
-			probability })
-		APM_LOG_INFO(self, 'result.add_with_probability()',
-			'in (normal.results): "' ..
-			tostring(recipe_name) ..
-			'" add: "' .. tostring(result_name) .. '"  with probability: "' .. tostring(probability) .. '"')
-	end
-
-	-- recipe.expensive
-	if recipe.expensive and recipe.expensive.results then
-		table.insert(recipe.expensive.results,
-			{ type = type_name, name = result_name, amount_min = result_amount_min, amount_max = result_amount_max, probability =
-			probability })
-		APM_LOG_INFO(self, 'result.add_with_probability()',
-			'in (expensive.results): "' ..
 			tostring(recipe_name) ..
 			'" add: "' .. tostring(result_name) .. '"  with probability: "' .. tostring(probability) .. '"')
 	end
@@ -1071,10 +753,6 @@ function apm.lib.utils.recipe.result.mod(recipe_name, result_name, result_amount
 	local recipe = data.raw.recipe[recipe_name]
 	local type_name = apm.lib.utils.item.get_type(result_name)
 
-	-- simple recipe (result)
-	if recipe.result then
-		apm.lib.utils.recipe.convert_simple_result_to_results(recipe_name)
-	end
 
 	-- simple recipe (results)
 	if recipe.results then
@@ -1109,95 +787,6 @@ function apm.lib.utils.recipe.result.mod(recipe_name, result_name, result_amount
 		end
 	end
 
-	-- recipe.normal
-	if recipe.normal ~= nil then
-		if recipe.normal.result ~= nil then
-			recipe.normal.results = {}
-			local type_result = apm.lib.utils.item.get_type(recipe.normal.result)
-			local amount = 1
-			if recipe.normal.result_count ~= nil then
-				amount = recipe.normal.result_count
-			end
-			table.insert(recipe.normal.results, { type = type_result, name = recipe.normal.result, amount = amount })
-			recipe.normal.result_count = nil
-			recipe.normal.result = nil
-		end
-
-		local seen_result = false
-		for k, v in pairs(recipe.normal.results) do
-			if v[1] == result_name or v.name == result_name then
-				seen_result = true
-				if result_amount == 0 then
-					if recipe.normal.main_product == result_name then
-						recipe.normal.main_product = nil
-					end
-					table.remove(recipe.normal.results, k)
-					APM_LOG_INFO(self, 'result.mod()',
-						'in (normal.results): "' ..
-						tostring(recipe_name) .. '" remove result: "' .. tostring(result_name) .. '"')
-				else
-					check_for_probability(recipe.normal.results[k], result_amount)
-					recipe.normal.results[k].amount = result_amount
-					APM_LOG_INFO(self, 'result.mod()',
-						'in (normal.results): "' ..
-						tostring(recipe_name) ..
-						'" change result: "' .. tostring(result_name) .. '" -> "' .. tostring(result_amount) .. '"')
-				end
-			end
-		end
-		if seen_result ~= true then
-			table.insert(recipe.normal.results, { type = type_name, name = result_name, amount = result_amount })
-			APM_LOG_INFO(self, 'result.mod()',
-				'in (normal.results): "' ..
-				tostring(recipe_name) ..
-				'" add result: "' .. tostring(result_name) .. '" -> "' .. tostring(result_amount) .. '"')
-		end
-	end
-
-	-- recipe.expensive
-	if recipe.expensive ~= nil then
-		if recipe.expensive.result ~= nil then
-			recipe.expensive.results = {}
-			local type_result = apm.lib.utils.item.get_type(recipe.expensive.result)
-			local amount = 1
-			if recipe.expensive.result_count ~= nil then
-				amount = recipe.expensive.result_count
-			end
-			table.insert(recipe.expensive.results, { type = type_result, name = recipe.expensive.result, amount = amount })
-			recipe.expensive.result_count = nil
-			recipe.expensive.result = nil
-		end
-
-		local seen_result = false
-		for k, v in pairs(recipe.expensive.results) do
-			if v[1] == result_name or v.name == result_name then
-				seen_result = true
-				if result_amount == 0 then
-					if recipe.expensive.main_product == result_name then
-						recipe.expensive.main_product = nil
-					end
-					table.remove(recipe.expensive.results, k)
-					APM_LOG_INFO(self, 'result.mod()',
-						'in (expensive.results): "' ..
-						tostring(recipe_name) .. '" remove result: "' .. tostring(result_name) .. '"')
-				else
-					check_for_probability(recipe.expensive.results[k], result_amount)
-					recipe.expensive.results[k].amount = result_amount
-					APM_LOG_INFO(self, 'result.mod()',
-						'in (expensive.results): "' ..
-						tostring(recipe_name) ..
-						'" change result: "' .. tostring(result_name) .. '" -> "' .. tostring(result_amount) .. '"')
-				end
-			end
-		end
-		if seen_result ~= true then
-			table.insert(recipe.expensive.results, { type = type_name, name = result_name, amount = result_amount })
-			APM_LOG_INFO(self, 'result.mod()',
-				'in (expensive.results): "' ..
-				tostring(recipe_name) ..
-				'" add result: "' .. tostring(result_name) .. '" -> "' .. tostring(result_amount) .. '"')
-		end
-	end
 	apm.lib.utils.recipe.add_mainproduct_if_needed(recipe_name)
 end
 
@@ -1206,7 +795,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function result_mod_temperature(recipe_name, base, base_name, ingredient_name, condition_temperature,
-									  target_temperature)
+																			target_temperature)
 	for _, ingredient in pairs(base) do
 		if ingredient[1] == ingredient_name or ingredient.name == ingredient_name then
 			if ingredient.temperature == condition_temperature then
@@ -1241,23 +830,9 @@ function apm.lib.utils.recipe.result.mod_temperature(recipe_name, result_name, c
 
 	local recipe = data.raw.recipe[recipe_name]
 
-	if recipe.result then
-		apm.lib.utils.recipe.convert_simple_result_to_results(recipe_name)
-	end
-
 	if recipe.results then
 		recipe.results = result_mod_temperature(recipe_name, recipe.results, 'simple', result_name, condition_temperature,
 			target_temperature)
-	end
-
-	if recipe.normal and recipe.normal.results then
-		recipe.normal.results = result_mod_temperature(recipe_name, recipe.normal.results, 'normal', result_name,
-			condition_temperature, target_temperature)
-	end
-
-	if recipe.expensive and recipe.expensive.results then
-		recipe.expensive.results = result_mod_temperature(recipe_name, recipe.expensive.results, 'expensive', result_name,
-			condition_temperature, target_temperature)
 	end
 end
 
@@ -1319,7 +894,7 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-function apm.lib.utils.recipe.energy_required.mod(recipe_name, value, value_expensive)
+function apm.lib.utils.recipe.energy_required.mod(recipe_name, value)
 	if not apm.lib.utils.recipe.exist(recipe_name) then return end
 	local recipe = data.raw.recipe[recipe_name]
 	local _value = value
@@ -1327,19 +902,6 @@ function apm.lib.utils.recipe.energy_required.mod(recipe_name, value, value_expe
 		recipe.energy_required = _value
 		APM_LOG_INFO(self, 'energy_required.mod()',
 			'for: "' .. tostring(recipe_name) .. '" (simple) to: "' .. tostring(value) .. '"')
-	end
-	if recipe.normal then
-		recipe.normal.energy_required = _value
-		APM_LOG_INFO(self, 'energy_required.mod()',
-			'for: "' .. tostring(recipe_name) .. '" (normal) to: "' .. tostring(value) .. '"')
-	end
-	if value_expensive then
-		_value = value_expensive
-	end
-	if recipe.expensive then
-		recipe.expensive.energy_required = _value
-		APM_LOG_INFO(self, 'energy_required.mod()',
-			'for: "' .. tostring(recipe_name) .. '" (expensive) to: "' .. tostring(_value) .. '"')
 	end
 end
 
@@ -1351,7 +913,7 @@ function apm.lib.utils.recipe.overwrite.group(recipe_name, group, subgroup, orde
 	if not apm.lib.utils.recipe.exist(recipe_name) then return end
 
 	local recipe = data.raw.recipe[recipe_name]
-	recipe.group = group
+
 	recipe.subgroup = subgroup
 	recipe.order = order
 

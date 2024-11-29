@@ -11,11 +11,11 @@ if apm.lib.utils.tile.set == nil then apm.lib.utils.tile.set = {} end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.tile.exist(tile_name)
-    if data.raw.tile[tile_name] then
-        return true
-    end
-    APM_LOG_WARN(self, 'exist()', 'tile with name: "' .. tostring(tile_name) .. '" dosent exist.')
-    return false
+	if data.raw.tile[tile_name] then
+		return true
+	end
+	APM_LOG_WARN(self, 'exist()', 'tile with name: "' .. tostring(tile_name) .. '" dosent exist.')
+	return false
 end
 
 -- Function -------------------------------------------------------------------
@@ -37,7 +37,8 @@ function apm.lib.utils.tile.set.layer(tile_name, layer)
 
 	local tile = data.raw.tile[tile_name]
 	tile.layer = layer
-	APM_LOG_INFO(self, 'set.layer()', 'tile with name: "' .. tostring(tile_name) .. '" set to layer: "' .. tostring(layer) .. '"')
+	APM_LOG_INFO(self, 'set.layer()',
+		'tile with name: "' .. tostring(tile_name) .. '" set to layer: "' .. tostring(layer) .. '"')
 end
 
 -- Function -------------------------------------------------------------------
@@ -45,29 +46,37 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.tile.unification(old_tile_name, new_tile_name)
-    if not apm.lib.utils.tile.exist(old_tile_name) then return end
-    if not apm.lib.utils.tile.exist(new_tile_name) then return end
+	if not apm.lib.utils.tile.exist(old_tile_name) then return end
+	if not apm.lib.utils.tile.exist(new_tile_name) then return end
 
-    local old_tile = data.raw.tile[old_tile_name]
-    local old_minable = old_tile.minable
+	local old_tile = data.raw.tile[old_tile_name]
+	local old_minable = old_tile.minable
 
-    if old_minable then
-        local old_minable_item_name = old_minable.result
-        if old_minable_item_name then
-            if apm.lib.utils.item.exist(old_minable_item_name) then
-                local item = data.raw.item[old_minable_item_name]
-                item.place_as_tile = { result = new_tile_name, condition_size = 1, condition = { "water-tile" }}
-            end
-        end
-    end
+	if old_minable then
+		local old_minable_item_name = old_minable.result
+		if old_minable_item_name then
+			if apm.lib.utils.item.exist(old_minable_item_name) then
+				local item = data.raw.item[old_minable_item_name]
+				---@type data.CollisionMaskConnector
+				local cond = {
+					layers = {
+						water_tile = true
+					},
+				}
+
+				item.place_as_tile = { result = new_tile_name, condition_size = 1, condition = cond }
+			end
+		end
+	end
 
 
-    local new_tile = data.raw.tile[new_tile_name]
-    data.raw.tile[old_tile_name] = table.deepcopy(new_tile)
-    data.raw.tile[old_tile_name].name = old_tile_name
+	local new_tile = data.raw.tile[new_tile_name]
+	data.raw.tile[old_tile_name] = table.deepcopy(new_tile)
+	data.raw.tile[old_tile_name].name = old_tile_name
 
-    apm.lib.utils.tile.set.relation(old_tile_name, new_tile_name, 0)
-    APM_LOG_INFO(self, 'unification()', 'tile with name: "' .. tostring(old_tile_name) .. '" unification with: "' .. tostring(new_tile_name) .. '"')
+	apm.lib.utils.tile.set.relation(old_tile_name, new_tile_name, 0)
+	APM_LOG_INFO(self, 'unification()',
+		'tile with name: "' .. tostring(old_tile_name) .. '" unification with: "' .. tostring(new_tile_name) .. '"')
 end
 
 -- Function -------------------------------------------------------------------
@@ -80,7 +89,8 @@ function apm.lib.utils.tile.set.relation(tile_name, base_tile_name, relation)
 
 	local base_layer = apm.lib.utils.tile.get.layer(base_tile_name)
 	if not base_layer then
-		APM_LOG_INFO(self, 'set.layer()', 'base_tile with name: "' .. tostring(tile_name) .. ' dosent have a layer attribute')
+		APM_LOG_INFO(self, 'set.layer()',
+			'base_tile with name: "' .. tostring(tile_name) .. ' dosent have a layer attribute')
 		return
 	end
 	local new_level = base_layer + relation

@@ -88,6 +88,11 @@ end
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.technology.prerequisite.has.science_pack(technology_name, science_pack_name)
 	local prerequisites = apm.lib.utils.technology.get.prerequisites(technology_name)
+
+	if not prerequisites then
+		return false
+	end
+
 	for _, prerequisite in pairs(prerequisites) do
 		if apm.lib.utils.technology.has.science_pack(prerequisite, science_pack_name) then
 			return true
@@ -234,7 +239,7 @@ function apm.lib.utils.technology.mod.unit_count(technology_name, count)
 	local technology = data.raw.technology[technology_name]
 	technology.unit.count = count
 	APM_LOG_INFO(self, 'mod.unit_count()',
-		'for: "' .. tostring(technology_name) .. '" set unit_count to: "' .. tostring(order) .. '"')
+		'for: "' .. tostring(technology_name) .. '" set unit_count to: "' .. tostring(count) .. '"')
 end
 
 -- Function -------------------------------------------------------------------
@@ -569,10 +574,11 @@ function apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(
 	for _, science_pack in pairs(collected_science) do
 		if not hash[science_pack] then
 			if not technology.unit then
-				technology.unit = {}
-				technology.unit.ingredients = {}
-				technology.count = 50
-				technology.time = 50
+				technology.unit = {
+					ingredients = {},
+					time = 50,
+					count = 50,
+				}
 			end
 			apm.lib.utils.technology.add.science_pack(technology_name, science_pack, 1)
 			hash[science_pack] = true
@@ -623,9 +629,12 @@ function apm.lib.utils.technology.force.prerequisites(technology_name, prerequis
 	if not apm.lib.utils.technology.exist(technology_name) then return end
 
 	local prerequisites = apm.lib.utils.technology.get.prerequisites(technology_name)
-	for i = #prerequisites, 1, -1 do
-		p_tech_name = prerequisites[i]
-		apm.lib.utils.technology.remove.prerequisites(technology_name, p_tech_name)
+
+	if prerequisites then
+		for i = #prerequisites, 1, -1 do
+			p_tech_name = prerequisites[i]
+			apm.lib.utils.technology.remove.prerequisites(technology_name, p_tech_name)
+		end
 	end
 
 	if prerequisites_names == nil then return end
