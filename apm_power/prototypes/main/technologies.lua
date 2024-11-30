@@ -139,6 +139,12 @@ new_tech(
 	}
 )
 
+apm.lib.utils.technology.trigger.set.craft_item(
+	"apm_crusher_machine_0",
+	"apm_industrial_science_pack",
+	10
+)
+
 -- Rubber I
 new_tech(
 	'apm_rubber-1',
@@ -155,7 +161,7 @@ new_tech(
 -- Rubber II
 new_tech(
 	'apm_rubber-2',
-	{ 'apm_rubber-1', 'apm_coking_plant_0' },
+	{ 'apm_rubber-1', 'apm_coking_plant_0', 'apm_fuel-2' },
 	{ 'apm_rubber_2' },
 	nil,
 	{
@@ -163,6 +169,12 @@ new_tech(
 		count = 50,
 		time = 25,
 	}
+)
+
+apm.lib.utils.technology.trigger.set.craft_item(
+	"apm_rubber-2",
+	"sulfur",
+	200
 )
 
 -- Press
@@ -314,6 +326,12 @@ new_tech(
 	'__apm_resource_pack_ldinc__/graphics/technologies/apm_fuel.png'
 )
 
+apm.lib.utils.technology.trigger.set.craft_item(
+	"apm_fuel-1",
+	"apm_coke",
+	200
+)
+
 -- Fuel II
 new_tech(
 	'apm_fuel-2',
@@ -370,6 +388,12 @@ new_tech(
 	'__apm_resource_pack_ldinc__/graphics/technologies/apm_asphalt.png'
 )
 
+apm.lib.utils.technology.trigger.set.craft_fluid(
+	"apm_asphalt-1",
+	"apm_creosote",
+	2000
+)
+
 -- Asphalt
 new_tech(
 	'apm_asphalt-2',
@@ -396,6 +420,12 @@ new_tech(
 		time = 15,
 	},
 	'__apm_resource_pack_ldinc__/graphics/technologies/apm_treated_wood_planks.png'
+)
+
+apm.lib.utils.technology.trigger.set.craft_fluid(
+	"apm_treated_wood_planks-1",
+	"apm_creosote",
+	1000
 )
 
 -- Treated wood planks II
@@ -453,6 +483,12 @@ new_tech(
 	}
 )
 
+apm.lib.utils.technology.trigger.set.craft_item(
+	"apm_fluid_control-1",
+	"pipe",
+	50
+)
+
 -- Water supply II
 new_tech(
 	'apm_water_supply-2',
@@ -494,6 +530,12 @@ new_tech(
 		count = 75,
 		time = 25,
 	}
+)
+
+apm.lib.utils.technology.trigger.set.craft_item(
+	"apm_steam_science_pack",
+	"boiler",
+	5
 )
 
 -- steam sieve

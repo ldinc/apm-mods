@@ -450,3 +450,7 @@ end
 if mods.PyCoalTBaA and apm_power_compat_kingarthur then
 	--apm.lib.utils.technology.remove.prerequisites('engine', 'coal-processing-1')
 end
+
+if mods["Smart_Inserters"] then
+		apm.lib.utils.technology.delete("apm_burner_long_inserter")
+end

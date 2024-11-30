@@ -1876,7 +1876,7 @@ if mods.angelssmelting and apm_power_compat_angel then
 	apm.lib.utils.recipe.ingredient.mod('apm_steel_0', 'apm_stone_crucible', 2)
 	apm.lib.utils.recipe.ingredient.mod('apm_steel_0', 'apm_coke_crushed', 5, 10)
 	apm.lib.utils.recipe.result.mod('apm_steel_0', 'steel-plate', 2)
-	apm.lib.utils.recipe.energy_required.mod('apm_steel_0', 24, 36)
+	apm.lib.utils.recipe.energy_required.mod('apm_steel_0', 24)
 
 	if apm_power_compat_angel_overhaul_machine_frames then
 		apm.power.machine_frame_addition('ore-processing-machine', 3, nil, 5, nil)

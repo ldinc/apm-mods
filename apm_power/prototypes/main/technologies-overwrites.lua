@@ -30,6 +30,7 @@ apm.lib.utils.technology.mod.unit_count('stone-walls', 20)
 
 apm.lib.utils.technology.add.science_pack('military', 'apm_industrial_science_pack', 1)
 apm.lib.utils.technology.remove.science_pack('military', 'automation-science-pack')
+apm.lib.utils.technology.force.prerequisites("military", "apm_press_machine_0")
 
 apm.lib.utils.technology.add.prerequisites('steel-processing', 'apm_puddling_furnace_0')
 apm.lib.utils.technology.add.prerequisites('steel-processing', "automation-science-pack")
@@ -78,7 +79,7 @@ apm.lib.utils.technology.add.prerequisites('logistic-science-pack', 'automation'
 --apm.lib.utils.technology.add.science_pack('logistic-science-pack', 'apm_industrial_science_pack', 1)
 apm.lib.utils.technology.force.recipe_for_unlock('logistic-science-pack', 'lab')
 
-apm.lib.utils.technology.force.recipe_for_unlock('military-2', 'radar')
+
 
 apm.lib.utils.technology.add.prerequisites('heavy-armor', 'apm_puddling_furnace_0')
 apm.lib.utils.technology.remove.prerequisites('heavy-armor', 'steel-processing')
@@ -134,6 +135,8 @@ apm.lib.utils.technology.trigger.set.craft_item("electronics", "apm_steam_scienc
 --- [iron-stick]
 apm.lib.utils.technology.remove.recipe_from_unlock("railway", "iron-stick")
 apm.lib.utils.recipe.enable("iron-stick")
+
+-- apm.lib.utils.technology.force.recipe_for_unlock('military-2', 'radar')
 
 if not mods["space-age"] then
 	apm.lib.utils.technology.remove.recipe_from_unlock('steam-power', 'offshore-pump')
