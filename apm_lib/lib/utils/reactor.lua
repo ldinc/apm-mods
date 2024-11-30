@@ -31,7 +31,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.reactor.exist(reactor_name)
-	if data.raw.reactor[reactor_name] then 
+	if data.raw.reactor[reactor_name] then
 		return true
 	end
 	APM_LOG_WARN(self, "exist()", "reactor with name: '" .. tostring(reactor_name) .. "' dosent exist.")
@@ -52,23 +52,22 @@ function apm.lib.utils.reactor.get.fuel_categories(reactor_name)
 		if reactor.energy_source.fuel_categories then
 			local rc = {}
 			for _, fc in pairs(reactor.energy_source.fuel_categories) do
-				table.insert(rc, {name=fc, type="fuel-category"})
+				table.insert(rc, { name = fc, type = "fuel-category" })
 			end
 			return rc
 		end
-
 	elseif reactor.energy_source.type == "fluid" then
 		if reactor.energy_source.fluid_box.filter ~= nil then
-			return {{name=reactor.energy_source.fluid_box.filter, type="fluid"}}
+			return { { name = reactor.energy_source.fluid_box.filter, type = "fluid" } }
 		end
 	end
 
 	if reactor.energy_source.type == "burner" then
 		APM_LOG_INFO(self, "get.fuel_categories()", "default 'burner' for: " .. tostring(reactor_name))
-		return {{name="nuclear", type="fuel-category"}} -- default value
+		return { { name = "nuclear", type = "fuel-category" } } -- default value
 	elseif reactor.energy_source.type == "fluid" then
 		APM_LOG_INFO(self, "get.fuel_categories()", "default 'fluid' for: " .. tostring(reactor_name))
-		return {{name="apm_petrol", type="fuel-category"}} -- default value
+		return { { name = "apm_petrol", type = "fuel-category" } } -- default value
 	end
 
 	return nil
@@ -121,6 +120,6 @@ function apm.lib.utils.reactor.overhaul(reactor_name, level)
 	if apm.lib.utils.reactor.overhaul_exceptions.table[reactor_name] then return end
 
 	local reactor = data.raw.reactor[reactor_name]
-	local default_categories = {"apm_nuclear_uranium", "apm_nuclear_mox", "apm_nuclear_neptunium", "apm_nuclear_thorium"}
+	local default_categories = { "apm_nuclear_uranium", "apm_nuclear_mox", "apm_nuclear_neptunium", "apm_nuclear_thorium" }
 	apm.lib.utils.entity.set.fuel_category(reactor, default_categories)
 end

@@ -119,29 +119,18 @@ end
 --
 -- ----------------------------------------------------------------------------
 
---- Construct new unit for technology
----@param ingredients string[]
----@param count uint64
----@param time double
----@param formula? data.MathExpression
----@return data.TechnologyUnit
-function apm.lib.utils.technology.new_unit(ingredients, count, time, formula)
-	---@type data.TechnologyUnit[]
-	local list = {}
+--- Try get item with status flag
+---@param technology_name string
+---@return data.TechnologyPrototype
+---@return boolean
+function apm.lib.utils.technology.get.by_name(technology_name)
+	local technology = data.raw.technology[technology_name]
 
-	for _, value in ipairs(ingredients) do
-		table.insert(list, { value, 1 })
+	if technology then
+		return technology, true
 	end
 
-	---@type data.TechnologyUnit
-	local unit = {
-		ingredients = list,
-		count = count,
-		count_formula = formula,
-		time = time,
-	}
-
-	return unit
+	return {}, false
 end
 
 --- Adding new technology to game

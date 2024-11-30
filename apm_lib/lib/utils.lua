@@ -105,6 +105,7 @@ require 'lib.utils.modules'
 if not apm.lib.utils.technology then apm.lib.utils.technology = {} end
 require 'lib.utils.technology'
 -- if not apm.lib.utils.technology.trigger then apm.lib.utils.technology.trigger = {} end
+require 'lib.utils.technology.unit'
 require 'lib.utils.technology.trigger'
 
 if not apm.lib.utils.batteries then apm.lib.utils.batteries = {} end
