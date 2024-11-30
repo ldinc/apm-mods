@@ -21,7 +21,7 @@ local new_fn = function(t_name, t_prerequisites, t_recipes, t_unit)
 	)
 end
 
-local new_unit = apm.lib.utils.technology.new_unit
+local new_unit = apm.lib.utils.technology.unit.new
 
 --- [apm_depleted_uranium]
 new_fn(
