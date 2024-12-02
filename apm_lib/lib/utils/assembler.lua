@@ -277,3 +277,49 @@ function apm.lib.utils.assembler.add.crafting_categories(assembler_name, craftin
 		end
 	end
 end
+
+function apm.lib.utils.assembler.pipe_picture_frozen()
+	if not mods["space-age"] then
+		return {}
+	end
+
+	return
+	{
+		north =
+		{
+			filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-N-frozen.png",
+			priority = "extra-high",
+			width = 71,
+			height = 38,
+			shift = util.by_pixel(2.25, 13.5),
+			scale = 0.5
+		},
+		east =
+		{
+			filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-E-frozen.png",
+			priority = "extra-high",
+			width = 42,
+			height = 76,
+			shift = util.by_pixel(-24.5, 1),
+			scale = 0.5
+		},
+		south =
+		{
+			filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-S-frozen.png",
+			priority = "extra-high",
+			width = 88,
+			height = 61,
+			shift = util.by_pixel(0, -31.25),
+			scale = 0.5
+		},
+		west =
+		{
+			filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-W-frozen.png",
+			priority = "extra-high",
+			width = 39,
+			height = 73,
+			shift = util.by_pixel(25.75, 1.25),
+			scale = 0.5
+		}
+	}
+end

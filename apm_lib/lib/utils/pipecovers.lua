@@ -276,3 +276,45 @@ function apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures()
 		}
 	}
 end
+
+function apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
+	if not mods["space-age"] then
+		return {}
+	end
+
+	return
+	{
+		north =
+		{
+			filename = "__space-age__/graphics/entity/frozen/pipe-covers/pipe-cover-north.png",
+			priority = "extra-high",
+			width = 128,
+			height = 128,
+			scale = 0.5
+		},
+		east =
+		{
+			filename = "__space-age__/graphics/entity/frozen/pipe-covers/pipe-cover-east.png",
+			priority = "extra-high",
+			width = 128,
+			height = 128,
+			scale = 0.5
+		},
+		south =
+		{
+			filename = "__space-age__/graphics/entity/frozen/pipe-covers/pipe-cover-south.png",
+			priority = "extra-high",
+			width = 128,
+			height = 128,
+			scale = 0.5
+		},
+		west =
+		{
+			filename = "__space-age__/graphics/entity/frozen/pipe-covers/pipe-cover-west.png",
+			priority = "extra-high",
+			width = 128,
+			height = 128,
+			scale = 0.5
+		}
+	}
+end
