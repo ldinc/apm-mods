@@ -1,12 +1,12 @@
 {
-        "name": "apm_resource_pack_ldinc",
-        "version": "0.30.4",
-        "title": "Amator Phasma's Resource Pack (forked)",
-        "author": "AmatorPhasma, ldinc",
-        "dependencies": [
-                "base >= 2.0.13"
-        ],
-        "description": "This mod is a resource pack, with all media files, it does nothing!.",
-        "factorio_version": "2.0",
-        "homepage": ""
+	"name": "apm_resource_pack_ldinc",
+	"version": "0.30.6",
+	"title": "Amator Phasma's Resource Pack (forked)",
+	"author": "AmatorPhasma, ldinc",
+	"dependencies": [
+		"base >= 2.0.13"
+	],
+	"description": "This mod is a resource pack, with all media files, it does nothing!.",
+	"factorio_version": "2.0",
+	"homepage": ""
 }
