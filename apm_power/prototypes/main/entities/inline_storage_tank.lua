@@ -23,12 +23,13 @@ local pipe_picture =
 	west = empty
 }
 
+---@type data.StorageTankPrototype
 local tank = {}
 tank.type = "storage-tank"
 tank.name = "apm_inline_storage_tank"
 tank.icons = { sprites.icon }
 tank.localised_description = { "entity-description.apm_inline_storage_tank" }
---sinkhole.icon_size = 32
+
 tank.flags = { "placeable-neutral", "placeable-player", "player-creation" }
 tank.minable = { mining_time = 0.2, result = "apm_inline_storage_tank" }
 tank.max_health = 400
@@ -38,9 +39,6 @@ tank.repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" }
 tank.mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" }
 tank.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 tank.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-tank.vehicle_impact_sound = { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 }
-tank.source_inventory_size = 0
-tank.result_inventory_size = 0
 tank.next_upgrade = nil
 
 tank.fast_replaceable_group = "pipe"
@@ -52,38 +50,21 @@ tank.selection_box = { { -0.5, -0.5 }, { 0.5, 0.5 } }
 local pic = {
 	layers = {
 		{
-			filename = sprites.base.lr.path,
+			filename = sprites.base.path,
 			priority = "high",
-			width = sprites.base.lr.w,
-			height = sprites.base.lr.h,
-			scale = sprites.base.lr.scale,
-			shift = sprites.base.lr.shift,
-			hr_version = {
-				filename = sprites.base.hr.path,
-				priority = "high",
-				width = sprites.base.hr.w,
-				height = sprites.base.hr.h,
-				scale = sprites.base.hr.scale,
-				shift = sprites.base.hr.shift,
-			},
+			width = sprites.base.w,
+			height = sprites.base.h,
+			scale = sprites.base.scale,
+			shift = sprites.base.shift,
 		},
 		{
-			filename = sprites.shadow.lr.path,
+			filename = sprites.shadow.path,
 			priority = "high",
-			width = sprites.shadow.lr.w,
-			height = sprites.shadow.lr.h,
-			scale = sprites.shadow.lr.scale,
-			shift = sprites.shadow.lr.shift,
+			width = sprites.shadow.w,
+			height = sprites.shadow.h,
+			scale = sprites.shadow.scale,
+			shift = sprites.shadow.shift,
 			draw_as_shadow = true,
-			hr_version = {
-				filename = sprites.shadow.hr.path,
-				priority = "high",
-				width = sprites.shadow.hr.w,
-				height = sprites.shadow.hr.h,
-				scale = sprites.shadow.hr.scale,
-				shift = sprites.shadow.hr.shift,
-				draw_as_shadow = true,
-			},
 		},
 	},
 }
@@ -94,12 +75,13 @@ tank.pictures = {
 	flow_sprite       = empty,
 	gas_flow          = empty,
 
-	picture           = {
+	picture           =
+	{
 		north = pic,
 		east = pic,
 		south = pic,
 		west = pic,
-	}
+	},
 }
 
 
@@ -119,36 +101,21 @@ tank.fluid_box =
 		{ direction = defines.direction.south, position = { 0, 0.001 } },
 		{ direction = defines.direction.west,  position = { -0.001, 0 } }
 	},
-	hide_connection_info = true
+	hide_connection_info = true,
 }
--- tank.fluid_box = {volume = 1000}
--- tank.fluid_box.pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- tank.fluid_box.pipe_picture = pipe_picture
--- tank.fluid_box.base_area = base_area
--- tank.fluid_box.base_level = 0
--- tank.fluid_box.filter = ""
--- tank.fluid_box.pipe_covers = pipecoverspictures()
-tank.hide_connection_info = true
 
--- tank.fluid_box.pipe_connections = {
--- 	{
--- 		type = "input-output",
--- 		position = { 0, 1 }
--- 	},
--- 	{
--- 		type = "input-output",
--- 		position = { 0, -1 },
--- 	},
--- 	{
--- 		type = "input-output",
--- 		position = { 1, 0 }
--- 	},
--- 	{
--- 		type = "input-output",
--- 		position = { -1, 0 },
--- 	}
--- }
--- tank.fluid_box.secondary_draw_orders = { north = -1, south = 1, west = -1, east = 1 }
+if mods["space-age"] then
+	tank.heating_energy = "100kW"
+
+	tank.pictures.frozen_patch = {
+		north = sprites.frozen_patch,
+		south = sprites.frozen_patch,
+		east = sprites.frozen_patch,
+		west = sprites.frozen_patch,
+	}
+
+	tank.fluid_box.pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
+end
 
 tank.window_bounding_box = { util.by_pixel(-3, -5), util.by_pixel(3, 11) }
 

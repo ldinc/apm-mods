@@ -179,4 +179,24 @@ press.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 	apm.lib.utils.pipecovers.assembler3pipepictures()
 )
 
+if mods["space-age"] then
+	press.heating_energy = "100kW"
+
+	press.graphics_set.reset_animation_when_frozen = true
+
+	for i, _ in ipairs(press.fluid_boxes) do
+		press.fluid_boxes[i].pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
+		press.fluid_boxes[i].pipe_picture_frozen = apm.lib.utils.assembler.pipe_picture_frozen()
+	end
+
+	press.graphics_set.frozen_patch = {
+		filename = "__apm_resource_pack_ldinc__/graphics/entities/press/hr_press_frozen.png",
+		priority = "high",
+		width = 320,
+		height = 256,
+		shift = { 0.4375, -0.28125 },
+		scale = 0.5,
+	}
+end
+
 data:extend({ press })

@@ -29,6 +29,6 @@ item.order = 'ae_a'
 item.place_as_tile = {
 	result = "apm_asphalt",
 	condition_size = 1,
-	condition = { layers = { water_tile = true } }
+	condition = {layers={water_tile=true}}
 }
 data:extend({ item })

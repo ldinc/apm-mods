@@ -1,8 +1,6 @@
 require('util')
 require('__apm_lib_ldinc__.lib.log')
 
-local sounds = require("__base__.prototypes.entity.sounds")
-
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 
 local self = 'apm_power/prototypes/main/sinkhole.lua'
@@ -21,35 +19,21 @@ local empty = {
 local pipe_picture =
 {
 	north = {
-		filename = ppPath .. "pipecovers/pipe-N.png",
+		filename = ppPath .. "pipecovers/hr-pipe-N.png",
 		priority = "extra-high",
-		width = 35,
-		height = 18,
-		shift = util.by_pixel(2.5, 14),
-		hr_version = {
-			filename = ppPath .. "pipecovers/hr-pipe-N.png",
-			priority = "extra-high",
-			width = 71,
-			height = 38,
-			shift = util.by_pixel(2.25, 13.5),
-			scale = 0.5
-		}
+		width = 71,
+		height = 38,
+		shift = util.by_pixel(2.25, 13.5),
+		scale = 0.5
 	},
 	east = empty,
 	south = {
-		filename = ppPath .. "pipecovers/pipe-S.png",
+		filename = ppPath .. "pipecovers/hr-pipe-S.png",
 		priority = "extra-high",
-		width = 44,
-		height = 31,
-		shift = util.by_pixel(0, -31.5),
-		hr_version = {
-			filename = ppPath .. "pipecovers/hr-pipe-S.png",
-			priority = "extra-high",
-			width = 88,
-			height = 61,
-			shift = util.by_pixel(0, -31.25),
-			scale = 0.5
-		}
+		width = 88,
+		height = 61,
+		shift = util.by_pixel(0, -31.25),
+		scale = 0.5
 	},
 	west = empty
 }
@@ -102,10 +86,10 @@ sinkhole.energy_source = {
 -- sinkhole.light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 1.0, g = 0.5, b = 0.0}}
 
 sinkhole.working_sound = {
-		filename                  = "__apm_power_ldinc__/sounds/entities/water-drain.ogg",
-		volume                    = 0.6,
-		audible_distance_modifier = 0.2,
-		probability               = 0.1,
+	filename                  = "__apm_power_ldinc__/sounds/entities/water-drain.ogg",
+	volume                    = 0.6,
+	audible_distance_modifier = 0.2,
+	probability               = 0.1,
 }
 
 sinkhole.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
@@ -186,5 +170,45 @@ sinkhole.fluid_boxes[1].pipe_connections = {
 	}
 }
 sinkhole.fluid_boxes[1].secondary_draw_orders = { north = -1 }
+
+if mods["space-age"] then
+	sinkhole.heating_energy = "250kW"
+
+	sinkhole.graphics_set.frozen_patch = {
+		filename = ppPath .. "hr-sinkhole-frozen.png",
+		priority = "extra-high",
+		width = 384,
+		height = 192,
+		frame_count = 1,
+		line_length = 1,
+		scale = 0.5,
+	}
+
+	sinkhole.fluid_boxes[1].pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
+	sinkhole.fluid_boxes[1].pipe_covers_frozen.west = empty
+	sinkhole.fluid_boxes[1].pipe_covers_frozen.east = empty
+
+	sinkhole.fluid_boxes[1].pipe_picture_frozen = {
+		west = empty,
+		east = empty,
+
+		north = {
+			filename = ppPath .. "pipecovers/hr-pipe-N-frozen.png",
+			priority = "extra-high",
+			width = 71,
+			height = 38,
+			shift = util.by_pixel(2.25, 13.5),
+			scale = 0.5
+		},
+		south = {
+			filename = ppPath .. "pipecovers/hr-pipe-S-frozen.png",
+			priority = "extra-high",
+			width = 88,
+			height = 61,
+			shift = util.by_pixel(0, -31.25),
+			scale = 0.5
+		},
+	}
+end
 
 data:extend({ sinkhole })

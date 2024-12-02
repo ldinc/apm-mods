@@ -44,8 +44,11 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reve
 --
 -- ----------------------------------------------------------------------------
 
-apm.lib.utils.tile.set.relation('apm_asphalt', 'stone-path', 0)
-apm.lib.utils.tile.set.relation('stone-path', 'apm_asphalt', 1)
+-- apm.lib.utils.tile.set.relation('apm_asphalt', 'stone-path', 0)
+-- apm.lib.utils.tile.set.relation('stone-path', 'apm_asphalt', 1)
+
+apm.lib.utils.tile.set.relation('apm_asphalt', 'stone-brick', 0)
+apm.lib.utils.tile.set.relation('stone-brick', 'apm_asphalt', 1)
 
 if mods.angelssmelting and apm_power_compat_angel then
 	apm.lib.utils.tile.set.relation('clay-bricks', 'stone-path', 1)

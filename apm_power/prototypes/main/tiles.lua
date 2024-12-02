@@ -3,6 +3,8 @@ require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/main/tiles.lua'
 
+local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
+
 APM_LOG_HEADER(self)
 
 -- Locals ---------------------------------------------------------------------
@@ -171,18 +173,18 @@ local concrete_transitions_between_transitions =
 	}
 }
 
-
+---@type data.TilePrototype
 local tile_asphalt = {
 	type = "tile",
 	name = "apm_asphalt",
 	needs_correction = false,
 	order = "a[artifical]-a[apm]-b[apm_asphalt]",
-	layer = 61,
+	layer = 250,
 	subgroup = "artificial-tiles",
-	decorative_removal_probability = 0.95,
+	decorative_removal_probability = 1.0,
 	minable = { mining_time = 0.1, result = "apm_asphalt" },
 	mined_sound = sound_deconstruct_bricks(0.6),
-	collision_mask = {layers = {ground_tile = true}},
+	collision_mask = tile_collision_masks.ground(),
 	walking_speed_modifier = 1.4,
 	variants = {
 		main =

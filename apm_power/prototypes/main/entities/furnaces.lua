@@ -148,15 +148,6 @@ puddling_furnace.graphics_set = {
 
 puddling_furnace.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_input_s()
 
--- puddling_furnace.fluid_boxes[1] = {}
--- puddling_furnace.fluid_boxes[1].production_type = "input"
--- puddling_furnace.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
--- puddling_furnace.fluid_boxes[1].pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures()
--- puddling_furnace.fluid_boxes[1].base_area = 1
--- puddling_furnace.fluid_boxes[1].base_level = -1
--- puddling_furnace.fluid_boxes[1].pipe_connections = { { type = "input", position = { 0, 2 } } }
--- puddling_furnace.fluid_boxes[1].secondary_draw_orders = { north = -1 }
-
 puddling_furnace.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ puddling_furnace })
 
@@ -282,6 +273,27 @@ steelworks.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_4way(
 )
 
 steelworks.fluid_boxes_off_when_no_fluid_recipe = true
+
+if mods["space-age"] then
+	steelworks.heating_energy = "900kW"
+
+	for i = 1,4,1 do
+		steelworks.fluid_boxes[i].pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
+		steelworks.fluid_boxes[i].pipe_picture_frozen = apm.lib.utils.assembler.pipe_picture_frozen()
+	end
+
+	steelworks.graphics_set.reset_animation_when_frozen = true
+
+	steelworks.graphics_set.frozen_patch = {
+		filename = "__apm_resource_pack_ldinc__/graphics/entities/steelworks/hr_steelworks_frozen.png",
+		priority = "high",
+		width = 320,
+		height = 256,
+		shift = util.by_pixel(-1, -8),
+		scale = 0.5,
+	}
+end
+
 data:extend({ steelworks })
 
 -- Entity ---------------------------------------------------------------------
@@ -324,8 +336,26 @@ steelworks.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_4way(
 	apm.lib.utils.pipecovers.assembler4pipepictures()
 )
 
--- steelworks.fluid_boxes[1].pipe_picture = apm.lib.utils.pipecovers.assembler4pipepictures()
--- steelworks.fluid_boxes[2].pipe_picture = apm.lib.utils.pipecovers.assembler4pipepictures()
--- steelworks.fluid_boxes[3].pipe_picture = apm.lib.utils.pipecovers.assembler4pipepictures()
--- steelworks.fluid_boxes[4].pipe_picture = apm.lib.utils.pipecovers.assembler4pipepictures()
+if mods["space-age"] then
+	steelworks.heating_energy = "900kW"
+
+	for i = 1,4,1 do
+		steelworks.fluid_boxes[i].pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
+		steelworks.fluid_boxes[i].pipe_picture_frozen = apm.lib.utils.assembler.pipe_picture_frozen()
+	end
+
+	steelworks.graphics_set.reset_animation_when_frozen = true
+
+	steelworks.graphics_set.frozen_patch = {
+		filename = "__apm_resource_pack_ldinc__/graphics/entities/steelworks/hr_steelworks_frozen.png",
+		priority = "high",
+		width = 320,
+		height = 256,
+		frame_count = 16,
+		line_length = 8,
+		shift = util.by_pixel(-1, -8),
+		scale = 0.5,
+	}
+end
+
 data:extend({ steelworks })

@@ -180,4 +180,25 @@ greenhouse.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_input_s(
 	apm.lib.utils.pipecovers.assembler3pipepictures()
 )
 
+if mods["space-age"] then
+	greenhouse.heating_energy = "650kW"
+
+	greenhouse.graphics_set.reset_animation_when_frozen = true
+
+	greenhouse.graphics_set.frozen_patch = {
+		filename = "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/hr_greenhouse_2-frozen.png",
+		priority = "high",
+		width = 320,
+		height = 256,
+		frame_count = 1,
+		line_length = 1,
+		shift = { 0.4375, -0.28125 },
+		scale = 0.5,
+	}
+
+	greenhouse.fluid_boxes[1].pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
+
+	greenhouse.fluid_boxes[1].pipe_picture_frozen = apm.lib.utils.assembler.pipe_picture_frozen()
+end
+
 data:extend({ greenhouse })

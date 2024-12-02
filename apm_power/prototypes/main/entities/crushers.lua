@@ -184,4 +184,24 @@ crusher.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 	apm.lib.utils.pipecovers.assembler3pipepictures()
 )
 
+if mods["space-age"] then
+	crusher.heating_energy = "100kW"
+
+	crusher.graphics_set.reset_animation_when_frozen = true
+
+	for i, _ in ipairs(crusher.fluid_boxes) do
+		crusher.fluid_boxes[i].pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
+		crusher.fluid_boxes[i].pipe_picture_frozen = apm.lib.utils.assembler.pipe_picture_frozen()
+	end
+
+	crusher.graphics_set.frozen_patch = {
+		filename = "__apm_resource_pack_ldinc__/graphics/entities/crusher/hr_crusher_frozen.png",
+		priority = "high",
+		width = 320,
+		height = 256,
+		shift = util.by_pixel(-1, -5),
+		scale = 0.5,
+	}
+end
+
 data:extend({ crusher })

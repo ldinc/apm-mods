@@ -109,4 +109,32 @@ sinkhole.fluid_boxes = {
 }
 sinkhole.fluid_boxes[1].pipe_picture = nil
 
+if mods["space-age"] then
+	local gen_frozen = function(direction)
+		local animation = {
+			filename = ppPath .. "hr-" .. base .. direction .. "-frozen" .. ext,
+			priority = "high",
+			width = 128,
+			height = 163,
+			frame_count = 1,
+			line_length = 1,
+			shift = { 0.0, -0.40625 },
+			scale = 0.5,
+		}
+
+		return animation
+	end
+
+	sinkhole.heating_energy = "150kW"
+
+	sinkhole.graphics_set.frozen_patch = {
+		north = gen_frozen("n"),
+		east = gen_frozen("e"),
+		south = gen_frozen("s"),
+		west = gen_frozen("w"),
+	}
+
+	sinkhole.fluid_boxes[1].pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
+end
+
 data:extend({ sinkhole })
