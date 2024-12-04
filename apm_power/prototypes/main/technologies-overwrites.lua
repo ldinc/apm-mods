@@ -138,6 +138,12 @@ apm.lib.utils.recipe.enable("iron-stick")
 
 -- apm.lib.utils.technology.force.recipe_for_unlock('military-2', 'radar')
 
+--- [gun-turret]
+apm.lib.utils.technology.remove.prerequisites_all("gun-turret")
+apm.lib.utils.technology.force.prerequisites("gun-turret", {"military"})
+apm.lib.utils.technology.remove.science_packs_except("gun-turret", {"apm_industrial_science_pack"})
+apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("gun-turret")
+
 if not mods["space-age"] then
 	apm.lib.utils.technology.remove.recipe_from_unlock('steam-power', 'offshore-pump')
 else

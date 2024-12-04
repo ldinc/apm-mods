@@ -454,3 +454,8 @@ end
 if mods["Smart_Inserters"] then
 		apm.lib.utils.technology.delete("apm_burner_long_inserter")
 end
+
+if mods["deadlock-beltboxes-loaders"] then
+	apm.lib.utils.technology.remove.science_packs_except("deadlock-stacking-1", {"apm_industrial_science_pack"})
+	apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("deadlock-stacking-1")
+end

@@ -2277,3 +2277,8 @@ if mods.PyCoalTBaA and apm_power_compat_kingarthur then
 	apm.lib.utils.recipe.ingredient.mod_temperature("u-rich-pulp", 'steam', 165, 120)
 	apm.lib.utils.recipe.ingredient.mod_temperature("fiberboard-2", 'steam', 165, 120)
 end
+
+if mods["deadlock-beltboxes-loaders"] then
+	apm.lib.utils.recipe.ingredient.replace("transport-belt-beltbox", "electronic-circuit", "apm_mechanical_relay", 1)
+	apm.lib.utils.recipe.ingredient.replace("fast-transport-belt-beltbox", "advanced-circuit", "electronic-circuit", 1)
+end

@@ -411,6 +411,39 @@ function apm.lib.utils.technology.remove.science_pack(technology_name, science_p
 	end
 end
 
+---comment
+---@param technology_name string
+---@param science_pack_list string[]
+function apm.lib.utils.technology.remove.science_packs_except(technology_name, science_pack_list)
+	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
+
+	if not ok or not science_pack_list or not technology.unit then
+		return
+	end
+
+	---@type table<string, boolean>
+	local skip_list = {}
+
+	for _, sp in ipairs(science_pack_list) do
+		table.insert(skip_list, {sp = true})
+	end
+
+	---@type data.ResearchIngredient[]
+	local new_set = {}
+
+	for _, sp in ipairs(technology.unit.ingredients) do
+		if sp then
+			local key = sp[1]
+
+			if skip_list[key] then
+				table.insert(new_set, sp)
+			end
+		end
+	end
+
+	technology.unit.ingredients = new_set
+end
+
 -- Function -------------------------------------------------------------------
 --
 --
@@ -573,6 +606,7 @@ function apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(
 			hash[science_pack] = true
 		end
 	end
+
 end
 
 -- Function -------------------------------------------------------------------

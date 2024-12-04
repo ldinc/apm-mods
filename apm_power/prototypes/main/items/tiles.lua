@@ -24,11 +24,14 @@ item.stack_size = 200
 item.group = "apm_power"
 item.subgroup = "apm_power_ash"
 item.order = 'ae_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
 item.place_as_tile = {
 	result = "apm_asphalt",
 	condition_size = 1,
 	condition = {layers={water_tile=true}}
 }
+
+if mods["space-age"] then
+	item.condition = {layers={water_tile=true, meltable=true}}
+end
+
 data:extend({ item })
