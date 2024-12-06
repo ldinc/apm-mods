@@ -21,3 +21,17 @@ function apm.lib.utils.assembler.get.by_name(assembler_name)
 
 	return {}, false
 end
+
+---@param assembler_name string
+---@return boolean
+function apm.lib.utils.assembler.exist(assembler_name)
+	if data.raw['assembling-machine'][assembler_name] then
+		return true
+	end
+
+	if APM_CAN_LOG_WARN then
+		log(APM_MSG_WARNING('exist()', 'assembler with name: "' .. tostring(assembler_name) .. '" dosent exist.'))
+	end
+
+	return false
+end

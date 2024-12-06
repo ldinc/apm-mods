@@ -27,12 +27,18 @@ local types_list = {
     'ammo',
 }
 
+--- [item.get_types_list]
+---@return string[]
+function apm.lib.utils.item.get_types_list()
+    return types_list
+end
+
 -- Function -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.item.exist(item_name)
-    local types_list = types_list
+    local types_list = apm.lib.utils.item.get_types_list()
     for _, type_name in pairs(types_list) do
         if data.raw[type_name][item_name] then
             return true
@@ -40,6 +46,30 @@ function apm.lib.utils.item.exist(item_name)
     end
     APM_LOG_WARN(self, 'exist()', 'item/fluid/module with name: "' .. tostring(item_name) .. '" dosent exist.')
     return false
+end
+
+--- [item.get_by_name]
+---@param item_name string
+---@return any
+---@return boolean
+function apm.lib.utils.item.get_by_name(item_name)
+    local types_list = apm.lib.utils.item.get_types_list()
+
+    ---? DOES WE NEED NOT USE ONLY data.raw.item ???
+
+    for _, type_name in pairs(types_list) do
+        local item = data.raw[type_name][item_name]
+
+        if item then
+            return item, true
+        end
+    end
+
+    if APM_CAN_LOG_WARN then
+        log(APM_MSG_WARNING('exist()', 'item/fluid/module with name: "' .. tostring(item_name) .. '" dosent exist.'))
+    end
+
+    return {}, false
 end
 
 -- Function -------------------------------------------------------------------
@@ -185,7 +215,7 @@ function apm.lib.utils.item.remove(item_name)
     local item = data.raw.item[item_name]
 
     if not item then
-        APM_LOG_ERR(self, "remove", "item '"..item_name.."' was not found to be removed.")
+        APM_LOG_ERR(self, "remove", "item '" .. item_name .. "' was not found to be removed.")
 
         return
     end
@@ -277,8 +307,12 @@ function apm.lib.utils.item.mod.burnt_result(item_name, burnt_result)
     if item.fuel_value then
         item.burnt_result = burnt_result
 
-        local check_category = { ['chemical'] = true, ['apm_refined_chemical'] = true, ['apm_petrol'] = true,
-            ['apm_vehicle_only'] = true }
+        local check_category = {
+            ['chemical'] = true,
+            ['apm_refined_chemical'] = true,
+            ['apm_petrol'] = true,
+            ['apm_vehicle_only'] = true
+        }
         if check_category[item.fuel_category] then
             if burnt_result then
                 item.localised_description = { "", { "apm_info_burnt_result_0" }, "\n", { "apm_info_fuel_tier", { "fuel-category-name." .. tostring(item.fuel_category) } } }

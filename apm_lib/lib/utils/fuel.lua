@@ -5,12 +5,23 @@ local self = 'lib.utils.fuel'
 
 if apm.lib.utils.fuel.category == nil then apm.lib.utils.fuel.category = {} end
 if apm.lib.utils.fuel.add == nil then apm.lib.utils.fuel.add = {} end
+if apm.lib.utils.fuel.get == nil then apm.lib.utils.fuel.get = {} end
 if apm.lib.utils.fuel.set == nil then apm.lib.utils.fuel.set = {} end
 if apm.lib.utils.fuel.exlude_list == nil then apm.lib.utils.fuel.exlude_list = {} end
 if apm.lib.utils.fuel.entity == nil then apm.lib.utils.fuel.entity = {} end
 if apm.lib.utils.fuel.entity.add == nil then apm.lib.utils.fuel.entity.add = {} end
 if apm.lib.utils.fuel.entities == nil then apm.lib.utils.fuel.entities = {} end
 if apm.lib.utils.fuel.entities.add == nil then apm.lib.utils.fuel.entities.add = {} end
+
+---@return data.FuelCategory
+function apm.lib.utils.fuel.get.default_category()
+	return { { name = "chemical", type = "fuel-category" } }
+end
+
+---@return data.FuelCategory
+function apm.lib.utils.fuel.get.default_fluid_category()
+	return { { name = "apm_petrol", type = "fuel-category" } }
+end
 
 -- Function -------------------------------------------------------------------
 --

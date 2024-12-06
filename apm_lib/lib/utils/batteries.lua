@@ -3,13 +3,19 @@ require('lib.log')
 
 local self = 'lib.utils.batteries'
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+--- [batteries.generate]
+---@param level number
+---@param battery_name string
+---@param fuel_value data.Energy
+---@param overlay data.IconData
+---@param probability double
+---@param technology_name string
 function apm.lib.utils.batteries.generate(level, battery_name, fuel_value, overlay, probability, technology_name)
-	if not apm.lib.utils.item.exist(battery_name) then return end
-	local item_battery = data.raw.item[battery_name]
+	local item_battery, ok = apm.lib.utils.item.get_by_name(battery_name)
+
+	if not ok then
+		return
+	end
 
 	local item_icon_a = apm.lib.utils.icon.get.from_item(battery_name)
 	local item_icon_b = { overlay }
@@ -28,7 +34,6 @@ function apm.lib.utils.batteries.generate(level, battery_name, fuel_value, overl
 
 	---@type data.ItemPrototype
 	local item = {
-
 		type = 'item',
 		name = 'apm_discharged_' .. battery_name,
 		localised_name = { "item-name.apm_discharged", { 'item-name.' .. battery_name } },
@@ -82,5 +87,7 @@ function apm.lib.utils.batteries.generate(level, battery_name, fuel_value, overl
 	-- overwrite battery
 	apm.lib.utils.item.overwrite.battery(level, battery_name, fuel_value, item.name)
 
-	APM_LOG_INFO(self, 'generate()', 'generated item recipes and for: "' .. tostring(battery_name) .. '"')
+	if APM_CAN_LOG_INFO then
+		log(APM_MSG_INFO('generate()', 'generated item recipes and for: "' .. tostring(battery_name) .. '"'))
+	end
 end

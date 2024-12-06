@@ -3,6 +3,8 @@ require('lib.log')
 
 local self = 'lib.utils.barrel'
 
+--- NOTE: seems to be unused
+
 if not apm.lib.utils.data.tables.fluid_container then apm.lib.utils.data.tables.fluid_container = {} end
 apm.lib.utils.data.tables.fluid_container['barrel'] = {}
 apm.lib.utils.data.tables.fluid_container['barrel'].empty_c_name = "empty-barrel"

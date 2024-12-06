@@ -6,18 +6,18 @@ if apm.lib.utils.assembler.get == nil then apm.lib.utils.assembler.get = {} end
 --- Default circuit definition for assembling machine
 ---@return { [1]: data.CircuitConnectorDefinition, [2]: data.CircuitConnectorDefinition, [3]: data.CircuitConnectorDefinition, [4]: data.CircuitConnectorDefinition }
 function apm.lib.utils.assembler.get.default_circuit_connector()
-	if circuit_connector_definitions["assembling-machine"] then
-		return circuit_connector_definitions["assembling-machine"]
-	end
+	-- if circuit_connector_definitions["assembling-machine"] then
+	-- 	return circuit_connector_definitions["assembling-machine"]
+	-- end
 
 	return circuit_connector_definitions.create_vector
 	(
 		universal_connector_template,
 		{
-			{ variation = 18, main_offset = util.by_pixel(24, 25), shadow_offset = util.by_pixel(35, 31), show_shadow = true },
-			{ variation = 18, main_offset = util.by_pixel(24, 25), shadow_offset = util.by_pixel(35, 31), show_shadow = true },
-			{ variation = 18, main_offset = util.by_pixel(24, 25), shadow_offset = util.by_pixel(35, 31), show_shadow = true },
-			{ variation = 18, main_offset = util.by_pixel(24, 25), shadow_offset = util.by_pixel(35, 31), show_shadow = true }
+			{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true },
+			{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true },
+			{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true },
+			{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true }
 		}
 	)
 end

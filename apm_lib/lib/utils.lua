@@ -65,10 +65,6 @@ require 'lib.utils.mining_drill'
 
 if not apm.lib.utils.assembler then apm.lib.utils.assembler = {} end
 require 'lib.utils.assembler'
-require "lib.utils.assembler.base"
-require 'lib.utils.assembler.circuit'
-require "lib.utils.assembler.fuel_categories"
-require "lib.utils.assembler.overhaul"
 
 if not apm.lib.utils.reactor then apm.lib.utils.reactor = {} end
 require 'lib.utils.reactor'

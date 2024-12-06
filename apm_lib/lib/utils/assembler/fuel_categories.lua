@@ -3,16 +3,6 @@ require('lib.log')
 
 if apm.lib.utils.assembler.get == nil then apm.lib.utils.assembler.get = {} end
 
----@return data.FuelCategory
-function apm.lib.utils.assembler.get.default_fuel_category()
-	return { { name = "chemical", type = "fuel-category" } }
-end
-
----@return data.FuelCategory
-function apm.lib.utils.assembler.get.default_fluid_fuel_category()
-	return { { name = "apm_petrol", type = "fuel-category" } }
-end
-
 ---@param assembler_name string
 ---@return data.FuelCategory[]?
 function apm.lib.utils.assembler.get.fuel_categories(assembler_name)
@@ -45,7 +35,7 @@ function apm.lib.utils.assembler.get.fuel_categories(assembler_name)
 			))
 		end
 
-		return apm.lib.utils.assembler.get.default_fuel_category()
+		return apm.lib.utils.fuel.get.default_category()
 	end
 
 	if assembler.energy_source.type == "fluid" then
@@ -69,7 +59,7 @@ function apm.lib.utils.assembler.get.fuel_categories(assembler_name)
 			))
 		end
 
-		return apm.lib.utils.assembler.get.default_fluid_fuel_category()
+		return apm.lib.utils.fuel.get.default_fluid_category()
 	end
 
 	return nil
