@@ -88,11 +88,15 @@ function apm.lib.utils.tile.set.relation(tile_name, base_tile_name, relation)
 	if not apm.lib.utils.tile.exist(base_tile_name) then return end
 
 	local base_layer = apm.lib.utils.tile.get.layer(base_tile_name)
+
 	if not base_layer then
 		APM_LOG_INFO(self, 'set.layer()',
 			'base_tile with name: "' .. tostring(tile_name) .. ' dosent have a layer attribute')
 		return
 	end
+	
 	local new_level = base_layer + relation
+
 	apm.lib.utils.tile.set.layer(tile_name, new_level)
+
 end

@@ -56,11 +56,6 @@ charging_station.working_sound = {
 
 charging_station.energy_usage = apm.energy_addon.constants.energy_usage_charging_station
 
--- charging_station.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
--- charging_station.vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
--- charging_station.working_sound.sound = { { filename = "__base__/sound/furnace.ogg" } } --<<<<
-
-
 charging_station.energy_source = apm.lib.utils.builders.energy_source.new_electric({})
 
 charging_station.graphics_set = {
@@ -122,6 +117,9 @@ charging_station.graphics_set = {
 		light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } },
 	},
 }
+
+charging_station.circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector()
+charging_station.circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
 
 --- TODO: adding glow & lightning ...
 

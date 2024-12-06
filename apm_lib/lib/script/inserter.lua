@@ -251,13 +251,36 @@ local function inserter_work(t_object, pickup_target, drop_target)
 		return
 	end
 
+
 	local pickup_target_inventory_contents = pickup_target_burnt_result_inventory.get_contents()
+
+
+
+	---@type LuaEntity
+	local entity = t_object.entity
+
+	local blacklisted = {}
+
+	-- ignore ash if it was blacklisted
+	if entity.inserter_filter_mode then
+
+		local count = entity.filter_slot_count
+
+		for i=1,count,1 do
+				local flt = entity.get_filter(i)
+
+				if flt and entity.inserter_filter_mode == "blacklist" and flt.comparator == "=" and flt.name == "apm_generic_ash" then
+						blacklisted[flt.name] = true
+				end
+		end
+	end
+
 	for _, item in ipairs(pickup_target_inventory_contents) do
 		if item.count >= 1 and check_filter(t_object.entity, item.name) then
-			local stack_size = calc_item_count(item_count, t_object)
+			local stack_size = calc_item_count(item.count, t_object)
 			local item_stack = { name = item.name, count = stack_size }
 			if check_drop_target(drop_target, item_stack) then
-				if t_object.entity.held_stack.transfer_stack(item_stack) then
+				if not blacklisted[item.name] and t_object.entity.held_stack.transfer_stack(item_stack) then
 					pickup_target_burnt_result_inventory.remove(item_stack)
 				end
 			end

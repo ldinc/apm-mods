@@ -179,6 +179,9 @@ press.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 	apm.lib.utils.pipecovers.assembler3pipepictures()
 )
 
+press.circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector()
+press.circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
+
 if mods["space-age"] then
 	press.heating_energy = "100kW"
 

@@ -140,4 +140,7 @@ cooling_pond.fluid_boxes = {
 	)
 }
 
+cooling_pond.circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector()
+cooling_pond.circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
+
 data:extend({ cooling_pond })

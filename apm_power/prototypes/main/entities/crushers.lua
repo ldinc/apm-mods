@@ -184,6 +184,9 @@ crusher.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 	apm.lib.utils.pipecovers.assembler3pipepictures()
 )
 
+crusher.circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector()
+crusher.circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
+
 if mods["space-age"] then
 	crusher.heating_energy = "100kW"
 

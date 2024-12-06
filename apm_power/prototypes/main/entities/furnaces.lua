@@ -274,6 +274,9 @@ steelworks.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_4way(
 
 steelworks.fluid_boxes_off_when_no_fluid_recipe = true
 
+steelworks.circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector()
+steelworks.circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
+
 if mods["space-age"] then
 	steelworks.heating_energy = "900kW"
 
@@ -335,6 +338,9 @@ steelworks.graphics_set.animation_progress = 0.33333334
 steelworks.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_4way(
 	apm.lib.utils.pipecovers.assembler4pipepictures()
 )
+
+steelworks.circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector()
+steelworks.circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
 
 if mods["space-age"] then
 	steelworks.heating_energy = "900kW"

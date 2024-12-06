@@ -180,6 +180,9 @@ greenhouse.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_input_s(
 	apm.lib.utils.pipecovers.assembler3pipepictures()
 )
 
+greenhouse.circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector()
+greenhouse.circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
+
 if mods["space-age"] then
 	greenhouse.heating_energy = "650kW"
 

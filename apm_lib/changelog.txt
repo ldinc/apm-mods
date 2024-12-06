@@ -1,4 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.30.24
+Date: 05.12.2024
+  Added:
+    - apm.lib.utils.assembler.get.default_circuit_connector()
+    - apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
+---------------------------------------------------------------------------------------------------
+Version: 0.30.23
+Date: 05.12.2024
+  Fixed:
+    - inserters fn: blacklisted ash changed to any burnt result item
+---------------------------------------------------------------------------------------------------
+Version: 0.30.22
+Date: 05.12.2024
+  Fixed:
+    - inserters fn: bug: blacklisting ash was ignored
+---------------------------------------------------------------------------------------------------
+Version: 0.30.21
+Date: 05.12.2024
+  Fixed:
+    - inserters fn: calc_item_count panic
+---------------------------------------------------------------------------------------------------
 Version: 0.30.20
 Date: 04.12.2024
   Added:

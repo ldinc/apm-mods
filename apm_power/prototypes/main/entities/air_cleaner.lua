@@ -158,6 +158,9 @@ air_cleaner.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 
 air_cleaner.fluid_boxes_off_when_no_fluid_recipe = true
 
+air_cleaner.circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector()
+air_cleaner.circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
+
 if mods["space-age"] then
 	air_cleaner.heating_energy = "100kW"
 

@@ -1,8 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.30.01
+Date: 05.12.2024
+  Changes:
+    - adding circuit connections
+---------------------------------------------------------------------------------------------------
 Version: 0.30.00
 Date: 17.11.2024
   Changes:
-    - Actualize code up to factorio 2.0. Minimal support to be runnable
+    - actualize code up to factorio 2.0. Minimal support to be runnable
 ---------------------------------------------------------------------------------------------------
 Version: 0.23.01
 Date: 11.01.2022
