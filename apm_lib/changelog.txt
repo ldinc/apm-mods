@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.30.27
+Date: 07.12.2024
+  Refactored:
+    - utils.car
+    - utils.category
+    - utils.character
+    - utils.debug
+    - utils.description
+    - utils.equipment
+  Fixed:
+    - burner car burnt_result_slot
+---------------------------------------------------------------------------------------------------
 Version: 0.30.26
 Date: 06.12.2024
   Refactored:

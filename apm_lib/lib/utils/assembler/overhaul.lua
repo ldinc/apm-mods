@@ -80,6 +80,12 @@ function apm.lib.utils.assembler.centrifuge.overhaul(centrifuge_name, level)
 	centrifuge.fast_replaceable_group = "centrifuge"
 	centrifuge.allowed_effects = { "consumption", "speed", "pollution" }
 
+	if mods["space-age"] then
+		for _, fluid_box in ipairs(centrifuge.fluid_boxes) do
+			fluid_box.pipe_picture_frozen = apm.lib.utils.assembler.pipe_picture_frozen()
+		end
+	end
+
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
 			"assembler.centrifuge.overhaul",
