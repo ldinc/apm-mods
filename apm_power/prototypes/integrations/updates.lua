@@ -175,11 +175,11 @@ if mods['aai-vehicles-miner'] and apm_power_compat_earendel then
 		apm.lib.utils.car.add.fuel_category('vehicle-miner-mk5', 'apm_vehicle_only')
 	end
 	-- the vehicle-miner need a effectivity of 2 to work correct
-	apm.lib.utils.car.effectivity('vehicle-miner', 2)
-	apm.lib.utils.car.effectivity('vehicle-miner-mk2', 2)
-	apm.lib.utils.car.effectivity('vehicle-miner-mk3', 2)
-	apm.lib.utils.car.effectivity('vehicle-miner-mk4', 2)
-	apm.lib.utils.car.effectivity('vehicle-miner-mk5', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner-mk2', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner-mk3', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner-mk4', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner-mk5', 2)
 end
 
 if mods['aai-vehicles-warden'] and apm_power_compat_earendel then
@@ -187,7 +187,7 @@ if mods['aai-vehicles-warden'] and apm_power_compat_earendel then
 	if mods['aai-industry'] then
 		apm.lib.utils.car.add.fuel_category('vehicle-warden', 'apm_vehicle_only')
 	end
-	apm.lib.utils.car.effectivity('vehicle-warden', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-warden', 2)
 end
 
 if mods['aai-vehicles-chaingunner'] and apm_power_compat_earendel then

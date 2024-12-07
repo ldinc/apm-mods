@@ -72,8 +72,6 @@ function vanilaFinalUpdatesRecipe()
 	end
 
 	if not apm.bob_rework then
-		apm.lib.utils.debug.object('patch with gun poweder')
-
 		local recipe = 'piercing-rounds-magazine'
 		apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_gun_powder', 5)
 		apm.lib.utils.recipe.ingredient.mod(recipe, 'firearm-magazine', 0)

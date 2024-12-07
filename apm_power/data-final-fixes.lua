@@ -10,7 +10,7 @@ require('prototypes.integrations.icons')
 require('prototypes.integrations.tiles')
 require('prototypes.integrations.final-overwrites')
 require('prototypes.integrations.patches')
---require('prototypes.power.map-gen-presets')
+require('prototypes.main.map-gen-presets')
 
 -- generate recipies for sinkhole
 
