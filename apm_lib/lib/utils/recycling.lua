@@ -3,6 +3,9 @@ require('lib.log')
 
 local self = 'lib.utils.recycling'
 
+--- TODO: try to refactoring it later...
+--- The original recycling mod now is not interesting for adoption 
+
 if not apm.lib.utils.data.tables.metal then apm.lib.utils.data.tables.metal = {} end
 if not apm.lib.utils.data.tables.scrap_metal then apm.lib.utils.data.tables.scrap_metal = {} end
 if not apm.lib.utils.recycling.metal then apm.lib.utils.recycling.metal = {} end

@@ -212,9 +212,13 @@ function apm.lib.utils.entity.del.fuel_category(entity, category)
 end
 
 --- [check_if_an_entity_exists]
----@param next_upgrade string
+---@param next_upgrade string?
 ---@return boolean
 local function check_if_an_entity_exists(next_upgrade)
+	if not next_upgrade then
+		return false
+	end
+
 	local prototypes = apm.lib.utils.entity.prototype_list()
 
 	for _, prototype in pairs(prototypes) do
@@ -230,7 +234,7 @@ end
 
 --- [entity.set.next_upgrade]
 ---@param entity any
----@param next_upgrade string
+---@param next_upgrade string?
 function apm.lib.utils.entity.set.next_upgrade(entity, next_upgrade)
 	if check_if_an_entity_exists(next_upgrade) then
 		entity.next_upgrade = next_upgrade

@@ -10,43 +10,64 @@ if apm.lib.utils.reactor.get == nil then apm.lib.utils.reactor.get = {} end
 if apm.lib.utils.reactor.overhaul_exceptions == nil then apm.lib.utils.reactor.overhaul_exceptions = {} end
 if apm.lib.utils.reactor.overhaul_exceptions.table == nil then apm.lib.utils.reactor.overhaul_exceptions.table = {} end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+--- [reactor.overhaul_exceptions.add]
+---@param reactor_name string
 function apm.lib.utils.reactor.overhaul_exceptions.add(reactor_name)
 	apm.lib.utils.reactor.overhaul_exceptions.table[reactor_name] = true
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+--- [reactor.overhaul_exceptions.remove]
+---@param reactor_name string
 function apm.lib.utils.reactor.overhaul_exceptions.remove(reactor_name)
 	apm.lib.utils.reactor.overhaul_exceptions.table[reactor_name] = nil
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+--- [reactor.exist]
+---@param reactor_name string
+---@return boolean
 function apm.lib.utils.reactor.exist(reactor_name)
 	if data.raw.reactor[reactor_name] then
 		return true
 	end
-	APM_LOG_WARN(self, "exist()", "reactor with name: '" .. tostring(reactor_name) .. "' dosent exist.")
+
+	if APM_CAN_LOG_WARN then
+		log(APM_MSG_WARNING("exist()", "reactor with name: '" .. tostring(reactor_name) .. "' dosent exist."))
+	end
+
 	return false
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-function apm.lib.utils.reactor.get.fuel_categories(reactor_name)
-	if not apm.lib.utils.reactor.exist(reactor_name) then return nil end
+--- [reactor.get.by_name]
+---@param reactor_name string
+---@return data.ReactorPrototype
+---@return boolean
+function apm.lib.utils.reactor.get.by_name(reactor_name)
+	local reactor = data.raw.reactor[reactor_name]
 
-	local reactor = data.raw["reactor"][reactor_name]
-	if not reactor.energy_source then return nil end
+	if reactor then
+		return reactor, true
+	end
+
+	if APM_CAN_LOG_WARN then
+		log(APM_MSG_WARNING("exist()", "reactor with name: '" .. tostring(reactor_name) .. "' dosent exist."))
+	end
+
+	return {}, false
+end
+
+--- [reactor.get.fuel_categories]
+---@param reactor_name string
+---@return data.FuelCategory[]?
+function apm.lib.utils.reactor.get.fuel_categories(reactor_name)
+	local reactor, ok = apm.lib.utils.reactor.get.by_name(reactor_name)
+
+	if not ok then
+		return nil
+	end
+
+	if not reactor.energy_source then
+		return nil
+	end
 
 	if reactor.energy_source.type == "burner" then
 		if reactor.energy_source.fuel_categories then
@@ -54,6 +75,7 @@ function apm.lib.utils.reactor.get.fuel_categories(reactor_name)
 			for _, fc in pairs(reactor.energy_source.fuel_categories) do
 				table.insert(rc, { name = fc, type = "fuel-category" })
 			end
+
 			return rc
 		end
 	elseif reactor.energy_source.type == "fluid" then
@@ -63,25 +85,39 @@ function apm.lib.utils.reactor.get.fuel_categories(reactor_name)
 	end
 
 	if reactor.energy_source.type == "burner" then
-		APM_LOG_INFO(self, "get.fuel_categories()", "default 'burner' for: " .. tostring(reactor_name))
-		return { { name = "nuclear", type = "fuel-category" } } -- default value
+		if APM_CAN_LOG_INFO then
+			log(APM_MSG_INFO(
+				"get.fuel_categories()", "default 'burner' for: " .. tostring(reactor_name)
+			))
+		end
+
+		return apm.lib.utils.fuel.get.default_category()
 	elseif reactor.energy_source.type == "fluid" then
-		APM_LOG_INFO(self, "get.fuel_categories()", "default 'fluid' for: " .. tostring(reactor_name))
-		return { { name = "apm_petrol", type = "fuel-category" } } -- default value
+		if APM_CAN_LOG_INFO then
+			log(APM_MSG_INFO(
+				"get.fuel_categories()", "default 'fluid' for: " .. tostring(reactor_name)
+			))
+		end
+
+		return apm.lib.utils.fuel.get.default_fluid_category()
 	end
 
 	return nil
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+--- [reactor.update_description]
+---@param reactor_name string
 function apm.lib.utils.reactor.update_description(reactor_name)
-	if not apm.lib.utils.reactor.exist(reactor_name) then return end
-	local reactor = data.raw["reactor"][reactor_name]
+	local reactor, ok = apm.lib.utils.reactor.get.by_name(reactor_name)
 
-	if not reactor.energy_source then return end
+	if not ok then
+		return nil
+	end
+
+	if not reactor.energy_source then
+		return nil
+	end
+
 	local fuel_categories = apm.lib.utils.reactor.get.fuel_categories(reactor_name)
 
 	if fuel_categories ~= nil then
@@ -90,36 +126,46 @@ function apm.lib.utils.reactor.update_description(reactor_name)
 	end
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+--- [reactor.add.fuel_category]
+---@param reactor_name string
+---@param fuel_categorie data.FuelCategoryID
 function apm.lib.utils.reactor.add.fuel_category(reactor_name, fuel_categorie)
-	if not apm.lib.utils.reactor.exist(reactor_name) then return end
+	local reactor, ok = apm.lib.utils.reactor.get.by_name(reactor_name)
 
-	local reactor = data.raw.reactor[reactor_name]
+	if not ok then
+		return nil
+	end
+
 	apm.lib.utils.entity.add.fuel_category(reactor, fuel_categorie)
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+--- [reactor.set.fuel_categories]
+---@param reactor_name string
+---@param fuel_categories data.FuelCategoryID|data.FuelCategoryID[]
 function apm.lib.utils.reactor.set.fuel_categories(reactor_name, fuel_categories)
-	if not apm.lib.utils.reactor.exist(reactor_name) then return end
-	local reactor = data.raw.reactor[reactor_name]
+	local reactor, ok = apm.lib.utils.reactor.get.by_name(reactor_name)
+
+	if not ok then
+		return nil
+	end
+
 	apm.lib.utils.entity.set.fuel_category(reactor, fuel_categories)
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-function apm.lib.utils.reactor.overhaul(reactor_name, level)
-	if not apm.lib.utils.reactor.exist(reactor_name) then return end
-	if apm.lib.utils.reactor.overhaul_exceptions.table[reactor_name] then return end
+--- [reactor.overhaul]
+---@param reactor_name string
+function apm.lib.utils.reactor.overhaul(reactor_name)
+	local reactor, ok = apm.lib.utils.reactor.get.by_name(reactor_name)
 
-	local reactor = data.raw.reactor[reactor_name]
-	local default_categories = { "apm_nuclear_uranium", "apm_nuclear_mox", "apm_nuclear_neptunium", "apm_nuclear_thorium" }
+	if not ok then
+		return nil
+	end
+
+	if apm.lib.utils.reactor.overhaul_exceptions.table[reactor_name] then 
+		return
+	end
+
+	local default_categories = apm.lib.utils.fuel.get.default_nuclear_category_ids()
+
 	apm.lib.utils.entity.set.fuel_category(reactor, default_categories)
 end

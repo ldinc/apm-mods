@@ -112,6 +112,7 @@ function apm.lib.utils.car.overhaul(car_name)
 
 	car.energy_source.burnt_inventory_size = car.energy_source.fuel_inventory_size
 	car.energy_source.emissions_per_minute = { pollution = base_emissions_per_minute }
+	car.energy_source.effectivity = 0.42
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO('overhaul()', 'car with name: "' .. tostring(car_name) .. '" changed...'))

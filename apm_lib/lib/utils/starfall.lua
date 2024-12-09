@@ -5,6 +5,9 @@ if not apm.lib.utils.starfall.add then apm.lib.utils.starfall.add = {} end
 if not apm.lib.utils.starfall.remove then apm.lib.utils.starfall.remove = {} end
 if not apm.lib.utils.starfall.ore then apm.lib.utils.starfall.ore = {} end
 
+--- NOTE:
+--- Refactoring ignored for unknown time...
+
 -- Function -------------------------------------------------------------------
 --
 --

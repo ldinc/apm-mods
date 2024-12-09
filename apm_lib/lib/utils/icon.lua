@@ -270,7 +270,8 @@ function apm.lib.utils.icon.layer.insert(base_dn, layer, icon_path, icon_size, s
 	if not base_dn.icons then return end
 	-- todo:
 	-- shifting icons at position behind target-layer, insert new one
-	APM_LOG_ERR(self, 'layer.insert', 'Debug: DUMMY used! No fuctions here, its a placeholder!')
+
+	log(APM_MSG_ERROR('layer.insert', 'Debug: DUMMY used! No fuctions here, its a placeholder!'))
 end
 
 -- Function -------------------------------------------------------------------
@@ -317,19 +318,24 @@ function apm.lib.utils.icon.layer.replace(base_dn, layer, icon_path, icon_size, 
 				table.remove(base_dn.icons, k)
 			else
 				base_dn.icons[k] = { icon = icon_path, icon_size = icon_size, scale = scale, shift = shift, tint = tint }
-				APM_LOG_INFO(self, 'layer.replace()',
-					'in: "' ..
-					tostring(base_dn.name) ..
-					'" type: "' ..
-					tostring(base_dn.type) ..
-					'" on layer: "' ..
-					tostring(layer) ..
-					'" new icon: "' ..
-					tostring(icon_path) ..
-					'" with size: "' ..
-					tostring(icon_size) ..
-					'" with scale: "' ..
-					tostring(scale) .. '" with shift: "' .. tostring(shift) .. '" with tint: "' .. tostring(tint) .. '"')
+
+				if APM_CAN_LOG_INFO then
+					log(APM_MSG_INFO(
+						'layer.replace()',
+						'in: "' ..
+						tostring(base_dn.name) ..
+						'" type: "' ..
+						tostring(base_dn.type) ..
+						'" on layer: "' ..
+						tostring(layer) ..
+						'" new icon: "' ..
+						tostring(icon_path) ..
+						'" with size: "' ..
+						tostring(icon_size) ..
+						'" with scale: "' ..
+						tostring(scale) .. '" with shift: "' .. tostring(shift) .. '" with tint: "' .. tostring(tint) .. '"'
+					))
+				end
 			end
 			return
 		end
@@ -361,9 +367,26 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.icon.add_tier_lable(name, level)
-	local prototypes = { 'item', 'item-with-entity-data', 'fluid', 'recipe', 'assembling-machine',
-		'boiler', 'logistic-robot', 'construction-robot', 'inserter', 'lab', 'locomotive',
-		'mining-drill', 'module', 'reactor', 'ammo-turret', 'car', 'generator' }
+	local prototypes = {
+		'item',
+		'item-with-entity-data',
+		'fluid',
+		'recipe',
+		'assembling-machine',
+		'boiler',
+		'logistic-robot',
+		'construction-robot',
+		'inserter',
+		'lab',
+		'locomotive',
+		'mining-drill',
+		'module',
+		'reactor',
+		'ammo-turret',
+		'car',
+		'generator',
+	}
+
 	for _, prototype in pairs(prototypes) do
 		local item = data.raw[prototype][name]
 		if item ~= nil then
@@ -385,6 +408,11 @@ end
 function apm.lib.utils.icon.set.icons(object, t_icons)
 	object.icon = nil
 	object.icons = t_icons
-	APM_LOG_INFO(self, 'set.icons()',
-		'icons set for type: "' .. tostring(object.type) .. '" name: "' .. tostring(object.name) .. '"')
+
+	if APM_CAN_LOG_INFO then
+		log(APM_MSG_INFO(
+			'set.icons()',
+			'icons set for type: "' .. tostring(object.type) .. '" name: "' .. tostring(object.name) .. '"'
+		))
+	end
 end

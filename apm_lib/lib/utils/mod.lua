@@ -1,8 +1,6 @@
 require 'util'
 require('lib.log')
 
-local self = 'lib.utils.mod'
-
 if apm == nil then apm = {} end
 if apm.lib == nil then apm.lib = {} end
 if apm.lib.utils == nil then apm.lib.utils = {} end

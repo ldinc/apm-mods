@@ -184,6 +184,7 @@ function apm.lib.utils.description.entities.update()
 					apm.lib.utils.boiler.update_description(entity_name)
 				elseif prototype == 'generator' then
 					apm.lib.utils.generator.update_description(entity_name)
+					--- TODO: add burner-generator ...
 				elseif prototype == 'car' then
 					apm.lib.utils.car.update_description(entity_name)
 				elseif prototype == 'locomotive' then

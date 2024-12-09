@@ -15,6 +15,7 @@ function apm.lib.utils.assembler.burner.overhaul(assembler_name, only_refined)
 
 	if assembler.energy_source.type == "burner" then
 		assembler.energy_source.burnt_inventory_size = 1
+		-- assembler.energy_source.effectivity = 0.42
 		if only_refined then
 			apm.lib.utils.entity.set.fuel_category(assembler, 'apm_refined_chemical')
 		else
