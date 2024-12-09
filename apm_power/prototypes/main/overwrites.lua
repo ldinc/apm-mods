@@ -54,12 +54,12 @@ apm.lib.utils.generator.overhaul('steam-engine', 1)
 apm.lib.utils.generator.set.next_upgrade('steam-engine', 'apm_steam_engine_2')
 
 -- Furnaces
-apm.lib.utils.furnace.overhaul('stone-furnace')
-apm.lib.utils.furnace.overhaul('steel-furnace', nil, true)
+apm.lib.utils.furnace.overhaul('stone-furnace', false)
+apm.lib.utils.furnace.overhaul('steel-furnace', true)
 
 -- Burner inserter
 apm.lib.utils.inserter.burner.overhaul('burner-inserter')
-apm.lib.utils.item.overwrite.group('burner-inserter', 'apm_power', 'apm_power_inserter', 'ab_a')
+apm.lib.utils.item.overwrite.group('burner-inserter', 'apm_power_inserter', 'ab_a')
 apm.lib.utils.inserter.burner.overhaul('apm_burner_long_inserter')
 
 --- [assemblers]
@@ -83,7 +83,7 @@ apm.lib.utils.lab.overhaul('lab')
 apm.lib.utils.recipe.disable('automation-science-pack')
 
 -- miner
-apm.lib.utils.item.overwrite.group('burner-mining-drill', 'apm_power', 'apm_power_machines_miner', 'aa_a')
+apm.lib.utils.item.overwrite.group('burner-mining-drill', 'apm_power_machines_miner', 'aa_a')
 
 -- bots
 apm.lib.utils.bot.logistic.overhaul('logistic-robot', 1)

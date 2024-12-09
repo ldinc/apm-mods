@@ -165,8 +165,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.ScienceCostTweakerM and apm_power_compat_sctm then
-	apm.lib.utils.lab.inputs('apm_lab_1',
-		{ "apm_industrial_science_pack", "apm_steam_science_pack", "automation-science-pack" })
+	apm.lib.utils.lab.add.science_pack('apm_lab_1', "apm_industrial_science_pack")
+	apm.lib.utils.lab.add.science_pack('apm_lab_1', "apm_steam_science_pack")
+	apm.lib.utils.lab.add.science_pack('apm_lab_1', "automation-science-pack")
 	apm.lib.utils.lab.overhaul('sct-lab-t1')
 	apm.lib.utils.lab.overhaul('sct-lab-t2')
 	apm.lib.utils.lab.overhaul('sct-lab-t3')
@@ -190,7 +191,7 @@ end
 -- ----------------------------------------------------------------------------
 if mods.RealisticReactors and apm_power_compat_realistic_reactors then
 	--patch hidden cooling-tower
-	apm.lib.utils.furnace.overhaul('rr-cooling-tower-steam', nil, false)
+	apm.lib.utils.furnace.overhaul('rr-cooling-tower-steam', false)
 end
 
 --- [space age]

@@ -2021,7 +2021,7 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 		apm.lib.utils.recipe.result.mod('wooden-board-paper', 'apm_wood_board', 3)
 		apm.lib.utils.recipe.result.mod('wooden-board-paper', 'wooden-board', 0)
 		apm.lib.utils.recipe.category.change('wooden-board-paper', 'apm_press')
-		apm.lib.utils.recipe.overwrite.group('wooden-board-paper', 'apm_power', 'apm_power_intermediates', 'ac_b')
+		apm.lib.utils.recipe.overwrite.group('wooden-board-paper', 'apm_power_intermediates', 'ac_b')
 	else
 		local recipe = {}
 		recipe.type = "recipe"
