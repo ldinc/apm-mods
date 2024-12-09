@@ -16,9 +16,10 @@ for reactor_name, _ in pairs(data.raw.reactor) do
 		local fuel_categories = {"chemical", "apm_refined_chemical"}
 		
 		apm.lib.utils.reactor.set.fuel_categories(reactor_name, fuel_categories)
-	else
-		apm.lib.utils.reactor.overhaul(reactor_name)
+		apm.lib.utils.reactor.overhaul_exceptions.add("heating-tower")
 	end
+
+	apm.lib.utils.reactor.overhaul(reactor_name)
 end
 
 APM_LOG_INFO(self, "", "END: basic overwrites of the fuel categories")

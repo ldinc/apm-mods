@@ -30,10 +30,10 @@ APM_LOG_SETTINGS(self, 'apm_nuclear_compat_mferrari', apm_nuclear_compat_mferrar
 --
 -- ----------------------------------------------------------------------------
 if mods.bobpower and apm_nuclear_compat_bob then
-	apm.lib.utils.item.overwrite.group('heat-exchanger-2', 'apm_nuclear', 'apm_nuclear_machines_1', 'ac_b')
-	apm.lib.utils.item.overwrite.group('heat-exchanger-3', 'apm_nuclear', 'apm_nuclear_machines_1', 'ac_c')
-	apm.lib.utils.item.overwrite.group('steam-turbine-2', 'apm_nuclear', 'apm_nuclear_machines_1', 'ad_b')
-	apm.lib.utils.item.overwrite.group('steam-turbine-3', 'apm_nuclear', 'apm_nuclear_machines_1', 'ad_c')
+	apm.lib.utils.item.overwrite.group('heat-exchanger-2', 'apm_nuclear_machines_1', 'ac_b')
+	apm.lib.utils.item.overwrite.group('heat-exchanger-3', 'apm_nuclear_machines_1', 'ac_c')
+	apm.lib.utils.item.overwrite.group('steam-turbine-2', 'apm_nuclear_machines_1', 'ad_b')
+	apm.lib.utils.item.overwrite.group('steam-turbine-3', 'apm_nuclear_machines_1', 'ad_c')
     
     apm.lib.utils.item.mod.fuel_category('deuterium-fuel-cell', 'apm_nuclear_deuterium')
 end
@@ -43,5 +43,5 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.RealisticReactors and apm_nuclear_compat_realistic_reactors then
-    apm.lib.utils.item.overwrite.group('rr-cooling-tower', 'apm_nuclear', 'apm_nuclear_cooling_tower', 'aa_a')
+    apm.lib.utils.item.overwrite.group('rr-cooling-tower', 'apm_nuclear_cooling_tower', 'aa_a')
 end

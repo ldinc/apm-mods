@@ -160,7 +160,7 @@ if mods.RealisticReactors and apm_nuclear_compat_realistic_reactors then
     local item_icon_b = {apm.lib.icons.dynamics.temp_down}
     local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
     apm.lib.utils.recipe.category.change('water-cooling', 'apm_fluid_cooling_0')
-    apm.lib.utils.recipe.overwrite.group('water-cooling', 'apm_nuclear', 'apm_nuclear_cooling_tower', 'ab_b')
+    apm.lib.utils.recipe.overwrite.group('water-cooling', 'apm_nuclear_cooling_tower', 'ab_b')
     apm.lib.utils.recipe.set.hidden('water-cooling', false)
     apm.lib.utils.recipe.energy_required.mod('water-cooling', 3.5)
     apm.lib.utils.recipe.ingredient.mod('water-cooling', 'water', 500)
@@ -171,7 +171,7 @@ if mods.RealisticReactors and apm_nuclear_compat_realistic_reactors then
         apm.lib.utils.recipe.set.always_show_made_in('water-cooling', true)
     end
 
-    apm.lib.utils.recipe.overwrite.group('steam_condensing', 'apm_nuclear', 'apm_nuclear_cooling_tower', 'ab_c')
+    apm.lib.utils.recipe.overwrite.group('steam_condensing', 'apm_nuclear_cooling_tower', 'ab_c')
     apm.lib.utils.furnace.mod.category.add('rr-cooling-tower', 'apm_fluid_cooling_0')
 
     if not apm_nuclear_compat_realistic_reactors_cooling_tower then
