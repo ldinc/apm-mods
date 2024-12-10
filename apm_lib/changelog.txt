@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.01
+Date: 10.12.2024
+  Added:
+    - apm.lib.utils.item.mod.overwrite_weight_for_science_packs
+    - all science pack are rewrited with default item's weight (1000)
+    - apm.lib.utils.constants.weight
+---------------------------------------------------------------------------------------------------
 Version: 0.31.00
 Date: 08.12.2024
   Refactored:

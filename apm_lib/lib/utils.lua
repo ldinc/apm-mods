@@ -3,6 +3,8 @@ if not apm.lib.utils.constants then apm.lib.utils.constants = {} end
 if not apm.lib.utils.data then apm.lib.utils.data = {} end
 if not apm.lib.utils.data.tables then apm.lib.utils.data.tables = {} end
 
+require "lib.utils.constants"
+
 if not apm.lib.utils.debug then apm.lib.utils.debug = {} end
 require 'lib.utils.debug'
 

@@ -533,3 +533,18 @@ function apm.lib.utils.item.overwrite.group(item_name, subgroup, order)
 		log(APM_MSG_INFO('overwrite.group()', 'item with name: "' .. tostring(item_name) .. '" changed.'))
 	end
 end
+
+
+--- [item.mod.overwrite_weight_for_science_packs]
+---@param w data.Weight?
+function  apm.lib.utils.item.mod.overwrite_weight_for_science_packs(w)
+	if w == nil or w <= 0 then
+		w = apm.lib.utils.constants.value.weight.science_pack
+	end
+
+	for key, value in pairs(data.raw["tool"]) do
+		if value ~= nil then
+			data.raw["tool"][key].weight = w
+		end
+	end
+end
