@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.01
+Date: 10.12.2024
+  Fixed:
+    - [Space age] recipies "apm_shielded_nuclear_fuel_cell" and "apm_shielded_nuclear_fuel_cell_reprocessing" moved to "fission-reactor-equipment" technology
+  Changed:
+    - remove productivity module support for nuclear fuel rods & breeder containment
+---------------------------------------------------------------------------------------------------
 Version: 0.31.00
 Date: 08.12.2024
   Changes:

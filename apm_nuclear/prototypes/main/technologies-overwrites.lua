@@ -62,8 +62,16 @@ apm.lib.utils.technology.mod.unit_count("nuclear-fuel-reprocessing", 150)
 --apm.lib.utils.technology.add.prerequisites("fusion-reactor-equipment", "apm_nuclear_rtg")
 apm.lib.utils.technology.add.prerequisites("fusion-reactor-equipment", "apm_nuclear_science_pack")
 apm.lib.utils.technology.add.science_pack("fusion-reactor-equipment", "apm_nuclear_science_pack", 1)
-apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
-apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment", "apm_shielded_nuclear_fuel_cell_reprocessing")
+
+if mods["space-age"] then
+  apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
+  apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment", "apm_shielded_nuclear_fuel_cell_reprocessing")
+else
+  apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
+  apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment", "apm_shielded_nuclear_fuel_cell_reprocessing")
+  
+end
+
 
 -- space-science-pack
 --apm.lib.utils.technology.add.prerequisites("space-science-pack", "apm_nuclear_science_pack")

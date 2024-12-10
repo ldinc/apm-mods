@@ -77,13 +77,14 @@ apm.lib.utils.description.entities.update()
 --
 --
 -- ----------------------------------------------------------------------------
-apm.lib.utils.recipe.allow_productivity('apm_fuel_rod_container')
+-- apm.lib.utils.recipe.allow_productivity('apm_breeder_container')
+-- apm.lib.utils.recipe.allow_productivity('apm_depleted_uranium_metal_mixture')
+-- apm.lib.utils.recipe.allow_productivity('apm_depleted_uranium_ingots')
+
 apm.lib.utils.recipe.allow_productivity('apm_waste_container')
-apm.lib.utils.recipe.allow_productivity('apm_breeder_container')
+apm.lib.utils.recipe.allow_productivity('apm_fuel_rod_container')
 apm.lib.utils.recipe.allow_productivity('apm_fluorite_ore')
 apm.lib.utils.recipe.allow_productivity('apm_yellowcake')
-apm.lib.utils.recipe.allow_productivity('apm_depleted_uranium_metal_mixture')
-apm.lib.utils.recipe.allow_productivity('apm_depleted_uranium_ingots')
 apm.lib.utils.recipe.allow_productivity('apm_potassium_bromide')
 apm.lib.utils.recipe.allow_productivity('apm_bromine')
 apm.lib.utils.recipe.allow_productivity('apm_bromine_trifluoride')
