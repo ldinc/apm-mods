@@ -7,16 +7,16 @@ APM_LOG_HEADER(self)
 
 local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
 APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_made_in)
-local reusable = apm.lib.utils.setting.get.starup('apm_power_machine_reusable_recipies')
-APM_LOG_SETTINGS(self, 'apm_power_machine_reusable_recipies', reusable)
 
 -- Recipe ---------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local recipe = {}
-recipe.type = "recipe"
-recipe.name = "apm_centrifuge_0"
+---@type data.RecipePrototype
+local recipe = {
+	type = "recipe",
+	name = "apm_centrifuge_0",
+}
 
 recipe.enabled = false
 recipe.energy_required = 2
@@ -60,8 +60,8 @@ recipe.requester_paste_multiplier = 4
 recipe.always_show_products = true
 recipe.always_show_made_in = apm_power_always_show_made_in
 
-if reusable then
-	table.insert(recipe.ingredients, 'apm_centrifuge_0')
+if apm.lib.features.reuse_previous_tier then
+	apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, "apm_centrifuge_0", 1)
 end
 
 data:extend({ recipe })
@@ -90,8 +90,9 @@ recipe.main_product = 'apm_centrifuge_2'
 recipe.requester_paste_multiplier = 4
 recipe.always_show_products = true
 recipe.always_show_made_in = apm_power_always_show_made_in
-if reusable then
-	table.insert(recipe.ingredients, 'apm_centrifuge_1')
+
+if apm.lib.features.reuse_previous_tier then
+	apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, 'apm_centrifuge_1', 1)
 end
 
 data:extend({ recipe })

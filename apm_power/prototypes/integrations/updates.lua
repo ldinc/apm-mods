@@ -141,7 +141,8 @@ end
 if mods['aai-industry'] and apm_power_compat_earendel then
 	-- overwrite fuel categorys on all car if they have a burner and uses 'checmical' as fuel category
 	--apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('car', 'apm_refined_chemical', {'apm_refined_chemical', 'apm_vehicle_only'})
-	apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('car', 'chemical',
+	apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition(
+		'car', 'chemical',
 		{ 'chemical', 'apm_refined_chemical', 'apm_vehicle_only' })
 	-- overwrite fuel categorys on all locomotive if they have a burner and uses 'checmical' as fuel category
 	apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('locomotive', 'chemical',

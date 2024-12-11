@@ -36,7 +36,8 @@ apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('locomotive', 'c
 apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('mining-drill', 'chemical',
 	{ 'chemical', 'apm_refined_chemical' })
 -- overwrite fuel categorys on all pump if they have a burner and uses 'checmical' as fuel category
-apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('pump', 'chemical', { 'chemical', 'apm_refined_chemical' })
+apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition('pump', 'chemical',
+	{ 'chemical', 'apm_refined_chemical' })
 --
 APM_LOG_INFO(self, '', 'END: basic overwrites of the fuel categories')
 -- ----------------------------------------------------------------------------------------------------------

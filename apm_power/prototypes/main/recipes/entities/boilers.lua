@@ -31,4 +31,8 @@ recipe.requester_paste_multiplier = 4
 recipe.always_show_products = true
 recipe.always_show_made_in = apm_power_always_show_made_in
 
+if apm.lib.features.reuse_previous_tier then
+	apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, 'boiler', 1)
+end
+
 data:extend({ recipe })
