@@ -128,8 +128,8 @@ end
 ---@param level number
 ---@param item_name string
 ---@param multiplicator number
----@param burnt_result string
----@param fuel_category data.FuelCategoryID
+---@param burnt_result string?
+---@param fuel_category data.FuelCategoryID?
 function apm.lib.utils.fuel.overhaul(level, item_name, multiplicator, burnt_result, fuel_category)
 	if not apm.lib.utils.item.exist(item_name) then return end
 

@@ -1,5 +1,6 @@
 if not apm.lib.utils.recipe then apm.lib.utils.recipe = {} end
 if not apm.lib.utils.recipe.has then apm.lib.utils.recipe.has = {} end
+if not apm.lib.utils.recipe.ingredient.get then apm.lib.utils.recipe.ingredient.get = {} end
 
 --- [has_ingredient]
 ---@param base data.IngredientPrototype[]
@@ -26,6 +27,22 @@ function apm.lib.utils.recipe.has.ingredient(recipe_name, ingredient_name)
 		return false
 	end
 
+	if not apm.lib.utils.item.exist(ingredient_name) then
+		return false
+	end
+
+	if recipe.ingredients then
+		if has_ingredient(recipe.ingredients, ingredient_name) then return true end
+	end
+
+	return false
+end
+
+--- [recipe.has.ingredient]
+---@param recipe data.RecipePrototype
+---@param ingredient_name string
+---@return boolean
+function apm.lib.utils.recipe.has.ingredient_by_ref(recipe, ingredient_name)
 	if not apm.lib.utils.item.exist(ingredient_name) then
 		return false
 	end
@@ -146,6 +163,18 @@ local function ingredient_mod(recipe_name, base, ingredient_name, ingredient_amo
 	return base
 end
 
+--- [recipe.ingredient.mod_by_ref]
+---@param recipe data.RecipePrototype
+---@param ingredient_name string
+---@param ingredient_amount number
+function apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, ingredient_name, ingredient_amount)
+	if not apm.lib.utils.item.exist(ingredient_name) then return end
+
+	-- simple recipe
+	if recipe.ingredients then
+		recipe.ingredients = ingredient_mod(recipe.name, recipe.ingredients, ingredient_name, ingredient_amount)
+	end
+end
 
 --- [recipe.ingredient.mod]
 ---@param recipe_name string
@@ -158,12 +187,7 @@ function apm.lib.utils.recipe.ingredient.mod(recipe_name, ingredient_name, ingre
 		return
 	end
 
-	if not apm.lib.utils.item.exist(ingredient_name) then return end
-
-	-- simple recipe
-	if recipe.ingredients then
-		recipe.ingredients = ingredient_mod(recipe_name, recipe.ingredients, ingredient_name, ingredient_amount)
-	end
+	apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, ingredient_name, ingredient_amount)
 end
 
 --- [replace_ingredient]
@@ -307,4 +331,19 @@ function apm.lib.utils.recipe.ingredient.replace_all(ingredient_old, ingredient_
 	for recipe, _ in pairs(data.raw.recipe) do
 		apm.lib.utils.recipe.ingredient.replace(recipe, ingredient_old, ingredient_new)
 	end
+end
+
+--- [recipe.ingredient.get_count_by_ref]
+---@param recipe data.RecipePrototype
+---@param ingredient_name string
+---@return integer
+---@return boolean
+function apm.lib.utils.recipe.ingredient.get.count_by_ref(recipe, ingredient_name)
+	for _, ingredient in ipairs(recipe.ingredients) do
+		if ingredient and ingredient.name == ingredient_name then
+			return ingredient.amount, true
+		end
+	end
+
+	return 0, false
 end

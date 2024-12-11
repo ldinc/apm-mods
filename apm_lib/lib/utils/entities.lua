@@ -40,7 +40,7 @@ end
 --- [entities.set.fuel_categoriy_to_all_with_condition]
 ---@param entity_type string
 ---@param conditional_category data.FuelCategoryID
----@param categories data.FuelCategoryID
+---@param categories data.FuelCategoryID[]|data.FuelCategoryID
 function apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition(entity_type, conditional_category, categories)
 	if not data.raw[entity_type] then
 		if APM_CAN_LOG_WARN then

@@ -118,7 +118,7 @@ end
 
 --- [technology.remove.recipe_recursive]
 ---@param recipe_name string recipe name
----@param tech_name string ignored technology
+---@param tech_name string? ignored technology
 function apm.lib.utils.technology.remove.recipe_recursive(recipe_name, tech_name)
 	if not apm.lib.utils.recipe.exist(recipe_name) then return end
 
