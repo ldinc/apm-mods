@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.03
+Date: 11.12.2024
+  Changed:
+    - split Coal & Steam category into: production + intermediates products 
+---------------------------------------------------------------------------------------------------
+Version: 0.31.02
+Date: 11.12.2024
+  Fixed:
+    - missing previous elements for some recipe with enabled option "reuse old tier machines in new recipes"
+---------------------------------------------------------------------------------------------------
 Version: 0.31.01
 Date: 11.12.2024
   Fixed:

@@ -59,4 +59,17 @@ recipe.requester_paste_multiplier = 4
 recipe.always_show_products = true
 recipe.always_show_made_in = apm_power_always_show_made_in
 
+if apm.lib.features.reuse_previous_tier then
+	local prev = "burner-mining-drill"
+
+	---@type data.ItemPrototype, boolean
+	local burner_2, ok = apm.lib.utils.item.get_by_name("apm_burner_miner_drill_2", true) 
+
+	if ok and not burner_2.hidden then
+		prev = "apm_burner_miner_drill_2"
+	end
+
+	apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, prev, 1)
+end
+
 data:extend({ recipe })

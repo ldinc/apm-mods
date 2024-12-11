@@ -184,7 +184,11 @@ if features.frames_recycling and features.reuse_previous_tier and features.frame
 	apm.power.try_set_frames_to_recipe_results("apm_centrifuge_2")
 	apm.power.try_set_frames_to_recipe_results("apm_lab_1")
 	apm.power.try_set_frames_to_recipe_results("apm_steelworks_1")
+end
 
+if features.reuse_previous_tier then
+	apm.lib.utils.recipe.ingredient.mod("pump", "apm_pump_0", 1)
+	apm.lib.utils.recipe.ingredient.mod("offshore-pump", "apm_offshore_pump_1", 1)
 end
 
 

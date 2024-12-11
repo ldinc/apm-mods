@@ -90,7 +90,15 @@ apm.lib.utils.item.overwrite.group('burner-mining-drill', 'apm_power_machines_mi
 apm.lib.utils.bot.logistic.overhaul('logistic-robot', 1)
 apm.lib.utils.bot.construction.overhaul('construction-robot', 1)
 
+
 -- offshore pump
 if not mods["space-age"] then
 	apm.lib.utils.item.remove('offshore-pump')
+else
+	local pump = data.raw["offshore-pump"]["offshore-pump"]
+
+	if pump then
+		pump.energy_source = apm.lib.utils.builders.energy_source.new_electric(nil, nil)
+		pump.energy_usage = "600kW"
+	end
 end
