@@ -12,22 +12,25 @@ APM_LOG_HEADER(self)
 local function ParticleFilter(i)
 	local bonus = 0.075 * i * -1
 
-	local item = {}
-	item.type = "module"
-	item.name = "apm_particle_filter_" .. i
-	item.category = "pollution-clean"
-	item.localised_name = { "item-name.apm_particle_filter", tostring(i) }
-	item.localised_description = { "item-description.apm_particle_filter" }
-	item.icons = {
-		{ icon = apm.power.icons.path.particle_filter_module .. tostring(i) .. '.png', icon_size = 64 }
+	---@type data.ModulePrototype
+	local item = {
+		type = "module",
+		name = "apm_particle_filter_" .. i,
+		category = "pollution-clean",
+		localised_name = { "item-name.apm_particle_filter", tostring(i) },
+		localised_description = { "item-description.apm_particle_filter" },
+		icons = {
+			{ icon = apm.power.icons.path.particle_filter_module .. tostring(i) .. '.png', icon_size = 64 }
+		},
+		tier = i,
+		subgroup = "apm_power_modules",
+		order = 'aa_a[' .. i .. ']',
+		stack_size = 100,
+		effect = { pollution = bonus },
+
+		weight = apm.lib.utils.constants.value.weight.module,
 	}
-	item.tier = i
-	item.group = "apm_power"
-	item.subgroup = "apm_power_modules"
-	item.order = 'aa_a[' .. i .. ']'
-	item.stack_size = 100
-	item.default_request_amount = 10
-	item.effect = { pollution = bonus }
+
 	data:extend({ item })
 end
 

@@ -12,3 +12,5 @@ require('prototypes.integrations.updates')
 if mods["space-age"] then
 	apm.lib.utils.character.crafting_category.add('character', 'apm_handcrafting_only')
 end
+
+apm.lib.utils.item.overwrite.weight("burner-inserter", apm.lib.utils.constants.value.weight.building.inserter)

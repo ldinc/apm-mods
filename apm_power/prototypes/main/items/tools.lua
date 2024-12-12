@@ -5,74 +5,69 @@ local self = 'apm_power/prototypes/main/items/tools.lua'
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_saw_blade_iron'
-item.icons = {
-	apm.power.icons.saw_blade_iron
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_saw_blade_iron',
+	icons = {
+		apm.power.icons.saw_blade_iron
+	},
+	stack_size = apm.lib.features.stack_size.default,
+	subgroup = "apm_power_tools",
+	order = 'ae_a',
+
+	weight = apm.lib.utils.constants.value.weight.product.saw,
 }
-item.stack_size = 200
-item.group = "apm_power"
-item.subgroup = "apm_power_tools"
-item.order = 'ae_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
+
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_saw_blade_iron_used'
-item.icons = {
-	apm.power.icons.saw_blade_iron_used
+
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_saw_blade_iron_used',
+	icons = {
+		apm.power.icons.saw_blade_iron_used
+	},
+	stack_size = apm.lib.features.stack_size.default,
+	subgroup = "apm_power_tools",
+	order = 'ae_b',
+
+	weight = apm.lib.utils.constants.value.weight.product.saw,
 }
-item.stack_size = 200
-item.group = "apm_power"
-item.subgroup = "apm_power_tools"
-item.order = 'ae_b'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
+
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_saw_blade_steel'
-item.icons = {
-	apm.power.icons.saw_blade_steel
+
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_saw_blade_steel',
+	icons = {
+		apm.power.icons.saw_blade_steel
+	},
+	stack_size = apm.lib.features.stack_size.default,
+	subgroup = "apm_power_tools",
+	order = 'af_a',
+
+	weight = apm.lib.utils.constants.value.weight.product.saw,
 }
-item.stack_size = 200
-item.group = "apm_power"
-item.subgroup = "apm_power_tools"
-item.order = 'af_a'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
+
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_saw_blade_steel_used'
-item.icons = {
-	apm.power.icons.saw_blade_steel_used
+
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_saw_blade_steel_used',
+	icons = {
+		apm.power.icons.saw_blade_steel_used
+	},
+	stack_size = apm.lib.features.stack_size.default,
+	subgroup = "apm_power_tools",
+	order = 'af_b',
+
+	weight = apm.lib.utils.constants.value.weight.product.saw,
 }
-item.stack_size = 200
-item.group = "apm_power"
-item.subgroup = "apm_power_tools"
-item.order = 'af_b'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
+
 data:extend({ item })

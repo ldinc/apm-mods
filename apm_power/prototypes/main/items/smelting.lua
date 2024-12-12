@@ -5,38 +5,34 @@ local self = 'apm_power/prototypes/main/items/smelting.lua'
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_stone_crucible_raw'
-item.icons = {
-	apm.power.icons.crucible_raw
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_stone_crucible_raw',
+	icons = {
+		apm.power.icons.crucible_raw
+	},
+	stack_size = apm.lib.features.stack_size.default,
+	subgroup = "apm_power_smelting",
+	order = 'aa_c',
+
+	weight = apm.lib.utils.constants.value.weight.default,
 }
-item.stack_size = 200
-item.group = "apm_power"
-item.subgroup = "apm_power_smelting"
-item.order = 'aa_c'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
+
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_stone_crucible'
-item.icons = {
-	apm.power.icons.crucible
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_stone_crucible',
+	icons = {
+		apm.power.icons.crucible
+	},
+	stack_size = apm.lib.features.stack_size.default,
+	subgroup = "apm_power_smelting",
+	order = 'aa_c',
+
+	weight = apm.lib.utils.constants.value.weight.default,
 }
-item.stack_size = 200
-item.group = "apm_power"
-item.subgroup = "apm_power_smelting"
-item.order = 'aa_c'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
+
 data:extend({ item })

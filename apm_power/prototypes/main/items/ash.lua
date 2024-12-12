@@ -7,21 +7,27 @@ local self = 'apm_power/prototypes/main/items/ash.lua'
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_generic_ash'
-item.icons = {
-	apm.power.icons.generic_ash
+local stack_size = apm.lib.features.stack_size.ash
+
+if stack_size == nil or stack_size == 0 then
+	stack_size = 2000
+end
+
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_generic_ash',
+	icons = {
+		apm.power.icons.generic_ash
+	},
+	stack_size = stack_size,
+	subgroup = "apm_power_ash",
+	order = 'aa_a',
+	inventory_move_sound = item_sounds.resource_inventory_move,
+	pick_sound = item_sounds.resource_inventory_pickup,
+	drop_sound = item_sounds.resource_inventory_move,
+
+	weight = apm.lib.utils.constants.value.weight.product.ash,
 }
-item.stack_size = 2000
-item.group = "apm_power"
-item.subgroup = "apm_power_ash"
-item.order = 'aa_a'
-item.inventory_move_sound = item_sounds.resource_inventory_move
-item.pick_sound = item_sounds.resource_inventory_pickup
-item.drop_sound = item_sounds.resource_inventory_move
+
 data:extend({ item })

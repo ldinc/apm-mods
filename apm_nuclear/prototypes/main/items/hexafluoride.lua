@@ -5,10 +5,7 @@ local self = "apm_nuclear/prototypes/main/items/hexafluoride.lua"
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -16,17 +13,15 @@ local item = {
 	icons = {
 		apm.nuclear.icons.yellowcake
 	},
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
 	subgroup = "apm_nuclear_chemistry",
 	order = "aa_a",
+
+	weight = apm.lib.utils.constants.value.weight.chemistry,
 }
 
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -34,9 +29,11 @@ local item = {
 	icons = {
 		apm.nuclear.icons.potassium_bromide
 	},
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
 	subgroup = "apm_nuclear_chemistry",
 	order = "ab_a",
+
+	weight = apm.lib.utils.constants.value.weight.chemistry,
 }
 
 data:extend({ item })

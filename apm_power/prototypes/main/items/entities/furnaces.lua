@@ -5,56 +5,62 @@ local self = 'apm_power/prototypes/main/items/entities/furnaces.lua'
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_puddling_furnace_0'
-item.icons = {
-	apm.lib.icons.dynamics.machine.t0,
-	apm.lib.icons.dynamics.lable_pf
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_puddling_furnace_0',
+	icons = {
+		apm.lib.icons.dynamics.machine.t0,
+		apm.lib.icons.dynamics.lable_pf
+	},
+	stack_size = 50,
+	subgroup = "apm_power_machines_1",
+	order = 'ab_a',
+	place_result = "apm_puddling_furnace_0",
+
+	weight = apm.lib.utils.constants.value.weight.building.medium,
 }
-item.stack_size = 50
-item.group = "apm_power"
-item.subgroup = "apm_power_machines_1"
-item.order = 'ab_a'
-item.place_result = "apm_puddling_furnace_0"
+
 data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_steelworks_0'
-item.icons = {
-	apm.lib.icons.dynamics.machine.t2,
-	apm.lib.icons.dynamics.lable_sw
+local item = {
+	type = 'item',
+	name = 'apm_steelworks_0',
+	icons = {
+		apm.lib.icons.dynamics.machine.t2,
+		apm.lib.icons.dynamics.lable_sw
+	},
+	stack_size = 50,
+	subgroup = "apm_power_machines_4",
+	order = 'ag_a',
+	place_result = "apm_steelworks_0",
+
+	weight = apm.lib.utils.constants.value.weight.building.medium,
 }
-item.stack_size = 50
-item.group = "apm_power"
-item.subgroup = "apm_power_machines_4"
-item.order = 'ag_a'
-item.place_result = "apm_steelworks_0"
+
 data:extend({ item })
 
 -- Item -----------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_steelworks_1'
-item.icons = {
-	apm.lib.icons.dynamics.machine.t3,
-	apm.lib.icons.dynamics.lable_sw
+local item = {
+	type = 'item',
+	name = 'apm_steelworks_1',
+	icons = {
+		apm.lib.icons.dynamics.machine.t3,
+		apm.lib.icons.dynamics.lable_sw
+	},
+	stack_size = 50,
+	subgroup = "apm_power_machines_5",
+	order = 'ag_a',
+	place_result = "apm_steelworks_1",
+
+	weight = apm.lib.utils.constants.value.weight.building.medium,
 }
-item.stack_size = 50
-item.group = "apm_power"
-item.subgroup = "apm_power_machines_5"
-item.order = 'ag_a'
-item.place_result = "apm_steelworks_1"
+
 data:extend({ item })

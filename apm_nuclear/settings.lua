@@ -24,6 +24,7 @@ data:extend(
 			default_value = true,
 			order = 'bb_a',
 		},
+
 		--- [apm_nuclear_compat_bob]
 		{
 			type = "bool-setting",

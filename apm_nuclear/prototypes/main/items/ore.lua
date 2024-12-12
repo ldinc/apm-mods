@@ -7,10 +7,6 @@ local self = "apm_nuclear/prototypes/main/items/ore.lua"
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -24,9 +20,11 @@ local item = {
 		apm.nuclear.icons.fluorite_2,
 		apm.nuclear.icons.fluorite_3
 	},
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
 	subgroup = "apm_nuclear_ore",
 	order = "aa_a",
+
+	weight = apm.lib.utils.constants.value.weight.ore,
 }
 
 data:extend({ item })
@@ -57,13 +55,14 @@ local item = {
 			layers = {apm.nuclear.icons.thorium_ore_3},
 		},
 	},
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
 	subgroup = "apm_nuclear_ore",
 	order = "aa_b",
-	weight = 5 * kg,
 	inventory_move_sound = item_sounds.nuclear_inventory_move,
 	pick_sound = item_sounds.nuclear_inventory_pickup,
 	drop_sound = item_sounds.nuclear_inventory_move,
+
+	weight = 5 * kg,
 }
 
 data:extend({ item })

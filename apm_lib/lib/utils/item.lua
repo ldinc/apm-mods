@@ -548,3 +548,20 @@ function  apm.lib.utils.item.mod.overwrite_weight_for_science_packs(w)
 		end
 	end
 end
+
+--- [item.overwrite.weight]
+---@param name string
+---@param w data.Weight?
+function apm.lib.utils.item.overwrite.weight(name, w)
+	local item, ok = apm.lib.utils.item.get_by_name(name, true)
+
+	if not ok then
+		return
+	end
+
+	if w == nil then
+		w = apm.lib.utils.constants.value.weight.default
+	end
+
+	item.weight = w
+end

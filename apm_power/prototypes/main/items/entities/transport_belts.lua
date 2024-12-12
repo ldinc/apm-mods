@@ -18,7 +18,6 @@ item.icon = "__base__/graphics/icons/transport-belt.png"
 --    apm.lib.icons.dynamics.lable_si
 --}
 item.stack_size = 50
-item.group = "apm_power"
 item.subgroup = "apm_power_inserter"
 item.order = 'aa_a'
 item.place_result = "apm_basic_transport_belt"

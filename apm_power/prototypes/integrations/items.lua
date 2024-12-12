@@ -41,14 +41,14 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_realistic_reactors', apm_power_compat_r
 APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reverse_factory)
 APM_LOG_SETTINGS(self, 'apm_power_compat_arcitos', apm_power_compat_arcitos)
 
-apm.lib.utils.item.mod.stack_size('copper-ore', 200, false)
-apm.lib.utils.item.mod.stack_size('iron-ore', 200, false)
-apm.lib.utils.item.mod.stack_size('stone', 200, false)
-apm.lib.utils.item.mod.stack_size('coal', 200, false)
-apm.lib.utils.item.mod.stack_size('uranium-ore', 200, false)
-apm.lib.utils.item.mod.stack_size('sulfur', 200, false)
-apm.lib.utils.item.mod.stack_size('wood', 200, false)
-apm.lib.utils.item.mod.stack_size('steel-plate', 200, false)
+apm.lib.utils.item.mod.stack_size('copper-ore', apm.lib.features.stack_size.default, false)
+apm.lib.utils.item.mod.stack_size('iron-ore', apm.lib.features.stack_size.default, false)
+apm.lib.utils.item.mod.stack_size('stone', apm.lib.features.stack_size.default, false)
+apm.lib.utils.item.mod.stack_size('coal', apm.lib.features.stack_size.default, false)
+apm.lib.utils.item.mod.stack_size('uranium-ore', apm.lib.features.stack_size.default, false)
+apm.lib.utils.item.mod.stack_size('sulfur', apm.lib.features.stack_size.default, false)
+apm.lib.utils.item.mod.stack_size('wood', apm.lib.features.stack_size.default, false)
+apm.lib.utils.item.mod.stack_size('steel-plate', apm.lib.features.stack_size.default, false)
 
 -- AsphaltRoads ----------------------------------------------------------------
 --

@@ -5,33 +5,31 @@ local self = 'apm_power/prototypes/main/items/tiles.lua'
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_asphalt'
-item.icons = {
-	{ icon = apm.power.icons.asphalt.filename, icon_size = apm.power.icons.asphalt.icon_size }
-}
-item.icon_mipmaps = apm.power.icons.asphalt.icon_mipmaps
-item.pictures = {
-	apm.power.icons.asphalt,
-	apm.power.icons.asphalt_1
-}
-item.stack_size = 200
-item.group = "apm_power"
-item.subgroup = "apm_power_ash"
-item.order = 'ae_a'
-item.place_as_tile = {
-	result = "apm_asphalt",
-	condition_size = 1,
-	condition = {layers={water_tile=true}}
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_asphalt',
+	icons = {
+		{ icon = apm.power.icons.asphalt.filename, icon_size = apm.power.icons.asphalt.icon_size }
+	},
+	pictures = {
+		apm.power.icons.asphalt,
+		apm.power.icons.asphalt_1
+	},
+	stack_size = apm.lib.features.stack_size.default,
+	subgroup = "apm_power_ash",
+	order = 'ae_a',
+	place_as_tile = {
+		result = "apm_asphalt",
+		condition_size = 1,
+		condition = { layers = { water_tile = true } }
+	},
+
+	weight = apm.lib.utils.constants.value.weight.product.asphalt,
 }
 
 if mods["space-age"] then
-	item.condition = {layers={water_tile=true, meltable=true}}
+	item.place_as_tile.condition = { layers = { water_tile = true, meltable = true } }
 end
 
 data:extend({ item })

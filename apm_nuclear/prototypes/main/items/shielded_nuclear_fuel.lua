@@ -5,10 +5,6 @@ local self = "apm_nuclear/prototypes/main/items/shielded_nuclear_fuel.lua"
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -23,14 +19,12 @@ local item = {
 	burnt_result = "apm_shielded_nuclear_fuel_cell_used",
 	fuel_value = apm.nuclear.constants.fuel_value.shielded_nuclear_fuel,
 	fuel_glow_color = apm.nuclear.color.fuel_glow.shielded_nuclear_fuel,
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -41,6 +35,8 @@ local item = {
 	stack_size = 10,
 	subgroup = "apm_nuclear_products",
 	order = "af_b",
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })

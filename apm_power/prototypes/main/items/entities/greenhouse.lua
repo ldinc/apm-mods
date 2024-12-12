@@ -5,56 +5,56 @@ local self = 'apm_power/prototypes/main/items/entities/greenhouse.lua'
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_greenhouse_0'
-item.icons = {
-	apm.lib.icons.dynamics.machine.t0,
-	apm.lib.icons.dynamics.lable_gh
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_greenhouse_0',
+	icons = {
+		apm.lib.icons.dynamics.machine.t0,
+		apm.lib.icons.dynamics.lable_gh
+	},
+	stack_size = 50,
+	subgroup = "apm_power_machines_1",
+	order = 'aa_a',
+	place_result = "apm_greenhouse_0",
+
+	weight = apm.lib.utils.constants.value.weight.building.medium,
 }
-item.stack_size = 50
-item.group = "apm_power"
-item.subgroup = "apm_power_machines_1"
-item.order = 'aa_a'
-item.place_result = "apm_greenhouse_0"
+
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_greenhouse_1'
-item.icons = {
-	apm.lib.icons.dynamics.machine.t1,
-	apm.lib.icons.dynamics.lable_gh
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_greenhouse_1',
+	icons = {
+		apm.lib.icons.dynamics.machine.t1,
+		apm.lib.icons.dynamics.lable_gh
+	},
+	stack_size = 50,
+	subgroup = "apm_power_machines_3",
+	order = 'aa_a',
+	place_result = "apm_greenhouse_1",
+
+	weight = apm.lib.utils.constants.value.weight.building.medium,
 }
-item.stack_size = 50
-item.group = "apm_power"
-item.subgroup = "apm_power_machines_3"
-item.order = 'aa_a'
-item.place_result = "apm_greenhouse_1"
+
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_greenhouse_2'
-item.icons = {
-	apm.lib.icons.dynamics.machine.t2,
-	apm.lib.icons.dynamics.lable_gh
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_greenhouse_2',
+	icons = {
+		apm.lib.icons.dynamics.machine.t2,
+		apm.lib.icons.dynamics.lable_gh
+	},
+	stack_size = 50,
+	subgroup = "apm_power_machines_4",
+	order = 'aa_a',
+	place_result = "apm_greenhouse_2",
+
+	weight = apm.lib.utils.constants.value.weight.building.medium,
 }
-item.stack_size = 50
-item.group = "apm_power"
-item.subgroup = "apm_power_machines_4"
-item.order = 'aa_a'
-item.place_result = "apm_greenhouse_2"
+
 data:extend({ item })

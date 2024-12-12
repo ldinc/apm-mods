@@ -16,9 +16,11 @@ local item = {
     icons = {
         apm.nuclear.icons.waste_radioactive
     },
-    stack_size = 2000,
+    stack_size = apm.lib.features.stack_size.ash,
     subgroup = "apm_nuclear_waste_products",
     order = "ac_b",
+
+    weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })

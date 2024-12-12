@@ -5,56 +5,52 @@ local self = 'apm_power/prototypes/main/items/greenhouse.lua'
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_tree_seeds'
-item.icons = {
-	apm.power.icons.tree_seeds
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_tree_seeds',
+	icons = {
+		apm.power.icons.tree_seeds
+	},
+	stack_size = 50,
+	subgroup = "apm_greenhouse",
+	order = 'ab_a',
+	fuel_category = 'chemical',
+	fuel_value = "1MJ",
+
+	weight = apm.lib.utils.constants.value.weight.product.tree_seeds,
 }
-item.stack_size = 50
-item.group = "apm_power"
-item.subgroup = "apm_greenhouse"
-item.order = 'ab_a'
-item.fuel_category = 'chemical'
-item.fuel_value = "1MJ"
+
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_fertiliser_1'
-item.icons = {
-	apm.power.icons.fertiliser_1
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_fertiliser_1',
+	icons = {
+		apm.power.icons.fertiliser_1
+	},
+	stack_size = apm.lib.features.stack_size.default,
+	subgroup = "apm_greenhouse",
+	order = 'ab_b',
+
+	weight = apm.lib.utils.constants.value.weight.default,
 }
-item.stack_size = 200
-item.group = "apm_power"
-item.subgroup = "apm_greenhouse"
-item.order = 'ab_b'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
+
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_fertiliser_2'
-item.icons = {
-	apm.power.icons.fertiliser_2
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_fertiliser_2',
+	icons = {
+		apm.power.icons.fertiliser_2
+	},
+	stack_size = apm.lib.features.stack_size.default,
+	subgroup = "apm_greenhouse",
+	order = 'ab_c',
+
+	weight = apm.lib.utils.constants.value.weight.default,
 }
-item.stack_size = 200
-item.group = "apm_power"
-item.subgroup = "apm_greenhouse"
-item.order = 'ab_c'
---item.fuel_category = 'chemical'
---item.fuel_value = "1MJ"
+
 data:extend({ item })

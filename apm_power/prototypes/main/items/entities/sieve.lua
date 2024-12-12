@@ -5,20 +5,21 @@ local self = 'apm_power/prototypes/main/items/entities/sieve.lua'
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item = {}
-item.type = 'item'
-item.name = 'apm_sieve_0'
-item.icons = {
-	apm.lib.icons.dynamics.machine.t1,
-	apm.lib.icons.dynamics.lable_si
+---@type data.ItemPrototype
+local item = {
+	type = 'item',
+	name = 'apm_sieve_0',
+	icons = {
+		apm.lib.icons.dynamics.machine.t1,
+		apm.lib.icons.dynamics.lable_si
+	},
+	stack_size = 50,
+	subgroup = "apm_power_machines_3",
+	order = 'ad_a',
+	place_result = "apm_sieve_0",
+
+	weight = apm.lib.utils.constants.value.weight.building.medium,
 }
-item.stack_size = 50
-item.group = "apm_power"
-item.subgroup = "apm_power_machines_3"
-item.order = 'ad_a'
-item.place_result = "apm_sieve_0"
+
+
 data:extend({ item })

@@ -5,10 +5,6 @@ local self = "apm_nuclear/prototypes/main/items/thorium.lua"
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -18,19 +14,17 @@ local item = {
 	},
 	fuel_category = "apm_nuclear_thorium",
 	burnt_result = "apm_fuel_rod_thorium_active",
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
 	subgroup = "apm_nuclear_fuel",
 	order = "ad_a[thorium]",
 	fuel_value = apm.nuclear.constants.fuel_value.fuel_rod.thorium,
 	fuel_glow_color = apm.nuclear.color.fuel_glow.fuel_rod.thorium,
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -38,17 +32,15 @@ local item = {
 	icons = {
 		apm.nuclear.icons.fuel_container_thorium_active
 	},
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
 	subgroup = "apm_nuclear_used_fuel",
 	order = "ad_a[thorium]",
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -56,17 +48,15 @@ local item = {
 	icons = {
 		apm.nuclear.icons.fuel_container_thorium_cooled
 	},
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
 	subgroup = "apm_nuclear_used_fuel_cold",
 	order = "ad_a[thorium]",
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -76,15 +66,13 @@ local item = {
 	},
 	subgroup = "apm_nuclear_breeding_thorium",
 	order = "aa_a",
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -98,15 +86,13 @@ local item = {
 	fuel_value = apm.nuclear.constants.fuel_value.breeder.thorium,
 	fuel_glow_color = apm.nuclear.color.fuel_glow.breeder.thorium,
 	order = "ab_a",
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -116,15 +102,13 @@ local item = {
 	},
 	subgroup = "apm_nuclear_breeding_thorium",
 	order = "ac_a",
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -134,15 +118,13 @@ local item = {
 	},
 	subgroup = "apm_nuclear_breeding_thorium",
 	order = "bd_a",
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ItemPrototype
 local item = {
 	type = "item",
@@ -152,7 +134,9 @@ local item = {
 	},
 	subgroup = "apm_nuclear_breeding_thorium",
 	order = "bd_a",
-	stack_size = 200,
+	stack_size = apm.lib.features.stack_size.default,
+
+	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
 
 data:extend({ item })

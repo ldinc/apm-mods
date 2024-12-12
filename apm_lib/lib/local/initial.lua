@@ -76,17 +76,6 @@ local function initial_apm_mods()
 		init.add_technology('battery-3')
 	end
 
-	-- apm_angel_addon
-	if apm.lib.utils.mod.enabled('apm_angel_addon') then
-		init.add_technology('angels-iron-smelting-1')
-		init.add_technology('angels-cobalt-steel-smelting-1')
-		init.add_technology('angels-brass-smelting-1')
-		init.add_technology('angels-titanium-smelting-1')
-		init.add_technology('angels-nitinol-smelting-1')
-		init.add_technology('angels-tungsten-smelting-1')
-		init.add_technology('angels-steel-smelting-1')
-	end
-
 	init.run()
 end
 

@@ -24,8 +24,7 @@ apm.lib.utils.category.create.subgroup(group, 'apm_power_machines_miner', 'ap_a'
 
 group = "apm_power_intermediates"
 
-apm.lib.utils.category.create.group(group, '__apm_resource_pack_ldinc__/graphics/categories/apm_power_intermediates.png',
-	'06')
+apm.lib.utils.category.create.group(group, '__apm_resource_pack_ldinc__/graphics/categories/apm_power_intermediates.png', '06')
 
 apm.lib.utils.category.create.subgroup(group, 'apm_power_fluid', 'aa_a')
 apm.lib.utils.category.create.subgroup(group, 'apm_power_tools', 'ab_a')

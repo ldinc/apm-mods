@@ -22,7 +22,9 @@ local item = {
 	icons = icons,
 	subgroup = item_car.subgroup,
 	order = item_car.order .. "z",
-	place_result = "apm_electric_car"
+	place_result = "apm_electric_car",
+
+	weight = item_car.weight,
 }
 
 data:extend({ item })
@@ -45,6 +47,8 @@ local item = {
 	order = item_tank.order .. "z",
 	place_result = "apm_electric_tank",
 	stack_size = item_tank.stack_size,
+
+	weight = item_tank.weight,
 }
 
 data:extend({ item })
@@ -67,6 +71,8 @@ local item = {
 	subgroup = item_locomotive.subgroup,
 	order = item_locomotive.order .. "z",
 	place_result = "apm_electric_locomotive",
+
+	weight = item_locomotive.weight,
 }
 
 data:extend({ item })
@@ -89,6 +95,8 @@ local item = {
 	subgroup = "production-machine",
 	order = "d[apm_battery_charging_station]",
 	place_result = "apm_battery_charging_station",
+
+	weight = apm.lib.utils.constants.value.weight.building.medium,
 }
 
 data:extend({ item })
@@ -110,6 +118,8 @@ local item = {
 	subgroup = "production-machine",
 	order = "d[apm_battery_discharging_station]",
 	place_result = "apm_battery_discharging_station",
+
+	weight = apm.lib.utils.constants.value.weight.building.medium,
 }
 
 data:extend({ item })
@@ -130,6 +140,8 @@ local item = {
 	subgroup = "equipment",
 	order = "a[energy-source]-b[apm-a]",
 	place_as_equipment_result = "apm_equipment_energy_transmitter",
+
+	weight = apm.lib.utils.constants.value.weight.equipment.light,
 }
 
 data:extend({ item })

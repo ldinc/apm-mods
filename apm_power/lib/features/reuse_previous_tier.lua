@@ -1,15 +1,7 @@
-require('__apm_lib_ldinc__.lib.log')
-require('__apm_lib_ldinc__.lib.utils')
-
-local self = 'apm_power/lib/data-interfaces.lua'
-
-APM_LOG_HEADER(self)
-
-local bool = require("bool")
-
-if not apm then apm = {} end
-if not apm.lib then apm.lib = {} end
-if not apm.lib.features then apm.lib.features = {} end
+require('__apm_lib_ldinc__.lib.features')
 
 ---@type boolean
-apm.lib.features.reuse_previous_tier = bool.startup("apm_power_machine_reusable_recipies")
+apm.lib.features.reuse_previous_tier =
+    apm.lib.features.startup.get_boolean_value_from_setting(
+      "apm_power_machine_reusable_recipies"
+    )

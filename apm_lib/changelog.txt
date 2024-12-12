@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.04
+Date: 12.12.2024
+  Added:
+    - apm.lib.features.stack_size
+    - settings: apm_lib_stack_size default item's stack size (recomended: 200)
+---------------------------------------------------------------------------------------------------
+Version: 0.31.03
+Date: 12.12.2024
+  Added:
+    - apm.lib.features
+    - apm.lib.utils.item.overwrite.weight
+    - apm.lib.utils.constants.value.weight
+---------------------------------------------------------------------------------------------------
 Version: 0.31.02
 Date: 11.12.2024
   Added:

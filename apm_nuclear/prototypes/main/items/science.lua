@@ -5,10 +5,6 @@ local self = "apm_nuclear/prototypes/main/items/science.lua"
 
 APM_LOG_HEADER(self)
 
--- Item -----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 ---@type data.ToolPrototype
 local item = {
 	type = "tool",
@@ -24,6 +20,8 @@ local item = {
 	durability = 1,
 	durability_description_key = "description.science-pack-remaining-amount-key",
 	durability_description_value = "description.science-pack-remaining-amount-value",
+
+	weight = apm.lib.utils.constants.value.weight.science_pack,
 }
 
 data:extend({ item })
