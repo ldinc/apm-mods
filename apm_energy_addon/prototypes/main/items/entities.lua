@@ -134,7 +134,10 @@ local item = {
 	type = "item",
 	name = "apm_equipment_energy_transmitter",
 	icons = {
-		apm.power.icons.apm_equipment_energy_transmitter
+		{
+			icon = '__apm_resource_pack_ldinc__/graphics/equipment/apm_equipment_energy_transmitter.png',
+			icon_size = 128,
+		}
 	},
 	stack_size = 20,
 	subgroup = "equipment",
@@ -156,9 +159,9 @@ local equipment = {
 	type = "generator-equipment",
 	name = "apm_equipment_energy_transmitter",
 	sprite = {
-		filename = apm.power.icons.item_equipment_energy_transmitter.icon,
-		width = apm.power.icons.item_equipment_energy_transmitter.icon_size,
-		height = apm.power.icons.item_equipment_energy_transmitter.icon_size,
+		filename = '__apm_resource_pack_ldinc__/graphics/icons/apm_equipment_energy_transmitter.png',
+		width = 64,
+		height = 64,
 		priority = "medium",
 	},
 	shape = {
