@@ -24,6 +24,16 @@ data:extend({
 		allowed_values = {50, 100, 200},
 		order = 'bc_a',
 	},
+	{
+		type = "int-setting",
+		name = "apm_lib_stack_size_ash",
+		setting_type = "startup",
+		default_value = 2000,
+		minimum_value = 50,
+		maximum_value = 2000,
+		allowed_values = {50, 100, 200, 400, 800, 1000, 2000},
+		order = 'de_a',
+	},
 })
 
 -- runtime-global -------------------------------------------------------------

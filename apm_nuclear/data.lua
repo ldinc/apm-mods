@@ -1,6 +1,8 @@
 if apm == nil then apm = {} end
 if apm.nuclear == nil then apm.nuclear = {} end
 
+require("__apm_lib_ldinc__.lib.features.all")
+
 require('lib.definitions')
 require('lib.functions')
 

@@ -1,13 +1,13 @@
 {
 	"name": "apm_nuclear_ldinc",
-	"version": "0.31.03",
+	"version": "0.31.04",
 	"title": "Amator Phasma's Nuclear",
 	"author": "AmatorPhasma, ldinc",
 	"dependencies": [
 		"base",
 		"? space-age >= 1.0.0",
 		"apm_resource_pack_ldinc >= 0.30.3",
-		"apm_lib_ldinc >= 0.31.03",
+		"apm_lib_ldinc >= 0.31.05",
 		"? apm_power_ldinc >= 0.31.04",
 		"? bobplates >= 1.1.2"
 	],

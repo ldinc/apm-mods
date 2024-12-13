@@ -51,7 +51,7 @@ local item = {
 	order = "ab_a",
 	place_result = "apm_nuclear_breeder",
 
-	weight = apm.lib.utils.constants.value.weight.building.big,
+	weight = apm.lib.utils.constants.value.weight.building.huge,
 }
 
 data:extend({ item })

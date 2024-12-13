@@ -46,17 +46,6 @@ data:extend({
 	{ type = "bool-setting", name = "apm_power_inherit_steam_science",                 setting_type = "startup", default_value = true,  order = 'ae_b' },
 	{ type = "bool-setting", name = "apm_burner_inserter_with_infinite_energy_source", setting_type = "startup", default_value = false, order = 'ae_b' },
 
-	{
-		type = "int-setting",
-		name = "apm_power_stack_size_ash",
-		setting_type = "startup",
-		default_value = 2000,
-		minimum_value = 50,
-		maximum_value = 2000,
-		allowed_values = {50, 100, 200, 400, 800, 1000, 2000},
-		order = 'ae_b',
-	},
-
 	{ type = "bool-setting", name = "apm_power_compat_bob",                                setting_type = "startup", default_value = false, order = 'pa_a' },
 	{ type = "bool-setting", name = "apm_power_compat_bob_overhaul_machine_frames",        setting_type = "startup", default_value = false, order = 'pa_b' },
 	{ type = "bool-setting", name = "apm_power_compat_angel",                              setting_type = "startup", default_value = false, order = 'pb_a' },
