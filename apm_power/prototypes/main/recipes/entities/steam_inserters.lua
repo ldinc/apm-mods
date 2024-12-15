@@ -33,6 +33,14 @@ recipe.requester_paste_multiplier = 4
 recipe.always_show_products = true
 recipe.always_show_made_in = apm_power_always_show_made_in
 
+if apm.lib.features.reuse_previous_tier then
+	recipe.ingredients = {
+		{ type = "item", name = "apm_steam_engine", amount = 1 },
+		{ type = "item", name = "pipe",             amount = 1 },
+		{ type = "item", name = "burner-inserter",  amount = 1 },
+	}
+end
+
 data:extend({ recipe })
 
 -------------------------------------------------------------------------------
@@ -57,5 +65,13 @@ recipe.main_product = 'apm_steam_inserter_long'
 recipe.requester_paste_multiplier = 4
 recipe.always_show_products = true
 recipe.always_show_made_in = apm_power_always_show_made_in
+
+if apm.lib.features.reuse_previous_tier then
+	recipe.ingredients = {
+		{ type = "item", name = "apm_steam_engine", amount = 1 },
+		{ type = "item", name = "pipe",             amount = 1 },
+		{ type = "item", name = "burner-inserter",  amount = 1 },
+	}
+end
 
 data:extend({ recipe })

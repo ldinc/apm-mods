@@ -63,7 +63,7 @@ apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'apm_iron_bearing', 1)
 apm.lib.utils.recipe.ingredient.mod('burner-mining-drill', 'iron-gear-wheel', 0)
 apm.lib.utils.recipe.ingredient.mod('burner-mining-drill', 'apm_simple_engine', 1)
 
-apm.lib.utils.recipe.ingredient.mod('inserter', 'burner-inserter', 1)
+apm.lib.utils.recipe.ingredient.mod('inserter', 'apm_steam_inserter', 1)
 apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-gear-wheel', 'apm_gearing')
 
 -- apm.lib.utils.recipe.ingredient.mod('fast-inserter', 'apm_gearing', 2)
@@ -184,6 +184,9 @@ if features.frames_recycling and features.reuse_previous_tier and features.frame
 	apm.power.try_set_frames_to_recipe_results("apm_centrifuge_2")
 	apm.power.try_set_frames_to_recipe_results("apm_lab_1")
 	apm.power.try_set_frames_to_recipe_results("apm_steelworks_1")
+	apm.power.try_set_frames_to_recipe_results("apm_coking_plant_1")
+	apm.power.try_set_frames_to_recipe_results("apm_coking_plant_2")
+	apm.power.try_set_frames_to_recipe_results("apm_air_cleaner_machine_1")
 end
 
 if features.reuse_previous_tier then

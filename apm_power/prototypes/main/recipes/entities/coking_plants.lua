@@ -46,7 +46,7 @@ recipe.energy_required = 4
 recipe.ingredients = {
 	-- {type="item", name="apm_coking_plant_0", amount=1},
 	{ type = "item", name = "stone-brick",             amount = 20 },
-	{ type = "item", name = "apm_machine_frame_basic", amount = 3 },
+	{ type = "item", name = "apm_machine_frame_steam", amount = 3 },
 	{ type = "item", name = "copper-plate",            amount = 5 },
 	{ type = "item", name = "steel-plate",             amount = 10 }
 }
