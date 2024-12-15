@@ -1383,9 +1383,6 @@ if mods['aai-industry'] and apm_power_compat_earendel then
 	apm.lib.utils.recipe.remove('small-iron-electric-pole')
 	apm.lib.utils.recipe.ingredient.replace('assembling-machine-1', 'burner-assembling-machine',
 		'apm_assembling_machine_1')
-	if apm.lib.utils.setting.get.starup('apm_power_overhaul_machine_frames') then
-		apm.lib.utils.recipe.result.mod('assembling-machine-1', 'apm_machine_frame_steam_used', 3)
-	end
 	apm.lib.utils.recipe.remove('burner-assembling-machine')
 	apm.lib.utils.recipe.ingredient.replace('lab', 'burner-lab', 'apm_lab_1')
 	apm.lib.utils.recipe.remove('burner-lab')

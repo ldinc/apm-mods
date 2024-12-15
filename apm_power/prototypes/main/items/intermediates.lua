@@ -269,21 +269,23 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
-local item = {
-	type = 'item',
-	name = 'apm_machine_frame_basic_used',
-	icons = {
-		apm.power.icons.machine_frame_basic_used
-	},
-	stack_size = apm.lib.features.stack_size.default,
-	subgroup = "apm_power_intermediates",
-	order = 'ab_f',
+if apm.lib.features.frames_recycling then
+	---@type data.ItemPrototype
+	local item = {
+		type = 'item',
+		name = 'apm_machine_frame_basic_used',
+		icons = {
+			apm.power.icons.machine_frame_basic_used
+		},
+		stack_size = apm.lib.features.stack_size.default,
+		subgroup = "apm_power_intermediates",
+		order = 'ab_f',
 
-	weight = apm.lib.utils.constants.value.weight.product.frame,
-}
+		weight = apm.lib.utils.constants.value.weight.product.frame,
+	}
 
-data:extend({ item })
+	data:extend({ item })
+end
 
 ---@type data.ItemPrototype
 local item = {
@@ -301,21 +303,23 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
-local item = {
-	type = 'item',
-	name = 'apm_machine_frame_steam_used',
-	icons = {
-		apm.power.icons.machine_frame_steam_used
-	},
-	stack_size = apm.lib.features.stack_size.default,
-	subgroup = "apm_power_intermediates",
-	order = 'ab_h',
+if apm.lib.features.frames_recycling then
+	---@type data.ItemPrototype
+	local item = {
+		type = 'item',
+		name = 'apm_machine_frame_steam_used',
+		icons = {
+			apm.power.icons.machine_frame_steam_used
+		},
+		stack_size = apm.lib.features.stack_size.default,
+		subgroup = "apm_power_intermediates",
+		order = 'ab_h',
 
-	weight = apm.lib.utils.constants.value.weight.product.frame,
-}
+		weight = apm.lib.utils.constants.value.weight.product.frame,
+	}
 
-data:extend({ item })
+	data:extend({ item })
+end
 
 ---@type data.ItemPrototype
 local item = {
@@ -365,21 +369,23 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
-local item = {
-	type = 'item',
-	name = 'apm_machine_frame_advanced_used',
-	icons = {
-		apm.power.icons.machine_frame_advanced_used
-	},
-	stack_size = apm.lib.features.stack_size.default,
-	subgroup = "apm_power_intermediates",
-	order = 'ab_j',
+if apm.lib.features.frames_recycling then
+	---@type data.ItemPrototype
+	local item = {
+		type = 'item',
+		name = 'apm_machine_frame_advanced_used',
+		icons = {
+			apm.power.icons.machine_frame_advanced_used
+		},
+		stack_size = apm.lib.features.stack_size.default,
+		subgroup = "apm_power_intermediates",
+		order = 'ab_j',
 
-	weight = apm.lib.utils.constants.value.weight.product.frame,
-}
+		weight = apm.lib.utils.constants.value.weight.product.frame,
+	}
 
-data:extend({ item })
+	data:extend({ item })
+end
 
 ---@type data.ItemPrototype
 local item = {

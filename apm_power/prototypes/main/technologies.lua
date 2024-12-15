@@ -95,14 +95,14 @@ local mod_name = 'apm_power'
 ---@param t_icon_size? uint64
 ---@param t_is_essential? boolean
 local new_tech = function(
-	technology,
-	t_prerequisites,
-	t_recipes,
-	t_trigger,
-	t_unit,
-	t_icon,
-	t_icon_size,
-	t_is_essential
+		technology,
+		t_prerequisites,
+		t_recipes,
+		t_trigger,
+		t_unit,
+		t_icon,
+		t_icon_size,
+		t_is_essential
 )
 	apm.lib.utils.technology.new(
 		mod_name,
@@ -516,12 +516,12 @@ new_tech(
 -- )
 
 --TODO: append long inserter?
--- Steam Science 
+-- Steam Science
 new_tech(
 	'apm_steam_science_pack',
 	-- { 'apm_power_steam' },
-	{"steam-power"},
-	{ 'apm_steam_science_pack', 'apm_steam_relay', 'apm_machine_frame_steam', 'apm_machine_frame_basic_maintenance',
+	{ "steam-power" },
+	{ 'apm_steam_science_pack', 'apm_steam_relay', 'apm_machine_frame_steam',
 		'apm_steam_engine',
 		"apm_steam_inserter", "apm_steam_inserter_long" },
 	nil,
@@ -531,6 +531,13 @@ new_tech(
 		time = 25,
 	}
 )
+
+if apm.lib.features.frames_recycling then
+	apm.lib.utils.technology.add.recipe_for_unlock(
+		"apm_steam_science_pack",
+		"apm_machine_frame_basic_maintenance"
+	)
+end
 
 apm.lib.utils.technology.trigger.set.craft_item(
 	"apm_steam_science_pack",
@@ -764,8 +771,7 @@ new_tech(
 new_tech(
 	'apm_power_electricity',
 	{ "automation-science-pack", 'apm_fuel-3' },
-	{ 'steam-engine', 'small-electric-pole', 'apm_machine_frame_advanced',
-		'apm_machine_frame_steam_maintenance', 'apm_machine_frame_advanced_maintenance' },
+	{ 'steam-engine', 'small-electric-pole', 'apm_machine_frame_advanced'},
 	nil,
 	{
 		ingredients = { { sp.industrial, 1 }, { sp.automation, 1 }, { sp.steam, 1 } },
@@ -773,6 +779,18 @@ new_tech(
 		time = 30,
 	}
 )
+
+if apm.lib.features.frames_recycling then
+	apm.lib.utils.technology.add.recipe_for_unlock(
+		"apm_power_electricity",
+		"apm_machine_frame_steam_maintenance"
+	)
+
+	apm.lib.utils.technology.add.recipe_for_unlock(
+		"apm_power_electricity",
+		"apm_machine_frame_advanced_maintenance"
+	)
+end
 
 -- Electric crusher
 new_tech(
@@ -871,7 +889,7 @@ new_tech(
 -- Boiler
 new_tech(
 	'apm_power_boiler',
-	{ 	"steam-power"	, 'advanced-material-processing' },
+	{ "steam-power", 'advanced-material-processing' },
 	{ 'apm_boiler_2' },
 	nil,
 	{

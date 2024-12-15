@@ -704,125 +704,121 @@ recipe.always_show_made_in = apm_power_always_show_made_in
 --recipe.allow_intermediates = false
 data:extend({ recipe })
 
--- Recipe ---------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item_icon_a = apm.lib.utils.icon.get.from_item('apm_machine_frame_basic_used')
-local item_icon_b = { apm.lib.icons.dynamics.recycling }
-local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
+if apm.lib.features.frames_recycling then
+	local item_icon_a = apm.lib.utils.icon.get.from_item('apm_machine_frame_basic_used')
+	local item_icon_b = { apm.lib.icons.dynamics.recycling }
+	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
-local recipe = {}
-recipe.type = "recipe"
-recipe.name = "apm_machine_frame_basic_maintenance"
-recipe.category = 'advanced-crafting'
-recipe.group = "apm_power"
-recipe.subgroup = "apm_power_intermediates"
-recipe.order = 'ab_f'
-recipe.icons = icons
+	---@type data.RecipePrototype
+	local recipe = {
+		type = "recipe",
+		name = "apm_machine_frame_basic_maintenance",
+		category = 'advanced-crafting',
+		subgroup = "apm_power_intermediates",
+		order = 'ab_f',
+		icons = icons,
 
-recipe.enabled = false
-recipe.energy_required = 4
-recipe.ingredients = {
-	{ type = "item",  name = "apm_machine_frame_basic_used", amount = 5 },
-	{ type = "item",  name = "iron-plate",                   amount = 3 },
-	{ type = "item",  name = "copper-plate",                 amount = 3 },
-	{ type = "fluid", name = "water",                        amount = 30 }
-}
-recipe.results = {
-	{ type = 'item',  name = 'apm_machine_frame_basic', amount = 4 },
-	{ type = "item",  name = "apm_machine_frame_basic", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water",          amount = 30,    catalyst_amount = 30 }
-}
-recipe.main_product = ''
-recipe.requester_paste_multiplier = 4
-recipe.always_show_products = true
-recipe.always_show_made_in = apm_power_always_show_made_in
-recipe.allow_decomposition = false
-recipe.allow_as_intermediate = false
-recipe.allow_intermediates = false
+		enabled = false,
+		energy_required = 4,
+		ingredients = {
+			{ type = "item",  name = "apm_machine_frame_basic_used", amount = 5 },
+			{ type = "item",  name = "iron-plate",                   amount = 3 },
+			{ type = "item",  name = "copper-plate",                 amount = 3 },
+			{ type = "fluid", name = "water",                        amount = 30 }
+		},
+		results = {
+			{ type = 'item',  name = 'apm_machine_frame_basic', amount = 4 },
+			{ type = "item",  name = "apm_machine_frame_basic", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
+			{ type = "fluid", name = "apm_dirt_water",          amount = 30,    catalyst_amount = 30 }
+		},
+		main_product = '',
+		requester_paste_multiplier = 4,
+		always_show_products = true,
+		allow_decomposition = false,
+		allow_as_intermediate = false,
+		allow_intermediates = false,
+		always_show_made_in = apm_power_always_show_made_in,
 
-data:extend({ recipe })
+	}
 
--- Recipe ---------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item_icon_a = apm.lib.utils.icon.get.from_item('apm_machine_frame_steam_used')
-local item_icon_b = { apm.lib.icons.dynamics.recycling }
-local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
+	data:extend({ recipe })
+end
 
-local recipe = {}
-recipe.type = "recipe"
-recipe.name = "apm_machine_frame_steam_maintenance"
-recipe.category = 'advanced-crafting'
-recipe.group = "apm_power"
-recipe.subgroup = "apm_power_intermediates"
-recipe.order = 'ab_h'
-recipe.icons = icons
+if apm.lib.features.frames_recycling then
+	local item_icon_a = apm.lib.utils.icon.get.from_item('apm_machine_frame_steam_used')
+	local item_icon_b = { apm.lib.icons.dynamics.recycling }
+	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
-recipe.enabled = false
-recipe.energy_required = 2
-recipe.ingredients = {
-	{ type = "item",  name = "apm_machine_frame_steam_used", amount = 5 },
-	{ type = "item",  name = "steel-plate",                  amount = 2 },
-	{ type = "item",  name = "copper-plate",                 amount = 5 },
-	{ type = "fluid", name = "water",                        amount = 30 }
-}
-recipe.results = {
-	{ type = 'item',  name = 'apm_machine_frame_steam', amount = 4 },
-	{ type = "item",  name = "apm_machine_frame_steam", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water",          amount = 30,    catalyst_amount = 30 }
-}
-recipe.main_product = ''
-recipe.requester_paste_multiplier = 4
-recipe.always_show_products = true
-recipe.always_show_made_in = apm_power_always_show_made_in
-recipe.allow_decomposition = false
-recipe.allow_as_intermediate = false
-recipe.allow_intermediates = false
+	local recipe = {}
+	recipe.type = "recipe"
+	recipe.name = "apm_machine_frame_steam_maintenance"
+	recipe.category = 'advanced-crafting'
+	recipe.group = "apm_power"
+	recipe.subgroup = "apm_power_intermediates"
+	recipe.order = 'ab_h'
+	recipe.icons = icons
 
-data:extend({ recipe })
+	recipe.enabled = false
+	recipe.energy_required = 2
+	recipe.ingredients = {
+		{ type = "item",  name = "apm_machine_frame_steam_used", amount = 5 },
+		{ type = "item",  name = "steel-plate",                  amount = 2 },
+		{ type = "item",  name = "copper-plate",                 amount = 5 },
+		{ type = "fluid", name = "water",                        amount = 30 }
+	}
+	recipe.results = {
+		{ type = 'item',  name = 'apm_machine_frame_steam', amount = 4 },
+		{ type = "item",  name = "apm_machine_frame_steam", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
+		{ type = "fluid", name = "apm_dirt_water",          amount = 30,    catalyst_amount = 30 }
+	}
+	recipe.main_product = ''
+	recipe.requester_paste_multiplier = 4
+	recipe.always_show_products = true
+	recipe.always_show_made_in = apm_power_always_show_made_in
+	recipe.allow_decomposition = false
+	recipe.allow_as_intermediate = false
+	recipe.allow_intermediates = false
 
--- Recipe ---------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local item_icon_a = apm.lib.utils.icon.get.from_item('apm_machine_frame_advanced_used')
-local item_icon_b = { apm.lib.icons.dynamics.recycling }
-local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
+	data:extend({ recipe })
+end
 
-local recipe = {}
-recipe.type = "recipe"
-recipe.name = "apm_machine_frame_advanced_maintenance"
-recipe.category = 'advanced-crafting'
-recipe.group = "apm_power"
-recipe.subgroup = "apm_power_intermediates"
-recipe.order = 'ab_j'
-recipe.icons = icons
+if apm.lib.features.frames_recycling then
+	local item_icon_a = apm.lib.utils.icon.get.from_item('apm_machine_frame_advanced_used')
+	local item_icon_b = { apm.lib.icons.dynamics.recycling }
+	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
-recipe.enabled = false
-recipe.energy_required = 4
-recipe.ingredients = {
-	{ type = "item",  name = "apm_machine_frame_advanced_used", amount = 5 },
-	{ type = "item",  name = "steel-plate",                     amount = 5 },
-	{ type = "item",  name = "copper-plate",                    amount = 2 },
-	{ type = "fluid", name = "water",                           amount = 30 }
-}
-recipe.results = {
-	{ type = 'item',  name = 'apm_machine_frame_advanced', amount = 4 },
-	{ type = "item",  name = "apm_machine_frame_advanced", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
-	{ type = "fluid", name = "apm_dirt_water",             amount = 30,    catalyst_amount = 30 }
-}
-recipe.main_product = ''
-recipe.requester_paste_multiplier = 4
-recipe.always_show_products = true
-recipe.always_show_made_in = apm_power_always_show_made_in
-recipe.allow_decomposition = false
-recipe.allow_as_intermediate = false
-recipe.allow_intermediates = false
+	local recipe = {}
+	recipe.type = "recipe"
+	recipe.name = "apm_machine_frame_advanced_maintenance"
+	recipe.category = 'advanced-crafting'
+	recipe.group = "apm_power"
+	recipe.subgroup = "apm_power_intermediates"
+	recipe.order = 'ab_j'
+	recipe.icons = icons
 
-data:extend({ recipe })
+	recipe.enabled = false
+	recipe.energy_required = 4
+	recipe.ingredients = {
+		{ type = "item",  name = "apm_machine_frame_advanced_used", amount = 5 },
+		{ type = "item",  name = "steel-plate",                     amount = 5 },
+		{ type = "item",  name = "copper-plate",                    amount = 2 },
+		{ type = "fluid", name = "water",                           amount = 30 }
+	}
+	recipe.results = {
+		{ type = 'item',  name = 'apm_machine_frame_advanced', amount = 4 },
+		{ type = "item",  name = "apm_machine_frame_advanced", amount_min = 1, amount_max = 1,      probability = 0.5, catalyst_amount = 1 },
+		{ type = "fluid", name = "apm_dirt_water",             amount = 30,    catalyst_amount = 30 }
+	}
+	recipe.main_product = ''
+	recipe.requester_paste_multiplier = 4
+	recipe.always_show_products = true
+	recipe.always_show_made_in = apm_power_always_show_made_in
+	recipe.allow_decomposition = false
+	recipe.allow_as_intermediate = false
+	recipe.allow_intermediates = false
+
+	data:extend({ recipe })
+end
 
 -- Recipe ---------------------------------------------------------------------
 --

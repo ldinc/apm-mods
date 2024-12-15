@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.09
+Date: 12.12.2024
+  Fixed:
+    - [AAI] recipe results for assembling-machine-1
+    - don't create items for used frames without enabled setting "Used frames recyling"
+---------------------------------------------------------------------------------------------------
 Version: 0.31.08
 Date: 12.12.2024
   Fixed:
