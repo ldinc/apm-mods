@@ -1,18 +1,16 @@
-local whitelist = {
-	"automation-science-pack",
-	"logistic-science-pack",
-	"cerys-science-pack",
-	"utility-science-pack",
-}
+return function()
+	local techlist = apm.lib.utils.technology.find.by_prefix("cerys")
 
-local techlist = apm.lib.utils.technology.find.by_prefix("cerys")
+	local skiplist = {
+		["holmium-plate-productivity-1"] = true,
+		["holmium-plate-productivity-2"] = true,
+	}
 
-if techlist then
-	for _, t_name in ipairs(techlist) do
-		apm.lib.utils.technology.remove.science_packs_except(t_name, whitelist)
+	if techlist then
+		for _, tech in ipairs(techlist) do
+			skiplist[tech] = true
+		end
 	end
 
-	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO("compatability for \"Cerys-Moon-of-Fulgora\" enabled"))
-	end
+	return skiplist
 end

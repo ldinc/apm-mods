@@ -216,19 +216,24 @@ apm.lib.utils.description.entities.update()
 --
 --
 -- ----------------------------------------------------------------------------
-if apm_power_inherit_industrial_science then
-	apm.lib.utils.technology.add.science_pack_conditional('apm_industrial_science_pack', 'automation-science-pack')
-end
 
-if apm_power_inherit_steam_science then
-	apm.lib.utils.technology.add.science_pack_conditional('apm_steam_science_pack', 'automation-science-pack')
-end
-
+local skiplist = nil
 
 --- [Cerys-Moon-of-Fulgora]
 if mods["Cerys-Moon-of-Fulgora"] then
-	require("prototypes.integrations.technologies.cerys")
+	getter = require("prototypes.integrations.technologies.cerys")
+
+	skiplist = getter()
 end
+
+if apm_power_inherit_industrial_science then
+	apm.lib.utils.technology.add.science_pack_conditional('apm_industrial_science_pack', 'automation-science-pack', skiplist)
+end
+
+if apm_power_inherit_steam_science then
+	apm.lib.utils.technology.add.science_pack_conditional('apm_steam_science_pack', 'automation-science-pack', skiplist)
+end
+
 
 -- recipes allow productivity modules -----------------------------------------
 --
