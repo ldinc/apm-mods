@@ -14,6 +14,24 @@ function apm.lib.utils.technology.find.technology_by_recipe(recipe_name)
 	return nil
 end
 
+--- [technology.find.by_prefix]
+---@param prefix string
+---@return string[]?
+function apm.lib.utils.technology.find.by_prefix(prefix)
+	local list = {}
+	for technology_name, _ in pairs(data.raw.technology) do
+		if string.find(technology_name, prefix, 1, true) == 1 then
+			table.insert(list, technology_name)
+		end
+	end
+
+	if #list > 0 then
+		return list
+	end
+
+	return nil
+end
+
 --- [technology.new]
 --- Adding new technology to game
 ---@param mod_name string

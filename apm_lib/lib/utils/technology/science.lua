@@ -130,7 +130,7 @@ function apm.lib.utils.technology.remove.science_packs_except(technology_name, s
 	local skip_list = {}
 
 	for _, sp in ipairs(science_pack_list) do
-		table.insert(skip_list, { [sp] = true })
+		skip_list[sp] = true
 	end
 
 	---@type data.ResearchIngredient[]
@@ -139,7 +139,6 @@ function apm.lib.utils.technology.remove.science_packs_except(technology_name, s
 	for _, sp in ipairs(technology.unit.ingredients) do
 		if sp then
 			local key = sp[1]
-
 			if skip_list[key] then
 				table.insert(new_set, sp)
 			end
