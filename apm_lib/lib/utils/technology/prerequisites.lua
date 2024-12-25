@@ -153,7 +153,7 @@ end
 --- This function forces the prerequisites of a technologie.
 --- prerequisites_names: table{string, string, ...} or string.
 ---@param technology_name string
----@param prerequisites_names string
+---@param prerequisites_names string|string[]
 function apm.lib.utils.technology.force.prerequisites(technology_name, prerequisites_names)
 	if not apm.lib.utils.technology.exist(technology_name) then return end
 

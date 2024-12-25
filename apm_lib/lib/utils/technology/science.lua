@@ -151,10 +151,20 @@ end
 --- [technology.add.science_pack_conditional]
 ---@param science_pack_name string
 ---@param cond_science_pack_name string
-function apm.lib.utils.technology.add.science_pack_conditional(science_pack_name, cond_science_pack_name)
-	for _, technology in pairs(data.raw.technology) do
-		if apm.lib.utils.technology.has.science_pack(technology.name, cond_science_pack_name) then
-			apm.lib.utils.technology.add.science_pack(technology.name, science_pack_name)
+function apm.lib.utils.technology.add.science_pack_conditional(science_pack_name, cond_science_pack_name, skiplist)
+	if not skiplist then
+		for _, technology in pairs(data.raw.technology) do
+			if apm.lib.utils.technology.has.science_pack(technology.name, cond_science_pack_name) then
+				apm.lib.utils.technology.add.science_pack(technology.name, science_pack_name)
+			end
+		end
+	else
+		for _, technology in pairs(data.raw.technology) do
+			if not skiplist[technology.name] then
+				if apm.lib.utils.technology.has.science_pack(technology.name, cond_science_pack_name) then
+					apm.lib.utils.technology.add.science_pack(technology.name, science_pack_name)
+				end
+			end
 		end
 	end
 end
