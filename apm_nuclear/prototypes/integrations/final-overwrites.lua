@@ -96,6 +96,16 @@ apm.lib.utils.recipe.allow_productivity('apm_rtg_radioisotope_thermoelectric_gen
 --
 --
 -- ----------------------------------------------------------------------------
+
+local skiplist = nil
+
+--- [Cerys-Moon-of-Fulgora]
+if mods["Cerys-Moon-of-Fulgora"] then
+	getter = require("prototypes.integrations.technologies.cerys")
+
+	skiplist = getter()
+end
+
 if apm_nuclear_inherit_nuclear_science_to_infinite_tech then
-    apm.nuclear.update_infinite_technologies()
+    apm.nuclear.update_infinite_technologies(skiplist)
 end

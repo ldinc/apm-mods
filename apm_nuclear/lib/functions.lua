@@ -41,11 +41,11 @@ function apm.nuclear.nuclear_vehicle(vehicle_name)
 
 	vehicle.localised_description = { "entity-description.apm_nuclear_vehicle" }
 
-	if  vehicle.energy_source.type == "burner" then
+	if vehicle.energy_source.type == "burner" then
 		vehicle.energy_source.fuel_inventory_size = 1
 		vehicle.energy_source.burnt_inventory_size = vehicle.energy_source.fuel_inventory_size
 		vehicle.energy_source.fuel_categories = { 'apm_nuclear_uranium' }
-		vehicle.energy_source.emissions_per_minute = nil	
+		vehicle.energy_source.emissions_per_minute = nil
 	end
 
 	vehicle.effectivity = 0.99
@@ -132,17 +132,43 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-function apm.nuclear.update_infinite_technologies()
-	APM_LOG_INFO(self, 'update_infinite_technologies()',
-		'-- start ----------------------------------------------------------------------')
-	for _, technology in pairs(data.raw.technology) do
-		if technology.max_level and type(technology.max_level) == 'string' and technology.max_level == 'infinite' then
-			if not apm.lib.utils.technology.prerequisite.has.science_pack(technology.name, 'apm_nuclear_science_pack') then
-				apm.lib.utils.technology.add.prerequisites(technology.name, 'apm_nuclear_science_pack')
+--- update_infinite_technologies
+---@param skiplist table<string, boolean>
+function apm.nuclear.update_infinite_technologies(skiplist)
+	if APM_CAN_LOG_INFO then
+		log(APM_MSG_INFO(
+			'update_infinite_technologies()',
+			'-- start ----------------------------------------------------------------------'
+		))
+	end
+
+	if not skiplist then
+		for _, technology in pairs(data.raw.technology) do
+			if technology.max_level and type(technology.max_level) == 'string' and technology.max_level == 'infinite' then
+				if not apm.lib.utils.technology.prerequisite.has.science_pack(technology.name, 'apm_nuclear_science_pack') then
+					apm.lib.utils.technology.add.prerequisites(technology.name, 'apm_nuclear_science_pack')
+				end
+				apm.lib.utils.technology.add.science_pack(technology.name, 'apm_nuclear_science_pack', 1)
 			end
-			apm.lib.utils.technology.add.science_pack(technology.name, 'apm_nuclear_science_pack', 1)
+		end
+	else
+		for _, technology in pairs(data.raw.technology) do
+			if technology.max_level and type(technology.max_level) == 'string' and technology.max_level == 'infinite' then
+				if not skiplist[technology.name] then
+					if not apm.lib.utils.technology.prerequisite.has.science_pack(technology.name, 'apm_nuclear_science_pack') then
+						apm.lib.utils.technology.add.prerequisites(technology.name, 'apm_nuclear_science_pack')
+					end
+					apm.lib.utils.technology.add.science_pack(technology.name, 'apm_nuclear_science_pack', 1)
+				end
+			end
 		end
 	end
-	APM_LOG_INFO(self, 'update_infinite_technologies()',
-		'-- end ------------------------------------------------------------------------')
+
+
+	if APM_CAN_LOG_INFO then
+		log(APM_MSG_INFO(
+			'update_infinite_technologies()',
+			'-- end ------------------------------------------------------------------------'
+		))
+	end
 end
