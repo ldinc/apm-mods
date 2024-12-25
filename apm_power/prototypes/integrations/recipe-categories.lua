@@ -126,3 +126,8 @@ if mods['space-exploration'] and apm_power_compat_earendel then
     end
     apm.lib.utils.recipe.set.always_show_products('sand-from-stone', true)
 end
+
+--- [wood-logistics]
+if mods["wood-logistics"] then
+    require("prototypes.integrations.recipes.wood-logistics")
+end

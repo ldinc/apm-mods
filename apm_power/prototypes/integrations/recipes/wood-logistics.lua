@@ -1,0 +1,1 @@
+-- apm.lib.utils.recipe.ingredient.replace_all("apm_treated_wood_planks", "lumber")

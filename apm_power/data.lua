@@ -121,3 +121,8 @@ require('prototypes.main.equipment.burner_generators')
 require('prototypes.main.equipment.batteries')
 require('prototypes.main.equipment.roboport')
 require('prototypes.main.equipment.robots')
+
+local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
+if mods['aai-industry'] and apm_power_compat_earendel then
+  apm.lib.utils.recipe.ingredient.replace_all("motor", "apm_simple_engine")
+end

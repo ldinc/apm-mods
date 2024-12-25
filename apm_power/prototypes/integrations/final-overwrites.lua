@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/integrations/final-overwrites.lua'
@@ -6,17 +6,22 @@ local self = 'apm_power/prototypes/integrations/final-overwrites.lua'
 APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
-local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"].value
+local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
+.value
 local apm_power_inherit_industrial_science = settings.startup["apm_power_inherit_industrial_science"].value
 local apm_power_inherit_steam_science = settings.startup["apm_power_inherit_steam_science"].value
 
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
-local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"].value
+local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
+.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
-local apm_power_compat_angel_overhaul_machine_frames = settings.startup["apm_power_compat_angel_overhaul_machine_frames"].value
-local apm_power_compat_angel_overwrite_crystal_saw_blades = settings.startup["apm_power_compat_angel_overwrite_crystal_saw_blades"].value
+local apm_power_compat_angel_overhaul_machine_frames = settings.startup
+["apm_power_compat_angel_overhaul_machine_frames"].value
+local apm_power_compat_angel_overwrite_crystal_saw_blades = settings.startup
+["apm_power_compat_angel_overwrite_crystal_saw_blades"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
-local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"].value
+local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
+.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -36,7 +41,8 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_bob', apm_power_compat_bob)
 APM_LOG_SETTINGS(self, 'apm_power_compat_bob_overhaul_machine_frames', apm_power_compat_bob_overhaul_machine_frames)
 APM_LOG_SETTINGS(self, 'apm_power_compat_angel', apm_power_compat_angel)
 APM_LOG_SETTINGS(self, 'apm_power_compat_angel_overhaul_machine_frames', apm_power_compat_angel_overhaul_machine_frames)
-APM_LOG_SETTINGS(self, 'apm_power_compat_angel_overwrite_crystal_saw_blades', apm_power_compat_angel_overwrite_crystal_saw_blades)
+APM_LOG_SETTINGS(self, 'apm_power_compat_angel_overwrite_crystal_saw_blades',
+	apm_power_compat_angel_overwrite_crystal_saw_blades)
 APM_LOG_SETTINGS(self, 'apm_power_compat_sctm', apm_power_compat_sctm)
 APM_LOG_SETTINGS(self, 'apm_power_compat_sct_overhaul_machine_frames', apm_power_compat_sct_overhaul_machine_frames)
 APM_LOG_SETTINGS(self, 'apm_power_compat_earendel', apm_power_compat_earendel)
@@ -109,8 +115,6 @@ if mods.angelsrefining and apm_power_compat_angel then
 
 
 	apm.lib.utils.item.remove('apm_crushed_stone')
-
-
 end
 
 if mods.angelspetrochem and apm_power_compat_angel then
@@ -179,15 +183,15 @@ if (mods.Bio_Industries and apm_power_compat_bio_industries) or (mods.angelsrefi
 
 	local item_icon_a = apm.lib.utils.icon.get.from_item('apm_asphalt')
 	local item_icon_b = apm.lib.utils.icon.get.from_item('stone-crushed')
-	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, {-9, -9})
-	local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
+	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 	apm.lib.utils.recipe.set.icons('apm_asphalt_2', icons)
 	apm.lib.utils.recipe.set.icons('apm_asphalt_4', icons)
 
 	local item_icon_a = apm.lib.utils.icon.get.from_item('apm_stone_brick_raw')
 	local item_icon_b = apm.lib.utils.icon.get.from_item('stone-crushed')
-	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, {-9, -9})
-	local icons = apm.lib.utils.icon.merge({item_icon_a, item_icon_b})
+	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
+	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 	apm.lib.utils.recipe.set.icons('apm_stone_brick_raw_with_crushed', icons)
 end
 
@@ -197,21 +201,16 @@ end
 -- ----------------------------------------------------------------------------
 -- do not edit the hidden entities for aai-programmable-vehicles
 if mods['aai-programmable-vehicles'] and apm_power_compat_earendel then
-    local composite_suffix = "-_-"
+	local composite_suffix = "-_-"
 	for _, vehicle in pairs(data.raw.car) do
-		local solid_name = vehicle.name .. composite_suffix.."solid"
-		local ghost_name = vehicle.name .. composite_suffix.."ghost"
+		local solid_name = vehicle.name .. composite_suffix .. "solid"
+		local ghost_name = vehicle.name .. composite_suffix .. "ghost"
 		apm.lib.utils.description.entities.exclude_list.add(solid_name)
 		apm.lib.utils.description.entities.exclude_list.add(ghost_name)
 	end
 end
 
 apm.lib.utils.description.entities.update()
-
--- fix offshore-pump
--- local apm_offshore_pump_0 = data.raw['offshore-pump']['apm_offshore_pump_0']
--- local apm_offshore_pump_burner = data.raw['assembling-machine']['apm_offshore_pump_burner']
--- apm_offshore_pump_0.localised_description = apm_offshore_pump_burner.localised_description
 
 -- science packs --------------------------------------------------------------
 --
@@ -223,6 +222,12 @@ end
 
 if apm_power_inherit_steam_science then
 	apm.lib.utils.technology.add.science_pack_conditional('apm_steam_science_pack', 'automation-science-pack')
+end
+
+
+--- [Cerys-Moon-of-Fulgora]
+if mods["Cerys-Moon-of-Fulgora"] then
+	require("prototypes.integrations.technologies.cerys")
 end
 
 -- recipes allow productivity modules -----------------------------------------

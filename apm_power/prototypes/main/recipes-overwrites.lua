@@ -63,8 +63,9 @@ apm.lib.utils.recipe.ingredient.mod('steam-inserter', 'apm_iron_bearing', 1)
 apm.lib.utils.recipe.ingredient.mod('burner-mining-drill', 'iron-gear-wheel', 0)
 apm.lib.utils.recipe.ingredient.mod('burner-mining-drill', 'apm_simple_engine', 1)
 
-apm.lib.utils.recipe.ingredient.mod('inserter', 'apm_steam_inserter', 1)
 apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-gear-wheel', 'apm_gearing')
+apm.lib.utils.recipe.ingredient.replace('inserter', 'burner-inserter', 'apm_steam_inserter')
+apm.lib.utils.recipe.ingredient.mod('inserter', 'apm_steam_inserter', 1)
 
 -- apm.lib.utils.recipe.ingredient.mod('fast-inserter', 'apm_gearing', 2)
 
@@ -72,7 +73,7 @@ apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'iron-stick', 0)
 apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'iron-plate', 2)
 apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', 'electronic-circuit', 1)
 apm.lib.utils.recipe.ingredient.replace('long-handed-inserter', 'iron-gear-wheel', 'apm_gearing', 2)
-apm.lib.utils.recipe.ingredient.replace('long-handed-inserter', 'inserter', 'apm_burner_long_inserter')
+apm.lib.utils.recipe.ingredient.replace('long-handed-inserter', 'inserter', 'apm_steam_inserter_long')
 
 apm.lib.utils.recipe.ingredient.mod('transport-belt', 'apm_rubber', 1)
 apm.lib.utils.recipe.ingredient.mod('transport-belt', 'iron-stick', 2)

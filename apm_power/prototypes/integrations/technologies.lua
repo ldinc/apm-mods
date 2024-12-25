@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/integrations/technologies.lua'
@@ -6,13 +6,17 @@ local self = 'apm_power/prototypes/integrations/technologies.lua'
 APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
-local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"].value
+local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
+.value
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
-local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"].value
+local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
+.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
-local apm_power_compat_angel_overhaul_machine_frames = settings.startup["apm_power_compat_angel_overhaul_machine_frames"].value
+local apm_power_compat_angel_overhaul_machine_frames = settings.startup
+["apm_power_compat_angel_overhaul_machine_frames"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
-local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"].value
+local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
+.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -173,6 +177,10 @@ if (mods['space-exploration'] or mods['aai-industry']) and apm_power_compat_eare
 	apm.lib.utils.technology.add.prerequisites('apm_steam_science_pack', 'apm_puddling_furnace_0')
 
 	apm.lib.utils.technology.force.recipe_for_unlock('electric-lab', 'lab')
+
+	apm.lib.utils.technology.remove.recipe_from_unlock("burner-mechanics", "motor")
+	apm.lib.utils.technology.remove.recipe_from_unlock("burner-mechanics", "iron-stick")
+	apm.lib.utils.technology.remove.recipe_from_unlock("burner-mechanics", "burner-inserter")
 end
 
 -- Bob ------------------------------------------------------------------------
@@ -269,7 +277,8 @@ end
 
 if mods.bobtech and apm_power_compat_bob then
 	if not mods.PyCoalTBaA then
-		apm.lib.utils.technology.mod.icon('apm_power_automation_science_pack', '__apm_resource_pack_ldinc__/graphics/technologies/apm_power_bob_automation_science_pack.png')
+		apm.lib.utils.technology.mod.icon('apm_power_automation_science_pack',
+			'__apm_resource_pack_ldinc__/graphics/technologies/apm_power_bob_automation_science_pack.png')
 	end
 end
 
@@ -393,7 +402,6 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.ScienceCostTweakerM and apm_power_compat_sctm then
-
 	apm.lib.utils.technology.delete('sct-lab-t1')
 	apm.lib.utils.technology.remove.recipe_from_unlock('apm_power_automation_science_pack', 'apm_electromagnet')
 	apm.lib.utils.technology.delete('apm_power_automation_science_pack')
@@ -417,30 +425,30 @@ if mods.ScienceCostTweakerM and apm_power_compat_sctm then
 		if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
 			apm.lib.utils.technology.remove.prerequisites('logistics-0', 'sct-automation-science-pack')
 		else
-    		apm.lib.utils.technology.remove.prerequisites('logistics', 'sct-automation-science-pack')
-    	end
-    else
-    	apm.lib.utils.technology.remove.prerequisites('logistics', 'sct-automation-science-pack')
-    end
+			apm.lib.utils.technology.remove.prerequisites('logistics', 'sct-automation-science-pack')
+		end
+	else
+		apm.lib.utils.technology.remove.prerequisites('logistics', 'sct-automation-science-pack')
+	end
 
 	if mods.bobinserters or mods.boblogistics then
 		apm.lib.utils.technology.remove.prerequisites('long-inserters-1', 'sct-automation-science-pack')
 	end
 
-    if mods['aai-industry'] then
-    	apm.lib.utils.technology.force.recipe_for_unlock('fuel-processing', 'fuel-processor')
-    	apm.lib.utils.technology.remove.prerequisites('sand-processing', 'sct-automation-science-pack')
-    	apm.lib.utils.technology.add.science_pack('electric-mining', 'automation-science-pack', 1)
-    	apm.lib.utils.technology.remove.science_pack('electric-mining', 'sct-science-pack-0')
-    	apm.lib.utils.technology.remove.science_pack('sct-automation-science-pack', 'sct-science-pack-0')
-    	apm.lib.utils.technology.delete('sct-aai-basic-fuel-processing')
-    	apm.lib.utils.technology.delete('sct-aai-advanced-fuel-processing')
-    	apm.lib.utils.technology.delete('sct-aai-nuclear-fuel-processing')
-    	apm.lib.utils.technology.delete('sct-aai-rocket-fuel-processing')
-    	apm.lib.utils.recipe.disable('sct-t0-crate')
-    	apm.lib.utils.recipe.disable('sct-t0-solvent')
-    	apm.lib.utils.recipe.disable('sct-science-pack-0')
-    end
+	if mods['aai-industry'] then
+		apm.lib.utils.technology.force.recipe_for_unlock('fuel-processing', 'fuel-processor')
+		apm.lib.utils.technology.remove.prerequisites('sand-processing', 'sct-automation-science-pack')
+		apm.lib.utils.technology.add.science_pack('electric-mining', 'automation-science-pack', 1)
+		apm.lib.utils.technology.remove.science_pack('electric-mining', 'sct-science-pack-0')
+		apm.lib.utils.technology.remove.science_pack('sct-automation-science-pack', 'sct-science-pack-0')
+		apm.lib.utils.technology.delete('sct-aai-basic-fuel-processing')
+		apm.lib.utils.technology.delete('sct-aai-advanced-fuel-processing')
+		apm.lib.utils.technology.delete('sct-aai-nuclear-fuel-processing')
+		apm.lib.utils.technology.delete('sct-aai-rocket-fuel-processing')
+		apm.lib.utils.recipe.disable('sct-t0-crate')
+		apm.lib.utils.recipe.disable('sct-t0-solvent')
+		apm.lib.utils.recipe.disable('sct-science-pack-0')
+	end
 end
 
 -- kingarthur -----------------------------------------------------------------
@@ -452,10 +460,10 @@ if mods.PyCoalTBaA and apm_power_compat_kingarthur then
 end
 
 if mods["Smart_Inserters"] then
-		apm.lib.utils.technology.delete("apm_burner_long_inserter")
+	apm.lib.utils.technology.delete("apm_burner_long_inserter")
 end
 
 if mods["deadlock-beltboxes-loaders"] then
-	apm.lib.utils.technology.remove.science_packs_except("deadlock-stacking-1", {"apm_industrial_science_pack"})
+	apm.lib.utils.technology.remove.science_packs_except("deadlock-stacking-1", { "apm_industrial_science_pack" })
 	apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("deadlock-stacking-1")
 end

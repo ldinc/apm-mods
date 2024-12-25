@@ -68,9 +68,10 @@ recipe.always_show_made_in = apm_power_always_show_made_in
 
 if apm.lib.features.reuse_previous_tier then
 	recipe.ingredients = {
-		{ type = "item", name = "apm_steam_engine", amount = 1 },
-		{ type = "item", name = "pipe",             amount = 1 },
-		{ type = "item", name = "burner-inserter",  amount = 1 },
+		{ type = "item", name = "apm_burner_long_inserter", amount = 1 },
+		{ type = "item", name = "apm_gearing",              amount = 1 },
+		{ type = "item", name = "pipe",              amount = 1 },
+		{ type = "item", name = "apm_steam_relay",          amount = 1 },
 	}
 end
 

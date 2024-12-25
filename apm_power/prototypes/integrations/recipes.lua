@@ -1397,6 +1397,11 @@ if mods['aai-industry'] and apm_power_compat_earendel then
 
 	apm.lib.utils.recipe.ingredient.replace("glass", "sand", "apm_crushed_stone")
 
+	apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', "electric-motor", 1)
+	apm.lib.utils.recipe.ingredient.mod('long-handed-inserter', "apm_gearing", 1)
+
+	apm.lib.utils.recipe.ingredient.replace_all("motor", "apm_simple_engine")
+
 	if not mods.bobelectronics then
 		apm.lib.utils.recipe.ingredient.mod('inserter', 'electronic-circuit', 1)
 		apm.lib.utils.recipe.ingredient.mod('apm_offshore_pump_1', 'electronic-circuit', 5)
