@@ -190,6 +190,31 @@ function apm.lib.utils.recipe.ingredient.mod(recipe_name, ingredient_name, ingre
 	apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, ingredient_name, ingredient_amount)
 end
 
+--- [recipe.ingredient.remove_by_ref]
+---@param recipe data.RecipePrototype
+---@param ingredient_name string
+function apm.lib.utils.recipe.ingredient.remove_by_ref(recipe, ingredient_name)
+	if not apm.lib.utils.item.exist(ingredient_name) then return end
+
+	-- simple recipe
+	if recipe.ingredients then
+		recipe.ingredients = ingredient_mod(recipe.name, recipe.ingredients, ingredient_name, 0)
+	end
+end
+
+--- [recipe.ingredient.remove]
+---@param recipe_name string
+---@param ingredient_name string
+function apm.lib.utils.recipe.ingredient.remove(recipe_name, ingredient_name)
+	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
+
+	if not ok then
+		return
+	end
+
+	apm.lib.utils.recipe.ingredient.remove_by_ref(recipe, ingredient_name)
+end
+
 --- [replace_ingredient]
 ---@param recipe_name string
 ---@param base data.IngredientPrototype[]
@@ -324,12 +349,13 @@ end
 --- [recipe.ingredient.replace_all]
 ---@param ingredient_old string
 ---@param ingredient_new string
-function apm.lib.utils.recipe.ingredient.replace_all(ingredient_old, ingredient_new)
+---@param multiplier number?
+function apm.lib.utils.recipe.ingredient.replace_all(ingredient_old, ingredient_new, multiplier)
 	if not apm.lib.utils.item.exist(ingredient_old) then return end
 	if not apm.lib.utils.item.exist(ingredient_new) then return end
 
 	for recipe, _ in pairs(data.raw.recipe) do
-		apm.lib.utils.recipe.ingredient.replace(recipe, ingredient_old, ingredient_new)
+		apm.lib.utils.recipe.ingredient.replace(recipe, ingredient_old, ingredient_new, multiplier)
 	end
 end
 

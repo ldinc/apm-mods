@@ -121,11 +121,15 @@ end
 --- [generator.overhaul]
 ---@param generator_name any
 ---@param level any
-function apm.lib.utils.generator.overhaul(generator_name, level)
+function apm.lib.utils.generator.overhaul(generator_name, level, output)
 	local generator, ok = apm.lib.utils.generator.get.by_name(generator_name)
 
 	if not ok then
 		return
+	end
+
+	if not output then
+		output = "500kW"
 	end
 
 	apm.lib.utils.icon.add_tier_lable(generator_name, level)
@@ -134,9 +138,16 @@ function apm.lib.utils.generator.overhaul(generator_name, level)
 	local base_fluid_usage_per_tick = 0.5
 	local base_effectivity = 0.9
 
+	
+
 	local new_maximum_temperature = base_maximum_temperature + ((level - 1) * 150)
-	local new_fluid_usage_per_tick = base_fluid_usage_per_tick - ((level - 1) * 0.025)
 	local new_effectivity = base_effectivity + ((level - 1) * 0.01)
+
+	local transmitted_energy = (new_maximum_temperature - 15)*200
+
+	local expected_energy = util.parse_energy(output)*level/new_effectivity
+
+	local new_fluid_usage_per_tick = expected_energy/transmitted_energy
 
 	generator.maximum_temperature = new_maximum_temperature
 	generator.fluid_usage_per_tick = new_fluid_usage_per_tick

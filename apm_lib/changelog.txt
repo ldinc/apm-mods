@@ -1,8 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.08
+Date: 01.01.2025
+  Fixed:
+    - [apm.lib.utils.assembler.add.fluid_connections] corrected input/output
+    - [apm.lib.utils.assembler.set.hidden] added hidden_in_factoriopedia 
+    - [apm.lib.utils.boiler.overhaul] changed default values to be odd 1MW
+    - [apm.lib.utils.recipe.ingredient.replace_all] pass multiplier for ingredient
+  Added:
+    - [apm.lib.utils.recipe.ingredient.remove_by_ref]
+    - [apm.lib.utils.recipe.ingredient.remove]
+
+---------------------------------------------------------------------------------------------------
 Version: 0.31.07
 Date: 26.12.2024
   Changed:
-    - apm.lib.utils.technology.add.science_pack_conditional adding optional skiplist
+    - apm.lib.utils.technology.add.science_pack_conditional: adding optional skiplist
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.06
 Date: 25.12.2024

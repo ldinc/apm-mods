@@ -3,11 +3,12 @@ if not apm.lib.utils.recipe then apm.lib.utils.recipe = {} end
 --- [recipe.clone]
 ---@param recipe_name string
 ---@param recipe_name_new string
+---@return data.RecipePrototype?
 function apm.lib.utils.recipe.clone(recipe_name, recipe_name_new)
 	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
 	if not ok then
-		return false
+		return nil
 	end
 
 	local new_recipe = table.deepcopy(recipe)
@@ -19,6 +20,8 @@ function apm.lib.utils.recipe.clone(recipe_name, recipe_name_new)
 	end
 
 	data:extend({ new_recipe })
+
+	return new_recipe
 end
 
 --- [recipe.remove]

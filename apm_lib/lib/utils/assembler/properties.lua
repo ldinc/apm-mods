@@ -87,6 +87,7 @@ function apm.lib.utils.assembler.set.hidden(assembler_name)
 	end
 
 	assembler.hidden = true
+	assembler.hidden_in_factoriopedia = true
 end
 
 --- Append crafting categoty without duplicates

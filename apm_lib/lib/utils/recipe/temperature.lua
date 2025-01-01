@@ -85,7 +85,7 @@ end
 ---@param recipe_name string
 ---@param base data.IngredientPrototype[]
 ---@param ingredient_name string
----@param condition_temperature number
+---@param condition_temperature? number
 ---@param target_temperature number
 ---@return any
 local function result_mod_temperature(
@@ -118,7 +118,7 @@ end
 --- [recipe.result.mod_temperature]
 ---@param recipe_name string
 ---@param result_name string
----@param condition_temperature number
+---@param condition_temperature? number
 ---@param target_temperature number
 function apm.lib.utils.recipe.result.mod_temperature(recipe_name, result_name, condition_temperature, target_temperature)
 	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)

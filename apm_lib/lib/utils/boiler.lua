@@ -106,7 +106,7 @@ end
 
 --- [boiler.set.next_upgrade]
 ---@param boiler_name string
----@param next_upgrade string
+---@param next_upgrade string?
 function apm.lib.utils.boiler.set.next_upgrade(boiler_name, next_upgrade)
 	local boiler, ok = apm.lib.utils.boiler.get.by_name(boiler_name)
 
@@ -120,7 +120,8 @@ end
 --- [boiler.overhaul]
 ---@param boiler_name string
 ---@param level number
-function apm.lib.utils.boiler.overhaul(boiler_name, level)
+---@param output? string
+function apm.lib.utils.boiler.overhaul(boiler_name, level, output)
 	local boiler, ok = apm.lib.utils.boiler.get.by_name(boiler_name)
 
 	if not ok then
@@ -129,14 +130,18 @@ function apm.lib.utils.boiler.overhaul(boiler_name, level)
 
 	apm.lib.utils.icon.add_tier_lable(boiler_name, level)
 
-	local base_energy_consumption = 1800000
+	if not output then
+		output = "1MW"
+	end
+
+	local base_energy_output = util.parse_energy(output) * 60
 	local base_target_temperature = 120
 	local base_effectivity = 0.8
 	local base_emissions_per_minute = 25
 
 	local new_energy_source_effectivity = base_effectivity + ((level - 1) * 0.03)
 	local new_target_temperature = base_target_temperature + ((level - 1) * 150)
-	local new_energy_consumption = base_energy_consumption * level
+	local new_energy_consumption = base_energy_output * level / new_energy_source_effectivity
 	local new_emissions_per_minute = base_emissions_per_minute - ((level - 1) * 2.5)
 
 	if boiler.energy_source.type == 'burner' then
@@ -148,8 +153,6 @@ function apm.lib.utils.boiler.overhaul(boiler_name, level)
 		boiler.energy_source.burnt_inventory_size = 1
 		boiler.energy_source.fuel_categories = { 'apm_refined_chemical' }
 		boiler.energy_source.emissions_per_minute = { pollution = new_emissions_per_minute }
-		--apm.lib.utils.entity.add.fuel_category(boiler, 'apm_refined_chemical')
-		--apm.lib.utils.entity.del.fuel_category(boiler, 'chemical')
 
 		if APM_CAN_LOG_INFO then
 			log(APM_MSG_INFO('overhaul()', 'boiler with name: "' .. tostring(boiler_name) .. '" changed'))

@@ -29,7 +29,7 @@ function apm.lib.utils.assembler.add.fluid_connections(assembler_name, level)
 
 	assembler.fluid_boxes = {
 		{
-			production_type = "output",
+			production_type = "input",
 			pipe_picture = pipe_picture,
 			pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
 			volume = 1000,
@@ -37,7 +37,7 @@ function apm.lib.utils.assembler.add.fluid_connections(assembler_name, level)
 			secondary_draw_orders = { north = -1 },
 		},
 		{
-			production_type = "input",
+			production_type = "output",
 			pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
 			pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
 			volume = 1000,
