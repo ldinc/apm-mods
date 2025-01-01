@@ -133,7 +133,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 --- update_infinite_technologies
----@param skiplist table<string, boolean>
+---@param skiplist table<string, boolean>?
 function apm.nuclear.update_infinite_technologies(skiplist)
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
