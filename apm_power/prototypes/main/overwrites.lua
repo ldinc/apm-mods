@@ -49,10 +49,12 @@ apm.lib.utils.car.set.fuel_category('tank', { 'apm_refined_chemical' })
 -- Boilers
 apm.lib.utils.boiler.overhaul('boiler', 1)
 apm.lib.utils.boiler.set.next_upgrade('boiler', 'apm_boiler_2')
+apm.lib.utils.boiler.overhaul('apm_boiler_2', 2)
 
 -- Generators
 apm.lib.utils.generator.overhaul('steam-engine', 1)
 apm.lib.utils.generator.set.next_upgrade('steam-engine', 'apm_steam_engine_2')
+apm.lib.utils.generator.overhaul('apm_steam_engine_2', 2)
 
 -- Furnaces
 apm.lib.utils.furnace.overhaul('stone-furnace', false)

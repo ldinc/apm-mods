@@ -6,16 +6,19 @@ local self = 'apm_power/prototypes/integrations/recipe-categories.lua'
 APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
-local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"].value
+local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
+.value
 local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
 
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
-local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"].value
+local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
+.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
 local apm_power_compat_angel_overhaul_machine_frames = settings.startup["apm_power_compat_angel_overhaul_machine_frames"
-    ].value
+].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
-local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"].value
+local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
+.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -49,14 +52,14 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reve
 --
 -- ----------------------------------------------------------------------------
 if mods.apm_recycling then
-    apm.lib.utils.recipe.category.change('apm_filter_charcoal_used_recycling', 'apm_recycling_1')
-    apm.lib.utils.recipe.category.change('apm_machine_frame_basic_maintenance', 'apm_recycling_1')
-    apm.lib.utils.recipe.category.change('apm_machine_frame_steam_maintenance', 'apm_recycling_1')
-    apm.lib.utils.recipe.category.change('apm_machine_frame_advanced_maintenance', 'apm_recycling_1')
-    apm.lib.utils.recipe.category.change('apm_crusher_drums_used_repair', 'apm_recycling_1')
-    apm.lib.utils.recipe.category.change('apm_press_plates_used_grind', 'apm_recycling_1')
-    apm.lib.utils.recipe.category.change('apm_saw_blade_iron_maintenance', 'apm_recycling_1')
-    apm.lib.utils.recipe.category.change('apm_saw_blade_steel_maintenance', 'apm_recycling_1')
+	apm.lib.utils.recipe.category.change('apm_filter_charcoal_used_recycling', 'apm_recycling_1')
+	apm.lib.utils.recipe.category.change('apm_machine_frame_basic_maintenance', 'apm_recycling_1')
+	apm.lib.utils.recipe.category.change('apm_machine_frame_steam_maintenance', 'apm_recycling_1')
+	apm.lib.utils.recipe.category.change('apm_machine_frame_advanced_maintenance', 'apm_recycling_1')
+	apm.lib.utils.recipe.category.change('apm_crusher_drums_used_repair', 'apm_recycling_1')
+	apm.lib.utils.recipe.category.change('apm_press_plates_used_grind', 'apm_recycling_1')
+	apm.lib.utils.recipe.category.change('apm_saw_blade_iron_maintenance', 'apm_recycling_1')
+	apm.lib.utils.recipe.category.change('apm_saw_blade_steel_maintenance', 'apm_recycling_1')
 end
 
 -- Earendel -------------------------------------------------------------------
@@ -64,11 +67,11 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods['aai-industry'] and apm_power_compat_earendel then
-    apm.lib.utils.recipe.category.change('sand-from-stone', 'apm_crusher')
-    if apm_power_always_show_made_in then
-        apm.lib.utils.recipe.set.always_show_made_in('sand-from-stone', true)
-    end
-    apm.lib.utils.recipe.set.always_show_products('sand-from-stone', true)
+	apm.lib.utils.recipe.category.change('sand-from-stone', 'apm_crusher')
+	if apm_power_always_show_made_in then
+		apm.lib.utils.recipe.set.always_show_made_in('sand-from-stone', true)
+	end
+	apm.lib.utils.recipe.set.always_show_products('sand-from-stone', true)
 end
 
 -- bio_industries -------------------------------------------------------------
@@ -76,20 +79,20 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.Bio_Industries and apm_power_compat_bio_industries then
-    apm.lib.utils.recipe.category.overwrite_all('biofarm-mod-crushing', 'apm_crusher')
-    apm.lib.utils.recipe.category.change('bi_recipe_woodpulp', 'apm_crusher')
-    if apm_power_always_show_made_in then
-        apm.lib.utils.recipe.set.always_show_made_in('bi_recipe_woodpulp', true)
-    end
-    apm.lib.utils.recipe.set.always_show_products('bi_recipe_woodpulp', true)
+	apm.lib.utils.recipe.category.overwrite_all('biofarm-mod-crushing', 'apm_crusher')
+	apm.lib.utils.recipe.category.change('bi_recipe_woodpulp', 'apm_crusher')
+	if apm_power_always_show_made_in then
+		apm.lib.utils.recipe.set.always_show_made_in('bi_recipe_woodpulp', true)
+	end
+	apm.lib.utils.recipe.set.always_show_products('bi_recipe_woodpulp', true)
 end
 
 if mods.Bio_Industries and apm_power_compat_bio_industries then
-    apm.lib.utils.recipe.category.overwrite_all('biofarm-mod-crushing', 'apm_crusher')
-    if apm_power_always_show_made_in then
-        apm.lib.utils.recipe.set.always_show_made_in('biofarm-mod-crushing', true)
-    end
-    apm.lib.utils.recipe.set.always_show_products('biofarm-mod-crushing', true)
+	apm.lib.utils.recipe.category.overwrite_all('biofarm-mod-crushing', 'apm_crusher')
+	if apm_power_always_show_made_in then
+		apm.lib.utils.recipe.set.always_show_made_in('biofarm-mod-crushing', true)
+	end
+	apm.lib.utils.recipe.set.always_show_products('biofarm-mod-crushing', true)
 end
 
 -- angel ----------------------------------------------------------------------
@@ -97,22 +100,22 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_0', 'ore-sorting')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_0', 'ore-sorting')
 
-    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'ore-sorting')
-    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'ore-sorting-2')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'ore-sorting')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'ore-sorting-2')
 
-    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting')
-    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting-2')
-    apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting-3')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting-2')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting-3')
 
-    apm.lib.utils.assembler.mod.category.add('burner-ore-crusher', 'apm_crusher')
-    apm.lib.utils.assembler.mod.category.add('ore-crusher', 'apm_crusher')
-    apm.lib.utils.assembler.mod.category.add('ore-crusher', 'apm_crusher_3')
-    apm.lib.utils.assembler.mod.category.add('ore-crusher-2', 'apm_crusher')
-    apm.lib.utils.assembler.mod.category.add('ore-crusher-2', 'apm_crusher_3')
-    apm.lib.utils.assembler.mod.category.add('ore-crusher-3', 'apm_crusher')
-    apm.lib.utils.assembler.mod.category.add('ore-crusher-3', 'apm_crusher_3')
+	apm.lib.utils.assembler.mod.category.add('burner-ore-crusher', 'apm_crusher')
+	apm.lib.utils.assembler.mod.category.add('ore-crusher', 'apm_crusher')
+	apm.lib.utils.assembler.mod.category.add('ore-crusher', 'apm_crusher_3')
+	apm.lib.utils.assembler.mod.category.add('ore-crusher-2', 'apm_crusher')
+	apm.lib.utils.assembler.mod.category.add('ore-crusher-2', 'apm_crusher_3')
+	apm.lib.utils.assembler.mod.category.add('ore-crusher-3', 'apm_crusher')
+	apm.lib.utils.assembler.mod.category.add('ore-crusher-3', 'apm_crusher_3')
 end
 
 -- Earendel -------------------------------------------------------------------
@@ -120,14 +123,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods['space-exploration'] and apm_power_compat_earendel then
-    apm.lib.utils.recipe.category.change('sand-from-stone', 'apm_crusher')
-    if apm_power_always_show_made_in then
-        apm.lib.utils.recipe.set.always_show_made_in('sand-from-stone', true)
-    end
-    apm.lib.utils.recipe.set.always_show_products('sand-from-stone', true)
-end
-
---- [wood-logistics]
-if mods["wood-logistics"] then
-    require("prototypes.integrations.recipes.wood-logistics")
+	apm.lib.utils.recipe.category.change('sand-from-stone', 'apm_crusher')
+	if apm_power_always_show_made_in then
+		apm.lib.utils.recipe.set.always_show_made_in('sand-from-stone', true)
+	end
+	apm.lib.utils.recipe.set.always_show_products('sand-from-stone', true)
 end

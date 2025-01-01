@@ -55,16 +55,16 @@ apm.lib.utils.item.mod.stack_size('steel-plate', apm.lib.features.stack_size.def
 --
 -- ----------------------------------------------------------------------------
 if mods['AsphaltRoads'] and apm_power_compat_arcitos then
-    apm.lib.utils.item.overwrite.localised_name('Arci-asphalt', {'item-name.apm_arci_asphalt'})
+	apm.lib.utils.item.overwrite.localised_name('Arci-asphalt', {'item-name.apm_arci_asphalt'})
 end
 
 if mods.bobpower and apm_power_compat_bob then
-    if apm.lib.utils.setting.get.starup('bobmods-power-steam') then
-        apm.lib.utils.item.remove('apm_boiler_2')
-        apm.lib.utils.item.remove('apm_steam_engine_2')
-    end
+	if apm.lib.utils.setting.get.starup('bobmods-power-steam') then
+		apm.lib.utils.item.remove('apm_boiler_2')
+		apm.lib.utils.item.remove('apm_steam_engine_2')
+	end
 end
 
 if mods['aai-industry'] and apm_power_compat_earendel then
-    apm.lib.utils.item.remove("sand")
+	apm.lib.utils.item.remove("sand")
 end

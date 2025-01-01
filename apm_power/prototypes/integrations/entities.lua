@@ -194,6 +194,11 @@ if mods.RealisticReactors and apm_power_compat_realistic_reactors then
 	apm.lib.utils.furnace.overhaul('rr-cooling-tower-steam', false)
 end
 
+--- [wood-logistics]
+if mods["wood-logistics"] then
+	require("prototypes.integrations.entities.wood-logistics")
+end
+
 --- [space age]
 if mods["space-age"] then
 	apm.lib.utils.assembler.add.crafting_categories("foundry", { "smelting" })
