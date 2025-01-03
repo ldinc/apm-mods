@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.17
+Date: 03.01.2025
+  Changed:
+    - [Wooden Logistics][AAI Loaders] refine compatibility for wood loaders recipe
+    - [Wooden Logistics] added more compatibility
+  Added:
+    - Settings to fix technology with migrations (experimental, by default disabled)
+---------------------------------------------------------------------------------------------------
+Version: 0.31.16
+Date: 02.01.2025
+  Changed:
+    - [Wooden Logistics][AAI Loaders] refine compatibility for wood loaders recipe
+---------------------------------------------------------------------------------------------------
 Version: 0.31.15
 Date: 01.01.2025
   Fixed:

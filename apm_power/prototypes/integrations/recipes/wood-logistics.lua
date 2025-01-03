@@ -71,3 +71,8 @@ for name, saw in pairs(recipies) do
 		data.extend({ new_recipe })
 	end
 end
+
+if mods["aai-loaders"] and apm.lib.features.power.compat.earendel then
+	apm.lib.utils.recipe.ingredient.remove("aai-wood-loader", "apm_simple_engine")
+	apm.lib.utils.recipe.ingredient.mod("aai-wood-loader", "apm_mechanical_relay", 25)
+end
