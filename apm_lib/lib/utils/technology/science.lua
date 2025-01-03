@@ -116,6 +116,13 @@ function apm.lib.utils.technology.remove.science_pack(technology_name, science_p
 	end
 end
 
+--- [technology.force.update_science_packs]
+---@param technology_name string
+function apm.lib.utils.technology.force.update_science_packs(technology_name)
+	apm.lib.utils.technology.remove.science_packs_except(technology_name, {})
+	apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(technology_name)
+end
+
 --- [technology.remove.science_packs_except]
 ---@param technology_name string
 ---@param science_pack_list string[]
@@ -185,7 +192,7 @@ function apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
 				'set.science_packs_from_prerequisites()',
-				'prerequisite: "' .. tostring(technology_name.name) .. '"does not have a prerequisites property'
+				'prerequisite: "' .. tostring(technology_name) .. '"does not have a prerequisites property'
 			))
 		end
 
