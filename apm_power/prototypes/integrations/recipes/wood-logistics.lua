@@ -73,6 +73,18 @@ for name, saw in pairs(recipies) do
 end
 
 if mods["aai-loaders"] and apm.lib.features.power.compat.earendel then
-	apm.lib.utils.recipe.ingredient.remove("aai-wood-loader", "apm_simple_engine")
-	apm.lib.utils.recipe.ingredient.mod("aai-wood-loader", "apm_mechanical_relay", 25)
+	local loader = "aai-wood-loader"
+
+	apm.lib.utils.recipe.ingredient.remove(loader, "apm_simple_engine")
+	apm.lib.utils.recipe.ingredient.mod(loader, "apm_mechanical_relay", 25)
+
+	local lubricant_enabled = settings.startup["aai-loaders-mode"].value == "lubricated"
+
+	if lubricant_enabled then
+		apm.lib.utils.recipe.ingredient.remove_all(loader)
+
+		apm.lib.utils.recipe.ingredient.mod(loader, "apm_mechanical_relay", 2)
+		apm.lib.utils.recipe.ingredient.mod(loader, "apm_treated_wood_planks", 2)
+		apm.lib.utils.recipe.ingredient.mod(loader, "wood-transport-belt", 2)
+	end
 end
