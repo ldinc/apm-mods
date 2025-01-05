@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.19
+Date: 05.01.2025
+  Added:
+    - [Hot metals] "apm_steel_0" recipe changed results: "steel-plate" -> "hot-steel-plate"
+    - [Hot metals] "apm_steel_0" recipe changed required energy: 35 -> 15 (total will be same 15 + 20 of spoilage = 35)
+    - [Hot metals] "apm_steel_0" recipe changed icon
+    - [Hot metals] "apm_steel_1" recipe changed results: "steel-plate" -> "hot-steel-plate"
+    - [Hot metals] "apm_steel_1" recipe changed required energy: 30 -> 10 (total will be same 10 + 20 of spoilage = 30)
+    - [Hot metals] "apm_steel_1" recipe changed icon
+---------------------------------------------------------------------------------------------------
 Version: 0.31.18
 Date: 04.01.2025
   Changed:
