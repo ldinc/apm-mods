@@ -42,3 +42,6 @@ luac.out
 # internal repos
 RampantFixed/
 rso-mod
+
+# vscode
+VSCodeCounter/
