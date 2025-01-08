@@ -33,3 +33,22 @@ burner_long_inserter.platform_picture.sheet.filename =
 '__apm_resource_pack_ldinc__/graphics/entities/burner_long_inserter/hr-inserter-platform.png'
 
 data:extend({ burner_long_inserter })
+
+if apm.lib.utils.inserter.exist("inserter") then
+	local inserter, ok = apm.lib.utils.inserter.get.by_name("burner-inserter")
+
+	if ok then
+		inserter.next_upgrade = "inserter"
+	end
+end
+
+if apm.lib.utils.inserter.exist("long-handed-inserter") then
+	local inserter, ok = apm.lib.utils.inserter.get.by_name("apm_burner_long_inserter")
+
+	if ok then
+		local long, _ = apm.lib.utils.inserter.get.by_name("long-handed-inserter")
+
+		inserter.fast_replaceable_group = long.fast_replaceable_group
+		inserter.next_upgrade = "long-handed-inserter"
+	end
+end

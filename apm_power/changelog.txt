@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.21
+Date: 08.01.2025
+  Fixed:
+    - [Hot metals] ""steam-power" tech cragt item trigger: "steel-plate" -> "hot-steel-plate"
+---------------------------------------------------------------------------------------------------
+Version: 0.31.20
+Date: 07.01.2025
+  Added:
+    - "burner-inserter".next_upgrade = "inserter" if exists
+    - "apm_burner_long_inserter".next_upgrade = "long-handed-inserter" if exists
+---------------------------------------------------------------------------------------------------
 Version: 0.31.19
 Date: 05.01.2025
   Added:

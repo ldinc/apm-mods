@@ -472,3 +472,7 @@ end
 if mods["wood-logistics"] then
 	require("prototypes.integrations.technologies.wood-logistics")
 end
+
+if mods["hot-metals"] then
+	require("prototypes.integrations.technologies.hot-metals")
+end
