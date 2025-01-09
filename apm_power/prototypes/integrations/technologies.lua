@@ -51,7 +51,7 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_arcitos', apm_power_compat_arcitos)
 -- ----------------------------------------------------------------------------
 
 apm.lib.utils.technology.force.recipe_for_unlock('apm_crusher_machine_0', 'apm_gun_powder')
-apm.lib.utils.technology.force.recipe_for_unlock('chemical-processing-1', 'apm_ammonium_sulfate_chem')
+apm.lib.utils.technology.force.recipe_for_unlock('apm_fertiliser_2', 'apm_ammonium_sulfate_chem')
 
 if mods.apm_recycling then
 	apm.lib.utils.technology.add.science_pack('apm_recycling-0', 'apm_industrial_science_pack', 1)

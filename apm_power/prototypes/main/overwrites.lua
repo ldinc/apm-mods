@@ -67,6 +67,7 @@ apm.lib.utils.inserter.burner.overhaul('apm_burner_long_inserter')
 
 --- [assemblers]
 apm.lib.utils.assembler.add.fluid_connections('assembling-machine-1', 1)
+apm.lib.utils.assembler.add.crafting_categories("assembling-machine-1", {"crafting-with-fluid"})
 apm.lib.utils.assembler.mod.crafting_speed('assembling-machine-1', 0.75)
 apm.lib.utils.assembler.mod.crafting_speed('assembling-machine-2', 1)
 

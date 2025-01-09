@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.22
+Date: 09.01.2025
+  Fixed:
+    - "assembling-machine-1" added "crafting-with-fluid"}
+    - recipe "apm_ammonium_sulfate_chem" enabled by tech "apm_fertiliser_2"
+---------------------------------------------------------------------------------------------------
 Version: 0.31.21
 Date: 08.01.2025
   Fixed:
