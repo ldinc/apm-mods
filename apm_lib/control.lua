@@ -10,6 +10,8 @@ local storage = require('lib.script.storage')
 local equipment = require('lib.script.equipment')
 require('lib.script.interfaces')
 
+require("lib.features.all")
+
 -- Function -------------------------------------------------------------------
 --
 --
@@ -47,6 +49,8 @@ local function event_on_update()
 	radiation.on_update()
 	storage.on_update()
 	equipment.on_update()
+
+	-- apm.lib.features.runtime.update()
 end
 
 -- Function -------------------------------------------------------------------

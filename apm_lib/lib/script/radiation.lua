@@ -15,6 +15,7 @@ require('lib.utils.prototypes')
 -- ----------------------------------------------------------------------------
 local apm_nuclear_radiation = settings.global['apm_lib_radiation_dmg'].value
 local radiation_dmg_multiplier = settings.global['apm_lib_radiation_dmg_multiplier'].value
+local radiation_dmg_based_on_stack = settings.global['apm_lib_radiation_dmg_based_on_stack'].value
 local checked_item_list = false
 
 -- Function -------------------------------------------------------------------
@@ -51,6 +52,7 @@ end
 local function get_config()
 	apm_nuclear_radiation = settings.global['apm_lib_radiation_dmg'].value
 	radiation_dmg_multiplier = settings.global['apm_lib_radiation_dmg_multiplier'].value
+	radiation_dmg_based_on_stack = settings.global['apm_lib_radiation_dmg_based_on_stack'].value
 end
 
 -- Function -------------------------------------------------------------------
@@ -164,13 +166,20 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-local function damage_to_character_from_item(player, character, item_name)
+local function damage_to_character_from_item(player, character, item_name, count)
 	local item_rtype = storage.items_radioactive_01774[item_name]
 	local rnd_min = 2 ^ item_rtype
 	local rnd_max = rnd_min * 2 * item_rtype
 	local damage = math.random(rnd_min, rnd_max) * radiation_dmg_multiplier
+
+	if radiation_dmg_based_on_stack and count then
+		damage = damage * count
+	end
+
 	character.damage(damage, game.forces.neutral)
+
 	local msg = { "apm_msg_radiation_dmg", damage, item_name }
+
 	core.send_dmg_msg_to_player(player, msg)
 end
 
@@ -180,8 +189,11 @@ end
 -- ----------------------------------------------------------------------------
 local function check_inventory(player, character, dmg)
 	for item_name, radiation_level in spairs(storage.items_radioactive_01774, function(t, a, b) return t[b] < t[a] end) do
-		if character.get_item_count(item_name) > 0 then
+		local count = character.get_item_count(item_name)
+
+		if count > 0 then
 			local radioactive_type = 'radioactive_b_'
+
 			if radiation_level <= 1 then
 				radioactive_type = 'radioactive_a_'
 			elseif radiation_level == 2 then
@@ -191,10 +203,18 @@ local function check_inventory(player, character, dmg)
 			end
 
 			sound.create_on_character_position(radioactive_type .. tostring(math.random(3)), character)
+
 			if dmg == true then
-				damage_to_character_from_item(player, character, item_name)
+				damage_to_character_from_item(player, character, item_name, count)
 			end
-			break
+
+			if not radiation_dmg_based_on_stack then
+				break
+			end
+
+			if not character.valid then
+				return
+			end
 		end
 	end
 end

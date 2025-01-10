@@ -21,7 +21,7 @@ data:extend({
 		default_value = 200,
 		minimum_value = 50,
 		maximum_value = 200,
-		allowed_values = {50, 100, 200},
+		allowed_values = { 50, 100, 200 },
 		order = 'bc_a',
 	},
 	{
@@ -31,7 +31,7 @@ data:extend({
 		default_value = 2000,
 		minimum_value = 50,
 		maximum_value = 2000,
-		allowed_values = {50, 100, 200, 400, 800, 1000, 2000},
+		allowed_values = { 50, 100, 200, 400, 800, 1000, 2000 },
 		order = 'de_a',
 	},
 })
@@ -40,8 +40,14 @@ data:extend({
 --
 --
 -- ----------------------------------------------------------------------------
-local setting = { type = "bool-setting", name = "apm_lib_inserter_functions", setting_type = "runtime-global", default_value = true, order =
-'aa_a' }
+local setting = {
+	type = "bool-setting",
+	name = "apm_lib_inserter_functions",
+	setting_type = "runtime-global",
+	default_value = true,
+	order =
+	'aa_a'
+}
 if mods.apm_power then
 	setting.default_value = true
 	log('Info: settings.lua: apm_lib_inserter_functions.default_value is: true')
@@ -59,6 +65,7 @@ data:extend({
 	{ type = "int-setting",    name = "apm_lib_storage_spit_out_iterations",       setting_type = "runtime-global", minimum_value = 1,                                                              default_value = 48,  order = 'ab_c' },
 	{ type = "bool-setting",   name = "apm_lib_radiation_dmg",                     setting_type = "runtime-global", default_value = true,                                                           order = 'ac_a' },
 	{ type = "double-setting", name = "apm_lib_radiation_dmg_multiplier",          setting_type = "runtime-global", minimum_value = 0.1,                                                            default_value = 1.0, order = 'ac_b' },
+	{ type = "bool-setting",   name = "apm_lib_radiation_dmg_based_on_stack",      setting_type = "runtime-global", default_value = false,                                                           order = 'ac_a' },
 })
 
 -- runtime-per-user -----------------------------------------------------------
