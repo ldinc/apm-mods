@@ -1,11 +1,12 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_nuclear/prototypes/integrations/final-overwrites.lua'
 
 APM_LOG_HEADER(self)
 
-local apm_nuclear_inherit_nuclear_science_to_infinite_tech = settings.startup["apm_nuclear_inherit_nuclear_science_to_infinite_tech"].value
+local apm_nuclear_inherit_nuclear_science_to_infinite_tech = settings.startup
+["apm_nuclear_inherit_nuclear_science_to_infinite_tech"].value
 
 local apm_nuclear_compat_bob = settings.startup["apm_nuclear_compat_bob"].value
 local apm_nuclear_compat_angel = settings.startup["apm_nuclear_compat_angel"].value
@@ -13,11 +14,13 @@ local apm_nuclear_compat_earendel = settings.startup["apm_nuclear_compat_earende
 local apm_nuclear_compat_bio_industries = settings.startup["apm_nuclear_compat_bio_industries"].value
 local apm_nuclear_compat_sctm = settings.startup["apm_nuclear_compat_sctm"].value
 local apm_nuclear_compat_realistic_reactors = settings.startup["apm_nuclear_compat_realistic_reactors"].value
-local apm_nuclear_compat_realistic_reactors_cooling_tower = settings.startup["apm_nuclear_compat_realistic_reactors_cooling_tower"].value
+local apm_nuclear_compat_realistic_reactors_cooling_tower = settings.startup
+["apm_nuclear_compat_realistic_reactors_cooling_tower"].value
 local apm_nuclear_compat_reverse_factory = settings.startup["apm_nuclear_compat_reverse_factory"].value
 local apm_nuclear_compat_mferrari = settings.startup["apm_nuclear_compat_mferrari"].value
 
-APM_LOG_SETTINGS(self, 'apm_nuclear_inherit_nuclear_science_to_infinite_tech', apm_nuclear_inherit_nuclear_science_to_infinite_tech)
+APM_LOG_SETTINGS(self, 'apm_nuclear_inherit_nuclear_science_to_infinite_tech',
+	apm_nuclear_inherit_nuclear_science_to_infinite_tech)
 
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_bob', apm_nuclear_compat_bob)
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_angel', apm_nuclear_compat_angel)
@@ -25,7 +28,8 @@ APM_LOG_SETTINGS(self, 'apm_nuclear_compat_earendel', apm_nuclear_compat_earende
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_bio_industries', apm_nuclear_compat_bio_industries)
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_sctm', apm_nuclear_compat_sctm)
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_realistic_reactors', apm_nuclear_compat_realistic_reactors)
-APM_LOG_SETTINGS(self, 'apm_nuclear_compat_realistic_reactors_cooling_tower', apm_nuclear_compat_realistic_reactors_cooling_tower)
+APM_LOG_SETTINGS(self, 'apm_nuclear_compat_realistic_reactors_cooling_tower',
+	apm_nuclear_compat_realistic_reactors_cooling_tower)
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_reverse_factory', apm_nuclear_compat_reverse_factory)
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_mferrari', apm_nuclear_compat_mferrari)
 
@@ -42,17 +46,17 @@ apm.lib.utils.recipe.result.replace_all('uranium-fuel-cell', 'apm_fuel_rod_urani
 --
 -- ----------------------------------------------------------------------------
 if mods.bobpower and apm_nuclear_compat_bob then
-    apm.lib.utils.recipe.ingredient.replace_all('thorium-232', 'apm_oxide_pellet_th232')
-    apm.lib.utils.recipe.result.replace_all('thorium-232', 'apm_oxide_pellet_th232')
+	apm.lib.utils.recipe.ingredient.replace_all('thorium-232', 'apm_oxide_pellet_th232')
+	apm.lib.utils.recipe.result.replace_all('thorium-232', 'apm_oxide_pellet_th232')
 
-    apm.lib.utils.recipe.ingredient.replace_all('plutonium-239', 'apm_oxide_pellet_pu239')
-    apm.lib.utils.recipe.result.replace_all('plutonium-239', 'apm_oxide_pellet_pu239')
+	apm.lib.utils.recipe.ingredient.replace_all('plutonium-239', 'apm_oxide_pellet_pu239')
+	apm.lib.utils.recipe.result.replace_all('plutonium-239', 'apm_oxide_pellet_pu239')
 
-    apm.lib.utils.recipe.ingredient.replace_all('thorium-fuel-cell', 'apm_fuel_rod_thorium')
-    apm.lib.utils.recipe.result.replace_all('thorium-fuel-cell', 'apm_fuel_rod_thorium')
+	apm.lib.utils.recipe.ingredient.replace_all('thorium-fuel-cell', 'apm_fuel_rod_thorium')
+	apm.lib.utils.recipe.result.replace_all('thorium-fuel-cell', 'apm_fuel_rod_thorium')
 
-    apm.lib.utils.recipe.ingredient.replace_all('used-up-thorium-fuel-cell', 'apm_fuel_rod_thorium_active')  
-    apm.lib.utils.recipe.result.replace_all('used-up-thorium-fuel-cell', 'apm_fuel_rod_thorium_active')  
+	apm.lib.utils.recipe.ingredient.replace_all('used-up-thorium-fuel-cell', 'apm_fuel_rod_thorium_active')
+	apm.lib.utils.recipe.result.replace_all('used-up-thorium-fuel-cell', 'apm_fuel_rod_thorium_active')
 end
 
 -- entity description updates -------------------------------------------------
@@ -62,10 +66,10 @@ end
 
 -- do not edit the hidden entities for aai-programmable-vehicles
 if mods['aai-programmable-vehicles'] and apm_nuclear_compat_earendel then
-    local composite_suffix = "-_-"
+	local composite_suffix = "-_-"
 	for _, vehicle in pairs(data.raw.car) do
-		local solid_name = vehicle.name .. composite_suffix.."solid"
-		local ghost_name = vehicle.name .. composite_suffix.."ghost"
+		local solid_name = vehicle.name .. composite_suffix .. "solid"
+		local ghost_name = vehicle.name .. composite_suffix .. "ghost"
 		apm.lib.utils.description.entities.exclude_list.add(solid_name)
 		apm.lib.utils.description.entities.exclude_list.add(ghost_name)
 	end
@@ -103,9 +107,23 @@ local skiplist = nil
 if mods["Cerys-Moon-of-Fulgora"] then
 	getter = require("prototypes.integrations.technologies.cerys")
 
-	skiplist = getter()
+	skiplist = getter(skiplist)
+end
+
+--- [Expanded Rocket Payloads Continued]
+if mods["expanded-rocket-payloads-continued"] then
+	getter = require("prototypes.integrations.technologies.expanded-rocket-payloads-continued")
+
+	skiplist = getter(skiplist)
+end
+
+--- []
+if mods["exotic-space-industries"] then
+	getter = require("prototypes.integrations.technologies.exotic-space-industries")
+
+	skiplist = getter(skiplist)
 end
 
 if apm_nuclear_inherit_nuclear_science_to_infinite_tech then
-    apm.nuclear.update_infinite_technologies(skiplist)
+	apm.nuclear.update_infinite_technologies(skiplist)
 end
