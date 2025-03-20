@@ -1,8 +1,10 @@
-local wall = require("prototypes/Wall")
-local tech = require("prototypes/Technologies")
+require("prototypes.main.entities.wall")
+require("prototypes.main.entities.gate")
 
-local wallEnable = wall.enable
-local techEnable = tech.enable
+require("prototypes.main.items.wall")
+require("prototypes.main.items.gate")
 
-techEnable()
-wallEnable()
+require("prototypes.main.recipes.wall")
+require("prototypes.main.recipes.gate")
+
+require("prototypes.main.technologies")

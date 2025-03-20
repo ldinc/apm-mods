@@ -1,0 +1,17 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.2.2
+Date: 20.03.2025
+  Fixed:
+    - Remove unused deps (apm-lib)
+---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+Date: 20.03.2025
+  Fixed:
+    - Broken optional deps
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 20.03.2025
+  Changed:
+    - Adding support factorio 2.0
+    - Rewritten code from scratch
+    - Added settings to use custom recipies for heavy-wall and heavy-gate
