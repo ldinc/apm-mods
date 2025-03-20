@@ -114,7 +114,9 @@ charging_station.graphics_set = {
 	},
 
 	working_visualisations = {
-		light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } },
+		{
+			light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } },
+		},
 	},
 }
 
@@ -172,8 +174,6 @@ discharging_station.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
 
 discharging_station.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 discharging_station.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-
-discharging_station.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
 
 discharging_station.working_sound = {
 	main_sounds = {
