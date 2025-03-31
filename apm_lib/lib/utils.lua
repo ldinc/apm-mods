@@ -1,3 +1,5 @@
+if not apm then apm = {} end
+if not apm.lib then apm.lib = {} end
 if not apm.lib.utils then apm.lib.utils = {} end
 if not apm.lib.utils.constants then apm.lib.utils.constants = {} end
 if not apm.lib.utils.data then apm.lib.utils.data = {} end

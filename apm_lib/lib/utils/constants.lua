@@ -2,6 +2,16 @@ if apm.lib.utils.constants == nil then apm.lib.utils.constants = {} end
 if apm.lib.utils.constants.value == nil then apm.lib.utils.constants.value = {} end
 if apm.lib.utils.constants.value.weight == nil then apm.lib.utils.constants.value.weight = {} end
 
+local gram = gram or  1
+local grams = grams or gram
+local kg = kg or (1000*grams)
+local tons = tons or (1000*kg)
+local second = second or 60
+local minute = minute or (60 * second)
+local hour = hour or (60 * minute)
+local meter = meter or 1
+local kilometer = kilometer or 1000
+
 apm.lib.utils.constants.value.weight.default = 1 * kg
 apm.lib.utils.constants.value.weight.science_pack = 1 * kg
 apm.lib.utils.constants.value.weight.plate = 1 * kg
