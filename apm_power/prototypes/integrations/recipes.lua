@@ -395,7 +395,6 @@ end
 
 if mods.boblogistics and apm_power_compat_bob then
 	if apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
-
 		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'iron-plate', 0)
 		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_gearing', 0)
 		apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'iron-plate', 1)
@@ -1043,6 +1042,12 @@ if mods["wood-logistics"] then
 	require("prototypes.integrations.recipes.wood-logistics")
 end
 
+--- [crushing-industry]
+if mods["crushing-industry"] then
+	require("prototypes.integrations.recipes.crushing-industry")
+end
+
+--- [hot-metals]
 if mods["hot-metals"] then
 	require("prototypes.integrations.recipes.hot-metals")
 end

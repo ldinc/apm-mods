@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.24
+Date: 01.04.2025
+  Fixed:
+    - crash with crushing-industry migration script while mod is missing (moved logic to patch on control.lua stage) 
+---------------------------------------------------------------------------------------------------
+Version: 0.31.23
+Date: 31.03.2025
+  Added:
+    - [Crushing Industry] recipe for crushed coal replaced w\ apm's recipe
+    - [Crushing Industry] burner and electric crushers were set hidden (replaced with similar assembling machines from apm) 
+    - [Crushing Industry] recipies for crushing machines added to original
+    - [Crushing Industry] reworked technology tree (apm crushing stone tech resolve base crushing entity and recipies)
+    - [Crushing Industry] added migration script for replacing existing enitites and items
+---------------------------------------------------------------------------------------------------
 Version: 0.31.22
 Date: 09.01.2025
   Fixed:

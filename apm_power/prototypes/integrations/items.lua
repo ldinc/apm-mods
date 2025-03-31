@@ -68,3 +68,8 @@ end
 if mods['aai-industry'] and apm_power_compat_earendel then
 	apm.lib.utils.item.remove("sand")
 end
+
+--- [crushing-industry]
+if mods["crushing-industry"] then
+	require("prototypes.integrations.items.crushing-industry")
+end

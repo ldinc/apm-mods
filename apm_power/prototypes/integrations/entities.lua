@@ -7,16 +7,16 @@ APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
 local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
-.value
+		.value
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
 local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
-.value
+		.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
 local apm_power_compat_angel_overhaul_machine_frames = settings.startup
-["apm_power_compat_angel_overhaul_machine_frames"].value
+		["apm_power_compat_angel_overhaul_machine_frames"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
 local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
-.value
+		.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -197,6 +197,11 @@ end
 --- [wood-logistics]
 if mods["wood-logistics"] then
 	require("prototypes.integrations.entities.wood-logistics")
+end
+
+--- [crushing-industry]
+if mods["crushing-industry"] then
+	require("prototypes.integrations.entities.crushing-industry")
 end
 
 --- [space age]

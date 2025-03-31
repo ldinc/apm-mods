@@ -42,5 +42,3 @@ for _,force in pairs(game.forces) do
 
 	research_technologies(technologies)
 end
-
-a()
