@@ -7,10 +7,21 @@ local updates = {
 	handlers = {},
 }
 
+--- [SafTheLamb]
+---
+
 --- [crushing-industry]
 if script.active_mods["crushing-industry"] then
 	updates.handlers["crushing-industry"] = require("patches.crushing-industry")
 end
+
+--- [alloy-smelting]
+if script.active_mods["alloy-smelting"] then
+	updates.handlers["alloy-smelting"] = require("patches.alloy-smelting")
+end
+
+---
+--- [/SafTheLamb]
 
 
 -- Function -------------------------------------------------------------------

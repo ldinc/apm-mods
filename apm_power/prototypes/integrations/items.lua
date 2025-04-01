@@ -69,7 +69,20 @@ if mods['aai-industry'] and apm_power_compat_earendel then
 	apm.lib.utils.item.remove("sand")
 end
 
+--- [SafTheLamb]
+--- 
+--- [wood-logistics]
+
 --- [crushing-industry]
 if mods["crushing-industry"] then
 	require("prototypes.integrations.items.crushing-industry")
 end
+
+
+--- [alloy-smelting]
+if mods["alloy-smelting"] then
+	require("prototypes.integrations.items.alloy-smelting")
+end
+
+---
+--- [/SafTheLamb]

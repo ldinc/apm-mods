@@ -1037,6 +1037,8 @@ if mods["deadlock-beltboxes-loaders"] then
 	apm.lib.utils.recipe.ingredient.replace("fast-transport-belt-beltbox", "advanced-circuit", "electronic-circuit", 1)
 end
 
+--- [SafTheLamb]
+--- 
 --- [wood-logistics]
 if mods["wood-logistics"] then
 	require("prototypes.integrations.recipes.wood-logistics")
@@ -1046,6 +1048,14 @@ end
 if mods["crushing-industry"] then
 	require("prototypes.integrations.recipes.crushing-industry")
 end
+
+--- [alloy-smelting]
+if mods["alloy-smelting"] then
+	require("prototypes.integrations.recipes.alloy-smelting")
+end
+
+---
+--- [/SafTheLamb]
 
 --- [hot-metals]
 if mods["hot-metals"] then

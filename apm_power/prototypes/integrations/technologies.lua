@@ -468,6 +468,8 @@ if mods["deadlock-beltboxes-loaders"] then
 	apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("deadlock-stacking-1")
 end
 
+--- [SafTheLamb]
+--- 
 --- [wood-logistics]
 if mods["wood-logistics"] then
 	require("prototypes.integrations.technologies.wood-logistics")
@@ -477,6 +479,14 @@ end
 if mods["crushing-industry"] then
 	require("prototypes.integrations.technologies.crushing-industry")
 end
+
+--- [alloy-smelting]
+if mods["alloy-smelting"] then
+	require("prototypes.integrations.technologies.alloy-smelting")
+end
+
+---
+--- [/SafTheLamb]
 
 --- [hot-metals]
 if mods["hot-metals"] then

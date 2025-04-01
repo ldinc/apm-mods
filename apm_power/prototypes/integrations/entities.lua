@@ -194,6 +194,9 @@ if mods.RealisticReactors and apm_power_compat_realistic_reactors then
 	apm.lib.utils.furnace.overhaul('rr-cooling-tower-steam', false)
 end
 
+--- [SafTheLamb]
+---
+
 --- [wood-logistics]
 if mods["wood-logistics"] then
 	require("prototypes.integrations.entities.wood-logistics")
@@ -203,6 +206,15 @@ end
 if mods["crushing-industry"] then
 	require("prototypes.integrations.entities.crushing-industry")
 end
+
+--- [alloy-smelting]
+if mods["alloy-smelting"] then
+	require("prototypes.integrations.entities.alloy-smelting")
+end
+
+---
+--- [/SafTheLamb]
+
 
 --- [space age]
 if mods["space-age"] then
