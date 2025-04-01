@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.12
+Date: 01.04.2025
+  Added:
+    - [apm.lib.utils.patch.item.replace] replace items in all inventories (control.lua)
+    - [apm.lib.utils.patch.entity.replace] replace entity on all surfaces (control.lua)
+---------------------------------------------------------------------------------------------------
 Version: 0.31.11
 Date: 01.04.2025
   Fixed:
