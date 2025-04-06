@@ -173,7 +173,7 @@ local recipe = {
 		{ type = "item",  name = "apm_oxide_pellet_th232",     amount = 1,                                    show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_radioactive_waste",      amount = 1,                                    show_details_in_recipe_tooltip = false },
 		{ type = "fluid", name = "apm_radioactive_wastewater", amount = apm.nuclear.constants.amount_of_rocow }
-		-- {type="item", name="fusion-catalyst", amount=1}
+		-- {type="item", name="bob-fusion-catalyst", amount=1}
 	},
 	requester_paste_multiplier = 4,
 	always_show_products = true,

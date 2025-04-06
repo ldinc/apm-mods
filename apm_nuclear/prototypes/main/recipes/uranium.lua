@@ -169,7 +169,7 @@ local recipe = {
 		{ type = "item",  name = "apm_oxide_pellet_pu239",     amount_min = 1,                                             amount_max = 1,                        probability = apm.nuclear.constants.probability_plutonium, show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_radioactive_waste",      amount = 1,                                                 show_details_in_recipe_tooltip = false },
 		{ type = "fluid", name = "apm_radioactive_wastewater", amount = apm.nuclear.constants.amount_of_rocow }
-		-- {type="item", name="fusion-catalyst", amount=1}
+		-- {type="item", name="bob-fusion-catalyst", amount=1}
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
