@@ -14,7 +14,7 @@ function apm.lib.utils.car.exist(car_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'car with name: "' .. tostring(car_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'car with name: "' .. tostring(car_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -31,7 +31,7 @@ function apm.lib.utils.car.get.by_name(car_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'car with name: "' .. tostring(car_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'car with name: "' .. tostring(car_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false

@@ -20,7 +20,7 @@ function apm.lib.utils.furnace.get.by_name(furnace_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'furnace with name: "' .. tostring(furnace_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'furnace with name: "' .. tostring(furnace_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false
@@ -137,7 +137,7 @@ function apm.lib.utils.furnace.overhaul(furnace_name, only_refined)
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
 			'overhaul()',
-			'furnace with name: "' .. tostring(furnace_name) .. '" dosent have energy_source.type == "burner"'
+			'furnace with name: "' .. tostring(furnace_name) .. '" doesnt have energy_source.type == "burner"'
 		))
 	end
 end

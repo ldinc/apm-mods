@@ -14,7 +14,7 @@ function apm.lib.utils.pump.exist(pump_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'pump with name: "' .. tostring(pump_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'pump with name: "' .. tostring(pump_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -32,7 +32,7 @@ function apm.lib.utils.pump.get.by_name(pump_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'pump with name: "' .. tostring(pump_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'pump with name: "' .. tostring(pump_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false

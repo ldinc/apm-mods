@@ -15,7 +15,7 @@ function apm.lib.utils.tile.exist(tile_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'tile with name: "' .. tostring(tile_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'tile with name: "' .. tostring(tile_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -33,7 +33,7 @@ function apm.lib.utils.tile.get.by_name(tile_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'tile with name: "' .. tostring(tile_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'tile with name: "' .. tostring(tile_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false
@@ -139,7 +139,7 @@ function apm.lib.utils.tile.set.relation(tile_name, base_tile_name, relation)
 		if APM_CAN_LOG_INFO then
 			log(APM_MSG_INFO(
 				'set.layer()',
-				'base_tile with name: "' .. tostring(tile_name) .. ' dosent have a layer attribute'
+				'base_tile with name: "' .. tostring(tile_name) .. ' doesnt have a layer attribute'
 			))
 		end
 		return

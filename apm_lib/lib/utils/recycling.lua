@@ -442,7 +442,7 @@ local function scrap_generation(recipe_name)
 		if not apm.lib.utils.recycling.metal.exist(scrap_metal.name) then
 			APM_LOG_ERR(self, 'scrap.generate()',
 				'can not process: "' ..
-				tostring(recipe_name) .. '" because scarp metal: "' .. tostring(scrap_metal.name) .. '" dosent exist')
+				tostring(recipe_name) .. '" because scarp metal: "' .. tostring(scrap_metal.name) .. '" doesnt exist')
 			return
 		end
 

@@ -10,7 +10,7 @@ function apm.lib.utils.recipe.exist(recipe_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'recipe: "' .. tostring(recipe_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'recipe: "' .. tostring(recipe_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -28,7 +28,7 @@ function apm.lib.utils.recipe.get.by_name(recipe_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'recipe: "' .. tostring(recipe_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'recipe: "' .. tostring(recipe_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false

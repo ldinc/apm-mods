@@ -17,7 +17,7 @@ function apm.lib.utils.lab.exist(lab_name)
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
-			'exist()', 'lab with name: "' .. tostring(lab_name) .. '" dosent exist.'
+			'exist()', 'lab with name: "' .. tostring(lab_name) .. '" doesnt exist.'
 		))
 	end
 
@@ -36,7 +36,7 @@ function apm.lib.utils.lab.get.by_name(lab_name)
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
-			'exist()', 'lab with name: "' .. tostring(lab_name) .. '" dosent exist.'
+			'exist()', 'lab with name: "' .. tostring(lab_name) .. '" doesnt exist.'
 		))
 	end
 

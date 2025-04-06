@@ -42,6 +42,8 @@ local function get_icon(object_name, type_name)
 		prototype_list = { 'recipe' }
 	elseif type_name == 'tool' then
 		prototype_list = { 'tool' }
+	elseif type_name and type_name ~= "" then
+		prototype_list = { type_name }
 	end
 
 	for _, prototype in pairs(prototype_list) do
@@ -73,6 +75,10 @@ end
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.icon.get.from_item(object_name)
 	return get_icon(object_name, 'item')
+end
+
+function apm.lib.utils.icon.get.from(object_type, object_name)
+	return get_icon(object_name, object_type)
 end
 
 -- Function -------------------------------------------------------------------

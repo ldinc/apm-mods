@@ -13,7 +13,7 @@ if not apm.lib.utils.autoplace_controls.table then apm.lib.utils.autoplace_contr
 ---@param richness data.MapGenSize
 function apm.lib.utils.autoplace_controls.add.ore(ore_name, frequency, size, richness)
 	if not data.raw.resource[ore_name] then
-		APM_LOG_WARN(self, 'add.ore()', 'resource with name: "' .. tostring(ore_name) .. '" dosent exist.')
+		APM_LOG_WARN(self, 'add.ore()', 'resource with name: "' .. tostring(ore_name) .. '" doesnt exist.')
 		return
 	end
 

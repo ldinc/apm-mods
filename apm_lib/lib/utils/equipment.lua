@@ -25,7 +25,7 @@ function apm.lib.utils.equipment.exist(equipment_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'equipment with name: "' .. tostring(equipment_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'equipment with name: "' .. tostring(equipment_name) .. '" doesnt exist.'))
 	end
 
 	return false

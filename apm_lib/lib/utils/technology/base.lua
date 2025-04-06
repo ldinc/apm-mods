@@ -10,7 +10,7 @@ function apm.lib.utils.technology.exist(technology_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('Warning: technology with name: "' .. tostring(technology_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('Warning: technology with name: "' .. tostring(technology_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -28,7 +28,7 @@ function apm.lib.utils.technology.get.by_name(technology_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('Warning: technology with name: "' .. tostring(technology_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('Warning: technology with name: "' .. tostring(technology_name) .. '" doesnt exist.'))
 	end
 
 

@@ -30,7 +30,7 @@ function apm.lib.utils.assembler.exist(assembler_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'assembler with name: "' .. tostring(assembler_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'assembler with name: "' .. tostring(assembler_name) .. '" doesnt exist.'))
 	end
 
 	return false

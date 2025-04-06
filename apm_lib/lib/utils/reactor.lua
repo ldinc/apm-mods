@@ -31,7 +31,7 @@ function apm.lib.utils.reactor.exist(reactor_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING("exist()", "reactor with name: '" .. tostring(reactor_name) .. "' dosent exist."))
+		log(APM_MSG_WARNING("exist()", "reactor with name: '" .. tostring(reactor_name) .. "' doesnt exist."))
 	end
 
 	return false
@@ -49,7 +49,7 @@ function apm.lib.utils.reactor.get.by_name(reactor_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING("exist()", "reactor with name: '" .. tostring(reactor_name) .. "' dosent exist."))
+		log(APM_MSG_WARNING("exist()", "reactor with name: '" .. tostring(reactor_name) .. "' doesnt exist."))
 	end
 
 	return {}, false

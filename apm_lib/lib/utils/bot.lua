@@ -14,7 +14,7 @@ function apm.lib.utils.bot.logistic.exist(bot_name)
 	if data.raw['logistic-robot'][bot_name] then 
 		return true
 	end
-	APM_LOG_WARN(self, 'logistic.exist()', 'logistic-robot with name: "' .. tostring(bot_name) .. '" dosent exist.')
+	APM_LOG_WARN(self, 'logistic.exist()', 'logistic-robot with name: "' .. tostring(bot_name) .. '" doesnt exist.')
 	return false
 end
 
@@ -26,7 +26,7 @@ function apm.lib.utils.bot.construction.exist(bot_name)
 	if data.raw['construction-robot'][bot_name] then 
 		return true
 	end
-	APM_LOG_WARN(self, 'construction.exist()', 'construction-robot with name: "' .. tostring(bot_name) .. '" dosent exist.')
+	APM_LOG_WARN(self, 'construction.exist()', 'construction-robot with name: "' .. tostring(bot_name) .. '" doesnt exist.')
 	return false
 end
 

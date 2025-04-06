@@ -14,7 +14,7 @@ function apm.lib.utils.storage_tank.exist(storage_tank_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'storage-tank with name: "' .. tostring(storage_tank_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'storage-tank with name: "' .. tostring(storage_tank_name) .. '" doesnt exist.'))
 	end
 
 	return false

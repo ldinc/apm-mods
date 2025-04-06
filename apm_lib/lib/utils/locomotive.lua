@@ -16,7 +16,7 @@ function apm.lib.utils.locomotive.exist(locomotive_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'locomotive with name: "' .. tostring(locomotive_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'locomotive with name: "' .. tostring(locomotive_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -34,7 +34,7 @@ function apm.lib.utils.locomotive.get.by_name(locomotive_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'locomotive with name: "' .. tostring(locomotive_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'locomotive with name: "' .. tostring(locomotive_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false

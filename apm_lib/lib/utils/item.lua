@@ -44,7 +44,7 @@ function apm.lib.utils.item.exist(item_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('item/fluid/module with name: "' .. tostring(item_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('item/fluid/module with name: "' .. tostring(item_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -79,7 +79,7 @@ function apm.lib.utils.item.get_by_name(item_name, only_item)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'item/fluid/module with name: "' .. tostring(item_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'item/fluid/module with name: "' .. tostring(item_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false
@@ -149,7 +149,7 @@ function apm.lib.utils.item.get_type(item_name, prefer_item)
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
-			'get_type()', 'item/fluid with name: "' .. tostring(item_name) .. '" dosent exist, return nil'
+			'get_type()', 'item/fluid with name: "' .. tostring(item_name) .. '" doesnt exist, return nil'
 		))
 	end
 

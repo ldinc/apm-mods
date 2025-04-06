@@ -17,7 +17,7 @@ function apm.lib.utils.mining_drill.exist(mining_drill_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('mining-drill with name: "' .. tostring(mining_drill_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('mining-drill with name: "' .. tostring(mining_drill_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -34,7 +34,7 @@ function apm.lib.utils.mining_drill.get.by_name(mining_drill_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('mining-drill with name: "' .. tostring(mining_drill_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('mining-drill with name: "' .. tostring(mining_drill_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false

@@ -14,7 +14,7 @@ function apm.lib.utils.boiler.exist(boiler_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'boiler with name: "' .. tostring(boiler_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'boiler with name: "' .. tostring(boiler_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -31,7 +31,7 @@ function apm.lib.utils.boiler.get.by_name(boiler_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'boiler with name: "' .. tostring(boiler_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'boiler with name: "' .. tostring(boiler_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false

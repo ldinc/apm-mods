@@ -15,7 +15,7 @@ function apm.lib.utils.modules.exist(module_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'module: "' .. tostring(module_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'module: "' .. tostring(module_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -33,7 +33,7 @@ function apm.lib.utils.modules.get.by_name(module_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'module: "' .. tostring(module_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'module: "' .. tostring(module_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false

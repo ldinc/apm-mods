@@ -85,6 +85,9 @@ require 'lib.utils.storage_tank'
 if not apm.lib.utils.car then apm.lib.utils.car = {} end
 require 'lib.utils.car'
 
+if not apm.lib.utils.spidertron then apm.lib.utils.spidertron = {} end
+require 'lib.utils.spidertron'
+
 if not apm.lib.utils.locomotive then apm.lib.utils.locomotive = {} end
 require 'lib.utils.locomotive'
 

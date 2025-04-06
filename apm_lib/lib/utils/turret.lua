@@ -11,6 +11,6 @@ function apm.lib.utils.turret.exist(turret_name)
 	if data.raw['ammo-turret'][turret_name] ~= nil then 
 		return true
 	end
-	APM_LOG_WARN(self, 'exist()', 'turret with name: "' .. tostring(turret_name) .. '" dosent exist.')
+	APM_LOG_WARN(self, 'exist()', 'turret with name: "' .. tostring(turret_name) .. '" doesnt exist.')
 	return false
 end

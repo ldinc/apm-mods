@@ -15,7 +15,7 @@ function apm.lib.utils.fluid.get_by_name(fluid_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'fluid with name: "' .. tostring(fluid_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'fluid with name: "' .. tostring(fluid_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false

@@ -16,7 +16,7 @@ function apm.lib.utils.inserter.exist(inserter_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'inserter with name: "' .. tostring(inserter_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'inserter with name: "' .. tostring(inserter_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -34,7 +34,7 @@ function apm.lib.utils.inserter.get.by_name(inserter_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'inserter with name: "' .. tostring(inserter_name) .. '" dosent exist.'))
+		log(APM_MSG_WARNING('exist()', 'inserter with name: "' .. tostring(inserter_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false
@@ -127,7 +127,7 @@ function apm.lib.utils.inserter.burner.overhaul(inserter_name)
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
 			'burner.overhaul()',
-			'inserter with name: "' .. tostring(inserter_name) .. '" dosent has energy_source.type == "burner"'
+			'inserter with name: "' .. tostring(inserter_name) .. '" doesnt has energy_source.type == "burner"'
 		))
 	end
 end
