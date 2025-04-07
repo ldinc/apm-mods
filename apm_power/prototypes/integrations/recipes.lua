@@ -5,107 +5,8 @@ local self = 'apm_power/prototypes/integrations/recipes.lua'
 
 APM_LOG_HEADER(self)
 
-local iron = 'iron-plate'
-local lead = 'lead-plate'
-local steel = 'steel-plate'
-local tin = 'tin-plate'
-local copper = 'copper-plate'
-local alum = 'aluminium-plate'
-local tungsten = 'tungsten-plate'
-local copperTungsten = 'copper-tungsten-alloy'
-local invar = 'invar-alloy'
-local titanium = 'titanium-plate'
-local cobaltSteel = 'cobalt-steel-alloy'
-local heavy = 'nitinol-alloy'
-local ironG = 'iron-gear-wheel'
-local steelG = 'steel-gear-wheel'
-local titaniumG = 'titanium-gear-wheel'
-local heavyG = 'nitinol-gear-wheel'
-local cobaltSteelG = 'cobalt-steel-gear-wheel'
-local ironB = 'apm_iron_bearing'
-local steelB = 'steel-bearing'
-local titaniumB = 'titanium-bearing'
-local heavyB = 'nitinol-bearing'
-local cobaltSteelB = 'cobalt-steel-bearing'
---
-local logicMech = 'apm_mechanical_relay'
-local logicSteam = 'apm_steam_relay'
-local logic = 'basic-circuit-board'
-local logic1 = 'electronic-circuit'
-local logic2 = 'advanced-circuit'
-local logic3 = 'processing-unit'
-local logic4 = 'advanced-processing-unit'
---
-local basicFr, steamFr, advFr = 'apm_machine_frame_basic', 'apm_machine_frame_steam', 'apm_machine_frame_advanced'
---
-local steelPipe = 'steel-pipe'
-local heavyPipe = 'nitinol-pipe'
-local titaniumPipe = 'titanium-pipe'
-local ceramicPipe = 'ceramic-pipe'
-local copperPipe = 'copper-pipe'
-local copperTungstenPipe = 'copper-tungsten-pipe'
---
-local brick, concrete, refConcrete = 'stone-brick', 'concrete', 'refined-concrete'
-local eEngine = 'electric-engine'
-local eGenerator = 'apm_egen_unit'
-local eMagnet = 'apm_electromagnet'
+require("prototypes.integrations.recipes.base")
 
-function vanilaFinalUpdatesRecipe()
-	-- more early electric engine technology
-	apm.lib.utils.technology.remove.science_pack(eEngine, 'chemical-science-pack')
-	apm.lib.utils.technology.add.prerequisites(eEngine, 'apm_power_electricicty')
-
-	-- used frames
-	local used = apm.lib.utils.setting.get.starup('apm_power_machine_frames_recycling')
-	if not used then
-		dropFrameMaintenance()
-	end
-
-	-- update concrete
-	updateConcrete()
-	-- integrate electric generators
-	useEGenUnits()
-	if not apm.lib.utils.resource.exist('sulfur') then
-		-- change recipe for gun powder
-		apm.lib.utils.recipe.ingredient.mod('apm_gun_powder', 'sulfur', 0)
-	end
-
-	if not apm.bob_rework then
-		local recipe = 'piercing-rounds-magazine'
-		apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_gun_powder', 5)
-		apm.lib.utils.recipe.ingredient.mod(recipe, 'firearm-magazine', 0)
-
-		recipe = 'piercing-shotgun-shell'
-		apm.lib.utils.recipe.ingredient.mod(recipe, 'apm_gun_powder', 5)
-		apm.lib.utils.recipe.ingredient.mod(recipe, 'shotgun-shell', 0)
-	end
-end
-
-function dropFrameMaintenance()
-	apm.lib.utils.recipe.remove('apm_machine_frame_basic_maintenance')
-	apm.lib.utils.recipe.remove('apm_machine_frame_steam_maintenance')
-	apm.lib.utils.recipe.remove('apm_machine_frame_advanced_maintenance')
-end
-
-function useEGenUnits()
-	-- assuming one eGenerator ~ 400 kW
-	local recipe = 'steam-engine'
-	apm.lib.utils.recipe.ingredient.mod(recipe, eGenerator, 2)
-	apm.lib.utils.recipe.ingredient.mod(recipe, eMagnet, 0)
-	recipe = 'apm_steam_engine_2'
-	apm.lib.utils.recipe.ingredient.mod(recipe, eGenerator, 4)
-	apm.lib.utils.recipe.ingredient.mod(recipe, eMagnet, 0)
-end
-
-function updateConcrete()
-	local recipe = 'concrete'
-	apm.lib.utils.recipe.ingredient.remove_all(recipe)
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'water', 100)
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'stone-brick', 5)
-	local recipe = 'refined-concrete'
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'iron-stick', 0)
-	apm.lib.utils.recipe.ingredient.mod(recipe, 'steel-plate', 2)
-end
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
 local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
@@ -153,7 +54,6 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reve
 APM_LOG_SETTINGS(self, 'apm_power_compat_arcitos', apm_power_compat_arcitos)
 APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_made_in)
 
-vanilaFinalUpdatesRecipe()
 
 if mods.apm_recycling then
 	apm.lib.utils.assembler.burner.overhaul('apm_recycling_machine_0')
@@ -295,8 +195,8 @@ if mods['aai-industry'] and apm_power_compat_earendel then
 		apm.lib.utils.recipe.ingredient.mod('inserter', 'electronic-circuit', 1)
 		apm.lib.utils.recipe.ingredient.mod('apm_offshore_pump_1', 'electronic-circuit', 5)
 	else
-		apm.lib.utils.recipe.ingredient.mod('inserter', 'basic-circuit-board', 1)
-		apm.lib.utils.recipe.ingredient.mod('apm_offshore_pump_1', 'basic-circuit-board', 5)
+		apm.lib.utils.recipe.ingredient.mod('inserter', 'bob-basic-circuit-board', 1)
+		apm.lib.utils.recipe.ingredient.mod('apm_offshore_pump_1', 'bob-basic-circuit-board', 5)
 	end
 
 	-- integrate motors
@@ -318,9 +218,9 @@ if mods['aai-industry'] and apm_power_compat_earendel then
 		apm.lib.utils.recipe.ingredient.mod('electric-mining-drill', 'electronic-circuit', 3)
 		apm.lib.utils.recipe.ingredient.mod('electronic-circuit', 'stone-tablet', 1)
 	else
-		apm.lib.utils.recipe.ingredient.mod('apm_offshore_pump_1', 'basic-circuit-board', 0)
-		apm.lib.utils.recipe.ingredient.mod('electric-mining-drill', 'basic-circuit-board', 3)
-		apm.lib.utils.recipe.ingredient.mod('basic-circuit-board', 'stone-tablet', 1)
+		apm.lib.utils.recipe.ingredient.mod('apm_offshore_pump_1', 'bob-basic-circuit-board', 0)
+		apm.lib.utils.recipe.ingredient.mod('electric-mining-drill', 'bob-basic-circuit-board', 3)
+		apm.lib.utils.recipe.ingredient.mod('bob-basic-circuit-board', 'stone-tablet', 1)
 	end
 end
 
@@ -356,10 +256,10 @@ if (mods['space-exploration'] or mods['aai-industry']) and apm_power_compat_eare
 	apm.lib.utils.recipe.ingredient.mod('sand-from-stone', 'stone', 0)
 	apm.lib.utils.recipe.category.change('sand-from-stone', 'apm_crusher')
 	-- integrate glass
-	apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_0', 'glass', 25)
-	apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_1', 'glass', 25)
-	apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_2', 'glass', 25)
-	apm.lib.utils.recipe.ingredient.mod('apm_lab_1', 'glass', 10)
+	apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_0', 'bob-glass', 25)
+	apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_1', 'bob-glass', 25)
+	apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_2', 'bob-glass', 25)
+	apm.lib.utils.recipe.ingredient.mod('apm_lab_1', 'bob-glass', 10)
 end
 
 if mods['space-exploration'] and apm_power_compat_earendel then
@@ -376,179 +276,9 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.bobpower and apm_power_compat_bob then
-	if apm.lib.utils.setting.get.starup('bobmods-power-steam') then
-		apm.lib.utils.recipe.remove('apm_boiler_2')
-		apm.lib.utils.recipe.remove('apm_steam_engine_2')
-	end
-	apm.lib.utils.recipe.ingredient.mod('steam-engine-2', 'apm_electromagnet', 6)
-	apm.lib.utils.recipe.ingredient.mod('steam-engine-3', 'apm_electromagnet', 6)
-	apm.lib.utils.recipe.ingredient.mod('steam-engine-4', 'apm_electromagnet', 6)
-	apm.lib.utils.recipe.ingredient.mod('steam-engine-5', 'apm_electromagnet', 6)
-	apm.lib.utils.recipe.ingredient.mod('steam-turbine-2', 'apm_electromagnet', 12)
-	apm.lib.utils.recipe.ingredient.mod('steam-turbine-3', 'apm_electromagnet', 12)
-	apm.lib.utils.recipe.ingredient.mod('fluid-generator', 'apm_electromagnet', 12)
-	apm.lib.utils.recipe.ingredient.mod('fluid-generator-2', 'apm_electromagnet', 12)
-	apm.lib.utils.recipe.ingredient.mod('fluid-generator-3', 'apm_electromagnet', 12)
-	apm.lib.utils.recipe.ingredient.mod('hydrazine-generator', 'apm_electromagnet', 12)
-end
 
-if mods.boblogistics and apm_power_compat_bob then
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
-		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'iron-plate', 0)
-		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'apm_gearing', 0)
-		apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'iron-plate', 1)
-		apm.lib.utils.recipe.ingredient.mod('yellow-filter-inserter', 'apm_gearing', 1)
-		apm.lib.utils.recipe.ingredient.mod('fast-inserter', 'apm_gearing', 0)
-		if mods.bobores and mods.bobplates then
-			apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-plate', 'tin-plate')
-			apm.lib.utils.recipe.ingredient.replace('yellow-filter-inserter', 'iron-plate', 'tin-plate')
-		end
-	else
-		if mods.bobores and mods.bobplates then
-			apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-plate', 'tin-plate')
-			apm.lib.utils.recipe.ingredient.replace('filter-inserter', 'iron-plate', 'tin-plate')
-		end
-	end
-	apm.lib.utils.recipe.ingredient.mod('copper-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('steel-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('stone-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('plastic-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('bronze-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('brass-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('ceramic-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('titanium-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('tungsten-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('nitinol-pipe', 'apm_sealing_rings', 1)
-	apm.lib.utils.recipe.ingredient.mod('copper-tungsten-pipe', 'apm_sealing_rings', 1)
-
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
-		apm.lib.utils.recipe.ingredient.replace('logistic-science-pack', 'basic-transport-belt', 'transport-belt')
-	end
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
-	end
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-inserterrequireprevious') then
-		apm.lib.utils.recipe.ingredient.mod('filter-inserter', 'fast-inserter', 0)
-	end
-end
-
-if mods.bobplates and apm_power_compat_bob then
-	apm.lib.utils.recipe.ingredient.mod('enriched-fuel-from-liquid-fuel', 'solid-fuel', 1)
-	apm.lib.utils.recipe.ingredient.replace('solid-fuel-from-hydrogen', 'coal', 'apm_coal_crushed', 2)
-	apm.lib.utils.recipe.ingredient.replace('polishing-wheel', 'wood', 'apm_wood_pellets', 1)
-
-	if apm_power_compat_bob_overhaul_machine_frames then
-		apm.power.machine_frame_addition('chemical-furnace', 3, nil, 3, nil)
-		apm.power.machine_frame_addition('electric-mixing-furnace', 3, nil, 3, nil)
-		apm.power.machine_frame_addition('bob-distillery', 3, nil, 3, nil)
-		apm.power.machine_frame_addition('electrolyser', 3, nil, 3, nil)
-	end
-end
-
-if mods.bobwarfare and apm_power_compat_bob then
-	apm.lib.utils.recipe.ingredient.replace('poison-rocket-warhead', 'coal', 'apm_coal_crushed', 2)
-	apm.lib.utils.recipe.ingredient.replace('poison-artillery-shell', 'coal', 'apm_coal_crushed', 1)
-	apm.lib.utils.recipe.ingredient.replace('poison-bullet-projectile', 'coal', 'apm_coal_crushed', 1)
-	apm.lib.utils.recipe.ingredient.replace('shotgun-poison-shell', 'coal', 'apm_coal_crushed', 2)
-	apm.lib.utils.recipe.ingredient.replace('gun-cotton', 'wood', 'apm_wood_pellets', 2)
-	apm.lib.utils.recipe.ingredient.replace('sniper-rifle', 'wood', 'apm_treated_wood_planks', 1)
-end
-
-if mods.bobelectronics and apm_power_compat_bob then
-	apm.lib.utils.recipe.ingredient.mod('electronic-circuit', 'apm_wood_board', 0)
-	apm.lib.utils.recipe.ingredient.mod('repair-pack', 'basic-circuit-board', 0)
-	apm.lib.utils.recipe.ingredient.mod('carbon', 'coal', 0)
-	apm.lib.utils.recipe.ingredient.mod('carbon', 'apm_coke', 1)
-	apm.lib.utils.recipe.ingredient.mod('offshore-pump', 'basic-circuit-board', 0)
-	apm.lib.utils.recipe.ingredient.mod('rail-signal', 'basic-circuit-board', 1)
-	apm.lib.utils.recipe.ingredient.mod('rail-signal', 'electronic-circuit', 0)
-	apm.lib.utils.recipe.ingredient.mod('rail-chain-signal', 'basic-circuit-board', 1)
-	apm.lib.utils.recipe.ingredient.mod('rail-chain-signal', 'electronic-circuit', 1)
-	apm.lib.utils.recipe.ingredient.replace('phenolic-board', 'wood', 'apm_wood_pellets', 2)
-	apm.lib.utils.recipe.ingredient.replace('electric-mining-drill', 'basic-circuit-board', 'electronic-circuit')
-end
-
-if mods.bobassembly and apm_power_compat_bob then
-	apm.lib.utils.recipe.remove('burner-assembling-machine')
-	apm.lib.utils.recipe.remove('steam-assembling-machine')
-
-	apm.power.machine_frame_addition('assembling-machine-3', 3, 3, 7, 4)
-	apm.lib.utils.recipe.ingredient.replace('electronics-machine-1', 'iron-gear-wheel', 'apm_gearing')
-
-	if apm_power_compat_bob_overhaul_machine_frames then
-		apm.power.machine_frame_addition('assembling-machine-4', 3, 3, 9, 5)
-		apm.power.machine_frame_addition('assembling-machine-5', 3, 3, 11, 6)
-		apm.power.machine_frame_addition('assembling-machine-6', 3, 3, 13, 7)
-
-		apm.power.machine_frame_addition('chemical-plant-2', 3, 3, 5, 3)
-		apm.power.machine_frame_addition('chemical-plant-3', 3, 3, 7, 4)
-		apm.power.machine_frame_addition('chemical-plant-4', 3, 3, 9, 5)
-
-		apm.power.machine_frame_addition('electric-furnace-2', 3, 3, 7, 4)
-		apm.power.machine_frame_addition('electric-furnace-3', 3, 3, 9, 5)
-
-		apm.power.machine_frame_addition('electronics-machine-1', 3, nil, 3, nil)
-		apm.power.machine_frame_addition('electronics-machine-2', 3, 3, 5, 3)
-		apm.power.machine_frame_addition('electronics-machine-3', 3, 3, 7, 4)
-
-		apm.power.machine_frame_addition('electric-chemical-mixing-furnace', 3, 3, 5, 3)
-		apm.power.machine_frame_addition('electric-chemical-mixing-furnace-2', 3, 3, 7, 4)
-
-		apm.power.machine_frame_addition('bob-distillery-2', 3, 3, 5, 3)
-		apm.power.machine_frame_addition('bob-distillery-3', 3, 3, 7, 4)
-		apm.power.machine_frame_addition('bob-distillery-4', 3, 3, 9, 5)
-		apm.power.machine_frame_addition('bob-distillery-5', 3, 3, 11, 6)
-
-		apm.power.machine_frame_addition('electrolyser-2', 3, 3, 5, 3)
-		apm.power.machine_frame_addition('electrolyser-3', 3, 3, 6, 4)
-		apm.power.machine_frame_addition('electrolyser-4', 3, 3, 9, 5)
-		apm.power.machine_frame_addition('electrolyser-5', 3, 3, 12, 6)
-
-		apm.power.machine_frame_addition('oil-refinery-2', 3, 3, 8, 5)
-		apm.power.machine_frame_addition('oil-refinery-3', 3, 3, 10, 6)
-		apm.power.machine_frame_addition('oil-refinery-4', 3, 3, 13, 7)
-	end
-end
-
-if mods.bobtech and apm_power_compat_bob then
-	if apm_power_compat_bob_overhaul_machine_frames then
-		apm.power.machine_frame_addition('lab-2', 3, 3, 8, 5)
-	end
-end
-
-if mods.bobgreenhouse and apm_power_compat_bob then
-	apm.lib.utils.recipe.ingredient.mod('bob-seedling', 'wood', 0)
-	apm.lib.utils.recipe.ingredient.mod('bob-seedling', 'apm_tree_seeds', 1)
-	apm.lib.utils.recipe.result.mod('bob-seedling', 'bob-seedling', 10)
-end
-
-
-if not mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
-	apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 0)
-elseif mods.boblogistics and mods.bobelectronics and apm_power_compat_bob then
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
-		apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 5)
-	else
-		apm.lib.utils.recipe.ingredient.mod('splitter', 'basic-circuit-board', 0)
-	end
-end
-
-
-
-if mods.bobplates and apm_power_compat_bob and not mods.angelsrefining and not mods['aai-industry'] then
-	apm.lib.utils.recipe.ingredient.mod('apm_lab_0', 'glass', 5)
-	apm.lib.utils.recipe.ingredient.mod('apm_lab_1', 'glass', 10)
-	apm.lib.utils.recipe.ingredient.mod('apm_greenhouse_0', 'glass', 25)
-end
-
-
-if mods.bobelectronics and mods.angelsrefining and apm_power_compat_bob then
-	apm.lib.utils.recipe.ingredient.mod('clarifier', 'electronic-circuit', 0)
-	apm.lib.utils.recipe.ingredient.mod('clarifier', 'basic-circuit-board', 4)
-end
-
-if mods.bobmining and apm_power_compat_bob then
-	apm.lib.utils.recipe.remove('steam-mining-drill')
+if apm_power_compat_bob then
+	require("prototypes.integrations.recipes.bobs")
 end
 
 -- angel ----------------------------------------------------------------------
@@ -920,7 +650,7 @@ end
 
 local unlock_steel_with_oxy = function()
 	if mods.bobelectronics then
-		apm.lib.utils.recipe.ingredient.replace('apm_steelworks_0', 'electronic-circuit', 'basic-circuit-board')
+		apm.lib.utils.recipe.ingredient.replace('apm_steelworks_0', 'electronic-circuit', 'bob-basic-circuit-board')
 	end
 
 	local item_icon_a = apm.lib.utils.icon.get.from_item('steel-plate')
@@ -949,7 +679,7 @@ local unlock_steel_with_oxy = function()
 		{ type = "item",  name = "apm_stone_crucible", amount = 4 },
 		{ type = "item",  name = "iron-ore",           amount = 8 },
 		{ type = "fluid", name = "water",              amount = 100, fluidbox_index = 1 },
-		{ type = "fluid", name = "oxygen",             amount = 40,  fluidbox_index = 2 }
+		{ type = "fluid", name = "bob-oxygen",         amount = 40,  fluidbox_index = 2 }
 	}
 	recipe.results = {
 		{ type = 'item',  name = 'steel-plate', amount = 4 },
@@ -1038,7 +768,7 @@ if mods["deadlock-beltboxes-loaders"] then
 end
 
 --- [SafTheLamb]
---- 
+---
 --- [wood-logistics]
 if mods["wood-logistics"] then
 	require("prototypes.integrations.recipes.wood-logistics")

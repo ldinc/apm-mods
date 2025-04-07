@@ -69,7 +69,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.bobplates and apm_power_compat_bob then
-	apm.lib.utils.fuel.overhaul(5, 'enriched-fuel', 8, nil, 'apm_refined_chemical')
+	apm.lib.utils.fuel.overhaul(5, 'bob-enriched-fuel', 8, nil, 'apm_refined_chemical')
 end
 
 -- angel ----------------------------------------------------------------------

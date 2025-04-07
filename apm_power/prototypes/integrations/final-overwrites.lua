@@ -85,19 +85,19 @@ if (mods.bobplates or mods.bobelectronics) and apm_power_compat_bob then
 end
 
 -- wooden boards
-apm.lib.utils.recipe.result.replace_all('wooden-board', 'apm_wood_board')
-apm.lib.utils.recipe.ingredient.replace_all('wooden-board', 'apm_wood_board')
-apm.lib.utils.item.remove('wooden-board')
+apm.lib.utils.recipe.result.replace_all('bob-wooden-board', 'apm_wood_board')
+apm.lib.utils.recipe.ingredient.replace_all('bob-wooden-board', 'apm_wood_board')
+apm.lib.utils.item.remove('bob-wooden-board')
 
 -- resin (seems be from bob?)
-apm.lib.utils.recipe.result.replace_all('resin', 'apm_resin')
-apm.lib.utils.recipe.ingredient.replace_all('resin', 'apm_resin')
-apm.lib.utils.item.remove('resin')
+apm.lib.utils.recipe.result.replace_all('bob-resin', 'apm_resin')
+apm.lib.utils.recipe.ingredient.replace_all('bob-resin', 'apm_resin')
+apm.lib.utils.item.remove('bob-resin')
 
 -- rubber
-apm.lib.utils.recipe.result.replace_all('rubber', 'apm_rubber')
-apm.lib.utils.recipe.ingredient.replace_all('rubber', 'apm_rubber')
-apm.lib.utils.item.remove('rubber')
+apm.lib.utils.recipe.result.replace_all('bob-rubber', 'apm_rubber')
+apm.lib.utils.recipe.ingredient.replace_all('bob-rubber', 'apm_rubber')
+apm.lib.utils.item.remove('bob-rubber')
 
 -- angel ----------------------------------------------------------------------
 --

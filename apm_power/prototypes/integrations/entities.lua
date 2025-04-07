@@ -86,50 +86,55 @@ if mods.bobpower and apm_power_compat_bob then
 	if apm.lib.utils.setting.get.starup('bobmods-power-steam') then
 		apm.lib.utils.boiler.set.hidden('apm_boiler_2')
 		apm.lib.utils.boiler.set.next_upgrade('apm_boiler_2', nil)
-		apm.lib.utils.boiler.set.next_upgrade('boiler', 'boiler-2')
+		apm.lib.utils.boiler.set.next_upgrade('boiler', 'bob-boiler-2')
 		apm.lib.utils.generator.set.hidden('apm_steam_engine_2')
 		apm.lib.utils.generator.set.next_upgrade('apm_steam_engine_2', nil)
-		apm.lib.utils.generator.set.next_upgrade('steam-engine', 'steam-engine-2')
+		apm.lib.utils.generator.set.next_upgrade('steam-engine', 'bob-steam-engine-2')
 	end
 
 	-- Boilers
-	apm.lib.utils.boiler.overhaul('boiler-2', 2)
-	apm.lib.utils.boiler.overhaul('boiler-3', 3)
-	apm.lib.utils.boiler.overhaul('boiler-4', 4)
-	apm.lib.utils.boiler.overhaul('boiler-5', 5)
+	apm.lib.utils.boiler.overhaul('bob-boiler-2', 2)
+	apm.lib.utils.boiler.overhaul('bob-boiler-3', 3)
+	apm.lib.utils.boiler.overhaul('bob-boiler-4', 4)
+	apm.lib.utils.boiler.overhaul('bob-boiler-5', 5)
 	-- Generators
-	apm.lib.utils.generator.overhaul('steam-engine-2', 2)
-	apm.lib.utils.generator.overhaul('steam-engine-3', 3)
-	apm.lib.utils.generator.overhaul('steam-engine-4', 4)
-	apm.lib.utils.generator.overhaul('steam-engine-5', 5)
+	apm.lib.utils.generator.overhaul('bob-steam-engine-2', 2)
+	apm.lib.utils.generator.overhaul('bob-steam-engine-3', 3)
+	apm.lib.utils.generator.overhaul('bob-steam-engine-4', 4)
+	apm.lib.utils.generator.overhaul('bob-steam-engine-5', 5)
 	-- heat reactor
-	apm.lib.utils.reactor.set.fuel_categories('burner-reactor', { 'chemical', 'apm_refined_chemical' })
-	apm.lib.utils.reactor.set.fuel_categories('burner-reactor-2', { 'chemical', 'apm_refined_chemical' })
-	apm.lib.utils.reactor.set.fuel_categories('burner-reactor-3', { 'chemical', 'apm_refined_chemical' })
+	apm.lib.utils.reactor.set.fuel_categories('bob-burner-reactor', { 'chemical', 'apm_refined_chemical' })
+	apm.lib.utils.reactor.set.fuel_categories('bob-burner-reactor-2', { 'chemical', 'apm_refined_chemical' })
+	apm.lib.utils.reactor.set.fuel_categories('bob-burner-reactor-3', { 'chemical', 'apm_refined_chemical' })
+
+	apm.lib.utils.entity.set.fuel_category(
+		data.raw["burner-generator"]['bob-burner-generator'],
+		{ 'chemical', 'apm_refined_chemical' }
+	)
 end
 
 if mods.bobplates and apm_power_compat_bob then
-	apm.lib.utils.assembler.burner.overhaul('chemical-boiler')
-	apm.lib.utils.assembler.burner.overhaul('chemical-steel-furnace', true)
-	apm.lib.utils.assembler.burner.overhaul('mixing-furnace')
-	apm.lib.utils.assembler.burner.overhaul('mixing-steel-furnace', true)
+	apm.lib.utils.assembler.burner.overhaul('bob-chemical-boiler')
+	apm.lib.utils.assembler.burner.overhaul('bob-chemical-steel-furnace', true)
+	apm.lib.utils.assembler.burner.overhaul('bob-mixing-furnace')
+	apm.lib.utils.assembler.burner.overhaul('bob-mixing-steel-furnace', true)
 end
 
 if mods.bobtech and apm_power_compat_bob then
-	apm.lib.utils.lab.overhaul('lab-2')
+	apm.lib.utils.lab.overhaul('bob-lab-2')
 end
 
 if mods.bobmining and apm_power_compat_bob then
-	apm.lib.utils.mining_drill.set.hidden('steam-mining-drill')
+	apm.lib.utils.mining_drill.set.hidden('bob-steam-mining-drill')
 end
 
 if mods.bobassembly and apm_power_compat_bob then
-	apm.lib.utils.assembler.set.hidden('burner-assembling-machine')
-	apm.lib.utils.assembler.set.hidden('steam-assembling-machine')
+	apm.lib.utils.assembler.set.hidden('bob-burner-assembling-machine')
+	apm.lib.utils.assembler.set.hidden('bob-steam-assembling-machine')
 
 	apm.lib.utils.assembler.mod.module_specification('assembling-machine-3', 4)
-	apm.lib.utils.assembler.mod.module_specification('assembling-machine-4', 5)
-	apm.lib.utils.assembler.mod.module_specification('assembling-machine-5', 6)
+	apm.lib.utils.assembler.mod.module_specification('bob-assembling-machine-4', 5)
+	apm.lib.utils.assembler.mod.module_specification('bob-assembling-machine-5', 6)
 end
 
 -- angel ----------------------------------------------------------------------

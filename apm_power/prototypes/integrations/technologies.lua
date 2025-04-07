@@ -53,6 +53,10 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_arcitos', apm_power_compat_arcitos)
 apm.lib.utils.technology.force.recipe_for_unlock('apm_crusher_machine_0', 'apm_gun_powder')
 apm.lib.utils.technology.force.recipe_for_unlock('apm_fertiliser_2', 'apm_ammonium_sulfate_chem')
 
+-- more early electric engine technology
+apm.lib.utils.technology.remove.science_pack('electric-engine', 'chemical-science-pack')
+apm.lib.utils.technology.add.prerequisites('electric-engine', 'apm_power_electricicty')
+
 if mods.apm_recycling then
 	apm.lib.utils.technology.add.science_pack('apm_recycling-0', 'apm_industrial_science_pack', 1)
 	apm.lib.utils.technology.remove.science_pack('apm_recycling-0', 'automation-science-pack')
@@ -187,133 +191,9 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-
-if mods.bobinserters and apm_power_compat_bob then
-	apm.lib.utils.technology.delete('apm_burner_long_inserter')
-
-	apm.lib.utils.technology.add.prerequisites('long-inserters-1', 'apm_puddling_furnace_0')
-	apm.lib.utils.technology.remove.prerequisites('long-inserters-1', 'logistics')
-	apm.lib.utils.technology.add.science_pack('long-inserters-1', 'apm_industrial_science_pack', 1)
-	apm.lib.utils.technology.remove.science_pack('long-inserters-1', 'automation-science-pack')
-	apm.lib.utils.technology.mod.unit_count('long-inserters-1', 50)
-	apm.lib.utils.technology.mod.unit_time('long-inserters-1', 25)
-
-	apm.lib.utils.technology.remove.prerequisites('near-inserters', 'logistics')
-	apm.lib.utils.technology.add.prerequisites('near-inserters', 'apm_puddling_furnace_0')
-	apm.lib.utils.technology.add.science_pack('near-inserters', 'apm_industrial_science_pack', 1)
-	apm.lib.utils.technology.remove.science_pack('near-inserters', 'automation-science-pack')
-	apm.lib.utils.technology.mod.unit_count('near-inserters', 50)
-	apm.lib.utils.technology.mod.unit_time('near-inserters', 25)
+if apm_power_compat_bob then
+	require("prototypes.integrations.technologies.bobs")
 end
-
-if mods.bobplates and apm_power_compat_bob then
-	apm.lib.utils.technology.add.prerequisites('alloy-processing-1', 'apm_power_automation_science_pack')
-	apm.lib.utils.technology.add.prerequisites('chemical-processing-1', 'apm_power_electricity')
-	apm.lib.utils.technology.add.prerequisites('electrolysis-1', 'apm_power_electricity')
-	apm.lib.utils.technology.add.prerequisites('air-compressor-1', 'apm_power_electricity')
-	apm.lib.utils.technology.add.prerequisites('water-bore-1', 'apm_power_electricity')
-end
-
-if mods.bobmining and apm_power_compat_bob then
-	apm.lib.utils.technology.add.prerequisites('bob-drills-1', 'apm_electric_mining_drills')
-	apm.lib.utils.technology.add.prerequisites('bob-area-drills-1', 'apm_electric_mining_drills')
-	apm.lib.utils.technology.add.prerequisites('water-miner-1', 'apm_electric_mining_drills')
-	apm.lib.utils.technology.add.prerequisites('bob-pumpjacks-1', 'apm_electric_mining_drills')
-	apm.lib.utils.technology.add.prerequisites('bob-pumpjacks-1', 'logistic-science-pack')
-	apm.lib.utils.technology.add.prerequisites('steel-axe-2', 'logistic-science-pack')
-end
-
-if mods.bobrevamp and apm_power_compat_bob then
-	apm.lib.utils.technology.add.prerequisites('pumpjack', 'logistic-science-pack')
-end
-
-if mods.boblogistics and apm_power_compat_bob then
-	if not mods.bobinserters and apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
-		apm.lib.utils.technology.delete('apm_burner_long_inserter')
-
-		apm.lib.utils.technology.add.prerequisites('long-inserters-1', 'apm_puddling_furnace_0')
-		apm.lib.utils.technology.remove.prerequisites('long-inserters-1', 'logistics')
-		apm.lib.utils.technology.add.science_pack('long-inserters-1', 'apm_industrial_science_pack', 1)
-		apm.lib.utils.technology.remove.science_pack('long-inserters-1', 'automation-science-pack')
-		apm.lib.utils.technology.mod.unit_count('long-inserters-1', 50)
-		apm.lib.utils.technology.mod.unit_time('long-inserters-1', 25)
-	end
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
-		-- logistics-0
-		apm.lib.utils.technology.add.prerequisites('apm_power_steam', 'logistics-0')
-		apm.lib.utils.technology.add.prerequisites('logistics-0', 'apm_rubber-1')
-		apm.lib.utils.technology.add.science_pack('logistics-0', 'apm_industrial_science_pack', 1)
-		apm.lib.utils.technology.remove.science_pack('logistics-0', 'automation-science-pack')
-		apm.lib.utils.technology.force.recipe_for_unlock('logistics-0', 'basic-transport-belt')
-		apm.lib.utils.technology.mod.order('logistics-0', 'a-a-a')
-		-- logistics
-		apm.lib.utils.technology.remove.prerequisites('apm_power_steam', 'logistics')
-		apm.lib.utils.technology.add.prerequisites('logistics', 'apm_power_electricity')
-		apm.lib.utils.technology.remove.prerequisites('logistics', 'apm_rubber-1')
-		apm.lib.utils.technology.add.science_pack('logistics', 'automation-science-pack', 1)
-		apm.lib.utils.technology.remove.science_pack('logistics', 'apm_industrial_science_pack')
-		apm.lib.utils.technology.mod.unit_count('logistics', 50)
-		-- logistic-science-pack
-		apm.lib.utils.technology.add.prerequisites('logistic-science-pack', 'logistics')
-	end
-
-	apm.lib.utils.technology.force.recipe_for_unlock('apm_water_supply-1', 'copper-pipe')
-	apm.lib.utils.technology.force.recipe_for_unlock('apm_water_supply-1', 'copper-pipe-to-ground')
-	apm.lib.utils.technology.force.recipe_for_unlock('apm_stone_bricks', 'stone-pipe')
-	apm.lib.utils.technology.force.recipe_for_unlock('apm_stone_bricks', 'stone-pipe-to-ground')
-end
-
-if mods.bobelectronics and apm_power_compat_bob then
-	apm.lib.utils.recipe.remove('wooden-board')
-
-	apm.lib.utils.technology.remove.prerequisites('apm_water_supply-2', 'apm_power_electricity')
-	apm.lib.utils.technology.add.prerequisites('apm_water_supply-2', 'electronics')
-
-	apm.lib.utils.technology.force.recipe_for_unlock('apm_power_electricity', 'basic-circuit-board')
-	apm.lib.utils.technology.force.recipe_for_unlock('electronics', 'electronic-circuit')
-
-	apm.lib.utils.technology.add.prerequisites('electronics', 'chemical-processing-1')
-end
-
-if mods.bobtech and apm_power_compat_bob then
-	if not mods.PyCoalTBaA then
-		apm.lib.utils.technology.mod.icon('apm_power_automation_science_pack',
-			'__apm_resource_pack_ldinc__/graphics/technologies/apm_power_bob_automation_science_pack.png')
-	end
-end
-
-if mods.bobwarfare and apm_power_compat_bob then
-	apm.lib.utils.technology.remove.prerequisites('radar-1', 'military')
-	apm.lib.utils.technology.add.prerequisites('radar-1', 'military-2')
-end
-
-if mods.bobpower and apm_power_compat_bob then
-	if apm.lib.utils.setting.get.starup('bobmods-power-steam') then
-		apm.lib.utils.technology.delete('apm_power_boiler')
-		apm.lib.utils.technology.delete('apm_steam_engine')
-	end
-	apm.lib.utils.technology.add.prerequisites('bob-steam-engine-2', 'apm_power_electricity')
-	apm.lib.utils.technology.mod.unit_count('bob-steam-engine-2', 100)
-	apm.lib.utils.technology.mod.unit_count('bob-steam-engine-3', 125)
-	apm.lib.utils.technology.mod.unit_count('bob-steam-engine-4', 150)
-	apm.lib.utils.technology.mod.unit_count('bob-steam-engine-5', 200)
-	apm.lib.utils.technology.add.prerequisites('bob-boiler-2', 'apm_power_electricity')
-	apm.lib.utils.technology.mod.unit_count('bob-boiler-2', 100)
-	apm.lib.utils.technology.mod.unit_count('bob-boiler-3', 125)
-	apm.lib.utils.technology.mod.unit_count('bob-boiler-4', 150)
-	apm.lib.utils.technology.mod.unit_count('bob-boiler-5', 200)
-	apm.lib.utils.technology.force.recipe_for_unlock('apm_power_electricity', 'bob-burner-generator')
-end
-
-if mods.bobwarfare and apm_power_compat_bob then
-	apm.lib.utils.technology.add.prerequisites('bob-turrets-2', 'logistic-science-pack')
-	apm.lib.utils.technology.add.prerequisites('bob-sniper-turrets-1', 'military-science-pack')
-end
-
-if mods.bobgreenhouse and apm_power_compat_bob then
-	apm.lib.utils.technology.add.prerequisites('bob-greenhouse', 'apm_power_electricity')
-end
-
 
 -- Angel ----------------------------------------------------------------------
 --
@@ -469,7 +349,7 @@ if mods["deadlock-beltboxes-loaders"] then
 end
 
 --- [SafTheLamb]
---- 
+---
 --- [wood-logistics]
 if mods["wood-logistics"] then
 	require("prototypes.integrations.technologies.wood-logistics")
