@@ -69,3 +69,30 @@ function apm.lib.utils.resource.on_starting_zone(resource_name, value)
 		log(APM_MSG_INFO('on_starting_zone()', 'resource with name: "' .. tostring(resource_name) .. msg))
 	end
 end
+
+---@param name string
+function apm.lib.utils.resource.remove(name)
+	local resource = data.raw["resource"][name]
+
+	if not resource then
+		return
+	end
+
+	resource.hidden = true
+	resource.hidden_in_factoriopedia = true
+
+	local ctrl = data.raw["autoplace-control"][name]
+
+	if ctrl then
+		ctrl.hidden = true
+		ctrl.hidden_in_factoriopedia = true
+	end
+
+	for _, preset in pairs(data.raw["map-gen-presets"]) do
+		for _, val in pairs(preset) do
+			if val.basic_settings and val.basic_settings.autoplace_controls then
+				val.basic_settings.autoplace_controls[name] = nil
+			end
+		end
+	end
+end

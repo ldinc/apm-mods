@@ -52,13 +52,13 @@ apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM', 'apm_thorium_o
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM', 'thorium-ore', 10) -- bobs: thorium-ore
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T0', 'electronic-circuit') -- fallback to vanilla
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T0', 'basic-circuit-board', 10) -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T0', 'bob-basic-circuit-board', 10) -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T0', 'apm_mechanical_relay', 50) -- apm: wet steam relay
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T1', 'electronic-circuit') -- fallback to vanilla
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T1', 'basic-circuit-board', 10) -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T1', 'bob-basic-circuit-board', 10) -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T1', 'apm_steam_relay', 50) -- apm: wet steam relay
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T2', 'electronic-circuit') -- fallback to vanilla
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T2', 'basic-circuit-board', 10) -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T2', 'bob-basic-circuit-board', 10) -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T3', 'electronic-circuit') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T3', 'electronic-circuit', 10)  -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T4', 'advanced-circuit') -- fallback to vanilla
@@ -66,25 +66,25 @@ apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T4', 'advanced-c
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T5', 'processing-unit') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T5', 'processing-unit', 10)  -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T6', 'processing-unit') -- fallback to vanilla
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T6', 'advanced-processing-unit', 10)  -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_CIRCUIT_T6', 'bob-advanced-processing-unit', 10)  -- bob
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T0', 'iron-gear-wheel') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T0', 'apm_gearing', 5) -- apm 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T1', 'iron-gear-wheel') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T1', 'apm_gearing', 5) -- apm 
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T1', 'steel-gear-wheel', 10) -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T1', 'bob-steel-gear-wheel', 10) -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T2', 'iron-gear-wheel') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T2', 'apm_gearing', 5) -- apm 
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T2', 'brass-gear-wheel', 10) -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T2', 'bob-brass-gear-wheel', 10) -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T3', 'iron-gear-wheel') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T3', 'apm_gearing', 5) -- apm 
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T3', 'cobalt-steel-gear-wheel', 10) -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T3', 'bob-cobalt-steel-gear-wheel', 10) -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T4', 'iron-gear-wheel') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T4', 'apm_gearing', 5) -- apm 
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T4', 'titanium-gear-wheel', 10) -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T4', 'bob-titanium-gear-wheel', 10) -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T5', 'iron-gear-wheel') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T5', 'apm_gearing', 5) -- apm 
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T5', 'tungsten-gear-wheel', 10) -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T5', 'bob-tungsten-gear-wheel', 10) -- bob
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T6', 'iron-gear-wheel') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T6', 'apm_gearing', 5) -- apm 
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T6', 'nitinol-gear-wheel', 10) -- bob
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_GEAR_T6', 'bob-nitinol-gear-wheel', 10) -- bob

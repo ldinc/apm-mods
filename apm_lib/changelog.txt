@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.14
+Date: 07.04.2025
+  Added:
+    - [apm.lib.utils.planet.remove.resource] remove resource from planet by name
+    - [apm.lib.utils.planet.remove.everywhere_resource] remove resource from all planets by name
+    - [apm.lib.utils.resource.remove] remove resource
+---------------------------------------------------------------------------------------------------
 Version: 0.31.13
 Date: 06.04.2025
   Added:
