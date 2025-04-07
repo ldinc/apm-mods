@@ -46,17 +46,14 @@ apm.lib.utils.recipe.result.replace_all('uranium-fuel-cell', 'apm_fuel_rod_urani
 --
 -- ----------------------------------------------------------------------------
 if mods.bobpower and apm_nuclear_compat_bob then
-	apm.lib.utils.recipe.ingredient.replace_all('thorium-232', 'apm_oxide_pellet_th232')
-	apm.lib.utils.recipe.result.replace_all('thorium-232', 'apm_oxide_pellet_th232')
+	apm.lib.utils.recipe.ingredient.replace_all('bob-thorium-232', 'apm_oxide_pellet_th232')
+	apm.lib.utils.recipe.result.replace_all('bob-thorium-232', 'apm_oxide_pellet_th232')
 
-	apm.lib.utils.recipe.ingredient.replace_all('plutonium-239', 'apm_oxide_pellet_pu239')
-	apm.lib.utils.recipe.result.replace_all('plutonium-239', 'apm_oxide_pellet_pu239')
+	apm.lib.utils.recipe.ingredient.replace_all('bob-plutonium-239', 'apm_oxide_pellet_pu239')
+	apm.lib.utils.recipe.result.replace_all('bob-plutonium-239', 'apm_oxide_pellet_pu239')
 
-	apm.lib.utils.recipe.ingredient.replace_all('thorium-fuel-cell', 'apm_fuel_rod_thorium')
-	apm.lib.utils.recipe.result.replace_all('thorium-fuel-cell', 'apm_fuel_rod_thorium')
-
-	apm.lib.utils.recipe.ingredient.replace_all('used-up-thorium-fuel-cell', 'apm_fuel_rod_thorium_active')
-	apm.lib.utils.recipe.result.replace_all('used-up-thorium-fuel-cell', 'apm_fuel_rod_thorium_active')
+	apm.lib.utils.recipe.ingredient.replace_all('bob-used-up-thorium-fuel-cell', 'apm_fuel_rod_thorium_active')
+	apm.lib.utils.recipe.result.replace_all('bob-used-up-thorium-fuel-cell', 'apm_fuel_rod_thorium_active')
 end
 
 -- entity description updates -------------------------------------------------

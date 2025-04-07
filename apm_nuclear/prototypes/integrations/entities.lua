@@ -42,12 +42,19 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.bobassembly and apm_nuclear_compat_bob then
-	apm.lib.utils.furnace.mod.category.add('electric-furnace-2', 'apm_electric_smelting')
-	apm.lib.utils.furnace.mod.category.add('electric-furnace-3', 'apm_electric_smelting')
-	apm.lib.utils.assembler.mod.category.add('electric-chemical-mixing-furnace', 'apm_electric_smelting')
-	apm.lib.utils.assembler.mod.category.add('electric-chemical-mixing-furnace-1', 'apm_electric_smelting')
-	apm.lib.utils.assembler.mod.category.add('electric-mixing-furnace', 'apm_electric_smelting')
+	apm.lib.utils.furnace.mod.category.add('bob-electric-furnace-2', 'apm_electric_smelting')
+	apm.lib.utils.furnace.mod.category.add('bob-electric-furnace-3', 'apm_electric_smelting')
+	apm.lib.utils.assembler.mod.category.add('bob-electric-chemical-mixing-furnace', 'apm_electric_smelting')
+	apm.lib.utils.assembler.mod.category.add('bob-electric-chemical-mixing-furnace-1', 'apm_electric_smelting')
+	apm.lib.utils.assembler.mod.category.add('bob-electric-chemical-mixing-furnace-2', 'apm_electric_smelting')
+	apm.lib.utils.assembler.mod.category.add('bob-electric-mixing-furnace', 'apm_electric_smelting')
 	apm.lib.utils.assembler.mod.category.add('chemical-furnace', 'apm_electric_smelting')
+end
+
+if mods.bobores and apm_nuclear_compat_bob then
+	apm.lib.utils.item.remove("bob-thorium-ore")
+	apm.lib.utils.resource.remove("bob-thorium-ore")
+	apm.lib.utils.planet.remove.everywhere_resource("bob-thorium-ore")
 end
 
 if mods.bobtech and apm_nuclear_compat_bob then

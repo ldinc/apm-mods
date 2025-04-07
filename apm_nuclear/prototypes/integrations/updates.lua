@@ -44,7 +44,7 @@ if mods.apm_recycling then
 
     if mods.bobplates and mods.bobores then
         apm.lib.utils.recycling.scrap.remove('apm_waste_container')
-        apm.lib.utils.recycling.scrap.add({recipe='apm_waste_container', metal='lead'})
+        apm.lib.utils.recycling.scrap.add({recipe='apm_waste_container', metal='bob-lead-plate'})
     end
 end
 

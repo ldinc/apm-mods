@@ -31,8 +31,8 @@ APM_LOG_SETTINGS(self, 'apm_nuclear_compat_mferrari', apm_nuclear_compat_mferrar
 -- ----------------------------------------------------------------------------
 if mods.bobplates and apm_nuclear_compat_bob then
     apm.lib.utils.technology.delete('bobingabout-enrichment-process')
-    apm.lib.utils.technology.delete('thorium-processing')
-    apm.lib.utils.technology.delete('thorium-fuel-reprocessing')
+    apm.lib.utils.technology.delete('bob-thorium-processing')
+    apm.lib.utils.technology.delete('bob-thorium-fuel-reprocessing')
     apm.lib.utils.technology.add.prerequisites('deuterium-processing', 'apm_nuclear_science_pack')
     apm.lib.utils.technology.add.science_pack('deuterium-processing', 'apm_nuclear_science_pack')
     apm.lib.utils.technology.add.science_pack('deuterium-fuel-reprocessing', 'apm_nuclear_science_pack')

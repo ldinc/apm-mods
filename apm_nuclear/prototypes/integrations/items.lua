@@ -30,12 +30,21 @@ APM_LOG_SETTINGS(self, 'apm_nuclear_compat_mferrari', apm_nuclear_compat_mferrar
 --
 -- ----------------------------------------------------------------------------
 if mods.bobpower and apm_nuclear_compat_bob then
-	apm.lib.utils.item.overwrite.group('heat-exchanger-2', 'apm_nuclear_machines_1', 'ac_b')
-	apm.lib.utils.item.overwrite.group('heat-exchanger-3', 'apm_nuclear_machines_1', 'ac_c')
-	apm.lib.utils.item.overwrite.group('steam-turbine-2', 'apm_nuclear_machines_1', 'ad_b')
-	apm.lib.utils.item.overwrite.group('steam-turbine-3', 'apm_nuclear_machines_1', 'ad_c')
+	-- apm.lib.utils.item.overwrite.group('heat-exchanger-2', 'apm_nuclear_machines_1', 'ac_b')
+	-- apm.lib.utils.item.overwrite.group('heat-exchanger-3', 'apm_nuclear_machines_1', 'ac_c')
+	-- apm.lib.utils.item.overwrite.group('steam-turbine-2', 'apm_nuclear_machines_1', 'ad_b')
+	-- apm.lib.utils.item.overwrite.group('steam-turbine-3', 'apm_nuclear_machines_1', 'ad_c')
     
     apm.lib.utils.item.mod.fuel_category('deuterium-fuel-cell', 'apm_nuclear_deuterium')
+end
+
+if mods.bobplates and apm_nuclear_compat_bob then
+	apm.lib.utils.item.remove("depleted-uranium-fuel-cell")
+	apm.lib.utils.item.remove("uranium-fuel-cell")
+	apm.lib.utils.item.remove("bob-plutonium-fuel-cell")
+	apm.lib.utils.item.remove("bob-thorium-fuel-cell")
+	apm.lib.utils.item.remove("bob-depleted-thorium-fuel-cell")
+	apm.lib.utils.item.remove("bob-thorium-plutonium-fuel-cell")
 end
 
 -- RealisticReactors ----------------------------------------------------------
