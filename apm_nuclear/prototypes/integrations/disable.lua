@@ -32,8 +32,13 @@ APM_LOG_SETTINGS(self, 'apm_nuclear_compat_mferrari', apm_nuclear_compat_mferrar
 if mods.bobpower and apm_nuclear_compat_bob then
     apm.lib.utils.item.remove('bob-thorium-232')
     apm.lib.utils.item.remove('bob-plutonium-239')
+
     apm.lib.utils.item.remove('bob-thorium-fuel-cell')
     apm.lib.utils.item.remove('bob-used-up-thorium-fuel-cell')
+
+    apm.lib.utils.item.remove('bob-plutonium-fuel-cell')
+    apm.lib.utils.item.remove('bob-plutonium-fuel-cell')
+
 
     apm.lib.utils.recipe.remove('bob-thorium-plutonium-fuel-cell')
     apm.lib.utils.recipe.remove('bob-thorium-fuel-cell')
