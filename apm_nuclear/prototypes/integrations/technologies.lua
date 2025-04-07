@@ -33,9 +33,9 @@ if mods.bobplates and apm_nuclear_compat_bob then
     apm.lib.utils.technology.delete('bobingabout-enrichment-process')
     apm.lib.utils.technology.delete('bob-thorium-processing')
     apm.lib.utils.technology.delete('bob-thorium-fuel-reprocessing')
-    apm.lib.utils.technology.add.prerequisites('deuterium-processing', 'apm_nuclear_science_pack')
-    apm.lib.utils.technology.add.science_pack('deuterium-processing', 'apm_nuclear_science_pack')
-    apm.lib.utils.technology.add.science_pack('deuterium-fuel-reprocessing', 'apm_nuclear_science_pack')
+    apm.lib.utils.technology.add.prerequisites('bob-deuterium-processing', 'apm_nuclear_science_pack')
+    apm.lib.utils.technology.add.science_pack('bob-deuterium-processing', 'apm_nuclear_science_pack')
+    apm.lib.utils.technology.add.science_pack('bob-deuterium-fuel-reprocessing', 'apm_nuclear_science_pack')
 end
 
 if mods.bobassembly and apm_nuclear_compat_bob then
@@ -51,9 +51,9 @@ if mods.bobpower and apm_nuclear_compat_bob then
 end
 
 if mods.bobequipment and apm_nuclear_compat_bob then
-    apm.lib.utils.technology.add.science_pack('fusion-reactor-equipment-2', 'apm_nuclear_science_pack')
-    apm.lib.utils.technology.add.science_pack('fusion-reactor-equipment-3', 'apm_nuclear_science_pack')
-    apm.lib.utils.technology.add.science_pack('fusion-reactor-equipment-4', 'apm_nuclear_science_pack')
+    apm.lib.utils.technology.add.science_pack('bob-fusion-reactor-equipment-2', 'apm_nuclear_science_pack')
+    apm.lib.utils.technology.add.science_pack('bob-fusion-reactor-equipment-3', 'apm_nuclear_science_pack')
+    apm.lib.utils.technology.add.science_pack('bob-fusion-reactor-equipment-4', 'apm_nuclear_science_pack')
 end
 
 -- angel ----------------------------------------------------------------------

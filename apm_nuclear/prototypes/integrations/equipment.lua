@@ -39,12 +39,12 @@ if mods.bobvehicleequipment and apm_nuclear_compat_bob then
 end
 
 if mods.bobequipment and apm_nuclear_compat_bob and apm_nuclear_fission_reactor_overhaul then
-    apm.lib.utils.item.overwrite.localised_name('fusion-reactor-equipment-2', {"equipment-name.apm_fission_reactor", 'MK2'})
-    apm.nuclear.update_fission_equipment('fusion-reactor-equipment-2', 2)
+    apm.lib.utils.item.overwrite.localised_name('bob- fusion-reactor-equipment-2', {"equipment-name.apm_fission_reactor", 'MK2'})
+    apm.nuclear.update_fission_equipment('bob-fusion-reactor-equipment-2', 2)
 
-    apm.lib.utils.item.overwrite.localised_name('fusion-reactor-equipment-3', {"equipment-name.apm_fission_reactor", 'MK3'})
-    apm.nuclear.update_fission_equipment('fusion-reactor-equipment-3', 3)
+    apm.lib.utils.item.overwrite.localised_name('bob-fusion-reactor-equipment-3', {"equipment-name.apm_fission_reactor", 'MK3'})
+    apm.nuclear.update_fission_equipment('bob-fusion-reactor-equipment-3', 3)
 
-    apm.lib.utils.item.overwrite.localised_name('fusion-reactor-equipment-4', {"equipment-name.apm_fission_reactor", 'MK4'})
-    apm.nuclear.update_fission_equipment('fusion-reactor-equipment-4', 4)
+    apm.lib.utils.item.overwrite.localised_name('bob-fusion-reactor-equipment-4', {"equipment-name.apm_fission_reactor", 'MK4'})
+    apm.nuclear.update_fission_equipment('bob-fusion-reactor-equipment-4', 4)
 end

@@ -77,16 +77,16 @@ if mods.bobplates and apm_nuclear_compat_bob then
 	apm.lib.utils.recipe.remove('plutonium-fuel-cell')
 
 
-	apm.lib.utils.recipe.ingredient.replace_all('bob-plutonium-fuel-cell', 'apm_fuel_rod_thorium')
-	apm.lib.utils.recipe.result.replace_all('bob-plutonium-fuel-cell', 'apm_fuel_rod_thorium')
+	apm.lib.utils.recipe.ingredient.replace_all('bob-plutonium-fuel-cell', 'apm_fuel_rod_neptunium')
+	apm.lib.utils.recipe.result.replace_all('bob-plutonium-fuel-cell', 'apm_fuel_rod_neptunium')
 	apm.lib.utils.recipe.remove('bob-plutonium-fuel-cell')
 
-	apm.lib.utils.recipe.ingredient.replace_all('bob-thorium-fuel-cell', 'apm_fuel_rod_neptunium')
-	apm.lib.utils.recipe.result.replace_all('bob-thorium-fuel-cell', 'apm_fuel_rod_neptunium')
+	apm.lib.utils.recipe.ingredient.replace_all('bob-thorium-fuel-cell', 'apm_fuel_rod_thorium')
+	apm.lib.utils.recipe.result.replace_all('bob-thorium-fuel-cell', 'apm_fuel_rod_thorium')
 	apm.lib.utils.recipe.remove('bob-thorium-fuel-cell')
 
-	apm.lib.utils.recipe.ingredient.replace_all('bob-thorium-plutonium-fuel-cell', 'apm_fuel_rod_neptunium')
-	apm.lib.utils.recipe.result.replace_all('bob-thorium-plutonium-fuel-cell', 'apm_fuel_rod_neptunium')
+	apm.lib.utils.recipe.ingredient.replace_all('bob-thorium-plutonium-fuel-cell', 'apm_fuel_rod_thorium')
+	apm.lib.utils.recipe.result.replace_all('bob-thorium-plutonium-fuel-cell', 'apm_fuel_rod_thorium')
 	apm.lib.utils.recipe.remove('bob-thorium-plutonium-fuel-cell')
 
 	apm.lib.utils.recipe.remove('bob-thorium-fuel-reprocessing')
@@ -98,11 +98,11 @@ if mods.bobplates and not mods.angelspetrochem and apm_nuclear_compat_bob then
 end
 
 if mods.bobwarfare and apm_nuclear_compat_bob then
-	apm.lib.utils.recipe.ingredient.mod('uranium-rounds-magazine', 'apm_depleted_uranium_ingots', 0)
-	apm.lib.utils.recipe.ingredient.mod('uranium-bullet-projectile', 'uranium-238', 0)
-	apm.lib.utils.recipe.ingredient.mod('uranium-bullet-projectile', 'apm_depleted_uranium_ingots', 1, 2)
-	apm.lib.utils.recipe.ingredient.replace('shotgun-uranium-shell', 'uranium-238', 'apm_depleted_uranium_ingots')
-	apm.lib.utils.recipe.ingredient.mod('shotgun-uranium-shell', 'apm_depleted_uranium_ingots', 5, 7)
+	apm.lib.utils.recipe.ingredient.mod('bob-uranium-rounds-magazine', 'apm_depleted_uranium_ingots', 0)
+	apm.lib.utils.recipe.ingredient.mod('bob-uranium-bullet-projectile', 'uranium-238', 0)
+	apm.lib.utils.recipe.ingredient.mod('bob-uranium-bullet-projectile', 'apm_depleted_uranium_ingots', 1, 2)
+	apm.lib.utils.recipe.ingredient.replace('bob-shotgun-uranium-shell', 'uranium-238', 'apm_depleted_uranium_ingots')
+	apm.lib.utils.recipe.ingredient.mod('bob-shotgun-uranium-shell', 'apm_depleted_uranium_ingots', 5, 7)
 end
 
 -- angel ----------------------------------------------------------------------------------

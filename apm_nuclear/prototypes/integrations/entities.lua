@@ -48,7 +48,7 @@ if mods.bobassembly and apm_nuclear_compat_bob then
 	apm.lib.utils.assembler.mod.category.add('bob-electric-chemical-mixing-furnace-1', 'apm_electric_smelting')
 	apm.lib.utils.assembler.mod.category.add('bob-electric-chemical-mixing-furnace-2', 'apm_electric_smelting')
 	apm.lib.utils.assembler.mod.category.add('bob-electric-mixing-furnace', 'apm_electric_smelting')
-	apm.lib.utils.assembler.mod.category.add('chemical-furnace', 'apm_electric_smelting')
+	apm.lib.utils.assembler.mod.category.add('bob-chemical-furnace', 'apm_electric_smelting')
 end
 
 if mods.bobores and apm_nuclear_compat_bob then
@@ -58,7 +58,7 @@ if mods.bobores and apm_nuclear_compat_bob then
 end
 
 if mods.bobtech and apm_nuclear_compat_bob then
-	apm.lib.utils.lab.add.science_pack('lab-2', 'apm_nuclear_science_pack')
+	apm.lib.utils.lab.add.science_pack('bob-lab-2', 'apm_nuclear_science_pack')
 end
 
 -- MFerrari -------------------------------------------------------------------
