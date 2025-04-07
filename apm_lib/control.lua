@@ -8,8 +8,8 @@ local inserter = require('lib.script.inserter')
 local radiation = require('lib.script.radiation')
 local storage = require('lib.script.storage')
 local equipment = require('lib.script.equipment')
-require('lib.script.interfaces')
 
+require('lib.script.interfaces')
 require("lib.features.all")
 
 -- Function -------------------------------------------------------------------
@@ -167,19 +167,6 @@ local function event_on_player_armor_inventory_changed(event)
 	equipment.control_equipment_manager_shortcut(event)
 end
 
-function dump(o)
-	if type(o) == 'table' then
-		local s = '{ '
-		for k, v in pairs(o) do
-			if type(k) ~= 'number' then k = '"' .. k .. '"' end
-			s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
-		end
-		return s .. '} '
-	else
-		return tostring(o)
-	end
-end
-
 -- Function -------------------------------------------------------------------
 --
 --
@@ -197,10 +184,6 @@ end
 local function event_on_player_joined_game(event)
 	local player = game.players[event.player_index]
 	equipment.check_equipment_manager(player)
-
-	-- log("event:" .. dump(event))
-	-- log("player:" .. tostring(event.player_index))
-	-- log("player:" .. dump(player))
 
 	-- local inventory = player.get_inventory(defines.inventory.character_main)
 	-- log("inv:" .. tostring(inventory))

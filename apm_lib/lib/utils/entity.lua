@@ -291,7 +291,7 @@ function apm.lib.utils.entity.set.fuel_category(entity, categories)
 		log(APM_MSG_WARNING('set.fuel_category()', 'set fuel_categories for : "' .. tostring(entity.name) .. '"'))
 		log(APM_MSG_WARNING(
 			'set.fuel_category()',
-			'Note: please be carfuel with this function, it can break compatibillity with other mods!'
+			'Note: please be careful with this function, it can break compatibillity with other mods!'
 		))
 		log(APM_MSG_WARNING('set.fuel_category()', '---------------------------------'))
 	end
