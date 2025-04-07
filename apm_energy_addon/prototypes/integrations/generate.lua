@@ -137,19 +137,19 @@ end
 if mods.bobplates and apm_energy_addon_compat_bob then
 	apm.lib.utils.batteries.generate(
 		2,
-		'lithium-ion-battery',
+		'bob-lithium-ion-battery',
 		apm.energy_addon.constants.fuel_value.battery_bob_lithium_ion,
 		apm.energy_addon.icons.depleted_battery_overlay,
 		0.90,
-		'battery-2'
+		'bob-battery-2'
 	)
 	apm.lib.utils.batteries.generate(
 		3,
-		'silver-zinc-battery',
+		'bob-silver-zinc-battery',
 		apm.energy_addon.constants.fuel_value.battery_bob_silver_zinc,
 		apm.energy_addon.icons.depleted_battery_overlay,
 		0.95,
-		'battery-3'
+		'bob-battery-3'
 	)
 end
 

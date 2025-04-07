@@ -22,11 +22,13 @@ function apm.energy_addon.overhaul(vehicle_name)
 		return
 	end
 
+	if not vehicle or not vehicle.energy_source or vehicle.energy_source.type ~= "burner" then
+		return
+	end
+
 	vehicle.localised_description = { "entity-description.apm_electric" }
 
 	local fuel_inventory_size = 2
-
-	log(serpent.block(vehicle))
 
 	if vehicle.energy_source.fuel_inventory_size > 3 then
 		fuel_inventory_size = 3
