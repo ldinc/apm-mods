@@ -1,7 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.30
+Date: 01.05.2025
+  Changed:
+    - [Colony Builder][compat] colony-greenhouse recipe [25 "electric-engine-unit", 50 "refined-concrete", 50 "small-lamp", 50 "processing-unit"]
+    - [Colony Builder][compat] colony-greenhouse recipe with bobplates mod added [100 "bob-glass"]
+    - [Colony Builder][compat] colony-greenhouse recipe with apm_power_overhaul_machine_frames setting enabled added [12 "apm_machine_frame_advanced"]
+---------------------------------------------------------------------------------------------------
 Version: 0.31.29
 Date: 01.05.2025
-  Fixed:
+  Added:
     - [Colony Builder][compat] available only apm's wood recipies
     - [Colony Builder][compat] recipies from colony-greenhouse available with apm's gh
     - [Colony Builder][compat] recipies from apm's gh available with colony-greenhouse too
