@@ -220,6 +220,10 @@ end
 ---
 --- [/SafTheLamb]
 
+--- [ColonyBuilder]
+if mods["ColonyBuilder"] then
+	require("prototypes.integrations.entities.colony-builder")
+end
 
 --- [space age]
 if mods["space-age"] then

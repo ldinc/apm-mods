@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.29
+Date: 01.05.2025
+  Fixed:
+    - [Colony Builder][compat] available only apm's wood recipies
+    - [Colony Builder][compat] recipies from colony-greenhouse available with apm's gh
+    - [Colony Builder][compat] recipies from apm's gh available with colony-greenhouse too
+    - [Colony Builder][compat] recipe "Agricultural farming" changed to: [200 wet mud, 50 crushed stone, 12k water]
+    - [Colony Builder][compat] recipies for gh now available with apm_greenhouse_1 tech
+    - [Colony Builder][compat] entity colony-greenhouse will be available with utility-science-pack tech (you can still use apm's electric gh)
+    - [Colony Builder][compat] colony-greenhouse production speed tuned to be 4 (1->4)
+---------------------------------------------------------------------------------------------------
+Version: 0.31.28
+Date: 25.04.2025
+  Fixed:
+    - [Bob's mods][logistics] fix robot's overhaul by bob's ...
+---------------------------------------------------------------------------------------------------
 Version: 0.31.27
 Date: 08.04.2025
   Fixed:

@@ -61,6 +61,9 @@ if mods.boblogistics then
 		apm.lib.utils.technology.remove.science_pack('logistics-0', 'automation-science-pack')
 		apm.lib.utils.technology.force.recipe_for_unlock('logistics-0', 'basic-transport-belt')
 		apm.lib.utils.technology.mod.order('logistics-0', 'a-a-a')
+
+		apm.lib.utils.technology.add.prerequisites('logistics', 'logistics-0')
+
 		-- logistics
 		apm.lib.utils.technology.remove.prerequisites('apm_power_steam', 'logistics')
 		apm.lib.utils.technology.add.prerequisites('logistics', 'apm_power_electricity')
@@ -85,10 +88,7 @@ if mods.bobelectronics then
 	apm.lib.utils.technology.remove.prerequisites('apm_water_supply-2', 'apm_power_electricity')
 	apm.lib.utils.technology.add.prerequisites('apm_water_supply-2', 'electronics')
 
-	apm.lib.utils.technology.force.recipe_for_unlock('apm_power_electricity', 'bob-basic-circuit-board')
-	apm.lib.utils.technology.force.recipe_for_unlock('electronics', 'electronic-circuit')
-
-	apm.lib.utils.technology.add.prerequisites('electronics', 'bob-chemical-processing-1')
+	apm.lib.utils.technology.force.recipe_for_unlock('electronics', 'bob-basic-circuit-board')
 end
 
 --- [bobtech]

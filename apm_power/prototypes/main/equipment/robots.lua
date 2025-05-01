@@ -40,4 +40,5 @@ robot.speed_multiplier_when_out_of_energy = 0.2
 robot.energy_per_move = "4kJ"
 robot.min_to_charge = 0.2
 robot.max_to_charge = 0.95
+robot.next_upgrade = nil
 data:extend({ robot })

@@ -372,3 +372,8 @@ end
 if mods["hot-metals"] then
 	require("prototypes.integrations.technologies.hot-metals")
 end
+
+--- [ColonyBuilder]
+if mods["ColonyBuilder"] then
+	require("prototypes.integrations.technologies.colony-builder")
+end

@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_power/prototypes/integrations/bots.lua'
@@ -6,13 +6,17 @@ local self = 'apm_power/prototypes/integrations/bots.lua'
 APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
-local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"].value
+local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
+	.value
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
-local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"].value
+local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
+	.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
-local apm_power_compat_angel_overhaul_machine_frames = settings.startup["apm_power_compat_angel_overhaul_machine_frames"].value
+local apm_power_compat_angel_overhaul_machine_frames = settings.startup
+	["apm_power_compat_angel_overhaul_machine_frames"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
-local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"].value
+local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
+	.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -44,10 +48,18 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reve
 --
 -- ----------------------------------------------------------------------------
 if mods.boblogistics and apm_power_compat_bob then
-    apm.lib.utils.bot.logistic.overhaul('bob-logistic-robot-2', 2)
-    apm.lib.utils.bot.logistic.overhaul('bob-logistic-robot-3', 3)
-    apm.lib.utils.bot.logistic.overhaul('bob-logistic-robot-4', 4)
-    apm.lib.utils.bot.construction.overhaul('bob-construction-robot-2', 2)
-    apm.lib.utils.bot.construction.overhaul('bob-construction-robot-3', 3)
-    apm.lib.utils.bot.construction.overhaul('bob-construction-robot-4', 4)
+	apm.lib.utils.bot.logistic.overhaul('bob-logistic-robot-2', 2)
+	apm.lib.utils.bot.logistic.overhaul('bob-logistic-robot-3', 3)
+	apm.lib.utils.bot.logistic.overhaul('bob-logistic-robot-4', 4)
+	apm.lib.utils.bot.construction.overhaul('bob-construction-robot-2', 2)
+	apm.lib.utils.bot.construction.overhaul('bob-construction-robot-3', 3)
+	apm.lib.utils.bot.construction.overhaul('bob-construction-robot-4', 4)
+end
+
+if mods.boblogistics then
+	local robot = data.raw["construction-robot"]["apm_zx80_construction_robot"]
+
+	if robot then
+		robot.next_upgrade = nil
+	end
 end
