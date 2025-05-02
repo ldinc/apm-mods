@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.16
+Date: 02.05.2025
+  Added:
+    - [apm.lib.utils.recipe.category.exists] check recipe category
+  Fix:
+    - [apm.lib.utils.assembler.add.crafting_categories] can gracefully handle non-existing recipe category
+---------------------------------------------------------------------------------------------------
 Version: 0.31.15
 Date: 08.04.2025
   Fix:

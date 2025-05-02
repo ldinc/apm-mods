@@ -106,7 +106,14 @@ function apm.lib.utils.assembler.add.crafting_categories(assembler_name, craftin
 
 	for _, crafting_category in ipairs(crafting_categories) do
 		if not apm.lib.utils.category.exists(crafting_category, assembler.crafting_categories) then
-			table.insert(assembler.crafting_categories, crafting_category)
+			if apm.lib.utils.recipe.category.exists(crafting_category) then
+				table.insert(assembler.crafting_categories, crafting_category)
+			else
+				log(APM_MSG_ERROR(
+					"apm.lib.utils.assembler.add.crafting_categories",
+					"invalid crafting category ["..crafting_category.."] will be ignored"
+				))
+			end
 		end
 	end
 end
