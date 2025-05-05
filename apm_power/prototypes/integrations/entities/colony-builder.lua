@@ -11,3 +11,5 @@ end
 apm.lib.utils.assembler.add.crafting_categories("colony-greenhouse", {"apm_greenhouse"})
 
 apm.lib.utils.assembler.mod.crafting_speed("colony-greenhouse", 4)
+
+apm.lib.utils.assembler.mod.crafting_speed("apm_greenhouse_2", 2)
