@@ -17,6 +17,21 @@
         "empty-block"
     ],
     "Lua.diagnostics.globals": [
-        "a"
-    ]
+    ],
+    "Lua.codeLens.enable": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "apm_bob_rework/": true,
+        "apm_bob_rework_resource_pack/": true,
+        "apm_recycling/": true,
+        "apm_starfall/": true,
+        "RampantFixed/": true,
+        "rso-mod/": true,
+        "rso-mod_6.2.22/": true,
+        "bobmods_gfxtweak": true,
+    }
 }

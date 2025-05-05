@@ -1,0 +1,12 @@
+{
+	"name": "apm_debug_ldinc",
+	"version": "0.0.1",
+	"title": "ldinc debug tools",
+	"author": "ldinc",
+	"dependencies": [
+		"base >= 2.0.13"
+	],
+	"description": "This is a toolset for debug",
+	"factorio_version": "2.0",
+	"homepage": ""
+}
