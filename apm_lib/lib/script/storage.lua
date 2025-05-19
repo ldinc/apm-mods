@@ -90,7 +90,8 @@ local function container(entity, cause)
 			},
 			force = entity_force,
 		}
-		
+
+		-- TODO: for factorio 2.0.51 now we can use LuaSurface.spill_inventory instead spill_item_stack
 		game.surfaces[surface].spill_item_stack(param)
 
 		increment_counter = increment_counter + 1
