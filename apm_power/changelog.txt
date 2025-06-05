@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.33
+Date: 05.06.2025
+  Added:
+    - Module visualization for particle filter (like vanilla modules)
+---------------------------------------------------------------------------------------------------
 Version: 0.31.32
 Date: 04.05.2025
   Changed:
@@ -50,13 +55,13 @@ Date: 01.04.2025
 Version: 0.31.24
 Date: 01.04.2025
   Fixed:
-    - crash with crushing-industry migration script while mod is missing (moved logic to patch on control.lua stage) 
+    - crash with crushing-industry migration script while mod is missing (moved logic to patch on control.lua stage)
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.23
 Date: 31.03.2025
   Added:
     - [Crushing Industry] recipe for crushed coal replaced w\ apm's recipe
-    - [Crushing Industry] burner and electric crushers were set hidden (replaced with similar assembling machines from apm) 
+    - [Crushing Industry] burner and electric crushers were set hidden (replaced with similar assembling machines from apm)
     - [Crushing Industry] recipies for crushing machines added to original
     - [Crushing Industry] reworked technology tree (apm crushing stone tech resolve base crushing entity and recipies)
     - [Crushing Industry] added migration script for replacing existing enitites and items
@@ -173,7 +178,7 @@ Date: 12.12.2024
 Version: 0.31.03
 Date: 11.12.2024
   Changed:
-    - split Coal & Steam category into: production + intermediates products 
+    - split Coal & Steam category into: production + intermediates products
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.02
 Date: 11.12.2024
@@ -218,7 +223,7 @@ Date: 04.12.2024
 Version: 0.30.24
 Date: 03.12.2024
   - Fixed:
-    - apm_asphalt subgroup = "artificial-tiles" -> "ground-artificial" 
+    - apm_asphalt subgroup = "artificial-tiles" -> "ground-artificial"
 ---------------------------------------------------------------------------------------------------
 Version: 0.30.23
 Date: 03.12.2024
@@ -266,7 +271,7 @@ Date: 22.11.2024
 Version: 0.30.15
 Date: 21.11.2024
   Fixed:
-    - `iron-stick` now is available by start with hand crafting 
+    - `iron-stick` now is available by start with hand crafting
 ---------------------------------------------------------------------------------------------------
 Version: 0.30.14
 Date: 21.11.2024
@@ -319,14 +324,14 @@ Date: 15.11.2024
 Version: 0.30.5
 Date: 15.11.2024
   Changed:
-    - Set Earendel patch enabled by default 
+    - Set Earendel patch enabled by default
   Fixed:
     - Cycles with tech tree with AAI Industry
 ---------------------------------------------------------------------------------------------------
 Version: 0.30.4
 Date: 14.11.2024
   Removed:
-    - Runtime settings for improvised armor. The feature now relies on freeplay-starting-equipment. 
+    - Runtime settings for improvised armor. The feature now relies on freeplay-starting-equipment.
 ---------------------------------------------------------------------------------------------------
 Version: 0.30.3
 Date: 14.11.2024
@@ -441,7 +446,7 @@ Date: 16.12.2020
   Bugfixes:
     - fixed bug with Angel's mod (angelsrefining).
   Changes:
-    - changed starter wood reciepe result form {14, [1-6]} to {[15-20]} 
+    - changed starter wood reciepe result form {14, [1-6]} to {[15-20]}
 ---------------------------------------------------------------------------------------------------
 Version: 0.19.50
 Date: 23.05.2020
@@ -1280,7 +1285,7 @@ Date: 27.04.2019
 Version: 0.17.44
 Date: 26.04.2019
   Changes:
-    - removed from game: "Perpetual motion gear wheel" 
+    - removed from game: "Perpetual motion gear wheel"
     - recipe: transport-belt: -"Perpetual motion gear wheel" +iron-gear-wheel
     - item: new: 'raw cruibel'
     - recipe: 'raw crucible 1' from 2x stone-brick
