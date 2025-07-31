@@ -4,5 +4,6 @@ if mods.boblogistics then
 
 	if ok then
 		apm.lib.utils.entity.del.next_upgrade(entity)
+		apm.lib.utils.entity.set.hidden(entity)
 	end
 end

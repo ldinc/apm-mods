@@ -39,7 +39,7 @@ if mods.boblogistics then
 
 	--- changes for steam inserter
 	apm.lib.utils.recipe.ingredient.replace_all("bob-steam-inserter", "apm_steam_inserter")
-	apm.lib.utils.recipe.disable("bob-steam-inserter")
+	apm.lib.utils.recipe.remove("bob-steam-inserter")
 
 	if mods["aai-loaders"] then
 		apm.lib.utils.recipe.ingredient.replace("aai-basic-loader", "apm_steam_inserter", "burner-inserter")
