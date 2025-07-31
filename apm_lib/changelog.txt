@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.17
+Date: 31.07.2025
+  Added:
+    - [apm.lib.utils.entity.get.by_name] find entity by name and group
+    - [apm.lib.utils.entity.del.next_upgrade] remove next_upgrade for selected entity
+---------------------------------------------------------------------------------------------------
 Version: 0.31.16
 Date: 02.05.2025
   Added:
@@ -48,7 +54,7 @@ Version: 0.31.08
 Date: 01.01.2025
   Fixed:
     - [apm.lib.utils.assembler.add.fluid_connections] corrected input/output
-    - [apm.lib.utils.assembler.set.hidden] added hidden_in_factoriopedia 
+    - [apm.lib.utils.assembler.set.hidden] added hidden_in_factoriopedia
     - [apm.lib.utils.boiler.overhaul] changed default values to be odd 1MW
     - [apm.lib.utils.recipe.ingredient.replace_all] pass multiplier for ingredient
   Added:
@@ -524,7 +530,7 @@ Date: 11. 12. 2019
     - new: ./lib/utils/entity.lua: function: apm.lib.utils.entity.has.crafting_category(entity, category)
     - new: ./lib/utils/entity.lua: function: apm.lib.utils.entity.add.crafting_category(entity, category)
     - new: ./lib/utils/entity.lua: function: apm.lib.utils.entity.has.fuel_category(entity, category)
-    - new: ./lib/utils/entity.lua: function: apm.lib.utils.entity.add.fuel_category(entity, category) 
+    - new: ./lib/utils/entity.lua: function: apm.lib.utils.entity.add.fuel_category(entity, category)
     - new: ./lib/utils/entities.lua: function: apm.lib.utils.entities.add.fuel_category_with_conditional(entity_type, conditional_category, category)
     - new: ./lib/utils/entities.lua: function: apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition(entity_type, conditional_category, categories)
     - new: ./lib/utils/entities.lua: function: apm.lib.utils.entities.set.fuel_categoriy_to_all(entity_type, categories)
@@ -549,7 +555,7 @@ Date: 08. 12. 2019
   Changes:
     - ./lib/scripts/inserter.lua: support for on_event(defines.events.on_entity_cloned)
     - ./lib/scripts/offshore_pump.lua: added forced: raise_built and raised_destroy
-    - new: ./lib/scripts/radiation.lua: function: radiation.remote.list_items() 
+    - new: ./lib/scripts/radiation.lua: function: radiation.remote.list_items()
       - returns a table with item names as key and radiation level as value
       - /c remote.call('apm_radiation', 'list_items')
       - example return: {'uranium-235'=2, 'uranium-fuel-cell'=2, 'used-up-uranium-fuel-cell'=3}
@@ -1031,7 +1037,7 @@ Date: 25. 04. 2019
 Version: 0.17.47
 Date: 25. 04. 2019
   Changes:
-    - ./lib/utils/recycling.lua: add some description to functions    
+    - ./lib/utils/recycling.lua: add some description to functions
     - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.metal.generation() changed icon generation
     - new settings: Type: 'Runtime-Global' -> 'Safe lock': Default: activated, to force the default value for 'Maximum inserter checks per tick'
 ---------------------------------------------------------------------------------------------------
@@ -1094,7 +1100,7 @@ Date: 21. 04. 2019
 Version: 0.17.39
 Date: 18. 04. 2019
   Bugfixes:
-    - fix: ./script error: Error while running event apm_lib::on_entity_died (ID 4) attempt to call field 'on_remove' (a nil value)  
+    - fix: ./script error: Error while running event apm_lib::on_entity_died (ID 4) attempt to call field 'on_remove' (a nil value)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.38
 Date: 18. 04. 2019

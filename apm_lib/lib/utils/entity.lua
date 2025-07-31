@@ -29,7 +29,26 @@ function apm.lib.utils.entity.prototype_list()
 	return prototypes
 end
 
---- [ntity.has.fuel_category]
+---@param name string
+---@param group string
+---@return any, boolean
+function apm.lib.utils.entity.get.by_name(name, group)
+	local group = data.raw[group]
+
+	if group == nil then
+		return nil, false
+	end
+
+	local entity = group[name]
+
+	if entity == nil then
+		return nil, false
+	end
+
+	return entity, true
+end
+
+--- [entity.has.fuel_category]
 ---@param entity any
 ---@param category data.FuelCategoryID
 ---@return boolean
@@ -230,6 +249,12 @@ local function check_if_an_entity_exists(next_upgrade)
 	end
 
 	return false
+end
+
+function apm.lib.utils.entity.del.next_upgrade(entity)
+	if entity ~= nil then
+		entity.next_upgrade = nil
+	end
 end
 
 --- [entity.set.next_upgrade]
