@@ -3,7 +3,6 @@
         {
             "name": "spaceage",
             "factorioPath": "d:\\Games\\Factorio\\bin\\x64\\factorio.exe",
-            "active": true
         }
     ],
     "Lua.workspace.userThirdParty": [
@@ -17,8 +16,7 @@
     "Lua.diagnostics.disable": [
         "empty-block"
     ],
-    "Lua.diagnostics.globals": [
-    ],
+    "Lua.diagnostics.globals": [],
     "Lua.codeLens.enable": true,
     "files.exclude": {
         "**/.git": true,
