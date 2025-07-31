@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.31.35
+Date: 31.07.2025
+  Changed:
+    - [AII Loaders + Bob's Logistics] tech for basic loader changed to be yearly tier with trigger by crafting 200 basic belts
+---------------------------------------------------------------------------------------------------
+Version: 0.31.34
+Date: 31.07.2025
+  Changed:
+    - [Bob's mods] steam inserter smoother replacement
+    - [AII Loaders] fix recipe
+---------------------------------------------------------------------------------------------------
 Version: 0.31.33
 Date: 05.06.2025
   Added:

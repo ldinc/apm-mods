@@ -199,6 +199,12 @@ if mods.RealisticReactors and apm_power_compat_realistic_reactors then
 	apm.lib.utils.furnace.overhaul('rr-cooling-tower-steam', false)
 end
 
+--- [bobs]
+if apm_power_compat_bob then
+	require("prototypes.integrations.entities.bobs")
+end
+
+
 --- [SafTheLamb]
 ---
 

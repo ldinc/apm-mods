@@ -36,6 +36,14 @@ if mods.boblogistics then
 	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
 		apm.lib.utils.recipe.ingredient.replace('logistic-science-pack', 'basic-transport-belt', 'transport-belt')
 	end
+
+	--- changes for steam inserter
+	apm.lib.utils.recipe.ingredient.replace_all("bob-steam-inserter", "apm_steam_inserter")
+	apm.lib.utils.recipe.disable("bob-steam-inserter")
+
+	if mods["aai-loaders"] then
+		apm.lib.utils.recipe.ingredient.replace("aai-basic-loader", "apm_steam_inserter", "burner-inserter")
+	end
 end
 
 --- [bobplates]

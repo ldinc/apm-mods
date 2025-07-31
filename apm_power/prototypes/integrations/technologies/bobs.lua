@@ -79,6 +79,14 @@ if mods.boblogistics then
 	apm.lib.utils.technology.force.recipe_for_unlock('apm_water_supply-1', 'bob-copper-pipe-to-ground')
 	apm.lib.utils.technology.force.recipe_for_unlock('apm_stone_bricks', 'bob-stone-pipe')
 	apm.lib.utils.technology.force.recipe_for_unlock('apm_stone_bricks', 'bob-stone-pipe-to-ground')
+
+	if mods["aai-loaders"] then
+		apm.lib.utils.technology.remove.prerequisites_all("aai-basic-loader")
+		apm.lib.utils.technology.add.prerequisites("aai-basic-loader", "logistics-0")
+
+		apm.lib.utils.technology.force.update_science_packs("aai-basic-loader")
+		apm.lib.utils.technology.trigger.set.craft_item("aai-basic-loader", "bob-basic-transport-belt", 200)
+	end
 end
 
 --- [bobelectronics]
