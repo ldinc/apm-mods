@@ -263,15 +263,14 @@ local function inserter_work(t_object, pickup_target, drop_target)
 
 	-- ignore ash if it was blacklisted
 	if entity.inserter_filter_mode then
-
 		local count = entity.filter_slot_count
 
-		for i=1,count,1 do
-				local flt = entity.get_filter(i)
+		for i = 1, count, 1 do
+			local flt = entity.get_filter(i)
 
-				if flt and entity.inserter_filter_mode == "blacklist" and flt.comparator == "=" and flt.name == "apm_generic_ash" then
-						blacklisted[flt.name] = true
-				end
+			if flt and entity.inserter_filter_mode == "blacklist" and flt.comparator == "=" and flt.name == "apm_generic_ash" then
+				blacklisted[flt.name] = true
+			end
 		end
 	end
 
@@ -566,6 +565,7 @@ end
 function inserter_script.on_init()
 	setup_environment(false, false)
 	get_config()
+	register_commands()
 end
 
 -- Function -------------------------------------------------------------------
