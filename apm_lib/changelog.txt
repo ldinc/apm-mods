@@ -8,7 +8,7 @@ Date: 02.08.2025
 Version: 0.31.19
 Date: 02.08.2025
   Bugfixes:
-    - Fixed multiplayer error with command register action
+    - Fixed multiplayer error with command register action.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.18
 Date: 31.07.2025
@@ -26,12 +26,12 @@ Date: 02.05.2025
   Features:
     - [apm.lib.utils.recipe.category.exists] Check recipe category
   Bugfixes:
-    - [apm.lib.utils.assembler.add.crafting_categories] Can gracefully handle non-existing recipe category
+    - [apm.lib.utils.assembler.add.crafting_categories] Can gracefully handle non-existing recipe category.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.15
 Date: 08.04.2025
   Bugfixes:
-    - Some small refactoring
+    - Some small refactoring.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.14
 Date: 07.04.2025
@@ -43,7 +43,7 @@ Date: 07.04.2025
 Version: 0.31.13
 Date: 06.04.2025
   Features:
-    - [apm.lib.utils.spidertron.exist] Added spidertron fn
+    - [apm.lib.utils.spidertron.exist] Added spidertron fn.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.12
 Date: 01.04.2025
@@ -54,12 +54,12 @@ Date: 01.04.2025
 Version: 0.31.11
 Date: 01.04.2025
   Bugfixes:
-    - Some missing objects for target require calls
+    - Some missing objects for target require calls.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.10
 Date: 10.01.2025
   Features:
-    - [apm_lib_radiation_dmg_based_on_stack] Adding setting for scale radiation damage by item quantity
+    - [apm_lib_radiation_dmg_based_on_stack] Adding setting for scale radiation damage by item quantity.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.09
 Date: 03.01.2025
@@ -80,7 +80,7 @@ Date: 01.01.2025
 Version: 0.31.07
 Date: 26.12.2024
   Changes:
-    - apm.lib.utils.technology.add.science_pack_conditional: Adding optional skiplist
+    - apm.lib.utils.technology.add.science_pack_conditional: Adding optional skiplist.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.06
 Date: 25.12.2024
@@ -98,7 +98,7 @@ Version: 0.31.04
 Date: 12.12.2024
   Features:
     - apm.lib.features.stack_size
-    - Settings: apm_lib_stack_size default item's stack size (recommended: 200)
+    - Settings: apm_lib_stack_size default item's stack size (recommended: 200).
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.03
 Date: 12.12.2024
@@ -118,7 +118,7 @@ Version: 0.31.01
 Date: 10.12.2024
   Features:
     - apm.lib.utils.item.mod.overwrite_weight_for_science_packs
-    - All science pack are rewrited with default item's weight (1000)
+    - All science pack are rewrited with default item's weight (1000).
     - apm.lib.utils.constants.weight
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.00
@@ -136,7 +136,7 @@ Date: 07.12.2024
     - utils.description
     - utils.equipment
   Bugfixes:
-    - Burner car burnt_result_slot
+    - Burner car burnt_result_slot.
 ---------------------------------------------------------------------------------------------------
 Version: 0.30.26
 Date: 06.12.2024
@@ -472,7 +472,7 @@ Version: 0.18.12
 Date: 26. 12. 2019
   Bugfixes:
     - Fix: ./lib/utils/assembler.lua: function: apm.lib.utils.assembler.get.fuel_categories() wrong log format.
-    - Fix: ./lib/scripts/inserter.lua: won't pickup ash from burnt_inventory if bobinserters changes the position to something that is not x*90°
+    - Fix: ./lib/scripts/inserter.lua: won't pickup ash from burnt_inventory if bobinserters changes the position to something that is not x*90Â°
   Changes:
     - Optimizations: ./lib/scripts/inserter.lua
     - Changed: ./lib/scripts/inserter.lua: add support for sound volume templates, sound enable/disable per player.
@@ -1248,87 +1248,87 @@ Date: 10. 04. 2019
 Version: 0.17.21
 Date: 09. 04. 2019
   Changes:
-    - Settings: For "Maximum inserter checks per tick" settings, the possible minimum value has been changed to 0 instead of 10
-    - New icons: for icon generation: ./graphics/icons/dynamics/apm_chemical_flame_1.png, ./graphics/icons/dynamics/apm_chemical_flame_2.png, ./graphics/icons/dynamics/apm_chemical_flame_3.png
+    - Settings: For "Maximum inserter checks per tick" settings, the possible minimum value has been changed to 0 instead of 10.
+    - New icons: for icon generation: ./graphics/icons/dynamics/apm_chemical_flame_1.png, ./graphics/icons/dynamics/apm_chemical_flame_2.png, ./graphics/icons/dynamics/apm_chemical_flame_3.png.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.20
 Date: 09. 04. 2019
   Changes:
-    - Some new basic image masks for use in other mods together
+    - Some new basic image masks for use in other mods together.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.19
 Date: 08. 04. 2019
   Optimizations:
-    - Optimized: ./lib/script/inserter.lua code (reduce required calls) performance gain: average ~0.14ms up to 0.22ms on 100 inserter iterations/tick
+    - Optimized: ./lib/script/inserter.lua code (reduce required calls) performance gain: average ~0.14ms up to 0.22ms on 100 inserter iterations/tick.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.18
 Date: 06. 04. 2019
   Minor Features:
-    - New: ./lib/utils/icon.lua: function: apm.lib.utils.icon.add_tier_lable(name, level)
+    - New: ./lib/utils/icon.lua: function: apm.lib.utils.icon.add_tier_lable(name, level).
   Changes:
-    - Replaced icon: ./graphics/icons/dynamics/apm_brick.png
-    - Replaced icon: ./graphics/icons/dynamics/apm_chunk.png
-    - New icon: ./graphics/icons/dynamics/apm_crushed.png
-    - Replaced icon: ./graphics/icons/dynamics/apm_tier_1.png
-    - Replaced icon: ./graphics/icons/dynamics/apm_tier_2.png
-    - Replaced icon: ./graphics/icons/dynamics/apm_tier_3.png
-    - Replaced icon: ./graphics/icons/dynamics/apm_tier_4.png
+    - Replaced icon: ./graphics/icons/dynamics/apm_brick.png.
+    - Replaced icon: ./graphics/icons/dynamics/apm_chunk.png.
+    - New icon: ./graphics/icons/dynamics/apm_crushed.png.
+    - Replaced icon: ./graphics/icons/dynamics/apm_tier_1.png.
+    - Replaced icon: ./graphics/icons/dynamics/apm_tier_2.png.
+    - Replaced icon: ./graphics/icons/dynamics/apm_tier_3.png.
+    - Replaced icon: ./graphics/icons/dynamics/apm_tier_4.png.
   Info:
-    - Cleaning up the source code, file names, etc. (naming, comments, unneeded parts)
+    - Cleaning up the source code, file names, etc. (naming, comments, unneeded parts).
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.17
 Date: 06. 04. 2019
   Changes:
-    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.metal.add() removed bool argument "b_separate_tech"
-    - Added file LICENSE
+    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.metal.add() removed bool argument "b_separate_tech".
+    - Added file LICENSE.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.16
 Date: 06. 04. 2019
   Minor Features:
-    - New: ./lib/utils/bot.lua: apm.lib.utils.bot.logistic.exist(bot_name), apm.lib.utils.bot.construction.exist(bot_name), apm.lib.utils.bot.logistic.overhaul(bot_name, level), apm.lib.utils.bot.construction.overhaul(bot_name, level)
+    - New: ./lib/utils/bot.lua: apm.lib.utils.bot.logistic.exist(bot_name), apm.lib.utils.bot.construction.exist(bot_name), apm.lib.utils.bot.logistic.overhaul(bot_name, level), apm.lib.utils.bot.construction.overhaul(bot_name, level).
   Changes:
-    - ./lib/utils/assembler.lua: function: apm.lib.utils.assembler.burner.overhaul() removed unused argument "level"
-    - ./lib/utils/locomotive.lua: function: apm.lib.utils.locomotive.overhaul() changed base pollution/s to 2/300000 per watt
-    - ./lib/utils/car.lua: function: apm.lib.utils.car.overhaul() changed base pollution/s to 3/150000 per watt
-    - ./lib/utils/mining_drill.lua: function: apm.lib.utils.mining_drill.burner.overhaul() new formula to calculate pollution/s on burner mining drills
+    - ./lib/utils/assembler.lua: function: apm.lib.utils.assembler.burner.overhaul() removed unused argument "level".
+    - ./lib/utils/locomotive.lua: function: apm.lib.utils.locomotive.overhaul() changed base pollution/s to 2/300000 per watt.
+    - ./lib/utils/car.lua: function: apm.lib.utils.car.overhaul() changed base pollution/s to 3/150000 per watt.
+    - ./lib/utils/mining_drill.lua: function: apm.lib.utils.mining_drill.burner.overhaul() new formula to calculate pollution/s on burner mining drills.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.15
 Date: 05. 04. 2019
   Changes:
-    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.generation() added the possibility to translate all strings
+    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.generation() added the possibility to translate all strings.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.14
 Date: 04. 04. 2019
   Changes:
-    - ./lib/utils/car.lua: function: apm.lib.utils.car.overhaul_all() now has the following arguments: only_refined, only_petrol, only_electrical
-    - ./lib/utils/car.lua: function: apm.lib.utils.car.overhaul() now has the following arguments: car_name, only_refined, only_petrol, only_electrical
-    - ./lib/utils/car.lua: function: apm.lib.utils.car.overhaul() set default: fuel_categories = {"chemical"}
-    - ./lib/utils/locomotive.lua: function: apm.lib.utils.locomotive.overhaul_all() now has the following arguments: only_refined, only_petrol, only_electrical
-    - ./lib/utils/locomotive.lua: function: apm.lib.utils.locomotive.overhaul() now has the following arguments: locomotive_name, only_refined, only_petrol, only_electrical
-    - ./lib/utils/locomotive.lua: function: apm.lib.utils.locomotive.overhaul() set default: fuel_categories = {"chemical","apm_refined_chemical", "apm_petrol"}
-    - ./lib/utils/boiler.lua: function: apm.lib.utils.boiler.overhaul() set default: fuel_categories = {"apm_refined_chemical", "apm_petrol"}
-    - ./lib/utils/mining_drill.lua: function: apm.lib.utils.mining_drill.burner.overhaul() set default: fuel_categories = {"chemical","apm_refined_chemical", "apm_petrol"}
-    - ./lib/utils/item.lua: function new: apm.lib.utils.item.overwrite.battery(level, item_name, fuel_value, burnt_result)
+    - ./lib/utils/car.lua: function: apm.lib.utils.car.overhaul_all() now has the following arguments: only_refined, only_petrol, only_electrical.
+    - ./lib/utils/car.lua: function: apm.lib.utils.car.overhaul() now has the following arguments: car_name, only_refined, only_petrol, only_electrical.
+    - ./lib/utils/car.lua: function: apm.lib.utils.car.overhaul() set default: fuel_categories = {"chemical"}.
+    - ./lib/utils/locomotive.lua: function: apm.lib.utils.locomotive.overhaul_all() now has the following arguments: only_refined, only_petrol, only_electrical.
+    - ./lib/utils/locomotive.lua: function: apm.lib.utils.locomotive.overhaul() now has the following arguments: locomotive_name, only_refined, only_petrol, only_electrical.
+    - ./lib/utils/locomotive.lua: function: apm.lib.utils.locomotive.overhaul() set default: fuel_categories = {"chemical","apm_refined_chemical", "apm_petrol"}.
+    - ./lib/utils/boiler.lua: function: apm.lib.utils.boiler.overhaul() set default: fuel_categories = {"apm_refined_chemical", "apm_petrol"}.
+    - ./lib/utils/mining_drill.lua: function: apm.lib.utils.mining_drill.burner.overhaul() set default: fuel_categories = {"chemical","apm_refined_chemical", "apm_petrol"}.
+    - ./lib/utils/item.lua: function new: apm.lib.utils.item.overwrite.battery(level, item_name, fuel_value, burnt_result).
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.13
 Date: 01. 04. 2019
   Info:
-    - Added new dynamic images for use in my other mods
+    - Added new dynamic images for use in my other mods.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.12
 Date: 31. 03. 2019
   Bugfixes:
-    - Fixed: ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.generation(): Scrap iron/copper recycling not available without angels mods (https://mods.factorio.com/mod/apm_recycling/discussion/5ca11cc23f02c6000d4cb011)
+    - Fixed: ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.generation(): Scrap iron/copper recycling not available without angels mods (https://mods.factorio.com/mod/apm_recycling/discussion/5ca11cc23f02c6000d4cb011).
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.11
 Date: 31. 03. 2019
   Changes:
-    - ./lib/utils/icons.lua: changed some internal names
-    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.generation() removed unnecessary code
-    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.generation() optimized technology generation
-    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.metal.add() add new argument for technology generation
-    - Replaced some images with new ones
-    - ./lib/utils/mining_drill.lua: function: apm.lib.utils.mining_drill.burner.overhaul(mining_drill_name, level) - new calculations
+    - ./lib/utils/icons.lua: changed some internal names.
+    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.generation() removed unnecessary code.
+    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.generation() optimized technology generation.
+    - ./lib/utils/recycling.lua: function: apm.lib.utils.recycling.metal.add() add new argument for technology generation.
+    - Replaced some images with new ones.
+    - ./lib/utils/mining_drill.lua: function: apm.lib.utils.mining_drill.burner.overhaul(mining_drill_name, level) - new calculations.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.10
 Date: 29. 03. 2019
@@ -1339,10 +1339,10 @@ Date: 29. 03. 2019
 Version: 0.17.09
 Date: 28. 03. 2019
   Bugfixes:
-    - ./lib/utils/starfall.lua: function: utils.starfall.generate() categorize resources by harvest types: with and without fluid
-    - ./lib/script/starfall.lua: function: create_impact() on game start only use resources without the need for fluid to harvest
+    - ./lib/utils/starfall.lua: function: utils.starfall.generate() categorize resources by harvest types: with and without fluid.
+    - ./lib/script/starfall.lua: function: create_impact() on game start only use resources without the need for fluid to harvest.
   Minor Features:
-    - New setting: to change the number of inserter checks performed by the script per tick (default: 100)
+    - New setting: to change the number of inserter checks performed by the script per tick (default: 100).
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.08
 Date: 27. 03. 2019
@@ -1357,36 +1357,36 @@ Date: 27. 03. 2019
   Minor Features:
     - New: ./lib/utils/item.lua: function: utils.item.overwrite.group
   Changes:
-    - Improved some scripts
+    - Improved some scripts.
   Bugfixes:
-    - ./lib/utils/recipe.lua: function: utils.recipe.result.replace(recipe_name, result_old, result_new) in some cases forget to set value for main_product
+    - ./lib/utils/recipe.lua: function: utils.recipe.result.replace(recipe_name, result_old, result_new) in some cases forget to set value for main_product.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.06
 Date: 24. 03. 2019
   Bugfixes:
-    - ./lib/utils/recipe.lua: function: convert_ingredients, removed copy and paste artifact
+    - ./lib/utils/recipe.lua: function: convert_ingredients, removed copy and paste artifact.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.05
 Date: 23. 03. 2019
   Bugfixes:
-    - ./lib/script/inserter.lua: function: check_filter' now handels blacklist and whitelist setting as expected
+    - ./lib/script/inserter.lua: function: check_filter' now handels blacklist and whitelist setting as expected.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.04
 Date: 23. 03. 2019
   Minor Features:
-    - New: ./lib/utils/recipe.lua: "replace_all(ingredient_old, ingredient_new)" replace "ingredient_old" with "ingredient_new" in all recipes
+    - New: ./lib/utils/recipe.lua: "replace_all(ingredient_old, ingredient_new)" replace "ingredient_old" with "ingredient_new" in all recipes.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.03
 Date: 23. 03. 2019
   Bugfixes:
-    - Fixed a failure that the inserter script wasn't running
+    - Fixed a failure that the inserter script wasn't running.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.02
 Date: 23. 03. 2019
   Info:
-    - Added new scripts for use in other mods
+    - Added new scripts for use in other mods.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.01
 Date: 16. 03. 2019
   Major Features:
-    - Initial release
+    - Initial release.

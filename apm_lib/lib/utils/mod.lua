@@ -6,6 +6,8 @@ if apm.lib == nil then apm.lib = {} end
 if apm.lib.utils == nil then apm.lib.utils = {} end
 if apm.lib.utils.mod == nil then apm.lib.utils.mod = {} end
 
+---@param name string
+---@return boolean
 function apm.lib.utils.mod.enabled(name)
 	if script.active_mods[name] then
 		return true

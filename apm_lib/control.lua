@@ -8,6 +8,7 @@ local inserter = require('lib.script.inserter')
 local radiation = require('lib.script.radiation')
 local storage = require('lib.script.storage')
 local equipment = require('lib.script.equipment')
+local init = require('lib.script.init')
 
 require('lib.script.interfaces')
 require("lib.features.all")
@@ -17,8 +18,9 @@ require("lib.features.all")
 --
 -- ----------------------------------------------------------------------------
 local function event_on_init()
-	storage.startupEquipment = {}
+	init.alloc_defenitions()
 	initial.run()
+	--- TODO:
 	inserter.on_init()
 	radiation.on_init()
 	storage.on_init()
