@@ -24,7 +24,8 @@ apm.lib.utils.category.create.subgroup(group, 'apm_power_machines_miner', 'ap_a'
 
 group = "apm_power_intermediates"
 
-apm.lib.utils.category.create.group(group, '__apm_resource_pack_ldinc__/graphics/categories/apm_power_intermediates.png', '06')
+apm.lib.utils.category.create.group(group, '__apm_resource_pack_ldinc__/graphics/categories/apm_power_intermediates.png',
+  '06')
 
 apm.lib.utils.category.create.subgroup(group, 'apm_power_fluid', 'aa_a')
 apm.lib.utils.category.create.subgroup(group, 'apm_power_tools', 'ab_a')
@@ -34,7 +35,6 @@ apm.lib.utils.category.create.subgroup(group, 'apm_power_wood', 'ae_a')
 apm.lib.utils.category.create.subgroup(group, 'apm_power_charcoal', 'ae_b')
 apm.lib.utils.category.create.subgroup(group, 'apm_power_coal', 'af_a')
 apm.lib.utils.category.create.subgroup(group, 'apm_power_coke', 'ag_a')
-apm.lib.utils.category.create.subgroup(group, 'apm_power_starfall', 'ah_a')
 apm.lib.utils.category.create.subgroup(group, 'apm_power_ash', 'ai_a')
 apm.lib.utils.category.create.subgroup(group, 'apm_power_electric', 'aj_a')
 apm.lib.utils.category.create.subgroup(group, 'apm_power_smelting', 'ak_a')

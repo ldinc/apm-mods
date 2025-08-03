@@ -54,18 +54,6 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reve
 APM_LOG_SETTINGS(self, 'apm_power_compat_arcitos', apm_power_compat_arcitos)
 APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_made_in)
 
-
-if mods.apm_recycling then
-	apm.lib.utils.assembler.burner.overhaul('apm_recycling_machine_0')
-	apm.lib.utils.recipe.ingredient.mod('apm_recycling_machine_0', 'iron-plate', 0)
-	apm.lib.utils.recipe.ingredient.mod('apm_recycling_machine_0', 'copper-plate', 0)
-
-	apm.power.machine_frame_addition('apm_recycling_machine_0', 1, nil, 3, nil, true)
-	apm.power.machine_frame_addition('apm_recycling_machine_1', 3, 1, 5, 3, true)
-	apm.power.machine_frame_addition('apm_recycling_machine_2', 3, 3, 7, 4, true)
-	apm.power.machine_frame_addition('apm_recycling_machine_3', 3, 3, 9, 5, true)
-end
-
 if mods.apm_energy_addon then
 	apm.lib.utils.recipe.ingredient.mod('apm_battery_charging_station', 'steel-plate', 0)
 	apm.power.machine_frame_addition('apm_battery_charging_station', 3, 3, 6, 3, true)

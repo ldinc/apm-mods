@@ -57,13 +57,6 @@ apm.lib.utils.technology.force.recipe_for_unlock('apm_fertiliser_2', 'apm_ammoni
 apm.lib.utils.technology.remove.science_pack('electric-engine', 'chemical-science-pack')
 apm.lib.utils.technology.add.prerequisites('electric-engine', 'apm_power_electricicty')
 
-if mods.apm_recycling then
-	apm.lib.utils.technology.add.science_pack('apm_recycling-0', 'apm_industrial_science_pack', 1)
-	apm.lib.utils.technology.remove.science_pack('apm_recycling-0', 'automation-science-pack')
-	apm.lib.utils.technology.add.prerequisites('apm_recycling-0', 'apm_stone_bricks')
-	apm.lib.utils.technology.mod.unit_count('apm_recycling-0', 20)
-end
-
 -- AsphaltRoads ----------------------------------------------------------------
 --
 --
@@ -296,10 +289,6 @@ if mods.ScienceCostTweakerM and apm_power_compat_sctm then
 	apm.lib.utils.technology.add.science_pack('sct-automation-science-pack', 'apm_industrial_science_pack', 1)
 	apm.lib.utils.technology.mod.unit_count('sct-automation-science-pack', 50)
 	apm.lib.utils.technology.mod.unit_time('sct-automation-science-pack', 30)
-
-	if mods.apm_recycling then
-		apm.lib.utils.technology.remove.prerequisites('apm_recycling-0', 'sct-automation-science-pack')
-	end
 
 	if mods.boblogistics then
 		if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then

@@ -12,12 +12,6 @@ apm.lib.utils.character.crafting_category.add('character', 'apm_handcrafting_onl
 -- general
 apm.lib.utils.recipe.category.create('apm_electric_smelting')
 
--- apm_recycling
-apm.lib.utils.recipe.category.create('apm_recycling_1')
-apm.lib.utils.recipe.category.create('apm_recycling_2')
-apm.lib.utils.recipe.category.create('apm_recycling_3')
-apm.lib.utils.recipe.category.create('apm_recycling_4')
-
 -- apm_power
 apm.lib.utils.recipe.category.create('apm_fluids_from_the_void')
 apm.lib.utils.recipe.category.create('apm_crusher')

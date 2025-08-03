@@ -54,9 +54,6 @@ apm.lib.utils.car.overhaul_all()
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.apm_recycling then
-	apm.lib.utils.assembler.burner.overhaul('apm_recycling_machine_0')
-end
 
 -- AlternativeSteam -----------------------------------------------------------
 --

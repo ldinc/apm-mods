@@ -12,7 +12,7 @@ local apm_nuclear_compat_bio_industries = settings.startup["apm_nuclear_compat_b
 local apm_nuclear_compat_sctm = settings.startup["apm_nuclear_compat_sctm"].value
 local apm_nuclear_compat_realistic_reactors = settings.startup["apm_nuclear_compat_realistic_reactors"].value
 local apm_nuclear_compat_realistic_reactors_cooling_tower = settings.startup
-["apm_nuclear_compat_realistic_reactors_cooling_tower"].value
+		["apm_nuclear_compat_realistic_reactors_cooling_tower"].value
 local apm_nuclear_compat_reverse_factory = settings.startup["apm_nuclear_compat_reverse_factory"].value
 local apm_nuclear_compat_mferrari = settings.startup["apm_nuclear_compat_mferrari"].value
 local apm_nuclear_always_show_made_in = settings.startup["apm_nuclear_always_show_made_in"].value
@@ -36,11 +36,6 @@ APM_LOG_SETTINGS(self, 'apm_nuclear_always_show_made_in', apm_nuclear_always_sho
 if mods.apm_power_ldinc then
 	apm.lib.utils.recipe.remove('apm_nuclear_ash')
 	apm.lib.utils.recipe.ingredient.replace('apm_phosphorus', 'apm_nuclear_ash', 'apm_generic_ash')
-end
-
-if mods.apm_recycling then
-	apm.lib.utils.recipe.category.change('apm_fuel_rod_container_maintenance', 'apm_recycling_2')
-	apm.lib.utils.recipe.category.change('apm_breeder_container_worn_maintenance', 'apm_recycling_2')
 end
 
 -- bio_industries -------------------------------------------------------------------------
@@ -90,7 +85,6 @@ if mods.bobplates and apm_nuclear_compat_bob then
 	apm.lib.utils.recipe.remove('bob-thorium-plutonium-fuel-cell')
 
 	apm.lib.utils.recipe.remove('bob-thorium-fuel-reprocessing')
-
 end
 
 if mods.bobplates and not mods.angelspetrochem and apm_nuclear_compat_bob then
@@ -121,11 +115,7 @@ if mods.angelspetrochem and mods.angelsrefining and apm_nuclear_compat_angel the
 	apm.lib.utils.recipe.result.mod('apm_breeder_uranium_seperation_process_b', 'water-red-waste', 50)
 	apm.lib.utils.recipe.result.mod('apm_oxide_pellet_u238', 'water-greenyellow-waste', 25)
 	apm.lib.utils.recipe.result.mod('apm_oxide_pellet_u235', 'water-greenyellow-waste', 25)
-	if mods.bobplates or mods.apm_starfall then
-		apm.lib.utils.recipe.result.mod('apm_oxide_pellet_th232', 'water-greenyellow-waste', 25)
-		apm.lib.utils.recipe.result.mod('apm_fuel_cell_thorium_recovery_stage_b', 'water-red-waste', 50)
-		apm.lib.utils.recipe.result.mod('apm_breeder_thorium_seperation_process_b', 'water-red-waste', 50)
-	end
+
 	apm.lib.utils.recipe.ingredient.mod('apm_phosphorpentachlorid', 'gas-chlorine', 100)
 
 	apm.lib.utils.recipe.ingredient.mod('apm_phosphoroxychlorid', 'gas-sulfur-dioxide', 50)

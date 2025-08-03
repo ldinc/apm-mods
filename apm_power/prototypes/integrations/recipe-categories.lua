@@ -7,18 +7,18 @@ APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
 local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
-.value
+		.value
 local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
 
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
 local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
-.value
+		.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
 local apm_power_compat_angel_overhaul_machine_frames = settings.startup["apm_power_compat_angel_overhaul_machine_frames"
 ].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
 local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
-.value
+		.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -51,16 +51,6 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reve
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.apm_recycling then
-	apm.lib.utils.recipe.category.change('apm_filter_charcoal_used_recycling', 'apm_recycling_1')
-	apm.lib.utils.recipe.category.change('apm_machine_frame_basic_maintenance', 'apm_recycling_1')
-	apm.lib.utils.recipe.category.change('apm_machine_frame_steam_maintenance', 'apm_recycling_1')
-	apm.lib.utils.recipe.category.change('apm_machine_frame_advanced_maintenance', 'apm_recycling_1')
-	apm.lib.utils.recipe.category.change('apm_crusher_drums_used_repair', 'apm_recycling_1')
-	apm.lib.utils.recipe.category.change('apm_press_plates_used_grind', 'apm_recycling_1')
-	apm.lib.utils.recipe.category.change('apm_saw_blade_iron_maintenance', 'apm_recycling_1')
-	apm.lib.utils.recipe.category.change('apm_saw_blade_steel_maintenance', 'apm_recycling_1')
-end
 
 -- Earendel -------------------------------------------------------------------
 --

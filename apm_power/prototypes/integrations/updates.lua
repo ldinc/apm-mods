@@ -7,16 +7,16 @@ APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
 local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
-.value
+		.value
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
 local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
-.value
+		.value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
 local apm_power_compat_angel_overhaul_machine_frames = settings.startup
-["apm_power_compat_angel_overhaul_machine_frames"].value
+		["apm_power_compat_angel_overhaul_machine_frames"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
 local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
-.value
+		.value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -51,27 +51,6 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_kumpu', apm_power_compat_kumpu)
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.apm_recycling then
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_steam_relay', metal = 'iron' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_steam_relay', metal = 'copper' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_mechanical_relay', metal = 'iron' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_mechanical_relay', metal = 'copper' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_gearing', metal = 'iron' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_electromagnet', metal = 'iron' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_electromagnet', metal = 'copper' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_filter_charcoal', metal = 'steel' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_sieve_iron', metal = 'iron' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_sieve_copper', metal = 'copper' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_press_plates', metal = 'steel' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_crusher_drums', metal = 'iron' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_saw_blade_iron', metal = 'iron' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_saw_blade_steel', metal = 'steel' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_pistions', metal = 'iron' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_machine_frame_basic', metal = 'iron' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_machine_frame_basic', metal = 'copper' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_machine_frame_steam', metal = 'steel' })
-	apm.lib.utils.recycling.scrap.add({ recipe = 'apm_machine_frame_advanced', metal = 'steel' })
-end
 
 -- Reverse Factory ------------------------------------------------------------
 --

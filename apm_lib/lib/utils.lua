@@ -115,17 +115,11 @@ require 'lib.utils.technology'
 if not apm.lib.utils.batteries then apm.lib.utils.batteries = {} end
 require 'lib.utils.batteries'
 
-if not apm.lib.utils.starfall then apm.lib.utils.starfall = {} end
-require 'lib.utils.starfall'
-
 if not apm.lib.utils.tile then apm.lib.utils.tile = {} end
 require 'lib.utils.tile'
 
 if not apm.lib.utils.builder then apm.lib.utils.builder = {} end
 require 'lib.utils.builder'
-
-if not apm.lib.utils.recycling then apm.lib.utils.recycling = {} end
-require 'lib.utils.recycling'
 
 if not apm.lib.utils.patch then apm.lib.utils.patch = {} end
 require 'lib.utils.patch.aai'

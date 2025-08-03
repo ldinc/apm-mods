@@ -21,11 +21,5 @@ apm.lib.utils.fuel.category.create('apm_nuclear_breeder')
 apm.lib.utils.fuel.category.create('apm_nuclear_shielded_cell')
 apm.lib.utils.fuel.category.create('apm_nuclear_fusion_cell')
 
--- apm_starfall
-apm.lib.utils.fuel.category.create('apm_starfall_alien')
-
 -- apm_energy_addon
 apm.lib.utils.fuel.category.create('apm_electrical')
-
-
-

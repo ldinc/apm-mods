@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_nuclear/prototypes/integrations/updates.lua'
@@ -11,7 +11,8 @@ local apm_nuclear_compat_earendel = settings.startup["apm_nuclear_compat_earende
 local apm_nuclear_compat_bio_industries = settings.startup["apm_nuclear_compat_bio_industries"].value
 local apm_nuclear_compat_sctm = settings.startup["apm_nuclear_compat_sctm"].value
 local apm_nuclear_compat_realistic_reactors = settings.startup["apm_nuclear_compat_realistic_reactors"].value
-local apm_nuclear_compat_realistic_reactors_cooling_tower = settings.startup["apm_nuclear_compat_realistic_reactors_cooling_tower"].value
+local apm_nuclear_compat_realistic_reactors_cooling_tower = settings.startup
+["apm_nuclear_compat_realistic_reactors_cooling_tower"].value
 local apm_nuclear_compat_reverse_factory = settings.startup["apm_nuclear_compat_reverse_factory"].value
 local apm_nuclear_compat_mferrari = settings.startup["apm_nuclear_compat_mferrari"].value
 
@@ -21,7 +22,8 @@ APM_LOG_SETTINGS(self, 'apm_nuclear_compat_earendel', apm_nuclear_compat_earende
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_bio_industries', apm_nuclear_compat_bio_industries)
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_sctm', apm_nuclear_compat_sctm)
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_realistic_reactors', apm_nuclear_compat_realistic_reactors)
-APM_LOG_SETTINGS(self, 'apm_nuclear_compat_realistic_reactors_cooling_tower', apm_nuclear_compat_realistic_reactors_cooling_tower)
+APM_LOG_SETTINGS(self, 'apm_nuclear_compat_realistic_reactors_cooling_tower',
+    apm_nuclear_compat_realistic_reactors_cooling_tower)
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_reverse_factory', apm_nuclear_compat_reverse_factory)
 APM_LOG_SETTINGS(self, 'apm_nuclear_compat_mferrari', apm_nuclear_compat_mferrari)
 
@@ -29,24 +31,6 @@ APM_LOG_SETTINGS(self, 'apm_nuclear_compat_mferrari', apm_nuclear_compat_mferrar
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.apm_recycling then
-    apm.lib.utils.recycling.scrap.add({recipe='apm_fuel_rod_container', metal='steel'})
-    apm.lib.utils.recycling.scrap.add({recipe='apm_fuel_rod_container_maintenance', metal='steel'})
-
-    apm.lib.utils.recycling.scrap.add({recipe='apm_breeder_container', metal='steel'})
-    apm.lib.utils.recycling.scrap.add({recipe='apm_breeder_container', metal='copper'})
-    apm.lib.utils.recycling.scrap.add({recipe='apm_breeder_container_worn_maintenance', metal='copper'})
-
-    apm.lib.utils.recycling.scrap.add({recipe='apm_waste_container', metal='iron'})
-
-    apm.lib.utils.recycling.scrap.add({recipe='apm_rtg_radioisotope_thermoelectric_generator', metal='iron'})
-    apm.lib.utils.recycling.scrap.add({recipe='apm_rtg_radioisotope_thermoelectric_generator', metal='copper'})
-
-    if mods.bobplates and mods.bobores then
-        apm.lib.utils.recycling.scrap.remove('apm_waste_container')
-        apm.lib.utils.recycling.scrap.add({recipe='apm_waste_container', metal='bob-lead-plate'})
-    end
-end
 
 -- Earendel -------------------------------------------------------------------
 --
@@ -61,11 +45,10 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods['reverse-factory'] and apm_nuclear_compat_reverse_factory then
-
     local function exclude(recipe_name)
-        if rf and rf.norecycle_items then  
+        if rf and rf.norecycle_items then
             table.insert(rf.norecycle_items, recipe_name)
-            log('Info: add recipe: "' ..tostring(recipe_name).. '" to rf.norecycle_items')
+            log('Info: add recipe: "' .. tostring(recipe_name) .. '" to rf.norecycle_items')
         end
     end
 
