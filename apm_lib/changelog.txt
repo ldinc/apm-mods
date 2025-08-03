@@ -6,6 +6,7 @@ Date: 02.08.2025
   Changes:
     - Deleted: Code for [apm_starfall]. No longer supported.
     - Deleted: Code for [apm_recycling]. No longer supported.
+    - Rewrited: New double linked list based walker for inserters. Now used dllist to handle inserters queue.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.19
 Date: 02.08.2025
