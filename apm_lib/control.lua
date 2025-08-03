@@ -20,8 +20,8 @@ require("lib.features.all")
 local function event_on_init()
 	init.alloc_defenitions()
 	initial.run()
-	--- TODO:
 	inserter.on_init()
+	--- TODO:
 	radiation.on_init()
 	storage.on_init()
 	equipment.on_init()

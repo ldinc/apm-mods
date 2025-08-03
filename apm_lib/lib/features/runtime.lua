@@ -28,7 +28,7 @@ end
 function apm.lib.features.runtime.get(key)
 	local v = apm.lib.features.runtime.values[key]
 
-	if not v then
+	if v then
 		return v
 	end
 
@@ -73,4 +73,42 @@ function apm.lib.features.runtime.get_double(key)
 	log(APM_MSG_ERROR("apm.lib.features.runtime.get_boolean", "not boolean"))
 
 	return 0.0
+end
+
+--- [get runtime integer setting]
+---@param key string
+---@return integer
+function apm.lib.features.runtime.get_integer(key)
+	local v = apm.lib.features.runtime.get(key)
+
+	if not v then
+		return 0
+	end
+
+	if type(v) == "number" then
+		return v
+	end
+
+	log(APM_MSG_ERROR("apm.lib.features.runtime.get_integer", "not number"))
+
+	return 0
+end
+
+--- [get runtime string setting]
+---@param key string
+---@return string
+function apm.lib.features.runtime.get_string(key)
+	local v = apm.lib.features.runtime.get(key)
+
+	if not v then
+		return ""
+	end
+
+	if type(v) == "string" then
+		return v
+	end
+
+	log(APM_MSG_ERROR("apm.lib.features.runtime.get_string", "not string"))
+
+	return ""
 end

@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.00
 Date: 02.08.2025
+  Bugfixes:
+    - There was a problem with the synchronization of the multiplayer game when joining as a non-host player.
   Changes:
     - Deleted: Code for [apm_starfall]. No longer supported.
     - Deleted: Code for [apm_recycling]. No longer supported.
