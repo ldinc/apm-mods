@@ -51,6 +51,14 @@ end
 ---@param unlock_technology string
 ---@param cond_recipes string[]|string
 function init.add_technology_conditional_recipe(unlock_technology, cond_recipes)
+	if
+			not storage.apm or
+			not storage.apm.lib or
+			storage.apm.lib.technologies or
+			storage.apm.lib.technologies.conditional_recipes then
+		return
+	end
+
 	---@type string[]
 	local p_recipes = {}
 
@@ -76,6 +84,14 @@ end
 
 ---@param force LuaForce
 local function activate_technologies_conditional(force)
+	if
+			not storage.apm or
+			not storage.apm.lib or
+			storage.apm.lib.technologies or
+			storage.apm.lib.technologies.conditional_recipes then
+		return
+	end
+
 	log("Info: execute: activate_technologies_conditional() for force: " .. tostring(force.name))
 
 	local technologies = force.technologies
@@ -109,6 +125,14 @@ local function activate_technologies_conditional_recipes(force)
 	local technologies = force.technologies
 	local recipes = force.recipes
 
+	if
+			not storage.apm or
+			not storage.apm.lib or
+			storage.apm.lib.technologies or
+			storage.apm.lib.technologies.conditional_recipes then
+		return
+	end
+
 	for technology, cond_recipes in pairs(storage.apm.lib.technologies.conditional_recipes) do
 		local tech = technologies[technology]
 
@@ -133,6 +157,14 @@ end
 
 ---@param force LuaForce
 local function check_technologies(force)
+	if
+			not storage.apm or
+			not storage.apm.lib or
+			storage.apm.lib.technologies or
+			storage.apm.lib.technologies.conditional_recipes then
+		return
+	end
+
 	log("Info: execute: check_technologies() for force: " .. tostring(force.name))
 
 	local technologies = force.technologies

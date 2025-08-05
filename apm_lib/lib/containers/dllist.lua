@@ -14,7 +14,7 @@
 ---Create a new doubly linked list
 ---@generic K, V
 ---@return DLL<K, V>
-function new()
+local function new()
 	return {
 		head = nil,
 		tail = nil,
@@ -28,7 +28,7 @@ end
 ---@generic K, V
 ---@param self DLL<K,V>
 ---@return nil
-function reset(self)
+local function reset(self)
 	self.head = nil
 	self.tail = nil
 	self.current = nil
@@ -42,7 +42,7 @@ end
 ---@param id K
 ---@param value V
 ---@return boolean
-function add(self, id, value)
+local function add(self, id, value)
 	if self.nodes[id] then
 		return false
 	end
@@ -74,7 +74,7 @@ end
 ---@param self DLL<K,V>
 ---@param id K
 ---@return boolean
-function remove(self, id)
+local function remove(self, id)
 	local node = self.nodes[id]
 	if not node then return false end
 
@@ -104,7 +104,7 @@ end
 ---@param self DLL<K,V>
 ---@param id K
 ---@return V|nil, boolean
-function find(self, id)
+local function find(self, id)
 	local node = self.nodes[id]
 	if node then
 		return node.value, true
@@ -116,7 +116,7 @@ end
 ---@generic K, V
 ---@param self DLL<K,V>
 ---@return V|nil, K|nil
-function get_current(self)
+local function get_current(self)
 	if not self.current then return nil, nil end
 	return self.current.value, self.current.id
 end
@@ -125,7 +125,7 @@ end
 ---@generic K, V
 ---@param self DLL<K,V>
 ---@return V|nil, K|nil
-function get_next(self)
+local function get_next(self)
 	if not self.current or not self.current.next then
 		return nil, nil
 	end
@@ -137,7 +137,7 @@ end
 ---@generic K, V
 ---@param self DLL<K,V>
 ---@return V|nil, K|nil
-function get_next_loop(self)
+local function get_next_loop(self)
 	if not self.current then
 		return nil, nil
 	end
@@ -155,7 +155,7 @@ end
 ---@generic K, V
 ---@param self DLL<K,V>
 ---@return V|nil, K|nil
-function get_head(self)
+local function get_head(self)
 	self.current = self.head
 	if not self.head then return nil, nil end
 	return self.head.value, self.head.id
@@ -165,7 +165,7 @@ end
 ---@generic K, V
 ---@param self DLL<K,V>
 ---@return V|nil, K|nil
-function get_tail(self)
+local function get_tail(self)
 	self.current = self.tail
 	if not self.tail then return nil, nil end
 	return self.tail.value, self.tail.id
@@ -175,7 +175,7 @@ end
 ---@generic K, V
 ---@param self DLL<K,V>
 ---@return integer
-function length(self)
+local function length(self)
 	return self.count
 end
 

@@ -160,7 +160,7 @@ local function calc_item_count(want_pickup_item_count, t_object)
 	return want_pickup_item_count
 end
 
----@param drop_target LuaEntity
+---@param drop_target LuaEntity?
 ---@param item_stack ItemStackDefinition
 ---@return boolean
 local function check_drop_target(drop_target, item_stack)
@@ -197,8 +197,8 @@ local function transfer_leeching(inserter, inventory, item_stack)
 	return false
 end
 
----@param pickup_target LuaEntity
----@param drop_target LuaEntity
+---@param pickup_target LuaEntity?
+---@param drop_target LuaEntity?
 ---@return LuaInventory?
 local function get_a_fuel_inventory(pickup_target, drop_target)
 	if pickup_target ~= nil then
@@ -220,8 +220,8 @@ end
 
 --- can pickup 'fuel' for it self from pickup_target or drop_target
 ---@param entity LuaEntity
----@param pickup_target LuaEntity
----@param drop_target LuaEntity
+---@param pickup_target LuaEntity?
+---@param drop_target LuaEntity?
 ---@return boolean
 local function burner_inserter_leech(entity, pickup_target, drop_target)
 	local target_inventory = get_a_fuel_inventory(pickup_target, drop_target)
@@ -262,6 +262,67 @@ local function inserter_chain_fuel(t_object, pickup_inventory, drop_target)
 	end
 end
 
+---@param t_object QueueItem
+---@param inventory LuaInventory?
+---@return ItemStackDefinition?
+local function inventory_get_fuel(t_object, inventory)
+	if (not inventory or not t_object.fuel_inventory) then
+		return nil
+	end
+
+	if (not t_object.entity.burner) then
+		return
+	end
+
+	local fuel_categories = t_object.entity.burner.fuel_categories
+
+	local contents = inventory.get_contents()
+
+	for _, content in ipairs(contents) do
+		local item = prototypes.item[content.name]
+
+		if item and item.fuel_category then
+			if fuel_categories[item.fuel_category] then
+				---@type ItemStackDefinition
+				local v = { name = item.name, count = 1 }
+
+				inventory.remove(v)
+				return v
+			end
+		end
+	end
+
+	return nil
+end
+
+---@param t_object QueueItem
+---@param pickup_target LuaEntity?
+local function steal_fuel_to_inserter(t_object, pickup_target)
+	---TODO: steal if has from arm helded fuel, and else check inventory from pickup
+	---TODO: optimize maybe
+	if (not t_object or not pickup_target) then
+		return
+	end
+
+	if (not t_object.entity.burner) then
+		return
+	end
+
+	local fuel_inventory = get_a_fuel_inventory(pickup_target)
+
+	local fuel = inventory_get_fuel(t_object, fuel_inventory)
+
+	if (not fuel) then
+		local inventory = pickup_target.get_inventory(defines.inventory.chest)
+
+		fuel = inventory_get_fuel(t_object, inventory)
+	end
+
+	if (fuel) then
+		t_object.entity.burner.inventory.insert(fuel)
+	end
+end
+
 --- This function made it possible that a inserter can handle the 'burnt_result_inventory' on all machiens.
 --- That burner inserter can also leech fuel from drop target.
 --- That burner inserters are capable to chain fuel through all burner machines
@@ -272,6 +333,11 @@ local function inserter_work(t_object, pickup_target, drop_target)
 	-- -------------------------------------------------------------------------------------
 	-- This part is for the fuel leeching
 	-- -------------------------------------------------------------------------------------
+
+	if t_object.entity.status == defines.entity_status.no_fuel then
+		steal_fuel_to_inserter(t_object, pickup_target)
+	end
+
 	if t_object.fuel_inventory and t_object.fuel_inventory.get_item_count() <= 0 then
 		if burner_inserter_leech(t_object.entity, pickup_target, drop_target) then
 			return
@@ -286,11 +352,9 @@ local function inserter_work(t_object, pickup_target, drop_target)
 	-- -------------------------------------------------------------------------------------
 	if drop_target and pickup_target then
 		local pickup_inventory = pickup_target.get_fuel_inventory()
-		--local pickup_inventory = my_get_fuel_inventory(pickup_target)
 
 		if pickup_inventory then
 			local drop_inventory = drop_target.get_fuel_inventory()
-			--local drop_inventory = my_get_fuel_inventory(drop_target)
 
 			if drop_inventory then
 				if pickup_inventory.get_item_count() >= 5 then
@@ -505,9 +569,10 @@ end
 --
 -- ----------------------------------------------------------------------------
 
+
 ---@return QueueItem?, LuaEntity?, LuaEntity?
 local function get_next_inserter()
-	local t_object = dllist.get_next_loop(storage.apm.lib.inserters.queue)
+	local t_object, _ = dllist.get_next_loop(storage.apm.lib.inserters.queue)
 
 	if not t_object then
 		return nil
@@ -528,7 +593,11 @@ local function get_next_inserter()
 
 	-- if (px ~= hx) or  (py ~= hy) then <- this is not bobinserters proofed only x*90° have exact pickup_position == held_stack_position
 	if (px > hx + 0.01 or px < hx - 0.01) or (py > hy + 0.01 or py < hy - 0.01) then
-		return nil
+		if (t_object.entity.status ~= defines.entity_status.no_fuel) then
+			return nil
+		end
+
+		-- return nil
 	end
 	-- --------------------------------------------------------------
 
@@ -603,11 +672,8 @@ end
 ---@param player LuaPlayer
 local function command_inserter_global_size(player)
 	local msg = { '', 'Inserter:' ..
-	'\ndb: ' .. tostring(remote_inserter_global_size() .. '\nunique ids: ' .. tostring(remote_inserter_global_ids())) }
+	'\ndb: ' .. tostring(dllist.length(storage.apm.lib.inserters.queue)) }
 	player.print(msg)
-
-	player.print(serpent.block(storage.apm.lib.inserters.queue))
-	player.print(serpent.block(storage.apm.lib.inserters.settings))
 end
 
 -- Command Function -----------------------------------------------------------
@@ -668,7 +734,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function inserter_script.on_load()
-	inserter_script.alloc_defenitions()
+	-- inserter_script.alloc_defenitions()
 	-- get_config()
 	register_commands()
 end
@@ -678,7 +744,6 @@ end
 --
 -- ----------------------------------------------------------------------------
 function inserter_script.on_update()
-	log("JIB UPDATES")
 	inserter_script.alloc_defenitions()
 	get_config()
 	rescan()
@@ -752,6 +817,17 @@ function inserter_script.on_build(entity)
 end
 
 ---@param entity LuaEntity
+function inserter_script.on_destroy_entity(entity)
+	if (entity.valid == false) or (not entity.unit_number) then
+		return
+	end
+
+	if entity.type == "inserter" then
+		dllist.remove(storage.apm.lib.inserters.queue, entity.unit_number)
+	end
+end
+
+---@param entity LuaEntity
 local function check_entity(entity)
 	if entity.valid == false or entity.unit_number == nil then return end
 
@@ -787,24 +863,17 @@ end
 -- end
 
 function inserter_script.on_tick()
-	if storage.apm.lib.inserters.queue == nil then
-		print()
-	end
-
 	local inserter_size = dllist.length(storage.apm.lib.inserters.queue)
 
 	if inserter_size == 0 or not storage.apm.lib.inserters.settings.fn_enabled then
 		return
 	end
 
-	local func_get = get_next_inserter
-	local func_work = inserter_work
-
 	for _ = 0, storage.apm.lib.inserters.settings.batch_size, 1 do
-		local t_object, pickup_target, drop_target = func_get()
+		local t_object, pickup_target, drop_target = get_next_inserter()
 
 		if t_object then
-			func_work(t_object, pickup_target, drop_target)
+			inserter_work(t_object, pickup_target, drop_target)
 		end
 	end
 end

@@ -72,9 +72,6 @@ local function on_nth_tick()
 	equipment.on_nth_tick()
 end
 
-local function on_cutscene_cancelled(player)
-end
-
 -- Function -------------------------------------------------------------------
 --
 --
@@ -89,9 +86,15 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+
 local function on_built_entity(event)
 	if event.entity.valid ~= true then return end
 	inserter.on_build(event.entity)
+end
+
+local function on_destroy_entity(event)
+	if event.entity.valid ~= true then return end
+	inserter.on_destroy_entity(event.entity)
 end
 
 -- Function -------------------------------------------------------------------
@@ -213,13 +216,47 @@ local entity_build_filter = {
 local entity_died_filter = {
 	{ filter = 'type', type = 'container' },
 }
+
+
+local build_events = {
+	defines.events.on_built_entity,
+	defines.events.on_robot_built_entity,
+	defines.events.script_raised_built,
+	defines.events.script_raised_revive,
+	defines.events.on_space_platform_built_entity,
+}
+
+for _, event in ipairs(build_events) do
+	script.on_event(
+		event,
+		on_built_entity,
+		entity_build_filter
+	)
+end
+
+local destroy_events = {
+	defines.events.on_robot_mined_entity,
+	defines.events.on_player_mined_entity,
+	defines.events.on_entity_died,
+	defines.events.script_raised_destroy,
+	defines.events.on_space_platform_mined_entity,
+}
+
+for _, event in ipairs(destroy_events) do
+	script.on_event(
+		event,
+		on_destroy_entity,
+		entity_build_filter
+	)
+end
+
 script.on_event(defines.events.on_tick, function(event) event_on_tick(event) end)
 script.on_event(defines.events.on_player_created, function(event) event_on_player_created(event) end)
 script.on_event(defines.events.on_player_joined_game, function(event) event_on_player_joined_game(event) end)
 script.on_event(defines.events.on_runtime_mod_setting_changed, function(event) event_mod_setting_changed(event) end)
-script.on_event(defines.events.on_built_entity, function(event) on_built_entity(event) end, entity_build_filter)
-script.on_event(defines.events.on_robot_built_entity, function(event) event_on_robot_build(event) end,
-	entity_build_filter)
+-- script.on_event(defines.events.on_built_entity, function(event) on_built_entity(event) end, entity_build_filter)
+-- script.on_event(defines.events.on_robot_built_entity, function(event) event_on_robot_build(event) end,
+-- entity_build_filter)
 script.on_event(defines.events.on_entity_cloned, function(event) event_on_entity_cloned(event) end)
 script.on_event(defines.events.on_player_rotated_entity, function(event) event_on_rotate(event) end)
 script.on_event(defines.events.on_entity_settings_pasted, function(event) event_on_entity_settings_pasted(event) end)
@@ -231,9 +268,6 @@ script.on_event(defines.events.on_player_armor_inventory_changed,
 	function(event) event_on_player_armor_inventory_changed(event) end)
 
 script.on_nth_tick(60 * 10, function() on_nth_tick() end)
-script.on_event(defines.events.on_cutscene_cancelled, function(event)
-	on_cutscene_cancelled(event.player_index)
-end)
 
 -- ----------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------

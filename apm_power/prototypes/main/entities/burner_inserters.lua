@@ -8,6 +8,8 @@ APM_LOG_HEADER(self)
 -- NOTE: With factorio 2.0 all inserters with filter
 -- Clone of electric long hand inserter & original burner insterter with updated graphics
 
+-- data.raw.inserter['burner-inserter'].allow_burner_leech = true
+
 local burner_long_inserter = table.deepcopy(data.raw.inserter['burner-inserter'])
 burner_long_inserter.name = 'apm_burner_long_inserter'
 burner_long_inserter.icon = '__apm_resource_pack_ldinc__/graphics/icons/apm_burner_long_inserter.png'
