@@ -109,10 +109,10 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-local function event_on_robot_build(event)
-	if event.entity.valid ~= true then return end
-	inserter.on_build(event.entity)
-end
+-- local function event_on_robot_build(event)
+-- 	if event.entity.valid ~= true then return end
+-- 	inserter.on_build(event.entity)
+-- end
 
 -- Function -------------------------------------------------------------------
 --
@@ -188,15 +188,8 @@ end
 -- ----------------------------------------------------------------------------
 local function event_on_player_joined_game(event)
 	local player = game.players[event.player_index]
-	equipment.check_equipment_manager(player)
 
-	-- local inventory = player.get_inventory(defines.inventory.character_main)
-	-- log("inv:" .. tostring(inventory))
-	-- player.insert{name="apm_equipment_burner_generator_basic", count=1}
-	-- player.insert{name="iron-plate", count=200}
-	-- player.insert{name="copper-plate", count=200}
-	-- player.insert{name="burner-mining-drill", count=12}
-	-- player.insert{name="coal", count=400}
+	equipment.check_equipment_manager(player)
 end
 
 -- Event Defines---------------------------------------------------------------

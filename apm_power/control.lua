@@ -2,19 +2,18 @@
 --
 --
 -- ----------------------------------------------------------------------------
-local updates = require('lib.updates')
+local updates = require("lib.updates")
 -- local core = require('__apm_lib_ldinc__.lib.script.core')
 -- local patch_aai = require('__apm_lib_ldinc__.lib.script.patch.aai')
-local patch_angel = require('__apm_lib_ldinc__.lib.script.patch.angel')
-local offshore_pumps = require('__apm_lib_ldinc__.lib.script.offshore_pump')
+local patch_angel = require("__apm_lib_ldinc__.lib.script.patch.angel")
 
 -- Function -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
 local function register_burner_equipment()
-	remote.call('apm_equipment', 'add_burner_equipment', 'apm_equipment_burner_generator_basic')
-	remote.call('apm_equipment', 'add_burner_equipment', 'apm_equipment_burner_generator_advanced')
+	remote.call("apm_equipment", "add_burner_equipment", "apm_equipment_burner_generator_basic")
+	remote.call("apm_equipment", "add_burner_equipment", "apm_equipment_burner_generator_advanced")
 end
 
 -- Function -------------------------------------------------------------------
@@ -23,7 +22,7 @@ end
 -- ----------------------------------------------------------------------------
 local function On_Init()
 	updates.run()
-	offshore_pumps.on_init()
+
 	register_burner_equipment()
 end
 
@@ -40,7 +39,7 @@ end
 -- ----------------------------------------------------------------------------
 local function on_update()
 	updates.run()
-	offshore_pumps.on_update()
+
 	register_burner_equipment()
 end
 
