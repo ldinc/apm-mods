@@ -4,9 +4,11 @@ Date: 02.08.2025
   Bugfixes:
     - There was a problem with the synchronization of the multiplayer game when joining as a non-host player.
     - Mod ignores enitites builded by script (for example: inserters were not be pushed to event queue).
+    - Mod loss quality modifier fuel.
   Changes:
     - Deleted: Code for [apm_starfall]. No longer supported.
     - Deleted: Code for [apm_recycling]. No longer supported.
+    - Deleted: Code for apm's offshore pumps. With 2.0 it became legacy.
     - Rewrited: New double linked list based walker for inserters. Now used dllist to handle inserters queue.
     - Added: The burner isnerters now try find fuel from pickup entity or try use helded suitable fuel when it's out of fuel.
 ---------------------------------------------------------------------------------------------------

@@ -53,25 +53,6 @@ local function split_to_dict(str)
 	return dict, list
 end
 
--- Helper function ------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
--- local function tablelength(T)
--- 	local count = 0
--- 	for _ in pairs(T) do count = count + 1 end
-
--- 	return count
--- end
-
--- Local ----------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-
--- local inserter_table = {}
--- local inserter_size = 0
-
 function inserter_script.alloc_defenitions()
 	if not storage.apm then storage.apm = {} end
 	if not storage.apm.lib then storage.apm.lib = {} end
@@ -99,8 +80,9 @@ end
 -- ----------------------------------------------------------------------------
 
 ---@param entity LuaEntity
+---@return boolean
 local function get_filter_mode(entity)
-	if entity.inserter_filter_mode == 'blacklist' then
+	if entity.inserter_filter_mode == "blacklist" then
 		return false
 	end
 
@@ -110,6 +92,7 @@ end
 --- This function checks filter state
 ---@param entity LuaEntity
 ---@param item_name string
+---@return boolean
 local function check_filter(entity, item_name)
 	local filter_slot_count = entity.filter_slot_count
 
@@ -168,6 +151,7 @@ local function check_drop_target(drop_target, item_stack)
 		return drop_target.can_insert(item_stack)
 	end
 
+	--- [Trollface.png]
 	return true -- we can always lay down an item on ground
 end
 
@@ -203,14 +187,13 @@ end
 local function get_a_fuel_inventory(pickup_target, drop_target)
 	if pickup_target ~= nil then
 		local pickup_inventory = pickup_target.get_fuel_inventory()
-		--local pickup_inventory = my_get_fuel_inventory(pickup_target)
+
 		if pickup_inventory ~= nil then
 			return pickup_inventory
 		end
 	end
 	if drop_target ~= nil then
 		local drop_inventory = drop_target.get_fuel_inventory()
-		--local drop_inventory = my_get_fuel_inventory(drop_target)
 
 		return drop_inventory
 	end
@@ -233,7 +216,8 @@ local function burner_inserter_leech(entity, pickup_target, drop_target)
 	for _, item in ipairs(target_inventory_contents) do
 		if item.count >= 2 then
 			local stack_size = math.min(item.count - 1, 5)
-			local item_stack = { name = item.name, count = stack_size }
+			---@type ItemStackDefinition
+			local item_stack = { name = item.name, count = stack_size, quality = item.quality }
 
 			return transfer_leeching(entity, target_inventory, item_stack)
 		end
@@ -284,7 +268,7 @@ local function inventory_get_fuel(t_object, inventory)
 		if item and item.fuel_category then
 			if fuel_categories[item.fuel_category] then
 				---@type ItemStackDefinition
-				local v = { name = item.name, count = 1 }
+				local v = { name = item.name, count = 1, quality = content.quality }
 
 				inventory.remove(v)
 				return v
@@ -373,7 +357,6 @@ local function inserter_work(t_object, pickup_target, drop_target)
 	-- -------------------------------------------------------------------------------------
 
 	local pickup_target_burnt_result_inventory = pickup_target.get_burnt_result_inventory()
-	--local pickup_target_burnt_result_inventory = my_get_burnt_result_inventory(pickup_target)
 
 	if not pickup_target_burnt_result_inventory then
 		return
@@ -406,7 +389,8 @@ local function inserter_work(t_object, pickup_target, drop_target)
 	for _, item in ipairs(pickup_target_inventory_contents) do
 		if item.count >= 1 and check_filter(t_object.entity, item.name) then
 			local stack_size = calc_item_count(item.count, t_object)
-			local item_stack = { name = item.name, count = stack_size }
+			---@type ItemStackDefinition
+			local item_stack = { name = item.name, count = stack_size, quality = item.quality }
 
 			if check_drop_target(drop_target, item_stack) then
 				if not blacklisted[item.name] and t_object.entity.held_stack.transfer_stack(item_stack) then
@@ -480,9 +464,8 @@ local function scan_area_for_inserter(entity)
 	local position = entity.position
 	local surface = entity.surface
 	local area = { { position.x - 6, position.y - 6 }, { position.x + 6, position.y + 6 } }
-	local inserters = surface.find_entities_filtered { type = "inserter", area = area }
 
-	return inserters
+	return surface.find_entities_filtered { type = "inserter", area = area }
 end
 
 local function get_config()
@@ -510,33 +493,18 @@ local function setup_environment(reset, loading)
 
 		dllist.reset(storage.apm.lib.inserters.queue)
 	end
-
-
-	--- old one code
-	-- if not loading and (not storage.inserter_01746 or reset) then
-	-- 	storage.inserter_01746 = {}
-	-- 	storage.inserter_01746_ids = {}
-	-- 	storage.inserter_01746_index = 1
-	-- end
-
-	-- inserter_table = storage.inserter_01746
-	-- inserter_size = #storage.inserter_01746
-
-	-- if loading and inserter_size then
-	-- 	log('-- setup_environment() ----------------------------------------------')
-	-- 	log('Info: inserters: "' .. tostring(inserter_size) .. '" from globale table loaded')
-	-- 	log('--------------------------------------------------------------------')
-	-- end
 end
 
 local function rescan()
-	log('-- rescan() -----------------------------------------------------')
-	log('this can take a secound or two...')
+	log("-- rescan() -----------------------------------------------------")
+	log("this can take a secound or two...")
 
 	setup_environment(true, false)
 
+	local old = dllist.length(storage.apm.lib.inserters.queue)
+
 	for _, surface in pairs(game.surfaces) do
-		local inserters = surface.find_entities_filtered({ type = 'inserter' })
+		local inserters = surface.find_entities_filtered({ type = "inserter" })
 
 		for _, inserter in pairs(inserters) do
 			if inserter_condition(inserter) then
@@ -545,8 +513,10 @@ local function rescan()
 		end
 	end
 
-	-- log('rescanned amount of inserters: ' .. tostring(#inserter_table))
-	log('-----------------------------------------------------------------')
+	local new = dllist.length(storage.apm.lib.inserters.queue)
+
+	log("rescanned amount of inserters: " .. tostring(old) .. " -> " .. tostring(new))
+	log("-----------------------------------------------------------------")
 end
 
 -- Function -------------------------------------------------------------------
@@ -624,7 +594,7 @@ local function get_next_inserter()
 			-- This condition for drop_target ~= 'inserter' is a workaround:
 			-- Because if this script fires in a situation were the inserter is feeding himself from a belt,
 			-- the drop_target in this exact moment is the inserter himself and will be otherwise removed from the table.
-			if drop_target.type ~= 'inserter' then
+			if drop_target.type ~= "inserter" then
 				remove_inserter(t_object)
 			end
 
@@ -658,10 +628,9 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+---@return integer
 local function remote_inserter_global_ids()
-	-- if not storage.inserter_01746_ids then return nil end
-	-- return tablelength(storage.inserter_01746_ids)
-	return nil
+	return dllist.length(storage.apm.lib.inserters.queue)
 end
 
 -- Command Function -----------------------------------------------------------
@@ -671,8 +640,8 @@ end
 
 ---@param player LuaPlayer
 local function command_inserter_global_size(player)
-	local msg = { '', 'Inserter:' ..
-	'\ndb: ' .. tostring(dllist.length(storage.apm.lib.inserters.queue)) }
+	local msg = { "", "Inserter:" ..
+	"\ndb: " .. tostring(dllist.length(storage.apm.lib.inserters.queue)) }
 	player.print(msg)
 end
 
@@ -684,13 +653,13 @@ end
 ---@param player LuaPlayer
 local function command_inserter_rescan(player)
 	if not player.admin then
-		player.print({ '', 'Only admins can use this command.' })
+		player.print({ "", "Only admins can use this command." })
 
 		return
 	end
 
 	rescan()
-	player.print({ '', 'All inserters rescanned.' })
+	player.print({ "", "All inserters rescanned." })
 end
 
 -- Command Function -----------------------------------------------------------
@@ -704,9 +673,9 @@ local function command_inserter(event)
 	local player = game.players[event.player_index]
 	local parameter = event.parameter
 
-	if parameter == 'info' then
+	if parameter == "info" then
 		command_inserter_global_size(player)
-	elseif parameter == 'rescan' then
+	elseif parameter == "rescan" then
 		command_inserter_rescan(player)
 	end
 end
@@ -716,7 +685,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function register_commands()
-	commands.add_command("inserter", { 'apm_cmd_description_inserter_info' }, command_inserter)
+	commands.add_command("inserter", { "apm_cmd_description_inserter_info" }, command_inserter)
 end
 
 -- Function -------------------------------------------------------------------
@@ -852,20 +821,11 @@ function inserter_script.on_entity_settings_pasted(entity)
 	check_entity(entity)
 end
 
--- local function next_inserter()
-
-
--- 	storage.apm.lib.inserters.index = storage.apm.lib.inserters.index + 1
-
--- 	if storage.apm.lib.inserters.index >= #storage.apm.lib.inserters.queue then
--- 		storage.apm.lib.inserters.index = 1
--- 	end
--- end
-
 function inserter_script.on_tick()
 	local inserter_size = dllist.length(storage.apm.lib.inserters.queue)
+	local feature_enabled = storage.apm.lib.inserters.settings.fn_enabled
 
-	if inserter_size == 0 or not storage.apm.lib.inserters.settings.fn_enabled then
+	if inserter_size == 0 or not feature_enabled then
 		return
 	end
 

@@ -96,6 +96,11 @@ local function remove(self, id)
 
 	self.nodes[id] = nil
 	self.count = self.count - 1 -- Decrement count
+
+	node.next = nil
+	node.prev = nil
+	node.value = nil
+
 	return true
 end
 
