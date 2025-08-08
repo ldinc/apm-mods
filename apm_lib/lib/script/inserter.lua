@@ -57,18 +57,16 @@ local function split_to_dict(str)
 end
 
 function inserter_script.alloc_defenitions()
-	if not storage.apm then storage.apm = {} end
-	if not storage.apm.lib then storage.apm.lib = {} end
-	if not storage.apm.lib.inserters then storage.apm.lib.inserters = {} end
+	if not storage.inserters then storage.inserters = {} end
 
-	if not storage.apm.lib.inserters.queue then
+	if not storage.inserters.queue then
 		---@type DLL<integer, QueueItem>
-		storage.apm.lib.inserters.queue = dllist.new()
+		storage.inserters.queue = dllist.new()
 	end
 
-	if not storage.apm.lib.inserters.settings then
+	if not storage.inserters.settings then
 		---@type {fn_enabled: boolean, batch_size: integer, valid_targets: table<string, boolean>, valid_targets_string: string[]}
-		storage.apm.lib.inserters.settings = {
+		storage.inserters.settings = {
 			fn_enabled = false,
 			batch_size = 15,
 			valid_targets = {},
@@ -416,7 +414,7 @@ local function add_inserter(inserter)
 		return
 	end
 
-	local _, exists = dllist.find(storage.apm.lib.inserters.queue, id)
+	local _, exists = dllist.find(storage.inserters.queue, id)
 
 	if not exists then
 		local fuel_inventory = inserter.get_fuel_inventory()
@@ -424,14 +422,14 @@ local function add_inserter(inserter)
 		---@type QueueItem
 		local item = { id = id, entity = inserter, fuel_inventory = fuel_inventory, bulk = bulk, err = 0 }
 
-		dllist.add(storage.apm.lib.inserters.queue, id, item)
+		dllist.add(storage.inserters.queue, id, item)
 	end
 end
 
 ---@param entity LuaEntity
 ---@return boolean
 local function entity_condition(entity)
-	if storage.apm.lib.inserters.settings.valid_targets[entity.type] then
+	if storage.inserters.settings.valid_targets[entity.type] then
 		if entity.get_fuel_inventory() then -- this will only catch entities with a burner NOT fluids (thats good)
 			return true
 		end
@@ -447,7 +445,7 @@ local function inserter_condition(entity)
 	local surface = entity.surface
 	local area = { { position.x - 6, position.y - 6 }, { position.x + 6, position.y + 6 } }
 	local filter = {
-		type = storage.apm.lib.inserters.settings.valid_targets_string,
+		type = storage.inserters.settings.valid_targets_string,
 		area = area,
 	}
 	local possible_entities = surface.find_entities_filtered(filter)
@@ -474,18 +472,18 @@ end
 local function get_config()
 	apm.lib.features.runtime.update()
 
-	storage.apm.lib.inserters.settings.fn_enabled           =
+	storage.inserters.settings.fn_enabled           =
 			apm.lib.features.runtime.get_boolean("apm_lib_inserter_functions")
-	storage.apm.lib.inserters.settings.batch_size           =
+	storage.inserters.settings.batch_size           =
 			apm.lib.features.runtime.get_integer("apm_lib_inserter_iterations_01759")
 
-	local valid_targets_string                              =
+	local valid_targets_string                      =
 			apm.lib.features.runtime.get_string("apm_lib_inserter_valid_targets")
 
-	local dict, list                                        = split_to_dict(valid_targets_string)
+	local dict, list                                = split_to_dict(valid_targets_string)
 
-	storage.apm.lib.inserters.settings.valid_targets        = dict
-	storage.apm.lib.inserters.settings.valid_targets_string = list
+	storage.inserters.settings.valid_targets        = dict
+	storage.inserters.settings.valid_targets_string = list
 end
 
 ---@param reset boolean
@@ -494,7 +492,7 @@ local function setup_environment(reset, loading)
 	if reset then
 		inserter_script.alloc_defenitions()
 
-		dllist.reset(storage.apm.lib.inserters.queue)
+		dllist.reset(storage.inserters.queue)
 	end
 end
 
@@ -504,7 +502,7 @@ local function rescan()
 
 	setup_environment(true, false)
 
-	local old = dllist.length(storage.apm.lib.inserters.queue)
+	local old = dllist.length(storage.inserters.queue)
 
 	for _, surface in pairs(game.surfaces) do
 		local inserters = surface.find_entities_filtered({ type = "inserter" })
@@ -516,7 +514,7 @@ local function rescan()
 		end
 	end
 
-	local new = dllist.length(storage.apm.lib.inserters.queue)
+	local new = dllist.length(storage.inserters.queue)
 
 	log("rescanned amount of inserters: " .. tostring(old) .. " -> " .. tostring(new))
 	log("-----------------------------------------------------------------")
@@ -531,7 +529,7 @@ end
 ---@param t_object QueueItem
 local function remove_inserter(t_object)
 	if t_object.err >= 3 then
-		dllist.remove(storage.apm.lib.inserters.queue, t_object.id)
+		dllist.remove(storage.inserters.queue, t_object.id)
 	else
 		t_object.err = t_object.err + 1
 	end
@@ -545,7 +543,7 @@ end
 
 ---@return QueueItem?, LuaEntity?, LuaEntity?
 local function get_next_inserter()
-	local t_object, _ = dllist.get_next_loop(storage.apm.lib.inserters.queue)
+	local t_object, _ = dllist.get_next_loop(storage.inserters.queue)
 
 	if not t_object then
 		return nil
@@ -592,8 +590,8 @@ local function get_next_inserter()
 		return nil
 	end
 
-	if pickup_target and not storage.apm.lib.inserters.settings.valid_targets[pickup_target.type] then
-		if drop_target and not storage.apm.lib.inserters.settings.valid_targets[drop_target.type] then
+	if pickup_target and not storage.inserters.settings.valid_targets[pickup_target.type] then
+		if drop_target and not storage.inserters.settings.valid_targets[drop_target.type] then
 			-- This condition for drop_target ~= 'inserter' is a workaround:
 			-- Because if this script fires in a situation were the inserter is feeding himself from a belt,
 			-- the drop_target in this exact moment is the inserter himself and will be otherwise removed from the table.
@@ -616,15 +614,13 @@ end
 -- ----------------------------------------------------------------------------
 local function remote_inserter_global_size()
 	if
-			not storage.apm or
-			not storage.apm.lib or
-			not storage.apm.lib.inserters or
-			not storage.apm.lib.inserters.queue
+			not storage.inserters or
+			not storage.inserters.queue
 	then
 		return nil
 	end
 
-	return dllist.length(storage.apm.lib.inserters.queue)
+	return dllist.length(storage.inserters.queue)
 end
 
 -- Remote Function ------------------------------------------------------------
@@ -633,7 +629,7 @@ end
 -- ----------------------------------------------------------------------------
 ---@return integer
 local function remote_inserter_global_ids()
-	return dllist.length(storage.apm.lib.inserters.queue)
+	return dllist.length(storage.inserters.queue)
 end
 
 -- Command Function -----------------------------------------------------------
@@ -644,7 +640,7 @@ end
 ---@param player LuaPlayer
 local function command_inserter_global_size(player)
 	local msg = { "", "Inserter:" ..
-	"\ndb: " .. tostring(dllist.length(storage.apm.lib.inserters.queue)) }
+	"\ndb: " .. tostring(dllist.length(storage.inserters.queue)) }
 	player.print(msg)
 end
 
@@ -729,7 +725,7 @@ function inserter_script.on_entity_cloned(src_entity, dest_entity)
 
 
 	if (src_entity.type == "inserter") and (src_entity.unit_number ~= nil) then
-		local _, src_entity_is_tracked = dllist.find(storage.apm.lib.inserters.queue, src_entity.unit_number)
+		local _, src_entity_is_tracked = dllist.find(storage.inserters.queue, src_entity.unit_number)
 
 		if src_entity_is_tracked then
 			add_inserter(dest_entity)
@@ -745,7 +741,7 @@ local function burner_fuel_leech_on_build(entity)
 
 	local pickup_target
 	local filter = {
-		type = storage.apm.lib.inserters.settings.valid_targets_string,
+		type = storage.inserters.settings.valid_targets_string,
 		position = pickup_position,
 	}
 
@@ -756,7 +752,7 @@ local function burner_fuel_leech_on_build(entity)
 	local drop_target
 
 	filter = {
-		type = storage.apm.lib.inserters.settings.valid_targets_string,
+		type = storage.inserters.settings.valid_targets_string,
 		position = drop_position,
 	}
 
@@ -795,7 +791,7 @@ function inserter_script.on_destroy_entity(entity)
 	end
 
 	if entity.type == "inserter" then
-		dllist.remove(storage.apm.lib.inserters.queue, entity.unit_number)
+		dllist.remove(storage.inserters.queue, entity.unit_number)
 	end
 end
 
@@ -804,7 +800,7 @@ local function check_entity(entity)
 	if entity.valid == false or entity.unit_number == nil then return end
 
 	if (entity.type == "inserter") and (entity.unit_number ~= nil) then
-		local _, tracked = dllist.find(storage.apm.lib.inserters.queue, entity.unit_number)
+		local _, tracked = dllist.find(storage.inserters.queue, entity.unit_number)
 
 		if not tracked then
 			if inserter_condition(entity) then
@@ -825,14 +821,14 @@ function inserter_script.on_entity_settings_pasted(entity)
 end
 
 function inserter_script.on_tick()
-	local inserter_size = dllist.length(storage.apm.lib.inserters.queue)
-	local feature_enabled = storage.apm.lib.inserters.settings.fn_enabled
+	local inserter_size = dllist.length(storage.inserters.queue)
+	local feature_enabled = storage.inserters.settings.fn_enabled
 
 	if inserter_size == 0 or not feature_enabled then
 		return
 	end
 
-	for _ = 0, storage.apm.lib.inserters.settings.batch_size, 1 do
+	for _ = 0, storage.inserters.settings.batch_size, 1 do
 		local t_object, pickup_target, drop_target = get_next_inserter()
 
 		if t_object then
