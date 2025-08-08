@@ -2,15 +2,15 @@
 --
 --
 -- ----------------------------------------------------------------------------
-local initial = require('lib.local.initial')
-local updates = require('lib.local.updates')
-local inserter = require('lib.script.inserter')
-local radiation = require('lib.script.radiation')
-local storage = require('lib.script.storage')
-local equipment = require('lib.script.equipment')
-local init = require('lib.script.init')
+local initial = require("lib.local.initial")
+local updates = require("lib.local.updates")
+local inserter = require("lib.script.inserter")
+local radiation = require("lib.script.radiation")
+local storage = require("lib.script.storage")
+local equipment = require("lib.script.equipment")
+local init = require("lib.script.init")
 
-require('lib.script.interfaces')
+require("lib.script.interfaces")
 require("lib.features.all")
 
 -- Function -------------------------------------------------------------------
@@ -68,8 +68,8 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-local function on_nth_tick()
-	equipment.on_nth_tick()
+local function on_nth_tick(event)
+	equipment.on_nth_tick(event)
 end
 
 -- Function -------------------------------------------------------------------
@@ -197,17 +197,17 @@ end
 --
 -- ----------------------------------------------------------------------------
 local entity_build_filter = {
-	{ filter = 'type', type = 'inserter' },
-	{ filter = 'type', type = 'assembling-machine' },
-	{ filter = 'type', type = 'furnace' },
-	{ filter = 'type', type = 'lab' },
-	{ filter = 'type', type = 'mining-drill' },
-	{ filter = 'type', type = 'boiler' },
-	{ filter = 'type', type = 'pump' }
+	{ filter = "type", type = "inserter" },
+	{ filter = "type", type = "assembling-machine" },
+	{ filter = "type", type = "furnace" },
+	{ filter = "type", type = "lab" },
+	{ filter = "type", type = "mining-drill" },
+	{ filter = "type", type = "boiler" },
+	{ filter = "type", type = "pump" }
 }
 
 local entity_died_filter = {
-	{ filter = 'type', type = 'container' },
+	{ filter = "type", type = "container" },
 }
 
 
@@ -260,7 +260,7 @@ script.on_event(defines.events.on_player_removed_equipment, function(event) even
 script.on_event(defines.events.on_player_armor_inventory_changed,
 	function(event) event_on_player_armor_inventory_changed(event) end)
 
-script.on_nth_tick(60 * 10, function() on_nth_tick() end)
+script.on_nth_tick(60 * 10, function(event) on_nth_tick(event) end)
 
 -- ----------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------

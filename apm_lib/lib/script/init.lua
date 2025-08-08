@@ -1,11 +1,6 @@
+local strings = require("lib.containers.strings")
+
 local init = {}
-
-local self = "apm.lib.script.init"
-
--- Definitions ----------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 
 function init.alloc_defenitions()
 	if not storage.apm then storage.apm = {} end
@@ -19,20 +14,11 @@ function init.alloc_defenitions()
 	if not storage.apm.lib.technologies.conditional_recipes then storage.apm.lib.technologies.conditional_recipes = {} end
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local function starts_with(str, start)
-	return str:sub(1, #start) == start
-end
-
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+---@param unlock_technology string
+---@param parent_technologies data.TechnologyPrototype | string
 function init.add_technology_conditional(unlock_technology, parent_technologies)
 	local p_techs = {}
+
 	if type(parent_technologies) == "table" then
 		p_techs = parent_technologies
 	elseif type(parent_technologies) == "string" then
@@ -171,7 +157,7 @@ local function check_technologies(force)
 	local recipes = force.recipes
 
 	for _, technology in pairs(technologies) do
-		if starts_with(technology.name, "apm_") or storage.apm.lib.technologies.list[technology.name] then
+		if strings.has_suffix(technology.name, "apm_") or storage.apm.lib.technologies.list[technology.name] then
 			technology.reload()
 
 			local is_researched = technology.researched
@@ -231,7 +217,7 @@ local function check_recipes(force)
 		for _, entity in pairs(entities) do
 			local recipe = entity.get_recipe()
 
-			if recipe and not recipe.enabled and not starts_with(recipe.name, "creative-") then
+			if recipe and not recipe.enabled and not strings.has_suffix(recipe.name, "creative-") then
 				log("-> removed recipe: \"" ..
 					tostring(recipe.name) ..
 					"\" from \"" ..

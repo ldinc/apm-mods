@@ -39,9 +39,18 @@ local function split_by_pattern_to_dict(input, pattern)
 	return dict, list
 end
 
+---@param input string
+---@param prefix string
+---@return boolean
+local function has_suffix(input, prefix)
+	return input:sub(1, #prefix) == prefix
+end
+
+
 local strings = {
 	split_by_pattern = split_by_pattern,
 	split_by_pattern_to_dict = split_by_pattern_to_dict,
+	has_suffix = has_suffix
 }
 
 return strings

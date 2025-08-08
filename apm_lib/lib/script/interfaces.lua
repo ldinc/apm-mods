@@ -11,12 +11,14 @@ local function inserter_clear_ash()
 
 		for _, inserter in pairs(inserters) do
 			local burnt_result_inventory = inserter.get_burnt_result_inventory()
+
 			if burnt_result_inventory ~= nil then
 				burnt_result_inventory.clear()
 			end
 		end
 
 		local msg = { "apm_interfaces_inserter_clear_ash", tostring(surface.name) }
+
 		surface.print(msg)
 	end
 end
@@ -31,6 +33,7 @@ local function inserter_add_fuel()
 
 		for _, inserter in pairs(inserters) do
 			local fuel_inventory = inserter.get_fuel_inventory()
+
 			if fuel_inventory ~= nil then
 				fuel_inventory.clear()
 				fuel_inventory.insert { name = "coal", count = 200 }
@@ -38,6 +41,7 @@ local function inserter_add_fuel()
 		end
 
 		local msg = { "apm_interfaces_inserter_add_fuel", tostring(surface.name) }
+
 		surface.print(msg)
 	end
 end
