@@ -14,12 +14,16 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+
+---@return {player : LuaPlayer, character: LuaEntity}[]
 function core.get_valid_players()
+	---@type {player : LuaPlayer, character: LuaEntity}[]
 	local players = {}
 
 	for _, player in pairs(game.players) do
 		if player.connected then
 			local character = player.character
+
 			if character ~= nil then
 				table.insert(players, { player = player, character = character })
 			end
@@ -60,10 +64,10 @@ function core.player_insert_items_safe(player, item_dict, print)
 				local item_stack = { name = name, count = count }
 				player.insert(item_stack)
 				if print then
-					player.print({ "", { 'apm_msg_put_in_inventory', name } })
+					player.print({ "", { "apm_msg_put_in_inventory", name } })
 				end
 				log('Info: core.player_insert_items_safe() insert item: "' ..
-				tostring(name) .. '" amount: "' .. tostring(count) .. '"')
+					tostring(name) .. '" amount: "' .. tostring(count) .. '"')
 			end
 		else
 			log('Warning: core.player_insert_items_safe() item: "' .. tostring(name) .. '" does not exist.')
@@ -80,7 +84,7 @@ local function grid_add_equipments(grid, equipments)
 		for _, name in pairs(equipments) do
 			local equipment = grid.put({ name = name })
 			if equipment and equipment.valid and equipment.burner and equipment.burner.inventory then
-				equipment.burner.inventory.insert({ name = 'coal', count = 10 })
+				equipment.burner.inventory.insert({ name = "coal", count = 10 })
 			end
 		end
 	end
@@ -113,7 +117,7 @@ function core.player_insert_armor_safe(player, armor_name, equipments)
 		grid = armor_stack.grid
 	end
 	grid_add_equipments(grid, equipments)
-	player.print({ "", { 'apm_msg_put_in_inventory', armor_name } })
+	player.print({ "", { "apm_msg_put_in_inventory", armor_name } })
 	return true
 end
 

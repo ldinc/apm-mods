@@ -247,9 +247,7 @@ script.on_event(defines.events.on_tick, function(event) event_on_tick(event) end
 script.on_event(defines.events.on_player_created, function(event) event_on_player_created(event) end)
 script.on_event(defines.events.on_player_joined_game, function(event) event_on_player_joined_game(event) end)
 script.on_event(defines.events.on_runtime_mod_setting_changed, function(event) event_mod_setting_changed(event) end)
--- script.on_event(defines.events.on_built_entity, function(event) on_built_entity(event) end, entity_build_filter)
--- script.on_event(defines.events.on_robot_built_entity, function(event) event_on_robot_build(event) end,
--- entity_build_filter)
+
 script.on_event(defines.events.on_entity_cloned, function(event) event_on_entity_cloned(event) end)
 script.on_event(defines.events.on_player_rotated_entity, function(event) event_on_rotate(event) end)
 script.on_event(defines.events.on_entity_settings_pasted, function(event) event_on_entity_settings_pasted(event) end)
@@ -258,7 +256,10 @@ script.on_event(defines.events.on_lua_shortcut, function(event) event_on_lua_sho
 script.on_event(defines.events.on_player_placed_equipment, function(event) event_on_player_placed_equipment(event) end)
 script.on_event(defines.events.on_player_removed_equipment, function(event) event_on_player_removed_equipment(event) end)
 script.on_event(defines.events.on_player_armor_inventory_changed,
-	function(event) event_on_player_armor_inventory_changed(event) end)
+	function(event)
+		event_on_player_armor_inventory_changed(event)
+	end
+)
 
 script.on_nth_tick(60 * 10, function(event) on_nth_tick(event) end)
 
