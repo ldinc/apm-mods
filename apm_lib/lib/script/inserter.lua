@@ -1,5 +1,6 @@
 require("lib.features")
 local dllist = require("lib.containers.dllist")
+local strings = require("lib.containers.strings")
 
 local inserter_script = {}
 
@@ -10,51 +11,6 @@ local inserter_script = {}
 ---@field fuel_inventory LuaInventory?
 ---@field bulk boolean?
 ---@field err integer
-
--- Helper function ------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
----@param str string
----@param pat string
----@return string[]
-local function split(str, pat)
-	str = string.gsub(str, "%s+", "")
-
-	local t = {}
-	local fpat = "(.-)" .. pat
-	local last_end = 1
-	local s, e, cap = str:find(fpat, 1)
-
-	while s do
-		if s ~= 1 or cap ~= "" then
-			table.insert(t, cap)
-		end
-		last_end = e + 1
-		s, e, cap = str:find(fpat, last_end)
-	end
-
-	if last_end <= #str then
-		cap = str:sub(last_end)
-		table.insert(t, cap)
-	end
-
-	return t
-end
-
----@param str string
----@return table<string, boolean>, string[]
-local function split_to_dict(str)
-	local list = split(str, ",")
-
-	local dict = {}
-
-	for _, key in ipairs(list) do
-		dict[key] = true
-	end
-
-	return dict, list
-end
 
 function inserter_script.alloc_defenitions()
 	if not storage.inserters then storage.inserters = {} end
@@ -480,7 +436,7 @@ local function get_config()
 	local valid_targets_string                      =
 			apm.lib.features.runtime.get_string("apm_lib_inserter_valid_targets")
 
-	local dict, list                                = split_to_dict(valid_targets_string)
+	local dict, list                                = strings.split_by_pattern_to_dict(valid_targets_string, ",")
 
 	storage.inserters.settings.valid_targets        = dict
 	storage.inserters.settings.valid_targets_string = list
