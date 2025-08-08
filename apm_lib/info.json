@@ -4,7 +4,7 @@
 	"title": "Amator Phasma's Library (forked)",
 	"author": "AmatorPhasma, ldinc",
 	"dependencies": [
-		"base >= 2.0.13",
+		"base >= 2.0.51",
 		"apm_resource_pack_ldinc >= 0.30.2",
 		"freeplay_starting_equipment >= 0.2.3",
 		"!Burner-Leech",

@@ -4,7 +4,8 @@ Date: 02.08.2025
   Bugfixes:
     - There was a problem with the synchronization of the multiplayer game when joining as a non-host player.
     - Mod ignores enitites builded by script (for example: inserters were not be pushed to event queue).
-    - Mod loss quality modifier fuel.
+    - Mod loss quality modifier for fuel with.
+    - Mod loss quality with spilling items from containers.
   Changes:
     - Deleted: Code for [apm_starfall]. No longer supported.
     - Deleted: Code for [apm_recycling]. No longer supported.

@@ -15,6 +15,9 @@ local inserter_script = {}
 --
 --
 -- ----------------------------------------------------------------------------
+---@param str string
+---@param pat string
+---@return string[]
 local function split(str, pat)
 	str = string.gsub(str, "%s+", "")
 

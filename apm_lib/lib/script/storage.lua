@@ -4,144 +4,122 @@ local storage_script = {}
 --
 --
 -- ----------------------------------------------------------------------------
-local core = require('lib.script.core')
+local core = require("lib.script.core")
 
 -- Definitions ----------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local apm_lib_storage_spit_out = settings.global['apm_lib_storage_spit_out'].value
-local apm_lib_storage_spit_out_mark_deconstruct = settings.global['apm_lib_storage_spit_out_mark_deconstruct'].value
-local apm_lib_storage_spit_out_iterations = settings.global['apm_lib_storage_spit_out_iterations'].value
-
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local function get_config()
-	apm_lib_storage_spit_out = settings.global['apm_lib_storage_spit_out'].value
-	apm_lib_storage_spit_out_mark_deconstruct = settings.global['apm_lib_storage_spit_out_mark_deconstruct'].value
-	apm_lib_storage_spit_out_iterations = settings.global['apm_lib_storage_spit_out_iterations'].value
+---@type boolean
+local apm_lib_storage_spit_out = false
+local v = settings.global["apm_lib_storage_spit_out"].value
+if type(v) == "boolean" then
+	apm_lib_storage_spit_out = v
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+---@type boolean
+local apm_lib_storage_spit_out_mark_deconstruct = false
+v = settings.global["apm_lib_storage_spit_out_mark_deconstruct"].value
+
+if type(v) == "boolean" then
+	apm_lib_storage_spit_out_mark_deconstruct = v
+end
+
+local function get_config()
+	v = settings.global["apm_lib_storage_spit_out"].value
+
+	if type(v) == "boolean" then
+		apm_lib_storage_spit_out = v
+	end
+
+
+	v = settings.global["apm_lib_storage_spit_out_mark_deconstruct"].value
+
+	if type(v) == "boolean" then
+		apm_lib_storage_spit_out_mark_deconstruct = v
+	end
+end
+
 function storage_script.on_init()
 	get_config()
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 function storage_script.on_load()
 	get_config()
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
 function storage_script.on_update()
 	get_config()
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+---@param entity LuaEntity
+---@return LuaForce|string|integer?
 local function get_force(entity)
-	local force
+	local force = nil
+
 	if apm_lib_storage_spit_out_mark_deconstruct then
 		force = entity.force
 	end
+
 	return force
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+---@param entity LuaEntity
+---@param cause LuaEntity?
 local function container(entity, cause)
-	if entity.valid ~= true then return end
-	if entity.type ~= 'container' then return end
+	if entity.valid ~= true then
+		return
+	end
+
+	if entity.type ~= "container" then
+		return
+	end
 
 	local inventory = entity.get_inventory(defines.inventory.chest)
 
-	if inventory == nil then return end
-	if inventory.is_empty() then return end
+	if inventory == nil then
+		return
+	end
 
-	local content = inventory.get_contents()
-	local surface = entity.surface.name
+	if inventory.is_empty() then
+		return
+	end
+
+
 	local position = entity.position
 	local entity_force = get_force(entity) -- will return nil if apm_lib_storage_spit_out_mark_deconstruct == false
 
-	local increment_counter = 0
-	for _, item in ipairs(content) do
-		---@type LuaSurface.spill_item_stack_param
-		local param = {
-			position = position,
-			---@type SimpleItemStack
-			stack = {
-				name = item.name,
-				count = item.count,
-			},
-			force = entity_force,
-		}
+	---@type LuaSurface.spill_inventory_param
+	local param = {
+		position = position,
+		inventory = inventory,
+		force = entity_force,
+	}
 
-		-- TODO: for factorio 2.0.51 now we can use LuaSurface.spill_inventory instead spill_item_stack
-		game.surfaces[surface].spill_item_stack(param)
-
-		increment_counter = increment_counter + 1
-		if increment_counter >= apm_lib_storage_spit_out_iterations then -- this sould prevent too much lag on modded storages. (48: steel-chest / default)
-			break
-		end
-	end
+	entity.surface.spill_inventory(param)
 
 	if cause ~= nil then
-		if cause.type == 'character' or cause.type == 'player' then
+		if cause.type == "character" or cause.type == "player" then
 			local force = cause.player.force
 			local player_name = cause.player.name
-			local msg = { 'apm_msg_storage_died', player_name }
+			local msg = { "apm_msg_storage_died", player_name }
+
 			core.send_msg_to_force(force, msg)
 		end
 	end
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-local function tank(entity, cause)
-	if entity.valid ~= true then return end
-	if entity.type ~= 'storage-tank' then return end
-end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
+---@param event EventData.on_entity_died
 function storage_script.died(event)
-	if not apm_lib_storage_spit_out then return end
+	if not apm_lib_storage_spit_out then
+		return
+	end
+
 	local entity = event.entity
 	local cause = event.cause
 
 	container(entity, cause)
 end
 
--- Function -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-function storage_script.pre_mined(event)
-	local entity = event.entity
-	local cause = event.cause
-
-	tank(entity, cause)
-end
-
--- ----------------------------------------------------------------------------
--- ----------------------------------------------------------------------------
 return storage_script

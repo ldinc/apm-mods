@@ -7,7 +7,7 @@ require("lib.utils.debug")
 
 local function inserter_clear_ash()
 	for _, surface in pairs(game.surfaces) do
-		local inserters = surface.find_entities_filtered({ type = 'inserter' })
+		local inserters = surface.find_entities_filtered({ type = "inserter" })
 
 		for _, inserter in pairs(inserters) do
 			local burnt_result_inventory = inserter.get_burnt_result_inventory()
@@ -19,7 +19,6 @@ local function inserter_clear_ash()
 		local msg = { "apm_interfaces_inserter_clear_ash", tostring(surface.name) }
 		surface.print(msg)
 	end
-	return
 end
 
 -- Remote Function ------------------------------------------------------------
@@ -28,20 +27,19 @@ end
 -- ----------------------------------------------------------------------------
 local function inserter_add_fuel()
 	for _, surface in pairs(game.surfaces) do
-		local inserters = surface.find_entities_filtered({ type = 'inserter' })
+		local inserters = surface.find_entities_filtered({ type = "inserter" })
 
 		for _, inserter in pairs(inserters) do
 			local fuel_inventory = inserter.get_fuel_inventory()
 			if fuel_inventory ~= nil then
 				fuel_inventory.clear()
-				fuel_inventory.insert { name = 'coal', count = 200 }
+				fuel_inventory.insert { name = "coal", count = 200 }
 			end
 		end
 
 		local msg = { "apm_interfaces_inserter_add_fuel", tostring(surface.name) }
 		surface.print(msg)
 	end
-	return
 end
 
 -- Remote Interface ------------------------------------------------------------
@@ -56,6 +54,6 @@ remote.add_interface(
 	{
 		inserter_clear_ash = function() return inserter_clear_ash() end,
 		inserter_add_fuel = function() return inserter_add_fuel() end,
-		debug_check_products = function () return apm.lib.utils.debug.check.products() end,
+		debug_check_products = function() return apm.lib.utils.debug.check.products() end,
 	}
 )
