@@ -306,7 +306,7 @@ local function try_transfer_ash(t_object, pickup_target, drop_target)
 		return
 	end
 
-	--- check does drop target
+	--- check does drop target valid
 	if not drop_target or not drop_target.burner then return end
 
 	try_transfer_ash_from_to(pickup_target, drop_target)
