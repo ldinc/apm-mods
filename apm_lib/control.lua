@@ -60,7 +60,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function event_on_tick(event)
-	inserter.on_tick()
+	inserter.on_tick(event.tick)
 	radiation.on_tick()
 end
 

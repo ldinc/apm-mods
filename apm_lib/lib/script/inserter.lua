@@ -11,6 +11,7 @@ local inserter_script = {}
 ---@field fuel_inventory LuaInventory?
 ---@field bulk boolean?
 ---@field err integer
+---@field ash_last_check_tick integer?
 
 function inserter_script.alloc_defenitions()
 	if not storage.inserters then storage.inserters = {} end
@@ -280,34 +281,49 @@ local function try_transfer_ash_from_to(from, to)
 
 	if not to.burner or not from.burner then return end
 
-	local count = from.burner.burnt_result_inventory.get_item_count("apm_generic_ash")
+	if
+			not from.burner.burnt_result_inventory.is_full()
+			or
+			to.burner.burnt_result_inventory.is_full()
+	then
+		return
+	end
 
 	---@type ItemStackDefinition
-	local stack = { name = "apm_generic_ash", count = storage.inserters.settings.ash_size }
+	local stack = { name = "apm_generic_ash", count = apm.lib.features.stack_size.ash }
 
-	if count >= storage.inserters.settings.ash_size then
-		local can_be_inserted = to.burner.burnt_result_inventory.get_insertable_count("apm_generic_ash")
+	local can_be_inserted = to.burner.burnt_result_inventory.get_insertable_count("apm_generic_ash")
 
-		if can_be_inserted >= storage.inserters.settings.ash_size then
-			local added = to.burner.burnt_result_inventory.insert(stack)
+	if can_be_inserted >= storage.inserters.settings.ash_size then
+		local added = to.burner.burnt_result_inventory.insert(stack)
 
-			stack.count = added
+		stack.count = added
 
-			from.burner.burnt_result_inventory.remove(stack)
-		end
+		from.burner.burnt_result_inventory.remove(stack)
 	end
 end
 
+---@param tick integer
 ---@param t_object QueueItem
 ---@param pickup_target LuaEntity?
 ---@param drop_target LuaEntity?
-local function try_transfer_ash(t_object, pickup_target, drop_target)
+local function try_transfer_ash(tick, t_object, pickup_target, drop_target)
 	if not storage.inserters.settings.ash_chaining or storage.inserters.settings.ash_size == 0 then
 		return
 	end
 
 	--- check does drop target valid
 	if not drop_target or not drop_target.burner then return end
+
+	if
+			t_object.ash_last_check_tick
+			and
+			(tick - t_object.ash_last_check_tick < 1000)
+	then
+		return
+	end
+
+	t_object.ash_last_check_tick = tick
 
 	try_transfer_ash_from_to(pickup_target, drop_target)
 	try_transfer_ash_from_to(t_object.entity, drop_target)
@@ -316,10 +332,11 @@ end
 --- This function made it possible that a inserter can handle the 'burnt_result_inventory' on all machiens.
 --- That burner inserter can also leech fuel from drop target.
 --- That burner inserters are capable to chain fuel through all burner machines
+---@param tick integer
 ---@param t_object QueueItem
 ---@param pickup_target LuaEntity?
 ---@param drop_target LuaEntity?
-local function inserter_work(t_object, pickup_target, drop_target)
+local function inserter_work(tick, t_object, pickup_target, drop_target)
 	-- -------------------------------------------------------------------------------------
 	-- This part is for the fuel leeching
 	-- -------------------------------------------------------------------------------------
@@ -328,7 +345,7 @@ local function inserter_work(t_object, pickup_target, drop_target)
 		steal_fuel_to_inserter(t_object, pickup_target)
 	end
 
-	try_transfer_ash(t_object, pickup_target, drop_target)
+	try_transfer_ash(tick, t_object, pickup_target, drop_target)
 
 	if t_object.fuel_inventory and t_object.fuel_inventory.get_item_count() <= 0 then
 		if burner_inserter_leech(t_object.entity, pickup_target, drop_target) then
@@ -838,7 +855,8 @@ function inserter_script.on_entity_settings_pasted(entity)
 	check_entity(entity)
 end
 
-function inserter_script.on_tick()
+---@param tick  integer
+function inserter_script.on_tick(tick)
 	local inserter_size = dllist.length(storage.inserters.queue)
 	local feature_enabled = storage.inserters.settings.fn_enabled
 
@@ -850,7 +868,7 @@ function inserter_script.on_tick()
 		local t_object, pickup_target, drop_target = get_next_inserter()
 
 		if t_object then
-			inserter_work(t_object, pickup_target, drop_target)
+			inserter_work(tick, t_object, pickup_target, drop_target)
 		end
 	end
 end
