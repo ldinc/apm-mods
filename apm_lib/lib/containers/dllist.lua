@@ -110,10 +110,10 @@ end
 ---@param id K
 ---@return V|nil, boolean
 local function find(self, id)
-	local node = self.nodes[id]
-	if node then
-		return node.value, true
+	if self.nodes[id] then
+		return self.nodes[id].value, true
 	end
+
 	return nil, false
 end
 
@@ -123,6 +123,7 @@ end
 ---@return V|nil, K|nil
 local function get_current(self)
 	if not self.current then return nil, nil end
+
 	return self.current.value, self.current.id
 end
 
@@ -134,7 +135,9 @@ local function get_next(self)
 	if not self.current or not self.current.next then
 		return nil, nil
 	end
+
 	self.current = self.current.next
+
 	return self.current.value, self.current.id
 end
 
@@ -162,7 +165,9 @@ end
 ---@return V|nil, K|nil
 local function get_head(self)
 	self.current = self.head
+
 	if not self.head then return nil, nil end
+
 	return self.head.value, self.head.id
 end
 
@@ -172,7 +177,9 @@ end
 ---@return V|nil, K|nil
 local function get_tail(self)
 	self.current = self.tail
+
 	if not self.tail then return nil, nil end
+
 	return self.tail.value, self.tail.id
 end
 
