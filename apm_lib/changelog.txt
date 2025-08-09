@@ -14,6 +14,7 @@ Date: 02.08.2025
     - Rewrited: New double linked list based walker for inserters. Now used dllist to handle inserters queue.
     - Added: The burner isnerters now try find fuel from pickup entity or try use helded suitable fuel when it's out of fuel.
     - Added: Ash chaining logic. Now inserter can take ash from burnt result inventories (self or pickup) and put to target's same inventory.
+    - Added: Ash auto transferring only starts when puckup inventory is full & target inventory is not full.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.19
 Date: 02.08.2025

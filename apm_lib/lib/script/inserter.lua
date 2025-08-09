@@ -281,6 +281,8 @@ local function try_transfer_ash_from_to(from, to)
 
 	if not to.burner or not from.burner then return end
 
+	if not to.burner.fuel_categories["chemical"] then return end
+
 	if
 			not from.burner.burnt_result_inventory.is_full()
 			or
@@ -454,7 +456,15 @@ end
 ---@return boolean
 local function entity_condition(entity)
 	if storage.inserters.settings.valid_targets[entity.type] then
-		if entity.get_fuel_inventory() then -- this will only catch entities with a burner NOT fluids (thats good)
+		local burner_inventory = entity.get_fuel_inventory()
+
+		if
+				burner_inventory
+				and
+				entity.burner
+				and
+				entity.burner.fuel_categories["chemical"]
+		then -- this will only catch entities with a burner NOT fluids (thats good)
 			return true
 		end
 	end
