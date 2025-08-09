@@ -35,3 +35,14 @@ apm.lib.features.runtime.register(
 		)
 	end
 )
+
+apm.lib.features.runtime.register(
+	"apm_lib_inserter_ash_chaining",
+	function()
+		return apm.lib.features.getter.boolean(
+			apm.lib.features.getter.type.runtime,
+			"apm_lib_inserter_ash_chaining",
+			true
+		)
+	end
+)

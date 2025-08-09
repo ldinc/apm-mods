@@ -3,6 +3,7 @@ Version: 0.32.00
 Date: 02.08.2025
   Bugfixes:
     - There was a problem with the synchronization of the multiplayer game when joining as a non-host player.
+    - Sad. Still got desync on start with mm. Only once, but stable. The bug only for apm_lib since version for 1.0...
     - Mod ignores enitites builded by script (for example: inserters were not be pushed to event queue).
     - Mod loss quality modifier for fuel with.
     - Mod loss quality with spilling items from containers.
@@ -12,6 +13,7 @@ Date: 02.08.2025
     - Deleted: Code for apm's offshore pumps. With 2.0 it became legacy.
     - Rewrited: New double linked list based walker for inserters. Now used dllist to handle inserters queue.
     - Added: The burner isnerters now try find fuel from pickup entity or try use helded suitable fuel when it's out of fuel.
+    - Added: Ash chaining logic. Now inserter can take ash from burnt result inventories (self or pickup) and put to target's same inventory.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.19
 Date: 02.08.2025

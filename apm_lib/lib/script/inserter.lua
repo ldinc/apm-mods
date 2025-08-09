@@ -21,12 +21,21 @@ function inserter_script.alloc_defenitions()
 	end
 
 	if not storage.inserters.settings then
-		---@type {fn_enabled: boolean, batch_size: integer, valid_targets: table<string, boolean>, valid_targets_string: string[]}
+		---@type {
+		---	fn_enabled: boolean,
+		---	batch_size: integer,
+		---	valid_targets: table<string, boolean>,
+		---	valid_targets_string: string[],
+		---	ash_chaining: boolean,
+		---	ash_size: integer,
+		---}
 		storage.inserters.settings = {
 			fn_enabled = false,
 			batch_size = 15,
 			valid_targets = {},
 			valid_targets_string = {},
+			ash_chaining = true,
+			ash_size = 100,
 		}
 	end
 end
@@ -264,6 +273,46 @@ local function steal_fuel_to_inserter(t_object, pickup_target)
 	end
 end
 
+---@param from LuaEntity?
+---@param to LuaEntity?
+local function try_transfer_ash_from_to(from, to)
+	if not from or not to then return end
+
+	if not to.burner or not from.burner then return end
+
+	local count = from.burner.burnt_result_inventory.get_item_count("apm_generic_ash")
+
+	---@type ItemStackDefinition
+	local stack = { name = "apm_generic_ash", count = storage.inserters.settings.ash_size }
+
+	if count >= storage.inserters.settings.ash_size then
+		local can_be_inserted = to.burner.burnt_result_inventory.get_insertable_count("apm_generic_ash")
+
+		if can_be_inserted >= storage.inserters.settings.ash_size then
+			local added = to.burner.burnt_result_inventory.insert(stack)
+
+			stack.count = added
+
+			from.burner.burnt_result_inventory.remove(stack)
+		end
+	end
+end
+
+---@param t_object QueueItem
+---@param pickup_target LuaEntity?
+---@param drop_target LuaEntity?
+local function try_transfer_ash(t_object, pickup_target, drop_target)
+	if not storage.inserters.settings.ash_chaining or storage.inserters.settings.ash_size == 0 then
+		return
+	end
+
+	--- check does drop target
+	if not drop_target or not drop_target.burner then return end
+
+	try_transfer_ash_from_to(pickup_target, drop_target)
+	try_transfer_ash_from_to(t_object.entity, drop_target)
+end
+
 --- This function made it possible that a inserter can handle the 'burnt_result_inventory' on all machiens.
 --- That burner inserter can also leech fuel from drop target.
 --- That burner inserters are capable to chain fuel through all burner machines
@@ -278,6 +327,8 @@ local function inserter_work(t_object, pickup_target, drop_target)
 	if t_object.entity.status == defines.entity_status.no_fuel then
 		steal_fuel_to_inserter(t_object, pickup_target)
 	end
+
+	try_transfer_ash(t_object, pickup_target, drop_target)
 
 	if t_object.fuel_inventory and t_object.fuel_inventory.get_item_count() <= 0 then
 		if burner_inserter_leech(t_object.entity, pickup_target, drop_target) then
@@ -440,6 +491,15 @@ local function get_config()
 
 	storage.inserters.settings.valid_targets        = dict
 	storage.inserters.settings.valid_targets_string = list
+
+	storage.inserters.settings.ash_chaining         =
+			apm.lib.features.runtime.get_boolean("apm_lib_inserter_ash_chaining")
+
+	if apm.lib.features.stack_size.ash > 0 then
+		storage.inserters.settings.ash_size = math.ceil(apm.lib.features.stack_size.ash / 10)
+	else
+		storage.inserters.settings.ash_size = 0
+	end
 end
 
 ---@param reset boolean
@@ -495,7 +555,6 @@ end
 -- return t_object{entity, fuel_inventory} or nil
 --
 -- ----------------------------------------------------------------------------
-
 
 ---@return QueueItem?, LuaEntity?, LuaEntity?
 local function get_next_inserter()
@@ -595,8 +654,11 @@ end
 
 ---@param player LuaPlayer
 local function command_inserter_global_size(player)
-	local msg = { "", "Inserter:" ..
-	"\ndb: " .. tostring(dllist.length(storage.inserters.queue)) }
+	local msg = {
+		"", "Inserter:" ..
+	"\ntotal inserters: " .. tostring(dllist.length(storage.inserters.queue)) ..
+	"\nsettings: " .. tostring(serpent.block(storage.inserters.settings))
+	}
 	player.print(msg)
 end
 

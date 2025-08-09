@@ -60,6 +60,7 @@ data:extend({ setting })
 data:extend({
 	{ type = "int-setting",    name = "apm_lib_inserter_iterations_01759",         setting_type = "runtime-global", minimum_value = 0,                                                              maximum_value = 100, default_value = 15, order = "aa_b" },
 	{ type = "string-setting", name = "apm_lib_inserter_valid_targets",            setting_type = "runtime-global", default_value = "assembling-machine, furnace, lab, mining-drill, boiler, pump", order = "aa_c" },
+	{ type = "bool-setting",   name = "apm_lib_inserter_ash_chaining",             setting_type = "runtime-global", default_value = true,                                                           order = "ab_a" },
 	{ type = "bool-setting",   name = "apm_lib_storage_spit_out",                  setting_type = "runtime-global", default_value = true,                                                           order = "ab_a" },
 	{ type = "bool-setting",   name = "apm_lib_storage_spit_out_mark_deconstruct", setting_type = "runtime-global", default_value = true,                                                           order = "ab_b" },
 	{ type = "bool-setting",   name = "apm_lib_radiation_dmg",                     setting_type = "runtime-global", default_value = true,                                                           order = "ac_a" },
