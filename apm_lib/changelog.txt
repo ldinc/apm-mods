@@ -2,8 +2,6 @@
 Version: 0.32.00
 Date: 02.08.2025
   Bugfixes:
-    - There was a problem with the synchronization of the multiplayer game when joining as a non-host player.
-    - Sad. Still got desync on start with mm. Only once, but stable. The bug only for apm_lib since version for 1.0...
     - Mod ignores enitites builded by script (for example: inserters were not be pushed to event queue).
     - Mod loss quality modifier for fuel with.
     - Mod loss quality with spilling items from containers.
