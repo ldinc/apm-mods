@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.00
-Date: 02.08.2025
+Date: 10.08.2025
   Bugfixes:
     - Mod ignores enitites builded by script (for example: inserters were not be pushed to event queue).
     - Mod loss quality modifier for fuel with.

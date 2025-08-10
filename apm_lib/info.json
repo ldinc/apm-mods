@@ -6,7 +6,7 @@
 	"dependencies": [
 		"base >= 2.0.51",
 		"apm_resource_pack_ldinc >= 0.30.2",
-		"freeplay_starting_equipment >= 0.2.3",
+		"freeplay_starting_equipment >= 0.2.6",
 		"!Burner-Leech",
 		"!Burner-Leech-Fork"
 	],
