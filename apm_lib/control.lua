@@ -21,7 +21,6 @@ local function event_on_init()
 	init.alloc_defenitions()
 	initial.run()
 	inserter.on_init()
-	--- TODO:
 	radiation.on_init()
 	storage.on_init()
 	equipment.on_init()
@@ -263,8 +262,8 @@ script.on_event(defines.events.on_player_armor_inventory_changed,
 
 script.on_nth_tick(60 * 10, function(event) on_nth_tick(event) end)
 
--- ----------------------------------------------------------------------------
--- ----------------------------------------------------------------------------
+-- -- ----------------------------------------------------------------------------
+-- -- ----------------------------------------------------------------------------
 script.on_init(event_on_init)
 script.on_load(event_on_load)
 script.on_configuration_changed(event_on_update)
