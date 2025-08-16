@@ -221,8 +221,21 @@ local comparator = function(t, a, b) return t[b] < t[a] end
 local function check_inventory(player, character, cause_damage)
 	if not player or not character then return end
 
+
+	local inv = character.get_main_inventory()
+	if not inv then
+		return
+	end
+
 	for item_name, radiation_level in spairs(storage.items_radioactive_01774, comparator) do
-		local count = character.get_item_count(item_name)
+		---@type ItemFilter
+		local filter = {
+			name = item_name,
+			quality = "normal",
+			comparator = ">="
+		}
+
+		local count = character.get_item_count(filter)
 
 		if count > 0 then
 			local radioactive_type = "radioactive_b_"

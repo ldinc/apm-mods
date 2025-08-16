@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.01
+Date: 13.08.2025
+  Bugfixes:
+    - Radioactive items with quality > normal don't trigger damage to player (by default get_items_count get only normal items).
+---------------------------------------------------------------------------------------------------
 Version: 0.32.00
 Date: 10.08.2025
   Bugfixes:
