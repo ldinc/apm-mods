@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.entity'
+local self = "lib.utils.entity"
 
 if apm.lib.utils.entity.has == nil then apm.lib.utils.entity.has = {} end
 if apm.lib.utils.entity.get == nil then apm.lib.utils.entity.get = {} end
@@ -14,16 +14,16 @@ if apm.lib.utils.entity.set == nil then apm.lib.utils.entity.set = {} end
 ---@return string[]
 function apm.lib.utils.entity.prototype_list()
 	local prototypes = {
-		'assembling-machine',
-		'boiler',
-		'inserter',
-		'lab',
-		'locomotive',
-		'mining-drill',
-		'reactor',
-		'ammo-turret',
-		'car',
-		'generator',
+		"assembling-machine",
+		"boiler",
+		"inserter",
+		"lab",
+		"locomotive",
+		"mining-drill",
+		"reactor",
+		"ammo-turret",
+		"car",
+		"generator",
 	}
 
 	return prototypes
@@ -60,26 +60,26 @@ function apm.lib.utils.entity.has.fuel_category(entity, category)
 			end
 		end
 
-		if entity.burner.fuel_categories == nil and category == 'chemical' then
+		if entity.burner.fuel_categories == nil and category == "chemical" then
 			return true
 		end
 	end
 
-	if entity.energy_source and entity.energy_source.type == 'burner' then
+	if entity.energy_source and entity.energy_source.type == "burner" then
 		if entity.energy_source.fuel_categories then
 			for i = 1, #entity.energy_source.fuel_categories do
 				if entity.energy_source.fuel_categories[i] == category then return true end
 			end
 		end
 
-		if entity.energy_source.fuel_category == nil and entity.energy_source.fuel_categories == nil and category == 'chemical' then
+		if entity.energy_source.fuel_category == nil and entity.energy_source.fuel_categories == nil and category == "chemical" then
 			return true
 		end
 	end
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
-			'has.fuel_categories()',
+			"has.fuel_categories()",
 			'entity: "' .. tostring(entity.name) .. '" does not have a fuel_category'
 		))
 	end
@@ -101,9 +101,9 @@ function apm.lib.utils.entity.get.fuel_categories(entity)
 		end
 	end
 
-	if entity.energy_source and entity.energy_source.type == 'burner' then
+	if entity.energy_source and entity.energy_source.type == "burner" then
 		if not entity.energy_source.fuel_categories then
-			return { 'chemical' }
+			return { "chemical" }
 		end
 		if entity.energy_source.fuel_categories then
 			return entity.energy_source.fuel_categories
@@ -112,7 +112,7 @@ function apm.lib.utils.entity.get.fuel_categories(entity)
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
-			'get.fuel_categories()',
+			"get.fuel_categories()",
 			'entity: "' .. tostring(entity.name) .. '" does not have a fuel_category'
 		))
 	end
@@ -130,7 +130,7 @@ function apm.lib.utils.entity.add.fuel_category(entity, category)
 
 	if entity.burner then
 		if not entity.burner.fuel_categories then
-			entity.burner.fuel_categories = { 'chemical' }
+			entity.burner.fuel_categories = { "chemical" }
 		end
 
 		if entity.burner.fuel_categories then
@@ -138,14 +138,14 @@ function apm.lib.utils.entity.add.fuel_category(entity, category)
 
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'add.fuel_category()',
+					"add.fuel_category()",
 					'added: "' .. tostring(category) .. '" to entity: "' .. tostring(entity.name) .. '"'
 				))
 			end
 		end
-	elseif entity.energy_source and entity.energy_source.type == 'burner' then
+	elseif entity.energy_source and entity.energy_source.type == "burner" then
 		if not entity.energy_source.fuel_categories then
-			entity.energy_source.fuel_categories = { 'chemical' }
+			entity.energy_source.fuel_categories = { "chemical" }
 		end
 
 		if entity.energy_source.fuel_categories then
@@ -153,7 +153,7 @@ function apm.lib.utils.entity.add.fuel_category(entity, category)
 
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'add.fuel_category()',
+					"add.fuel_category()",
 					'added: "' .. tostring(category) .. '" to entity: "' .. tostring(entity.name) .. '"'
 				))
 			end
@@ -161,7 +161,7 @@ function apm.lib.utils.entity.add.fuel_category(entity, category)
 	else
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'add.fuel_category()',
+				"add.fuel_category()",
 				'entity: "' .. tostring(entity.name) .. '" does not have a burner energy source'
 			))
 		end
@@ -200,12 +200,12 @@ function apm.lib.utils.entity.del.fuel_category(entity, category)
 
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'del.fuel_category()',
+					"del.fuel_category()",
 					'deleted: "' .. tostring(category) .. '" from entity: "' .. tostring(entity.name) .. '"'
 				))
 			end
 		end
-	elseif entity.energy_source and entity.energy_source.type == 'burner' then
+	elseif entity.energy_source and entity.energy_source.type == "burner" then
 		if not entity.energy_source.fuel_categories then
 			entity.energy_source.fuel_categories = fc
 		end
@@ -215,7 +215,7 @@ function apm.lib.utils.entity.del.fuel_category(entity, category)
 
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'add.fuel_category()',
+					"add.fuel_category()",
 					'deleted: "' .. tostring(category) .. '" from entity: "' .. tostring(entity.name) .. '"'
 				))
 			end
@@ -223,7 +223,7 @@ function apm.lib.utils.entity.del.fuel_category(entity, category)
 	else
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'add.fuel_category()',
+				"add.fuel_category()",
 				'entity: "' .. tostring(entity.name) .. '" does not have a burner energy source'
 			))
 		end
@@ -275,7 +275,7 @@ function apm.lib.utils.entity.set.next_upgrade(entity, next_upgrade)
 
 		if APM_CAN_LOG_INFO then
 			log(APM_MSG_INFO(
-				'next_upgrade()',
+				"next_upgrade()",
 				'for entity: "' .. tostring(entity.name) .. '" set to entity: "' .. tostring(next_upgrade) .. '"'
 			))
 		end
@@ -287,7 +287,7 @@ function apm.lib.utils.entity.set.next_upgrade(entity, next_upgrade)
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
-			'next_upgrade()',
+			"next_upgrade()",
 			'for entity: "' ..
 			tostring(entity.name) .. '" but entity: "' .. tostring(next_upgrade) .. '" does not exist, set to "nil"'
 		))
@@ -300,12 +300,12 @@ end
 function apm.lib.utils.entity.set.fuel_category(entity, categories)
 	if entity.burner then
 		entity.burner.fuel_categories = {}
-	elseif entity.energy_source and entity.energy_source.type == 'burner' then
+	elseif entity.energy_source and entity.energy_source.type == "burner" then
 		entity.energy_source.fuel_categories = {}
 	else
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'set.fuel_category()',
+				"set.fuel_category()",
 				'entity: "' .. tostring(entity.name) .. '" its energy_source type does not have a fuel_category'
 			))
 		end
@@ -313,21 +313,21 @@ function apm.lib.utils.entity.set.fuel_category(entity, categories)
 		return
 	end
 
-	if type(categories) == 'table' then
+	if type(categories) == "table" then
 		for i = 1, #categories do
 			apm.lib.utils.entity.add.fuel_category(entity, categories[i])
 		end
-	elseif type(categories) == 'string' then
+	elseif type(categories) == "string" then
 		apm.lib.utils.entity.add.fuel_category(entity, categories)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('set.fuel_category()', 'set fuel_categories for : "' .. tostring(entity.name) .. '"'))
+		log(APM_MSG_WARNING("set.fuel_category()", 'set fuel_categories for : "' .. tostring(entity.name) .. '"'))
 		log(APM_MSG_WARNING(
-			'set.fuel_category()',
-			'Note: please be careful with this function, it can break compatibillity with other mods!'
+			"set.fuel_category()",
+			"Note: please be careful with this function, it can break compatibillity with other mods!"
 		))
-		log(APM_MSG_WARNING('set.fuel_category()', '---------------------------------'))
+		log(APM_MSG_WARNING("set.fuel_category()", "---------------------------------"))
 	end
 end
 
@@ -361,14 +361,14 @@ function apm.lib.utils.entity.add.crafting_category(entity, category)
 
 		if APM_CAN_LOG_INFO then
 			log(APM_MSG_INFO(
-				'add.crafting_category()',
+				"add.crafting_category()",
 				'added: "' .. tostring(category) .. '" to "' .. tostring(entity.name) .. '"'
 			))
 		end
 	else
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'add.crafting_category()',
+				"add.crafting_category()",
 				'entity: "' .. tostring(entity.name) .. '" allready has crafting_categories: "' .. tostring(category) .. '"'
 			))
 		end
@@ -380,7 +380,7 @@ end
 ---@param flag string
 ---@return boolean
 function apm.lib.utils.entity.has.flag(entity, flag)
-	if type(entity.flags) == 'table' and entity.flags then
+	if type(entity.flags) == "table" and entity.flags then
 		---@type data.EntityPrototypeFlags
 		local flags = entity.flags
 
@@ -398,19 +398,19 @@ end
 ---@param entity any
 ---@param flag string
 function apm.lib.utils.entity.add.flag(entity, flag)
-	if type(entity.flags) == 'table' then
+	if type(entity.flags) == "table" then
 		if not apm.lib.utils.entity.has.flag(entity, flag) then
 			table.insert(entity.flags, flag)
 
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'add.flag()', 'added: "' .. tostring(flag) .. '" to "' .. tostring(entity.name) .. '"'
+					"add.flag()", 'added: "' .. tostring(flag) .. '" to "' .. tostring(entity.name) .. '"'
 				))
 			end
 		else
 			if APM_CAN_LOG_WARN then
 				log(APM_MSG_WARNING(
-					'add.flag()',
+					"add.flag()",
 					'entity: "' .. tostring(entity.name) .. '" allready has flag: "' .. tostring(flag) .. '"'
 				))
 			end
@@ -419,7 +419,7 @@ function apm.lib.utils.entity.add.flag(entity, flag)
 		entity.flags = { flag }
 
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('add.flag()', 'added: "' .. tostring(flag) .. '" to "' .. tostring(entity.name) .. '"'))
+			log(APM_MSG_INFO("add.flag()", 'added: "' .. tostring(flag) .. '" to "' .. tostring(entity.name) .. '"'))
 		end
 	end
 end

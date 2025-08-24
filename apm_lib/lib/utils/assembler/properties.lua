@@ -1,5 +1,5 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
 if apm.lib.utils.assembler.burner == nil then apm.lib.utils.assembler.burner = {} end
 
@@ -71,7 +71,7 @@ function apm.lib.utils.assembler.mod.module_specification(assembler_name, value,
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'mod.module_specification()',
+			"mod.module_specification()",
 			'changed module_specification for: "' .. tostring(assembler_name) .. '"'
 		))
 	end
@@ -88,6 +88,18 @@ function apm.lib.utils.assembler.set.hidden(assembler_name)
 
 	assembler.hidden = true
 	assembler.hidden_in_factoriopedia = true
+end
+
+---@param assembler_name string
+---@return string[]?
+function apm.lib.utils.assembler.get.crafting_categories(assembler_name)
+	local assembler, ok = apm.lib.utils.assembler.get.by_name(assembler_name)
+
+	if not ok then
+		return nil
+	end
+
+	return assembler.crafting_categories
 end
 
 --- Append crafting categoty without duplicates
@@ -111,7 +123,7 @@ function apm.lib.utils.assembler.add.crafting_categories(assembler_name, craftin
 			else
 				log(APM_MSG_ERROR(
 					"apm.lib.utils.assembler.add.crafting_categories",
-					"invalid crafting category ["..crafting_category.."] will be ignored"
+					"invalid crafting category [" .. crafting_category .. "] will be ignored"
 				))
 			end
 		end

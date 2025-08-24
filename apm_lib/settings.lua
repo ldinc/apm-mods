@@ -40,6 +40,7 @@ data:extend({
 --
 --
 -- ----------------------------------------------------------------------------
+---@type data.ModBoolSettingPrototype
 local setting = {
 	type = "bool-setting",
 	name = "apm_lib_inserter_functions",
@@ -48,6 +49,7 @@ local setting = {
 	order =
 	"aa_a"
 }
+
 if mods.apm_power then
 	setting.default_value = true
 	log("Info: settings.lua: apm_lib_inserter_functions.default_value is: true")
@@ -55,6 +57,7 @@ else
 	setting.default_value = false
 	log("Info: settings.lua: apm_lib_inserter_functions.default_value is: false")
 end
+
 data:extend({ setting })
 
 data:extend({
