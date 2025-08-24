@@ -4,5 +4,7 @@ end
 
 apm.lib.utils.technology.add.recipe_for_unlock("apm_stone_bricks", "sand")
 
-apm.lib.utils.technology.disable("kiln-smelting")
+apm.lib.utils.technology.disable("kiln	-smelting")
 apm.lib.utils.technology.disable("kiln-smelting-2")
+
+apm.lib.utils.technology.remove.recipe_from_unlock("advanced-material-processing-2", "electric-kiln")

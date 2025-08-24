@@ -1,4 +1,3 @@
-
 if not apm.lib.features.power.compat.safthelamb then
 	return
 end

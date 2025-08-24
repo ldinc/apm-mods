@@ -12,6 +12,6 @@ apm.lib.utils.recipe.result.replace_all(
 	"apm_coke"
 )
 
-apm.lib.utils.recipe.remove("brick-kiln")
-apm.lib.utils.recipe.remove("electric-kiln")
+-- apm.lib.utils.recipe.remove("brick-kiln")
+-- apm.lib.utils.recipe.remove("electric-kiln")
 apm.lib.utils.recipe.remove("coke")

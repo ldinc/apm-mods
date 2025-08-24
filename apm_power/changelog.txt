@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.01
+Date: 24.08.2025
+  Compatibility:
+    - [Alloy smelting] Adding to coking plants original crafting categories from kiln and e-kiln.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.00
 Date: 10.08.2025
   Changes:
@@ -7,12 +12,12 @@ Date: 10.08.2025
 Version: 0.31.36
 Date: 31.07.2025
   Bugfixes:
-    - [Bob's Logistics] Hide from factoriopedia all info about bob's steam inserter
+    - [Bob's Logistics] Hide from factoriopedia all info about bob's steam inserter.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.35
 Date: 31.07.2025
   Changes:
-    - [AII Loaders + Bob's Logistics] Tech for basic loader changed to be yearly tier with trigger by crafting 200 basic belts
+    - [AII Loaders + Bob's Logistics] Tech for basic loader changed to be yearly tier with trigger by crafting 200 basic belts.
 ---------------------------------------------------------------------------------------------------
 Version: 0.31.34
 Date: 31.07.2025
