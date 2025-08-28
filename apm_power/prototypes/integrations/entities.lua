@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_power/prototypes/integrations/entities.lua'
+local self = "apm_power/prototypes/integrations/entities.lua"
 
 APM_LOG_HEADER(self)
 
@@ -28,24 +28,24 @@ local apm_power_compat_reverse_factory = settings.startup["apm_power_compat_reve
 local apm_power_compat_suicidalkid = settings.startup["apm_power_compat_suicidalkid"].value
 local apm_power_compat_kumpu = settings.startup["apm_power_compat_kumpu"].value
 
-APM_LOG_SETTINGS(self, 'apm_power_overhaul_machine_frames', apm_power_overhaul_machine_frames)
-APM_LOG_SETTINGS(self, 'apm_power_steam_assembler_craftin_with_fluids', apm_power_steam_assembler_craftin_with_fluids)
-APM_LOG_SETTINGS(self, 'apm_power_compat_bob', apm_power_compat_bob)
-APM_LOG_SETTINGS(self, 'apm_power_compat_bob_overhaul_machine_frames', apm_power_compat_bob_overhaul_machine_frames)
-APM_LOG_SETTINGS(self, 'apm_power_compat_angel', apm_power_compat_angel)
-APM_LOG_SETTINGS(self, 'apm_power_compat_angel_overhaul_machine_frames', apm_power_compat_angel_overhaul_machine_frames)
-APM_LOG_SETTINGS(self, 'apm_power_compat_sctm', apm_power_compat_sctm)
-APM_LOG_SETTINGS(self, 'apm_power_compat_sct_overhaul_machine_frames', apm_power_compat_sct_overhaul_machine_frames)
-APM_LOG_SETTINGS(self, 'apm_power_compat_earendel', apm_power_compat_earendel)
-APM_LOG_SETTINGS(self, 'apm_power_compat_bio_industries', apm_power_compat_bio_industries)
-APM_LOG_SETTINGS(self, 'apm_power_compat_expensivelandfillrecipe', apm_power_compat_expensivelandfillrecipe)
-APM_LOG_SETTINGS(self, 'apm_power_compat_kingarthur', apm_power_compat_kingarthur)
-APM_LOG_SETTINGS(self, 'apm_power_compat_mferrari', apm_power_compat_mferrari)
-APM_LOG_SETTINGS(self, 'apm_power_compat_linver', apm_power_compat_linver)
-APM_LOG_SETTINGS(self, 'apm_power_compat_realistic_reactors', apm_power_compat_realistic_reactors)
-APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reverse_factory)
-APM_LOG_SETTINGS(self, 'apm_power_compat_suicidalkid', apm_power_compat_suicidalkid)
-APM_LOG_SETTINGS(self, 'apm_power_compat_kumpu', apm_power_compat_kumpu)
+APM_LOG_SETTINGS(self, "apm_power_overhaul_machine_frames", apm_power_overhaul_machine_frames)
+APM_LOG_SETTINGS(self, "apm_power_steam_assembler_craftin_with_fluids", apm_power_steam_assembler_craftin_with_fluids)
+APM_LOG_SETTINGS(self, "apm_power_compat_bob", apm_power_compat_bob)
+APM_LOG_SETTINGS(self, "apm_power_compat_bob_overhaul_machine_frames", apm_power_compat_bob_overhaul_machine_frames)
+APM_LOG_SETTINGS(self, "apm_power_compat_angel", apm_power_compat_angel)
+APM_LOG_SETTINGS(self, "apm_power_compat_angel_overhaul_machine_frames", apm_power_compat_angel_overhaul_machine_frames)
+APM_LOG_SETTINGS(self, "apm_power_compat_sctm", apm_power_compat_sctm)
+APM_LOG_SETTINGS(self, "apm_power_compat_sct_overhaul_machine_frames", apm_power_compat_sct_overhaul_machine_frames)
+APM_LOG_SETTINGS(self, "apm_power_compat_earendel", apm_power_compat_earendel)
+APM_LOG_SETTINGS(self, "apm_power_compat_bio_industries", apm_power_compat_bio_industries)
+APM_LOG_SETTINGS(self, "apm_power_compat_expensivelandfillrecipe", apm_power_compat_expensivelandfillrecipe)
+APM_LOG_SETTINGS(self, "apm_power_compat_kingarthur", apm_power_compat_kingarthur)
+APM_LOG_SETTINGS(self, "apm_power_compat_mferrari", apm_power_compat_mferrari)
+APM_LOG_SETTINGS(self, "apm_power_compat_linver", apm_power_compat_linver)
+APM_LOG_SETTINGS(self, "apm_power_compat_realistic_reactors", apm_power_compat_realistic_reactors)
+APM_LOG_SETTINGS(self, "apm_power_compat_reverse_factory", apm_power_compat_reverse_factory)
+APM_LOG_SETTINGS(self, "apm_power_compat_suicidalkid", apm_power_compat_suicidalkid)
+APM_LOG_SETTINGS(self, "apm_power_compat_kumpu", apm_power_compat_kumpu)
 
 apm.lib.utils.locomotive.overhaul_all()
 apm.lib.utils.car.overhaul_all()
@@ -60,19 +60,19 @@ apm.lib.utils.car.overhaul_all()
 --
 -- ----------------------------------------------------------------------------
 if mods.AlternativeSteam then
-	apm.lib.utils.reactor.set.fuel_categories('as-chemical-fired-reactor', { 'chemical', 'apm_refined_chemical' })
+	apm.lib.utils.reactor.set.fuel_categories("as-chemical-fired-reactor", { "chemical", "apm_refined_chemical" })
 end
 
 -- Earendel -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-if mods['aai-industry'] and apm_power_compat_earendel then
-	apm.lib.utils.assembler.set.hidden('burner-assembling-machine')
+if mods["aai-industry"] and apm_power_compat_earendel then
+	apm.lib.utils.assembler.set.hidden("burner-assembling-machine")
 end
 
-if mods['space-exploration'] and apm_power_compat_earendel then
-	apm.lib.utils.lab.add.science_pack('se-space-science-lab', 'apm_industrial_science_pack')
+if mods["space-exploration"] and apm_power_compat_earendel then
+	apm.lib.utils.lab.add.science_pack("se-space-science-lab", "apm_industrial_science_pack")
 end
 
 -- bob ------------------------------------------------------------------------
@@ -80,58 +80,58 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.bobpower and apm_power_compat_bob then
-	if apm.lib.utils.setting.get.starup('bobmods-power-steam') then
-		apm.lib.utils.boiler.set.hidden('apm_boiler_2')
-		apm.lib.utils.boiler.set.next_upgrade('apm_boiler_2', nil)
-		apm.lib.utils.boiler.set.next_upgrade('boiler', 'bob-boiler-2')
-		apm.lib.utils.generator.set.hidden('apm_steam_engine_2')
-		apm.lib.utils.generator.set.next_upgrade('apm_steam_engine_2', nil)
-		apm.lib.utils.generator.set.next_upgrade('steam-engine', 'bob-steam-engine-2')
+	if apm.lib.utils.setting.get.starup("bobmods-power-steam") then
+		apm.lib.utils.boiler.set.hidden("apm_boiler_2")
+		apm.lib.utils.boiler.set.next_upgrade("apm_boiler_2", nil)
+		apm.lib.utils.boiler.set.next_upgrade("boiler", "bob-boiler-2")
+		apm.lib.utils.generator.set.hidden("apm_steam_engine_2")
+		apm.lib.utils.generator.set.next_upgrade("apm_steam_engine_2", nil)
+		apm.lib.utils.generator.set.next_upgrade("steam-engine", "bob-steam-engine-2")
 	end
 
 	-- Boilers
-	apm.lib.utils.boiler.overhaul('bob-boiler-2', 2)
-	apm.lib.utils.boiler.overhaul('bob-boiler-3', 3)
-	apm.lib.utils.boiler.overhaul('bob-boiler-4', 4)
-	apm.lib.utils.boiler.overhaul('bob-boiler-5', 5)
+	apm.lib.utils.boiler.overhaul("bob-boiler-2", 2)
+	apm.lib.utils.boiler.overhaul("bob-boiler-3", 3)
+	apm.lib.utils.boiler.overhaul("bob-boiler-4", 4)
+	apm.lib.utils.boiler.overhaul("bob-boiler-5", 5)
 	-- Generators
-	apm.lib.utils.generator.overhaul('bob-steam-engine-2', 2)
-	apm.lib.utils.generator.overhaul('bob-steam-engine-3', 3)
-	apm.lib.utils.generator.overhaul('bob-steam-engine-4', 4)
-	apm.lib.utils.generator.overhaul('bob-steam-engine-5', 5)
+	apm.lib.utils.generator.overhaul("bob-steam-engine-2", 2)
+	apm.lib.utils.generator.overhaul("bob-steam-engine-3", 3)
+	apm.lib.utils.generator.overhaul("bob-steam-engine-4", 4)
+	apm.lib.utils.generator.overhaul("bob-steam-engine-5", 5)
 	-- heat reactor
-	apm.lib.utils.reactor.set.fuel_categories('bob-burner-reactor', { 'chemical', 'apm_refined_chemical' })
-	apm.lib.utils.reactor.set.fuel_categories('bob-burner-reactor-2', { 'chemical', 'apm_refined_chemical' })
-	apm.lib.utils.reactor.set.fuel_categories('bob-burner-reactor-3', { 'chemical', 'apm_refined_chemical' })
+	apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor", { "chemical", "apm_refined_chemical" })
+	apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor-2", { "chemical", "apm_refined_chemical" })
+	apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor-3", { "chemical", "apm_refined_chemical" })
 
 	apm.lib.utils.entity.set.fuel_category(
-		data.raw["burner-generator"]['bob-burner-generator'],
-		{ 'chemical', 'apm_refined_chemical' }
+		data.raw["burner-generator"]["bob-burner-generator"],
+		{ "chemical", "apm_refined_chemical" }
 	)
 end
 
 if mods.bobplates and apm_power_compat_bob then
-	apm.lib.utils.assembler.burner.overhaul('bob-chemical-boiler')
-	apm.lib.utils.assembler.burner.overhaul('bob-chemical-steel-furnace', true)
-	apm.lib.utils.assembler.burner.overhaul('bob-mixing-furnace')
-	apm.lib.utils.assembler.burner.overhaul('bob-mixing-steel-furnace', true)
+	apm.lib.utils.assembler.burner.overhaul("bob-chemical-boiler")
+	apm.lib.utils.assembler.burner.overhaul("bob-chemical-steel-furnace", true)
+	apm.lib.utils.assembler.burner.overhaul("bob-mixing-furnace")
+	apm.lib.utils.assembler.burner.overhaul("bob-mixing-steel-furnace", true)
 end
 
 if mods.bobtech and apm_power_compat_bob then
-	apm.lib.utils.lab.overhaul('bob-lab-2')
+	apm.lib.utils.lab.overhaul("bob-lab-2")
 end
 
 if mods.bobmining and apm_power_compat_bob then
-	apm.lib.utils.mining_drill.set.hidden('bob-steam-mining-drill')
+	apm.lib.utils.mining_drill.set.hidden("bob-steam-mining-drill")
 end
 
 if mods.bobassembly and apm_power_compat_bob then
-	apm.lib.utils.assembler.set.hidden('bob-burner-assembling-machine')
-	apm.lib.utils.assembler.set.hidden('bob-steam-assembling-machine')
+	apm.lib.utils.assembler.set.hidden("bob-burner-assembling-machine")
+	apm.lib.utils.assembler.set.hidden("bob-steam-assembling-machine")
 
-	apm.lib.utils.assembler.mod.module_specification('assembling-machine-3', 4)
-	apm.lib.utils.assembler.mod.module_specification('bob-assembling-machine-4', 5)
-	apm.lib.utils.assembler.mod.module_specification('bob-assembling-machine-5', 6)
+	apm.lib.utils.assembler.mod.module_specification("assembling-machine-3", 4)
+	apm.lib.utils.assembler.mod.module_specification("bob-assembling-machine-4", 5)
+	apm.lib.utils.assembler.mod.module_specification("bob-assembling-machine-5", 6)
 end
 
 -- angel ----------------------------------------------------------------------
@@ -139,27 +139,27 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-	apm.lib.utils.assembler.burner.overhaul('burner-ore-crusher')
-	apm.lib.utils.assembler.set.hidden('burner-ore-crusher')
+	apm.lib.utils.assembler.burner.overhaul("burner-ore-crusher")
+	apm.lib.utils.assembler.set.hidden("burner-ore-crusher")
 end
 
 if mods.angelssmelting and apm_power_compat_angel then
-	apm.lib.utils.assembler.set.hidden('burner-ore-crusher')
-	apm.lib.utils.assembler.set.hidden('apm_steelworks_0')
-	apm.lib.utils.assembler.set.hidden('apm_steelworks_1')
+	apm.lib.utils.assembler.set.hidden("burner-ore-crusher")
+	apm.lib.utils.assembler.set.hidden("apm_steelworks_0")
+	apm.lib.utils.assembler.set.hidden("apm_steelworks_1")
 
-	apm.lib.utils.assembler.burner.overhaul('blast-furnace', true)
-	apm.lib.utils.assembler.burner.overhaul('blast-furnace-2', true)
-	apm.lib.utils.assembler.burner.overhaul('blast-furnace-3', true)
-	apm.lib.utils.assembler.burner.overhaul('blast-furnace-4', true)
+	apm.lib.utils.assembler.burner.overhaul("blast-furnace", true)
+	apm.lib.utils.assembler.burner.overhaul("blast-furnace-2", true)
+	apm.lib.utils.assembler.burner.overhaul("blast-furnace-3", true)
+	apm.lib.utils.assembler.burner.overhaul("blast-furnace-4", true)
 end
 
 -- MFerrari -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-if mods['Mining-Space-Industries'] and apm_power_compat_mferrari then
-	apm.lib.utils.lab.overhaul('msi-worker-lab')
+if mods["Mining-Space-Industries"] and apm_power_compat_mferrari then
+	apm.lib.utils.lab.overhaul("msi-worker-lab")
 end
 
 -- sctm -----------------------------------------------------------------------
@@ -167,13 +167,13 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.ScienceCostTweakerM and apm_power_compat_sctm then
-	apm.lib.utils.lab.add.science_pack('apm_lab_1', "apm_industrial_science_pack")
-	apm.lib.utils.lab.add.science_pack('apm_lab_1', "apm_steam_science_pack")
-	apm.lib.utils.lab.add.science_pack('apm_lab_1', "automation-science-pack")
-	apm.lib.utils.lab.overhaul('sct-lab-t1')
-	apm.lib.utils.lab.overhaul('sct-lab-t2')
-	apm.lib.utils.lab.overhaul('sct-lab-t3')
-	apm.lib.utils.lab.overhaul('sct-lab-t4')
+	apm.lib.utils.lab.add.science_pack("apm_lab_1", "apm_industrial_science_pack")
+	apm.lib.utils.lab.add.science_pack("apm_lab_1", "apm_steam_science_pack")
+	apm.lib.utils.lab.add.science_pack("apm_lab_1", "automation-science-pack")
+	apm.lib.utils.lab.overhaul("sct-lab-t1")
+	apm.lib.utils.lab.overhaul("sct-lab-t2")
+	apm.lib.utils.lab.overhaul("sct-lab-t3")
+	apm.lib.utils.lab.overhaul("sct-lab-t4")
 end
 
 -- kingarthur -----------------------------------------------------------------
@@ -181,9 +181,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.PyCoalTBaA and apm_power_compat_kingarthur then
-	if mods['aai-industry'] then
-		apm.lib.utils.lab.add.science_pack('apm_lab_0', 'science-pack-0')
-		apm.lib.utils.lab.add.science_pack('apm_lab_1', 'science-pack-0')
+	if mods["aai-industry"] then
+		apm.lib.utils.lab.add.science_pack("apm_lab_0", "science-pack-0")
+		apm.lib.utils.lab.add.science_pack("apm_lab_1", "science-pack-0")
 	end
 end
 
@@ -193,7 +193,7 @@ end
 -- ----------------------------------------------------------------------------
 if mods.RealisticReactors and apm_power_compat_realistic_reactors then
 	--patch hidden cooling-tower
-	apm.lib.utils.furnace.overhaul('rr-cooling-tower-steam', false)
+	apm.lib.utils.furnace.overhaul("rr-cooling-tower-steam", false)
 end
 
 --- [bobs]
@@ -231,4 +231,9 @@ end
 --- [space age]
 if mods["space-age"] then
 	apm.lib.utils.assembler.add.crafting_categories("foundry", { "smelting" })
+end
+
+--- [BZ mods]
+if require("prototypes.integrations.matcher.bz")() then
+	require("prototypes.integrations.entities.bz")
 end

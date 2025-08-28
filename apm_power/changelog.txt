@@ -1,4 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.04
+Date: 28.08.2025
+  Changes:
+    - [apm_lib] 0.32.03
+---------------------------------------------------------------------------------------------------
+Version: 0.32.03
+Date: 28.08.2025
+  Compatibility:
+    - [BZ] Fix some technology prereq.
+  Bugfixes:
+    - Add reactor entities for fuel replacing (if it has "chemical" -> can use "refined chemical")
+---------------------------------------------------------------------------------------------------
+Version: 0.32.02
+Date: 26.08.2025
+  Compatibility:
+    - [BZ] Added some compat fixes for bz-mods.
+    - [loaders-modernized-wood] added burner tier compat.
+    - [Alloy smelting + Wood Industry] some compat updates.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.01
 Date: 24.08.2025
   Compatibility:

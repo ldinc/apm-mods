@@ -165,7 +165,7 @@ script.on_nth_tick(60 * 15, function(event)
 		}
 
 
-		box.text
+		-- box.text
 	end
 end)
 
