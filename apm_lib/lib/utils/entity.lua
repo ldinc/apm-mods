@@ -9,6 +9,8 @@ if apm.lib.utils.entity.add == nil then apm.lib.utils.entity.add = {} end
 if apm.lib.utils.entity.del == nil then apm.lib.utils.entity.del = {} end
 if apm.lib.utils.entity.set == nil then apm.lib.utils.entity.set = {} end
 
+---@alias ApmEntity data.AssemblingMachinePrototype | data.ReactorPrototype | data.PumpPrototype | data.LocomotivePrototype |	data.InserterPrototype | data.LabPrototype |data.FurnacePrototype |data.GeneratorPrototype | data.CarPrototype | data.MiningDrillPrototype
+
 --- [entity.prototype_list]
 --- Set default list of handled prorotypes for some fns (like next_upgrade and etc)
 ---@return string[]
@@ -49,38 +51,24 @@ function apm.lib.utils.entity.get.by_name(name, group)
 end
 
 --- [entity.has.fuel_category]
----@param entity any
+---@param entity ApmEntity
 ---@param category data.FuelCategoryID
 ---@return boolean
 function apm.lib.utils.entity.has.fuel_category(entity, category)
-	if entity.burner then
-		if entity.burner.fuel_categories then
-			for i = 1, #entity.burner.fuel_categories do
-				if entity.burner.fuel_categories[i] == category then return true end
-			end
-		end
-
-		if entity.burner.fuel_categories == nil and category == "chemical" then
-			return true
-		end
-	end
-
 	if entity.energy_source and entity.energy_source.type == "burner" then
 		if entity.energy_source.fuel_categories then
-			for i = 1, #entity.energy_source.fuel_categories do
-				if entity.energy_source.fuel_categories[i] == category then return true end
+			for _, ecat in ipairs(entity.energy_source.fuel_categories) do
+				if ecat == category then
+					return true
+				end
 			end
-		end
-
-		if entity.energy_source.fuel_category == nil and entity.energy_source.fuel_categories == nil and category == "chemical" then
-			return true
 		end
 	end
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
 			"has.fuel_categories()",
-			'entity: "' .. tostring(entity.name) .. '" does not have a fuel_category'
+			'entity: "' .. tostring(entity.name) .. '" does not have a fuel_category <' .. tostring(category) .. ">"
 		))
 	end
 

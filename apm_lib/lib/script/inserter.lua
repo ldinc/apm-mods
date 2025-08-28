@@ -314,6 +314,11 @@ local function try_transfer_ash(tick, t_object, pickup_target, drop_target)
 		return
 	end
 
+	-- if t_object.entity.status == defines.entity_status.full_burnt_result_output then
+	-- 	-- TODO: check if can drop ash to storage or belt, or land
+	-- end
+
+
 	--- check does drop target valid
 	if not drop_target or not drop_target.burner then return end
 
@@ -346,6 +351,7 @@ local function inserter_work(tick, t_object, pickup_target, drop_target)
 	if t_object.entity.status == defines.entity_status.no_fuel then
 		steal_fuel_to_inserter(t_object, pickup_target)
 	end
+
 
 	try_transfer_ash(tick, t_object, pickup_target, drop_target)
 
@@ -606,7 +612,12 @@ local function get_next_inserter()
 
 	-- if (px ~= hx) or  (py ~= hy) then <- this is not bobinserters proofed only x*90° have exact pickup_position == held_stack_position
 	if (px > hx + 0.01 or px < hx - 0.01) or (py > hy + 0.01 or py < hy - 0.01) then
-		if (t_object.entity.status ~= defines.entity_status.no_fuel) then
+		if (
+					(t_object.entity.status ~= defines.entity_status.no_fuel)
+				-- TODO: uncomment if want to drop ash from out of burnt result inserter into storage/on belt
+				-- and
+				-- (t_object.entity.status ~= defines.entity_status.full_burnt_result_output)
+				) then
 			return nil
 		end
 

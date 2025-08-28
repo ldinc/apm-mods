@@ -6,6 +6,7 @@ require("lib.features")
 local core = require("lib.script.core")
 local sound = require("lib.script.sound")
 require("lib.utils.prototypes")
+require("lib.utils")
 
 
 -- Definitions ----------------------------------------------------------------
@@ -187,6 +188,22 @@ function radiation_script.on_update()
 	get_config()
 	convert_table()
 	generate_radioactive_table()
+	check_table()
+end
+
+function check_table()
+	for item_name, _ in pairs(storage.items_radioactive_01774) do
+		if not apm.lib.utils.prototypes.item.exists(item_name) then
+			storage.items_radioactive_01774[item_name] = nil
+
+			log(
+				APM_MSG_ERROR(
+					"radiation_script.check_table",
+					"Invalid radiactive item was removed [" .. tostring(item_name) .. "]"
+				)
+			)
+		end
+	end
 end
 
 ---@param player LuaPlayer?

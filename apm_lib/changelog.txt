@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.04
+Date: 28.08.2025
+  Bugfixes:
+    - Radiation script. Post disabling mod w\ radioacive items can lead to panic.
+---------------------------------------------------------------------------------------------------
+Version: 0.32.03
+Date: 28.08.2025
+  Changes:
+    - Rewrited: Code for [apm.lib.utils.entity.has.fuel_category]. Using strict typing.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.02
 Date: 24.08.2025
   Changes:
