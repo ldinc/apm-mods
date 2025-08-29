@@ -1,10 +1,10 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
-require('__apm_lib_ldinc__.lib.utils')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
+require("__apm_lib_ldinc__.lib.utils")
 
 local default_circuit_wire_max_distance = 9
 
-local inline_storage_tank = require('graphics.inline_storage_tank')
+local inline_storage_tank = require("graphics.inline_storage_tank")
 
 local sprites = inline_storage_tank
 
@@ -24,28 +24,55 @@ local pipe_picture =
 }
 
 ---@type data.StorageTankPrototype
-local tank = {}
-tank.type = "storage-tank"
-tank.name = "apm_inline_storage_tank"
-tank.icons = { sprites.icon }
-tank.localised_description = { "entity-description.apm_inline_storage_tank" }
+local tank = {
+	type = "storage-tank",
+	name = "apm_inline_storage_tank",
+	icons = { sprites.icon },
+	localised_description = { "entity-description.apm_inline_storage_tank" },
 
-tank.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-tank.minable = { mining_time = 0.2, result = "apm_inline_storage_tank" }
-tank.max_health = 400
-tank.corpse = "small-remnants"
-tank.dying_explosion = "medium-explosion"
-tank.repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" }
-tank.mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" }
-tank.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
-tank.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-tank.next_upgrade = nil
+	flags = { "placeable-neutral", "placeable-player", "player-creation" },
+	minable = { mining_time = 0.2, result = "apm_inline_storage_tank" },
+	max_health = 400,
+	corpse = "small-remnants",
+	dying_explosion = "medium-explosion",
+	repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+	mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+	open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+	next_upgrade = nil,
 
-tank.fast_replaceable_group = "pipe"
-tank.resistances = { { type = "fire", percent = 95 } }
+	fast_replaceable_group = "pipe",
+	resistances = { { type = "fire", percent = 95 } },
 
-tank.collision_box = { { -0.45, -0.45 }, { 0.45, 0.45 } }
-tank.selection_box = { { -0.5, -0.5 }, { 0.5, 0.5 } }
+	collision_box = { { -0.45, -0.45 }, { 0.45, 0.45 } },
+	selection_box = { { -0.5, -0.5 }, { 0.5, 0.5 } },
+
+	window_bounding_box = { util.by_pixel(-3, -5), util.by_pixel(3, 11) },
+
+	flow_length_in_ticks = 360,
+
+	two_direction_only = false,
+
+	fluid_box =
+	{
+		volume = 1000,
+		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
+		pipe_picture = pipe_picture,
+		pipe_connections =
+		{
+
+			---@diagnostic disable-next-line: assign-type-mismatch
+			{ direction = defines.direction.north, position = { 0, -0.001 } },
+			---@diagnostic disable-next-line: assign-type-mismatch
+			{ direction = defines.direction.east,  position = { 0.001, 0 } },
+			---@diagnostic disable-next-line: assign-type-mismatch
+			{ direction = defines.direction.south, position = { 0, 0.001 } },
+			---@diagnostic disable-next-line: assign-type-mismatch
+			{ direction = defines.direction.west,  position = { -0.001, 0 } }
+		},
+		hide_connection_info = true,
+	},
+}
 
 local pic = {
 	layers = {
@@ -84,26 +111,6 @@ tank.pictures = {
 	},
 }
 
-
-local base_area = 30
-
-tank.two_direction_only = false
-
-tank.fluid_box =
-{
-	volume = 1000,
-	pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
-	pipe_picture = pipe_picture,
-	pipe_connections =
-	{
-		{ direction = defines.direction.north, position = { 0, -0.001 } },
-		{ direction = defines.direction.east,  position = { 0.001, 0 } },
-		{ direction = defines.direction.south, position = { 0, 0.001 } },
-		{ direction = defines.direction.west,  position = { -0.001, 0 } }
-	},
-	hide_connection_info = true,
-}
-
 if mods["space-age"] then
 	tank.heating_energy = "100kW"
 
@@ -117,9 +124,7 @@ if mods["space-age"] then
 	tank.fluid_box.pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()
 end
 
-tank.window_bounding_box = { util.by_pixel(-3, -5), util.by_pixel(3, 11) }
 
-tank.flow_length_in_ticks = 360
 
 
 circuit_connector_definitions["apm_inline_storage_tank"] = circuit_connector_definitions.create_vector
@@ -133,8 +138,11 @@ circuit_connector_definitions["apm_inline_storage_tank"] = circuit_connector_def
 			}
 		)
 
-tank.circuit_wire_connection_points = circuit_connector_definitions[tank.name].points
-tank.circuit_connector_sprites = circuit_connector_definitions[tank.name].sprites
+-- tank.circuit_wire_connection_points = circuit_connector_definitions[tank.name].points
+-- tank.circuit_connector_sprites = circuit_connector_definitions[tank.name].sprites
+
+tank.circuit_connector = circuit_connector_definitions[tank.name]
+
 tank.circuit_wire_max_distance = default_circuit_wire_max_distance
 
 data:extend({ tank })

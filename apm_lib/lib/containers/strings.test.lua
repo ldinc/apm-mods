@@ -1,4 +1,5 @@
-local strings = require("strings")
+---@diagnostic disable-next-line: different-requires
+local e_strings = require("strings")
 
 ---NOTE: Partially generated with DeepseekAI
 
@@ -70,7 +71,7 @@ local function run_tests()
 	-- Tests for split_by_pattern
 	print("Testing split_by_pattern")
 	for _, test in ipairs(tests) do
-		local result = strings.split_by_pattern(test.input.str, test.input.pattern)
+		local result = e_strings.split_by_pattern(test.input.str, test.input.pattern)
 		local passed = true
 		if #result ~= #test.expected then
 			passed = false
@@ -96,7 +97,7 @@ local function run_tests()
 	-- Tests for split_by_pattern_to_dict
 	print("\nTesting split_by_pattern_to_dict")
 	for _, test in ipairs(tests) do
-		local dict, list = strings.split_by_pattern_to_dict(test.input.str, test.input.pattern)
+		local dict, list = e_strings.split_by_pattern_to_dict(test.input.str, test.input.pattern)
 
 		-- Verify list part matches expected
 		local list_ok = true

@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_energy_addon/prototypes/main/entities.lua'
+local self = "apm_energy_addon/prototypes/main/entities.lua"
 
 APM_LOG_HEADER(self)
 
@@ -11,117 +11,119 @@ APM_LOG_HEADER(self)
 -- ----------------------------------------------------------------------------
 
 ---@type data.AssemblingMachinePrototype
-local charging_station = {}
-charging_station.type = "assembling-machine"
-charging_station.name = "apm_battery_charging_station"
+local charging_station = {
+	type = "assembling-machine",
+	name = "apm_battery_charging_station",
 
-charging_station.icons = {
-	apm.lib.icons.dynamics.machine.t2,
-	apm.lib.icons.dynamics.lable_lightning,
-	apm.lib.icons.dynamics.recycling
-}
-
-charging_station.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-
-charging_station.minable = { mining_time = 0.2, result = "apm_battery_charging_station" }
-
-charging_station.crafting_categories = { "apm_electric_charging" }
-charging_station.crafting_speed = 1
-
-charging_station.fast_replaceable_group = "apm_battery_charging_station"
-charging_station.next_upgrade = nil
-
-charging_station.max_health = 500
-
-charging_station.corpse = "big-remnants"
-charging_station.dying_explosion = "medium-explosion"
-charging_station.resistances = { { type = "fire", percent = 90 } }
-
-charging_station.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
-charging_station.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-
-charging_station.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
-charging_station.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-
-charging_station.module_slots = 0
-charging_station.allowed_effects = nil
-
-charging_station.working_sound = {
-	main_sounds = {
-		{
-			sound = { filename = "__base__/sound/furnace.ogg" },
-		}
+	icons = {
+		apm.lib.icons.dynamics.machine.t2,
+		apm.lib.icons.dynamics.lable_lightning,
+		apm.lib.icons.dynamics.recycling
 	},
-}
 
-charging_station.energy_usage = apm.energy_addon.constants.energy_usage_charging_station
+	flags = { "placeable-neutral", "placeable-player", "player-creation" },
+	minable = { mining_time = 0.2, result = "apm_battery_charging_station" },
 
-charging_station.energy_source = apm.lib.utils.builders.energy_source.new_electric({})
+	crafting_categories = { "apm_electric_charging" },
+	crafting_speed = 1,
 
-charging_station.graphics_set = {
-	animation_progress = 0.16666667,
+	fast_replaceable_group = "apm_battery_charging_station",
+	next_upgrade = nil,
 
-	animation = {
-		layers = {
+	max_health = 500,
+
+	corpse = "big-remnants",
+	dying_explosion = "medium-explosion",
+	resistances = { { type = "fire", percent = 90 } },
+
+	collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } },
+	selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+
+	open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+
+	module_slots = 0,
+	allowed_effects = nil,
+
+	working_sound = {
+		main_sounds = {
 			{
-				filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_0.png",
-				priority = "high",
-				width = 320,
-				height = 256,
-				line_length = 5,
-				frame_count = 5,
-				scale = 0.5,
-				shift = { 0.4375, -0.28125 },
+				sound = { filename = "__base__/sound/furnace.ogg" },
+			}
+		},
+	},
+
+	energy_usage = apm.energy_addon.constants.energy_usage_charging_station,
+
+	energy_source = apm.lib.utils.builders.energy_source.new_electric({}),
+
+	graphics_set = {
+		animation_progress = 0.16666667,
+
+		animation = {
+			layers = {
+				{
+					filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_0.png",
+					priority = "high",
+					width = 320,
+					height = 256,
+					line_length = 5,
+					frame_count = 5,
+					scale = 0.5,
+					shift = { 0.4375, -0.28125 },
+				},
+				{
+					filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_shadow.png",
+					priority = "high",
+					draw_as_shadow = true,
+					width = 320,
+					height = 256,
+					line_length = 5,
+					frame_count = 5,
+					scale = 0.5,
+					shift = { 0.4375, -0.28125 },
+				},
 			},
+		},
+
+		idle_animation = {
+			layers = {
+				{
+					filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_idle_0.png",
+					priority = "high",
+					width = 320,
+					height = 256,
+					line_length = 5,
+					frame_count = 5,
+					scale = 0.5,
+					shift = { 0.4375, -0.28125 },
+				},
+				{
+					filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_shadow.png",
+					priority = "high",
+					draw_as_shadow = true,
+					width = 320,
+					height = 256,
+					line_length = 5,
+					frame_count = 5,
+					scale = 0.5,
+					shift = { 0.4375, -0.28125 },
+				},
+			},
+		},
+
+		working_visualisations = {
 			{
-				filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_shadow.png",
-				priority = "high",
-				draw_as_shadow = true,
-				width = 320,
-				height = 256,
-				line_length = 5,
-				frame_count = 5,
-				scale = 0.5,
-				shift = { 0.4375, -0.28125 },
+				light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } },
 			},
 		},
 	},
 
-	idle_animation = {
-		layers = {
-			{
-				filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_idle_0.png",
-				priority = "high",
-				width = 320,
-				height = 256,
-				line_length = 5,
-				frame_count = 5,
-				scale = 0.5,
-				shift = { 0.4375, -0.28125 },
-			},
-			{
-				filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_shadow.png",
-				priority = "high",
-				draw_as_shadow = true,
-				width = 320,
-				height = 256,
-				line_length = 5,
-				frame_count = 5,
-				scale = 0.5,
-				shift = { 0.4375, -0.28125 },
-			},
-		},
-	},
-
-	working_visualisations = {
-		{
-			light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } },
-		},
-	},
+	circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector(),
+	circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance(),
 }
 
-charging_station.circuit_connector = apm.lib.utils.assembler.get.default_circuit_connector()
-charging_station.circuit_wire_max_distance = apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
+
 
 --- TODO: adding glow & lightning ...
 

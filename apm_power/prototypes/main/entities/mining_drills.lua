@@ -1,16 +1,16 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
-require('__apm_lib_ldinc__.lib.utils')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
+require("__apm_lib_ldinc__.lib.utils")
 
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
 
-local self = 'apm_power/prototypes/main/mining_drills.lua'
+local self = "apm_power/prototypes/main/mining_drills.lua"
 
 APM_LOG_HEADER(self)
 
-local burner_miner = table.deepcopy(data.raw['mining-drill']['burner-mining-drill'])
-burner_miner.name = 'apm_burner_miner_drill_2'
+local burner_miner = table.deepcopy(data.raw["mining-drill"]["burner-mining-drill"])
+burner_miner.name = "apm_burner_miner_drill_2"
 burner_miner.module_slots = apm.power.constants.modules.specification_0.module_slots
 burner_miner.allowed_effects = apm.power.constants.modules.allowed_effects_0
 burner_miner.icon = nil
@@ -21,22 +21,22 @@ burner_miner.icons = {
 burner_miner.minable = { mining_time = 0.3, result = "apm_burner_miner_drill_2" }
 
 local layer = table.deepcopy(burner_miner.graphics_set.animation.north.layers[1])
-layer.filename = '__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-N.png'
+layer.filename = "__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-N.png"
 layer.tint = apm.power.color.burner_mining_drill_tier_2
 table.insert(burner_miner.graphics_set.animation.north.layers, layer)
 
 local layer = table.deepcopy(burner_miner.graphics_set.animation.east.layers[1])
-layer.filename = '__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-E.png'
+layer.filename = "__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-E.png"
 layer.tint = apm.power.color.burner_mining_drill_tier_2
 table.insert(burner_miner.graphics_set.animation.east.layers, layer)
 
 local layer = table.deepcopy(burner_miner.graphics_set.animation.south.layers[1])
-layer.filename = '__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-S.png'
+layer.filename = "__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-S.png"
 layer.tint = apm.power.color.burner_mining_drill_tier_2
 table.insert(burner_miner.graphics_set.animation.south.layers, layer)
 
 local layer = table.deepcopy(burner_miner.graphics_set.animation.west.layers[1])
-layer.filename = '__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-W.png'
+layer.filename = "__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-W.png"
 layer.tint = apm.power.color.burner_mining_drill_tier_2
 table.insert(burner_miner.graphics_set.animation.west.layers, layer)
 
@@ -78,31 +78,34 @@ local steam_mining_drill = {
 		{ apm.lib.utils.builders.smoke.light },
 		apm.lib.utils.builders.fluid_box.new_steam_input_3way()
 	),
-}
-steam_mining_drill.type = "mining-drill"
-steam_mining_drill.name = "apm_steam_mining_drill"
-steam_mining_drill.icon = nil
-steam_mining_drill.icons = {
-	apm.power.icons.electric_mining_drill
-}
 
-steam_mining_drill.damaged_trigger_effect = hit_effects.entity()
-steam_mining_drill.working_sound = {
-	sound = { filename = "__base__/sound/electric-mining-drill.ogg", volume = 1.0, advanced_volume_control = { attenuation = "exponential" } },
-	max_sounds_per_type = 4,
-	fade_in_ticks = 4,
-	fade_out_ticks = 20
+
+	type = "mining-drill",
+	name = "apm_steam_mining_drill",
+	icon = nil,
+	icons = {
+		apm.power.icons.electric_mining_drill
+	},
+
+	damaged_trigger_effect = hit_effects.entity(),
+	working_sound = {
+		sound = { filename = "__base__/sound/electric-mining-drill.ogg", volume = 1.0, advanced_volume_control = { attenuation = "exponential" } },
+		max_sounds_per_type = 4,
+		fade_in_ticks = 4,
+		fade_out_ticks = 20
+	},
+	open_sound = sounds.drill_open,
+	close_sound = sounds.drill_close,
+
+	flags = { "placeable-neutral", "player-creation" },
+	minable = { mining_time = 0.3, result = "apm_steam_mining_drill" },
+	max_health = 300,
+
+	corpse = "big-remnants",
+	collision_box = { { -1.4, -1.4 }, { 1.4, 1.4 } },
+	selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+
 }
-steam_mining_drill.open_sound = sounds.drill_open
-steam_mining_drill.close_sound = sounds.drill_close
-
-steam_mining_drill.flags = { "placeable-neutral", "player-creation" }
-steam_mining_drill.minable = { mining_time = 0.3, result = "apm_steam_mining_drill" }
-steam_mining_drill.max_health = 300
-
-steam_mining_drill.corpse = "big-remnants"
-steam_mining_drill.collision_box = { { -1.4, -1.4 }, { 1.4, 1.4 } }
-steam_mining_drill.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
 
 steam_mining_drill.graphics_set = {
 	animation_progress = 1,
@@ -388,7 +391,11 @@ steam_mining_drill.radius_visualisation_picture = {
 }
 steam_mining_drill.monitor_visualization_tint = { r = 78, g = 173, b = 255 }
 steam_mining_drill.fast_replaceable_group = "mining-drill"
+---@diagnostic disable-next-line: inject-field
 steam_mining_drill.circuit_wire_connection_points = circuit_connector_definitions["electric-mining-drill"].points
+---@diagnostic disable-next-line: inject-field
 steam_mining_drill.circuit_connector_sprites = circuit_connector_definitions["electric-mining-drill"].sprites
+---@diagnostic disable-next-line: inject-field
 steam_mining_drill.circuit_wire_max_distance = default_circuit_wire_max_distance
+
 data:extend({ steam_mining_drill })

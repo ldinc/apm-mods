@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.06
+Date: 29.08.2025
+  Changes:
+    - Fix some code lint warinings
+---------------------------------------------------------------------------------------------------
+Version: 0.32.05
+Date: 28.08.2025
+  Bugfixes:
+    - Removed some erros in logs without bob's mod.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.04
 Date: 28.08.2025
   Changes:
@@ -1639,7 +1649,6 @@ Date: 07.04.2019
     - New recipe category: apm_crusher_3
     - New recipe category: apm_press_3
     - New color code for wood products (only a little bit darker)
-  General:
     - Cleaning up the source code, file names, etc. (naming, comments, unneeded parts)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.21

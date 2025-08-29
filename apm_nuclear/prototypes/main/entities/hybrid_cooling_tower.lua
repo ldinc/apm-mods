@@ -9,52 +9,53 @@ APM_LOG_HEADER(self)
 local hybrid_cooling_tower = {
 	result_inventory_size = 0,
 	source_inventory_size = 0,
-}
 
-hybrid_cooling_tower.type = "furnace"
-hybrid_cooling_tower.name = "apm_hybrid_cooling_tower_0"
-hybrid_cooling_tower.icons = {
-	apm.nuclear.icons.hybrid_cooling_tower
-}
---hybrid_cooling_tower.icon_size = 32
-hybrid_cooling_tower.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-hybrid_cooling_tower.minable = { mining_time = 0.2, result = "apm_hybrid_cooling_tower_0" }
-hybrid_cooling_tower.crafting_categories = { "apm_fluid_cooling_0" }
-hybrid_cooling_tower.crafting_speed = 1
-
-hybrid_cooling_tower.fast_replaceable_group = "apm_hybrid_cooling_tower"
-hybrid_cooling_tower.next_upgrade = nil
-hybrid_cooling_tower.max_health = 250
-hybrid_cooling_tower.corpse = "big-remnants"
-hybrid_cooling_tower.dying_explosion = "medium-explosion"
-hybrid_cooling_tower.resistances = { { type = "fire", percent = 90 } }
-hybrid_cooling_tower.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
-hybrid_cooling_tower.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-
--- hybrid_cooling_tower.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
-
-hybrid_cooling_tower.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
-hybrid_cooling_tower.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-
-hybrid_cooling_tower.working_sound = {
-	main_sounds = {
-		sound = {
-			filename = "__apm_resource_pack_ldinc__/sounds/entities/hybrid_cooling_tower.ogg",
-			volume = 0.8,
-		},
+	type = "furnace",
+	name = "apm_hybrid_cooling_tower_0",
+	icons = {
+		apm.nuclear.icons.hybrid_cooling_tower
 	},
-	idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-	apparent_volume = 1.5,
-}
+	--hybrid_cooling_tower.icon_size = 32
+	flags = { "placeable-neutral", "placeable-player", "player-creation" },
+	minable = { mining_time = 0.2, result = "apm_hybrid_cooling_tower_0" },
+	crafting_categories = { "apm_fluid_cooling_0" },
+	crafting_speed = 1,
 
-hybrid_cooling_tower.module_slots = 0
-hybrid_cooling_tower.allowed_effects = nil
+	fast_replaceable_group = "apm_hybrid_cooling_tower",
+	next_upgrade = nil,
+	max_health = 250,
+	corpse = "big-remnants",
+	dying_explosion = "medium-explosion",
+	resistances = { { type = "fire", percent = 90 } },
+	collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } },
+	selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
 
-hybrid_cooling_tower.energy_usage = "300kW"
-hybrid_cooling_tower.energy_source = {
-	type = "electric",
-	usage_priority = "secondary-input",
-	emissions_per_minute = { pollution = 0.25 },
+	-- hybrid_cooling_tower.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
+
+	open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+
+	working_sound = {
+		main_sounds = {
+			sound = {
+				filename = "__apm_resource_pack_ldinc__/sounds/entities/hybrid_cooling_tower.ogg",
+				volume = 0.8,
+			},
+		},
+		idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+		apparent_volume = 1.5,
+	},
+
+	module_slots = 0,
+	allowed_effects = nil,
+
+	energy_usage = "300kW",
+	energy_source = {
+		type = "electric",
+		usage_priority = "secondary-input",
+		emissions_per_minute = { pollution = 0.25 },
+	},
+
 }
 
 hybrid_cooling_tower.graphics_set = {
@@ -163,7 +164,7 @@ hybrid_cooling_tower.fluid_boxes = {
 		10000,
 		apm.lib.utils.pipecovers.assembler4pipepictures(),
 		defines.direction.south,
-		{0, 1},
+		{ 0, 1 },
 		{ north = -1 }
 	),
 	box(
@@ -171,7 +172,7 @@ hybrid_cooling_tower.fluid_boxes = {
 		1000,
 		apm.lib.utils.pipecovers.assembler4pipepictures(),
 		defines.direction.north,
-		{0, -1},
+		{ 0, -1 },
 		{ north = -1 }
 	),
 }

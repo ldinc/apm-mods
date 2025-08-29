@@ -1,5 +1,5 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
 if apm.lib.utils.assembler.add == nil then apm.lib.utils.assembler.add = {} end
 
@@ -33,7 +33,14 @@ function apm.lib.utils.assembler.add.fluid_connections(assembler_name, level)
 			pipe_picture = pipe_picture,
 			pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
 			volume = 1000,
-			pipe_connections = { { flow_direction = "input", direction = defines.direction.east, position = { 1, 0 } } },
+			pipe_connections = {
+				{
+					flow_direction = "input",
+					---@diagnostic disable-next-line: assign-type-mismatch
+					direction = defines.direction.east,
+					position = { 1, 0 }
+				}
+			},
 			secondary_draw_orders = { north = -1 },
 		},
 		{
@@ -41,7 +48,14 @@ function apm.lib.utils.assembler.add.fluid_connections(assembler_name, level)
 			pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
 			pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
 			volume = 1000,
-			pipe_connections = { { flow_direction = "output", direction = defines.direction.west, position = { -1, 0 } } },
+			pipe_connections = {
+				{
+					flow_direction = "output",
+					---@diagnostic disable-next-line: assign-type-mismatch
+					direction = defines.direction.west,
+					position = { -1, 0 }
+				}
+			},
 			secondary_draw_orders = { north = -1 },
 		},
 	}

@@ -9,7 +9,17 @@ if apm.lib.utils.entity.add == nil then apm.lib.utils.entity.add = {} end
 if apm.lib.utils.entity.del == nil then apm.lib.utils.entity.del = {} end
 if apm.lib.utils.entity.set == nil then apm.lib.utils.entity.set = {} end
 
----@alias ApmEntity data.AssemblingMachinePrototype | data.ReactorPrototype | data.PumpPrototype | data.LocomotivePrototype |	data.InserterPrototype | data.LabPrototype |data.FurnacePrototype |data.GeneratorPrototype | data.CarPrototype | data.MiningDrillPrototype
+---@alias ApmEntity
+---| data.AssemblingMachinePrototype
+---| data.ReactorPrototype
+---| data.PumpPrototype
+---| data.LocomotivePrototype
+---| data.InserterPrototype
+---| data.LabPrototype
+---| data.FurnacePrototype
+---| data.GeneratorPrototype
+---| data.CarPrototype
+---| data.MiningDrillPrototype
 
 --- [entity.prototype_list]
 --- Set default list of handled prorotypes for some fns (like next_upgrade and etc)

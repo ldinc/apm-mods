@@ -1,8 +1,8 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
-require('__apm_lib_ldinc__.lib.utils')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
+require("__apm_lib_ldinc__.lib.utils")
 
-local self = 'apm_power/prototypes/main/coking_plants.lua'
+local self = "apm_power/prototypes/main/coking_plants.lua"
 
 APM_LOG_HEADER(self)
 
@@ -10,40 +10,41 @@ local base_animation_progress = 0.26666667
 
 --- [apm_coking_plant_0]
 ---@type data.AssemblingMachinePrototype
-local coking_plant = {}
-coking_plant.type = "assembling-machine"
-coking_plant.name = "apm_coking_plant_0"
-coking_plant.icons = {
-	apm.lib.icons.dynamics.machine.t0,
-	apm.lib.icons.dynamics.lable_cp
+local coking_plant = {
+	type = "assembling-machine",
+	name = "apm_coking_plant_0",
+	icons = {
+		apm.lib.icons.dynamics.machine.t0,
+		apm.lib.icons.dynamics.lable_cp
+	},
+	--coking_plant.icon_size = 32
+	flags = { "placeable-neutral", "placeable-player", "player-creation" },
+	minable = { mining_time = 0.2, result = "apm_coking_plant_0" },
+	crafting_categories = { "apm_coking" },
+	crafting_speed = 1,
+	fast_replaceable_group = "apm_coking_plant",
+	next_upgrade = "apm_coking_plant_1",
+	max_health = 250,
+	corpse = "big-remnants",
+	dying_explosion = "medium-explosion",
+	resistances = { { type = "fire", percent = 90 } },
+	collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } },
+	selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+
+	open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+
+	working_sound = { filename = "__base__/sound/furnace.ogg" },
+	energy_usage = apm.power.constants.energy_usage.coking_plant_0,
+	module_slots = apm.power.constants.modules.specification_0.module_slots,
+	allowed_effects = apm.power.constants.modules.allowed_effects_0,
+
+	energy_source = apm.lib.utils.builders.energy_source.new_burner(
+		{ "chemical", "apm_refined_chemical" },
+		apm.power.constants.emissions.cp_0,
+		apm.lib.utils.builders.smoke.burner.t0
+	),
 }
---coking_plant.icon_size = 32
-coking_plant.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-coking_plant.minable = { mining_time = 0.2, result = "apm_coking_plant_0" }
-coking_plant.crafting_categories = { "apm_coking" }
-coking_plant.crafting_speed = 1
-coking_plant.fast_replaceable_group = "apm_coking_plant"
-coking_plant.next_upgrade = "apm_coking_plant_1"
-coking_plant.max_health = 250
-coking_plant.corpse = "big-remnants"
-coking_plant.dying_explosion = "medium-explosion"
-coking_plant.resistances = { { type = "fire", percent = 90 } }
-coking_plant.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
-coking_plant.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-
-coking_plant.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
-coking_plant.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-
-coking_plant.working_sound = { filename = "__base__/sound/furnace.ogg" }
-coking_plant.energy_usage = apm.power.constants.energy_usage.coking_plant_0
-coking_plant.module_slots = apm.power.constants.modules.specification_0.module_slots
-coking_plant.allowed_effects = apm.power.constants.modules.allowed_effects_0
-
-coking_plant.energy_source = apm.lib.utils.builders.energy_source.new_burner(
-	{ 'chemical', 'apm_refined_chemical' },
-	apm.power.constants.emissions.cp_0,
-	apm.lib.utils.builders.smoke.burner.t0
-)
 
 coking_plant.graphics_set = {
 	animation_progress = base_animation_progress / coking_plant.crafting_speed,
@@ -116,13 +117,13 @@ coking_plant.icons = {
 coking_plant.minable = { mining_time = 0.2, result = "apm_coking_plant_1" }
 coking_plant.crafting_speed = 1.5
 coking_plant.crafting_categories = { "apm_coking", "apm_coking_2" }
-coking_plant.next_upgrade = 'apm_coking_plant_2'
+coking_plant.next_upgrade = "apm_coking_plant_2"
 coking_plant.energy_usage = apm.power.constants.energy_usage.coking_plant_1
 coking_plant.module_slots = apm.power.constants.modules.specification_1.module_slots
 coking_plant.allowed_effects = apm.power.constants.modules.allowed_effects_1
 
 coking_plant.energy_source = apm.lib.utils.builders.energy_source.new_burner(
-	{ 'apm_refined_chemical' },
+	{ "apm_refined_chemical" },
 	apm.power.constants.emissions.cp_1,
 	apm.lib.utils.builders.smoke.burner.t1
 )
@@ -157,7 +158,7 @@ coking_plant.module_slots = apm.power.constants.modules.specification_2.module_s
 coking_plant.allowed_effects = apm.power.constants.modules.allowed_effects_2
 
 coking_plant.energy_source = apm.lib.utils.builders.energy_source.new_burner(
-	{ 'apm_refined_chemical' },
+	{ "apm_refined_chemical" },
 	apm.power.constants.emissions.cp_2,
 	apm.lib.utils.builders.smoke.burner.t12
 )

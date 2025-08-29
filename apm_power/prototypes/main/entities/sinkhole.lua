@@ -1,9 +1,9 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 
-local self = 'apm_power/prototypes/main/sinkhole.lua'
+local self = "apm_power/prototypes/main/sinkhole.lua"
 
 APM_LOG_HEADER(self)
 
@@ -46,41 +46,41 @@ local rate = settings.startup["apm_sinkhole_fluid_rate"].value / 10
 
 --- [apm_sinkhole]
 ---@type data.FurnacePrototype
-local sinkhole = {}
-sinkhole.type = "furnace"
-sinkhole.name = "apm_sinkhole"
-sinkhole.icons = { apm.lib.icons.static.sinkhole }
-sinkhole.localised_description = { "entity-description.apm_sinkhole" }
---sinkhole.icon_size = 32
-sinkhole.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-sinkhole.minable = { mining_time = 0.2, result = "apm_sinkhole" }
-sinkhole.max_health = 400
-sinkhole.corpse = "medium-remnants"
-sinkhole.dying_explosion = "medium-explosion"
+local sinkhole = {
+	type = "furnace",
+	name = "apm_sinkhole",
+	icons = { apm.lib.icons.static.sinkhole },
+	localised_description = { "entity-description.apm_sinkhole" },
+	flags = { "placeable-neutral", "placeable-player", "player-creation" },
+	minable = { mining_time = 0.2, result = "apm_sinkhole" },
+	max_health = 400,
+	corpse = "medium-remnants",
+	dying_explosion = "medium-explosion",
 
-sinkhole.impact_category = "metal"
+	impact_category = "metal",
 
-sinkhole.repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" }
-sinkhole.mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" }
-sinkhole.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
-sinkhole.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
+	repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+	mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+	open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
 
-sinkhole.source_inventory_size = 0
-sinkhole.result_inventory_size = 0
-sinkhole.next_upgrade = nil
-sinkhole.crafting_categories = { "apm_sinkhole" }
-sinkhole.crafting_speed = rate
-sinkhole.fast_replaceable_group = "apm_power_sinkhole"
-sinkhole.resistances = { { type = "fire", percent = 95 } }
+	source_inventory_size = 0,
+	result_inventory_size = 0,
+	next_upgrade = nil,
+	crafting_categories = { "apm_sinkhole" },
+	crafting_speed = rate,
+	fast_replaceable_group = "apm_power_sinkhole",
+	resistances = { { type = "fire", percent = 95 } },
 
-sinkhole.collision_box = { { -1.45, -1.45 }, { 1.45, 1.45 } }
-sinkhole.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
+	collision_box = { { -1.45, -1.45 }, { 1.45, 1.45 } },
+	selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
 
-sinkhole.energy_usage = apm.power.constants.energy_usage.electric
+	energy_usage = apm.power.constants.energy_usage.electric,
 
-sinkhole.energy_source = {
-	type = "void",
-	emissions_per_minute = { pollution = 5 },
+	energy_source = {
+		type = "void",
+		emissions_per_minute = { pollution = 5 },
+	},
 }
 
 -- sinkhole.light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 1.0, g = 0.5, b = 0.0}}
@@ -93,7 +93,6 @@ sinkhole.working_sound = {
 }
 
 sinkhole.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
-sinkhole.working_sound.apparent_volume = 1.5
 
 
 
@@ -140,36 +139,45 @@ sinkhole.graphics_set = {
 	},
 }
 
-sinkhole.fluid_boxes = {}
-sinkhole.fluid_boxes[1] = {}
-sinkhole.fluid_boxes[1].production_type = "input"
-sinkhole.fluid_boxes[1].pipe_picture = pipe_picture
-sinkhole.fluid_boxes[1].pipe_covers = pipe_covers
-sinkhole.fluid_boxes[1].filter = ""
-sinkhole.fluid_boxes[1].volume = 2000
-sinkhole.fluid_boxes[1].pipe_connections = {
-	{
-		flow_direction = "input",
-		direction = defines.direction.south,
-		position = { 0, 1.0 }
+---@type data.FluidBox
+box = {
+	production_type = "input",
+	pipe_picture = pipe_picture,
+	pipe_covers = pipe_covers,
+	filter = "",
+	volume = 2000,
+	pipe_connections = {
+		{
+			flow_direction = "input",
+			---@diagnostic disable-next-line: assign-type-mismatch
+			direction = defines.direction.south,
+			position = { 0, 1.0 }
+		},
+		{
+			flow_direction = "input",
+			---@diagnostic disable-next-line: assign-type-mismatch
+			direction = defines.direction.north,
+			position = { 0, -1.0 }
+		},
+		{
+			flow_direction = "input",
+			---@diagnostic disable-next-line: assign-type-mismatch
+			direction = defines.direction.west,
+			position = { -1.0, 0 }
+		},
+		{
+			flow_direction = "input",
+			---@diagnostic disable-next-line: assign-type-mismatch
+			direction = defines.direction.east,
+			position = { 1.0, 0 }
+		}
 	},
-	{
-		flow_direction = "input",
-		direction = defines.direction.north,
-		position = { 0, -1.0 }
-	},
-	{
-		flow_direction = "input",
-		direction = defines.direction.west,
-		position = { -1.0, 0 }
-	},
-	{
-		flow_direction = "input",
-		direction = defines.direction.east,
-		position = { 1.0, 0 }
-	}
+	secondary_draw_orders = { north = -1 },
 }
-sinkhole.fluid_boxes[1].secondary_draw_orders = { north = -1 }
+
+sinkhole.fluid_boxes = {
+	box,
+}
 
 if mods["space-age"] then
 	sinkhole.heating_energy = "250kW"

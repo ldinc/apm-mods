@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.0
+Date: 29.08.2025
+  Changes:
+    - Some cleanups & pin version w\ others mod
+---------------------------------------------------------------------------------------------------
+Version: 0.30.8
+Date: 29.08.2025
+  Changes:
+    - Deleted: Some low resolution sprites. With Factorio 2.0 update all entities use autoscale atlas generator.
+---------------------------------------------------------------------------------------------------
 Version: 0.30.7
 Date: 11.12.2024
   Changes:

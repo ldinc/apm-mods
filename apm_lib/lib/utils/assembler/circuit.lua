@@ -1,5 +1,5 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
 if apm.lib.utils.assembler.get == nil then apm.lib.utils.assembler.get = {} end
 
@@ -11,17 +11,16 @@ function apm.lib.utils.assembler.get.default_circuit_connector()
 	-- end
 
 	return circuit_connector_definitions.create_vector
-	(
-		universal_connector_template,
-		{
-			{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true },
-			{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true },
-			{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true },
-			{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true }
-		}
-	)
+			(
+				universal_connector_template,
+				{
+					{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true },
+					{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true },
+					{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true },
+					{ variation = 18, main_offset = util.by_pixel(22, 19), shadow_offset = util.by_pixel(33, 25), show_shadow = true }
+				}
+			)
 end
-
 
 --- Default circuit wire max distance for assembling machine
 ---@return number
@@ -30,5 +29,5 @@ function apm.lib.utils.assembler.get.default_circuit_wire_max_distance()
 		return assembling_machine_circuit_wire_max_distance
 	end
 
-  return 9
+	return 9
 end

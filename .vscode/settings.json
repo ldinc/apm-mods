@@ -16,7 +16,17 @@
     "Lua.diagnostics.disable": [
         "empty-block"
     ],
-    "Lua.diagnostics.globals": [],
+    "Lua.diagnostics.globals": [
+        "rf",
+        "angelsmods",
+        "circuit_connector_definitions",
+        "universal_connector_template",
+        "assembling_machine_circuit_wire_max_distance",
+        "assembler2pipepictures",
+        "assembler3pipepictures",
+        "make_resource",
+        "default_circuit_wire_max_distance"
+    ],
     "Lua.codeLens.enable": true,
     "Lua.format.defaultConfig": {
         "indent_style": "tab",

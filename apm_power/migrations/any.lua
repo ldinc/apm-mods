@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: different-requires
 require("lib.features.migrations")
 
 if not apm.lib.features.power.migrations_patches_enabled then
@@ -31,13 +32,13 @@ local function research_technologies(technologies)
 			local force_researched = try_research_technology(tech)
 
 			if force_researched and APM_CAN_LOG_INFO then
-				log(APM_MSG_INFO("migrations", "tech \""..key.."\" has been force researched"))
+				log(APM_MSG_INFO("migrations", "tech \"" .. key .. "\" has been force researched"))
 			end
 		end
 	end
 end
 
-for _,force in pairs(game.forces) do
+for _, force in pairs(game.forces) do
 	local technologies = force.technologies
 
 	research_technologies(technologies)

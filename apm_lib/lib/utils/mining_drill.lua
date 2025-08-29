@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.mining_drill'
+local self = "lib.utils.mining_drill"
 
 if apm.lib.utils.mining_drill.get == nil then apm.lib.utils.mining_drill.get = {} end
 if apm.lib.utils.mining_drill.set == nil then apm.lib.utils.mining_drill.set = {} end
@@ -12,7 +12,7 @@ if apm.lib.utils.mining_drill.burner.mod == nil then apm.lib.utils.mining_drill.
 ---@param mining_drill_name string
 ---@return boolean
 function apm.lib.utils.mining_drill.exist(mining_drill_name)
-	if data.raw['mining-drill'][mining_drill_name] then
+	if data.raw["mining-drill"][mining_drill_name] then
 		return true
 	end
 
@@ -28,7 +28,7 @@ end
 ---@return data.MiningDrillPrototype
 ---@return boolean
 function apm.lib.utils.mining_drill.get.by_name(mining_drill_name)
-	local mining_drill = data.raw['mining-drill'][mining_drill_name]
+	local mining_drill = data.raw["mining-drill"][mining_drill_name]
 	if mining_drill then
 		return mining_drill, true
 	end
@@ -54,35 +54,35 @@ function apm.lib.utils.mining_drill.get.fuel_categories(mining_drill_name)
 		return nil
 	end
 
-	if mining_drill.energy_source.type == 'burner' then
+	if mining_drill.energy_source.type == "burner" then
 		if mining_drill.energy_source.fuel_categories then
 			local rc = {}
 
 			for _, fc in pairs(mining_drill.energy_source.fuel_categories) do
-				table.insert(rc, { name = fc, type = 'fuel-category' })
+				table.insert(rc, { name = fc, type = "fuel-category" })
 			end
 
 			return rc
 		end
-	elseif mining_drill.energy_source.type == 'fluid' then
+	elseif mining_drill.energy_source.type == "fluid" then
 		if mining_drill.energy_source.fluid_box.filter ~= nil then
-			if mining_drill.energy_source.fluid_box.filter == 'steam' then
+			if mining_drill.energy_source.fluid_box.filter == "steam" then
 				return nil
 			end
 
-			return { { name = mining_drill.energy_source.fluid_box.filter, type = 'fluid' } }
+			return { { name = mining_drill.energy_source.fluid_box.filter, type = "fluid" } }
 		end
 	end
 
-	if mining_drill.energy_source.type == 'burner' then
+	if mining_drill.energy_source.type == "burner" then
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('get.fuel_categories()', 'set default "burner" for: ' .. tostring(mining_drill_name)))
+			log(APM_MSG_INFO("get.fuel_categories()", 'set default "burner" for: ' .. tostring(mining_drill_name)))
 		end
 
 		return apm.lib.utils.fuel.get.default_category()
-	elseif mining_drill.energy_source.type == 'fluid' then
+	elseif mining_drill.energy_source.type == "fluid" then
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('get.fuel_categories()', 'set default "fluid" for: ' .. tostring(mining_drill_name)))
+			log(APM_MSG_INFO("get.fuel_categories()", 'set default "fluid" for: ' .. tostring(mining_drill_name)))
 		end
 
 		return apm.lib.utils.fuel.get.default_fluid_category()
@@ -118,10 +118,10 @@ function apm.lib.utils.mining_drill.burner.overhaul(mining_drill_name, level)
 		return
 	end
 
-	if not mining_drill.energy_source.type == 'burner' then
+	if not mining_drill.energy_source.type == "burner" then
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'burner.overhaul()',
+				"burner.overhaul()",
 				'mining-drill with name: "' .. tostring(mining_drill_name) .. '" has not energy_source.type == "burner".'
 			))
 		end
@@ -138,10 +138,10 @@ function apm.lib.utils.mining_drill.burner.overhaul(mining_drill_name, level)
 	local new_energy_usage = base_energy_usage + ((level - 1) * 75000)
 
 	mining_drill.mining_speed = new_mining_speed
-	mining_drill.energy_usage = new_energy_usage .. 'W'
+	mining_drill.energy_usage = new_energy_usage .. "W"
 
 	mining_drill.energy_source = apm.lib.utils.builders.energy_source.new_burner(
-		{ 'chemical', 'apm_refined_chemical' },
+		{ "chemical", "apm_refined_chemical" },
 		{ pollution = new_base_emissions_per_minute }
 	)
 
@@ -156,7 +156,7 @@ function apm.lib.utils.mining_drill.burner.overhaul(mining_drill_name, level)
 	}
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('burner.overhaul()', 'mining-drill with name: "' .. tostring(mining_drill_name) .. '" changed.'))
+		log(APM_MSG_INFO("burner.overhaul()", 'mining-drill with name: "' .. tostring(mining_drill_name) .. '" changed.'))
 	end
 end
 

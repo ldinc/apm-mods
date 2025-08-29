@@ -1,8 +1,8 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
-require('__apm_lib_ldinc__.lib.utils')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
+require("__apm_lib_ldinc__.lib.utils")
 
-local self = 'apm_power/prototypes/main/labs.lua'
+local self = "apm_power/prototypes/main/labs.lua"
 
 APM_LOG_HEADER(self)
 
@@ -36,45 +36,51 @@ local smoke_steam = {
 
 --- [apm_lab_0]
 ---@type data.LabPrototype
-local lab = {}
-lab.type = "lab"
-lab.name = "apm_lab_0"
-lab.icons = {
-	apm.lib.icons.dynamics.machine.t0,
-	apm.lib.icons.dynamics.lable_l
-}
-lab.localised_description = { "entity-description.apm_lab_0" }
-lab.flags = { "placeable-player", "player-creation" }
-lab.minable = { mining_time = 0.2, result = "apm_lab_0" }
-lab.max_health = 250
-lab.corpse = "big-remnants"
-lab.dying_explosion = "medium-explosion"
-lab.resistances = { { type = "fire", percent = 90 } }
-lab.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
-lab.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-lab.light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } }
-lab.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
-lab.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
+local lab = {
 
-lab.working_sound = { filename = "__base__/sound/lab.ogg", volume = 0.8 }
-lab.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
-lab.working_sound.apparent_volume = 1.5
-lab.energy_usage = apm.power.constants.energy_usage.lab_0
-lab.module_slots = apm.power.constants.modules.specification_0.module_slots
-lab.allowed_effects = apm.power.constants.modules.allowed_effects_0
-lab.researching_speed = 1
-lab.fast_replaceable_group = "lab"
-lab.next_upgrade = "apm_lab_1"
-lab.inputs = {
-	"apm_industrial_science_pack",
-	"apm_steam_science_pack",
+	type = "lab",
+	name = "apm_lab_0",
+	icons = {
+		apm.lib.icons.dynamics.machine.t0,
+		apm.lib.icons.dynamics.lable_l
+	},
+	localised_description = { "entity-description.apm_lab_0" },
+	flags = { "placeable-player", "player-creation" },
+	minable = { mining_time = 0.2, result = "apm_lab_0" },
+	max_health = 250,
+	corpse = "big-remnants",
+	dying_explosion = "medium-explosion",
+	resistances = { { type = "fire", percent = 90 } },
+	collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } },
+	selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+	light = { intensity = 0.6, size = 9.9, shift = { 0.0, 0.0 }, color = { r = 1.0, g = 0.5, b = 0.0 } },
+	open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+
+	working_sound = {
+		filename = "__base__/sound/lab.ogg",
+		volume = 0.8,
+		idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+	},
+	-- lab.working_sound.apparent_volume = 1.5
+	energy_usage = apm.power.constants.energy_usage.lab_0,
+	module_slots = apm.power.constants.modules.specification_0.module_slots,
+	allowed_effects = apm.power.constants.modules.allowed_effects_0,
+	researching_speed = 1,
+	fast_replaceable_group = "lab",
+	next_upgrade = "apm_lab_1",
+	inputs = {
+		"apm_industrial_science_pack",
+		"apm_steam_science_pack",
+	},
+
+	energy_source = apm.lib.utils.builders.energy_source.new_burner(
+		{ "chemical", "apm_refined_chemical" },
+		apm.power.constants.emissions.lab_0,
+		smoke_burner
+	),
 }
 
-lab.energy_source = apm.lib.utils.builders.energy_source.new_burner(
-	{ 'chemical', 'apm_refined_chemical' },
-	apm.power.constants.emissions.lab_0,
-	smoke_burner
-)
 
 lab.on_animation = {
 	layers = {
@@ -87,7 +93,7 @@ lab.on_animation = {
 			line_length = 8,
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
-			run_mode = 'forward-then-backward',
+			run_mode = "forward-then-backward",
 			animation_speed = base_animation_progress / lab.researching_speed,
 		},
 		{
@@ -100,7 +106,7 @@ lab.on_animation = {
 			line_length = 8,
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
-			run_mode = 'forward-then-backward',
+			run_mode = "forward-then-backward",
 			animation_speed = base_animation_progress / lab.researching_speed,
 		}
 	},
@@ -117,7 +123,7 @@ lab.off_animation = {
 			line_length = 8,
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
-			run_mode = 'forward-then-backward',
+			run_mode = "forward-then-backward",
 			animation_speed = base_animation_progress / lab.researching_speed,
 		},
 		{
@@ -130,7 +136,7 @@ lab.off_animation = {
 			line_length = 8,
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
-			run_mode = 'forward-then-backward',
+			run_mode = "forward-then-backward",
 			animation_speed = base_animation_progress / lab.researching_speed,
 		}
 	},

@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: different-requires
 local dllist = require("dllist")
 
 ---NOTE: Partially generated with DeepseekAI

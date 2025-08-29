@@ -1,3 +1,6 @@
+---@alias K any
+---@alias V any
+
 ---@class DLLNode : table<K, V>
 ---@field id K
 ---@field value V

@@ -1,8 +1,8 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
-require('__apm_lib_ldinc__.lib.utils')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
+require("__apm_lib_ldinc__.lib.utils")
 
-local self = 'apm_power/prototypes/main/sieve.lua'
+local self = "apm_power/prototypes/main/sieve.lua"
 
 APM_LOG_HEADER(self)
 
@@ -36,45 +36,45 @@ local base_animation_progress = 1.0666667
 
 --- [apm_sieve_0]
 ---@type data.AssemblingMachinePrototype
-local sieve = {}
-sieve.type = "assembling-machine"
-sieve.name = "apm_sieve_0"
-sieve.icons = {
-	apm.lib.icons.dynamics.machine.t1,
-	apm.lib.icons.dynamics.lable_si
-}
-sieve.localised_description = { "entity-description.apm_sieve_0" }
-
-sieve.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-sieve.minable = { mining_time = 0.2, result = "apm_sieve_0" }
-sieve.crafting_categories = { "apm_sifting_0" }
-sieve.crafting_speed = 1
-sieve.fast_replaceable_group = "apm_sieve"
-sieve.next_upgrade = nil
-sieve.max_health = 250
-sieve.corpse = "big-remnants"
-sieve.dying_explosion = "medium-explosion"
-sieve.resistances = { { type = "fire", percent = 90 } }
-sieve.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
-sieve.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-
-sieve.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
-sieve.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-
-sieve.working_sound = {
-	main_sounds = {
-		{ sound = { filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.8 } },
-		{ sound = { filename = "__base__/sound/assembling-machine-t1-2.ogg", volume = 0.8 } },
+local sieve = {
+	type = "assembling-machine",
+	name = "apm_sieve_0",
+	icons = {
+		apm.lib.icons.dynamics.machine.t1,
+		apm.lib.icons.dynamics.lable_si,
 	},
+	localised_description = { "entity-description.apm_sieve_0" },
+
+	flags = { "placeable-neutral", "placeable-player", "player-creation" },
+	minable = { mining_time = 0.2, result = "apm_sieve_0" },
+	crafting_categories = { "apm_sifting_0" },
+	crafting_speed = 1,
+	fast_replaceable_group = "apm_sieve",
+	next_upgrade = nil,
+	max_health = 250,
+	corpse = "big-remnants",
+	dying_explosion = "medium-explosion",
+	resistances = { { type = "fire", percent = 90 } },
+	collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } },
+	selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+
+	open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+
+	working_sound = {
+		main_sounds = {
+			{ sound = { filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.8 } },
+			{ sound = { filename = "__base__/sound/assembling-machine-t1-2.ogg", volume = 0.8 } },
+		},
+		idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
+	},
+
+	energy_usage = apm.power.constants.energy_usage.steam,
+	module_slots = apm.power.constants.modules.specification_2.module_slots,
+	allowed_effects = apm.power.constants.modules.allowed_effects_2,
+
+	energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.t2, smoke_steam),
 }
-
-sieve.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
-sieve.working_sound.apparent_volume = 1.5
-sieve.energy_usage = apm.power.constants.energy_usage.steam
-sieve.module_slots = apm.power.constants.modules.specification_2.module_slots
-sieve.allowed_effects = apm.power.constants.modules.allowed_effects_2
-
-sieve.energy_source = apm.lib.utils.builders.energy_source.new_steam(apm.power.constants.emissions.t2, smoke_steam)
 
 sieve.graphics_set = {
 	animation_progress = base_animation_progress / sieve.crafting_speed,

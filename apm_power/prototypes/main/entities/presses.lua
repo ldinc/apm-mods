@@ -1,8 +1,8 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
-require('__apm_lib_ldinc__.lib.utils')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
+require("__apm_lib_ldinc__.lib.utils")
 
-local self = 'apm_power/prototypes/main/presses.lua'
+local self = "apm_power/prototypes/main/presses.lua"
 
 APM_LOG_HEADER(self)
 
@@ -36,48 +36,46 @@ local base_animation_progress = 1.0666667
 
 --- [apm_press_machine_0]
 ---@type data.AssemblingMachinePrototype
-local press = {}
-press.type = "assembling-machine"
-press.name = "apm_press_machine_0"
-press.icons = {
-	apm.lib.icons.dynamics.machine.t0,
-	apm.lib.icons.dynamics.lable_p
+local press = {
+	type = "assembling-machine",
+	name = "apm_press_machine_0",
+	icons = {
+		apm.lib.icons.dynamics.machine.t0,
+		apm.lib.icons.dynamics.lable_p
+	},
+
+	flags = { "placeable-neutral", "placeable-player", "player-creation" },
+	minable = { mining_time = 0.1, result = "apm_press_machine_0" },
+	crafting_categories = { "apm_press" },
+	crafting_speed = 0.5,
+	fast_replaceable_group = "apm_power_press_machine",
+	next_upgrade = "apm_press_machine_1",
+	max_health = 250,
+	corpse = "big-remnants",
+	dying_explosion = "medium-explosion",
+	resistances = { { type = "fire", percent = 90 } },
+	collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } },
+	selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+
+	open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+
+	working_sound = {
+		filename = "__apm_resource_pack_ldinc__/sounds/entities/press.ogg",
+		volume = 0.8,
+		idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+	},
+
+	energy_usage = apm.power.constants.energy_usage.burner,
+	module_slots = apm.power.constants.modules.specification_0.module_slots,
+	allowed_effects = apm.power.constants.modules.allowed_effects_0,
+
+	energy_source = apm.lib.utils.builders.energy_source.new_burner(
+		{ "chemical", "apm_refined_chemical" },
+		apm.power.constants.emissions.t0,
+		smoke_burner
+	),
 }
-
-press.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-press.minable = { mining_time = 0.1, result = "apm_press_machine_0" }
-press.crafting_categories = { "apm_press" }
-press.crafting_speed = 0.5
-press.fast_replaceable_group = "apm_power_press_machine"
-press.next_upgrade = "apm_press_machine_1"
-press.max_health = 250
-press.corpse = "big-remnants"
-press.dying_explosion = "medium-explosion"
-press.resistances = { { type = "fire", percent = 90 } }
-press.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
-press.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
-
-press.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
-press.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
-
-press.working_sound = {
-	filename = "__apm_resource_pack_ldinc__/sounds/entities/press.ogg",
-	volume = 0.8,
-}
-
-press.working_sound.idle_sound = {}
-press.working_sound.idle_sound.filename = "__base__/sound/idle1.ogg"
-press.working_sound.idle_sound.volume = 0.6
-press.working_sound.apparent_volume = 1.5
-press.energy_usage = apm.power.constants.energy_usage.burner
-press.module_slots = apm.power.constants.modules.specification_0.module_slots
-press.allowed_effects = apm.power.constants.modules.allowed_effects_0
-
-press.energy_source = apm.lib.utils.builders.energy_source.new_burner(
-	{ 'chemical', 'apm_refined_chemical' },
-	apm.power.constants.emissions.t0,
-	smoke_burner
-)
 
 press.graphics_set = {
 	animation_progress = base_animation_progress / press.crafting_speed,
@@ -124,7 +122,7 @@ press.icons = {
 
 press.minable = { mining_time = 0.2, result = "apm_press_machine_1" }
 
-press.crafting_categories = { "apm_press", 'apm_press_2' }
+press.crafting_categories = { "apm_press", "apm_press_2" }
 press.crafting_speed = 1
 press.fast_replaceable_group = "apm_power_press_machine"
 press.next_upgrade = "apm_press_machine_2"
@@ -158,7 +156,7 @@ press.icons = {
 
 press.minable = { mining_time = 0.2, result = "apm_press_machine_2" }
 
-press.crafting_categories = { "apm_press", 'apm_press_2', 'apm_press_3' }
+press.crafting_categories = { "apm_press", "apm_press_2", "apm_press_3" }
 press.crafting_speed = 1.5
 press.fast_replaceable_group = "apm_power_press_machine"
 press.next_upgrade = nil

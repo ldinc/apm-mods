@@ -1,8 +1,8 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
-require('__apm_lib_ldinc__.lib.utils')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
+require("__apm_lib_ldinc__.lib.utils")
 
-local self = 'apm_power/prototypes/main/greenhouse.lua'
+local self = "apm_power/prototypes/main/greenhouse.lua"
 
 APM_LOG_HEADER(self)
 
@@ -36,44 +36,46 @@ local smoke_steam = {
 
 --- [apm_greenhouse_0]
 ---@type data.AssemblingMachinePrototype
-local greenhouse = {}
-greenhouse.type = "assembling-machine"
-greenhouse.name = "apm_greenhouse_0"
-greenhouse.icons = {
-	apm.lib.icons.dynamics.machine.t0,
-	apm.lib.icons.dynamics.lable_gh
+local greenhouse = {
+	type = "assembling-machine",
+	name = "apm_greenhouse_0",
+	icons = {
+		apm.lib.icons.dynamics.machine.t0,
+		apm.lib.icons.dynamics.lable_gh
+	},
+	flags = { "placeable-neutral", "placeable-player", "player-creation" },
+	minable = { mining_time = 0.1, result = "apm_greenhouse_0" },
+	crafting_categories = { "apm_greenhouse" },
+	crafting_speed = 1,
+	fast_replaceable_group = "apm_greenhouse",
+	next_upgrade = "apm_greenhouse_1",
+	max_health = 150,
+	corpse = "big-remnants",
+	dying_explosion = "medium-explosion",
+	resistances = { { type = "fire", percent = 90 } },
+	collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } },
+	selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+	--greenhouse.light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 1.0, g = 0.5, b = 0.0}}
+	open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+
+	working_sound = {
+		filename = "__apm_resource_pack_ldinc__/sounds/ambient/greenhouse.ogg",
+		volume = 0.8,
+		apparent_volume = 1.5,
+	},
+
+	energy_usage = apm.power.constants.energy_usage.greenhouse_0,
+	module_slots = apm.power.constants.modules.greenhouse.specification_0.module_slots,
+	allowed_effects = apm.power.constants.modules.greenhouse.allowed_effects_0,
+
+	energy_source = apm.lib.utils.builders.energy_source.new_burner(
+		{ "chemical", "apm_refined_chemical" },
+		apm.power.constants.emissions.gh_0,
+		smoke_burner
+	),
 }
-greenhouse.flags = { "placeable-neutral", "placeable-player", "player-creation" }
-greenhouse.minable = { mining_time = 0.1, result = "apm_greenhouse_0" }
-greenhouse.crafting_categories = { "apm_greenhouse" }
-greenhouse.crafting_speed = 1
-greenhouse.fast_replaceable_group = "apm_greenhouse"
-greenhouse.next_upgrade = 'apm_greenhouse_1'
-greenhouse.max_health = 150
-greenhouse.corpse = "big-remnants"
-greenhouse.dying_explosion = "medium-explosion"
-greenhouse.resistances = { { type = "fire", percent = 90 } }
-greenhouse.collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
-greenhouse.selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
---greenhouse.light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 1.0, g = 0.5, b = 0.0}}
-greenhouse.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
-greenhouse.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
 
-greenhouse.working_sound = {
-	filename = "__apm_resource_pack_ldinc__/sounds/ambient/greenhouse.ogg",
-	volume = 0.8,
-	apparent_volume = 1.5,
-}
-
-greenhouse.energy_usage = apm.power.constants.energy_usage.greenhouse_0
-greenhouse.module_slots = apm.power.constants.modules.greenhouse.specification_0.module_slots
-greenhouse.allowed_effects = apm.power.constants.modules.greenhouse.allowed_effects_0
-
-greenhouse.energy_source = apm.lib.utils.builders.energy_source.new_burner(
-	{ 'chemical', 'apm_refined_chemical' },
-	apm.power.constants.emissions.gh_0,
-	smoke_burner
-)
 
 greenhouse.graphics_set = {
 	animation_progress = base_animation_progress / greenhouse.crafting_speed,

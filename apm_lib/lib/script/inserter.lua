@@ -1,5 +1,6 @@
 require("lib.features")
 local dllist = require("lib.containers.dllist")
+---@diagnostic disable-next-line: different-requires
 local strings = require("lib.containers.strings")
 
 local inserter_script = {}

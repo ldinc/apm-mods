@@ -1,8 +1,8 @@
-require 'util'
-require('lib.log')
-require('lib.utils.builders.fluid_box')
+require "util"
+require("lib.log")
+require("lib.utils.builders.fluid_box")
 
-local self = 'lib.utils.builders.energy_source'
+local self = "lib.utils.builders.energy_source"
 
 --- Construct new energy source instance
 --- @param emmisions_pm? {data.AirbornePollutantID: number}
@@ -52,7 +52,7 @@ end
 ---@return data.VoidEnergySource
 function apm.lib.utils.builders.energy_source.new_void(emmisions_pm)
 	return {
-		type = 'void',
+		type = "void",
 		emissions_per_minute = emmisions_pm,
 	}
 end
@@ -63,7 +63,7 @@ function apm.lib.utils.builders.energy_source.new_electric(emmisions_pm, drain)
 	end
 
 	return {
-		type = 'electric',
+		type = "electric",
 		usage_priority = "secondary-input",
 		emissions_per_minute = emmisions_pm,
 		drain = drain,
@@ -71,7 +71,7 @@ function apm.lib.utils.builders.energy_source.new_electric(emmisions_pm, drain)
 end
 
 ---@param fuel_categories? data.FuelCategoryID[]
----@param emmisions_pm? table<string, data.AirbornePollutantID>
+---@param emmisions_pm? {[data.AirbornePollutantID]: number},
 ---@param smoke any
 ---@param fuel_inventory_size any
 ---@param eff any
@@ -108,7 +108,7 @@ end
 function apm.lib.utils.builders.energy_source.new_electroaccum(fuel_inventory_size, burnt_inventory_size)
 	return {
 		type = "burner",
-		fuel_categories = {"apm_electrical"},
+		fuel_categories = { "apm_electrical" },
 		effectivity = 0.89,
 		fuel_inventory_size = fuel_inventory_size,
 		burnt_inventory_size = burnt_inventory_size,

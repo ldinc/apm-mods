@@ -1,7 +1,16 @@
-require('__apm_lib_ldinc__.lib.log')
-require('__apm_lib_ldinc__.lib.utils')
+require("__apm_lib_ldinc__.lib.log")
+require("__apm_lib_ldinc__.lib.utils")
 
-local self = 'apm_energy_addon/lib/functions.lua'
+local self = "apm_energy_addon/lib/functions.lua"
+
+---@type boolean
+local apm_energy_addon_always_show_made_in = false
+
+local v = settings.startup["apm_energy_addon_always_show_made_in"].value
+
+if type(v) == "boolean" then
+	apm_energy_addon_always_show_made_in = v
+end
 
 APM_LOG_HEADER(self)
 
@@ -50,19 +59,19 @@ function apm.energy_addon.generate_electric_powered(name)
 	local item_icon_a = apm.lib.utils.icon.get.from_item(name)
 	local item_icon_b = { apm.energy_addon.icons.electric_symbol }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
-	local item_car = data.raw['item-with-entity-data'][name]
-	local item_name = 'apm_electric_' .. name
+	local item_car = data.raw["item-with-entity-data"][name]
+	local item_name = "apm_electric_" .. name
 
 	---@type data.ItemPrototype
 	local item = {
-		type = 'item',
+		type = "item",
 		name = item_name,
-		localised_name = { "entity-name.apm_electric", { 'entity-name.' .. name } },
+		localised_name = { "entity-name.apm_electric", { "entity-name." .. name } },
 		icons = icons,
 		--item.icon_mipmaps = 4
 		stack_size = item_car.stack_size,
 		subgroup = item_car.subgroup,
-		order = item_car.order .. 'z',
+		order = item_car.order .. "z",
 		place_result = item_name,
 	}
 
@@ -74,7 +83,7 @@ function apm.energy_addon.generate_electric_powered(name)
 	local car_ico = apm.lib.utils.icon.merge({ car_original_ico, item_icon_b })
 
 	car.name = item.name
-	car.localised_name = { "entity-name.apm_electric", { 'entity-name.' .. name } }
+	car.localised_name = { "entity-name.apm_electric", { "entity-name." .. name } }
 	car.icon = nil
 	car.icons = car_ico
 	car.minable = { mining_time = 0.4, result = item.name }
@@ -111,17 +120,17 @@ function apm.energy_addon.generate_electric_powered_locomotive(name)
 	local item_icon_a = apm.lib.utils.icon.get.from_item(name)
 	local item_icon_b = { apm.energy_addon.icons.electric_symbol }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
-	local item_car = data.raw['item-with-entity-data'][name]
+	local item_car = data.raw["item-with-entity-data"][name]
 	local item = {}
 
-	item.type = 'item'
-	item.name = 'apm_electric_' .. name
-	item.localised_name = { "entity-name.apm_electric", { 'entity-name.' .. name } }
+	item.type = "item"
+	item.name = "apm_electric_" .. name
+	item.localised_name = { "entity-name.apm_electric", { "entity-name." .. name } }
 	item.icons = icons
 	--item.icon_mipmaps = 4
 	item.stack_size = item_car.stack_size
 	item.subgroup = item_car.subgroup
-	item.order = item_car.order .. 'z'
+	item.order = item_car.order .. "z"
 	item.place_result = item.name
 	data:extend({ item })
 
@@ -130,7 +139,7 @@ function apm.energy_addon.generate_electric_powered_locomotive(name)
 	local locomotive_ico = apm.lib.utils.icon.merge({ locomotive_original_ico, item_icon_b })
 
 	locomotive.name = item.name
-	locomotive.localised_name = { "entity-name.apm_electric", { 'entity-name.' .. name } }
+	locomotive.localised_name = { "entity-name.apm_electric", { "entity-name." .. name } }
 	locomotive.icon = nil
 	locomotive.icons = locomotive_ico
 	locomotive.minable = { mining_time = 0.4, result = item.name }
@@ -158,10 +167,10 @@ function apm.energy_addon.generate_electric_locomotive_new_recipe(name)
 		ingredients = {
 			{ type = "item", name = name,                   amount = 1 },
 			{ type = "item", name = "electric-engine-unit", amount = 24 },
-			apm.lib.utils.builder.recipe.item.simple('APM_CIRCUIT_T5', 20)
+			apm.lib.utils.builder.recipe.item.simple("APM_CIRCUIT_T5", 20)
 		},
 		results = {
-			{ type = 'item', name = resultName, amount = 1 }
+			{ type = "item", name = resultName, amount = 1 }
 		},
 		main_product = resultName,
 		requester_paste_multiplier = 4,
@@ -173,26 +182,26 @@ function apm.energy_addon.generate_electric_locomotive_new_recipe(name)
 end
 
 function apm.energy_addon.generate_electric_locomotive_new_tech(name, suffix)
-	local tName = 'apm_electric_' .. suffix
+	local tName = "apm_electric_" .. suffix
 	local itmName = "apm_electric_" .. name
 
 	---@type data.TechnologyPrototype
 	local technology = {
-		type = 'technology',
+		type = "technology",
 		name = tName,
-		icon = '__base__/graphics/technology/railway.png',
+		icon = "__base__/graphics/technology/railway.png",
 		icon_size = 256,
 		icon_mipmaps = 4,
 		effects = {
-			{ type = 'unlock-recipe', recipe = itmName },
+			{ type = "unlock-recipe", recipe = itmName },
 		},
-		prerequisites = { suffix, 'electric-engine', 'battery' },
+		prerequisites = { suffix, "electric-engine", "battery" },
 		unit = {
 			count = 125,
 			ingredients = { { "automation-science-pack", 1 }, { "logistic-science-pack", 1 }, { "military-science-pack", 1 }, { "chemical-science-pack", 1 } },
 			time = 30,
 		},
-		order = 'aa_a',
+		order = "aa_a",
 	}
 
 	data:extend({ technology })
@@ -202,20 +211,20 @@ function apm.energy_addon.generate_electric_powered_spidertron(name)
 	local item_icon_a = apm.lib.utils.icon.get.from_item(name)
 	local item_icon_b = { apm.energy_addon.icons.electric_symbol }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
-	local item_spidertron = data.raw['item-with-entity-data'][name]
-	local e_name = 'apm_electric_' .. name
+	local item_spidertron = data.raw["item-with-entity-data"][name]
+	local e_name = "apm_electric_" .. name
 
 	---@type data.ItemPrototype
 	local item = {
 
-		type = 'item',
+		type = "item",
 		name = e_name,
-		localised_name = { "entity-name.apm_electric", { 'entity-name.' .. name } },
+		localised_name = { "entity-name.apm_electric", { "entity-name." .. name } },
 		icons = icons,
 		--item.icon_mipmaps = 4,
 		stack_size = item_spidertron.stack_size,
 		subgroup = item_spidertron.subgroup,
-		order = item_spidertron.order .. 'z',
+		order = item_spidertron.order .. "z",
 		place_result = e_name,
 	}
 
@@ -226,7 +235,7 @@ function apm.energy_addon.generate_electric_powered_spidertron(name)
 	local spidertron_ico = apm.lib.utils.icon.merge({ spidertron_original_ico, item_icon_b })
 
 	spidertron.name = item.name
-	spidertron.localised_name = { "entity-name.apm_electric", { 'entity-name.' .. name } }
+	spidertron.localised_name = { "entity-name.apm_electric", { "entity-name." .. name } }
 	spidertron.icon = nil
 	spidertron.icons = spidertron_ico
 	spidertron.minable = { mining_time = 0.4, result = item.name }
@@ -254,10 +263,10 @@ function apm.energy_addon.generate_electric_spidertron_new_recipe(name)
 		ingredients = {
 			{ type = "item", name = name,                   amount = 1 },
 			{ type = "item", name = "electric-engine-unit", amount = 48 },
-			apm.lib.utils.builder.recipe.item.simple('APM_CIRCUIT_T6', 40)
+			apm.lib.utils.builder.recipe.item.simple("APM_CIRCUIT_T6", 40)
 		},
 		results = {
-			{ type = 'item', name = resultName, amount = 1 }
+			{ type = "item", name = resultName, amount = 1 }
 		},
 		main_product = resultName,
 		requester_paste_multiplier = 4,
@@ -269,26 +278,26 @@ function apm.energy_addon.generate_electric_spidertron_new_recipe(name)
 end
 
 function apm.energy_addon.generate_electric_spidertron_new_tech(name, suffix)
-	local tName = 'apm_electric_' .. suffix
+	local tName = "apm_electric_" .. suffix
 	local itmName = "apm_electric_" .. name
 
 	---@type data.TechnologyPrototype
 	local technology = {
-		type = 'technology',
+		type = "technology",
 		name = tName,
-		icon = '__base__/graphics/technology/spidertron.png',
+		icon = "__base__/graphics/technology/spidertron.png",
 		icon_size = 256,
 		icon_mipmaps = 4,
 		effects = {
-			{ type = 'unlock-recipe', recipe = itmName },
+			{ type = "unlock-recipe", recipe = itmName },
 		},
-		prerequisites = { suffix, 'electric-engine', 'battery' },
+		prerequisites = { suffix, "electric-engine", "battery" },
 		unit = {
 			count = 125,
 			ingredients = { { "automation-science-pack", 1 }, { "logistic-science-pack", 1 }, { "military-science-pack", 1 }, { "chemical-science-pack", 1 } },
 			time = 30,
 		},
-		order = 'aa_a',
+		order = "aa_a",
 	}
 
 	data:extend({ technology })
