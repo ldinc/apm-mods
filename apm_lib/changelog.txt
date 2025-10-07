@@ -1,8 +1,22 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.07
+Date: 30.09.2025
+  Bugfixes:
+    - Fixed: invalid sprite path.
+---------------------------------------------------------------------------------------------------
+Version: 0.32.06
+Date: 30.09.2025
+  Changes:
+    - Added: [apm.lib.utils.furnace.get.crafting_categories].
+    - Added: [apm.lib.utils.furnace.add.crafting_categories].
+    - Added: types_list extended with "tool".
+    - Added: [apm.lib.utils.technology.remove.apms_if_has_others_by_ref].
+    - Added: [apm.lib.utils.technology.has.science_packs].
+---------------------------------------------------------------------------------------------------
 Version: 0.32.05
 Date: 29.08.2025
   Changes:
-    - Fix some code lint warinings
+    - Fix some code lint warnings
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.04
 Date: 28.08.2025
@@ -729,7 +743,6 @@ Date: 22. 10. 2019
     - Recipe-category: renamed apm_press_with_tool to apm_press_3
     - New: ./lib/util/fuel.lua: function: apm.lib.utils.fuel.entities.add.category_with_conditional(entity_type, conditional_category, category)
     - New: ./lib/util/fuel.lua: function: apm.lib.utils.fuel.overwrite_emissions_multiplier(item_name, emissions_multiplier)
-  Deprecated:
     - Mark deprecated: ./lib/util/builder.lua: function: apm.lib.utils.builder.recipe.ingredient.alternatives.add()
     - Mark deprecated: ./lib/util/builder.lua: function: apm.lib.utils.builder.recipe.ingredient.alternatives.get()
     - Mark deprecated: ./lib/util/builder.lua: function: apm.lib.utils.builder.recipe.ingredient.simple()
@@ -738,7 +751,6 @@ Date: 22. 10. 2019
     - Mark deprecated: ./lib/util/builder.lua: function: apm.lib.utils.builder.recipe.result.alternatives.get()
     - Mark deprecated: ./lib/util/builder.lua: function: apm.lib.utils.builder.recipe.result.simple()
     - Mark deprecated: ./lib/util/builder.lua: function: apm.lib.utils.builder.recipe.result.probability()
-  Deleted:
     - Deleted: ./lib/util/description.lua: apm.lib.utils.description.entities.include_list.add(entity_name) -> no longer needed
     - Deleted: ./lib/util/description.lua: apm.lib.utils.description.entities.include_list.remove(entity_name) -> no longer needed
 ---------------------------------------------------------------------------------------------------

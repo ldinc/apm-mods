@@ -50,7 +50,7 @@ function apm.lib.utils.technology.add.science_pack(technology_name, science_pack
 	if apm.lib.utils.technology.has.science_pack(technology_name, science_pack) then
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'add.science_pack()',
+				"add.science_pack()",
 				'technology: "' ..
 				tostring(technology_name) .. '" allready has science_pack: "' .. tostring(science_pack) .. '"'
 			))
@@ -64,7 +64,7 @@ function apm.lib.utils.technology.add.science_pack(technology_name, science_pack
 
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'add.science_pack()',
+				"add.science_pack()",
 				'technology: "' .. tostring(technology_name) .. '" skipped due empty "unit" field'
 			))
 		end
@@ -76,7 +76,7 @@ function apm.lib.utils.technology.add.science_pack(technology_name, science_pack
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'add.science_pack()',
+			"add.science_pack()",
 			'science_pack: "' ..
 			tostring(science_pack) ..
 			'" added to: "' .. tostring(technology_name) .. '" with amount: "' .. tostring(science_amount) .. '"'
@@ -155,6 +155,48 @@ function apm.lib.utils.technology.remove.science_packs_except(technology_name, s
 	technology.unit.ingredients = new_set
 end
 
+apm.lib.utils.technology.basic_science_packs = {
+	["apm_industrial_science_pack"] = true,
+	["apm_steam_science_pack"] = true,
+}
+
+--- @param tech data.TechnologyPrototype?
+function apm.lib.utils.technology.remove.apms_if_has_others_by_ref(tech)
+	if not tech then
+		return
+	end
+
+	local ok = apm.lib.utils.technology.has.science_packs(tech, apm.lib.utils.technology.basic_science_packs, false)
+
+	if not ok then
+		for sp_name, _ in pairs(apm.lib.utils.technology.basic_science_packs) do
+			apm.lib.utils.technology.remove.science_pack(tech.name, sp_name)
+		end
+	end
+end
+
+---@param tech data.TechnologyPrototype
+---@param map { [string]: string }
+---@param any_mode boolean?
+---@return boolean
+function apm.lib.utils.technology.has.science_packs(tech, map, any_mode)
+	if not tech.unit or #tech.unit.ingredients == 0 then
+		return false
+	end
+
+	for _, ingredients in ipairs(tech.unit.ingredients) do
+		if any_mode and map[ingredients[1]] then
+			return true
+		end
+
+		if not any_mode and not map[ingredients[1]] then
+			return false
+		end
+	end
+
+	return true
+end
+
 --- [technology.add.science_pack_conditional]
 ---@param science_pack_name string
 ---@param cond_science_pack_name string
@@ -191,7 +233,7 @@ function apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(
 	if not technology.prerequisites then
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'set.science_packs_from_prerequisites()',
+				"set.science_packs_from_prerequisites()",
 				'prerequisite: "' .. tostring(technology_name) .. '"does not have a prerequisites property'
 			))
 		end
@@ -209,7 +251,7 @@ function apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(
 			else
 				if APM_CAN_LOG_WARN then
 					log(APM_MSG_WARNING(
-						'set.science_packs_from_prerequisites()',
+						"set.science_packs_from_prerequisites()",
 						'prerequisite: "' .. tostring(required_technology.name) .. '"does not have an unit property'
 					))
 				end
@@ -220,7 +262,7 @@ function apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(
 	if not collected_science then
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'set.science_packs_from_prerequisites()',
+				"set.science_packs_from_prerequisites()",
 				'No inheritance possible for: "' .. tostring(technology_name) .. '"!'
 			))
 		end

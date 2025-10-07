@@ -1,8 +1,28 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.10
+Date: 08.10.2025
+  Compatibility:
+    - [Bio_Industry_2] Basic compat.
+---------------------------------------------------------------------------------------------------
+Version: 0.32.09
+Date: 30.09.2025
+  Compatibility:
+    - [Krastorio2] Basic compat.
+---------------------------------------------------------------------------------------------------
+Version: 0.32.08
+Date: 04.09.2025
+  Compatibility:
+    - [RealisticReactorsReborn] Fixed fuel categories for hidden steam furnace.
+---------------------------------------------------------------------------------------------------
+Version: 0.32.07
+Date: 03.09.2025
+  Compatibility:
+    - [BZ] Carbon, returned fluid mining tech
+---------------------------------------------------------------------------------------------------
 Version: 0.32.06
 Date: 29.08.2025
   Changes:
-    - Fix some code lint warinings
+    - Fixed some code lint warinings
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.05
 Date: 28.08.2025
@@ -17,16 +37,16 @@ Date: 28.08.2025
 Version: 0.32.03
 Date: 28.08.2025
   Compatibility:
-    - [BZ] Fix some technology prereq.
+    - [BZ] Fixed some technology prereq.
   Bugfixes:
-    - Add reactor entities for fuel replacing (if it has "chemical" -> can use "refined chemical")
+    - Added reactor entities for fuel replacing (if it has "chemical" -> can use "refined chemical")
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.02
 Date: 26.08.2025
   Compatibility:
     - [BZ] Added some compat fixes for bz-mods.
-    - [loaders-modernized-wood] added burner tier compat.
-    - [Alloy smelting + Wood Industry] some compat updates.
+    - [loaders-modernized-wood] Added burner tier compat.
+    - [Alloy smelting + Wood Industry] Some compat updates.
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.01
 Date: 24.08.2025

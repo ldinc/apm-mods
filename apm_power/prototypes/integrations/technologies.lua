@@ -81,14 +81,13 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.Bio_Industries and apm_power_compat_bio_industries then
-	apm.lib.utils.technology.delete("bi-tech-coal-processing-2")
-	apm.lib.utils.technology.delete("bi-tech-coal-processing-3")
-	apm.lib.utils.recipe.disable("bi_recipe_crushed_stone")
-
-	apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "bi_recipe_big_wooden_pole")
-	apm.lib.utils.technology.force.recipe_for_unlock("apm_water_supply-1", "bi_recipe_wood_pipe")
-	apm.lib.utils.technology.force.recipe_for_unlock("apm_water_supply-1", "bi_recipe_pipe_to_ground_wood")
+if (
+			(mods["Bio_Industries"] or mods["Bio_Industries_2"])
+			and
+			apm_power_compat_bio_industries
+		)
+then
+	require("prototypes.integrations.technologies.bio-industries")
 end
 
 -- Earendel -------------------------------------------------------------------
@@ -381,4 +380,14 @@ end
 --- [loaders-modernized-wood]
 if mods["loaders-modernized-wood"] then
 	require("prototypes.integrations.technologies.loaders-modernized-wood")
+end
+
+--- [Space Exploration]
+if mods["space-exploration"] then
+	require("prototypes.integrations.technologies.se")
+end
+
+--- [Krastorio2]
+if mods["Krastorio2"] then
+	require("prototypes.integrations.technologies.krastorio")
 end

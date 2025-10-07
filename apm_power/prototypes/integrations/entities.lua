@@ -237,3 +237,23 @@ end
 if require("prototypes.integrations.matcher.bz")() then
 	require("prototypes.integrations.entities.bz")
 end
+
+--- [RealisticReactorsReborn]
+if mods["RealisticReactorsReborn"] then
+	require("prototypes.integrations.entities.realistic-reactors-reborn")
+end
+
+--- [Krastorio2]
+if mods["Krastorio2"] then
+	require("prototypes.integrations.entities.krastorio")
+end
+
+--- [Bio_Industries]
+if (
+			(mods["Bio_Industries"] or mods["Bio_Industries_2"])
+			and
+			apm_power_compat_bio_industries
+		)
+then
+	require("prototypes.integrations.entities.bio-industries")
+end

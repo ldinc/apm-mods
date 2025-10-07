@@ -109,45 +109,13 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.Bio_Industries and apm_power_compat_bio_industries then
-	apm.lib.utils.recipe.remove("bi_recipe_stone_crusher")
-	apm.lib.utils.recipe.remove("bi_recipe_charcoal")
-	apm.lib.utils.recipe.remove("bi_recipe_charcoal_2")
-	apm.lib.utils.recipe.remove("bi_recipe_ash_1")
-	apm.lib.utils.recipe.remove("bi_recipe_ash_2")
-	apm.lib.utils.recipe.remove("bi_recipe_stone_brick")
-	apm.lib.utils.recipe.remove("bi_recipe_cokery")
-	apm.lib.utils.recipe.remove("bi_recipe_coal")
-	apm.lib.utils.recipe.remove("bi_recipe_coke_coal")
-	apm.lib.utils.recipe.remove("bi_recipe_coal_2")
-	apm.lib.utils.recipe.remove("bi_recipe_resin_wood")
-	apm.lib.utils.recipe.remove("bi_recipe_crushed_stone")
-	apm.lib.utils.recipe.remove("bi_recipe_soild_fuel")
-	apm.lib.utils.recipe.ingredient.replace("bi_recipe_rail_wood", "wood", "apm_treated_wood_planks")
-	apm.lib.utils.recipe.ingredient.replace("bi_recipe_rail_wood_bridge", "wood", "apm_treated_wood_planks")
-	apm.lib.utils.recipe.ingredient.replace("bi_recipe_wood_pipe", "wood", "apm_treated_wood_planks")
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_wood_pipe", "apm_sealing_rings", 1)
-	apm.lib.utils.recipe.ingredient.replace("bi_recipe_big_wooden_pole", "wood", "apm_treated_wood_planks")
-	apm.lib.utils.recipe.ingredient.replace("bi_recipe_huge_wooden_pole", "wood", "apm_treated_wood_planks")
-	apm.lib.utils.recipe.result.mod("bi_recipe_seed_1", "bi-seed", 40 / 5)
-	apm.lib.utils.recipe.result.mod("bi_recipe_seed_2", "bi-seed", 50 / 5)
-	apm.lib.utils.recipe.result.mod("bi_recipe_seed_3", "bi-seed", 60 / 5)
-	apm.lib.utils.recipe.result.mod("bi_recipe_seed_4", "bi-seed", 80 / 5)
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_seedling_mk1", "bi-seed", 20 / 5)
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_seedling_mk2", "bi-seed", 20 / 5)
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_seedling_mk3", "bi-seed", 20 / 5)
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_seedling_mk4", "bi-seed", 20 / 5)
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_seed_bomb_basic", "bi-seed", 400 / 5)
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_seed_bomb_standard", "bi-seed", 400 / 5)
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_seed_bomb_advanced", "bi-seed", 400 / 5)
-	apm.lib.utils.recipe.ingredient.replace("bi_recipe_plastic_1", "wood", "apm_wood_pellets", 2)
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_wood_fuel_brick", "bi-woodpulp", 7)
-	apm.lib.utils.recipe.result.mod("bi_recipe_wood_fuel_brick", "apm_wood_briquette", 1)
-	apm.lib.utils.recipe.result.mod("bi_recipe_wood_fuel_brick", "wood-bricks", 0)
-	apm.lib.utils.recipe.category.change("bi_recipe_wood_fuel_brick", "apm_press")
-	apm.lib.utils.recipe.ingredient.mod("bi_recipe_rail_wood", "apm_crushed_stone", 0)
-	apm.lib.utils.recipe.ingredient.mod("rail", "apm_crushed_stone", 0)
-	apm.lib.utils.recipe.ingredient.replace("bi_recipe_mineralized_sulfuric_waste", "wood-charcoal", "apm_charcoal")
+if (
+			(mods["Bio_Industries"] or mods["Bio_Industries_2"])
+			and
+			apm_power_compat_bio_industries
+		)
+then
+	require("prototypes.integrations.recipes.bio-industries")
 end
 
 -- Earendel -------------------------------------------------------------------
@@ -793,4 +761,9 @@ end
 --- [loaders-modernized-wood]
 if mods["loaders-modernized-wood"] then
 	require("prototypes.integrations.recipes.loaders-modernized-wood")
+end
+
+--- [Krastorio2]
+if mods["Krastorio2"] then
+	require("prototypes.integrations.recipes.krastorio")
 end

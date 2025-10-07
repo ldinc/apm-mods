@@ -1,4 +1,4 @@
-require 'util'
+require "util"
 
 if not utils then utils = {} end
 if not apm.lib.utils.pipecovers then apm.lib.utils.pipecovers = {} end
@@ -95,10 +95,15 @@ function apm.lib.utils.pipecovers.assembler3pipepictures()
 		},
 		east =
 		{
+			-- filename = "__base__/graphics/entity/assembling-machine-3/mark2.png",
 			filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3-pipe-E.png",
 			width = 42,
+			-- width = 42,
 			height = 76,
+			-- height = 64,
+			-- shift = util.by_pixel(0, 0),
 			shift = util.by_pixel(-24.5, 1),
+			-- scale = 1.0,
 			scale = 0.5,
 		},
 		south =

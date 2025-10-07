@@ -1,12 +1,13 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.furnace'
+local self = "lib.utils.furnace"
 
 if apm.lib.utils.furnace.mod == nil then apm.lib.utils.furnace.mod = {} end
 if apm.lib.utils.furnace.mod.category == nil then apm.lib.utils.furnace.mod.category = {} end
 if apm.lib.utils.furnace.get == nil then apm.lib.utils.furnace.get = {} end
 if apm.lib.utils.furnace.set == nil then apm.lib.utils.furnace.set = {} end
+if apm.lib.utils.furnace.add == nil then apm.lib.utils.furnace.add = {} end
 
 --- [furnace.get.by_name]
 ---@param furnace_name string
@@ -20,7 +21,7 @@ function apm.lib.utils.furnace.get.by_name(furnace_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'furnace with name: "' .. tostring(furnace_name) .. '" doesnt exist.'))
+		log(APM_MSG_WARNING("exist()", 'furnace with name: "' .. tostring(furnace_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false
@@ -39,6 +40,18 @@ function apm.lib.utils.furnace.mod.category.add(furnace_name, category)
 	apm.lib.utils.entity.add.crafting_category(furnace, category)
 end
 
+---@param furnace_name string
+---@return string[]?
+function apm.lib.utils.furnace.get.crafting_categories(furnace_name)
+	local furnace, ok = apm.lib.utils.furnace.get.by_name(furnace_name)
+
+	if not ok then
+		return nil
+	end
+
+	return furnace.crafting_categories
+end
+
 --- [furnace.get.fuel_categories]
 ---@param furnace_name string
 ---@return data.FuelCategoryID[]?
@@ -53,31 +66,31 @@ function apm.lib.utils.furnace.get.fuel_categories(furnace_name)
 		return nil
 	end
 
-	if furnace.energy_source.type == 'burner' then
+	if furnace.energy_source.type == "burner" then
 		if furnace.energy_source.fuel_categories then
 			local rc = {}
 
 			for _, fc in pairs(furnace.energy_source.fuel_categories) do
-				table.insert(rc, { name = fc, type = 'fuel-category' })
+				table.insert(rc, { name = fc, type = "fuel-category" })
 			end
 
 			return rc
 		end
-	elseif furnace.energy_source.type == 'fluid' then
+	elseif furnace.energy_source.type == "fluid" then
 		if furnace.energy_source.fluid_box.filter ~= nil then
-			return { { name = furnace.energy_source.fluid_box.filter, type = 'fluid' } }
+			return { { name = furnace.energy_source.fluid_box.filter, type = "fluid" } }
 		end
 	end
 
-	if furnace.energy_source.type == 'burner' then
+	if furnace.energy_source.type == "burner" then
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('get.fuel_categories()', 'default "burner" for: ' .. tostring(furnace_name)))
+			log(APM_MSG_INFO("get.fuel_categories()", 'default "burner" for: ' .. tostring(furnace_name)))
 		end
 
 		return apm.lib.utils.fuel.get.default_category()
-	elseif furnace.energy_source.type == 'fluid' then
+	elseif furnace.energy_source.type == "fluid" then
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('get.fuel_categories()', 'default "fluid" for: ' .. tostring(furnace_name)))
+			log(APM_MSG_INFO("get.fuel_categories()", 'default "fluid" for: ' .. tostring(furnace_name)))
 		end
 
 		return apm.lib.utils.fuel.get.default_fluid_category()
@@ -117,18 +130,18 @@ function apm.lib.utils.furnace.overhaul(furnace_name, only_refined)
 		return
 	end
 
-	if furnace.energy_source.type == 'burner' then
+	if furnace.energy_source.type == "burner" then
 		furnace.energy_source.burnt_inventory_size = 1
 		furnace.energy_source.fuel_categories = nil
 
 		if only_refined then
-			apm.lib.utils.entity.set.fuel_category(furnace, 'apm_refined_chemical')
+			apm.lib.utils.entity.set.fuel_category(furnace, "apm_refined_chemical")
 		else
-			apm.lib.utils.entity.set.fuel_category(furnace, { 'chemical', 'apm_refined_chemical' })
+			apm.lib.utils.entity.set.fuel_category(furnace, { "chemical", "apm_refined_chemical" })
 		end
 
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('overhaul()', 'furnace with name: "' .. tostring(furnace_name) .. '" changed'))
+			log(APM_MSG_INFO("overhaul()", 'furnace with name: "' .. tostring(furnace_name) .. '" changed'))
 		end
 
 		return
@@ -136,7 +149,7 @@ function apm.lib.utils.furnace.overhaul(furnace_name, only_refined)
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
-			'overhaul()',
+			"overhaul()",
 			'furnace with name: "' .. tostring(furnace_name) .. '" doesnt have energy_source.type == "burner"'
 		))
 	end
@@ -153,4 +166,29 @@ function apm.lib.utils.furnace.set.hidden(furnace_name)
 
 	furnace.hidden = true
 	furnace.hidden_in_factoriopedia = true
+end
+
+function apm.lib.utils.furnace.add.crafting_categories(assembler_name, crafting_categories)
+	local furnace, ok = apm.lib.utils.furnace.get.by_name(assembler_name)
+
+	if not ok then
+		return
+	end
+
+	if not furnace.crafting_categories then
+		furnace.crafting_categories = {}
+	end
+
+	for _, crafting_category in ipairs(crafting_categories) do
+		if not apm.lib.utils.category.exists(crafting_category, furnace.crafting_categories) then
+			if apm.lib.utils.recipe.category.exists(crafting_category) then
+				table.insert(furnace.crafting_categories, crafting_category)
+			else
+				log(APM_MSG_ERROR(
+					"apm.lib.utils.furnace.add.crafting_categories",
+					"invalid crafting category [" .. crafting_category .. "] will be ignored"
+				))
+			end
+		end
+	end
 end

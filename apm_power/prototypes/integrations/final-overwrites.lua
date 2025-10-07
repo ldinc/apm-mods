@@ -233,6 +233,17 @@ if mods["Cerys-Moon-of-Fulgora"] then
 	skiplist = getter()
 end
 
+if mods["space-exploration"] then
+	require("prototypes.integrations.overwrites.se")
+end
+
+if mods["Krastorio2"] then
+	require("prototypes.integrations.overwrites.krastorio")
+
+	apm_power_inherit_industrial_science = false
+	apm_power_inherit_steam_science = false
+end
+
 if apm_power_inherit_industrial_science then
 	apm.lib.utils.technology.add.science_pack_conditional("apm_industrial_science_pack", "automation-science-pack",
 		skiplist)
@@ -241,6 +252,7 @@ end
 if apm_power_inherit_steam_science then
 	apm.lib.utils.technology.add.science_pack_conditional("apm_steam_science_pack", "automation-science-pack", skiplist)
 end
+
 
 
 -- recipes allow productivity modules -----------------------------------------

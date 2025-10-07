@@ -83,7 +83,7 @@ function apm.lib.utils.technology.new(
 	local effects = {}
 
 	for _, name in ipairs(t_recipes) do
-		table.insert(effects, { type = 'unlock-recipe', recipe = name })
+		table.insert(effects, { type = "unlock-recipe", recipe = name })
 	end
 
 	---@type data.TechnologyPrototype
@@ -103,7 +103,7 @@ function apm.lib.utils.technology.new(
 	data:extend({ new })
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('new()', 'create new technology: "' .. tostring(new.name) .. '"'))
+		log(APM_MSG_INFO("new()", 'create new technology: "' .. tostring(new.name) .. '"'))
 	end
 end
 
@@ -121,7 +121,7 @@ function apm.lib.utils.technology.mod.unit_time(technology_name, time)
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'mod.unit_time()',
+			"mod.unit_time()",
 			'for: "' .. tostring(technology_name) .. '" set unit_time to: "' .. tostring(time) .. '"'
 		))
 	end
@@ -141,7 +141,7 @@ function apm.lib.utils.technology.mod.unit_count(technology_name, count)
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'mod.unit_count()',
+			"mod.unit_count()",
 			'for: "' .. tostring(technology_name) .. '" set unit_count to: "' .. tostring(count) .. '"'
 		))
 	end
@@ -160,7 +160,7 @@ function apm.lib.utils.technology.mod.order(technology_name, order)
 	technology.order = order
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('mod.order()', 'for: "' .. tostring(technology_name) .. '" set order: "' .. tostring(order) .. '"'))
+		log(APM_MSG_INFO("mod.order()", 'for: "' .. tostring(technology_name) .. '" set order: "' .. tostring(order) .. '"'))
 	end
 end
 
@@ -178,7 +178,7 @@ function apm.lib.utils.technology.mod.icon(technology_name, icon)
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'mod.icon()', 'for: "' .. tostring(technology_name) .. '" set icon: "' .. tostring(icon) .. '"'
+			"mod.icon()", 'for: "' .. tostring(technology_name) .. '" set icon: "' .. tostring(icon) .. '"'
 		))
 	end
 end
@@ -201,7 +201,7 @@ function apm.lib.utils.technology.disable(technology_name)
 	end
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('disable()', 'set: enabled = false for:"' .. tostring(technology_name) .. '"'))
+		log(APM_MSG_INFO("disable()", 'set: enabled = false for:"' .. tostring(technology_name) .. '"'))
 	end
 end
 
@@ -215,7 +215,7 @@ function apm.lib.utils.technology.delete(technology_name)
 	end
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('delete()', 'technology: "' .. tostring(technology_name) .. '"'))
+		log(APM_MSG_INFO("delete()", 'technology: "' .. tostring(technology_name) .. '"'))
 	end
 
 	technology.enabled = false
@@ -262,4 +262,27 @@ function apm.lib.utils.technology.overwrite.localised_description(technology_nam
 	end
 
 	technology.localised_description = localised_description
+end
+
+---@param original_technology_name string
+---@param replacement_technology_name string
+function apm.lib.utils.technology.overwrite.by(original_technology_name, replacement_technology_name)
+	local original, ok = apm.lib.utils.technology.get.by_name(original_technology_name)
+
+	if not ok then
+		return
+	end
+
+	local replacement, ok = apm.lib.utils.technology.get.by_name(replacement_technology_name)
+
+	if not ok then
+		return
+	end
+
+	for tname, t in pairs(data.raw["technology"]) do
+		if apm.lib.utils.technology.has.prerequisites(tname, original_technology_name) then
+			apm.lib.utils.technology.remove.prerequisites(tname, original_technology_name)
+			apm.lib.utils.technology.add.prerequisites(tname, replacement_technology_name)
+		end
+	end
 end

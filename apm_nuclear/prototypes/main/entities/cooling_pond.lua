@@ -136,7 +136,7 @@ cooling_pond.fluid_boxes = {
 		2000,
 		apm.lib.utils.pipecovers.assembler3pipepictures(),
 		defines.direction.east,
-		{ 1.119, 0 },
+		{ 1, 0 },
 		{ north = -1 }
 	)
 }
