@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.12
+Date: 25.10.2025
+  Changes:
+    - Updated graphics for inline storage tank and added fixes for original game pipes for better visual style.
+---------------------------------------------------------------------------------------------------
+Version: 0.32.11
+Date: 08.10.2025
+  Compatibility:
+    - [Bio_Industry_2] Enable compat setting by default.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.10
 Date: 08.10.2025
   Compatibility:

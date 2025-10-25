@@ -2,7 +2,7 @@
 --
 --
 -------------------------------------------------------------------------------
-local fuel_value_exclude_list = { ['PyCoalTBaA'] = true }
+local fuel_value_exclude_list = { ["PyCoalTBaA"] = true }
 
 -- Function -------------------------------------------------------------------
 --
@@ -23,7 +23,7 @@ end
 -- ----------------------------------------------------------------------------
 if not is_mod_on_exclude_list() then
 	data:extend({
-		{ type = "double-setting", name = "apm_power_coal_value_01779", setting_type = "startup", minimum_value = 0.1, maximum_value = 50, default_value = 3.2, order = 'aa_a' }
+		{ type = "double-setting", name = "apm_power_coal_value_01779", setting_type = "startup", minimum_value = 0.1, maximum_value = 50, default_value = 3.2, order = "aa_a" }
 	})
 else
 	log(
@@ -37,36 +37,36 @@ end
 data:extend({
 
 	{ type = "int-setting",  name = "apm_sinkhole_fluid_rate",                             setting_type = "startup", allow_blank = false,   default_value = 200, minimum_value = 1, maximum_value = 10000 },
-	{ type = "bool-setting", name = "apm_power_overhaul_machine_frames",                   setting_type = "startup", default_value = true,  order = 'ab_a' },
-	{ type = "bool-setting", name = "apm_power_machine_frames_recycling",                  setting_type = "startup", default_value = false, order = 'ab_a' },
-	{ type = "bool-setting", name = "apm_power_machine_reusable_recipies",                 setting_type = "startup", default_value = false, order = 'ab_a' },
-	{ type = "bool-setting", name = "apm_power_steam_assembler_craftin_with_fluids",       setting_type = "startup", default_value = true,  order = 'ac_a' },
-	{ type = "bool-setting", name = "apm_power_always_show_made_in",                       setting_type = "startup", default_value = true,  order = 'ad_a' },
-	{ type = "bool-setting", name = "apm_power_inherit_industrial_science",                setting_type = "startup", default_value = true,  order = 'ae_a' },
-	{ type = "bool-setting", name = "apm_power_inherit_steam_science",                     setting_type = "startup", default_value = true,  order = 'ae_b' },
-	{ type = "bool-setting", name = "apm_burner_inserter_with_infinite_energy_source",     setting_type = "startup", default_value = false, order = 'ae_b' },
+	{ type = "bool-setting", name = "apm_power_overhaul_machine_frames",                   setting_type = "startup", default_value = true,  order = "ab_a" },
+	{ type = "bool-setting", name = "apm_power_machine_frames_recycling",                  setting_type = "startup", default_value = false, order = "ab_a" },
+	{ type = "bool-setting", name = "apm_power_machine_reusable_recipies",                 setting_type = "startup", default_value = false, order = "ab_a" },
+	{ type = "bool-setting", name = "apm_power_steam_assembler_craftin_with_fluids",       setting_type = "startup", default_value = true,  order = "ac_a" },
+	{ type = "bool-setting", name = "apm_power_always_show_made_in",                       setting_type = "startup", default_value = true,  order = "ad_a" },
+	{ type = "bool-setting", name = "apm_power_inherit_industrial_science",                setting_type = "startup", default_value = true,  order = "ae_a" },
+	{ type = "bool-setting", name = "apm_power_inherit_steam_science",                     setting_type = "startup", default_value = true,  order = "ae_b" },
+	{ type = "bool-setting", name = "apm_burner_inserter_with_infinite_energy_source",     setting_type = "startup", default_value = false, order = "ae_b" },
 
-	{ type = "bool-setting", name = "apm_extra_migrations_enabled",                        setting_type = "startup", default_value = false,  order = 'ae_b' },
+	{ type = "bool-setting", name = "apm_extra_migrations_enabled",                        setting_type = "startup", default_value = false, order = "ae_b" },
 
-	{ type = "bool-setting", name = "apm_power_compat_safthelamb",                         setting_type = "startup", default_value = true,  order = 'ps_a' },
-	{ type = "bool-setting", name = "apm_power_compat_bob",                                setting_type = "startup", default_value = false, order = 'pa_a' },
-	{ type = "bool-setting", name = "apm_power_compat_bob_overhaul_machine_frames",        setting_type = "startup", default_value = false, order = 'pa_b' },
-	{ type = "bool-setting", name = "apm_power_compat_angel",                              setting_type = "startup", default_value = false, order = 'pb_a' },
-	{ type = "bool-setting", name = "apm_power_compat_angel_overhaul_machine_frames",      setting_type = "startup", default_value = false, order = 'pb_b' },
-	{ type = "bool-setting", name = "apm_power_compat_angel_overwrite_crystal_saw_blades", setting_type = "startup", default_value = false, order = 'pb_c' },
-	{ type = "bool-setting", name = "apm_power_compat_sctm",                               setting_type = "startup", default_value = false, order = 'pc_a' },
-	{ type = "bool-setting", name = "apm_power_compat_sct_overhaul_machine_frames",        setting_type = "startup", default_value = false, order = 'pc_b' },
-	{ type = "bool-setting", name = "apm_power_compat_earendel",                           setting_type = "startup", default_value = true,  order = 'pd_a' },
-	{ type = "bool-setting", name = "apm_power_compat_bio_industries",                     setting_type = "startup", default_value = false, order = 'pe_a' },
-	{ type = "bool-setting", name = "apm_power_compat_expensivelandfillrecipe",            setting_type = "startup", default_value = false, order = 'pf_a' },
-	{ type = "bool-setting", name = "apm_power_compat_kingarthur",                         setting_type = "startup", default_value = false, order = 'pg_a' },
-	{ type = "bool-setting", name = "apm_power_compat_mferrari",                           setting_type = "startup", default_value = false, order = 'ph_a' },
-	{ type = "bool-setting", name = "apm_power_compat_linver",                             setting_type = "startup", default_value = false, order = 'pi_a' },
-	{ type = "bool-setting", name = "apm_power_compat_realistic_reactors",                 setting_type = "startup", default_value = false, order = 'pj_a' },
-	{ type = "bool-setting", name = "apm_power_compat_reverse_factory",                    setting_type = "startup", default_value = false, order = 'pk_a' },
-	{ type = "bool-setting", name = "apm_power_compat_suicidalkid",                        setting_type = "startup", default_value = false, order = 'pl_a' },
-	{ type = "bool-setting", name = "apm_power_compat_kumpu",                              setting_type = "startup", default_value = false, order = 'pm_a' },
-	{ type = "bool-setting", name = "apm_power_compat_arcitos",                            setting_type = "startup", default_value = false, order = 'pn_a' },
+	{ type = "bool-setting", name = "apm_power_compat_safthelamb",                         setting_type = "startup", default_value = true,  order = "ps_a" },
+	{ type = "bool-setting", name = "apm_power_compat_bob",                                setting_type = "startup", default_value = false, order = "pa_a" },
+	{ type = "bool-setting", name = "apm_power_compat_bob_overhaul_machine_frames",        setting_type = "startup", default_value = false, order = "pa_b" },
+	{ type = "bool-setting", name = "apm_power_compat_angel",                              setting_type = "startup", default_value = false, order = "pb_a" },
+	{ type = "bool-setting", name = "apm_power_compat_angel_overhaul_machine_frames",      setting_type = "startup", default_value = false, order = "pb_b" },
+	{ type = "bool-setting", name = "apm_power_compat_angel_overwrite_crystal_saw_blades", setting_type = "startup", default_value = false, order = "pb_c" },
+	{ type = "bool-setting", name = "apm_power_compat_sctm",                               setting_type = "startup", default_value = false, order = "pc_a" },
+	{ type = "bool-setting", name = "apm_power_compat_sct_overhaul_machine_frames",        setting_type = "startup", default_value = false, order = "pc_b" },
+	{ type = "bool-setting", name = "apm_power_compat_earendel",                           setting_type = "startup", default_value = true,  order = "pd_a" },
+	{ type = "bool-setting", name = "apm_power_compat_bio_industries",                     setting_type = "startup", default_value = true,  order = "pe_a" },
+	{ type = "bool-setting", name = "apm_power_compat_expensivelandfillrecipe",            setting_type = "startup", default_value = false, order = "pf_a" },
+	{ type = "bool-setting", name = "apm_power_compat_kingarthur",                         setting_type = "startup", default_value = false, order = "pg_a" },
+	{ type = "bool-setting", name = "apm_power_compat_mferrari",                           setting_type = "startup", default_value = false, order = "ph_a" },
+	{ type = "bool-setting", name = "apm_power_compat_linver",                             setting_type = "startup", default_value = false, order = "pi_a" },
+	{ type = "bool-setting", name = "apm_power_compat_realistic_reactors",                 setting_type = "startup", default_value = false, order = "pj_a" },
+	{ type = "bool-setting", name = "apm_power_compat_reverse_factory",                    setting_type = "startup", default_value = false, order = "pk_a" },
+	{ type = "bool-setting", name = "apm_power_compat_suicidalkid",                        setting_type = "startup", default_value = false, order = "pl_a" },
+	{ type = "bool-setting", name = "apm_power_compat_kumpu",                              setting_type = "startup", default_value = false, order = "pm_a" },
+	{ type = "bool-setting", name = "apm_power_compat_arcitos",                            setting_type = "startup", default_value = false, order = "pn_a" },
 })
 
 -- runtime-global settings ----------------------------------------------------
