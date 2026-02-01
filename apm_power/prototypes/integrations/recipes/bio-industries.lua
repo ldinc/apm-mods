@@ -5,11 +5,11 @@ apm.lib.utils.recipe.remove("bi-ash-1")
 apm.lib.utils.recipe.remove("bi-ash-2")
 
 local replace_all = function(old, new)
-	apm.lib.utils.recipe.ingredient.replace_all(old, new)
-	apm.lib.utils.recipe.result.replace_all(old, new)
+  apm.lib.utils.recipe.ingredient.replace_all(old, new)
+  apm.lib.utils.recipe.result.replace_all(old, new)
 end
 
-replace_all("stone-crushed", "apm_crushed_stone")
+replace_all("angels-stone-crushed", "apm_crushed_stone")
 replace_all("bi-ash", "apm_generic_ash")
 replace_all("bi-charcoal", "apm_charcoal")
 replace_all("wood-charcoal", "apm_charcoal")
