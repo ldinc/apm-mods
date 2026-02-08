@@ -231,6 +231,7 @@ end
 if mods.angelsindustries and apm_power_compat_angel then
   apm.lib.utils.technology.add.prerequisites("angels-vequipment-1", "apm_power_electricity")
   apm.lib.utils.technology.add.prerequisites("cargo-robots", "apm_power_electricity")
+  apm.lib.utils.technology.delete("apm_electric_mining_drills")
 end
 
 if mods["angelsaddons-smeltingtrain"] and apm_power_compat_angel then
