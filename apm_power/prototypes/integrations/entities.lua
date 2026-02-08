@@ -148,10 +148,10 @@ if mods.angelssmelting and apm_power_compat_angel then
   apm.lib.utils.assembler.set.hidden("apm_steelworks_0")
   apm.lib.utils.assembler.set.hidden("apm_steelworks_1")
 
-  apm.lib.utils.assembler.burner.overhaul("blast-furnace", true)
-  apm.lib.utils.assembler.burner.overhaul("blast-furnace-2", true)
-  apm.lib.utils.assembler.burner.overhaul("blast-furnace-3", true)
-  apm.lib.utils.assembler.burner.overhaul("blast-furnace-4", true)
+  apm.lib.utils.assembler.burner.overhaul("angels-blast-furnace", true)
+  apm.lib.utils.assembler.burner.overhaul("angels-blast-furnace-2", true)
+  apm.lib.utils.assembler.burner.overhaul("angels-blast-furnace-3", true)
+  apm.lib.utils.assembler.burner.overhaul("angels-blast-furnace-4", true)
 end
 
 -- MFerrari -------------------------------------------------------------------
