@@ -1,8 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.14
+Date: 28.03.2026
+  Bugfixes:
+    - Steam inserters pickup & dropout points (tune pos +0.2)
+    - [Muluna] fix fuel categories for "muluna-vacuum-heating-tower"
+    - [bzfoundry2] fix coke integration
+---------------------------------------------------------------------------------------------------
 Version: 0.32.13
 Date: 28.03.2026
   Bugfixes:
-    - Steam insertes pickup & drop points
+    - Steam inserters pickup & dropout points
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.12
 Date: 25.10.2025

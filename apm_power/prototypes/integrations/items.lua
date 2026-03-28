@@ -119,3 +119,8 @@ if (
 then
 	require("prototypes.integrations.items.bio-industries")
 end
+
+--- [BZ]
+if mods["bzfoundry2"] then
+	require("prototypes.integrations.items.bzfoundry2")
+end

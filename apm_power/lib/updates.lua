@@ -28,6 +28,12 @@ if script.active_mods["RealisticReactorsReborn"] then
 	updates.handlers["RealisticReactorsReborn"] = require("patches.realistic-reactors-reborn")
 end
 
+
+--- [BZ Foundry 2]
+if script.active_mods["bzfoundry2"] then
+	updates.handlers["bzfoundry2"] = require("patches.bzfoundry2")
+end
+
 -- Function -------------------------------------------------------------------
 --
 --

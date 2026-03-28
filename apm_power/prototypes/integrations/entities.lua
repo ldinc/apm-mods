@@ -238,6 +238,10 @@ if require("prototypes.integrations.matcher.bz")() then
 	require("prototypes.integrations.entities.bz")
 end
 
+if mods["bzfoundry2"] then
+	require("prototypes.integrations.entities.bzfoundry2")
+end
+
 --- [RealisticReactorsReborn]
 if mods["RealisticReactorsReborn"] then
 	require("prototypes.integrations.entities.realistic-reactors-reborn")
@@ -256,4 +260,10 @@ if (
 		)
 then
 	require("prototypes.integrations.entities.bio-industries")
+end
+
+
+--- [Muluna]
+if mods["planet-muluna"] then
+	require("prototypes.integrations.entities.muluna")
 end

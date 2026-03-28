@@ -758,6 +758,10 @@ if require("prototypes.integrations.matcher.bz")() then
 	require("prototypes.integrations.recipes.bz")
 end
 
+if mods["bzfoundry2"] then
+	require("prototypes.integrations.recipes.bzfoundry2")
+end
+
 --- [loaders-modernized-wood]
 if mods["loaders-modernized-wood"] then
 	require("prototypes.integrations.recipes.loaders-modernized-wood")
