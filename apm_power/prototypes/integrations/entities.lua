@@ -7,16 +7,16 @@ APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
 local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
-		.value
+    .value
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
 local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
-		.value
+    .value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
 local apm_power_compat_angel_overhaul_machine_frames = settings.startup
-		["apm_power_compat_angel_overhaul_machine_frames"].value
+    ["apm_power_compat_angel_overhaul_machine_frames"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
 local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
-		.value
+    .value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -60,7 +60,7 @@ apm.lib.utils.car.overhaul_all()
 --
 -- ----------------------------------------------------------------------------
 if mods.AlternativeSteam then
-	apm.lib.utils.reactor.set.fuel_categories("as-chemical-fired-reactor", { "chemical", "apm_refined_chemical" })
+  apm.lib.utils.reactor.set.fuel_categories("as-chemical-fired-reactor", { "chemical", "apm_refined_chemical" })
 end
 
 -- Earendel -------------------------------------------------------------------
@@ -68,11 +68,11 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods["aai-industry"] and apm_power_compat_earendel then
-	apm.lib.utils.assembler.set.hidden("burner-assembling-machine")
+  apm.lib.utils.assembler.set.hidden("burner-assembling-machine")
 end
 
 if mods["space-exploration"] and apm_power_compat_earendel then
-	apm.lib.utils.lab.add.science_pack("se-space-science-lab", "apm_industrial_science_pack")
+  apm.lib.utils.lab.add.science_pack("se-space-science-lab", "apm_industrial_science_pack")
 end
 
 -- bob ------------------------------------------------------------------------
@@ -80,58 +80,58 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.bobpower and apm_power_compat_bob then
-	if apm.lib.utils.setting.get.starup("bobmods-power-steam") then
-		apm.lib.utils.boiler.set.hidden("apm_boiler_2")
-		apm.lib.utils.boiler.set.next_upgrade("apm_boiler_2", nil)
-		apm.lib.utils.boiler.set.next_upgrade("boiler", "bob-boiler-2")
-		apm.lib.utils.generator.set.hidden("apm_steam_engine_2")
-		apm.lib.utils.generator.set.next_upgrade("apm_steam_engine_2", nil)
-		apm.lib.utils.generator.set.next_upgrade("steam-engine", "bob-steam-engine-2")
-	end
+  if apm.lib.utils.setting.get.starup("bobmods-power-steam") then
+    apm.lib.utils.boiler.set.hidden("apm_boiler_2")
+    apm.lib.utils.boiler.set.next_upgrade("apm_boiler_2", nil)
+    apm.lib.utils.boiler.set.next_upgrade("boiler", "bob-boiler-2")
+    apm.lib.utils.generator.set.hidden("apm_steam_engine_2")
+    apm.lib.utils.generator.set.next_upgrade("apm_steam_engine_2", nil)
+    apm.lib.utils.generator.set.next_upgrade("steam-engine", "bob-steam-engine-2")
+  end
 
-	-- Boilers
-	apm.lib.utils.boiler.overhaul("bob-boiler-2", 2)
-	apm.lib.utils.boiler.overhaul("bob-boiler-3", 3)
-	apm.lib.utils.boiler.overhaul("bob-boiler-4", 4)
-	apm.lib.utils.boiler.overhaul("bob-boiler-5", 5)
-	-- Generators
-	apm.lib.utils.generator.overhaul("bob-steam-engine-2", 2)
-	apm.lib.utils.generator.overhaul("bob-steam-engine-3", 3)
-	apm.lib.utils.generator.overhaul("bob-steam-engine-4", 4)
-	apm.lib.utils.generator.overhaul("bob-steam-engine-5", 5)
-	-- heat reactor
-	apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor", { "chemical", "apm_refined_chemical" })
-	apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor-2", { "chemical", "apm_refined_chemical" })
-	apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor-3", { "chemical", "apm_refined_chemical" })
+  -- Boilers
+  apm.lib.utils.boiler.overhaul("bob-boiler-2", 2)
+  apm.lib.utils.boiler.overhaul("bob-boiler-3", 3)
+  apm.lib.utils.boiler.overhaul("bob-boiler-4", 4)
+  apm.lib.utils.boiler.overhaul("bob-boiler-5", 5)
+  -- Generators
+  apm.lib.utils.generator.overhaul("bob-steam-engine-2", 2)
+  apm.lib.utils.generator.overhaul("bob-steam-engine-3", 3)
+  apm.lib.utils.generator.overhaul("bob-steam-engine-4", 4)
+  apm.lib.utils.generator.overhaul("bob-steam-engine-5", 5)
+  -- heat reactor
+  apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor", { "chemical", "apm_refined_chemical" })
+  apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor-2", { "chemical", "apm_refined_chemical" })
+  apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor-3", { "chemical", "apm_refined_chemical" })
 
-	apm.lib.utils.entity.set.fuel_category(
-		data.raw["burner-generator"]["bob-burner-generator"],
-		{ "chemical", "apm_refined_chemical" }
-	)
+  apm.lib.utils.entity.set.fuel_category(
+    data.raw["burner-generator"]["bob-burner-generator"],
+    { "chemical", "apm_refined_chemical" }
+  )
 end
 
 if mods.bobplates and apm_power_compat_bob then
-	apm.lib.utils.assembler.burner.overhaul("bob-chemical-boiler")
-	apm.lib.utils.assembler.burner.overhaul("bob-chemical-steel-furnace", true)
-	apm.lib.utils.assembler.burner.overhaul("bob-mixing-furnace")
-	apm.lib.utils.assembler.burner.overhaul("bob-mixing-steel-furnace", true)
+  apm.lib.utils.assembler.burner.overhaul("bob-chemical-boiler")
+  apm.lib.utils.assembler.burner.overhaul("bob-chemical-steel-furnace", true)
+  apm.lib.utils.assembler.burner.overhaul("bob-mixing-furnace")
+  apm.lib.utils.assembler.burner.overhaul("bob-mixing-steel-furnace", true)
 end
 
 if mods.bobtech and apm_power_compat_bob then
-	apm.lib.utils.lab.overhaul("bob-lab-2")
+  apm.lib.utils.lab.overhaul("bob-lab-2")
 end
 
 if mods.bobmining and apm_power_compat_bob then
-	apm.lib.utils.mining_drill.set.hidden("bob-steam-mining-drill")
+  apm.lib.utils.mining_drill.set.hidden("bob-steam-mining-drill")
 end
 
 if mods.bobassembly and apm_power_compat_bob then
-	apm.lib.utils.assembler.set.hidden("bob-burner-assembling-machine")
-	apm.lib.utils.assembler.set.hidden("bob-steam-assembling-machine")
+  apm.lib.utils.assembler.set.hidden("bob-burner-assembling-machine")
+  apm.lib.utils.assembler.set.hidden("bob-steam-assembling-machine")
 
-	apm.lib.utils.assembler.mod.module_specification("assembling-machine-3", 4)
-	apm.lib.utils.assembler.mod.module_specification("bob-assembling-machine-4", 5)
-	apm.lib.utils.assembler.mod.module_specification("bob-assembling-machine-5", 6)
+  apm.lib.utils.assembler.mod.module_specification("assembling-machine-3", 4)
+  apm.lib.utils.assembler.mod.module_specification("bob-assembling-machine-4", 5)
+  apm.lib.utils.assembler.mod.module_specification("bob-assembling-machine-5", 6)
 end
 
 -- angel ----------------------------------------------------------------------
@@ -139,19 +139,19 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-	apm.lib.utils.assembler.burner.overhaul("burner-ore-crusher")
-	apm.lib.utils.assembler.set.hidden("burner-ore-crusher")
+  apm.lib.utils.assembler.burner.overhaul("burner-ore-crusher")
+  apm.lib.utils.assembler.set.hidden("burner-ore-crusher")
 end
 
 if mods.angelssmelting and apm_power_compat_angel then
-	apm.lib.utils.assembler.set.hidden("burner-ore-crusher")
-	apm.lib.utils.assembler.set.hidden("apm_steelworks_0")
-	apm.lib.utils.assembler.set.hidden("apm_steelworks_1")
+  apm.lib.utils.assembler.set.hidden("burner-ore-crusher")
+  apm.lib.utils.assembler.set.hidden("apm_steelworks_0")
+  apm.lib.utils.assembler.set.hidden("apm_steelworks_1")
 
-	apm.lib.utils.assembler.burner.overhaul("blast-furnace", true)
-	apm.lib.utils.assembler.burner.overhaul("blast-furnace-2", true)
-	apm.lib.utils.assembler.burner.overhaul("blast-furnace-3", true)
-	apm.lib.utils.assembler.burner.overhaul("blast-furnace-4", true)
+  apm.lib.utils.assembler.burner.overhaul("angels-blast-furnace", true)
+  apm.lib.utils.assembler.burner.overhaul("angels-blast-furnace-2", true)
+  apm.lib.utils.assembler.burner.overhaul("angels-blast-furnace-3", true)
+  apm.lib.utils.assembler.burner.overhaul("angels-blast-furnace-4", true)
 end
 
 -- MFerrari -------------------------------------------------------------------
@@ -159,7 +159,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods["Mining-Space-Industries"] and apm_power_compat_mferrari then
-	apm.lib.utils.lab.overhaul("msi-worker-lab")
+  apm.lib.utils.lab.overhaul("msi-worker-lab")
 end
 
 -- sctm -----------------------------------------------------------------------
@@ -167,13 +167,13 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.ScienceCostTweakerM and apm_power_compat_sctm then
-	apm.lib.utils.lab.add.science_pack("apm_lab_1", "apm_industrial_science_pack")
-	apm.lib.utils.lab.add.science_pack("apm_lab_1", "apm_steam_science_pack")
-	apm.lib.utils.lab.add.science_pack("apm_lab_1", "automation-science-pack")
-	apm.lib.utils.lab.overhaul("sct-lab-t1")
-	apm.lib.utils.lab.overhaul("sct-lab-t2")
-	apm.lib.utils.lab.overhaul("sct-lab-t3")
-	apm.lib.utils.lab.overhaul("sct-lab-t4")
+  apm.lib.utils.lab.add.science_pack("apm_lab_1", "apm_industrial_science_pack")
+  apm.lib.utils.lab.add.science_pack("apm_lab_1", "apm_steam_science_pack")
+  apm.lib.utils.lab.add.science_pack("apm_lab_1", "automation-science-pack")
+  apm.lib.utils.lab.overhaul("sct-lab-t1")
+  apm.lib.utils.lab.overhaul("sct-lab-t2")
+  apm.lib.utils.lab.overhaul("sct-lab-t3")
+  apm.lib.utils.lab.overhaul("sct-lab-t4")
 end
 
 -- kingarthur -----------------------------------------------------------------
@@ -181,10 +181,10 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.PyCoalTBaA and apm_power_compat_kingarthur then
-	if mods["aai-industry"] then
-		apm.lib.utils.lab.add.science_pack("apm_lab_0", "science-pack-0")
-		apm.lib.utils.lab.add.science_pack("apm_lab_1", "science-pack-0")
-	end
+  if mods["aai-industry"] then
+    apm.lib.utils.lab.add.science_pack("apm_lab_0", "science-pack-0")
+    apm.lib.utils.lab.add.science_pack("apm_lab_1", "science-pack-0")
+  end
 end
 
 -- RealisticReactors ----------------------------------------------------------
@@ -192,13 +192,13 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.RealisticReactors and apm_power_compat_realistic_reactors then
-	--patch hidden cooling-tower
-	apm.lib.utils.furnace.overhaul("rr-cooling-tower-steam", false)
+  --patch hidden cooling-tower
+  apm.lib.utils.furnace.overhaul("rr-cooling-tower-steam", false)
 end
 
 --- [bobs]
 if apm_power_compat_bob then
-	require("prototypes.integrations.entities.bobs")
+  require("prototypes.integrations.entities.bobs")
 end
 
 
@@ -207,17 +207,17 @@ end
 
 --- [wood-logistics]
 if mods["wood-logistics"] then
-	require("prototypes.integrations.entities.wood-logistics")
+  require("prototypes.integrations.entities.wood-logistics")
 end
 
 --- [crushing-industry]
 if mods["crushing-industry"] then
-	require("prototypes.integrations.entities.crushing-industry")
+  require("prototypes.integrations.entities.crushing-industry")
 end
 
 --- [alloy-smelting]
 if mods["alloy-smelting"] then
-	require("prototypes.integrations.entities.alloy-smelting")
+  require("prototypes.integrations.entities.alloy-smelting")
 end
 
 ---
@@ -225,17 +225,17 @@ end
 
 --- [ColonyBuilder]
 if mods["ColonyBuilder"] then
-	require("prototypes.integrations.entities.colony-builder")
+  require("prototypes.integrations.entities.colony-builder")
 end
 
 --- [space age]
 if mods["space-age"] then
-	apm.lib.utils.assembler.add.crafting_categories("foundry", { "smelting" })
+  apm.lib.utils.assembler.add.crafting_categories("foundry", { "smelting" })
 end
 
 --- [BZ mods]
 if require("prototypes.integrations.matcher.bz")() then
-	require("prototypes.integrations.entities.bz")
+  require("prototypes.integrations.entities.bz")
 end
 
 if mods["bzfoundry2"] then
@@ -244,22 +244,22 @@ end
 
 --- [RealisticReactorsReborn]
 if mods["RealisticReactorsReborn"] then
-	require("prototypes.integrations.entities.realistic-reactors-reborn")
+  require("prototypes.integrations.entities.realistic-reactors-reborn")
 end
 
 --- [Krastorio2]
 if mods["Krastorio2"] then
-	require("prototypes.integrations.entities.krastorio")
+  require("prototypes.integrations.entities.krastorio")
 end
 
 --- [Bio_Industries]
 if (
-			(mods["Bio_Industries"] or mods["Bio_Industries_2"])
-			and
-			apm_power_compat_bio_industries
-		)
+      (mods["Bio_Industries"] or mods["Bio_Industries_2"])
+      and
+      apm_power_compat_bio_industries
+    )
 then
-	require("prototypes.integrations.entities.bio-industries")
+  require("prototypes.integrations.entities.bio-industries")
 end
 
 

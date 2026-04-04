@@ -1,4 +1,4 @@
-require ('util')
+require('util')
 require('__apm_lib_ldinc__.lib.log')
 
 local self = 'apm_starfall/prototypes/integrations/recipes.lua'
@@ -20,5 +20,5 @@ APM_LOG_SETTINGS(self, 'apm_starfall_compat_reverse_factory', apm_starfall_compa
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_starfall_compat_angel then
-    apm.lib.utils.technology.add.prerequisites('apm_starfall_catalysis', 'water-treatment')
+  apm.lib.utils.technology.add.prerequisites('apm_starfall_catalysis', 'angels-water-treatment')
 end

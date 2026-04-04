@@ -7,21 +7,21 @@ APM_LOG_HEADER(self)
 
 local apm_power_overhaul_machine_frames = settings.startup["apm_power_overhaul_machine_frames"].value
 local apm_power_steam_assembler_craftin_with_fluids = settings.startup["apm_power_steam_assembler_craftin_with_fluids"]
-		.value
+    .value
 local apm_power_inherit_industrial_science = settings.startup["apm_power_inherit_industrial_science"].value
 local apm_power_inherit_steam_science = settings.startup["apm_power_inherit_steam_science"].value
 
 local apm_power_compat_bob = settings.startup["apm_power_compat_bob"].value
 local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power_compat_bob_overhaul_machine_frames"]
-		.value
+    .value
 local apm_power_compat_angel = settings.startup["apm_power_compat_angel"].value
 local apm_power_compat_angel_overhaul_machine_frames = settings.startup
-		["apm_power_compat_angel_overhaul_machine_frames"].value
+    ["apm_power_compat_angel_overhaul_machine_frames"].value
 local apm_power_compat_angel_overwrite_crystal_saw_blades = settings.startup
-		["apm_power_compat_angel_overwrite_crystal_saw_blades"].value
+    ["apm_power_compat_angel_overwrite_crystal_saw_blades"].value
 local apm_power_compat_sctm = settings.startup["apm_power_compat_sctm"].value
 local apm_power_compat_sct_overhaul_machine_frames = settings.startup["apm_power_compat_sct_overhaul_machine_frames"]
-		.value
+    .value
 local apm_power_compat_earendel = settings.startup["apm_power_compat_earendel"].value
 local apm_power_compat_bio_industries = settings.startup["apm_power_compat_bio_industries"].value
 local apm_power_compat_expensivelandfillrecipe = settings.startup["apm_power_compat_expensivelandfillrecipe"].value
@@ -42,7 +42,7 @@ APM_LOG_SETTINGS(self, "apm_power_compat_bob_overhaul_machine_frames", apm_power
 APM_LOG_SETTINGS(self, "apm_power_compat_angel", apm_power_compat_angel)
 APM_LOG_SETTINGS(self, "apm_power_compat_angel_overhaul_machine_frames", apm_power_compat_angel_overhaul_machine_frames)
 APM_LOG_SETTINGS(self, "apm_power_compat_angel_overwrite_crystal_saw_blades",
-	apm_power_compat_angel_overwrite_crystal_saw_blades)
+  apm_power_compat_angel_overwrite_crystal_saw_blades)
 APM_LOG_SETTINGS(self, "apm_power_compat_sctm", apm_power_compat_sctm)
 APM_LOG_SETTINGS(self, "apm_power_compat_sct_overhaul_machine_frames", apm_power_compat_sct_overhaul_machine_frames)
 APM_LOG_SETTINGS(self, "apm_power_compat_earendel", apm_power_compat_earendel)
@@ -67,12 +67,12 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.Bio_Industries and apm_power_compat_bio_industries then
-	apm.lib.utils.recipe.result.replace_all("bi-seed", "apm_tree_seeds")
-	apm.lib.utils.recipe.ingredient.replace_all("bi-seed", "apm_tree_seeds")
-	apm.lib.utils.recipe.result.replace_all("bi-ash", "apm_generic_ash")
-	apm.lib.utils.recipe.ingredient.replace_all("bi-ash", "apm_generic_ash")
-	apm.lib.utils.recipe.result.replace_all("wood-charcoal", "apm_charcoal")
-	apm.lib.utils.recipe.ingredient.replace_all("wood-charcoal", "apm_charcoal")
+  apm.lib.utils.recipe.result.replace_all("bi-seed", "apm_tree_seeds")
+  apm.lib.utils.recipe.ingredient.replace_all("bi-seed", "apm_tree_seeds")
+  apm.lib.utils.recipe.result.replace_all("bi-ash", "apm_generic_ash")
+  apm.lib.utils.recipe.ingredient.replace_all("bi-ash", "apm_generic_ash")
+  apm.lib.utils.recipe.result.replace_all("wood-charcoal", "apm_charcoal")
+  apm.lib.utils.recipe.ingredient.replace_all("wood-charcoal", "apm_charcoal")
 end
 
 -- bob ------------------------------------------------------------------------
@@ -80,30 +80,30 @@ end
 --
 -- ----------------------------------------------------------------------------
 if (mods.bobplates or mods.bobelectronics) and apm_power_compat_bob then
-	apm.lib.utils.recipe.disable("bob-resin-wood")
-	apm.lib.utils.recipe.disable("bob-rubber")
+  apm.lib.utils.recipe.disable("bob-resin-wood")
+  apm.lib.utils.recipe.disable("bob-rubber")
 end
 
 -- wooden boards
 if apm.lib.utils.item.exist("bob-wooden-board") then
-	apm.lib.utils.recipe.result.replace_all("bob-wooden-board", "apm_wood_board")
-	apm.lib.utils.recipe.ingredient.replace_all("bob-wooden-board", "apm_wood_board")
-	apm.lib.utils.item.remove("bob-wooden-board")
+  apm.lib.utils.recipe.result.replace_all("bob-wooden-board", "apm_wood_board")
+  apm.lib.utils.recipe.ingredient.replace_all("bob-wooden-board", "apm_wood_board")
+  apm.lib.utils.item.remove("bob-wooden-board")
 end
 
 
 -- resin (seems be from bob?)
 if apm.lib.utils.item.exist("bob-resin") then
-	apm.lib.utils.recipe.result.replace_all("bob-resin", "apm_resin")
-	apm.lib.utils.recipe.ingredient.replace_all("bob-resin", "apm_resin")
-	apm.lib.utils.item.remove("bob-resin")
+  apm.lib.utils.recipe.result.replace_all("bob-resin", "apm_resin")
+  apm.lib.utils.recipe.ingredient.replace_all("bob-resin", "apm_resin")
+  apm.lib.utils.item.remove("bob-resin")
 end
 
 -- rubber
 if apm.lib.utils.item.exist("bob-rubber") then
-	apm.lib.utils.recipe.result.replace_all("bob-rubber", "apm_rubber")
-	apm.lib.utils.recipe.ingredient.replace_all("bob-rubber", "apm_rubber")
-	apm.lib.utils.item.remove("bob-rubber")
+  apm.lib.utils.recipe.result.replace_all("bob-rubber", "apm_rubber")
+  apm.lib.utils.recipe.ingredient.replace_all("bob-rubber", "apm_rubber")
+  apm.lib.utils.item.remove("bob-rubber")
 end
 
 -- angel ----------------------------------------------------------------------
@@ -111,51 +111,51 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-	apm.lib.utils.item.remove("burner-ore-crusher")
-	-- unification of mud items:
-	apm.lib.utils.recipe.result.replace_all("solid-mud", "apm_wet_mud")
-	apm.lib.utils.recipe.ingredient.replace_all("solid-mud", "apm_dry_mud")
-	local crusher = data.raw["assembling-machine"]["burner-ore-crusher"]
-	if crusher then
-		crusher.next_upgrade = ""
-	end
+  apm.lib.utils.item.remove("burner-ore-crusher")
+  -- unification of mud items:
+  apm.lib.utils.recipe.result.replace_all("angels-solid-mud", "apm_wet_mud")
+  apm.lib.utils.recipe.ingredient.replace_all("angels-solid-mud", "apm_dry_mud")
+  local crusher = data.raw["assembling-machine"]["burner-ore-crusher"]
+  if crusher then
+    crusher.next_upgrade = ""
+  end
 
 
-	apm.lib.utils.item.remove("apm_crushed_stone")
+  apm.lib.utils.item.remove("apm_crushed_stone")
 end
 
 if mods.angelspetrochem and apm_power_compat_angel then
-	apm.lib.utils.recipe.result.replace_all("solid-resin", "apm_resin")
-	apm.lib.utils.recipe.ingredient.replace_all("solid-resin", "apm_resin")
-	apm.lib.utils.item.remove("solid-resin")
-	apm.lib.utils.recipe.result.replace_all("solid-rubber", "apm_rubber")
-	apm.lib.utils.recipe.ingredient.replace_all("solid-rubber", "apm_rubber")
-	apm.lib.utils.item.remove("solid-rubber")
-	apm.lib.utils.recipe.ingredient.replace_all("coal-crushed", "apm_coal_crushed")
-	apm.lib.utils.recipe.ingredient.replace_all("pellet-coke", "apm_coke_brick")
-	apm.lib.utils.item.remove("coal-crushed")
-	apm.lib.utils.item.remove("pellet-coke")
-	apm.lib.utils.item.remove("apm_coke")
+  apm.lib.utils.recipe.result.replace_all("solid-resin", "apm_resin")
+  apm.lib.utils.recipe.ingredient.replace_all("solid-resin", "apm_resin")
+  apm.lib.utils.item.remove("solid-resin")
+  apm.lib.utils.recipe.result.replace_all("solid-rubber", "apm_rubber")
+  apm.lib.utils.recipe.ingredient.replace_all("solid-rubber", "apm_rubber")
+  apm.lib.utils.item.remove("solid-rubber")
+  apm.lib.utils.recipe.ingredient.replace_all("coal-crushed", "apm_coal_crushed")
+  apm.lib.utils.recipe.ingredient.replace_all("pellet-coke", "apm_coke_brick")
+  apm.lib.utils.item.remove("coal-crushed")
+  apm.lib.utils.item.remove("pellet-coke")
+  apm.lib.utils.item.remove("apm_coke")
 end
 
 if mods.angelsbioprocessing and apm_power_compat_angel then
-	apm.lib.utils.recipe.ingredient.replace_all("wood-pellets", "apm_wood_pellets")
-	apm.lib.utils.recipe.ingredient.replace_all("wood-bricks", "apm_wood_briquette")
-	apm.lib.utils.item.remove("wood-pellets")
-	apm.lib.utils.item.remove("wood-bricks")
+  apm.lib.utils.recipe.ingredient.replace_all("wood-pellets", "apm_wood_pellets")
+  apm.lib.utils.recipe.ingredient.replace_all("wood-bricks", "apm_wood_briquette")
+  apm.lib.utils.item.remove("wood-pellets")
+  apm.lib.utils.item.remove("wood-bricks")
 
-	apm.lib.utils.recipe.ingredient.replace_all("solid-saw", "apm_saw_blade_iron")
-	apm.lib.utils.recipe.result.replace_all("solid-saw", "apm_saw_blade_iron_used")
-	apm.lib.utils.item.remove("solid-saw")
+  apm.lib.utils.recipe.ingredient.replace_all("solid-saw", "apm_saw_blade_iron")
+  apm.lib.utils.recipe.result.replace_all("solid-saw", "apm_saw_blade_iron_used")
+  apm.lib.utils.item.remove("solid-saw")
 
-	if apm_power_compat_angel_overwrite_crystal_saw_blades then
-		apm.lib.utils.recipe.ingredient.replace_all("solid-crystal-tipped-saw", "apm_saw_blade_steel")
-		apm.lib.utils.recipe.result.replace_all("solid-crystal-tipped-saw", "apm_saw_blade_steel_used")
-		apm.lib.utils.recipe.ingredient.replace_all("solid-crystal-full-saw", "apm_saw_blade_steel")
-		apm.lib.utils.recipe.result.replace_all("solid-crystal-full-saw", "apm_saw_blade_steel_used")
-		apm.lib.utils.item.remove("solid-crystal-tipped-saw")
-		apm.lib.utils.item.remove("solid-crystal-full-saw")
-	end
+  if apm_power_compat_angel_overwrite_crystal_saw_blades then
+    apm.lib.utils.recipe.ingredient.replace_all("solid-crystal-tipped-saw", "apm_saw_blade_steel")
+    apm.lib.utils.recipe.result.replace_all("solid-crystal-tipped-saw", "apm_saw_blade_steel_used")
+    apm.lib.utils.recipe.ingredient.replace_all("solid-crystal-full-saw", "apm_saw_blade_steel")
+    apm.lib.utils.recipe.result.replace_all("solid-crystal-full-saw", "apm_saw_blade_steel_used")
+    apm.lib.utils.item.remove("solid-crystal-tipped-saw")
+    apm.lib.utils.item.remove("solid-crystal-full-saw")
+  end
 end
 
 -- kingarthur -----------------------------------------------------------------
@@ -163,20 +163,20 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.PyCoalTBaA and apm_power_compat_kingarthur then
-	apm.lib.utils.recipe.result.replace_all("py-asphalt", "apm_asphalt")
-	apm.lib.utils.recipe.ingredient.replace_all("py-asphalt", "apm_asphalt")
-	--apm.lib.utils.item.remove('py-asphalt')
-	apm.lib.utils.item.delete_hard("py-asphalt")
+  apm.lib.utils.recipe.result.replace_all("py-asphalt", "apm_asphalt")
+  apm.lib.utils.recipe.ingredient.replace_all("py-asphalt", "apm_asphalt")
+  --apm.lib.utils.item.remove('py-asphalt')
+  apm.lib.utils.item.delete_hard("py-asphalt")
 
-	apm.lib.utils.recipe.result.replace_all("apm_creosote", "creosote")
-	apm.lib.utils.recipe.ingredient.replace_all("apm_creosote", "creosote")
-	--apm.lib.utils.fluid.remove('creosote')
-	apm.lib.utils.fluid.delete_hard("apm_creosote")
+  apm.lib.utils.recipe.result.replace_all("apm_creosote", "creosote")
+  apm.lib.utils.recipe.ingredient.replace_all("apm_creosote", "creosote")
+  --apm.lib.utils.fluid.remove('creosote')
+  apm.lib.utils.fluid.delete_hard("apm_creosote")
 
-	apm.lib.utils.recipe.result.replace_all("treated-wood", "apm_treated_wood_planks")
-	apm.lib.utils.recipe.ingredient.replace_all("treated-wood", "apm_treated_wood_planks")
-	--apm.lib.utils.item.remove('treated-wood')
-	apm.lib.utils.item.delete_hard("treated-wood")
+  apm.lib.utils.recipe.result.replace_all("treated-wood", "apm_treated_wood_planks")
+  apm.lib.utils.recipe.ingredient.replace_all("treated-wood", "apm_treated_wood_planks")
+  --apm.lib.utils.item.remove('treated-wood')
+  apm.lib.utils.item.delete_hard("treated-wood")
 end
 
 -- Crushed stone integration --------------------------------------------------
@@ -184,22 +184,21 @@ end
 --
 -- ----------------------------------------------------------------------------
 if (mods.Bio_Industries and apm_power_compat_bio_industries) or (mods.angelsrefining and apm_power_compat_angel) then
-	apm.lib.utils.recipe.ingredient.replace_all("apm_crushed_stone", "stone-crushed")
-	apm.lib.utils.recipe.result.replace_all("apm_crushed_stone", "stone-crushed")
-	apm.lib.utils.recipe.overwrite.group("apm_crushed_stone", "apm_power_intermediates", "ak_a")
+  apm.lib.utils.recipe.ingredient.replace_all("apm_crushed_stone", "angels-stone-crushed")
+  apm.lib.utils.recipe.result.replace_all("apm_crushed_stone", "angels-stone-crushed")
 
-	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_asphalt")
-	local item_icon_b = apm.lib.utils.icon.get.from_item("stone-crushed")
-	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
-	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
-	apm.lib.utils.recipe.set.icons("apm_asphalt_2", icons)
-	apm.lib.utils.recipe.set.icons("apm_asphalt_4", icons)
+  local item_icon_a = apm.lib.utils.icon.get.from_item("apm_asphalt")
+  local item_icon_b = apm.lib.utils.icon.get.from_item("angels-stone-crushed")
+  item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
+  local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
+  apm.lib.utils.recipe.set.icons("apm_asphalt_2", icons)
+  apm.lib.utils.recipe.set.icons("apm_asphalt_4", icons)
 
-	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_stone_brick_raw")
-	local item_icon_b = apm.lib.utils.icon.get.from_item("stone-crushed")
-	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
-	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
-	apm.lib.utils.recipe.set.icons("apm_stone_brick_raw_with_crushed", icons)
+  local item_icon_a = apm.lib.utils.icon.get.from_item("apm_stone_brick_raw")
+  local item_icon_b = apm.lib.utils.icon.get.from_item("angels-stone-crushed")
+  item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
+  local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
+  apm.lib.utils.recipe.set.icons("apm_stone_brick_raw_with_crushed", icons)
 end
 
 -- entity description updates -------------------------------------------------
@@ -208,13 +207,13 @@ end
 -- ----------------------------------------------------------------------------
 -- do not edit the hidden entities for aai-programmable-vehicles
 if mods["aai-programmable-vehicles"] and apm_power_compat_earendel then
-	local composite_suffix = "-_-"
-	for _, vehicle in pairs(data.raw.car) do
-		local solid_name = vehicle.name .. composite_suffix .. "solid"
-		local ghost_name = vehicle.name .. composite_suffix .. "ghost"
-		apm.lib.utils.description.entities.exclude_list.add(solid_name)
-		apm.lib.utils.description.entities.exclude_list.add(ghost_name)
-	end
+  local composite_suffix = "-_-"
+  for _, vehicle in pairs(data.raw.car) do
+    local solid_name = vehicle.name .. composite_suffix .. "solid"
+    local ghost_name = vehicle.name .. composite_suffix .. "ghost"
+    apm.lib.utils.description.entities.exclude_list.add(solid_name)
+    apm.lib.utils.description.entities.exclude_list.add(ghost_name)
+  end
 end
 
 apm.lib.utils.description.entities.update()
@@ -228,29 +227,29 @@ local skiplist = nil
 
 --- [Cerys-Moon-of-Fulgora]
 if mods["Cerys-Moon-of-Fulgora"] then
-	getter = require("prototypes.integrations.technologies.cerys")
+  getter = require("prototypes.integrations.technologies.cerys")
 
-	skiplist = getter()
+  skiplist = getter()
 end
 
 if mods["space-exploration"] then
-	require("prototypes.integrations.overwrites.se")
+  require("prototypes.integrations.overwrites.se")
 end
 
 if mods["Krastorio2"] then
-	require("prototypes.integrations.overwrites.krastorio")
+  require("prototypes.integrations.overwrites.krastorio")
 
-	apm_power_inherit_industrial_science = false
-	apm_power_inherit_steam_science = false
+  apm_power_inherit_industrial_science = false
+  apm_power_inherit_steam_science = false
 end
 
 if apm_power_inherit_industrial_science then
-	apm.lib.utils.technology.add.science_pack_conditional("apm_industrial_science_pack", "automation-science-pack",
-		skiplist)
+  apm.lib.utils.technology.add.science_pack_conditional("apm_industrial_science_pack", "automation-science-pack",
+    skiplist)
 end
 
 if apm_power_inherit_steam_science then
-	apm.lib.utils.technology.add.science_pack_conditional("apm_steam_science_pack", "automation-science-pack", skiplist)
+  apm.lib.utils.technology.add.science_pack_conditional("apm_steam_science_pack", "automation-science-pack", skiplist)
 end
 
 
