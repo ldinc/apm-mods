@@ -198,8 +198,8 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-	apm.lib.utils.technology.add.prerequisites("ore-crushing", "apm_power_electricity")
-	apm.lib.utils.technology.add.prerequisites("water-treatment", "apm_power_electricity")
+	apm.lib.utils.technology.add.prerequisites("angels-ore-crushing", "apm_power_electricity")
+	apm.lib.utils.technology.add.prerequisites("angels-water-treatment", "apm_power_electricity")
 end
 
 if mods.angelssmelting and apm_power_compat_angel then
@@ -218,14 +218,14 @@ if mods["angelsaddons-warehouses"] and apm_power_compat_angel then
 end
 
 if mods.angelsbioprocessing and apm_power_compat_angel then
-	apm.lib.utils.technology.add.prerequisites("gardens", "apm_power_electricity")
-	apm.lib.utils.technology.add.prerequisites("bio-arboretum-1", "apm_power_electricity")
+	apm.lib.utils.technology.add.prerequisites("angels-gardens", "apm_power_electricity")
+	apm.lib.utils.technology.add.prerequisites("angels-bio-arboretum-1", "apm_power_electricity")
 
-	apm.lib.utils.technology.delete("bio-wood-processing")
-	apm.lib.utils.technology.delete("bio-wood-processing-2")
-	apm.lib.utils.technology.delete("bio-wood-processing-3")
+	apm.lib.utils.technology.delete("angels-bio-wood-processing")
+	apm.lib.utils.technology.delete("angels-bio-wood-processing-2")
+	apm.lib.utils.technology.delete("angels-bio-wood-processing-3")
 
-	apm.lib.utils.technology.add.prerequisites("bio-arboretum-2", "apm_tools_2")
+	apm.lib.utils.technology.add.prerequisites("angels-bio-arboretum-2", "apm_tools_2")
 end
 
 if mods.angelsindustries and apm_power_compat_angel then

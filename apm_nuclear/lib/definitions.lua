@@ -129,8 +129,8 @@ apm.nuclear.icons.path.hybrid_cooling_tower = '__apm_resource_pack_ldinc__/graph
 apm.nuclear.icons.path.shielded_nuclear_fuel_cell = '__apm_resource_pack_ldinc__/graphics/icons/apm_shielded_nuclear_fuel_cell.png'
 apm.nuclear.icons.path.shielded_nuclear_fuel_cell_used = '__apm_resource_pack_ldinc__/graphics/icons/apm_shielded_nuclear_fuel_cell_used.png'
 
-apm.nuclear.icons.path.angel_sort_icon = '__angelsrefining__/graphics/icons/sort-icon.png'
-apm.nuclear.icons.path.angel_slag_processing_blank = '__angelsrefining__/graphics/icons/slag-processing-blank.png'
+apm.nuclear.icons.path.angel_sort_icon = '__angelsrefininggraphics__/graphics/icons/sort-icon.png'
+apm.nuclear.icons.path.angel_slag_processing_blank = '__angelsrefininggraphics__/graphics/icons/slag-processing-blank.png'
 
 -- Icons ----------------------------------------------------------------------
 --

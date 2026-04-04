@@ -85,18 +85,20 @@ end
 --- [bobelectronics]
 if mods.bobelectronics then
 	if mods.angelsrefining then
-		apm.lib.utils.recipe.ingredient.mod('clarifier', 'electronic-circuit', 0)
-		apm.lib.utils.recipe.ingredient.mod('clarifier', 'bob-basic-circuit-board', 4)
+		apm.lib.utils.recipe.ingredient.mod('angels-clarifier', 'electronic-circuit', 0)
+		apm.lib.utils.recipe.ingredient.mod('angels-clarifier', 'bob-basic-circuit-board', 4)
 	end
 
 	if not mods.boblogistics then
 		apm.lib.utils.recipe.ingredient.mod('splitter', 'bob-basic-circuit-board', 0)
-	elseif mods.boblogistics then
+	elseif mods.boblogistics and (not mods.angelsindustries) then
 		if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
 			apm.lib.utils.recipe.ingredient.mod('splitter', 'bob-basic-circuit-board', 5)
 		else
 			apm.lib.utils.recipe.ingredient.mod('splitter', 'bob-basic-circuit-board', 0)
 		end
+	else
+		apm.lib.utils.recipe.ingredient.mod('splitter', 'circuit-red-loaded', 5)
 	end
 
 	apm.lib.utils.recipe.ingredient.mod('electronic-circuit', 'apm_wood_board', 0)
@@ -104,10 +106,17 @@ if mods.bobelectronics then
 	apm.lib.utils.recipe.ingredient.mod('bob-carbon', 'coal', 0)
 	apm.lib.utils.recipe.ingredient.mod('bob-carbon', 'apm_coke', 1)
 	apm.lib.utils.recipe.ingredient.mod('offshore-pump', 'bob-basic-circuit-board', 0)
-	apm.lib.utils.recipe.ingredient.mod('rail-signal', 'bob-basic-circuit-board', 1)
-	apm.lib.utils.recipe.ingredient.mod('rail-signal', 'electronic-circuit', 0)
-	apm.lib.utils.recipe.ingredient.mod('rail-chain-signal', 'bob-basic-circuit-board', 1)
-	apm.lib.utils.recipe.ingredient.mod('rail-chain-signal', 'electronic-circuit', 1)
+	if mods.angelsindustries then
+		apm.lib.utils.recipe.ingredient.mod('rail-signal', 'circuit-red-loaded', 1)
+		apm.lib.utils.recipe.ingredient.mod('rail-signal', 'electronic-circuit', 0)
+		apm.lib.utils.recipe.ingredient.mod('rail-chain-signal', 'circuit-red-loaded', 1)
+		apm.lib.utils.recipe.ingredient.mod('rail-chain-signal', 'electronic-circuit', 1)
+	else
+		apm.lib.utils.recipe.ingredient.mod('rail-signal', 'bob-basic-circuit-board', 1)
+		apm.lib.utils.recipe.ingredient.mod('rail-signal', 'electronic-circuit', 0)
+		apm.lib.utils.recipe.ingredient.mod('rail-chain-signal', 'bob-basic-circuit-board', 1)
+		apm.lib.utils.recipe.ingredient.mod('rail-chain-signal', 'electronic-circuit', 1)
+	end
 	apm.lib.utils.recipe.ingredient.replace('bob-phenolic-board', 'wood', 'apm_wood_pellets', 2)
 	apm.lib.utils.recipe.ingredient.replace('electric-mining-drill', 'bob-basic-circuit-board', 'electronic-circuit')
 end

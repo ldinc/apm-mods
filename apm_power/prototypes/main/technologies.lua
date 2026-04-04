@@ -326,11 +326,19 @@ new_tech(
 	'__apm_resource_pack_ldinc__/graphics/technologies/apm_fuel.png'
 )
 
-apm.lib.utils.technology.trigger.set.craft_item(
-	"apm_fuel-1",
-	"apm_coke",
-	200
-)
+if mods["angelspetrochem"] then
+	apm.lib.utils.technology.trigger.set.craft_item(
+		"apm_fuel-1",
+		"angels-solid-coke",
+		200
+	)
+else
+	apm.lib.utils.technology.trigger.set.craft_item(
+		"apm_fuel-1",
+		"apm_coke",
+		200
+	)
+end
 
 -- Fuel II
 new_tech(
@@ -768,17 +776,32 @@ new_tech(
 )
 
 -- Electricity
-new_tech(
-	'apm_power_electricity',
-	{ "automation-science-pack", 'apm_fuel-3' },
-	{ 'steam-engine', 'small-electric-pole', 'apm_machine_frame_advanced'},
-	nil,
-	{
-		ingredients = { { sp.industrial, 1 }, { sp.automation, 1 }, { sp.steam, 1 } },
-		count = 100,
-		time = 30,
-	}
-)
+
+if mods['angelsindustries'] then
+	new_tech(
+		'apm_power_electricity',
+		{ 'apm_fuel-3' },
+		{ 'steam-engine', 'small-electric-pole', 'apm_machine_frame_advanced'},
+		nil,
+		{
+			ingredients = { { sp.industrial, 1 }, { sp.automation, 1 }, { sp.steam, 1 } },
+			count = 100,
+			time = 30,
+		}
+	)
+else
+	new_tech(
+		'apm_power_electricity',
+		{ "automation-science-pack", 'apm_fuel-3' },
+		{ 'steam-engine', 'small-electric-pole', 'apm_machine_frame_advanced'},
+		nil,
+		{
+			ingredients = { { sp.industrial, 1 }, { sp.automation, 1 }, { sp.steam, 1 } },
+			count = 100,
+			time = 30,
+		}
+	)
+end
 
 if apm.lib.features.frames_recycling then
 	apm.lib.utils.technology.add.recipe_for_unlock(

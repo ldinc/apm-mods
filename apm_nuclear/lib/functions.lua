@@ -75,11 +75,11 @@ function apm.nuclear.generate_angel_coolant_recipes()
 		apm.lib.utils.icon.add_tier_lable(new_recipe.name, 2)
 
 		apm.lib.utils.recipe.ingredient.mod(new_recipe.name, 'water', 0)
-		apm.lib.utils.recipe.ingredient.mod(new_recipe.name, 'liquid-coolant', 500)
+		apm.lib.utils.recipe.ingredient.mod(new_recipe.name, 'angels-liquid-coolant', 500)
 		apm.lib.utils.recipe.result.mod(new_recipe.name, 'apm_hot_water', 0)
-		apm.lib.utils.recipe.result.mod(new_recipe.name, 'liquid-coolant-used', 500)
+		apm.lib.utils.recipe.result.mod(new_recipe.name, 'angels-liquid-coolant-used', 500)
 		apm.lib.utils.recipe.result.mod(new_recipe.name, 'apm_radioactive_wastewater', 0)
-		apm.lib.utils.recipe.result.mod_temperature(new_recipe.name, 'liquid-coolant-used', nil, 300)
+		apm.lib.utils.recipe.result.mod_temperature(new_recipe.name, 'angels-liquid-coolant-used', nil, 300)
 
 		local technology_name = apm.lib.utils.technology.find.technology_by_recipe(recipe.name)
 		if technology_name then

@@ -86,24 +86,24 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_dry_mud_sifting_iron'], 2, '__angelsrefining__/graphics/icons/angels-ore1.png')
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_dry_mud_sifting_copper'], 2, '__angelsrefining__/graphics/icons/angels-ore3.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_dry_mud_sifting_iron'], 2, '__angelsrefininggraphics__/graphics/icons/angels-ore1.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_dry_mud_sifting_copper'], 2, '__angelsrefininggraphics__/graphics/icons/angels-ore3.png')
 end
 
 if mods.angelssmelting and apm_power_compat_angel then
-	apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_steel_0'], 1, '__angelssmelting__/graphics/icons/plate-steel.png')
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_steel_1'], 1, '__angelssmelting__/graphics/icons/plate-steel.png')
+	apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_steel_0'], 1, '__angelssmeltinggraphics__/graphics/icons/plate-steel.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_steel_1'], 1, '__angelssmeltinggraphics__/graphics/icons/plate-steel.png')
 end
 
 if mods.angelspetrochem and apm_power_compat_angel then
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_1'], 2, '__angelspetrochem__/graphics/icons/solid-coke.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_1'], 2, '__angelspetrochemgraphics__/graphics/icons/solid-coke.png')
 	apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_1'], 1, nil)
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_2'], 2, '__angelspetrochem__/graphics/icons/solid-coke.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_2'], 2, '__angelspetrochemgraphics__/graphics/icons/solid-coke.png')
 	apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_2'], 1, nil)
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_3'], 2, '__angelspetrochem__/graphics/icons/solid-coke.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_3'], 2, '__angelspetrochemgraphics__/graphics/icons/solid-coke.png')
 	apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_3'], 1, nil)
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_4'], 2, '__angelspetrochem__/graphics/icons/solid-coke.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_4'], 2, '__angelspetrochemgraphics__/graphics/icons/solid-coke.png')
 	apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_4'], 1, nil)
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_5'], 2, '__angelspetrochem__/graphics/icons/solid-coke.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_5'], 2, '__angelspetrochemgraphics__/graphics/icons/solid-coke.png')
 	apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_pyrolysis_coke_5'], 1, nil)
 end

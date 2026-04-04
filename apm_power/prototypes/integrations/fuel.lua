@@ -77,13 +77,13 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelspetrochem and apm_power_compat_angel then
-	apm.lib.utils.fuel.overhaul(3, 'solid-coke', 3.7, nil, 'apm_refined_chemical')
-	apm.lib.utils.fuel.overhaul(5, 'solid-carbon', 2.5, nil, 'apm_refined_chemical')
-	apm.lib.utils.fuel.overhaul(6, 'rocket-booster', 4, nil, 'apm_rocket')
+	apm.lib.utils.fuel.overhaul(3, 'angels-solid-coke', 3.7, nil, 'apm_refined_chemical')
+	apm.lib.utils.fuel.overhaul(5, 'angels-solid-carbon', 2.5, nil, 'apm_refined_chemical')
+	apm.lib.utils.fuel.overhaul(6, 'angels-rocket-booster', 4, nil, 'apm_rocket')
 end
 
 if mods.angelsbioprocessing and apm_power_compat_angel then
-	apm.lib.utils.fuel.overhaul(1, 'cellulose-fiber', 0.125, 'apm_generic_ash')
+	apm.lib.utils.fuel.overhaul(1, 'angels-cellulose-fiber', 0.125, 'apm_generic_ash')
 end
 
 -- Earendel -------------------------------------------------------------------
