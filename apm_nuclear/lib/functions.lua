@@ -68,7 +68,7 @@ function apm.nuclear.generate_angel_coolant_recipes()
 		local new_recipe = table.deepcopy(recipe)
 		new_recipe.name = recipe.name .. "_with_coolant"
 		new_recipe.localised_name = { "recipe-name." .. tostring(recipe.name) }
-		new_recipe.normal.energy_required = recipe.normal.energy_required / 2
+		new_recipe.energy_required = recipe.energy_required / 2
 		data:extend({ new_recipe })
 
 		apm.lib.utils.icon.add_tier_lable(recipe.name, 1)

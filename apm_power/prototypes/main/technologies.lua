@@ -784,7 +784,7 @@ if mods['angelsindustries'] then
 		{ 'steam-engine', 'small-electric-pole', 'apm_machine_frame_advanced'},
 		nil,
 		{
-			ingredients = { { sp.industrial, 1 }, { sp.automation, 1 }, { sp.steam, 1 } },
+			ingredients = { { sp.industrial, 1 }, { sp.steam, 1 } },
 			count = 100,
 			time = 30,
 		}

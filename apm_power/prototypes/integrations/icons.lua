@@ -86,8 +86,8 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_dry_mud_sifting_iron'], 2, '__angelsrefininggraphics__/graphics/icons/angels-ore1.png')
-    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_dry_mud_sifting_copper'], 2, '__angelsrefininggraphics__/graphics/icons/angels-ore3.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_dry_mud_sifting_iron'], 2, '__angelsrefininggraphics__/graphics/icons/angels-ore1/angels-ore1.png')
+    apm.lib.utils.icon.layer.replace(data.raw.recipe['apm_dry_mud_sifting_copper'], 2, '__angelsrefininggraphics__/graphics/icons/angels-ore3/angels-ore3.png')
 end
 
 if mods.angelssmelting and apm_power_compat_angel then

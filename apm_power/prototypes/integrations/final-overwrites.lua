@@ -186,7 +186,7 @@ end
 if (mods.Bio_Industries and apm_power_compat_bio_industries) then
 	apm.lib.utils.recipe.ingredient.replace_all("apm_crushed_stone", "stone-crushed")
 	apm.lib.utils.recipe.result.replace_all("apm_crushed_stone", "stone-crushed")
-	apm.lib.utils.recipe.overwrite.group("apm_crushed_stone", "apm_power_intermediates", "ak_a")
+	apm.lib.utils.recipe.overwrite.group("apm_crushed_stone", "apm_power", "apm_power_intermediates", "ak_a")
 
 	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_asphalt")
 	local item_icon_b = apm.lib.utils.icon.get.from_item("stone-crushed")
@@ -205,7 +205,7 @@ end
 if (mods.angelsrefining and apm_power_compat_angel) then
 	apm.lib.utils.recipe.ingredient.replace_all("apm_crushed_stone", "angels-stone-crushed")
 	apm.lib.utils.recipe.result.replace_all("apm_crushed_stone", "angels-stone-crushed")
-	apm.lib.utils.recipe.overwrite.group("apm_crushed_stone", "apm_power_intermediates", "ak_a")
+	apm.lib.utils.recipe.overwrite.group("apm_crushed_stone", "apm_power", "apm_power_intermediates", "ak_a")
 
 	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_asphalt")
 	local item_icon_b = apm.lib.utils.icon.get.from_item("angels-stone-crushed")

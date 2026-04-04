@@ -118,7 +118,7 @@ if mods.bobplates and apm_power_compat_bob then
 end
 
 if mods.bobtech and apm_power_compat_bob then
-	apm.lib.utils.lab.overhaul("bob-lab-2")
+	--apm.lib.utils.lab.overhaul("bob-lab-2")
 end
 
 if mods.bobmining and apm_power_compat_bob then
