@@ -90,14 +90,14 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_0', 'ore-sorting')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_0', 'angels-ore-sorting')
 
-	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'ore-sorting')
-	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'ore-sorting-2')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'angels-ore-sorting')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_1', 'angels-ore-sorting-2')
 
-	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting')
-	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting-2')
-	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'ore-sorting-3')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'angels-ore-sorting')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'angels-ore-sorting-2')
+	apm.lib.utils.assembler.mod.category.add('apm_crusher_machine_2', 'angels-ore-sorting-3')
 
 	apm.lib.utils.assembler.mod.category.add('burner-ore-crusher', 'apm_crusher')
 	apm.lib.utils.assembler.mod.category.add('ore-crusher', 'apm_crusher')

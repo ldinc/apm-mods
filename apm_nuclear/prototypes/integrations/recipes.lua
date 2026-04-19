@@ -108,39 +108,39 @@ if mods.angelspetrochem and apm_nuclear_compat_angel then
 end
 
 if mods.angelspetrochem and mods.angelsrefining and apm_nuclear_compat_angel then
-	apm.lib.utils.recipe.result.mod("apm_bromine_trifluoride", "water-greenyellow-waste", 10)
-	apm.lib.utils.recipe.result.mod("apm_used_fuel_cell_recovery_stage_b_042", "water-red-waste", 50)
-	apm.lib.utils.recipe.result.mod("apm_fuel_rod_uranium_recovery_stage_b", "water-red-waste", 50)
-	apm.lib.utils.recipe.result.mod("apm_fuel_rod_mox_recovery_stage_b", "water-red-waste", 50)
-	apm.lib.utils.recipe.result.mod("apm_breeder_uranium_seperation_process_b", "water-red-waste", 50)
-	apm.lib.utils.recipe.result.mod("apm_oxide_pellet_u238", "water-greenyellow-waste", 25)
-	apm.lib.utils.recipe.result.mod("apm_oxide_pellet_u235", "water-greenyellow-waste", 25)
+	apm.lib.utils.recipe.result.mod("apm_bromine_trifluoride", "angels-water-greenyellow-waste", 10)
+	apm.lib.utils.recipe.result.mod("apm_used_fuel_cell_recovery_stage_b_042", "angels-water-red-waste", 50)
+	apm.lib.utils.recipe.result.mod("apm_fuel_rod_uranium_recovery_stage_b", "angels-water-red-waste", 50)
+	apm.lib.utils.recipe.result.mod("apm_fuel_rod_mox_recovery_stage_b", "angels-water-red-waste", 50)
+	apm.lib.utils.recipe.result.mod("apm_breeder_uranium_seperation_process_b", "angels-water-red-waste", 50)
+	apm.lib.utils.recipe.result.mod("apm_oxide_pellet_u238", "angels-water-greenyellow-waste", 25)
+	apm.lib.utils.recipe.result.mod("apm_oxide_pellet_u235", "angels-water-greenyellow-waste", 25)
 
-	apm.lib.utils.recipe.ingredient.mod("apm_phosphorpentachlorid", "gas-chlorine", 100)
+	apm.lib.utils.recipe.ingredient.mod("apm_phosphorpentachlorid", "angels-gas-chlorine", 100)
 
-	apm.lib.utils.recipe.ingredient.mod("apm_phosphoroxychlorid", "gas-sulfur-dioxide", 50)
-	apm.lib.utils.recipe.ingredient.mod("apm_phosphoroxychlorid", "water-purified", 85)
-	apm.lib.utils.recipe.result.mod("apm_phosphoroxychlorid", "water-yellow-waste", 85)
+	apm.lib.utils.recipe.ingredient.mod("apm_phosphoroxychlorid", "angels-gas-sulfur-dioxide", 50)
+	apm.lib.utils.recipe.ingredient.mod("apm_phosphoroxychlorid", "angels-water-purified", 85)
+	apm.lib.utils.recipe.result.mod("apm_phosphoroxychlorid", "angels-water-yellow-waste", 85)
 
-	apm.lib.utils.recipe.ingredient.replace("apm_trimethyl_phosphate", "petroleum-gas", "gas-methanol")
-	apm.lib.utils.recipe.ingredient.replace("apm_trimethyl_phosphate", "gas-methane", "gas-methanol")
-	apm.lib.utils.recipe.ingredient.mod("apm_trimethyl_phosphate", "gas-methanol", 150)
-	apm.lib.utils.recipe.ingredient.mod("apm_trimethyl_phosphate", "water-purified", 100)
+	apm.lib.utils.recipe.ingredient.replace("apm_trimethyl_phosphate", "petroleum-gas", "angels-gas-methanol")
+	apm.lib.utils.recipe.ingredient.replace("apm_trimethyl_phosphate", "gas-methane", "angels-gas-methane")
+	apm.lib.utils.recipe.ingredient.mod("apm_trimethyl_phosphate", "angels-gas-methanol", 150)
+	apm.lib.utils.recipe.ingredient.mod("apm_trimethyl_phosphate", "angels-water-purified", 100)
 	apm.lib.utils.recipe.ingredient.replace("apm_trimethyl_phosphate", "apm_phosphorus", "apm_phosphoroxychlorid")
-	apm.lib.utils.recipe.result.mod("apm_trimethyl_phosphate", "water-green-waste", 100)
+	apm.lib.utils.recipe.result.mod("apm_trimethyl_phosphate", "angels-water-green-waste", 100)
 
 	apm.lib.utils.recipe.ingredient.mod("apm_trimethyl_phosphate", "apm_phosphoroxychlorid", 50)
 end
 
 if mods.angelsrefining and apm_nuclear_compat_angel then
-	apm.lib.utils.recipe.ingredient.replace("apm_potassium_bromide_filltration", "water", "water-saline")
-	apm.lib.utils.recipe.category.change("apm_radioactive_wastewater_recyling", "water-treatment")
-	apm.lib.utils.recipe.result.replace("apm_radioactive_wastewater_recyling", "water", "water-purified")
+	apm.lib.utils.recipe.ingredient.replace("apm_potassium_bromide_filltration", "water", "angels-water-saline")
+	apm.lib.utils.recipe.category.change("apm_radioactive_wastewater_recyling", "angels-water-treatment")
+	apm.lib.utils.recipe.result.replace("apm_radioactive_wastewater_recyling", "water", "angels-water-purified")
 end
 
 if mods.angelssmelting and apm_nuclear_compat_angel then
 	if not mods.apm_power then
-		apm.lib.utils.recipe.result.mod("coolant-cool-steam", "water-purified", 45)
+		apm.lib.utils.recipe.result.mod("coolant-cool-steam", "angels-water-purified", 45)
 		apm.lib.utils.recipe.result.mod("coolant-cool-100", "steam", 100)
 		apm.lib.utils.recipe.result.mod("coolant-cool-200", "steam", 100)
 		apm.lib.utils.recipe.result.mod("coolant-cool-300", "steam", 100)
@@ -151,8 +151,8 @@ end
 
 if mods.angelssmelting and mods.angelspetrochem and mods.bobplates and apm_nuclear_compat_angel then
 	apm.lib.utils.recipe.remove("apm_fluorite_ore")
-	apm.lib.utils.recipe.category.change("apm_depleted_uranium_metal_mixture", "powder-mixing")
-	apm.lib.utils.recipe.ingredient.replace("apm_depleted_uranium_metal_mixture", "iron-plate", "processed-iron", 2)
+	apm.lib.utils.recipe.category.change("apm_depleted_uranium_metal_mixture", "angels-powder-mixing")
+	apm.lib.utils.recipe.ingredient.replace("apm_depleted_uranium_metal_mixture", "iron-plate", "angels-processed-iron", 2)
 	--apm.lib.utils.recipe.category.change('apm_depleted_uranium_ingots', 'induction-smelting')
 	--TODO Create molten metal for this...
 end

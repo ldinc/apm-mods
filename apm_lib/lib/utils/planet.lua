@@ -36,7 +36,7 @@ function apm.lib.utils.planet.remove.resource(planet_name, resource_name)
 		return
 	end
 
-	if planet.map_gen_settings == nil and planet.map_gen_settings.autoplace_controls then
+	if planet.map_gen_settings == nil or planet.map_gen_settings.autoplace_controls == nil then
 		return
 	end
 

@@ -111,11 +111,11 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.angelsrefining and apm_power_compat_angel then
-	apm.lib.utils.item.remove("burner-ore-crusher")
+	apm.lib.utils.item.remove("angels-burner-ore-crusher")
 	-- unification of mud items:
-	apm.lib.utils.recipe.result.replace_all("solid-mud", "apm_wet_mud")
-	apm.lib.utils.recipe.ingredient.replace_all("solid-mud", "apm_dry_mud")
-	local crusher = data.raw["assembling-machine"]["burner-ore-crusher"]
+	apm.lib.utils.recipe.result.replace_all("angels-solid-mud", "apm_wet_mud")
+	apm.lib.utils.recipe.ingredient.replace_all("angels-solid-mud", "apm_dry_mud")
+	local crusher = data.raw["assembling-machine"]["angels-burner-ore-crusher"]
 	if crusher then
 		crusher.next_upgrade = ""
 	end
@@ -125,36 +125,36 @@ if mods.angelsrefining and apm_power_compat_angel then
 end
 
 if mods.angelspetrochem and apm_power_compat_angel then
-	apm.lib.utils.recipe.result.replace_all("solid-resin", "apm_resin")
-	apm.lib.utils.recipe.ingredient.replace_all("solid-resin", "apm_resin")
-	apm.lib.utils.item.remove("solid-resin")
-	apm.lib.utils.recipe.result.replace_all("solid-rubber", "apm_rubber")
-	apm.lib.utils.recipe.ingredient.replace_all("solid-rubber", "apm_rubber")
-	apm.lib.utils.item.remove("solid-rubber")
-	apm.lib.utils.recipe.ingredient.replace_all("coal-crushed", "apm_coal_crushed")
-	apm.lib.utils.recipe.ingredient.replace_all("pellet-coke", "apm_coke_brick")
-	apm.lib.utils.item.remove("coal-crushed")
-	apm.lib.utils.item.remove("pellet-coke")
+	apm.lib.utils.recipe.result.replace_all("angels-solid-resin", "apm_resin")
+	apm.lib.utils.recipe.ingredient.replace_all("angels-solid-resin", "apm_resin")
+	apm.lib.utils.item.remove("angels-solid-resin")
+	apm.lib.utils.recipe.result.replace_all("angels-solid-rubber", "apm_rubber")
+	apm.lib.utils.recipe.ingredient.replace_all("angels-solid-rubber", "apm_rubber")
+	apm.lib.utils.item.remove("angels-solid-rubber")
+	apm.lib.utils.recipe.ingredient.replace_all("angels-coal-crushed", "apm_coal_crushed")
+	apm.lib.utils.recipe.ingredient.replace_all("angels-pellet-coke", "apm_coke_brick")
+	apm.lib.utils.item.remove("angels-coal-crushed")
+	apm.lib.utils.item.remove("angels-pellet-coke")
 	apm.lib.utils.item.remove("apm_coke")
 end
 
 if mods.angelsbioprocessing and apm_power_compat_angel then
-	apm.lib.utils.recipe.ingredient.replace_all("wood-pellets", "apm_wood_pellets")
-	apm.lib.utils.recipe.ingredient.replace_all("wood-bricks", "apm_wood_briquette")
-	apm.lib.utils.item.remove("wood-pellets")
-	apm.lib.utils.item.remove("wood-bricks")
+	apm.lib.utils.recipe.ingredient.replace_all("angels-wood-pellets", "apm_wood_pellets")
+	apm.lib.utils.recipe.ingredient.replace_all("angels-wood-bricks", "apm_wood_briquette")
+	apm.lib.utils.item.remove("angels-wood-pellets")
+	apm.lib.utils.item.remove("angels-wood-bricks")
 
-	apm.lib.utils.recipe.ingredient.replace_all("solid-saw", "apm_saw_blade_iron")
-	apm.lib.utils.recipe.result.replace_all("solid-saw", "apm_saw_blade_iron_used")
-	apm.lib.utils.item.remove("solid-saw")
+	apm.lib.utils.recipe.ingredient.replace_all("angels-solid-saw", "apm_saw_blade_iron")
+	apm.lib.utils.recipe.result.replace_all("angels-solid-saw", "apm_saw_blade_iron_used")
+	apm.lib.utils.item.remove("angels-solid-saw")
 
 	if apm_power_compat_angel_overwrite_crystal_saw_blades then
-		apm.lib.utils.recipe.ingredient.replace_all("solid-crystal-tipped-saw", "apm_saw_blade_steel")
-		apm.lib.utils.recipe.result.replace_all("solid-crystal-tipped-saw", "apm_saw_blade_steel_used")
-		apm.lib.utils.recipe.ingredient.replace_all("solid-crystal-full-saw", "apm_saw_blade_steel")
-		apm.lib.utils.recipe.result.replace_all("solid-crystal-full-saw", "apm_saw_blade_steel_used")
-		apm.lib.utils.item.remove("solid-crystal-tipped-saw")
-		apm.lib.utils.item.remove("solid-crystal-full-saw")
+		apm.lib.utils.recipe.ingredient.replace_all("angels-solid-crystal-tipped-saw", "apm_saw_blade_steel")
+		apm.lib.utils.recipe.result.replace_all("angels-solid-crystal-tipped-saw", "apm_saw_blade_steel_used")
+		apm.lib.utils.recipe.ingredient.replace_all("angels-solid-crystal-full-saw", "apm_saw_blade_steel")
+		apm.lib.utils.recipe.result.replace_all("angels-solid-crystal-full-saw", "apm_saw_blade_steel_used")
+		apm.lib.utils.item.remove("angels-solid-crystal-tipped-saw")
+		apm.lib.utils.item.remove("angels-solid-crystal-full-saw")
 	end
 end
 
@@ -183,10 +183,10 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-if (mods.Bio_Industries and apm_power_compat_bio_industries) or (mods.angelsrefining and apm_power_compat_angel) then
+if (mods.Bio_Industries and apm_power_compat_bio_industries) then
 	apm.lib.utils.recipe.ingredient.replace_all("apm_crushed_stone", "stone-crushed")
 	apm.lib.utils.recipe.result.replace_all("apm_crushed_stone", "stone-crushed")
-	apm.lib.utils.recipe.overwrite.group("apm_crushed_stone", "apm_power_intermediates", "ak_a")
+	apm.lib.utils.recipe.overwrite.group("apm_crushed_stone", "apm_power", "apm_power_intermediates", "ak_a")
 
 	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_asphalt")
 	local item_icon_b = apm.lib.utils.icon.get.from_item("stone-crushed")
@@ -197,6 +197,25 @@ if (mods.Bio_Industries and apm_power_compat_bio_industries) or (mods.angelsrefi
 
 	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_stone_brick_raw")
 	local item_icon_b = apm.lib.utils.icon.get.from_item("stone-crushed")
+	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
+	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
+	apm.lib.utils.recipe.set.icons("apm_stone_brick_raw_with_crushed", icons)
+end
+
+if (mods.angelsrefining and apm_power_compat_angel) then
+	apm.lib.utils.recipe.ingredient.replace_all("apm_crushed_stone", "angels-stone-crushed")
+	apm.lib.utils.recipe.result.replace_all("apm_crushed_stone", "angels-stone-crushed")
+	apm.lib.utils.recipe.overwrite.group("apm_crushed_stone", "apm_power", "apm_power_intermediates", "ak_a")
+
+	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_asphalt")
+	local item_icon_b = apm.lib.utils.icon.get.from_item("angels-stone-crushed")
+	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
+	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
+	apm.lib.utils.recipe.set.icons("apm_asphalt_2", icons)
+	apm.lib.utils.recipe.set.icons("apm_asphalt_4", icons)
+
+	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_stone_brick_raw")
+	local item_icon_b = apm.lib.utils.icon.get.from_item("angels-stone-crushed")
 	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 	apm.lib.utils.recipe.set.icons("apm_stone_brick_raw_with_crushed", icons)

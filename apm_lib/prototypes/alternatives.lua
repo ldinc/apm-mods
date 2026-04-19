@@ -11,42 +11,43 @@ APM_LOG_HEADER(self)
 -- ----------------------------------------------------------------------------
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CLEANING_SOLUTION', 'stone') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CLEANING_SOLUTION', 'apm_crushed_stone', 5, 2) -- apm: crushed stone
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_CLEANING_SOLUTION', 'stone-crushed', 30, 2) -- angels: crushed stone
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_CLEANING_SOLUTION', 'angels-stone-crushed', 30, 2) -- angels: crushed stone
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_MOLD_BASE', 'stone-brick')  -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_MOLD_BASE', 'apm_stone_brick_raw', 5) -- apm
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_MOLD_BASE', 'clay-brick-raw', 30) -- angels
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_MOLD_BASE', 'angels-clay-brick-raw', 30) -- angels
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_FLUORITE', 'apm_fluorite_ore') -- fallback to vanilla
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_FLUORITE', 'angels-fluorite-ore', 20) -- angels
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_FLUORITE', 'fluorite-ore', 20) -- bob
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_NUCLEAR_ACID', 'sulfuric-acid') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_NUCLEAR_ACID', 'nitric-acid', 10) -- bob
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_NUCLEAR_ACID', 'liquid-nitric-acid', 20) -- angels
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_NUCLEAR_ACID', 'angels-liquid-nitric-acid', 20) -- angels
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_WATER', 'water') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_WATER', 'pure-water', 10) -- bobs: pure-water
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_WATER', 'water-purified', 20) -- angels: pure-water
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_WATER', 'angels-water-purified', 20) -- angels: pure-water
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_SALINE_WATER', 'water') -- fallback to vanilla
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_SALINE_WATER', 'water-saline', 30) -- angels
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_SALINE_WATER', 'angels-water-saline', 30) -- angels
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CRUSHED_STONE', 'stone') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_CRUSHED_STONE', 'apm_crushed_stone', 5) -- apm: crushed stone
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_CRUSHED_STONE', 'stone-crushed', 30) -- angels: crushed stone
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_CRUSHED_STONE', 'angels-stone-crushed', 30) -- angels: crushed stone
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM_SLAG', 'stone') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM_SLAG', 'apm_crushed_stone', 5, 2) -- apm: crushed stone
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM_SLAG', 'stone-crushed', 20, 2) -- angels: slag
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM_SLAG', 'slag', 30, 2) -- angels: slag
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM_SLAG', 'angels-stone-crushed', 20, 2) -- angels: slag
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM_SLAG', 'angels-slag', 30, 2) -- angels: slag
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_SLAG', 'stone') -- fallback to vanilla
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_SLAG', 'apm_crushed_stone', 5) -- apm: crushed stone
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_SLAG', 'stone-crushed', 20) -- angels: slag
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_SLAG', 'slag', 30) -- angels: slag
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_SLAG', 'angels-stone-crushed', 20) -- angels: slag
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_SLAG', 'angels-slag', 30) -- angels: slag
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_SULFUR_RESULT', 'sulfur') -- fallback to vanilla
-apm.lib.utils.builder.recipe.item.alternatives.add('APM_SULFUR_RESULT', 'water-yellow-waste', 20) -- angels: water-yellow-waste
+apm.lib.utils.builder.recipe.item.alternatives.add('APM_SULFUR_RESULT', 'angels-water-yellow-waste', 20) -- angels: water-yellow-waste
 
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM', 'apm_thorium_ore') -- apm: apm_thorium_ore
 apm.lib.utils.builder.recipe.item.alternatives.add('APM_THORIUM', 'thorium-ore', 10) -- bobs: thorium-ore

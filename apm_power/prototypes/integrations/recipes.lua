@@ -248,7 +248,7 @@ if mods.angelsrefining and apm_power_compat_angel then
 	apm.lib.utils.recipe.result.replace("apm_dry_mud_sifting_copper", "copper-ore", "angels-ore3")
 	apm.lib.utils.recipe.ingredient.replace("apm_steel_0", "iron-ore", "angels-ore1-crushed")
 	apm.lib.utils.recipe.ingredient.replace("apm_steel_1", "iron-ore", "angels-ore1-crushed")
-	apm.lib.utils.recipe.remove("burner-ore-crusher")
+	apm.lib.utils.recipe.remove("angels-burner-ore-crusher")
 	apm.lib.utils.recipe.ingredient.replace("ore-crusher", "burner-ore-crusher", "apm_crusher_machine_1")
 	-- angelsmods.functions.make_void(fluid_name, void_category) --categories: chemical (flare-stack), water(clarifier)
 	angelsmods.functions.make_void("apm_sea_water", "water")
@@ -258,49 +258,49 @@ if mods.angelsrefining and apm_power_compat_angel then
 
 	apm.lib.utils.recipe.ingredient.replace("ore-crusher", "iron-gear-wheel", "apm_gearing")
 	if apm_power_compat_angel_overhaul_machine_frames then
-		apm.power.machine_frame_addition("ore-crusher", 3, 2, 3, 3)
-		apm.power.machine_frame_addition("ore-crusher-2", 3, 3, 5, 3)
-		apm.power.machine_frame_addition("ore-crusher-3", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-ore-crusher", 3, 2, 3, 3)
+		apm.power.machine_frame_addition("angels-ore-crusher-2", 3, 3, 5, 3)
+		apm.power.machine_frame_addition("angels-ore-crusher-3", 3, 3, 7, 4)
 
-		apm.power.machine_frame_addition("ore-sorting-facility", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("ore-sorting-facility-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("ore-sorting-facility-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("ore-sorting-facility-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-ore-sorting-facility", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-ore-sorting-facility-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-ore-sorting-facility-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-ore-sorting-facility-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("ore-floatation-cell", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("ore-floatation-cell-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("ore-floatation-cell-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-ore-floatation-cell", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-ore-floatation-cell-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-ore-floatation-cell-3", 3, 3, 9, 5)
 
-		apm.power.machine_frame_addition("ore-leaching-plant", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("ore-leaching-plant-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("ore-leaching-plant-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-ore-leaching-plant", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-ore-leaching-plant-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-ore-leaching-plant-3", 3, 3, 9, 5)
 
-		apm.power.machine_frame_addition("ore-refinery", 3, nil, 7, nil)
-		apm.power.machine_frame_addition("ore-refinery-2", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-ore-refinery", 3, nil, 7, nil)
+		apm.power.machine_frame_addition("angels-ore-refinery-2", 3, 3, 9, 5)
 
-		apm.power.machine_frame_addition("ore-powderizer", 3, nil, 3, nil)
-		apm.power.machine_frame_addition("ore-powderizer-2", 3, 3, 5, 3)
-		apm.power.machine_frame_addition("ore-powderizer-3", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-ore-powderizer", 3, nil, 3, nil)
+		apm.power.machine_frame_addition("angels-ore-powderizer-2", 3, 3, 5, 3)
+		apm.power.machine_frame_addition("angels-ore-powderizer-3", 3, 3, 7, 4)
 
-		apm.power.machine_frame_addition("electro-whinning-cell", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("electro-whinning-cell-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("electro-whinning-cell-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-electro-whinning-cell", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-electro-whinning-cell-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-electro-whinning-cell-3", 3, 3, 9, 5)
 
-		apm.power.machine_frame_addition("filtration-unit", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("filtration-unit-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-filtration-unit", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-filtration-unit-2", 3, 3, 7, 4)
 
-		apm.power.machine_frame_addition("crystallizer", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("crystallizer-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-crystallizer", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-crystallizer-2", 3, 3, 7, 4)
 
-		apm.power.machine_frame_addition("hydro-plant", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("hydro-plant-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("hydro-plant-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-hydro-plant", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-hydro-plant-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-hydro-plant-3", 3, 3, 9, 5)
 
-		apm.power.machine_frame_addition("salination-plant", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("salination-plant-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-salination-plant", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-salination-plant-2", 3, 3, 7, 4)
 
-		apm.power.machine_frame_addition("washing-plant", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("washing-plant-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-washing-plant", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-washing-plant-2", 3, 3, 7, 4)
 	end
 end
 
@@ -319,50 +319,50 @@ if mods.angelssmelting and apm_power_compat_angel then
 	apm.lib.utils.recipe.energy_required.mod("apm_steel_0", 24)
 
 	if apm_power_compat_angel_overhaul_machine_frames then
-		apm.power.machine_frame_addition("ore-processing-machine", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("ore-processing-machine-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("ore-processing-machine-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("ore-processing-machine-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-ore-processing-machine", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-ore-processing-machine-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-ore-processing-machine-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-ore-processing-machine-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("pellet-press", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("pellet-press-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("pellet-press-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("pellet-press-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-pellet-press", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-pellet-press-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-pellet-press-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-pellet-press-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("powder-mixer", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("powder-mixer-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("powder-mixer-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("powder-mixer-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-powder-mixer", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-powder-mixer-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-powder-mixer-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-powder-mixer-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("blast-furnace", 1, nil, 5, nil)
-		apm.power.machine_frame_addition("blast-furnace-2", 1, 1, 7, 4)
-		apm.power.machine_frame_addition("blast-furnace-3", 1, 1, 9, 5)
-		apm.power.machine_frame_addition("blast-furnace-4", 1, 1, 11, 6)
+		apm.power.machine_frame_addition("angels-blast-furnace", 1, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-blast-furnace-2", 1, 1, 7, 4)
+		apm.power.machine_frame_addition("angels-blast-furnace-3", 1, 1, 9, 5)
+		apm.power.machine_frame_addition("angels-blast-furnace-4", 1, 1, 11, 6)
 
 		apm.power.machine_frame_addition("angels-chemical-furnace", 3, nil, 5, nil)
 		apm.power.machine_frame_addition("angels-chemical-furnace-2", 3, 3, 7, 4)
 		apm.power.machine_frame_addition("angels-chemical-furnace-3", 3, 3, 9, 5)
 		apm.power.machine_frame_addition("angels-chemical-furnace-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("induction-furnace", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("induction-furnace-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("induction-furnace-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("induction-furnace-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-induction-furnace", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-induction-furnace-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-induction-furnace-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-induction-furnace-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("casting-machine", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("casting-machine-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("casting-machine-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("casting-machine-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-casting-machine", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-casting-machine-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-casting-machine-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-casting-machine-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("strand-casting-machine", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("strand-casting-machine-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("strand-casting-machine-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("strand-casting-machine-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-strand-casting-machine", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-strand-casting-machine-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-strand-casting-machine-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-strand-casting-machine-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("sintering-oven", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("sintering-oven-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("sintering-oven-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("sintering-oven-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-sintering-oven", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-sintering-oven-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-sintering-oven-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-sintering-oven-4", 3, 3, 11, 6)
 	end
 end
 
@@ -370,35 +370,35 @@ if mods.angelspetrochem and apm_power_compat_angel then
 	-- angelsmods.functions.make_void(fluid_name, void_category) --categories: chemical (flare-stack), water(clarifier)
 	angelsmods.functions.make_void("apm_coke_oven_gas", "chemical")
 
-	apm.lib.utils.recipe.ingredient.replace("carbon-separation-2", "coal", "apm_coal_crushed", 2)
-	apm.lib.utils.recipe.ingredient.replace("solid-nitroglycerin", "coal", "apm_coal_crushed", 2)
+	apm.lib.utils.recipe.ingredient.replace("angels-carbon-separation-2", "coal", "apm_coal_crushed", 2)
+	apm.lib.utils.recipe.ingredient.replace("angels-solid-nitroglycerin", "coal", "apm_coal_crushed", 2)
 
-	apm.lib.utils.recipe.result.mod("apm_refining_coke_oven_gas_1", "gas-hydrogen", 20)
-	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_1", "apm_coke", "solid-coke")
-	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_2", "apm_coke", "solid-coke")
-	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_3", "apm_coke", "solid-coke")
-	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_4", "apm_coke", "solid-coke")
-	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_5", "apm_coke", "solid-coke")
-	apm.lib.utils.recipe.ingredient.replace("apm_coke_crushed", "apm_coke", "solid-coke")
-	apm.lib.utils.recipe.ingredient.replace("apm_coke_brick", "apm_coke", "solid-coke")
+	apm.lib.utils.recipe.result.mod("apm_refining_coke_oven_gas_1", "angels-gas-hydrogen", 20)
+	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_1", "apm_coke", "angels-solid-coke")
+	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_2", "apm_coke", "angels-solid-coke")
+	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_3", "apm_coke", "angels-solid-coke")
+	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_4", "apm_coke", "angels-solid-coke")
+	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_5", "apm_coke", "angels-solid-coke")
+	apm.lib.utils.recipe.ingredient.replace("apm_coke_crushed", "apm_coke", "angels-solid-coke")
+	apm.lib.utils.recipe.ingredient.replace("apm_coke_brick", "apm_coke", "angels-solid-coke")
 
-	apm.lib.utils.recipe.remove("solid-coke")
-	apm.lib.utils.recipe.remove("solid-coke-sulfur")
+	apm.lib.utils.recipe.remove("angels-solid-coke")
+	apm.lib.utils.recipe.remove("angels-solid-coke-sulfur")
 
-	apm.lib.utils.recipe.ingredient.replace("apm_pyrolysis_coke_5", "steam", "water-purified")
-	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_5", "sulfur", "water-yellow-waste")
+	apm.lib.utils.recipe.ingredient.replace("apm_pyrolysis_coke_5", "steam", "angels-water-purified")
+	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_5", "sulfur", "angels-water-yellow-waste")
 	apm.lib.utils.recipe.result.mod("apm_pyrolysis_coke_5", "water-yellow-waste", 100)
 	--apm.lib.utils.technology.add.recipe_for_unlock('angels-coal-processing-2', 'apm_pyrolysis_coke_5')
 	apm.lib.utils.technology.add.recipe_for_unlock("angels-coal-cracking", "apm_pyrolysis_coke_5")
 	--apm.lib.utils.technology.add.prerequisites('angels-coal-processing-2', 'apm_coking_plant_2')
 	--apm.lib.utils.technology.add.prerequisites('angels-coal-processing-2', 'apm_fuel-4')
 
-	apm.lib.utils.recipe.remove("pellet-coke")
-	apm.lib.utils.recipe.remove("coal-crushed")
+	apm.lib.utils.recipe.remove("angels-pellet-coke")
+	apm.lib.utils.recipe.remove("angels-coal-crushed")
 
-	apm.lib.utils.recipe.result.mod("coal-cracking-1", "solid-coke", 2)
-	apm.lib.utils.recipe.result.mod("coal-cracking-2", "solid-coke", 2)
-	apm.lib.utils.recipe.result.mod("condensates-refining", "solid-coke", 1)
+	apm.lib.utils.recipe.result.mod("coal-cracking-1", "angels-solid-coke", 2)
+	apm.lib.utils.recipe.result.mod("coal-cracking-2", "angels-solid-coke", 2)
+	apm.lib.utils.recipe.result.mod("condensates-refining", "angels-solid-coke", 1)
 
 	if apm_power_compat_angel_overhaul_machine_frames then
 		apm.power.machine_frame_addition("angels-electrolyser", 3, nil, 5, nil)
@@ -406,37 +406,37 @@ if mods.angelspetrochem and apm_power_compat_angel then
 		apm.power.machine_frame_addition("angels-electrolyser-3", 3, 3, 9, 5)
 		apm.power.machine_frame_addition("angels-electrolyser-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("liquifier", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("liquifier-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("liquifier-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("liquifier-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-liquifier", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-liquifier-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-liquifier-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-liquifier-4", 3, 3, 11, 6)
 
 		apm.power.machine_frame_addition("angels-air-filter", 3, nil, 5, nil)
 		apm.power.machine_frame_addition("angels-air-filter-2", 3, 3, 7, 4)
 
-		apm.power.machine_frame_addition("separator", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("separator-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("separator-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("separator-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-separator", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-separator-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-separator-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-separator-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("gas-refinery-small", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("gas-refinery-small-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("gas-refinery-small-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("gas-refinery-small-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-gas-refinery-small", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-gas-refinery-small-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-gas-refinery-small-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-gas-refinery-small-4", 3, 3, 11, 6)
 
 		apm.power.machine_frame_addition("angels-electric-boiler", 3, nil, 5, nil)
 
-		apm.power.machine_frame_addition("steam-cracker", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("steam-cracker-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("steam-cracker-3", 3, 3, 9, 5)
-		apm.power.machine_frame_addition("steam-cracker-4", 3, 3, 11, 6)
+		apm.power.machine_frame_addition("angels-steam-cracker", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-steam-cracker-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-steam-cracker-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-steam-cracker-4", 3, 3, 11, 6)
 
-		apm.power.machine_frame_addition("gas-refinery", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("gas-refinery-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("gas-refinery-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-gas-refinery", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-gas-refinery-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-gas-refinery-3", 3, 3, 9, 5)
 
-		apm.power.machine_frame_addition("advanced-chemical-plant", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("advanced-chemical-plant-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-advanced-chemical-plant", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-advanced-chemical-plant-2", 3, 3, 7, 4)
 
 		apm.power.machine_frame_addition("angels-chemical-plant", 3, nil, 5, nil)
 		apm.power.machine_frame_addition("angels-chemical-plant-2", 3, 3, 7, 4)
@@ -448,7 +448,7 @@ end
 if mods.angelsbioprocessing and apm_power_compat_angel then
 	-- wooden board from solid-paper
 	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_wood_board")
-	local item_icon_b = apm.lib.utils.icon.get.from_item("solid-paper")
+	local item_icon_b = apm.lib.utils.icon.get.from_item("angels-solid-paper")
 	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -6, 0 })
 	local item_icon_c = { apm.lib.icons.dynamics.t3 }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
@@ -459,7 +459,7 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 			apm.lib.utils.recipe.set.always_show_made_in("wooden-board-paper", true)
 		end
 		apm.lib.utils.recipe.energy_required.mod("wooden-board-paper", 1)
-		apm.lib.utils.recipe.ingredient.mod("wooden-board-paper", "solid-paper", 6)
+		apm.lib.utils.recipe.ingredient.mod("wooden-board-paper", "angels-solid-paper", 6)
 		apm.lib.utils.recipe.result.mod("wooden-board-paper", "apm_wood_board", 3)
 		apm.lib.utils.recipe.result.mod("wooden-board-paper", "wooden-board", 0)
 		apm.lib.utils.recipe.category.change("wooden-board-paper", "apm_press")
@@ -477,7 +477,7 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 		recipe.enabled = false
 		recipe.energy_required = 1
 		recipe.ingredients = {
-			{ type = "item", name = "solid-paper", amount = 6 }
+			{ type = "item", name = "angels-solid-paper", amount = 6 }
 		}
 		recipe.results = {
 			{ type = "item", name = "apm_wood_board", amount = 3 }
@@ -488,7 +488,7 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 		recipe.always_show_made_in = apm_power_always_show_made_in
 
 		data:extend({ recipe })
-		apm.lib.utils.technology.add.recipe_for_unlock("bio-paper-1", "apm_wooden_board_from_paper")
+		apm.lib.utils.technology.add.recipe_for_unlock("angels-bio-paper-1", "apm_wooden_board_from_paper")
 	end
 
 	-- wood pellets from wood
@@ -501,7 +501,7 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 
 	-- wood pellets from cellulose
 	local item_icon_a = apm.lib.utils.icon.get.from_item("apm_wood_pellets")
-	local item_icon_b = apm.lib.utils.icon.get.from_item("cellulose-fiber")
+	local item_icon_b = apm.lib.utils.icon.get.from_item("angels-cellulose-fiber")
 	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -8, -8 })
 	local item_icon_c = { apm.lib.icons.dynamics.t1 }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
@@ -512,11 +512,11 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 	recipe.subgroup = "apm_power_wood"
 	recipe.order = "ac_b"
 	recipe.ingredients = {
-		{ type = "item", name = "cellulose-fiber", amount = 8 },
+		{ type = "item", name = "angels-cellulose-fiber", amount = 8 },
 	}
 
 	data:extend({ recipe })
-	apm.lib.utils.technology.add.recipe_for_unlock("bio-processing-brown", "apm_wood_pellets_cellulose")
+	apm.lib.utils.technology.add.recipe_for_unlock("angels-bio-processing-brown", "apm_wood_pellets_cellulose")
 
 	-- wood-sawing I
 	local item_icon_a = apm.lib.utils.icon.get.from_item("wood")
@@ -524,80 +524,80 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -8, -6 })
 	local item_icon_c = { apm.lib.icons.dynamics.t1 }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
-	apm.lib.utils.recipe.set.icons("wood-sawing-1", icons)
-	apm.lib.utils.recipe.ingredient.mod("wood-sawing-1", "solid-saw", 0)
-	apm.lib.utils.recipe.ingredient.mod("wood-sawing-1", "apm_saw_blade_iron", 1)
-	apm.lib.utils.recipe.result.mod("wood-sawing-1", "solid-saw", 0)
-	apm.lib.utils.recipe.result.mod("wood-sawing-1", "apm_saw_blade_iron_used", 1)
+	apm.lib.utils.recipe.set.icons("angels-wood-sawing-1", icons)
+	apm.lib.utils.recipe.ingredient.mod("angels-wood-sawing-1", "angels-solid-saw", 0)
+	apm.lib.utils.recipe.ingredient.mod("angels-wood-sawing-1", "apm_saw_blade_iron", 1)
+	apm.lib.utils.recipe.result.mod("angels-wood-sawing-1", "angels-solid-saw", 0)
+	apm.lib.utils.recipe.result.mod("angels-wood-sawing-1", "apm_saw_blade_iron_used", 1)
 
 	-- removing iron saw blades
-	apm.lib.utils.recipe.remove("solid-saw")
+	apm.lib.utils.recipe.remove("angels-solid-saw")
 
 	-- wood-sawing II
 	local item_icon_a = apm.lib.utils.icon.get.from_item("wood")
-	local item_icon_b = apm.lib.utils.icon.get.from_item("solid-crystal-tipped-saw")
+	local item_icon_b = apm.lib.utils.icon.get.from_item("angels-solid-crystal-tipped-saw")
 	if apm_power_compat_angel_overwrite_crystal_saw_blades then
 		item_icon_b = apm.lib.utils.icon.get.from_item("apm_saw_blade_steel")
 	end
 	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -8, -6 })
 	local item_icon_c = { apm.lib.icons.dynamics.t2 }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
-	apm.lib.utils.recipe.set.icons("wood-sawing-2", icons)
+	apm.lib.utils.recipe.set.icons("angels-wood-sawing-2", icons)
 	if apm_power_compat_angel_overwrite_crystal_saw_blades then
-		apm.lib.utils.recipe.ingredient.mod("wood-sawing-2", "solid-crystal-tipped-saw", 0)
-		apm.lib.utils.recipe.ingredient.mod("wood-sawing-2", "apm_saw_blade_steel", 1)
-		apm.lib.utils.recipe.result.mod("wood-sawing-2", "solid-crystal-tipped-saw", 0)
-		apm.lib.utils.recipe.result.mod("wood-sawing-2", "apm_saw_blade_steel_used", 1)
+		apm.lib.utils.recipe.ingredient.mod("angels-wood-sawing-2", "angels-solid-crystal-tipped-saw", 0)
+		apm.lib.utils.recipe.ingredient.mod("angels-wood-sawing-2", "apm_saw_blade_steel", 1)
+		apm.lib.utils.recipe.result.mod("angels-wood-sawing-2", "angels-solid-crystal-tipped-saw", 0)
+		apm.lib.utils.recipe.result.mod("angels-wood-sawing-2", "apm_saw_blade_steel_used", 1)
 	end
 
 	--
-	apm.lib.utils.recipe.ingredient.mod("solid-crystal-tipped-saw", "solid-saw", 0)
-	apm.lib.utils.recipe.ingredient.mod("solid-crystal-tipped-saw", "apm_saw_blade_steel", 1)
+	apm.lib.utils.recipe.ingredient.mod("angels-solid-crystal-tipped-saw", "angels-solid-saw", 0)
+	apm.lib.utils.recipe.ingredient.mod("angels-solid-crystal-tipped-saw", "apm_saw_blade_steel", 1)
 
 	-- wood-sawing III
 	local item_icon_a = apm.lib.utils.icon.get.from_item("wood")
-	local item_icon_b = apm.lib.utils.icon.get.from_item("solid-crystal-full-saw")
+	local item_icon_b = apm.lib.utils.icon.get.from_item("angels-solid-crystal-full-saw")
 	item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -8, -6 })
 	local item_icon_c = { apm.lib.icons.dynamics.t3 }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
-	apm.lib.utils.recipe.set.icons("wood-sawing-3", icons)
+	apm.lib.utils.recipe.set.icons("angels-wood-sawing-3", icons)
 
 	if apm_power_compat_angel_overwrite_crystal_saw_blades then
 		-- wood-sawing III
-		apm.lib.utils.recipe.remove("wood-sawing-3")
+		apm.lib.utils.recipe.remove("angels-wood-sawing-3")
 
 		-- removing crystal saw blades
-		apm.lib.utils.recipe.remove("solid-crystal-tipped-saw")
-		apm.lib.utils.recipe.remove("solid-crystal-full-saw")
+		apm.lib.utils.recipe.remove("angels-solid-crystal-tipped-saw")
+		apm.lib.utils.recipe.remove("angels-solid-crystal-full-saw")
 	end
 
 	if apm_power_compat_angel_overhaul_machine_frames then
-		apm.power.machine_frame_addition("algae-farm", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("algae-farm-2", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("algae-farm-3", 3, 3, 9, 5)
+		apm.power.machine_frame_addition("angels-algae-farm", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-algae-farm-2", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-algae-farm-3", 3, 3, 9, 5)
 
-		apm.power.machine_frame_addition("bio-arboretum-1", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-bio-arboretum-1", 3, nil, 5, nil)
 
-		apm.power.machine_frame_addition("bio-generator-desert-1", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("bio-generator-swamp-1", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("bio-generator-temperate-1", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-bio-generator-desert-1", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-bio-generator-swamp-1", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-bio-generator-temperate-1", 3, nil, 5, nil)
 
-		apm.power.machine_frame_addition("crop-farm", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("temperate-farm", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("desert-farm", 3, 3, 7, 4)
-		apm.power.machine_frame_addition("swamp-farm", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-crop-farm", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-temperate-farm", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-desert-farm", 3, 3, 7, 4)
+		apm.power.machine_frame_addition("angels-swamp-farm", 3, 3, 7, 4)
 
-		apm.power.machine_frame_addition("bio-press", 3, nil, 3, nil)
-		apm.power.machine_frame_addition("bio-processor", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("composter", 3, nil, 3, nil)
-		apm.power.machine_frame_addition("nutrient-extractor", 3, nil, 3, nil)
-		apm.power.machine_frame_addition("seed-extractor", 3, nil, 3, nil)
+		apm.power.machine_frame_addition("angels-bio-press", 3, nil, 3, nil)
+		apm.power.machine_frame_addition("angels-bio-processor", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-composter", 3, nil, 3, nil)
+		apm.power.machine_frame_addition("angels-nutrient-extractor", 3, nil, 3, nil)
+		apm.power.machine_frame_addition("angels-seed-extractor", 3, nil, 3, nil)
 
-		apm.power.machine_frame_addition("bio-butchery", 3, nil, 3, nil)
-		apm.power.machine_frame_addition("bio-hatchery", 3, nil, 3, nil)
-		apm.power.machine_frame_addition("bio-refugium-biter", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("bio-refugium-fish", 3, nil, 5, nil)
-		apm.power.machine_frame_addition("bio-refugium-puffer", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-bio-butchery", 3, nil, 3, nil)
+		apm.power.machine_frame_addition("angels-bio-hatchery", 3, nil, 3, nil)
+		apm.power.machine_frame_addition("angels-bio-refugium-biter", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-bio-refugium-fish", 3, nil, 5, nil)
+		apm.power.machine_frame_addition("angels-bio-refugium-puffer", 3, nil, 5, nil)
 	end
 end
 
