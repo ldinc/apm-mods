@@ -176,9 +176,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function event_on_player_created(event)
-	local player = game.players[event.player_index]
-
-	result = equipment.check_equipment_manager(player)
+	equipment.check_equipment_manager(game.players[event.player_index])
 end
 
 -- Function -------------------------------------------------------------------
