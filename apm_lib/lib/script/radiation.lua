@@ -22,6 +22,10 @@ function radiation_script.alloc_defenitions()
 
 	if not storage.radiation then storage.radiation = {} end
 
+	if not storage.radiation.players then
+		storage.radiation.players = {}
+	end
+
 	if not storage.radiation.apm_nuclear_radiation then
 		storage.radiation.apm_nuclear_radiation = true
 	end
@@ -211,7 +215,8 @@ end
 ---@param item_name string
 ---@param count integer
 local function damage_to_character_from_item(player, character, item_name, count)
-	if not player or not character then return end
+	if not player or not player.valid then return end
+	if not character or not character.valid then return end
 
 	local item_rtype = storage.items_radioactive_01774[item_name]
 	local rnd_min = 2 ^ item_rtype
@@ -230,19 +235,29 @@ local function damage_to_character_from_item(player, character, item_name, count
 	core.send_dmg_msg_to_player(player, msg)
 end
 
+
 local comparator = function(t, a, b) return t[b] < t[a] end
 
 ---@param player LuaPlayer?
 ---@param character LuaEntity?
----@param cause_damage boolean
-local function check_inventory(player, character, cause_damage)
-	if not player or not character then return end
+---@return {item_name: string, count: integer, sound: string}?
+local function check_inventory(player, character)
+	if not player or not character then return nil end
+
+	if not character.valid then
+		return nil
+	end
 
 
 	local inv = character.get_main_inventory()
+
 	if not inv then
-		return
+		return nil
 	end
+
+	local state = invalidate_radiation_state()
+
+	state.need_to_be_updated = false
 
 	for item_name, radiation_level in spairs(storage.items_radioactive_01774, comparator) do
 		---@type ItemFilter
@@ -255,31 +270,11 @@ local function check_inventory(player, character, cause_damage)
 		local count = character.get_item_count(filter)
 
 		if count > 0 then
-			local radioactive_type = "radioactive_b_"
-
-			if radiation_level <= 1 then
-				radioactive_type = "radioactive_a_"
-			elseif radiation_level == 2 then
-				radioactive_type = "radioactive_b_"
-			elseif radiation_level >= 3 then
-				radioactive_type = "radioactive_c_"
-			end
-
-			sound.create_on_character_position(radioactive_type .. tostring(math.random(3)), player)
-
-			if cause_damage == true then
-				damage_to_character_from_item(player, character, item_name, count)
-			end
-
-			if not storage.radiation.radiation_dmg_based_on_stack then
-				break
-			end
-
-			if not character.valid then
-				return
-			end
+			state.radiactive_items[item_name] = count
 		end
 	end
+
+	return state
 end
 
 -- Function -------------------------------------------------------------------
@@ -304,31 +299,81 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+
+local radiation_sounds = {
+	[0] = { "radioactive_a_1", "radioactive_a_2", "radioactive_a_3" },
+	[1] = { "radioactive_a_1", "radioactive_a_2", "radioactive_a_3" },
+	[2] = { "radioactive_b_1", "radioactive_b_2", "radioactive_b_3" },
+	[3] = { "radioactive_c_1", "radioactive_c_2", "radioactive_c_3" }
+}
+
+local function get_radiation_sound(radiation_level)
+	if radiation_level >= 3 then
+		radiation_level = 3
+	elseif radiation_level < 0 then
+		radiation_level = 0
+	end
+
+	local sounds = radiation_sounds[radiation_level] or radiation_sounds[2]
+	return sounds[math.random(3)]
+end
+
+function invalidate_radiation_state()
+	return { need_to_be_updated = true, radiactive_items = {} }
+end
+
 function radiation_script.on_tick()
 	if not storage.radiation.apm_nuclear_radiation then return end
 
 	check_item_list()
-
-	if game.tick % 240 == 37 then
-		local players = core.get_valid_players()
-
-		if not players then return end
-
-		for _, t_object in pairs(players) do
-			check_inventory(t_object.player, t_object.character, true)
-		end
-		return
-	end
 
 	if game.tick % 60 == 37 then
 		local players = core.get_valid_players()
 
 		if not players then return end
 
-		for _, t_object in pairs(players) do
-			check_inventory(t_object.player, t_object.character, false)
+		for _, obj in pairs(players) do
+			local player = obj.player
+			local character = obj.character
+
+			if not storage.radiation.players then storage.radiation.players = {} end
+
+			local state = storage.radiation.players[obj.player.index]
+
+			if not state then state = invalidate_radiation_state() end
+
+			if state.need_to_be_updated then
+				local new_state = check_inventory(player, character)
+
+				if new_state then
+					state = new_state
+				end
+
+				storage.radiation.players[obj.player.index] = state
+			end
+
+			for item_name, count in pairs(state.radiactive_items) do
+				local radiation_level = storage.items_radioactive_01774[item_name]
+
+				sound.create_on_character_position(get_radiation_sound(radiation_level), player)
+
+				damage_to_character_from_item(player, character, item_name, count)
+			end
 		end
 	end
+end
+
+--- @param player_index integer
+function radiation_script.on_player_main_inventory_changed(player_index)
+	if not storage.radiation.players then storage.radiation.players = {} end
+
+	storage.radiation.players[player_index] = invalidate_radiation_state()
+end
+
+function radiation_script.on_player_died(player_index)
+	if not storage.radiation.players then storage.radiation.players = {} end
+
+	storage.radiation.players[player_index] = invalidate_radiation_state()
 end
 
 -- Remote Interface ------------------------------------------------------------

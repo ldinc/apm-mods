@@ -81,6 +81,14 @@ local function event_mod_setting_changed(event)
 	storage.on_update()
 end
 
+local function on_player_main_inventory_changed(event)
+	radiation.on_player_main_inventory_changed(event.player_index)
+end
+
+local function on_player_died(event)
+	radiation.on_player_died(event.player_index)
+end
+
 -- Function -------------------------------------------------------------------
 --
 --
@@ -257,6 +265,9 @@ script.on_event(defines.events.on_player_armor_inventory_changed,
 		event_on_player_armor_inventory_changed(event)
 	end
 )
+
+script.on_event(defines.events.on_player_main_inventory_changed, on_player_main_inventory_changed)
+script.on_event(defines.events.on_player_died, on_player_died)
 
 script.on_nth_tick(60 * 10, function(event) on_nth_tick(event) end)
 
