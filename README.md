@@ -2,9 +2,13 @@
 
 ## Description
 
-The factorio mod set.
+This repository is a fork of [AmatorPhasma](https://mods.factorio.com/user/AmatorPhasma)'s [APM mods](https://gitlab.com/AmatorPhasma/apm_factorio).
 
-Fork for <https://mods.factorio.com/user/AmatorPhasma>
+The original project saw no updates since May 2020.
+
+Since then, I have taken over full support: maintaining the mods, adapting them to all major game redesigns (including the full port to Factorio version 2.0), and continuing their development.
+
+The core of this repository remains the forked APM mod set, but it also includes my own personal mods.
 
 ## Notes
 
