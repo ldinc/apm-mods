@@ -359,6 +359,9 @@ if mods["alloy-smelting"] then
 	require("prototypes.integrations.technologies.alloy-smelting")
 end
 
+if mods["wood-military"] then
+	require("prototypes.integrations.technologies.wood-military")
+end
 ---
 --- [/SafTheLamb]
 

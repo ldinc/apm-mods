@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_power/prototypes/integrations/overwrites.lua'
+local self = "apm_power/prototypes/integrations/overwrites.lua"
 
 APM_LOG_HEADER(self)
 
@@ -26,34 +26,34 @@ local apm_power_compat_linver = settings.startup["apm_power_compat_linver"].valu
 local apm_power_compat_realistic_reactors = settings.startup["apm_power_compat_realistic_reactors"].value
 local apm_power_compat_reverse_factory = settings.startup["apm_power_compat_reverse_factory"].value
 
-APM_LOG_SETTINGS(self, 'apm_power_overhaul_machine_frames', apm_power_overhaul_machine_frames)
-APM_LOG_SETTINGS(self, 'apm_power_steam_assembler_craftin_with_fluids', apm_power_steam_assembler_craftin_with_fluids)
-APM_LOG_SETTINGS(self, 'apm_power_compat_bob', apm_power_compat_bob)
-APM_LOG_SETTINGS(self, 'apm_power_compat_bob_overhaul_machine_frames', apm_power_compat_bob_overhaul_machine_frames)
-APM_LOG_SETTINGS(self, 'apm_power_compat_angel', apm_power_compat_angel)
-APM_LOG_SETTINGS(self, 'apm_power_compat_angel_overhaul_machine_frames', apm_power_compat_angel_overhaul_machine_frames)
-APM_LOG_SETTINGS(self, 'apm_power_compat_sctm', apm_power_compat_sctm)
-APM_LOG_SETTINGS(self, 'apm_power_compat_sct_overhaul_machine_frames', apm_power_compat_sct_overhaul_machine_frames)
-APM_LOG_SETTINGS(self, 'apm_power_compat_earendel', apm_power_compat_earendel)
-APM_LOG_SETTINGS(self, 'apm_power_compat_bio_industries', apm_power_compat_bio_industries)
-APM_LOG_SETTINGS(self, 'apm_power_compat_expensivelandfillrecipe', apm_power_compat_expensivelandfillrecipe)
-APM_LOG_SETTINGS(self, 'apm_power_compat_kingarthur', apm_power_compat_kingarthur)
-APM_LOG_SETTINGS(self, 'apm_power_compat_mferrari', apm_power_compat_mferrari)
-APM_LOG_SETTINGS(self, 'apm_power_compat_linver', apm_power_compat_linver)
-APM_LOG_SETTINGS(self, 'apm_power_compat_realistic_reactors', apm_power_compat_realistic_reactors)
-APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reverse_factory)
+APM_LOG_SETTINGS(self, "apm_power_overhaul_machine_frames", apm_power_overhaul_machine_frames)
+APM_LOG_SETTINGS(self, "apm_power_steam_assembler_craftin_with_fluids", apm_power_steam_assembler_craftin_with_fluids)
+APM_LOG_SETTINGS(self, "apm_power_compat_bob", apm_power_compat_bob)
+APM_LOG_SETTINGS(self, "apm_power_compat_bob_overhaul_machine_frames", apm_power_compat_bob_overhaul_machine_frames)
+APM_LOG_SETTINGS(self, "apm_power_compat_angel", apm_power_compat_angel)
+APM_LOG_SETTINGS(self, "apm_power_compat_angel_overhaul_machine_frames", apm_power_compat_angel_overhaul_machine_frames)
+APM_LOG_SETTINGS(self, "apm_power_compat_sctm", apm_power_compat_sctm)
+APM_LOG_SETTINGS(self, "apm_power_compat_sct_overhaul_machine_frames", apm_power_compat_sct_overhaul_machine_frames)
+APM_LOG_SETTINGS(self, "apm_power_compat_earendel", apm_power_compat_earendel)
+APM_LOG_SETTINGS(self, "apm_power_compat_bio_industries", apm_power_compat_bio_industries)
+APM_LOG_SETTINGS(self, "apm_power_compat_expensivelandfillrecipe", apm_power_compat_expensivelandfillrecipe)
+APM_LOG_SETTINGS(self, "apm_power_compat_kingarthur", apm_power_compat_kingarthur)
+APM_LOG_SETTINGS(self, "apm_power_compat_mferrari", apm_power_compat_mferrari)
+APM_LOG_SETTINGS(self, "apm_power_compat_linver", apm_power_compat_linver)
+APM_LOG_SETTINGS(self, "apm_power_compat_realistic_reactors", apm_power_compat_realistic_reactors)
+APM_LOG_SETTINGS(self, "apm_power_compat_reverse_factory", apm_power_compat_reverse_factory)
 
 -- kingarthur -----------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
 if mods.PyCoalTBaA and apm_power_compat_kingarthur then
-	apm.lib.utils.item.mod.burnt_result('raw-coal', 'apm_generic_ash')
-	apm.lib.utils.item.mod.burnt_result('coarse-coal', 'apm_generic_ash')
-	apm.lib.utils.item.mod.burnt_result('crushed-coal', 'apm_generic_ash')
-	apm.lib.utils.item.mod.burnt_result('coal-dust', 'apm_generic_ash')
-	apm.lib.utils.item.mod.burnt_result('raw-fiber', 'apm_generic_ash')
-	apm.lib.utils.item.mod.burnt_result('coal-briquette', 'apm_generic_ash')
+	apm.lib.utils.item.mod.burnt_result("raw-coal", "apm_generic_ash")
+	apm.lib.utils.item.mod.burnt_result("coarse-coal", "apm_generic_ash")
+	apm.lib.utils.item.mod.burnt_result("crushed-coal", "apm_generic_ash")
+	apm.lib.utils.item.mod.burnt_result("coal-dust", "apm_generic_ash")
+	apm.lib.utils.item.mod.burnt_result("raw-fiber", "apm_generic_ash")
+	apm.lib.utils.item.mod.burnt_result("coal-briquette", "apm_generic_ash")
 end
 
 if mods["deadlock-beltboxes-loaders"] then
@@ -74,3 +74,12 @@ if mods["deadlock-beltboxes-loaders"] then
 		end
 	end
 end
+
+-- if mods["wood-military"] and mods["bobtech"] then
+-- 	if apm.lib.utils.technology.has.science_pack("heavy-armor", "logistic-science-pack") then
+-- 		log(serpent.block(data.raw["technology"]["heavy"]))
+-- 		a()
+-- 	end
+-- 	b()
+-- 	apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("heavy-armor")
+-- end

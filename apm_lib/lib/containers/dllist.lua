@@ -1,211 +1,235 @@
 ---@alias K any
 ---@alias V any
 
----@class DLLNode : table<K, V>
----@field id K
----@field value V
----@field prev DLLNode|nil
----@field next DLLNode|nil
-
 ---@class DLL : table<K, V>
----@field head DLLNode|nil
----@field tail DLLNode|nil
----@field current DLLNode|nil
----@field nodes table<K, DLLNode>
----@field count integer
+---@field values V[]                  -- Packed array of values; indices 1..count are live
+---@field ids K[]                     -- Parallel array of ids aligned with `values`
+---@field index_of table<K, integer>  -- Reverse map: id -> current array index
+---@field cursor integer              -- Round-robin iteration position (0 means "before head")
+---@field count integer               -- Number of live items (== #values while count > 0)
 
----Create a new doubly linked list
+---Create a new queue.
+---
+---Despite the legacy class name `DLL`, the internal representation is a
+---packed array with swap-pop removal and a parallel id array. Iteration
+---order is insertion order; `get_next_loop` walks the array cyclically.
+---All public operations are amortised O(1) and allocate no wrapper nodes,
+---which keeps GC pressure low for large queues held in `storage`.
 ---@generic K, V
 ---@return DLL<K, V>
 local function new()
 	return {
-		head = nil,
-		tail = nil,
-		current = nil,
-		nodes = {},
-		count = 0 -- Initialize count
+		values   = {},
+		ids      = {},
+		index_of = {},
+		cursor   = 0,
+		count    = 0,
 	}
 end
 
----Reset the list to empty state
+---Reset the queue to an empty state.
 ---@generic K, V
----@param self DLL<K,V>
+---@param self DLL<K, V>
 ---@return nil
 local function reset(self)
-	self.head = nil
-	self.tail = nil
-	self.current = nil
-	self.nodes = {}
-	self.count = 0
+	self.values   = {}
+	self.ids      = {}
+	self.index_of = {}
+	self.cursor   = 0
+	self.count    = 0
 end
 
----Add a value with unique ID to the list
+---Add a value with a unique id to the end of the queue.
+---Returns false if the id is already present.
 ---@generic K, V
----@param self DLL<K,V>
+---@param self DLL<K, V>
 ---@param id K
 ---@param value V
----@return boolean
+---@return boolean added
 local function add(self, id, value)
-	if self.nodes[id] then
+	if self.index_of[id] then
 		return false
 	end
 
-	---@type DLLNode
-	local new_node = {
-		id = id,
-		value = value,
-		prev = self.tail,
-		next = nil
-	}
+	local n           = self.count + 1
+	self.values[n]    = value
+	self.ids[n]       = id
+	self.index_of[id] = n
+	self.count        = n
 
-	self.nodes[id] = new_node
-	self.count = self.count + 1 -- Increment count
-
-	if not self.head then
-		self.head = new_node
-		self.current = new_node
-	else
-		self.tail.next = new_node
-	end
-
-	self.tail = new_node
 	return true
 end
 
----Remove a value by ID
+---Remove a value by id. O(1) via swap-pop with the tail.
+---The round-robin cursor is fixed up so that:
+---  * if the cursor was on the removed item, the next `get_next_loop`
+---    call lands on the item that moved into the freed slot (no skip);
+---  * if the cursor was on the tail item (which moved), it follows it.
+---Returns false if the id is not in the queue.
 ---@generic K, V
----@param self DLL<K,V>
+---@param self DLL<K, V>
 ---@param id K
----@return boolean
+---@return boolean removed
 local function remove(self, id)
-	local node = self.nodes[id]
-	if not node then return false end
+	local index_of = self.index_of
+	local i        = index_of[id]
+	if not i then return false end
 
-	if node.prev then
-		node.prev.next = node.next
+	local n      = self.count
+	local values = self.values
+	local ids    = self.ids
+	local cursor = self.cursor
+
+	if i ~= n then
+		-- Move the tail element into slot `i`.
+		local last_id     = ids[n]
+		values[i]         = values[n]
+		ids[i]            = last_id
+		index_of[last_id] = i
+
+		-- Cursor fixup.
+		if cursor == n then
+			-- The item the cursor pointed at moved from `n` to `i`.
+			self.cursor = i
+		elseif cursor == i then
+			-- We removed the item at the cursor. Step back so the next
+			-- get_next_loop advances to `i` (the relocated tail item),
+			-- which effectively takes the removed item's turn.
+			self.cursor = i - 1
+		end
 	else
-		self.head = node.next
+		-- Removing the tail slot itself.
+		if cursor == n then
+			self.cursor = n - 1
+		end
 	end
 
-	if node.next then
-		node.next.prev = node.prev
-	else
-		self.tail = node.prev
-	end
-
-	if self.current == node then
-		self.current = node.next or node.prev or nil
-	end
-
-	self.nodes[id] = nil
-	self.count = self.count - 1 -- Decrement count
-
-	node.next = nil
-	node.prev = nil
-	node.value = nil
+	values[n]    = nil
+	ids[n]       = nil
+	index_of[id] = nil
+	self.count   = n - 1
 
 	return true
 end
 
----Find a value by ID
+---Find a value by id. The second return value is true iff found.
 ---@generic K, V
----@param self DLL<K,V>
+---@param self DLL<K, V>
 ---@param id K
----@return V|nil, boolean
+---@return V|nil value
+---@return boolean found
 local function find(self, id)
-	if self.nodes[id] then
-		return self.nodes[id].value, true
+	local i = self.index_of[id]
+	if i then
+		return self.values[i], true
 	end
 
 	return nil, false
 end
 
----Get current node's value and ID
+---Get the value and id at the current cursor position without moving it.
+---Returns nil, nil if the cursor is not on a valid slot (empty queue or
+---after a removal that left the cursor at 0).
 ---@generic K, V
----@param self DLL<K,V>
----@return V|nil, K|nil
+---@param self DLL<K, V>
+---@return V|nil value
+---@return K|nil id
 local function get_current(self)
-	if not self.current then return nil, nil end
+	local c = self.cursor
+	if c < 1 or c > self.count then
+		return nil, nil
+	end
 
-	return self.current.value, self.current.id
+	return self.values[c], self.ids[c]
 end
 
----Move to and get next node (linear)
+---Advance the cursor and return the next value/id. Returns nil, nil at
+---the end of the queue (does not wrap). Use `get_next_loop` for cyclic
+---iteration.
 ---@generic K, V
----@param self DLL<K,V>
----@return V|nil, K|nil
+---@param self DLL<K, V>
+---@return V|nil value
+---@return K|nil id
 local function get_next(self)
-	if not self.current or not self.current.next then
+	local c = self.cursor + 1
+	if c > self.count then
 		return nil, nil
 	end
 
-	self.current = self.current.next
-
-	return self.current.value, self.current.id
+	self.cursor = c
+	return self.values[c], self.ids[c]
 end
 
----Move to and get next node with loop behavior
+---Advance the cursor with wrap-around. Returns nil, nil only when the
+---queue is empty.
 ---@generic K, V
----@param self DLL<K,V>
----@return V|nil, K|nil
+---@param self DLL<K, V>
+---@return V|nil value
+---@return K|nil id
 local function get_next_loop(self)
-	if not self.current then
+	local n = self.count
+	if n == 0 then
 		return nil, nil
 	end
 
-	if self.current.next then
-		self.current = self.current.next
-	else
-		self.current = self.head -- Wrap to head when at tail
+	local c = self.cursor + 1
+	if c > n then c = 1 end
+
+	self.cursor = c
+	return self.values[c], self.ids[c]
+end
+
+---Set the cursor to the head and return its value/id.
+---@generic K, V
+---@param self DLL<K, V>
+---@return V|nil value
+---@return K|nil id
+local function get_head(self)
+	if self.count == 0 then
+		self.cursor = 0
+		return nil, nil
 	end
 
-	return self.current.value, self.current.id
+	self.cursor = 1
+	return self.values[1], self.ids[1]
 end
 
----Get head node's value and ID
+---Set the cursor to the tail and return its value/id.
 ---@generic K, V
----@param self DLL<K,V>
----@return V|nil, K|nil
-local function get_head(self)
-	self.current = self.head
-
-	if not self.head then return nil, nil end
-
-	return self.head.value, self.head.id
-end
-
----Get tail node's value and ID
----@generic K, V
----@param self DLL<K,V>
----@return V|nil, K|nil
+---@param self DLL<K, V>
+---@return V|nil value
+---@return K|nil id
 local function get_tail(self)
-	self.current = self.tail
+	local n = self.count
+	if n == 0 then
+		self.cursor = 0
+		return nil, nil
+	end
 
-	if not self.tail then return nil, nil end
-
-	return self.tail.value, self.tail.id
+	self.cursor = n
+	return self.values[n], self.ids[n]
 end
 
----Get the current number of items in the list
+---Number of items currently in the queue.
 ---@generic K, V
----@param self DLL<K,V>
+---@param self DLL<K, V>
 ---@return integer
 local function length(self)
 	return self.count
 end
 
 local dllist = {
-	new = new,
-	reset = reset,
-	add = add,
-	remove = remove,
-	find = find,
-	get_current = get_current,
-	get_next = get_next,
+	new           = new,
+	reset         = reset,
+	add           = add,
+	remove        = remove,
+	find          = find,
+	get_current   = get_current,
+	get_next      = get_next,
 	get_next_loop = get_next_loop,
-	get_head = get_head,
-	get_tail = get_tail,
-	length = length
+	get_head      = get_head,
+	get_tail      = get_tail,
+	length        = length,
 }
 
 return dllist

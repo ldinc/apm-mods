@@ -1,10 +1,15 @@
 require("lib.features")
-local dllist = require("lib.containers.dllist")
+local dllist          = require("lib.containers.dllist")
 ---@diagnostic disable-next-line: different-requires
-local strings = require("lib.containers.strings")
+local strings         = require("lib.containers.strings")
 
 local inserter_script = {}
 
+local scratch_leech   = { name = "", count = 0, quality = nil }
+local scratch_chain   = { name = "", count = 0 }
+local scratch_fuel    = { name = "", count = 1, quality = nil }
+local scratch_ash     = { name = "apm_generic_ash", count = 0 }
+local scratch_work    = { name = "", count = 0, quality = nil }
 
 ---@class QueueItem
 ---@field id integer
@@ -17,29 +22,57 @@ local inserter_script = {}
 function inserter_script.alloc_defenitions()
 	if not storage.inserters then storage.inserters = {} end
 
-	if not storage.inserters.queue then
+	local q = storage.inserters.queue
+	if not q or q.values == nil or q.nodes ~= nil or q.head ~= nil then
 		---@type DLL<integer, QueueItem>
 		storage.inserters.queue = dllist.new()
 	end
 
 	if not storage.inserters.settings then
-		---@type {
-		---	fn_enabled: boolean,
-		---	batch_size: integer,
-		---	valid_targets: table<string, boolean>,
-		---	valid_targets_string: string[],
-		---	ash_chaining: boolean,
-		---	ash_size: integer,
-		---}
 		storage.inserters.settings = {
-			fn_enabled = false,
-			batch_size = 15,
-			valid_targets = {},
+			fn_enabled           = false,
+			batch_size           = 15,
+			valid_targets        = {},
 			valid_targets_string = {},
-			ash_chaining = true,
-			ash_size = 100,
+			ash_chaining         = true,
+			ash_size             = 100,
 		}
 	end
+
+	-- Per-force bonus cache. Keyed by force.index.
+	-- Populated lazily in calc_item_count and refreshed by force events.
+	if not storage.inserters.force_bonus then
+		---@type table<integer, { stack: integer, bulk: integer }>
+		storage.inserters.force_bonus = {}
+	end
+end
+
+--- Refresh the cached inserter bonuses for a single force.
+--- Called from force-level events (research finished, force reset, etc.).
+---@param force LuaForce
+local function refresh_force_bonus(force)
+	storage.inserters.force_bonus[force.index] = {
+		stack = force.inserter_stack_size_bonus,
+		bulk  = force.bulk_inserter_capacity_bonus,
+	}
+end
+
+--- Read the cached bonuses for a force, populating the cache on first miss.
+--- This is the hot-path accessor called from calc_item_count.
+---@param force LuaForce
+---@return integer stack_bonus
+---@return integer bulk_bonus
+local function get_force_bonus(force)
+	local cache = storage.inserters.force_bonus
+	local entry = cache[force.index]
+	if not entry then
+		entry = {
+			stack = force.inserter_stack_size_bonus,
+			bulk  = force.bulk_inserter_capacity_bonus,
+		}
+		cache[force.index] = entry
+	end
+	return entry.stack, entry.bulk
 end
 
 -- Function -------------------------------------------------------------------
@@ -47,36 +80,80 @@ end
 -- return: true for withlist, return false for blacklist
 -- ----------------------------------------------------------------------------
 
----@param entity LuaEntity
----@return boolean
-local function get_filter_mode(entity)
-	if entity.inserter_filter_mode == "blacklist" then
-		return false
-	end
+-- Scratch table for the precomputed filter decision. Reused across calls.
+-- Fields:
+--   names      : table<string, true> | nil   -- set of filter item names, nil if no slots
+--   mode_allow : boolean                      -- true = whitelist, false = blacklist
+--   ash_in_set : boolean                      -- fast path used by the burnt-result loop
+local scratch_filter_state = { names = nil, mode_allow = true, ash_in_set = false }
 
-	return true
-end
-
---- This function checks filter state
+--- Build (or refresh) the filter decision for an inserter. Call once per
+--- visit, then query with `filter_passes()`.
+---
+--- Allocates at most one table (`names`), and only when the inserter actually
+--- has filter slots configured. The same `scratch_filter_state` is reused
+--- every call; the caller must consume the result before the next call.
 ---@param entity LuaEntity
----@param item_name string
----@return boolean
-local function check_filter(entity, item_name)
+---@return table   -- the `scratch_filter_state` table, for chaining
+local function build_filter_state(entity)
 	local filter_slot_count = entity.filter_slot_count
 
+	scratch_filter_state.mode_allow = (entity.inserter_filter_mode ~= "blacklist")
+	scratch_filter_state.ash_in_set = false
+
 	if filter_slot_count == 0 then
-		return true
+		scratch_filter_state.names = nil
+		return scratch_filter_state
 	end
 
-	local return_value = get_filter_mode(entity)
+	-- Reuse the names table across calls instead of reallocating.
+	local names = scratch_filter_state.names
+	if names then
+		for k in pairs(names) do names[k] = nil end
+	else
+		names = {}
+		scratch_filter_state.names = names
+	end
 
 	for i = 1, filter_slot_count do
-		if entity.get_filter(i) == item_name then
-			return return_value
+		local flt = entity.get_filter(i)
+		if flt then
+			names[flt.name] = true
+			if flt.name == "apm_generic_ash" and flt.comparator == "=" then
+				scratch_filter_state.ash_in_set = true
+			end
 		end
 	end
 
-	return not return_value
+	return scratch_filter_state
+end
+
+--- Query the precomputed filter: does `item_name` pass this inserter's filter?
+---@param item_name string
+---@return boolean
+local function filter_passes(item_name)
+	local names = scratch_filter_state.names
+	if not names then
+		-- No filter slots configured -> everything passes.
+		return true
+	end
+	local in_set = names[item_name] == true
+	return in_set == scratch_filter_state.mode_allow
+end
+
+local force_bonus_cache = setmetatable({}, { __mode = "v" })
+
+local function get_force_bonus(force, bulk)
+	local entry = force_bonus_cache[force.name]
+	if not entry then
+		entry = { force = force }
+		force_bonus_cache[force.name] = entry
+	end
+	if bulk then
+		return force.bulk_inserter_capacity_bonus
+	else
+		return force.inserter_stack_size_bonus
+	end
 end
 
 ---@param want_pickup_item_count integer
@@ -85,29 +162,21 @@ end
 local function calc_item_count(want_pickup_item_count, t_object)
 	if want_pickup_item_count == 1 then return 1 end
 
-	local inserter_stack_bonus = 0
-	if t_object.bulk then
-		-- is stack inserter
-		inserter_stack_bonus = t_object.entity.force.bulk_inserter_capacity_bonus
+	local entity = t_object.entity
+	local stack_override = entity.inserter_stack_size_override
+
+	local possible_stack_size
+	if stack_override > 0 then
+		possible_stack_size = stack_override
 	else
-		-- is normal inserter
-		inserter_stack_bonus = t_object.entity.force.inserter_stack_size_bonus
-	end
-
-	local possible_stack_size = 1 + inserter_stack_bonus
-	local stack_size_override = t_object.entity.inserter_stack_size_override
-
-	if stack_size_override > 0 then
-		possible_stack_size = stack_size_override
+		-- One `.force` read (unavoidable), then cached bonus lookup.
+		local stack_bonus, bulk_bonus = get_force_bonus(entity.force)
+		possible_stack_size = 1 + (t_object.bulk and bulk_bonus or stack_bonus)
 	end
 
 	if want_pickup_item_count > possible_stack_size then
-		-- pickup target more items then the possible stack size
-		want_pickup_item_count = possible_stack_size
-
-		return want_pickup_item_count
+		return possible_stack_size
 	end
-
 	return want_pickup_item_count
 end
 
@@ -176,22 +245,17 @@ end
 ---@return boolean
 local function burner_inserter_leech(entity, pickup_target, drop_target)
 	local target_inventory = get_a_fuel_inventory(pickup_target, drop_target)
-	if not target_inventory then return false end
+	if not target_inventory or target_inventory.is_empty() then return false end
 
+	-- Look at slot 1 directly instead of building a full contents table.
+	local slot = target_inventory[1]
+	if not slot.valid_for_read or slot.count < 2 then return false end
 
-	local target_inventory_contents = target_inventory.get_contents()
+	scratch_leech.name    = slot.name
+	scratch_leech.count   = math.min(slot.count - 1, 5)
+	scratch_leech.quality = slot.quality
 
-	for _, item in ipairs(target_inventory_contents) do
-		if item.count >= 2 then
-			local stack_size = math.min(item.count - 1, 5)
-			---@type ItemStackDefinition
-			local item_stack = { name = item.name, count = stack_size, quality = item.quality }
-
-			return transfer_leeching(entity, target_inventory, item_stack)
-		end
-
-		return false
-	end
+	return transfer_leeching(entity, target_inventory, scratch_leech)
 end
 
 --- chain fuel from pickup_target to drop_target
@@ -200,47 +264,46 @@ end
 ---@param drop_target LuaEntity
 ---@return boolean
 local function inserter_chain_fuel(t_object, pickup_inventory, drop_target)
+	if pickup_inventory.is_empty() then return false end
+
 	local pickup_inventory_contents = pickup_inventory.get_contents()
 
 	for _, item in ipairs(pickup_inventory_contents) do
-		local stack_size = calc_item_count((item.count), t_object)
-		local item_stack = { name = item.name, count = stack_size }
+		scratch_chain.name  = item.name
+		scratch_chain.count = calc_item_count(item.count, t_object)
 
-		if drop_target.can_insert(item_stack) then
-			return transfer_leeching(t_object.entity, pickup_inventory, item_stack)
+		if drop_target.can_insert(scratch_chain) then
+			return transfer_leeching(t_object.entity, pickup_inventory, scratch_chain)
 		end
 
 		return false
 	end
+
+	return false
 end
 
 ---@param t_object QueueItem
 ---@param inventory LuaInventory?
 ---@return ItemStackDefinition?
 local function inventory_get_fuel(t_object, inventory)
-	if (not inventory or not t_object.fuel_inventory) then
-		return nil
-	end
+	if not inventory or not t_object.fuel_inventory then return nil end
+	if inventory.is_empty() then return nil end
 
-	if (not t_object.entity.burner) then
-		return
-	end
-
-	local fuel_categories = t_object.entity.burner.fuel_categories
+	local burner = t_object.entity.burner
+	if not burner then return nil end
+	local fuel_categories = burner.fuel_categories
 
 	local contents = inventory.get_contents()
 
 	for _, content in ipairs(contents) do
 		local item = prototypes.item[content.name]
+		if item and item.fuel_category and fuel_categories[item.fuel_category] then
+			scratch_fuel.name    = item.name
+			scratch_fuel.count   = 1
+			scratch_fuel.quality = content.quality
 
-		if item and item.fuel_category then
-			if fuel_categories[item.fuel_category] then
-				---@type ItemStackDefinition
-				local v = { name = item.name, count = 1, quality = content.quality }
-
-				inventory.remove(v)
-				return v
-			end
+			inventory.remove(scratch_fuel)
+			return scratch_fuel
 		end
 	end
 
@@ -249,29 +312,27 @@ end
 
 ---@param t_object QueueItem
 ---@param pickup_target LuaEntity?
+---@param t_object QueueItem
+---@param pickup_target LuaEntity?
 local function steal_fuel_to_inserter(t_object, pickup_target)
-	---TODO: steal if has from arm helded fuel, and else check inventory from pickup
-	---TODO: optimize maybe
-	if (not t_object or not pickup_target) then
-		return
+	if not t_object or not pickup_target then return end
+
+	-- The cached fuel_inventory exists iff the inserter is a burner,
+	-- and it IS the burner's inventory — so we can skip reading
+	-- `entity.burner` and `entity.burner.inventory` entirely.
+	local fuel_inventory = t_object.fuel_inventory
+	if not fuel_inventory then return end
+
+	-- Try the pickup target's fuel inventory first (e.g. another burner machine).
+	local fuel = inventory_get_fuel(t_object, get_a_fuel_inventory(pickup_target))
+
+	-- Fall back to the pickup target's main chest inventory.
+	if not fuel then
+		fuel = inventory_get_fuel(t_object, pickup_target.get_inventory(defines.inventory.chest))
 	end
 
-	if (not t_object.entity.burner) then
-		return
-	end
-
-	local fuel_inventory = get_a_fuel_inventory(pickup_target)
-
-	local fuel = inventory_get_fuel(t_object, fuel_inventory)
-
-	if (not fuel) then
-		local inventory = pickup_target.get_inventory(defines.inventory.chest)
-
-		fuel = inventory_get_fuel(t_object, inventory)
-	end
-
-	if (fuel) then
-		t_object.entity.burner.inventory.insert(fuel)
+	if fuel then
+		fuel_inventory.insert(fuel)
 	end
 end
 
@@ -280,29 +341,21 @@ end
 local function try_transfer_ash_from_to(from, to)
 	if not from or not to then return end
 
-	if not to.burner or not from.burner then return end
+	local to_burner   = to.burner
+	local from_burner = from.burner
+	if not to_burner or not from_burner then return end
+	if not to_burner.fuel_categories["chemical"] then return end
 
-	if not to.burner.fuel_categories["chemical"] then return end
+	local to_brr   = to_burner.burnt_result_inventory
+	local from_brr = from_burner.burnt_result_inventory
+	if not from_brr.is_full() or to_brr.is_full() then return end
 
-	if
-			not from.burner.burnt_result_inventory.is_full()
-			or
-			to.burner.burnt_result_inventory.is_full()
-	then
-		return
-	end
-
-	---@type ItemStackDefinition
-	local stack = { name = "apm_generic_ash", count = apm.lib.features.stack_size.ash }
-
-	local can_be_inserted = to.burner.burnt_result_inventory.get_insertable_count("apm_generic_ash")
-
+	local can_be_inserted = to_brr.get_insertable_count("apm_generic_ash")
 	if can_be_inserted >= storage.inserters.settings.ash_size then
-		local added = to.burner.burnt_result_inventory.insert(stack)
-
-		stack.count = added
-
-		from.burner.burnt_result_inventory.remove(stack)
+		scratch_ash.count = apm.lib.features.stack_size.ash
+		local added = to_brr.insert(scratch_ash)
+		scratch_ash.count = added
+		from_brr.remove(scratch_ash)
 	end
 end
 
@@ -345,94 +398,69 @@ end
 ---@param pickup_target LuaEntity?
 ---@param drop_target LuaEntity?
 local function inserter_work(tick, t_object, pickup_target, drop_target)
-	-- -------------------------------------------------------------------------------------
-	-- This part is for the fuel leeching
-	-- -------------------------------------------------------------------------------------
+	local entity = t_object.entity
 
-	if t_object.entity.status == defines.entity_status.no_fuel then
+	-- Fuel leeching --------------------------------------------------------
+	if entity.status == defines.entity_status.no_fuel then
 		steal_fuel_to_inserter(t_object, pickup_target)
 	end
-
 
 	try_transfer_ash(tick, t_object, pickup_target, drop_target)
 
 	if t_object.fuel_inventory and t_object.fuel_inventory.get_item_count() <= 0 then
-		if burner_inserter_leech(t_object.entity, pickup_target, drop_target) then
+		if burner_inserter_leech(entity, pickup_target, drop_target) then
 			return
 		end
 	end
 
-	-- we can simply return here if there is no pickup_target
 	if not pickup_target then return end
 
-	-- -------------------------------------------------------------------------------------
-	-- This part is for the fuel chain
-	-- -------------------------------------------------------------------------------------
-	if drop_target and pickup_target then
+	-- Fuel chain -----------------------------------------------------------
+	if drop_target then
 		local pickup_inventory = pickup_target.get_fuel_inventory()
-
 		if pickup_inventory then
 			local drop_inventory = drop_target.get_fuel_inventory()
-
-			if drop_inventory then
-				if pickup_inventory.get_item_count() >= 5 then
-					if drop_inventory.get_item_count() < 5 then
-						if inserter_chain_fuel(t_object, pickup_inventory, drop_target) then
-							return
-						end
-					end
+			if drop_inventory
+					and pickup_inventory.get_item_count() >= 5
+					and drop_inventory.get_item_count() < 5
+			then
+				if inserter_chain_fuel(t_object, pickup_inventory, drop_target) then
+					return
 				end
 			end
 		end
 	end
 
-	-- -------------------------------------------------------------------------------------
-	-- This part is for clearing the burned fuel inventory
-	-- -------------------------------------------------------------------------------------
+	-- Burnt-result clearing ------------------------------------------------
+	local burnt_inv = pickup_target.get_burnt_result_inventory()
+	if not burnt_inv or burnt_inv.is_empty() then return end
 
-	local pickup_target_burnt_result_inventory = pickup_target.get_burnt_result_inventory()
+	-- Precompute the filter decision once for this inserter/tick.
+	local state           = build_filter_state(entity)
 
-	if not pickup_target_burnt_result_inventory then
-		return
-	end
+	-- Ash is specifically blacklisted iff it's in the filter set AND the
+	-- inserter is in blacklist mode.
+	local ash_blacklisted = state.ash_in_set and not state.mode_allow
 
-	if pickup_target_burnt_result_inventory.is_empty() then
-		return
-	end
+	local contents        = burnt_inv.get_contents()
+	local held_stack      = entity.held_stack
 
+	for _, item in ipairs(contents) do
+		local name = item.name
+		if item.count >= 1 and filter_passes(name) then
+			scratch_work.name    = name
+			scratch_work.count   = calc_item_count(item.count, t_object)
+			scratch_work.quality = item.quality
 
-	local pickup_target_inventory_contents = pickup_target_burnt_result_inventory.get_contents()
-
-	local entity = t_object.entity
-
-	local blacklisted = {}
-
-	-- ignore ash if it was blacklisted
-	if entity.inserter_filter_mode then
-		local count = entity.filter_slot_count
-
-		for i = 1, count, 1 do
-			local flt = entity.get_filter(i)
-
-			if flt and entity.inserter_filter_mode == "blacklist" and flt.comparator == "=" and flt.name == "apm_generic_ash" then
-				blacklisted[flt.name] = true
-			end
-		end
-	end
-
-	for _, item in ipairs(pickup_target_inventory_contents) do
-		if item.count >= 1 and check_filter(t_object.entity, item.name) then
-			local stack_size = calc_item_count(item.count, t_object)
-			---@type ItemStackDefinition
-			local item_stack = { name = item.name, count = stack_size, quality = item.quality }
-
-			if check_drop_target(drop_target, item_stack) then
-				if not blacklisted[item.name] and t_object.entity.held_stack.transfer_stack(item_stack) then
-					pickup_target_burnt_result_inventory.remove(item_stack)
+			if check_drop_target(drop_target, scratch_work) then
+				local is_ash = (name == "apm_generic_ash")
+				if not (ash_blacklisted and is_ash)
+						and held_stack.transfer_stack(scratch_work)
+				then
+					burnt_inv.remove(scratch_work)
 				end
 			end
 		end
-
 		return
 	end
 end
@@ -594,71 +622,45 @@ end
 local function get_next_inserter()
 	local t_object, _ = dllist.get_next_loop(storage.inserters.queue)
 
-	if not t_object then
-		return nil
-	end
+	if not t_object then return nil end
 
-	if not t_object.entity or not t_object.entity.valid then
+	local entity = t_object.entity
+	if not entity or not entity.valid then
 		remove_inserter(t_object)
-
 		return nil
 	end
 
-	-- --------------------------------------------------------------
-	-- if the inserter hand is not in place, we don't need to check anything.
-	local px = t_object.entity.pickup_position.x
-	local hx = t_object.entity.held_stack_position.x
-	local py = t_object.entity.pickup_position.y
-	local hy = t_object.entity.held_stack_position.y
+	-- Read each position table exactly once.
+	local pickup_pos = entity.pickup_position
+	local held_pos   = entity.held_stack_position
+	local dx         = pickup_pos.x - held_pos.x
+	local dy         = pickup_pos.y - held_pos.y
 
-	-- if (px ~= hx) or  (py ~= hy) then <- this is not bobinserters proofed only x*90° have exact pickup_position == held_stack_position
-	if (px > hx + 0.01 or px < hx - 0.01) or (py > hy + 0.01 or py < hy - 0.01) then
-		if (
-					(t_object.entity.status ~= defines.entity_status.no_fuel)
-				-- TODO: uncomment if want to drop ash from out of burnt result inserter into storage/on belt
-				-- and
-				-- (t_object.entity.status ~= defines.entity_status.full_burnt_result_output)
-				) then
+	if dx > 0.01 or dx < -0.01 or dy > 0.01 or dy < -0.01 then
+		if entity.status ~= defines.entity_status.no_fuel then
 			return nil
 		end
-
-		-- return nil
 	end
-	-- --------------------------------------------------------------
 
-	-- --------------------------------------------------------------
-	-- debug lines for positions
-	-- local entity = t_object.entity
-	-- game.print('Positions:' .. '\npx: ' ..tostring(entity.pickup_position.x).. '\nhx: ' ..tostring(entity.held_stack_position.x).. '\npy: ' ..tostring(entity.pickup_position.y).. '\nhy: ' ..tostring(entity.held_stack_position.y))
-	-- --------------------------------------------------------------
-
-	-- if t_object.entity.held_stack.valid_for_read then return end <- that call is fucking expensive, we won't do it!
-	-- --------------------------------------------------------------
-
-	local pickup_target = t_object.entity.pickup_target
-	local drop_target = t_object.entity.drop_target
+	local pickup_target = entity.pickup_target
+	local drop_target   = entity.drop_target
 
 	if not pickup_target and not drop_target then
 		remove_inserter(t_object)
-
 		return nil
 	end
 
-	if pickup_target and not storage.inserters.settings.valid_targets[pickup_target.type] then
-		if drop_target and not storage.inserters.settings.valid_targets[drop_target.type] then
-			-- This condition for drop_target ~= 'inserter' is a workaround:
-			-- Because if this script fires in a situation were the inserter is feeding himself from a belt,
-			-- the drop_target in this exact moment is the inserter himself and will be otherwise removed from the table.
+	local valid_targets = storage.inserters.settings.valid_targets
+	if pickup_target and not valid_targets[pickup_target.type] then
+		if drop_target and not valid_targets[drop_target.type] then
 			if drop_target.type ~= "inserter" then
 				remove_inserter(t_object)
 			end
-
 			return nil
 		end
 	end
 
 	t_object.err = 0
-
 	return t_object, pickup_target, drop_target
 end
 
@@ -752,6 +754,10 @@ function inserter_script.on_init()
 	inserter_script.alloc_defenitions()
 	get_config()
 	register_commands()
+
+	for _, force in pairs(game.forces) do
+		refresh_force_bonus(force)
+	end
 end
 
 -- Function -------------------------------------------------------------------
@@ -802,9 +808,8 @@ local function burner_fuel_leech_on_build(entity)
 		position = pickup_position,
 	}
 
-	for _, p_e in pairs(surface.find_entities_filtered(filter)) do
-		pickup_target = p_e
-	end
+	local hits = surface.find_entities_filtered(filter)
+	local pickup_target = hits[1]
 
 	local drop_target
 
@@ -940,4 +945,6 @@ end
 
 -- ----------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------
+inserter_script.refresh_force_bonus = refresh_force_bonus
+
 return inserter_script

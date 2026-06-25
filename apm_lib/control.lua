@@ -176,9 +176,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function event_on_player_created(event)
-	local player = game.players[event.player_index]
-
-	result = equipment.check_equipment_manager(player)
+	equipment.check_equipment_manager(game.players[event.player_index])
 end
 
 -- Function -------------------------------------------------------------------
@@ -189,6 +187,35 @@ local function event_on_player_joined_game(event)
 	local player = game.players[event.player_index]
 
 	equipment.check_equipment_manager(player)
+end
+
+-- Function -------------------------------------------------------------------
+-- Refresh cached inserter bonuses (stack size, bulk capacity) when they
+-- can change. The hot path (calc_item_count) reads from storage instead
+-- of hitting force.inserter_stack_size_bonus every tick.
+-- ----------------------------------------------------------------------------
+local function event_on_research_finished(event)
+	if event.research then
+		inserter.refresh_force_bonus(event.research.force)
+	end
+end
+
+local function event_on_research_reversed(event)
+	if event.research then
+		inserter.refresh_force_bonus(event.research.force)
+	end
+end
+
+local function event_on_force_created(event)
+	inserter.refresh_force_bonus(event.force)
+end
+
+local function event_on_forces_merged(event)
+	-- Source force is gone; drop its stale cache entry.
+	if storage.inserters and storage.inserters.force_bonus then
+		storage.inserters.force_bonus[event.source_index] = nil
+	end
+	inserter.refresh_force_bonus(event.destination)
 end
 
 -- Event Defines---------------------------------------------------------------
@@ -259,6 +286,12 @@ script.on_event(defines.events.on_player_armor_inventory_changed,
 		event_on_player_armor_inventory_changed(event)
 	end
 )
+
+-- Force-level events: keep the cached inserter bonuses in sync.
+script.on_event(defines.events.on_research_finished, function(event) event_on_research_finished(event) end)
+script.on_event(defines.events.on_research_reversed, function(event) event_on_research_reversed(event) end)
+script.on_event(defines.events.on_force_created, function(event) event_on_force_created(event) end)
+script.on_event(defines.events.on_forces_merged, function(event) event_on_forces_merged(event) end)
 
 script.on_nth_tick(60 * 10, function(event) on_nth_tick(event) end)
 

@@ -21,4 +21,5 @@ apm.lib.utils.assembler.add.crafting_categories("apm_crusher_machine_2", safthel
 apm.lib.utils.assembler.add.crafting_categories("big-crusher", apm_categories)
 
 apm.lib.utils.furnace.set.hidden("burner-crusher")
+apm.lib.utils.entity.del.next_upgrade(apm.lib.utils.entity.get.by_name("burner-crusher", "furnace"))
 apm.lib.utils.furnace.set.hidden("electric-crusher")

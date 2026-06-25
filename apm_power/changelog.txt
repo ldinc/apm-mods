@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.19
+Date: 21.06.2026
+  Bugfixes:
+    - Fixed: Fix error on startup with "heavy-armor" technology with wood military mod + bobtech.
+---------------------------------------------------------------------------------------------------
+Version: 0.32.18
+Date: 21.06.2026
+  Bugfixes:
+    - Fixed: Fix error on startup with crushing industry.
+---------------------------------------------------------------------------------------------------
+Version: 0.32.17
+Date: 27.05.2026
+  Compatibility:
+    - [BZ2] experimental: enabled same fix from old bz mods.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.16
 Date: 19.04.2026
   Bugfixes:

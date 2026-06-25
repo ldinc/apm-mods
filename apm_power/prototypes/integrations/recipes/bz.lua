@@ -1,4 +1,4 @@
-if mods["bzlead"] then
+if mods["bzlead"] or mods["bzlead2"] then
 	local recipe = apm.lib.utils.recipe.clone("stone-brick", "apm_dry_stone_brick")
 
 	if recipe then
@@ -19,7 +19,7 @@ if mods["bzlead"] then
 	end
 end
 
-if mods["bzsilicon"] then
+if mods["bzsilicon"] or mods["bzsilicon2"] then
 	apm.lib.utils.recipe.remove("basic-crusher")
 end
 

@@ -1,4 +1,4 @@
-if mods["bzlead"] then
+if mods["bzlead"] or mods["bzlead2"] then
 	apm.lib.utils.technology.add.recipe_for_unlock("apm_press_machine_0", "apm_dry_stone_brick")
 
 
@@ -8,7 +8,7 @@ if mods["bzlead"] then
 	end
 end
 
-if mods["bzcarbon"] then
+if mods["bzcarbon"] or mods["bzcarbon2"] then
 	apm.lib.utils.technology.remove.prerequisites_all("fluid-mining")
 
 	apm.lib.utils.technology.remove.prerequisites("steel-processing", "graphite-processing")
@@ -37,17 +37,17 @@ if mods["bzcarbon"] then
 	apm.lib.utils.technology.add.recipe_for_unlock("graphite-processing", "apm_bz_graphite_electronic-circuit")
 end
 
-if mods["bztitanium"] then
+if mods["bztitanium"] or mods["bztitanium2"] then
 	-- apm.lib.utils.technology.remove.prerequisites("uranium-processing", "fluid-mining")
 	-- apm.lib.utils.technology.remove.prerequisites("titanium-processing", "fluid-mining")
 end
 
-if mods["bzsilicon"] then
+if mods["bzsilicon"] or mods["bzsilicon2"] then
 	apm.lib.utils.technology.remove.prerequisites_all("graphite-processing")
 	apm.lib.utils.technology.remove.recipe_from_unlock("graphite-processing", "basic-crusher")
 	apm.lib.utils.technology.add.prerequisites("graphite-processing", "apm_crusher_machine_0")
 end
 
-if mods["bzzirconium"] then
+if mods["bzzirconium"] or mods["bzzirconium2"] then
 	apm.lib.utils.technology.add.prerequisites("zirconia-processing", "logistic-science-pack")
 end
