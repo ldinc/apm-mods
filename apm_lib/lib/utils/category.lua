@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.category'
+local self = "lib.utils.category"
 
 if not apm.lib.utils.category.create then apm.lib.utils.category.create = {} end
 
@@ -26,7 +26,7 @@ function apm.lib.utils.category.create.group(name, icon, order)
 	data:extend({ new })
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('create.group()', 'new category group created: "' .. tostring(name) .. '"'))
+		log(APM_MSG_INFO("create.group()", 'new category group created: "' .. tostring(name) .. '"'))
 	end
 end
 
@@ -41,13 +41,13 @@ function apm.lib.utils.category.create.subgroup(group, subgroup, order)
 
 	---@type data.ItemSubGroup
 	local new = {
-		type = 'item-subgroup',
+		type = "item-subgroup",
 		name = subgroup,
 		group = group,
 		order = order,
 	}
 
-	if data.raw['item-group'][group] == nil then
+	if data.raw["item-group"][group] == nil then
 		return
 	end
 
@@ -55,7 +55,7 @@ function apm.lib.utils.category.create.subgroup(group, subgroup, order)
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'create.group()',
+			"create.group()",
 			'new subgroup created: "' .. tostring(subgroup) .. '" in group: "' .. tostring(group) .. '"'
 		))
 	end
@@ -63,7 +63,7 @@ end
 
 ---@return string[]
 function apm.lib.utils.category.prototype_list()
-	return { 'item', 'fluid', 'recipe', 'tool' }
+	return { "item", "fluid", "recipe", "tool" }
 end
 
 --- NOTE: not used
@@ -77,16 +77,14 @@ function apm.lib.utils.category.change(group, subgroup, new_group, new_subgroup)
 	local prototypes = apm.lib.utils.category.prototype_list()
 
 	for _, prototype in pairs(prototypes) do
-		local object = data.raw[prototype][prototype]
-
-		if object ~= nil then
+		for _, object in pairs(data.raw[prototype] or {}) do
 			if object.group == group and object.subgroup == subgroup then
 				object.group = new_group
 				object.subgroup = new_subgroup
 
 				if APM_CAN_LOG_INFO then
 					log(APM_MSG_INFO(
-						'change()',
+						"change()",
 						'for "' ..
 						tostring(prototype) ..
 						'": "' ..

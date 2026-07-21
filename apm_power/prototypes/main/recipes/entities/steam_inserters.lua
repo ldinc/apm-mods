@@ -1,20 +1,19 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_power/prototypes/main/recipes/entities/steam_engines.lua'
+local self = "apm_power/prototypes/main/recipes/entities/steam_engines.lua"
 
 APM_LOG_HEADER(self)
-
-local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
-APM_LOG_SETTINGS(self, 'apm_power_always_show_made_in', apm_power_always_show_made_in)
 
 -- Recipe ---------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
-local recipe = {}
-recipe.type = "recipe"
-recipe.name = "apm_steam_inserter"
+---@type data.RecipePrototype
+local recipe = {
+	type = "recipe",
+	name = "apm_steam_inserter"
+}
 
 recipe.enabled = false
 recipe.energy_required = 2
@@ -26,12 +25,11 @@ recipe.ingredients = {
 	{ type = "item", name = "apm_steam_relay",  amount = 1 },
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_steam_inserter', amount = 1 }
+	{ type = "item", name = "apm_steam_inserter", amount = 1 }
 }
-recipe.main_product = 'apm_steam_inserter'
+recipe.main_product = "apm_steam_inserter"
 recipe.requester_paste_multiplier = 4
-recipe.always_show_products = true
-recipe.always_show_made_in = apm_power_always_show_made_in
+recipe.always_show_made_in = apm.lib.features.show.made_in
 
 if apm.lib.features.reuse_previous_tier then
 	recipe.ingredients = {
@@ -45,9 +43,11 @@ data:extend({ recipe })
 
 -------------------------------------------------------------------------------
 
-local recipe = {}
-recipe.type = "recipe"
-recipe.name = "apm_steam_inserter_long"
+---@type data.RecipePrototype
+local recipe = {
+	type = "recipe",
+	name = "apm_steam_inserter_long"
+}
 
 recipe.enabled = false
 recipe.energy_required = 2
@@ -59,18 +59,17 @@ recipe.ingredients = {
 	{ type = "item", name = "apm_steam_relay",  amount = 1 },
 }
 recipe.results = {
-	{ type = 'item', name = 'apm_steam_inserter_long', amount = 1 }
+	{ type = "item", name = "apm_steam_inserter_long", amount = 1 }
 }
-recipe.main_product = 'apm_steam_inserter_long'
+recipe.main_product = "apm_steam_inserter_long"
 recipe.requester_paste_multiplier = 4
-recipe.always_show_products = true
-recipe.always_show_made_in = apm_power_always_show_made_in
+recipe.always_show_made_in = apm.lib.features.show.made_in
 
 if apm.lib.features.reuse_previous_tier then
 	recipe.ingredients = {
 		{ type = "item", name = "apm_burner_long_inserter", amount = 1 },
 		{ type = "item", name = "apm_gearing",              amount = 1 },
-		{ type = "item", name = "pipe",              amount = 1 },
+		{ type = "item", name = "pipe",                     amount = 1 },
 		{ type = "item", name = "apm_steam_relay",          amount = 1 },
 	}
 end

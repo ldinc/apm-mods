@@ -61,7 +61,7 @@ local recipe = {
 	},
 	results = {
 		{ type = "item",  name = "apm_fuel_rod_container",     amount = 4 },
-		{ type = "item",  name = "apm_fuel_rod_container",     amount_min = 1, amount_max = 1, probability = 0.85 },
+		{ type = "item",  name = "apm_fuel_rod_container",     amount_min = 1, amount_max = 1, independent_probability = 0.85 },
 		{ type = "fluid", name = "apm_radioactive_wastewater", amount = 50 },
 	},
 	main_product = "",
@@ -132,7 +132,7 @@ local recipe = {
 	},
 	results = {
 		{ type = "item",  name = "apm_breeder_container",      amount = 4 },
-		{ type = "item",  name = "apm_breeder_container",      amount_min = 1, amount_max = 1, probability = 0.85 },
+		{ type = "item",  name = "apm_breeder_container",      amount_min = 1, amount_max = 1, independent_probability = 0.85 },
 		{ type = "fluid", name = "apm_radioactive_wastewater", amount = 50 },
 	},
 	main_product = "",

@@ -31,7 +31,6 @@ local apm_power_compat_linver = settings.startup["apm_power_compat_linver"].valu
 local apm_power_compat_realistic_reactors = settings.startup["apm_power_compat_realistic_reactors"].value
 local apm_power_compat_reverse_factory = settings.startup["apm_power_compat_reverse_factory"].value
 local apm_power_compat_arcitos = settings.startup["apm_power_compat_arcitos"].value
-local apm_power_always_show_made_in = settings.startup["apm_power_always_show_made_in"].value
 
 APM_LOG_SETTINGS(self, "apm_power_overhaul_machine_frames", apm_power_overhaul_machine_frames)
 APM_LOG_SETTINGS(self, "apm_power_steam_assembler_craftin_with_fluids", apm_power_steam_assembler_craftin_with_fluids)
@@ -52,7 +51,7 @@ APM_LOG_SETTINGS(self, "apm_power_compat_linver", apm_power_compat_linver)
 APM_LOG_SETTINGS(self, "apm_power_compat_realistic_reactors", apm_power_compat_realistic_reactors)
 APM_LOG_SETTINGS(self, "apm_power_compat_reverse_factory", apm_power_compat_reverse_factory)
 APM_LOG_SETTINGS(self, "apm_power_compat_arcitos", apm_power_compat_arcitos)
-APM_LOG_SETTINGS(self, "apm_power_always_show_made_in", apm_power_always_show_made_in)
+APM_LOG_SETTINGS(self, "apm_power_always_show_made_in", apm.lib.features.show.made_in)
 
 if mods.apm_energy_addon then
 	apm.lib.utils.recipe.ingredient.mod("apm_battery_charging_station", "steel-plate", 0)
@@ -74,7 +73,10 @@ if mods["AsphaltRoads"] and apm_power_compat_arcitos then
 	apm.lib.utils.recipe.ingredient.remove_all("Arci-asphalt")
 	apm.lib.utils.recipe.ingredient.mod("Arci-asphalt", "apm_asphalt", 5)
 	apm.lib.utils.recipe.ingredient.mod("Arci-asphalt", "steam", 50)
-	apm.lib.utils.recipe.category.change("Arci-asphalt", "chemistry")
+	local recipe, ok = apm.lib.utils.recipe.get.by_name("Arci-asphalt")
+	if ok then
+		apm.lib.utils.recipe.category.change(recipe, "chemistry")
+	end
 end
 
 -- ExpensiveLandFillRecipe ----------------------------------------------------
@@ -210,7 +212,10 @@ if (mods["space-exploration"] or mods["aai-industry"]) and apm_power_compat_eare
 	-- integrate stone from sand
 	apm.lib.utils.recipe.ingredient.mod("sand-from-stone", "apm_crushed_stone", 4)
 	apm.lib.utils.recipe.ingredient.mod("sand-from-stone", "stone", 0)
-	apm.lib.utils.recipe.category.change("sand-from-stone", "apm_crusher")
+	local recipe, ok = apm.lib.utils.recipe.get.by_name("sand-from-stone")
+	if ok then
+		apm.lib.utils.recipe.category.change(recipe, "apm_crusher")
+	end
 	-- integrate glass
 	apm.lib.utils.recipe.ingredient.mod("apm_greenhouse_0", "bob-glass", 25)
 	apm.lib.utils.recipe.ingredient.mod("apm_greenhouse_1", "bob-glass", 25)
@@ -454,22 +459,28 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 	if mods.bobelectronics then
 		apm.lib.utils.recipe.set.icons("wooden-board-paper", icons)
-		apm.lib.utils.recipe.set.always_show_products("wooden-board-paper", true)
-		if apm_power_always_show_made_in then
+		if apm.lib.features.show.made_in then
 			apm.lib.utils.recipe.set.always_show_made_in("wooden-board-paper", true)
 		end
 		apm.lib.utils.recipe.energy_required.mod("wooden-board-paper", 1)
 		apm.lib.utils.recipe.ingredient.mod("wooden-board-paper", "angels-solid-paper", 6)
 		apm.lib.utils.recipe.result.mod("wooden-board-paper", "apm_wood_board", 3)
 		apm.lib.utils.recipe.result.mod("wooden-board-paper", "wooden-board", 0)
-		apm.lib.utils.recipe.category.change("wooden-board-paper", "apm_press")
+
+		local recipe, ok = apm.lib.utils.recipe.get.by_name("wooden-board-paper")
+		if ok then
+			apm.lib.utils.recipe.category.change(recipe, "apm_press")
+		end
+
 		apm.lib.utils.recipe.overwrite.group("wooden-board-paper", "apm_power_intermediates", "ac_b")
 	else
-		local recipe = {}
-		recipe.type = "recipe"
-		recipe.name = "apm_wooden_board_from_paper"
-		recipe.category = "apm_press"
-		recipe.group = "apm_power"
+		---@type data.RecipePrototype
+		local recipe = {
+			type = "recipe",
+			name = "apm_wooden_board_from_paper"
+		}
+
+		recipe.categories = { "apm_press" }
 		recipe.subgroup = "apm_power_intermediates"
 		recipe.order = "ac_b"
 		recipe.icons = icons
@@ -484,8 +495,7 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 		}
 		recipe.main_product = ""
 		recipe.requester_paste_multiplier = 4
-		recipe.always_show_products = true
-		recipe.always_show_made_in = apm_power_always_show_made_in
+		recipe.always_show_made_in = apm.lib.features.show.made_in
 
 		data:extend({ recipe })
 		apm.lib.utils.technology.add.recipe_for_unlock("angels-bio-paper-1", "apm_wooden_board_from_paper")
@@ -507,7 +517,7 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 	local recipe = table.deepcopy(data.raw.recipe["apm_wood_pellets_1"])
 	recipe.name = "apm_wood_pellets_cellulose"
-	recipe.category = "apm_press"
+	recipe.categories = { "apm_press" }
 	recipe.icons = icons
 	recipe.subgroup = "apm_power_wood"
 	recipe.order = "ac_b"
@@ -614,11 +624,13 @@ local unlock_steel_with_oxy = function()
 	local item_icon_c = { apm.lib.icons.dynamics.smelting }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
-	local recipe = {}
-	recipe.type = "recipe"
-	recipe.name = "apm_steel_2"
-	recipe.category = "apm_steelworks"
-	recipe.group = "apm_power"
+	---@type data.RecipePrototype
+	local recipe = {
+		type = "recipe",
+		name = "apm_steel_2",
+	}
+
+	recipe.categories = { "apm_steelworks" }
 	recipe.subgroup = "apm_power_smelting"
 	recipe.order = "ab_c"
 	recipe.icons = icons
@@ -643,11 +655,7 @@ local unlock_steel_with_oxy = function()
 	}
 	recipe.main_product = ""
 	recipe.requester_paste_multiplier = 4
-	recipe.always_show_products = true
-	recipe.always_show_made_in = apm_power_always_show_made_in
-	--recipe.allow_decomposition = false
-	--recipe.allow_as_intermediate = false
-	--recipe.allow_intermediates = false
+	recipe.always_show_made_in = apm.lib.features.show.made_in
 
 	data:extend({ recipe })
 	apm.lib.utils.technology.add.recipe_for_unlock("advanced-material-processing", recipe.name)

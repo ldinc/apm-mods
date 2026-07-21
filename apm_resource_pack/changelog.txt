@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.4
+Date: 13.07.2026
+  Changes:
+    - Updated for factorio 2.1.x.
+    - Updated pipes connection graphivcs & spritesheets for advanced burning miner.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.2
 Date: 25.10.2025
   Changes:

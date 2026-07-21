@@ -1,6 +1,6 @@
 {
 	"name": "apm_power_ldinc",
-	"version": "0.32.19",
+	"version": "0.32.20",
 	"title": "Amator Phasma's Coal & Steam (forked)",
 	"author": "AmatorPhasma, ldinc",
 	"dependencies": [
@@ -8,7 +8,7 @@
 		"? space-age >= 1.0.0",
 		"? quality",
 		"apm_resource_pack_ldinc >= 0.32.2",
-		"apm_lib_ldinc >= 0.32.08",
+		"apm_lib_ldinc >= 0.32.11",
 		"(?) aai-industry >= 0.6.5",
 		"? bobwarfare >= 2.0.0",
 		"? bobores >= 2.0.0",
@@ -26,6 +26,6 @@
 	"segmented_units_required": false,
 	"expansion_shaders_required": false,
 	"description": "This mod revisits the early game of Factorio and pushes the electrification a bit further back by extending the Burner-Stage and inserting a new stage: Steam-Stage (buildings will be powered by steam).",
-	"factorio_version": "2.0",
+	"factorio_version": "2.1",
 	"homepage": ""
 }

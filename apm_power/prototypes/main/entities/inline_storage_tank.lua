@@ -58,19 +58,12 @@ local tank = {
 		volume = 1000,
 		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
 		pipe_picture = pipe_picture,
-		pipe_connections =
-		{
-
-			---@diagnostic disable-next-line: assign-type-mismatch
-			{ direction = defines.direction.north, position = { 0, -0.001 } },
-			---@diagnostic disable-next-line: assign-type-mismatch
-			{ direction = defines.direction.east,  position = { 0.001, 0 } },
-			---@diagnostic disable-next-line: assign-type-mismatch
-			{ direction = defines.direction.south, position = { 0, 0.001 } },
-			---@diagnostic disable-next-line: assign-type-mismatch
-			{ direction = defines.direction.west,  position = { -0.001, 0 } }
+		pipe_connections = {
+			{ direction = defines.direction.north, position = { 0, -0.001 }, hide_connection_info = true },
+			{ direction = defines.direction.east,  position = { 0.001, 0 },  hide_connection_info = true },
+			{ direction = defines.direction.south, position = { 0, 0.001 },  hide_connection_info = true },
+			{ direction = defines.direction.west,  position = { -0.001, 0 }, hide_connection_info = true }
 		},
-		hide_connection_info = true,
 	},
 }
 

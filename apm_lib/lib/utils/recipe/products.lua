@@ -27,14 +27,21 @@ function apm.lib.utils.recipe.set.always_show_products(recipe_name, bool, catego
 		return
 	end
 
-	if category_condition and recipe.category ~= category_condition then
-		return
+	if category_condition then
+		local matches = false
+
+		for _, c in ipairs(recipe.categories or {}) do
+			if c == category_condition then
+				matches = true; break
+			end
+		end
+
+		if not matches then return end
 	end
 
-	recipe.always_show_products = bool
-
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('set.always_show_products()', 'set true for recipe: "' .. tostring(recipe_name) .. '"'))
+		-- log(APM_MSG_INFO("set.always_show_products()", 'set true for recipe: "' .. tostring(recipe_name) .. '"'))
+		log(APM_MSG_INFO("set.always_show_products()", 'Depricated!: "' .. tostring(recipe_name) .. '"'))
 	end
 end
 
@@ -73,7 +80,7 @@ function apm.lib.utils.recipe.set.main_product(recipe_name, result_old, result_n
 		if not apm.lib.utils.recipe.has.main_product(recipe_name) then
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'set.main_product()',
+					"set.main_product()",
 					'can not set main_product for: "' ..
 					tostring(recipe_name) .. '" to: "' .. tostring(result_new) .. '" recipe does not have this property'
 				))
@@ -92,7 +99,7 @@ function apm.lib.utils.recipe.set.main_product(recipe_name, result_old, result_n
 	if done then
 		if APM_CAN_LOG_INFO then
 			log(APM_MSG_INFO(
-				'set.main_product()',
+				"set.main_product()",
 				'set main_product for: "' ..
 				tostring(recipe_name) .. '" from: "' .. tostring(result_old) .. '" to "' .. tostring(result_new) .. '"'
 			))
@@ -131,7 +138,7 @@ function apm.lib.utils.recipe.add_mainproduct_if_needed(recipe_name, force_mainp
 
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'add_mainproduct_if_needed()',
+					"add_mainproduct_if_needed()",
 					'in (simple.results): "' ..
 					tostring(recipe_name) .. '" set main product to: "' .. tostring(main_product) .. '"'
 				))

@@ -8,29 +8,32 @@ apm.lib.utils.assembler.add.crafting_categories("apm_assembling_machine_0", craf
 apm.lib.utils.assembler.add.crafting_categories("apm_assembling_machine_1", crafting_category)
 
 
-local item_icon = apm.lib.utils.icon.get.from_item('apm_treated_wood_planks')
+local item_icon = apm.lib.utils.icon.get.from_item("apm_treated_wood_planks")
 
 ---@type data.RecipePrototype
 local handcrafted_wood_planks = {
 	type = "recipe",
-	name = "apm_treated_wood_planks_handcraft_only",
-	category = 'crafting-or-carpentry',
-	subgroup = "apm_power_intermediates",
-	order = 'ag_a',
-	icons = item_icon,
-
-	enabled = true,
-	energy_required = 4,
-	ingredients = {
-		{ type = "item", name = "wood", amount = 10 },
-	},
-	results = {
-		{ type = 'item', name = 'apm_treated_wood_planks', amount = 10 },
-	},
-	requester_paste_multiplier = 4,
-	always_show_products = true,
-	always_show_made_in = apm.lib.features.show.made_in,
+	name = "apm_treated_wood_planks_handcraft_only"
 }
+
+handcrafted_wood_planks.categories = { "crafting-or-carpentry" }
+handcrafted_wood_planks.subgroup = "apm_power_intermediates"
+handcrafted_wood_planks.order = "ag_a"
+handcrafted_wood_planks.icons = item_icon
+
+handcrafted_wood_planks.enabled = true
+handcrafted_wood_planks.energy_required = 4
+
+handcrafted_wood_planks.ingredients = {
+	{ type = "item", name = "wood", amount = 10 },
+}
+
+handcrafted_wood_planks.results = {
+	{ type = "item", name = "apm_treated_wood_planks", amount = 10 },
+}
+
+handcrafted_wood_planks.requester_paste_multiplier = 4
+handcrafted_wood_planks.always_show_made_in = apm.lib.features.show.made_in
 
 data:extend({ handcrafted_wood_planks })
 
@@ -58,9 +61,9 @@ for name, saw in pairs(recipies) do
 	local new_recipe = apm.lib.utils.recipe.clone(name, name .. "_lumber_mill")
 
 	if new_recipe then
-		apm.lib.utils.recipe.category.change(new_recipe.name, "carpentry")
+		apm.lib.utils.recipe.category.change(new_recipe, "carpentry")
 
-		local item_icon_a = apm.lib.utils.icon.get.from_item('apm_treated_wood_planks')
+		local item_icon_a = apm.lib.utils.icon.get.from_item("apm_treated_wood_planks")
 		local item_icon_b = apm.lib.utils.icon.get.from_item(saw)
 		item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.6, { -6, -3 })
 		local item_icon_c = { apm.lib.icons.dynamics.t3 }

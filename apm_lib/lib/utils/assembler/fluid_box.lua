@@ -69,43 +69,28 @@ function apm.lib.utils.assembler.pipe_picture_frozen()
 		return {}
 	end
 
-	return
-	{
-		north =
-		{
-			filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-N-frozen.png",
-			priority = "extra-high",
-			width = 71,
-			height = 38,
-			shift = util.by_pixel(2.25, 13.5),
-			scale = 0.5
-		},
-		east =
-		{
-			filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-E-frozen.png",
-			priority = "extra-high",
-			width = 42,
-			height = 76,
-			shift = util.by_pixel(-24.5, 1),
-			scale = 0.5
-		},
-		south =
-		{
-			filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-S-frozen.png",
-			priority = "extra-high",
-			width = 88,
-			height = 61,
-			shift = util.by_pixel(0, -31.25),
-			scale = 0.5
-		},
-		west =
-		{
-			filename = "__space-age__/graphics/entity/frozen/assembling-machine/assembling-machine-pipe-W-frozen.png",
-			priority = "extra-high",
-			width = 39,
-			height = 73,
-			shift = util.by_pixel(25.75, 1.25),
-			scale = 0.5
-		}
-	}
+	-- Read from vanilla so sprite dimensions track Wube's asset changes automatically.
+	-- Hardcoding width/height here breaks any time Space Age reshapes its frozen pipe sprites
+	-- (which happened in 2.1: east sprite went from 42x76 to 32x62, etc.).
+	local source = data.raw["assembling-machine"] and data.raw["assembling-machine"]["assembling-machine-2"]
+	if source and source.fluid_boxes then
+		for _, fb in pairs(source.fluid_boxes) do
+			if fb.pipe_picture_frozen then
+				return table.deepcopy(fb.pipe_picture_frozen)
+			end
+		end
+	end
+
+	-- Fallback: try the chemical plant if assembling-machine-2 isn't available for some reason
+	local chem = data.raw["assembling-machine"] and data.raw["assembling-machine"]["chemical-plant"]
+	if chem and chem.fluid_boxes then
+		for _, fb in pairs(chem.fluid_boxes) do
+			if fb.pipe_picture_frozen then
+				return table.deepcopy(fb.pipe_picture_frozen)
+			end
+		end
+	end
+
+	-- Nothing to copy from — return nil. Callers should be prepared for this.
+	return nil
 end

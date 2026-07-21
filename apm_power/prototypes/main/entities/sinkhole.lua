@@ -89,7 +89,7 @@ sinkhole.working_sound = {
 	filename                  = "__apm_power_ldinc__/sounds/entities/water-drain.ogg",
 	volume                    = 0.6,
 	audible_distance_modifier = 0.2,
-	probability               = 0.1,
+	independent_probability   = 0.1,
 }
 
 sinkhole.working_sound.idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 }
@@ -144,7 +144,6 @@ box = {
 	production_type = "input",
 	pipe_picture = pipe_picture,
 	pipe_covers = pipe_covers,
-	filter = "",
 	volume = 2000,
 	pipe_connections = {
 		{

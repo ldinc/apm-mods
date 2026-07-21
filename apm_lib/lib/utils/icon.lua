@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.icon'
+local self = "lib.utils.icon"
 
 if not apm.lib.utils.icons then apm.lib.utils.icons = {} end
 if not apm.lib.utils.icon.get then apm.lib.utils.icon.get = {} end
@@ -13,12 +13,24 @@ if not apm.lib.utils.icon.layer then apm.lib.utils.icon.layer = {} end
 if not apm.lib.utils.icon.path then apm.lib.utils.icon.path = {} end
 if not apm.lib.utils.icon.generate then apm.lib.utils.icon.generate = {} end
 
+--- Safe data.raw indexing. Returns nil if the type subtable doesn't exist,
+--- otherwise returns data.raw[type_name][object_name] (which may itself be nil).
+--- Guards against Factorio dropping a previously-guaranteed prototype type
+--- (e.g. 2.1 removing all vanilla "tool" prototypes).
+---@param type_name string
+---@param object_name string
+---@return table?
+local function raw_get(type_name, object_name)
+	local subtable = data.raw[type_name]
+	return subtable and subtable[object_name] or nil
+end
+
 -- Function -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
 local function get_icon_size(object)
-	local size = defines.default_icon_size
+	local size = defines.constant.default_icon_size
 
 	if object.icon_size then
 		size = object.icon_size
@@ -36,24 +48,24 @@ end
 local function get_icon(object_name, type_name)
 	local prototype_list = {}
 
-	if type_name == 'item' or type_name == 'item-with-entity-data' or type_name == 'fluid' then
-		prototype_list = { 'item', 'item-with-entity-data', 'fluid' }
-	elseif type_name == 'recipe' then
-		prototype_list = { 'recipe' }
-	elseif type_name == 'tool' then
-		prototype_list = { 'tool' }
+	if type_name == "item" or type_name == "item-with-entity-data" or type_name == "fluid" then
+		prototype_list = { "item", "item-with-entity-data", "fluid" }
+	elseif type_name == "recipe" then
+		prototype_list = { "recipe" }
+	elseif type_name == "tool" then
+		prototype_list = { "tool", "item" }
 	elseif type_name and type_name ~= "" then
 		prototype_list = { type_name }
 	end
 
 	for _, prototype in pairs(prototype_list) do
-		local object = data.raw[prototype][object_name]
+		local object = raw_get(prototype, object_name)
 
 		if object then
 			if object.icon then
 				local icon_size = get_icon_size(object)
 
-				if object.icon == nil or object.icon == '' then
+				if object.icon == nil or object.icon == "" then
 					return { apm.lib.icons.dummy }
 				end
 
@@ -74,7 +86,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.icon.get.from_item(object_name)
-	return get_icon(object_name, 'item')
+	return get_icon(object_name, "item")
 end
 
 function apm.lib.utils.icon.get.from(object_type, object_name)
@@ -86,7 +98,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.icon.get.from_fluid(object_name)
-	return get_icon(object_name, 'fluid')
+	return get_icon(object_name, "fluid")
 end
 
 -- Function -------------------------------------------------------------------
@@ -94,15 +106,16 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.icon.get.from_recipe(object_name)
-	return get_icon(object_name, 'recipe')
+	return get_icon(object_name, "recipe")
 end
 
 -- Function -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
+--- DEPRICATED
 function apm.lib.utils.icon.get.from_tool(object_name)
-	return get_icon(object_name, 'tool')
+	return get_icon(object_name, "tool")
 end
 
 -- Function -------------------------------------------------------------------
@@ -151,7 +164,7 @@ function apm.lib.utils.icon.merge(icon_tables)
 	local min_size = 1024
 
 	for _, icon in pairs(icon_tables) do
-		if type(icon) == 'table' then
+		if type(icon) == "table" then
 			for _, ico in pairs(icon) do
 				if ico.icon_size and min_size > ico.icon_size then
 					min_size = ico.icon_size
@@ -166,7 +179,7 @@ function apm.lib.utils.icon.merge(icon_tables)
 
 	local icons = {}
 	for _, t_icon in pairs(icon_tables) do
-		if type(t_icon) == 'table' then
+		if type(t_icon) == "table" then
 			for _, icon in pairs(t_icon) do
 				local scale = min_size / icon.icon_size
 				if scale ~= 1.0 then
@@ -256,11 +269,11 @@ function apm.lib.utils.icon.generate.fluid(tint_1, tint_2, symbol, background_ti
 	bg_tint.a = background_alpha
 
 	table.insert(icons,
-		{ icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_fluid_drop_background.png', tint = bg_tint, icon_size = 64 })
+		{ icon = "__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_fluid_drop_background.png", tint = bg_tint, icon_size = 64 })
 	table.insert(icons,
-		{ icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_fluid_drop_inner.png', tint = tint_2, icon_size = 64 })
+		{ icon = "__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_fluid_drop_inner.png", tint = tint_2, icon_size = 64 })
 	table.insert(icons,
-		{ icon = '__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_fluid_drop_body.png', tint = tint_1, icon_size = 64 })
+		{ icon = "__apm_resource_pack_ldinc__/graphics/icons/dynamics/apm_fluid_drop_body.png", tint = tint_1, icon_size = 64 })
 	if symbol then
 		table.insert(icons, symbol)
 	end
@@ -277,7 +290,7 @@ function apm.lib.utils.icon.layer.insert(base_dn, layer, icon_path, icon_size, s
 	-- todo:
 	-- shifting icons at position behind target-layer, insert new one
 
-	log(APM_MSG_ERROR('layer.insert', 'Debug: DUMMY used! No fuctions here, its a placeholder!'))
+	log(APM_MSG_ERROR("layer.insert", "Debug: DUMMY used! No fuctions here, its a placeholder!"))
 end
 
 -- Function -------------------------------------------------------------------
@@ -285,9 +298,9 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.icon.replace(icon_path_old, icon_path_new, icon_size, scale, shift, tint)
-	local type_list = { 'item', 'recipe' }
+	local type_list = { "item", "recipe" }
 	for _, obj_type in pairs(type_list) do
-		for _, obj in pairs(data.raw[obj_type]) do
+		for _, obj in pairs(data.raw[obj_type] or {}) do
 			if obj.icon then
 				if obj.icon == icon_path_old then
 					obj.icon = icon_path_new
@@ -327,7 +340,7 @@ function apm.lib.utils.icon.layer.replace(base_dn, layer, icon_path, icon_size, 
 
 				if APM_CAN_LOG_INFO then
 					log(APM_MSG_INFO(
-						'layer.replace()',
+						"layer.replace()",
 						'in: "' ..
 						tostring(base_dn.name) ..
 						'" type: "' ..
@@ -374,27 +387,27 @@ end
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.icon.add_tier_lable(name, level)
 	local prototypes = {
-		'item',
-		'item-with-entity-data',
-		'fluid',
-		'recipe',
-		'assembling-machine',
-		'boiler',
-		'logistic-robot',
-		'construction-robot',
-		'inserter',
-		'lab',
-		'locomotive',
-		'mining-drill',
-		'module',
-		'reactor',
-		'ammo-turret',
-		'car',
-		'generator',
+		"item",
+		"item-with-entity-data",
+		"fluid",
+		"recipe",
+		"assembling-machine",
+		"boiler",
+		"logistic-robot",
+		"construction-robot",
+		"inserter",
+		"lab",
+		"locomotive",
+		"mining-drill",
+		"module",
+		"reactor",
+		"ammo-turret",
+		"car",
+		"generator",
 	}
 
 	for _, prototype in pairs(prototypes) do
-		local item = data.raw[prototype][name]
+		local item = raw_get(prototype, name)
 		if item ~= nil then
 			if item.icon then
 				item.icons = { { icon = item.icon }, get_tier_icon(level) }
@@ -417,7 +430,7 @@ function apm.lib.utils.icon.set.icons(object, t_icons)
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'set.icons()',
+			"set.icons()",
 			'icons set for type: "' .. tostring(object.type) .. '" name: "' .. tostring(object.name) .. '"'
 		))
 	end

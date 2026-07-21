@@ -7,6 +7,7 @@ if not apm.lib.utils.item.add then apm.lib.utils.item.add = {} end
 if not apm.lib.utils.item.set then apm.lib.utils.item.set = {} end
 if not apm.lib.utils.item.has then apm.lib.utils.item.has = {} end
 if not apm.lib.utils.item.mod then apm.lib.utils.item.mod = {} end
+if not apm.lib.utils.item.get then apm.lib.utils.item.get = {} end
 if not apm.lib.utils.item.replace then apm.lib.utils.item.replace = {} end
 if not apm.lib.utils.item.overwrite then apm.lib.utils.item.overwrite = {} end
 
@@ -32,22 +33,24 @@ function apm.lib.utils.item.get_types_list()
 	return types_list
 end
 
+---@param object_name string
+---@return table?
+local function raw_get(type_name, object_name)
+	local subtable = data.raw[type_name]
+	return subtable and subtable[object_name] or nil
+end
+
 --- [item.exist]
 ---@param item_name string
 ---@return boolean
 function apm.lib.utils.item.exist(item_name)
-	local types_list = apm.lib.utils.item.get_types_list()
-
-	for _, type_name in pairs(types_list) do
-		if data.raw[type_name][item_name] then
-			return true
-		end
+	for _, type_name in pairs(apm.lib.utils.item.get_types_list()) do
+		if raw_get(type_name, item_name) then return true end
 	end
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING('item/fluid/module with name: "' .. tostring(item_name) .. '" doesnt exist.'))
 	end
-
 	return false
 end
 
@@ -57,33 +60,16 @@ end
 ---@return any
 ---@return boolean
 function apm.lib.utils.item.get_by_name(item_name, only_item)
-	local types_list = apm.lib.utils.item.get_types_list()
-
-	---? DOES WE NEED NOT USE ONLY data.raw.item ???
-
 	if only_item then
-		local item = data.raw["item"][item_name]
-
-		if item then
-			return item, true
-		end
-
-		return {}, false
-	end
-
-	for _, type_name in pairs(types_list) do
-		local item = data.raw[type_name][item_name]
-
-		if item then
-			return item, true
+		local item = raw_get("item", item_name)
+		if item then return item, true end
+	else
+		for _, type_name in pairs(apm.lib.utils.item.get_types_list()) do
+			local item = raw_get(type_name, item_name)
+			if item then return item, true end
 		end
 	end
-
-	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING("exist()", 'item/fluid/module with name: "' .. tostring(item_name) .. '" doesnt exist.'))
-	end
-
-	return {}, false
+	return nil, false
 end
 
 --- [item.create_simple]
@@ -114,15 +100,13 @@ end
 ---@param prefer_item boolean?
 ---@return string?
 function apm.lib.utils.item.get_type(item_name, prefer_item)
-	local types_list = apm.lib.utils.item.get_types_list()
 	local result
 	local count = 0
 
-	for _, type_name in pairs(types_list) do
-		if data.raw[type_name][item_name] then
+	for _, type_name in pairs(apm.lib.utils.item.get_types_list()) do
+		if raw_get(type_name, item_name) then
 			result = type_name
 			count = count + 1
-
 			if type_name ~= "item" and type_name ~= "fluid" then
 				return "item"
 			end
@@ -130,12 +114,7 @@ function apm.lib.utils.item.get_type(item_name, prefer_item)
 	end
 
 	if count > 1 then
-		if prefer_item then
-			result = "item"
-		else
-			result = "fluid"
-		end
-
+		result = prefer_item and "item" or "fluid"
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
 				"get_type()",
@@ -144,17 +123,7 @@ function apm.lib.utils.item.get_type(item_name, prefer_item)
 		end
 	end
 
-	if result then
-		return result
-	end
-
-	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING(
-			"get_type()", 'item/fluid with name: "' .. tostring(item_name) .. '" doesnt exist, return nil'
-		))
-	end
-
-	return nil
+	return result
 end
 
 --- [item.add.radioactive_description]
@@ -385,7 +354,7 @@ end
 ---@param old_burnt_result string
 ---@param new_burnt_result string
 function apm.lib.utils.item.replace.burnt_results(old_burnt_result, new_burnt_result)
-	for _, item in pairs(data.raw.item) do
+	for _, item in pairs(data.raw.item or {}) do
 		if apm.lib.utils.item.has.burnt_result(item.name, old_burnt_result) then
 			apm.lib.utils.item.mod.burnt_result(item.name, new_burnt_result)
 		end
@@ -483,7 +452,7 @@ end
 --- [item.overwrite.battery]
 ---@param level number
 ---@param item_name string
----@param fuel_value data.Energy
+---@param fuel_value Energy
 ---@param burnt_result string
 function apm.lib.utils.item.overwrite.battery(level, item_name, fuel_value, burnt_result)
 	local item, ok = apm.lib.utils.item.get_by_name(item_name, true)
@@ -535,6 +504,21 @@ function apm.lib.utils.item.overwrite.group(item_name, subgroup, order)
 	end
 end
 
+---@return table<string,true>
+function apm.lib.utils.item.get.all_science_packs_names()
+	local names = {}
+
+	for _, lab in pairs(data.raw["lab"] or {}) do
+		if lab.inputs then
+			for _, input_name in ipairs(lab.inputs) do
+				names[input_name] = true
+			end
+		end
+	end
+
+	return names
+end
+
 --- [item.mod.overwrite_weight_for_science_packs]
 ---@param w data.Weight?
 function apm.lib.utils.item.mod.overwrite_weight_for_science_packs(w)
@@ -542,9 +526,12 @@ function apm.lib.utils.item.mod.overwrite_weight_for_science_packs(w)
 		w = apm.lib.utils.constants.value.weight.science_pack
 	end
 
-	for key, value in pairs(data.raw["tool"]) do
-		if value ~= nil then
-			data.raw["tool"][key].weight = w
+	local science_pack_names = apm.lib.utils.item.get.all_science_packs_names()
+
+	for name, _ in pairs(science_pack_names) do
+		local item = data.raw["item"] and data.raw["item"][name]
+		if item then
+			item.weight = w
 		end
 	end
 end

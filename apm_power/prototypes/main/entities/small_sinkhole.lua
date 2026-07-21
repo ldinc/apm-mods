@@ -44,7 +44,7 @@ local sinkhole = {
 			filename                  = "__apm_power_ldinc__/sounds/entities/water-drain.ogg",
 			volume                    = 0.3,
 			audible_distance_modifier = 0.2,
-			probability               = 0.1,
+			independent_probability   = 0.1,
 		},
 	},
 
@@ -70,28 +70,49 @@ local sinkhole = {
 	energy_source = apm.lib.utils.builders.energy_source.new_void({ pollution = 5 }),
 }
 
-local gen = function(direction)
-	local animation = {
-		filename = ppPath .. "hr-" .. base .. direction .. ext,
-		priority = "high",
-		width = 128,
-		height = 163,
-		frame_count = 1,
-		line_length = 1,
-		shift = { 0.0, -0.40625 },
-		scale = 0.5,
-	}
-
-	return animation
-end
-
-
 sinkhole.graphics_set = {
-	animation = {
-		north = gen("n"),
-		east = gen("e"),
-		south = gen("s"),
-		west = gen("w"),
+	animation =
+	{
+		north = {
+			filename = ppPath .. "hr-" .. base .. "n" .. ext,
+			priority = "high",
+			width = 128,
+			height = 163,
+			frame_count = 1,
+			line_length = 1,
+			shift = util.by_pixel(0, -15.75),
+			scale = 0.5,
+		},
+		east = {
+			filename = ppPath .. "hr-" .. base .. "e" .. ext,
+			priority = "high",
+			width = 128,
+			height = 163,
+			frame_count = 1,
+			line_length = 1,
+			shift = util.by_pixel(0, -11.75),
+			scale = 0.5,
+		},
+		south = {
+			filename = ppPath .. "hr-" .. base .. "s" .. ext,
+			priority = "high",
+			width = 128,
+			height = 163,
+			frame_count = 1,
+			line_length = 1,
+			shift = util.by_pixel(3, -10),
+			scale = 0.5,
+		},
+		west = {
+			filename = ppPath .. "hr-" .. base .. "w" .. ext,
+			priority = "high",
+			width = 128,
+			height = 163,
+			frame_count = 1,
+			line_length = 1,
+			shift = util.by_pixel(-0.05, -12.25),
+			scale = 0.5,
+		},
 	},
 }
 
@@ -110,28 +131,49 @@ sinkhole.fluid_boxes = {
 sinkhole.fluid_boxes[1].pipe_picture = nil
 
 if mods["space-age"] then
-	local gen_frozen = function(direction)
-		local animation = {
-			filename = ppPath .. "hr-" .. base .. direction .. "-frozen" .. ext,
+	sinkhole.heating_energy = "150kW"
+
+	sinkhole.graphics_set.frozen_patch = {
+		north = {
+			filename = ppPath .. "hr-" .. base .. "n" .. "-frozen" .. ext,
 			priority = "high",
 			width = 128,
 			height = 163,
 			frame_count = 1,
 			line_length = 1,
-			shift = { 0.0, -0.40625 },
+			shift = util.by_pixel(0, -15.75),
 			scale = 0.5,
-		}
-
-		return animation
-	end
-
-	sinkhole.heating_energy = "150kW"
-
-	sinkhole.graphics_set.frozen_patch = {
-		north = gen_frozen("n"),
-		east = gen_frozen("e"),
-		south = gen_frozen("s"),
-		west = gen_frozen("w"),
+		},
+		east = {
+			filename = ppPath .. "hr-" .. base .. "e" .. "-frozen" .. ext,
+			priority = "high",
+			width = 128,
+			height = 163,
+			frame_count = 1,
+			line_length = 1,
+			shift = util.by_pixel(0, -11.75),
+			scale = 0.5,
+		},
+		south = {
+			filename = ppPath .. "hr-" .. base .. "s" .. "-frozen" .. ext,
+			priority = "high",
+			width = 128,
+			height = 163,
+			frame_count = 1,
+			line_length = 1,
+			shift = util.by_pixel(3, -10),
+			scale = 0.5,
+		},
+		west = {
+			filename = ppPath .. "hr-" .. base .. "w" .. "-frozen" .. ext,
+			priority = "high",
+			width = 128,
+			height = 163,
+			frame_count = 1,
+			line_length = 1,
+			shift = util.by_pixel(-0.05, -12.25),
+			scale = 0.5,
+		},
 	}
 
 	sinkhole.fluid_boxes[1].pipe_covers_frozen = apm.lib.utils.pipecovers.frozen_pipe_cover_pictures()

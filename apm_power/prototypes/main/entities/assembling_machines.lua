@@ -25,7 +25,7 @@ local assembling_machine = {
 
 	flags = { "placeable-neutral", "placeable-player", "player-creation" },
 	minable = { mining_time = 0.2, result = "apm_assembling_machine_0" },
-	crafting_categories = { "crafting", "basic-crafting" },
+	crafting_categories = { "crafting" },
 	crafting_speed = 0.5,
 	fast_replaceable_group = "assembling-machine",
 	next_upgrade = "apm_assembling_machine_1",
@@ -68,7 +68,8 @@ assembling_machine.graphics_set = {
 				height = 256,
 				frame_count = 32,
 				line_length = 8,
-				shift = { 0.4375, -0.28125 },
+				shift = util.by_pixel(14, -9),
+				-- shift = { 0.4375, -0.28125 },
 				scale = 0.5,
 			},
 			{
@@ -79,7 +80,7 @@ assembling_machine.graphics_set = {
 				height = 256,
 				frame_count = 32,
 				line_length = 8,
-				shift = { 0.4375, -0.28125 },
+				shift = util.by_pixel(14, -9),
 				scale = 0.5,
 			},
 		},
@@ -103,7 +104,7 @@ assembling_machine.icons = {
 	apm.lib.icons.dynamics.lable_a
 }
 assembling_machine.minable = { mining_time = 0.2, result = "apm_assembling_machine_1" }
-assembling_machine.crafting_categories = { "crafting", "advanced-crafting", "basic-crafting" }
+assembling_machine.crafting_categories = { "crafting", "advanced-crafting" }
 assembling_machine.crafting_speed = 0.75
 assembling_machine.energy_usage = apm.power.constants.energy_usage.steam
 assembling_machine.module_slots = apm.power.constants.modules.specification_1.module_slots

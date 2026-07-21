@@ -2,7 +2,7 @@ if mods["bzlead"] or mods["bzlead2"] then
 	local recipe = apm.lib.utils.recipe.clone("stone-brick", "apm_dry_stone_brick")
 
 	if recipe then
-		apm.lib.utils.recipe.category.change("apm_dry_stone_brick", "apm_press")
+		apm.lib.utils.recipe.category.change(recipe, "apm_press")
 		apm.lib.utils.recipe.ingredient.remove_all("apm_dry_stone_brick")
 		apm.lib.utils.recipe.ingredient.mod("apm_dry_stone_brick", "apm_crushed_stone", 6)
 

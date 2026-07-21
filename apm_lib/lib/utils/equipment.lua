@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.equipment'
+local self = "lib.utils.equipment"
 
 if not apm.lib.utils.equipment.get then apm.lib.utils.equipment.get = {} end
 if not apm.lib.utils.equipment.add then apm.lib.utils.equipment.add = {} end
@@ -11,7 +11,16 @@ if not apm.lib.utils.equipment.set then apm.lib.utils.equipment.set = {} end
 --
 --
 -- ----------------------------------------------------------------------------
-local prototypes = { 'generator-equipment' }
+local prototypes = { "generator-equipment" }
+
+--- Safe data.raw indexing.
+---@param type_name string
+---@param object_name string
+---@return table?
+local function raw_get(type_name, object_name)
+	local subtable = data.raw[type_name]
+	return subtable and subtable[object_name] or nil
+end
 
 
 --- [equipment.exist]
@@ -19,13 +28,13 @@ local prototypes = { 'generator-equipment' }
 ---@return boolean
 function apm.lib.utils.equipment.exist(equipment_name)
 	for _, prototype in pairs(prototypes) do
-		if data.raw[prototype][equipment_name] then
+		if raw_get(prototype, equipment_name) then
 			return true
 		end
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'equipment with name: "' .. tostring(equipment_name) .. '" doesnt exist.'))
+		log(APM_MSG_WARNING("exist()", 'equipment with name: "' .. tostring(equipment_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -36,7 +45,7 @@ end
 ---@return string?
 function apm.lib.utils.equipment.get.type(equipment_name)
 	for _, prototype in pairs(prototypes) do
-		if data.raw[prototype][equipment_name] then
+		if raw_get(prototype, equipment_name) then
 			return prototype
 		end
 	end
@@ -52,34 +61,35 @@ function apm.lib.utils.equipment.get.fuel_categories(equipment_name)
 	end
 
 	local prototype = apm.lib.utils.equipment.get.type(equipment_name)
+	if not prototype then return nil end
 
-	local equipment = data.raw[prototype][equipment_name]
-	if not equipment.burner then
+	local equipment = raw_get(prototype, equipment_name)
+	if not equipment or not equipment.burner then
 		return nil
 	end
 
 	if equipment.burner.fuel_category then
-		return { { name = equipment.burner.fuel_category, type = 'fuel-category' } }
+		return { { name = equipment.burner.fuel_category, type = "fuel-category" } }
 	elseif equipment.burner.fuel_categories then
 		local rc = {}
 
 		for _, fc in pairs(equipment.burner.fuel_categories) do
-			table.insert(rc, { name = fc, type = 'fuel-category' })
+			table.insert(rc, { name = fc, type = "fuel-category" })
 		end
 
 		return rc
 	end
 
 	if equipment.energy_source then
-		if equipment.energy_source.type == 'burner' then
+		if equipment.energy_source.type == "burner" then
 			if APM_CAN_LOG_INFO then
-				log(APM_MSG_WARNING('get.fuel_categories()', 'default "burner" for: ' .. tostring(equipment_name)))
+				log(APM_MSG_WARNING("get.fuel_categories()", 'default "burner" for: ' .. tostring(equipment_name)))
 			end
 
 			return apm.lib.utils.fuel.get.default_category()
-		elseif equipment.energy_source.type == 'fluid' then
+		elseif equipment.energy_source.type == "fluid" then
 			if APM_CAN_LOG_WARN then
-				log(APM_MSG_WARNING('get.fuel_categories()', 'default "fluid" for: ' .. tostring(equipment_name)))
+				log(APM_MSG_WARNING("get.fuel_categories()", 'default "fluid" for: ' .. tostring(equipment_name)))
 			end
 
 			return apm.lib.utils.fuel.get.default_fluid_category()
@@ -97,9 +107,10 @@ function apm.lib.utils.equipment.update_description(equipment_name)
 	end
 
 	local prototype = apm.lib.utils.equipment.get.type(equipment_name)
-	local equipment = data.raw[prototype][equipment_name]
+	if not prototype then return end
 
-	if not equipment.burner then
+	local equipment = raw_get(prototype, equipment_name)
+	if not equipment or not equipment.burner then
 		return
 	end
 	--equipment.localised_description = {"", {"apm_info_fuel_equipment_manager"}}

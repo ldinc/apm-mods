@@ -20,25 +20,23 @@ burner_miner.icons = {
 }
 burner_miner.minable = { mining_time = 0.3, result = "apm_burner_miner_drill_2" }
 
-local layer = table.deepcopy(burner_miner.graphics_set.animation.north.layers[1])
-layer.filename = "__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-N.png"
-layer.tint = apm.power.color.burner_mining_drill_tier_2
-table.insert(burner_miner.graphics_set.animation.north.layers, layer)
+burner_miner.graphics_set.animation.north.layers[1].filename =
+"__apm_resource_pack_ldinc__/graphics/entities/advanced_burner_mining_drill/advanced-burner-mining-drill-N.png"
+burner_miner.graphics_set.animation.south.layers[1].filename =
+"__apm_resource_pack_ldinc__/graphics/entities/advanced_burner_mining_drill/advanced-burner-mining-drill-S.png"
+burner_miner.graphics_set.animation.west.layers[1].filename =
+"__apm_resource_pack_ldinc__/graphics/entities/advanced_burner_mining_drill/advanced-burner-mining-drill-W.png"
+burner_miner.graphics_set.animation.east.layers[1].filename =
+"__apm_resource_pack_ldinc__/graphics/entities/advanced_burner_mining_drill/advanced-burner-mining-drill-E.png"
 
-local layer = table.deepcopy(burner_miner.graphics_set.animation.east.layers[1])
-layer.filename = "__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-E.png"
-layer.tint = apm.power.color.burner_mining_drill_tier_2
-table.insert(burner_miner.graphics_set.animation.east.layers, layer)
-
-local layer = table.deepcopy(burner_miner.graphics_set.animation.south.layers[1])
-layer.filename = "__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-S.png"
-layer.tint = apm.power.color.burner_mining_drill_tier_2
-table.insert(burner_miner.graphics_set.animation.south.layers, layer)
-
-local layer = table.deepcopy(burner_miner.graphics_set.animation.west.layers[1])
-layer.filename = "__apm_resource_pack_ldinc__/graphics/masks/burner_mining_drill/hr-burner-mining-drill-W.png"
-layer.tint = apm.power.color.burner_mining_drill_tier_2
-table.insert(burner_miner.graphics_set.animation.west.layers, layer)
+burner_miner.graphics_set_flipped.animation.north.layers[1].filename =
+"__apm_resource_pack_ldinc__/graphics/entities/advanced_burner_mining_drill/advanced-burner-mining-drill-N-flipped.png"
+burner_miner.graphics_set_flipped.animation.south.layers[1].filename =
+"__apm_resource_pack_ldinc__/graphics/entities/advanced_burner_mining_drill/advanced-burner-mining-drill-S-flipped.png"
+burner_miner.graphics_set_flipped.animation.west.layers[1].filename =
+"__apm_resource_pack_ldinc__/graphics/entities/advanced_burner_mining_drill/advanced-burner-mining-drill-W-flipped.png"
+burner_miner.graphics_set_flipped.animation.east.layers[1].filename =
+"__apm_resource_pack_ldinc__/graphics/entities/advanced_burner_mining_drill/advanced-burner-mining-drill-E-flipped.png"
 
 data:extend({ burner_miner })
 

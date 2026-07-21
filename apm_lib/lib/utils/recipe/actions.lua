@@ -77,29 +77,69 @@ function apm.lib.utils.recipe.category.create(category_name)
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'category.add()', 'created category with name: "' .. tostring(category_name) .. '"'
+			"category.add()", 'created category with name: "' .. tostring(category_name) .. '"'
 		))
 	end
 end
 
---- [recipe.category.change]
----@param recipe_name string
+--- [recipe.category.add] add  category for recipe
+---@param recipe data.RecipePrototype
 ---@param category_name string
-function apm.lib.utils.recipe.category.change(recipe_name, category_name)
-	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
-
-	if not ok then
-		return
+function apm.lib.utils.recipe.category.add(recipe, category_name)
+	if #recipe.categories == 0 then
+		recipe.categories = { category_name }
+	else
+		table.insert(recipe.categories, category_name)
 	end
-
-	recipe.category = category_name
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'category.change()',
-			'category of: "' .. tostring(recipe_name) .. '" to: "' .. tostring(category_name) .. '"'
+			"category.add()",
+			'category of: "' .. tostring(recipe.name) .. '" added: "' .. tostring(category_name) .. '"'
 		))
 	end
+end
+
+--- [recipe.category.change] set single category for recipe!
+---@param recipe data.RecipePrototype
+---@param category_name string
+function apm.lib.utils.recipe.category.change(recipe, category_name)
+	recipe.categories = { category_name }
+
+	if APM_CAN_LOG_INFO then
+		log(APM_MSG_INFO(
+			"category.change()",
+			'category of: "' .. tostring(recipe.name) .. '" to: "' .. tostring(category_name) .. '"'
+		))
+	end
+end
+
+--- [recipe.category.replace]
+--- Replace one specific category in a recipe's category list, leaving other
+--- categories intact. Returns true if at least one replacement was made.
+---@param recipe data.RecipePrototype
+---@param category_old string
+---@param category_new string
+---@return boolean
+function apm.lib.utils.recipe.category.replace(recipe, category_old, category_new)
+	if not recipe.categories then return false end
+
+	local changed = false
+
+	for i, c in ipairs(recipe.categories) do
+		if c == category_old then
+			recipe.categories[i] = category_new
+			changed = true
+		end
+	end
+
+	if changed and APM_CAN_LOG_INFO then
+		log(APM_MSG_INFO("category.replace()",
+			'in "' .. tostring(recipe.name) .. '" replaced "' .. tostring(category_old) ..
+			'" with "' .. tostring(category_new) .. '"'))
+	end
+
+	return changed
 end
 
 --- [recipe.category.overwrite_all]
@@ -107,9 +147,7 @@ end
 ---@param category_name_new string
 function apm.lib.utils.recipe.category.overwrite_all(category_name_old, category_name_new)
 	for _, recipe in pairs(data.raw.recipe) do
-		if recipe.category == category_name_old then
-			apm.lib.utils.recipe.category.change(recipe.name, category_name_new)
-		end
+		apm.lib.utils.recipe.category.replace(recipe, category_name_old, category_name_new)
 	end
 end
 
@@ -130,7 +168,7 @@ function apm.lib.utils.recipe.energy_required.mod(recipe_name, value)
 
 		if APM_CAN_LOG_INFO then
 			log(APM_MSG_INFO(
-				'energy_required.mod()',
+				"energy_required.mod()",
 				'for: "' .. tostring(recipe_name) .. '" (simple) to: "' .. tostring(value) .. '"'
 			))
 		end
@@ -152,7 +190,7 @@ function apm.lib.utils.recipe.overwrite.group(recipe_name, group, subgroup, orde
 	recipe.order = order
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('overwrite.group()', 'item with name: "' .. tostring(recipe_name) .. '" changed.'))
+		log(APM_MSG_INFO("overwrite.group()", 'item with name: "' .. tostring(recipe_name) .. '" changed.'))
 	end
 end
 

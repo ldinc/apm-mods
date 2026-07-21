@@ -23,14 +23,22 @@ function apm.lib.utils.recipe.set.always_show_made_in(recipe_name, bool, categor
 		return
 	end
 
-	if category_condition and recipe.category ~= category_condition then
-		return
+	if category_condition then
+		local matches = false
+
+		for _, c in ipairs(recipe.categories or {}) do
+			if c == category_condition then
+				matches = true; break
+			end
+		end
+
+		if not matches then return end
 	end
 
 	recipe.always_show_made_in = bool
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('set.always_show_made_in()', 'set true for recipe: "' .. tostring(recipe_name) .. '"'))
+		log(APM_MSG_INFO("set.always_show_made_in()", 'set true for recipe: "' .. tostring(recipe_name) .. '"'))
 	end
 end
 
@@ -79,7 +87,7 @@ function apm.lib.utils.recipe.set.icon(recipe_name, icon_path)
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'set.icon()',
+			"set.icon()",
 			'set icon for: "' .. tostring(recipe_name) .. '" to: "' .. tostring(icon_path) .. '"'
 		))
 	end
@@ -100,7 +108,7 @@ function apm.lib.utils.recipe.set.hidden(recipe_name, bool)
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'set.hidden()', 'set hidden for: "' .. tostring(recipe_name) .. '" to: "' .. tostring(bool)
+			"set.hidden()", 'set hidden for: "' .. tostring(recipe_name) .. '" to: "' .. tostring(bool)
 		))
 	end
 end

@@ -68,7 +68,7 @@ local recipe = {
 		{ type = "item",  name = "apm_oxide_pellet_pu239",         amount = 1,     show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_radioactive_waste",          amount = 1,     show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_shielded_nuclear_fuel_cell", amount = 4 },
-		{ type = "item",  name = "apm_shielded_nuclear_fuel_cell", amount_min = 1, amount_max = 1,                        probability = 0.9, show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = "apm_shielded_nuclear_fuel_cell", amount_min = 1, amount_max = 1,                        independent_probability = 0.9, show_details_in_recipe_tooltip = false },
 		{ type = "fluid", name = "apm_radioactive_wastewater",     amount = 50 }
 	},
 	main_product = "",

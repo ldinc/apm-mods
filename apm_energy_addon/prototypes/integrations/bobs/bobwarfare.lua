@@ -1,12 +1,6 @@
 local generate = function()
-	---@type boolean
-	local apm_energy_addon_always_show_made_in = false
-
-	local v = settings.startup["apm_energy_addon_always_show_made_in"].value
-
-	if type(v) == "boolean" then
-		apm_energy_addon_always_show_made_in = v
-	end
+	local value = settings.startup["apm_energy_addon_always_show_made_in"].value
+	local apm_energy_addon_always_show_made_in = value == true
 
 	apm.energy_addon.generate_electric_powered("bob-tank-2")
 
@@ -27,7 +21,6 @@ local generate = function()
 		},
 		main_product = "apm_electric_bob-tank-2",
 		requester_paste_multiplier = 4,
-		always_show_products = true,
 		always_show_made_in = apm_energy_addon_always_show_made_in,
 	}
 
@@ -39,7 +32,6 @@ local generate = function()
 		name = "tanks_electric-2",
 		icon = "__base__/graphics/technology/tank.png",
 		icon_size = 256,
-		icon_mipmaps = 4,
 		effects = {
 			{ type = "unlock-recipe", recipe = recipe.name },
 		},
@@ -77,7 +69,6 @@ local generate = function()
 		},
 		main_product = "apm_electric_bob-tank-3",
 		requester_paste_multiplier = 4,
-		always_show_products = true,
 		always_show_made_in = apm_energy_addon_always_show_made_in,
 	}
 

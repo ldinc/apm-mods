@@ -9,14 +9,8 @@ local apm_energy_addon_compat_bob = settings.startup["apm_energy_addon_compat_bo
 local apm_energy_addon_compat_earendel = settings.startup["apm_energy_addon_compat_earendel"].value
 local apm_energy_addon_compat_reverse_factory = settings.startup["apm_energy_addon_compat_reverse_factory"].value
 
----@type boolean
-local apm_energy_addon_always_show_made_in = false
-
-local v = settings.startup["apm_energy_addon_always_show_made_in"].value
-
-if type(v) == "boolean" then
-	apm_energy_addon_always_show_made_in = v
-end
+local value = settings.startup["apm_energy_addon_always_show_made_in"].value
+local apm_energy_addon_always_show_made_in = value == true
 
 APM_LOG_SETTINGS(self, "apm_energy_addon_compat_bob", apm_energy_addon_compat_bob)
 APM_LOG_SETTINGS(self, "apm_energy_addon_compat_earendel", apm_energy_addon_compat_earendel)
@@ -57,35 +51,59 @@ if mods.apm_nuclear then
 	local recipe = {
 		type = "recipe",
 		name = "apm_decayed_rtg_reprocessing",
-		localised_name = { "recipe-name.apm_decayed", { "item-name." .. rtg_name } },
-		category = "chemistry",
-		subgroup = item_battery.subgroup,
-		order = item_battery.order .. "z",
-		icons = icons,
-		enabled = false,
-		energy_required = 5,
+
 		ingredients = {
 			{ type = "item", name = item.name,                amount = 5 },
 			{ type = "item", name = "apm_oxide_pellet_pu239", amount = 1 },
 			{ type = "item", name = "apm_waste_container",    amount = 1 },
 			apm.lib.utils.builder.recipe.item.simple("APM_NUCLEAR_ACID", 5),
-			{ type = "fluid", name = "apm_tbp_30", amount = 100 }
+			{ type = "fluid", name = "apm_tbp_30", amount = 100 },
 		},
+
 		results = {
 			{ type = "item",  name = "apm_oxide_pellet_np237",     amount = 5,     show_details_in_recipe_tooltip = false },
 			{ type = "item",  name = "apm_radioactive_waste",      amount = 1,     show_details_in_recipe_tooltip = false },
 			{ type = "item",  name = rtg_name,                     amount = 4 },
-			{ type = "item",  name = rtg_name,                     amount_min = 1, amount_max = 1,                        probability = 0.9, show_details_in_recipe_tooltip = false },
-			{ type = "fluid", name = "apm_radioactive_wastewater", amount = 50 }
+			{ type = "item",  name = rtg_name,                     amount_min = 1, amount_max = 1,                        independent_probability = 0.9, show_details_in_recipe_tooltip = false },
+			{ type = "fluid", name = "apm_radioactive_wastewater", amount = 50 },
 		},
-		main_product = "",
-		requester_paste_multiplier = 4,
-		always_show_products = true,
-		always_show_made_in = apm_energy_addon_always_show_made_in,
-		allow_decomposition = false,
-		allow_as_intermediate = false,
-		allow_intermediates = false,
 	}
+
+	recipe.categories = { "chemistry" }
+
+	recipe.localised_name = { "recipe-name.apm_decayed", { "item-name." .. rtg_name } }
+	recipe.subgroup = item_battery.subgroup
+	recipe.order = item_battery.order .. "z"
+	recipe.icons = icons
+	recipe.enabled = false
+	recipe.energy_required = 5
+	recipe.main_product = ""
+	recipe.requester_paste_multiplier = 4
+	recipe.always_show_made_in = apm_energy_addon_always_show_made_in
+	recipe.allow_decomposition = false
+	recipe.allow_as_intermediate = false
+	recipe.allow_intermediates = false
+
+	---@type data.IngredientPrototype[]
+	local ingredients = {
+		{ type = "item", name = item.name,                amount = 5 },
+		{ type = "item", name = "apm_oxide_pellet_pu239", amount = 1 },
+		{ type = "item", name = "apm_waste_container",    amount = 1 },
+		apm.lib.utils.builder.recipe.item.simple("APM_NUCLEAR_ACID", 5),
+		{ type = "fluid", name = "apm_tbp_30", amount = 100 },
+	}
+
+	---@type data.ProductPrototype[]
+	local results = {
+		{ type = "item",  name = "apm_oxide_pellet_np237",     amount = 5,     show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = "apm_radioactive_waste",      amount = 1,     show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = rtg_name,                     amount = 4 },
+		{ type = "item",  name = rtg_name,                     amount_min = 1, amount_max = 1,                        independent_probability = 0.9, show_details_in_recipe_tooltip = false },
+		{ type = "fluid", name = "apm_radioactive_wastewater", amount = 50 },
+	}
+
+	recipe.ingredients = ingredients
+	recipe.results = results
 
 	data:extend({ recipe })
 
@@ -114,7 +132,6 @@ if mods["aai-vehicles-warden"] and apm_energy_addon_compat_earendel then
 		},
 		main_product = "apm_electric_vehicle-warden",
 		requester_paste_multiplier = 4,
-		always_show_products = true,
 		always_show_made_in = apm_energy_addon_always_show_made_in,
 	}
 

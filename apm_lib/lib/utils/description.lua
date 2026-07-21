@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.description'
+local self = "lib.utils.description"
 
 if not apm.lib.utils.description.entities then apm.lib.utils.description.entities = {} end
 if not apm.lib.utils.description.entities.exclude_list then apm.lib.utils.description.entities.exclude_list = {} end
@@ -36,12 +36,12 @@ end
 --
 -- ----------------------------------------------------------------------------
 local nuclear_fuel_types = {
-	['apm_nuclear_uranium'] = true,
-	['apm_nuclear_mox'] = true,
-	['apm_nuclear_neptunium'] = true,
-	['apm_nuclear_thorium'] = true,
-	['apm_nuclear_deuterium'] = true,
-	['antimatter'] = true
+	["apm_nuclear_uranium"] = true,
+	["apm_nuclear_mox"] = true,
+	["apm_nuclear_neptunium"] = true,
+	["apm_nuclear_thorium"] = true,
+	["apm_nuclear_deuterium"] = true,
+	["antimatter"] = true
 }
 
 -- Function -------------------------------------------------------------------
@@ -50,10 +50,10 @@ local nuclear_fuel_types = {
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.description.entities.add_fuel_types(entity, entry_list)
 	for _, entry in pairs(entry_list) do
-		if entry.type == 'fuel-category' then
+		if entry.type == "fuel-category" then
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'entities.add_fuel_types()',
+					"entities.add_fuel_types()",
 					tostring(entity.name) .. " -> " .. tostring(entry.type) .. " : " .. tostring(entry.name)
 				))
 			end
@@ -62,18 +62,18 @@ function apm.lib.utils.description.entities.add_fuel_types(entity, entry_list)
 				entity.localised_description,
 				{ "apm_info_fuel_type", "\n", { tostring(entry.type) .. "-name." .. tostring(entry.name) } }
 			)
-			if entry.name == 'apm_electrical' then
+			if entry.name == "apm_electrical" then
 				table.insert(entity.localised_description, { "apm_info_fuel_charge", " " })
-			elseif entry.name == 'apm_vehicle_only' then
+			elseif entry.name == "apm_vehicle_only" then
 				table.insert(entity.localised_description, { "apm_info_fuel_vehicle", " " })
-			elseif entry.name == 'apm_rocket' then
+			elseif entry.name == "apm_rocket" then
 				table.insert(entity.localised_description, { "apm_info_fuel_rocket", " " })
 			elseif nuclear_fuel_types[entry.name] then
 				table.insert(entity.localised_description, { "apm_info_fuel_nuclear", " " })
 			else
 				table.insert(entity.localised_description, { "apm_info_fuel_fuel", " " })
 			end
-		elseif entry.type == 'fluid' then
+		elseif entry.type == "fluid" then
 			table.insert(
 				entity.localised_description,
 				{ "apm_info_fuel_type", "\n", { tostring(entry.type) .. "-name." .. tostring(entry.name) } }
@@ -88,11 +88,11 @@ end
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.description.entities.initial(entity)
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('entities.initial()', tostring(entity.name)))
+		log(APM_MSG_INFO("entities.initial()", tostring(entity.name)))
 	end
 
 	if not apm.lib.utils.description.entities.setup_list[entity.name] then
-		if type(entity.localised_description) == 'table' then
+		if type(entity.localised_description) == "table" then
 			apm.lib.utils.description.entities.org_localised_description[entity.name] = {
 				"",
 				table.deepcopy(entity.localised_description)
@@ -126,10 +126,10 @@ end
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.description.entities.setup(entity, entry_list)
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('entities.setup()', tostring(entity.name)))
+		log(APM_MSG_INFO("entities.setup()", tostring(entity.name)))
 	end
 
-	if entry_list == nil or type(entry_list) ~= 'table' then
+	if entry_list == nil or type(entry_list) ~= "table" then
 		log(APM_MSG_ERROR(
 			"entities.setup()",
 			"attribute: entry_list is nil for entity: " .. tostring(entity.name)
@@ -151,47 +151,47 @@ end
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.description.entities.update()
 	local prototypes = {
-		'assembling-machine',
-		'furnace',
-		'inserter',
-		'lab',
-		'mining-drill',
-		'reactor',
-		'boiler',
-		'generator',
-		'car',
-		'locomotive',
-		'pump',
-		'generator-equipment',
+		"assembling-machine",
+		"furnace",
+		"inserter",
+		"lab",
+		"mining-drill",
+		"reactor",
+		"boiler",
+		"generator",
+		"car",
+		"locomotive",
+		"pump",
+		"generator-equipment",
 	}
 
 	for _, prototype in pairs(prototypes) do
-		for entity_name, _ in pairs(data.raw[prototype]) do
+		for entity_name, _ in pairs(data.raw[prototype] or {}) do
 			if not apm.lib.utils.description.entities.exclude_list.table[entity_name] then
-				if prototype == 'assembling-machine' then
+				if prototype == "assembling-machine" then
 					apm.lib.utils.assembler.update_description(entity_name)
-				elseif prototype == 'furnace' then
+				elseif prototype == "furnace" then
 					apm.lib.utils.furnace.update_description(entity_name)
-				elseif prototype == 'inserter' then
+				elseif prototype == "inserter" then
 					apm.lib.utils.inserter.update_description(entity_name)
-				elseif prototype == 'lab' then
+				elseif prototype == "lab" then
 					apm.lib.utils.lab.update_description(entity_name)
-				elseif prototype == 'mining-drill' then
+				elseif prototype == "mining-drill" then
 					apm.lib.utils.mining_drill.update_description(entity_name)
-				elseif prototype == 'reactor' then
+				elseif prototype == "reactor" then
 					apm.lib.utils.reactor.update_description(entity_name)
-				elseif prototype == 'boiler' then
+				elseif prototype == "boiler" then
 					apm.lib.utils.boiler.update_description(entity_name)
-				elseif prototype == 'generator' then
+				elseif prototype == "generator" then
 					apm.lib.utils.generator.update_description(entity_name)
 					--- TODO: add burner-generator ...
-				elseif prototype == 'car' then
+				elseif prototype == "car" then
 					apm.lib.utils.car.update_description(entity_name)
-				elseif prototype == 'locomotive' then
+				elseif prototype == "locomotive" then
 					apm.lib.utils.locomotive.update_description(entity_name)
-				elseif prototype == 'pump' then
+				elseif prototype == "pump" then
 					apm.lib.utils.pump.update_description(entity_name)
-				elseif prototype == 'generator-equipment' then
+				elseif prototype == "generator-equipment" then
 					apm.lib.utils.equipment.update_description(entity_name)
 				end
 			end

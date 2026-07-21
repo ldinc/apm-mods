@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.technology.trigger'
+local self = "lib.utils.technology.trigger"
 
 if not apm.lib.utils.technology.trigger then apm.lib.utils.technology.trigger = {} end
 if not apm.lib.utils.technology.trigger.set then apm.lib.utils.technology.trigger.set = {} end
@@ -18,12 +18,11 @@ function apm.lib.utils.technology.trigger.remove(technology_name, set_default_sp
 
 	if set_default_sp then
 		data.raw["technology"][technology_name].unit = apm.lib.utils.technology.unit.new(
-			{"apm_industrial_science_pack"},
+			{ "apm_industrial_science_pack" },
 			1,
 			1
 		)
 	end
-
 end
 
 ---@param technology_name data.TechnologyID
@@ -68,7 +67,6 @@ function apm.lib.utils.technology.trigger.set.craft_item(technology_name, trigge
 	technology.research_trigger = trigger
 end
 
-
 ---@param technology_name string
 ---@param trigger_item string
 ---@param trigger_count double
@@ -83,7 +81,7 @@ function apm.lib.utils.technology.trigger.set.craft_fluid(technology_name, trigg
 
 	---@type data.CraftFluidTechnologyTrigger
 	local trigger = {
-		type ="craft-fluid",
+		type = "craft-fluid",
 		fluid = trigger_item,
 	}
 
@@ -95,7 +93,6 @@ function apm.lib.utils.technology.trigger.set.craft_fluid(technology_name, trigg
 	technology.research_trigger = trigger
 end
 
-
 ---@param technology_name data.TechnologyID
 ---@param trigger_entity data.EntityID
 function apm.lib.utils.technology.trigger.set.mine(technology_name, trigger_entity)
@@ -106,7 +103,7 @@ function apm.lib.utils.technology.trigger.set.mine(technology_name, trigger_enti
 	---@type data.MineEntityTechnologyTrigger
 	local trigger = {
 		type = "mine-entity",
-		entity = trigger_entity,
+		entities = { trigger_entity },
 	}
 
 	data.raw["technology"][technology_name].unit = nil

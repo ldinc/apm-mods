@@ -241,6 +241,7 @@ function init.run()
 	log("initial and update scripts")
 	log("-------------------------------------------------------------")
 
+	---@diagnostic disable-next-line: undefined-field
 	local force = game.forces.player
 
 	force.reset_recipes()

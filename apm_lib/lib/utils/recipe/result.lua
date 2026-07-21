@@ -93,7 +93,7 @@ function apm.lib.utils.recipe.result.replace(recipe_name, result_old, result_new
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'result.replace()',
+			"result.replace()",
 			'trying to replace result in: "' ..
 			tostring(recipe_name) .. '": "' .. tostring(result_old) .. '" -> "' .. tostring(result_new) .. '"'
 		))
@@ -121,7 +121,7 @@ function apm.lib.utils.recipe.result.replace(recipe_name, result_old, result_new
 
 				if APM_CAN_LOG_INFO then
 					log(APM_MSG_INFO(
-						'result.replace()',
+						"result.replace()",
 						'in (simple.results): "' ..
 						tostring(recipe_name) ..
 						'" result: "' .. tostring(result_old) .. '" -> "' .. tostring(result_new) .. '"'
@@ -191,13 +191,13 @@ function apm.lib.utils.recipe.result.add_with_probability(
 				name = result_name,
 				amount_min = result_amount_min,
 				amount_max = result_amount_max,
-				probability = probability
+				independent_probability = probability
 			}
 		)
 
 		if APM_CAN_LOG_INFO then
 			log(APM_MSG_INFO(
-				'result.add_with_probability()',
+				"result.add_with_probability()",
 				'in (simple.results): "' ..
 				tostring(recipe_name) ..
 				'" add: "' .. tostring(result_name) .. '"  with probability: "' .. tostring(probability) .. '"'
@@ -214,7 +214,7 @@ end
 ---@param result_amount number?
 local function check_for_probability(base_dn, result_amount)
 	if base_dn.probability and result_amount >= 1 then
-		base_dn.probability = nil
+		base_dn.independent_probability = nil
 		base_dn.amount_min = nil
 		base_dn.amount_max = nil
 	end
@@ -254,7 +254,7 @@ function apm.lib.utils.recipe.result.mod(recipe_name, result_name, result_amount
 
 					if APM_CAN_LOG_INFO then
 						log(APM_MSG_INFO(
-							'result.mod()',
+							"result.mod()",
 							'in (simple.results): "' ..
 							tostring(recipe_name) .. '" remove result: "' .. tostring(result_name) .. '"'
 						))
@@ -266,7 +266,7 @@ function apm.lib.utils.recipe.result.mod(recipe_name, result_name, result_amount
 
 					if APM_CAN_LOG_INFO then
 						log(APM_MSG_INFO(
-							'result.mod()',
+							"result.mod()",
 							'in (simple.results): "' ..
 							tostring(recipe_name) ..
 							'" change result: "' .. tostring(result_name) .. '" -> "' .. tostring(result_amount) .. '"'
@@ -280,7 +280,7 @@ function apm.lib.utils.recipe.result.mod(recipe_name, result_name, result_amount
 
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'result.mod()',
+					"result.mod()",
 					'in (simple.results): "' ..
 					tostring(recipe_name) ..
 					'" add result: "' .. tostring(result_name) .. '" -> "' .. tostring(result_amount) .. '"'

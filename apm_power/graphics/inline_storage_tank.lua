@@ -1,7 +1,7 @@
-local base = '__apm_resource_pack_ldinc__/graphics/'
-local sprites = base .. 'entities/inline_storage_tank/'
+local base = "__apm_resource_pack_ldinc__/graphics/"
+local sprites = base .. "entities/inline_storage_tank/"
 
-local shift = { 0.6875, -0.21875 }
+local shift = util.by_pixel(22, -7) -- { 0.6875, -0.21875 }
 local hr = {
 	w = 320,
 	h = 256,

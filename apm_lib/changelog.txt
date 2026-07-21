@@ -1,4 +1,31 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.12
+Date: 13.07.2026
+  Bugfixes:
+    - [apm.lib.utils.batteries.generate] Used old category field in recipe instead categories.
+---------------------------------------------------------------------------------------------------
+Version: 0.32.11
+Date: 13.07.2026
+  Changes:
+    - Used new sprites for pipe connections from apm_resource_pack
+---------------------------------------------------------------------------------------------------
+Version: 0.32.10
+Date: 25.06.2026
+  Features:
+    - Factorio 2.1 support.
+    - Added: [apm.lib.utils.recipe.category.add] Adds a category to a recipe, preserving existing categories.
+    - Added: [apm.lib.utils.recipe.category.replace] Replaces one specific category in a recipe, leaving others intact. Returns true if a replacement was made.
+    - Added: [apm.lib.utils.item.get.all_science_packs_names] Returns the set of science pack item names discovered from lab prototypes' inputs.
+  Changes:
+    - [apm.lib.utils.recipe.category.change] signature and logic changed.
+    - [apm.lib.utils.recipe.category.overwrite_all] now preserves other categories on multi-category recipes instead of replacing the whole list.
+    - Internal recipes builder migrated to the new `categories` array field (Factorio 2.1 removed the singular `category` field on RecipePrototype).
+    - Barrel recipes migrated from `catalyst_amount` to `ignored_by_productivity` / `ignored_by_stats` on ingredients and results.
+    - [apm.lib.utils.technology.trigger.set.mine] Fixed for factorio 2.1.x.
+    - [apm.lib.utils.item.mod.overwrite_weight_for_science_packs] rewritten to discover science packs via lab inputs, since Factorio 2.1 moved science packs from the "tool" type to plain items.
+    - Removed `always_show_products = true` from internal recipes; the property no longer exists in Factorio 2.1.
+    - [apm.lib.utils.recipe.set.always_show_products] is now a deprecated.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.09
 Date: 19.04.2026
   Bugfixes:

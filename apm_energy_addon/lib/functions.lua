@@ -3,14 +3,8 @@ require("__apm_lib_ldinc__.lib.utils")
 
 local self = "apm_energy_addon/lib/functions.lua"
 
----@type boolean
-local apm_energy_addon_always_show_made_in = false
-
-local v = settings.startup["apm_energy_addon_always_show_made_in"].value
-
-if type(v) == "boolean" then
-	apm_energy_addon_always_show_made_in = v
-end
+local value = settings.startup["apm_energy_addon_always_show_made_in"].value
+local apm_energy_addon_always_show_made_in = value == true
 
 APM_LOG_HEADER(self)
 
@@ -68,7 +62,6 @@ function apm.energy_addon.generate_electric_powered(name)
 		name = item_name,
 		localised_name = { "entity-name.apm_electric", { "entity-name." .. name } },
 		icons = icons,
-		--item.icon_mipmaps = 4
 		stack_size = item_car.stack_size,
 		subgroup = item_car.subgroup,
 		order = item_car.order .. "z",
@@ -127,7 +120,6 @@ function apm.energy_addon.generate_electric_powered_locomotive(name)
 	item.name = "apm_electric_" .. name
 	item.localised_name = { "entity-name.apm_electric", { "entity-name." .. name } }
 	item.icons = icons
-	--item.icon_mipmaps = 4
 	item.stack_size = item_car.stack_size
 	item.subgroup = item_car.subgroup
 	item.order = item_car.order .. "z"
@@ -174,8 +166,7 @@ function apm.energy_addon.generate_electric_locomotive_new_recipe(name)
 		},
 		main_product = resultName,
 		requester_paste_multiplier = 4,
-		always_show_products = true,
-		always_show_made_in = apm_energy_addon_always_show_made_in or true,
+		always_show_made_in = apm_energy_addon_always_show_made_in,
 	}
 
 	data:extend({ recipe })
@@ -191,7 +182,6 @@ function apm.energy_addon.generate_electric_locomotive_new_tech(name, suffix)
 		name = tName,
 		icon = "__base__/graphics/technology/railway.png",
 		icon_size = 256,
-		icon_mipmaps = 4,
 		effects = {
 			{ type = "unlock-recipe", recipe = itmName },
 		},
@@ -221,7 +211,6 @@ function apm.energy_addon.generate_electric_powered_spidertron(name)
 		name = e_name,
 		localised_name = { "entity-name.apm_electric", { "entity-name." .. name } },
 		icons = icons,
-		--item.icon_mipmaps = 4,
 		stack_size = item_spidertron.stack_size,
 		subgroup = item_spidertron.subgroup,
 		order = item_spidertron.order .. "z",
@@ -270,7 +259,6 @@ function apm.energy_addon.generate_electric_spidertron_new_recipe(name)
 		},
 		main_product = resultName,
 		requester_paste_multiplier = 4,
-		always_show_products = true,
 		always_show_made_in = apm_energy_addon_always_show_made_in or true,
 	}
 
@@ -287,7 +275,6 @@ function apm.energy_addon.generate_electric_spidertron_new_tech(name, suffix)
 		name = tName,
 		icon = "__base__/graphics/technology/spidertron.png",
 		icon_size = 256,
-		icon_mipmaps = 4,
 		effects = {
 			{ type = "unlock-recipe", recipe = itmName },
 		},

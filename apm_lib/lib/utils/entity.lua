@@ -239,7 +239,8 @@ local function check_if_an_entity_exists(next_upgrade)
 	local prototypes = apm.lib.utils.entity.prototype_list()
 
 	for _, prototype in pairs(prototypes) do
-		local entity = data.raw[prototype][next_upgrade]
+		local subtable = data.raw[prototype]
+		local entity = subtable and subtable[next_upgrade]
 
 		if entity and entity.name == next_upgrade then
 			return true

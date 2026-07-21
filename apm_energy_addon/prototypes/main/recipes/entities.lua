@@ -5,12 +5,8 @@ local self = "apm_energy_addon/prototypes/main/recipes/entities.lua"
 
 APM_LOG_HEADER(self)
 
-local v = settings.startup["apm_energy_addon_always_show_made_in"].value
-local apm_energy_addon_always_show_made_in = false
-
-if type(v) == "boolean" then
-	apm_energy_addon_always_show_made_in = v
-end
+local value = settings.startup["apm_energy_addon_always_show_made_in"].value
+local apm_energy_addon_always_show_made_in = value == true
 
 APM_LOG_SETTINGS(self, "apm_energy_addon_always_show_made_in", apm_energy_addon_always_show_made_in)
 
@@ -37,7 +33,6 @@ local recipe = {
 	},
 	main_product = "apm_battery_charging_station",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_energy_addon_always_show_made_in,
 }
 
@@ -66,7 +61,6 @@ local recipe = {
 	},
 	main_product = "apm_battery_discharging_station",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_energy_addon_always_show_made_in,
 }
 
@@ -94,7 +88,6 @@ local recipe = {
 	},
 	main_product = "apm_equipment_energy_transmitter",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_energy_addon_always_show_made_in,
 }
 
