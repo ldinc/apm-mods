@@ -41,8 +41,8 @@ function apm.lib.utils.technology.trigger.get(technology_name)
 	return nil
 end
 
----@param technology_name data.TechnologyID
----@param trigger_item data.ItemID
+---@param technology_name TechnologyID
+---@param trigger_item ItemID
 ---@param trigger_count? uint32
 function apm.lib.utils.technology.trigger.set.craft_item(technology_name, trigger_item, trigger_count)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
@@ -53,7 +53,7 @@ function apm.lib.utils.technology.trigger.set.craft_item(technology_name, trigge
 
 	apm.lib.utils.technology.unit.clear_all_by_ref(technology)
 
-	---@type data.CraftItemTechnologyTrigger
+	---@type CraftItemTechnologyTrigger
 	local trigger = {
 		type = "craft-item",
 		item = trigger_item,

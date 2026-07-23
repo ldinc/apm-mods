@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.car'
+local self = "lib.utils.car"
 
 if not apm.lib.utils.car.get then apm.lib.utils.car.get = {} end
 if not apm.lib.utils.car.add then apm.lib.utils.car.add = {} end
@@ -14,7 +14,7 @@ function apm.lib.utils.car.exist(car_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'car with name: "' .. tostring(car_name) .. '" doesnt exist.'))
+		log(APM_MSG_WARNING("exist()", 'car with name: "' .. tostring(car_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -31,7 +31,7 @@ function apm.lib.utils.car.get.by_name(car_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'car with name: "' .. tostring(car_name) .. '" doesnt exist.'))
+		log(APM_MSG_WARNING("exist()", 'car with name: "' .. tostring(car_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false
@@ -50,13 +50,13 @@ function apm.lib.utils.car.get.fuel_categories(car_name)
 	if not car.energy_source then return nil end
 
 	if car.energy_source then
-		if car.energy_source.type == 'burner' then
+		if car.energy_source.type == "burner" then
 			if car.energy_source.fuel_categories then
 				return car.energy_source.fuel_categories
 			end
 
 			if APM_CAN_LOG_INFO then
-				log(APM_MSG_INFO('get.fuel_categories()', 'default "burner" for: ' .. tostring(car_name)))
+				log(APM_MSG_INFO("get.fuel_categories()", 'default "burner" for: ' .. tostring(car_name)))
 			end
 
 			return apm.lib.utils.fuel.get.default_category()
@@ -100,13 +100,13 @@ function apm.lib.utils.car.overhaul(car_name)
 
 	if not car.energy_source or not (car.energy_source.type == "burner") then
 		if APM_CAN_LOG_WARN then
-			log(APM_MSG_WARNING('overhaul()', 'car with name: "' .. tostring(car_name) .. '" has no property: burner'))
+			log(APM_MSG_WARNING("overhaul()", 'car with name: "' .. tostring(car_name) .. '" has no property: burner'))
 		end
 
 		return
 	end
 
-	if apm.lib.utils.entity.has.fuel_category(car, 'apm_electrical') then
+	if apm.lib.utils.entity.has.fuel_category(car, "apm_electrical") then
 		return
 	end
 
@@ -115,7 +115,7 @@ function apm.lib.utils.car.overhaul(car_name)
 	car.energy_source.effectivity = 0.42
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('overhaul()', 'car with name: "' .. tostring(car_name) .. '" changed...'))
+		log(APM_MSG_INFO("overhaul()", 'car with name: "' .. tostring(car_name) .. '" changed...'))
 	end
 end
 
@@ -154,7 +154,7 @@ end
 
 --- [car.set.fuel_category]
 ---@param car_name string
----@param categories data.FuelCategoryID[] | data.FuelCategoryID
+---@param categories FuelCategoryID[] | FuelCategoryID
 function apm.lib.utils.car.set.fuel_category(car_name, categories)
 	local car, ok = apm.lib.utils.car.get.by_name(car_name)
 

@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.inserter'
+local self = "lib.utils.inserter"
 
 if apm.lib.utils.inserter.get == nil then apm.lib.utils.inserter.get = {} end
 if apm.lib.utils.inserter.burner == nil then apm.lib.utils.inserter.burner = {} end
@@ -16,7 +16,7 @@ function apm.lib.utils.inserter.exist(inserter_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'inserter with name: "' .. tostring(inserter_name) .. '" doesnt exist.'))
+		log(APM_MSG_WARNING("exist()", 'inserter with name: "' .. tostring(inserter_name) .. '" doesnt exist.'))
 	end
 
 	return false
@@ -24,7 +24,7 @@ end
 
 --- [inserter.get.by_name]
 ---@param inserter_name string
----@return data.InserterPrototype
+---@return InserterPrototype
 ---@return boolean
 function apm.lib.utils.inserter.get.by_name(inserter_name)
 	local inserter = data.raw.inserter[inserter_name]
@@ -34,7 +34,7 @@ function apm.lib.utils.inserter.get.by_name(inserter_name)
 	end
 
 	if APM_CAN_LOG_WARN then
-		log(APM_MSG_WARNING('exist()', 'inserter with name: "' .. tostring(inserter_name) .. '" doesnt exist.'))
+		log(APM_MSG_WARNING("exist()", 'inserter with name: "' .. tostring(inserter_name) .. '" doesnt exist.'))
 	end
 
 	return {}, false
@@ -42,7 +42,7 @@ end
 
 --- [inserter.get.fuel_categories]
 ---@param inserter_name string
----@return data.FuelCategory[]?
+---@return FuelCategory[]?
 function apm.lib.utils.inserter.get.fuel_categories(inserter_name)
 	local inserter, ok = apm.lib.utils.inserter.get.by_name(inserter_name)
 
@@ -52,31 +52,31 @@ function apm.lib.utils.inserter.get.fuel_categories(inserter_name)
 
 	if not inserter.energy_source then return nil end
 
-	if inserter.energy_source.type == 'burner' then
+	if inserter.energy_source.type == "burner" then
 		if inserter.energy_source.fuel_categories then
 			local rc = {}
 
 			for _, fc in pairs(inserter.energy_source.fuel_categories) do
-				table.insert(rc, { name = fc, type = 'fuel-category' })
+				table.insert(rc, { name = fc, type = "fuel-category" })
 			end
 
 			return rc
 		end
-	elseif inserter.energy_source.type == 'fluid' then
+	elseif inserter.energy_source.type == "fluid" then
 		if inserter.energy_source.fluid_box.filter ~= nil then
-			return { { name = inserter.energy_source.fluid_box.filter, type = 'fluid' } }
+			return { { name = inserter.energy_source.fluid_box.filter, type = "fluid" } }
 		end
 	end
 
-	if inserter.energy_source.type == 'burner' then
+	if inserter.energy_source.type == "burner" then
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('get.fuel_categories()', 'set default "burner" for: ' .. tostring(inserter_name)))
+			log(APM_MSG_INFO("get.fuel_categories()", 'set default "burner" for: ' .. tostring(inserter_name)))
 		end
 
 		return apm.lib.utils.fuel.get.default_category()
-	elseif inserter.energy_source.type == 'fluid' then
+	elseif inserter.energy_source.type == "fluid" then
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('get.fuel_categories()', 'set default "fluid" for: ' .. tostring(inserter_name)))
+			log(APM_MSG_INFO("get.fuel_categories()", 'set default "fluid" for: ' .. tostring(inserter_name)))
 		end
 
 		return apm.lib.utils.fuel.get.default_fluid_category()
@@ -113,12 +113,12 @@ function apm.lib.utils.inserter.burner.overhaul(inserter_name)
 		return
 	end
 
-	if inserter.energy_source.type == 'burner' then
+	if inserter.energy_source.type == "burner" then
 		inserter.energy_source.burnt_inventory_size = 1
-		inserter.energy_source.fuel_categories = { 'chemical', 'apm_refined_chemical' }
+		inserter.energy_source.fuel_categories = { "chemical", "apm_refined_chemical" }
 
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('burner.overhaul()', 'inserter with name: "' .. tostring(inserter_name) .. '"changed'))
+			log(APM_MSG_INFO("burner.overhaul()", 'inserter with name: "' .. tostring(inserter_name) .. '"changed'))
 		end
 
 		return
@@ -126,7 +126,7 @@ function apm.lib.utils.inserter.burner.overhaul(inserter_name)
 
 	if APM_CAN_LOG_WARN then
 		log(APM_MSG_WARNING(
-			'burner.overhaul()',
+			"burner.overhaul()",
 			'inserter with name: "' .. tostring(inserter_name) .. '" doesnt has energy_source.type == "burner"'
 		))
 	end

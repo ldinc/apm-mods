@@ -59,8 +59,11 @@ apm.lib.utils.furnace.overhaul("steel-furnace", true)
 
 -- Burner inserter
 apm.lib.utils.inserter.burner.overhaul("burner-inserter")
-apm.lib.utils.item.overwrite.group("burner-inserter", "apm_power_inserter", "ab_a")
 apm.lib.utils.inserter.burner.overhaul("apm_burner_long_inserter")
+
+apm.lib.utils.recipe.disable("burner-inserter")
+
+apm.lib.utils.item.overwrite.group("burner-inserter", "apm_power_inserter", "ab_a")
 
 --- [assemblers]
 apm.lib.utils.assembler.add.fluid_connections("assembling-machine-1", 1)

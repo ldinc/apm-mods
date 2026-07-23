@@ -1,10 +1,6 @@
 require("util")
 require("__apm_lib_ldinc__.lib.log")
 
-local self = "apm_power/prototypes/main/recipes/science.lua"
-
-APM_LOG_HEADER(self)
-
 -- Recipe ---------------------------------------------------------------------
 --
 --
@@ -13,7 +9,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_industrial_science_pac
 local icons       = apm.lib.utils.icon.merge({ item_icon_a })
 
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe                      = {
 	type = "recipe",
 	name = "apm_industrial_science_pack_0"
@@ -50,7 +46,7 @@ data:extend({ recipe })
 local item_icon_a = apm.lib.utils.icon.get.from_item("apm_industrial_science_pack")
 local icons = apm.lib.utils.icon.merge({ item_icon_a })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_industrial_science_pack_1"
@@ -60,7 +56,7 @@ recipe.subgroup = "apm_power_science"
 recipe.order = "aa_b"
 recipe.icons = icons
 
-recipe.enabled = true
+recipe.enabled = false
 recipe.energy_required = 5
 recipe.ingredients = {
 	{ type = "item", name = "apm_mechanical_relay", amount = 1 },
@@ -78,7 +74,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_steam_science_pack"
@@ -87,7 +83,7 @@ local recipe = {
 recipe.categories = { "crafting-with-fluid" }
 --recipe.icons = icons
 
-recipe.enabled = true
+recipe.enabled = false
 recipe.energy_required = 5
 recipe.ingredients = {
 	{ type = "item",  name = "apm_steam_relay", amount = 1 },

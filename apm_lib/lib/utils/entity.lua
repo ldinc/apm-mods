@@ -10,16 +10,16 @@ if apm.lib.utils.entity.del == nil then apm.lib.utils.entity.del = {} end
 if apm.lib.utils.entity.set == nil then apm.lib.utils.entity.set = {} end
 
 ---@alias ApmEntity
----| data.AssemblingMachinePrototype
----| data.ReactorPrototype
----| data.PumpPrototype
----| data.LocomotivePrototype
----| data.InserterPrototype
----| data.LabPrototype
----| data.FurnacePrototype
----| data.GeneratorPrototype
----| data.CarPrototype
----| data.MiningDrillPrototype
+---| AssemblingMachinePrototype
+---| ReactorPrototype
+---| PumpPrototype
+---| LocomotivePrototype
+---| InserterPrototype
+---| LabPrototype
+---| FurnacePrototype
+---| GeneratorPrototype
+---| CarPrototype
+---| MiningDrillPrototype
 
 --- [entity.prototype_list]
 --- Set default list of handled prorotypes for some fns (like next_upgrade and etc)
@@ -62,7 +62,7 @@ end
 
 --- [entity.has.fuel_category]
 ---@param entity ApmEntity
----@param category data.FuelCategoryID
+---@param category FuelCategoryID
 ---@return boolean
 function apm.lib.utils.entity.has.fuel_category(entity, category)
 	if entity.energy_source and entity.energy_source.type == "burner" then

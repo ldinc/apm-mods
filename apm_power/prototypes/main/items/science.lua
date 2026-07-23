@@ -5,7 +5,7 @@ local self = "apm_power/prototypes/main/items/science.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_industrial_science_pack",
@@ -22,7 +22,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_steam_science_pack",

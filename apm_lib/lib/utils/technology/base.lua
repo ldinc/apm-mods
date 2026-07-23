@@ -17,8 +17,8 @@ function apm.lib.utils.technology.exist(technology_name)
 end
 
 --- [technology.get.by_name]
----@param technology_name string
----@return data.TechnologyPrototype
+---@param technology_name TechnologyID
+---@return TechnologyPrototype
 ---@return boolean
 function apm.lib.utils.technology.get.by_name(technology_name)
 	local technology = data.raw.technology[technology_name]

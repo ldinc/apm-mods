@@ -1,5 +1,5 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
 if not apm.lib.utils.technology.unit then apm.lib.utils.technology.unit = {} end
 if not apm.lib.utils.technology.unit.set then apm.lib.utils.technology.unit.set = {} end
@@ -42,7 +42,7 @@ function apm.lib.utils.technology.unit.clear_all(technology_name)
 end
 
 --- Delete all research units
----@param technology data.TechnologyPrototype
+---@param technology TechnologyPrototype
 function apm.lib.utils.technology.unit.clear_all_by_ref(technology)
 	if technology then
 		technology.unit = nil

@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_steam_inserter"
@@ -43,7 +43,7 @@ data:extend({ recipe })
 
 -------------------------------------------------------------------------------
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_steam_inserter_long"

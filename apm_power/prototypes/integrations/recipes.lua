@@ -383,18 +383,18 @@ if mods.angelspetrochem and apm_power_compat_angel then
 	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_2", "apm_coke", "angels-solid-coke")
 	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_3", "apm_coke", "angels-solid-coke")
 	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_4", "apm_coke", "angels-solid-coke")
-	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_5", "apm_coke", "angels-solid-coke")
+	-- apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_5", "apm_coke", "angels-solid-coke")
 	apm.lib.utils.recipe.ingredient.replace("apm_coke_crushed", "apm_coke", "angels-solid-coke")
 	apm.lib.utils.recipe.ingredient.replace("apm_coke_brick", "apm_coke", "angels-solid-coke")
 
 	apm.lib.utils.recipe.remove("angels-solid-coke")
 	apm.lib.utils.recipe.remove("angels-solid-coke-sulfur")
 
-	apm.lib.utils.recipe.ingredient.replace("apm_pyrolysis_coke_5", "steam", "angels-water-purified")
-	apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_5", "sulfur", "angels-water-yellow-waste")
-	apm.lib.utils.recipe.result.mod("apm_pyrolysis_coke_5", "water-yellow-waste", 100)
+	-- apm.lib.utils.recipe.ingredient.replace("apm_pyrolysis_coke_5", "steam", "angels-water-purified")
+	-- apm.lib.utils.recipe.result.replace("apm_pyrolysis_coke_5", "sulfur", "angels-water-yellow-waste")
+	-- apm.lib.utils.recipe.result.mod("apm_pyrolysis_coke_5", "water-yellow-waste", 100)
 	--apm.lib.utils.technology.add.recipe_for_unlock('angels-coal-processing-2', 'apm_pyrolysis_coke_5')
-	apm.lib.utils.technology.add.recipe_for_unlock("angels-coal-cracking", "apm_pyrolysis_coke_5")
+	-- apm.lib.utils.technology.add.recipe_for_unlock("angels-coal-cracking", "apm_pyrolysis_coke_5")
 	--apm.lib.utils.technology.add.prerequisites('angels-coal-processing-2', 'apm_coking_plant_2')
 	--apm.lib.utils.technology.add.prerequisites('angels-coal-processing-2', 'apm_fuel-4')
 

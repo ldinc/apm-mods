@@ -106,7 +106,7 @@ recipe.ingredients = {
 ---@type data.ProductPrototype[]
 recipe.results = {
 	{ type = "item",  name = "apm_coal_crushed",              amount = 6 },
-	{ type = "item",  name = "apm_coal_crushed",              amount_min = 1, amount_max = 2,        independent_probability = 0.5,           show_details_in_recipe_tooltip = false },
+	{ type = "item",  name = "apm_coal_crushed",              amount_min = 1, amount_max = 2,        independent_probability = 0.5, show_details_in_recipe_tooltip = false },
 	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 20,    ignored_by_stats = 20, ignored_by_productivity = 20 }
 }
 recipe.main_product = ""
@@ -388,7 +388,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_coke")
 local item_icon_b = { apm.lib.icons.dynamics.t4 }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_pyrolysis_coke_4"
@@ -401,12 +401,12 @@ recipe.icons = icons
 
 recipe.enabled = false
 recipe.energy_required = 3.5
----@type data.IngredientPrototype[]
+---@type IngredientPrototype[]
 recipe.ingredients = {
 	{ type = "item",  name = "apm_coal_briquette", amount = 4 },
 	{ type = "fluid", name = "steam",              amount = 150 }
 }
----@type data.ProductPrototype[]
+---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item",  name = "apm_coke",          amount = 4 },
 	{ type = "item",  name = "apm_coke",          amount_min = 1, amount_max = 1, independent_probability = 0.5, show_details_in_recipe_tooltip = false },
@@ -424,40 +424,43 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
-local item_icon_a = apm.lib.utils.icon.get.from_item("apm_coke")
-local item_icon_b = { apm.lib.icons.dynamics.t5 }
-local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
-local recipe = {
-	type = "recipe",
-	name = "apm_pyrolysis_coke_5"
-}
+--- NOTE: seems to be not interesting
 
-recipe.categories = { "apm_coking_3" }
-recipe.subgroup = "apm_power_coke"
-recipe.order = "aa_e"
-recipe.icons = icons
+-- local item_icon_a = apm.lib.utils.icon.get.from_item("apm_coke")
+-- local item_icon_b = { apm.lib.icons.dynamics.t5 }
+-- local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
-recipe.enabled = false
-recipe.energy_required = 4
----@type data.IngredientPrototype[]
-recipe.ingredients = {
-	{ type = "item",  name = "apm_coal_briquette", amount = 4 },
-	{ type = "fluid", name = "steam",              amount = 200 }
-}
----@type data.ProductPrototype[]
-recipe.results = {
-	{ type = "item",  name = "apm_coke",          amount = 5 },
-	{ type = "item",  name = "sulfur",            amount = 1 },
-	{ type = "fluid", name = "apm_creosote",      amount = 35 },
-	{ type = "fluid", name = "apm_coke_oven_gas", amount = 45 }
-}
-recipe.main_product = ""
-recipe.requester_paste_multiplier = 4
-recipe.always_show_made_in = apm.lib.features.show.made_in
+-- ---@type RecipePrototype
+-- local recipe = {
+-- 	type = "recipe",
+-- 	name = "apm_pyrolysis_coke_5"
+-- }
 
-data:extend({ recipe })
+-- recipe.categories = { "apm_coking_3" }
+-- recipe.subgroup = "apm_power_coke"
+-- recipe.order = "aa_e"
+-- recipe.icons = icons
+
+-- recipe.enabled = false
+-- recipe.energy_required = 4
+-- ---@type IngredientPrototype[]
+-- recipe.ingredients = {
+-- 	{ type = "item",  name = "apm_coal_briquette", amount = 4 },
+-- 	{ type = "fluid", name = "steam",              amount = 200 }
+-- }
+-- ---@type ProductPrototype[]
+-- recipe.results = {
+-- 	{ type = "item",  name = "apm_coke",          amount = 5 },
+-- 	{ type = "item",  name = "sulfur",            amount = 1 },
+-- 	{ type = "fluid", name = "apm_creosote",      amount = 35 },
+-- 	{ type = "fluid", name = "apm_coke_oven_gas", amount = 45 }
+-- }
+-- recipe.main_product = ""
+-- recipe.requester_paste_multiplier = 4
+-- recipe.always_show_made_in = apm.lib.features.show.made_in
+
+-- data:extend({ recipe })
 
 -- Recipe ---------------------------------------------------------------------
 --
