@@ -12,7 +12,7 @@ APM_LOG_SETTINGS(self, "apm_power_always_show_made_in", apm_power_always_show_ma
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_puddling_furnace_0",
@@ -38,7 +38,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_steelworks_0",
@@ -66,7 +66,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_steelworks_1",

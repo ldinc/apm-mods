@@ -54,7 +54,7 @@ end
 
 --- [equipment.get.fuel_categories]
 ---@param equipment_name string
----@return data.FuelCategory[]?
+---@return FuelCategory[]?
 function apm.lib.utils.equipment.get.fuel_categories(equipment_name)
 	if not apm.lib.utils.equipment.exist(equipment_name) then
 		return nil

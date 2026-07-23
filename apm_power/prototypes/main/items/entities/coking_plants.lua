@@ -5,7 +5,7 @@ local self = 'apm_power/prototypes/main/items/entities/coking_plants.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_coking_plant_0',
@@ -24,7 +24,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_coking_plant_1',
@@ -42,7 +42,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_coking_plant_2',

@@ -26,7 +26,7 @@ local entity_name = "apm_sinkhole_small"
 local rate = settings.startup["apm_sinkhole_fluid_rate"].value / 100
 
 --- [apm_sinkhole_small]
----@type data.FurnacePrototype
+---@type FurnacePrototype
 local sinkhole = {
 	type = "furnace",
 	name = "apm_sinkhole_small",

@@ -14,7 +14,7 @@ function apm.lib.utils.category.create.group(name, icon, order)
 	icon = tostring(icon)
 	order = tostring(order)
 
-	---@type data.ItemGroup
+	---@type ItemGroup
 	local new = {
 		type = "item-group",
 		name = name,
@@ -39,7 +39,7 @@ function apm.lib.utils.category.create.subgroup(group, subgroup, order)
 	subgroup = tostring(subgroup)
 	order = tostring(order)
 
-	---@type data.ItemSubGroup
+	---@type ItemSubGroup
 	local new = {
 		type = "item-subgroup",
 		name = subgroup,

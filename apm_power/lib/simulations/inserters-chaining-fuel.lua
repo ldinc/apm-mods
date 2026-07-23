@@ -158,7 +158,7 @@ script.on_nth_tick(60 * 15, function(event)
 
 		assembler.highlight_box_blink_interval = 100
 
-		---@type data.HighlightBoxEntityPrototype
+		---@type HighlightBoxEntityPrototype
 		local box = assembler.surface.create_entity {
 			name = "highlight-box",
 			position = assembler.position,

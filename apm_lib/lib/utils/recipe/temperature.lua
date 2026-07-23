@@ -3,7 +3,7 @@ if not apm.lib.utils.recipe.ingredient then apm.lib.utils.recipe.ingredient = {}
 
 --- [ingredient_mod_temperature]
 ---@param recipe_name string
----@param base data.IngredientPrototype[]
+---@param base IngredientPrototype[]
 ---@param ingredient_name string
 ---@param condition_temperature number
 ---@param target_temperature number
@@ -83,7 +83,7 @@ end
 
 --- [result_mod_temperature]
 ---@param recipe_name string
----@param base data.IngredientPrototype[]
+---@param base IngredientPrototype[]
 ---@param ingredient_name string
 ---@param condition_temperature? number
 ---@param target_temperature number

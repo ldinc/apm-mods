@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_crusher_drums"
@@ -19,11 +19,11 @@ recipe.categories = { "advanced-crafting" }
 
 recipe.enabled = false
 recipe.energy_required = 1
----@type data.IngredientPrototype[]
+---@type IngredientPrototype[]
 recipe.ingredients = {
 	{ type = "item", name = "iron-plate", amount = 4 }
 }
----@type data.ProductPrototype[]
+---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item", name = "apm_crusher_drums", amount = 1 }
 }
@@ -41,7 +41,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_crusher_drums_used")
 local item_icon_b = { apm.lib.icons.dynamics.recycling }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_crusher_drums_used_repair"
@@ -54,13 +54,13 @@ recipe.icons = icons
 
 recipe.enabled = false
 recipe.energy_required = 3
----@type data.IngredientPrototype[]
+---@type IngredientPrototype[]
 recipe.ingredients = {
 	{ type = "fluid", name = "water",                  amount = 30 },
 	{ type = "item",  name = "apm_crusher_drums_used", amount = 5 },
 	{ type = "item",  name = "repair-pack",            amount = 1 }
 }
----@type data.ProductPrototype[]
+---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item",  name = "apm_crusher_drums", amount = 4,     ignored_by_stats = 4,  ignored_by_productivity = 4 },
 	{ type = "item",  name = "apm_crusher_drums", amount_min = 1, amount_max = 1,        independent_probability = 0.95,          ignored_by_stats = 1, ignored_by_productivity = 1 },

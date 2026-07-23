@@ -15,7 +15,7 @@ APM_LOG_SETTINGS(self, "apm_energy_addon_always_show_made_in", apm_energy_addon_
 --
 -- ----------------------------------------------------------------------------
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_battery_charging_station",
@@ -43,7 +43,7 @@ data:extend({ recipe })
 --
 -- ----------------------------------------------------------------------------
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_battery_discharging_station",
@@ -71,7 +71,7 @@ data:extend({ recipe })
 --
 -- ----------------------------------------------------------------------------
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_equipment_energy_transmitter",

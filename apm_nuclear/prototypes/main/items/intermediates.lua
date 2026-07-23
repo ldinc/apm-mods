@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/items/intermediates.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_fuel_rod_container",
@@ -21,7 +21,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_fuel_rod_container_worn",
@@ -37,7 +37,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_breeder_container",
@@ -53,7 +53,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_breeder_container_worn",
@@ -69,7 +69,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_waste_container",
@@ -85,7 +85,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_depleted_uranium_metal_mixture",
@@ -101,7 +101,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_depleted_uranium_ingots",
@@ -118,7 +118,7 @@ local item = {
 data:extend({ item })
 
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_rtg_radioisotope_thermoelectric_generator",
@@ -135,7 +135,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_hexafluoride_sample",

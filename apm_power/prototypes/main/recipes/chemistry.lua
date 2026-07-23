@@ -15,7 +15,7 @@ item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.6, { -6, -3 })
 local item_icon_c = { apm.lib.icons.dynamics.t1 }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_treated_wood_planks_1",
@@ -26,13 +26,13 @@ local recipe = {
 
 	enabled = false,
 	energy_required = 4,
-	---@type data.IngredientPrototype[]
+	---@type IngredientPrototype[]
 	ingredients = {
 		{ type = "item",  name = "wood",               amount = 5 },
 		{ type = "item",  name = "apm_saw_blade_iron", amount = 1 },
 		{ type = "fluid", name = "apm_creosote",       amount = 50 }
 	},
-	---@type data.ProductPrototype[]
+	---@type ProductPrototype[]
 	results = {
 		{ type = "item", name = "apm_treated_wood_planks", amount = 10 },
 		{ type = "item", name = "apm_saw_blade_iron_used", amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1 }
@@ -54,7 +54,7 @@ item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.6, { -6, -3 })
 local item_icon_c = { apm.lib.icons.dynamics.t1 }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_treated_wood_planks_1b",
@@ -65,13 +65,13 @@ local recipe = {
 
 	enabled = false,
 	energy_required = 4,
-	---@type data.IngredientPrototype[]
+	---@type IngredientPrototype[]
 	ingredients = {
 		{ type = "item",  name = "wood",               amount = 5 },
 		{ type = "item",  name = "apm_saw_blade_iron", amount = 1 },
 		{ type = "fluid", name = "heavy-oil",          amount = 50 }
 	},
-	---@type data.ProductPrototype[]
+	---@type ProductPrototype[]
 	results = {
 		{ type = "item", name = "apm_treated_wood_planks", amount = 10 },
 		{ type = "item", name = "apm_saw_blade_iron_used", amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1 }
@@ -93,7 +93,7 @@ item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.6, { -6, -3 })
 local item_icon_c = { apm.lib.icons.dynamics.t2 }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_treated_wood_planks_2",
@@ -104,13 +104,13 @@ local recipe = {
 
 	enabled = false,
 	energy_required = 4,
-	---@type data.IngredientPrototype[]
+	---@type IngredientPrototype[]
 	ingredients = {
 		{ type = "item",  name = "wood",                amount = 5 },
 		{ type = "item",  name = "apm_saw_blade_steel", amount = 1 },
 		{ type = "fluid", name = "apm_creosote",        amount = 50 }
 	},
-	---@type data.ProductPrototype[]
+	---@type ProductPrototype[]
 	results = {
 		{ type = "item", name = "apm_treated_wood_planks",  amount = 15 },
 		{ type = "item", name = "apm_saw_blade_steel_used", amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1 }
@@ -132,7 +132,7 @@ item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.6, { -6, -3 })
 local item_icon_c = { apm.lib.icons.dynamics.t2 }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_treated_wood_planks_2b",
@@ -143,13 +143,13 @@ local recipe = {
 
 	enabled = false,
 	energy_required = 4,
-	---@type data.IngredientPrototype[]
+	---@type IngredientPrototype[]
 	ingredients = {
 		{ type = "item",  name = "wood",                amount = 5 },
 		{ type = "item",  name = "apm_saw_blade_steel", amount = 1 },
 		{ type = "fluid", name = "heavy-oil",           amount = 50 }
 	},
-	---@type data.ProductPrototype[]
+	---@type ProductPrototype[]
 	results = {
 		{ type = "item", name = "apm_treated_wood_planks",  amount = 15 },
 		{ type = "item", name = "apm_saw_blade_steel_used", amount = 1, ignored_by_stats = 1, ignored_by_productivity = 1 }
@@ -170,7 +170,7 @@ local fluid_icon = apm.lib.utils.icon.get.from_item("wood")
 fluid_icon = apm.lib.utils.icons.mod(fluid_icon, 0.6, { -8, -8 })
 local icons = apm.lib.utils.icon.merge({ recipe_icon, fluid_icon })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_refining_wood_1",
@@ -181,12 +181,12 @@ local recipe = {
 
 	enabled = false,
 	energy_required = 4.5,
-	---@type data.IngredientPrototype[]
+	---@type IngredientPrototype[]
 	ingredients = {
 		{ type = "item",  name = "wood",  amount = 10 },
 		{ type = "fluid", name = "steam", amount = 50 }
 	},
-	---@type data.ProductPrototype[]
+	---@type ProductPrototype[]
 	results = {
 		{ type = "fluid", name = "apm_creosote",      amount = 80 },
 		{ type = "fluid", name = "apm_coke_oven_gas", amount = 20 }
@@ -207,7 +207,7 @@ local fluid_icon = apm.lib.utils.icon.get.from_fluid("apm_creosote")
 fluid_icon = apm.lib.utils.icons.mod(fluid_icon, 0.6, { -8, -8 })
 local icons = apm.lib.utils.icon.merge({ recipe_icon, fluid_icon })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_refining_creosote_1",
@@ -218,12 +218,12 @@ local recipe = {
 
 	enabled = false,
 	energy_required = 4.5,
-	---@type data.IngredientPrototype[]
+	---@type IngredientPrototype[]
 	ingredients = {
 		{ type = "fluid", name = "apm_creosote", amount = 100 },
 		{ type = "fluid", name = "steam",        amount = 50 }
 	},
-	---@type data.ProductPrototype[]
+	---@type ProductPrototype[]
 	results = {
 		{ type = "fluid", name = "heavy-oil",     amount = 25 },
 		{ type = "fluid", name = "light-oil",     amount = 20 },
@@ -246,7 +246,7 @@ local fluid_icon = apm.lib.utils.icon.get.from_fluid("apm_coke_oven_gas")
 fluid_icon = apm.lib.utils.icons.mod(fluid_icon, 0.6, { -8, -8 })
 local icons = apm.lib.utils.icon.merge({ recipe_icon, fluid_icon })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_refining_coke_oven_gas_1"
@@ -267,12 +267,12 @@ recipe.crafting_machine_tint = {
 recipe.enabled = false
 recipe.energy_required = 4.5
 
----@type data.IngredientPrototype[]
+---@type IngredientPrototype[]
 recipe.ingredients = {
 	{ type = "fluid", name = "apm_coke_oven_gas", amount = 100 }
 }
 
----@type data.ProductPrototype[]
+---@type ProductPrototype[]
 recipe.results = {
 	{ type = "fluid", name = "petroleum-gas", amount = 10 }
 }

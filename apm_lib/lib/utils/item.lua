@@ -12,7 +12,7 @@ if not apm.lib.utils.item.replace then apm.lib.utils.item.replace = {} end
 if not apm.lib.utils.item.overwrite then apm.lib.utils.item.overwrite = {} end
 
 --- [item.dummy]
----@return data.ItemPrototype
+---@return ItemPrototype
 function apm.lib.utils.item.dummy()
 	return { type = "item", name = "apm_dummy", amount = 1 }
 end
@@ -80,7 +80,7 @@ end
 function apm.lib.utils.item.create_simple(module, item_name, item_sub_group, item_order)
 	--todo remove this function?
 
-	---@type data.ItemPrototype
+	---@type ItemPrototype
 	local item = {
 		type = "item",
 		name = item_name,
@@ -301,7 +301,7 @@ end
 
 --- [item.mod.fuel_category]
 ---@param item_name string
----@param fuel_category data.FuelCategoryID
+---@param fuel_category FuelCategoryID
 function apm.lib.utils.item.mod.fuel_category(item_name, fuel_category)
 	local item, ok = apm.lib.utils.item.get_by_name(item_name, true)
 
@@ -520,7 +520,7 @@ function apm.lib.utils.item.get.all_science_packs_names()
 end
 
 --- [item.mod.overwrite_weight_for_science_packs]
----@param w data.Weight?
+---@param w Weight?
 function apm.lib.utils.item.mod.overwrite_weight_for_science_packs(w)
 	if w == nil or w <= 0 then
 		w = apm.lib.utils.constants.value.weight.science_pack
@@ -538,7 +538,7 @@ end
 
 --- [item.overwrite.weight]
 ---@param name string
----@param w data.Weight?
+---@param w Weight?
 function apm.lib.utils.item.overwrite.weight(name, w)
 	local item, ok = apm.lib.utils.item.get_by_name(name, true)
 

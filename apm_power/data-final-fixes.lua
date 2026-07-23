@@ -36,7 +36,7 @@ end
 for k, v in pairs(data.raw.fluid) do
 	local newicons = get_icons(v)
 
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe =
 	{
 		type = "recipe",

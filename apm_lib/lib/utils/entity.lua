@@ -87,7 +87,7 @@ end
 
 --- [entity.get.fuel_categories]
 ---@param entity any
----@return data.FuelCategoryID[]?
+---@return FuelCategoryID[]?
 function apm.lib.utils.entity.get.fuel_categories(entity)
 	if entity.burner then
 		if not entity.burner.fuel_categories then
@@ -120,7 +120,7 @@ end
 
 --- [add.fuel_category]
 ---@param entity any
----@param category data.FuelCategoryID
+---@param category FuelCategoryID
 function apm.lib.utils.entity.add.fuel_category(entity, category)
 	if apm.lib.utils.entity.has.fuel_category(entity, category) then
 		return
@@ -168,7 +168,7 @@ end
 
 --- [entity.del.fuel_category]
 ---@param entity any
----@param category data.FuelCategoryID
+---@param category FuelCategoryID
 function apm.lib.utils.entity.del.fuel_category(entity, category)
 	if not apm.lib.utils.entity.has.fuel_category(entity, category) then
 		return
@@ -179,7 +179,7 @@ function apm.lib.utils.entity.del.fuel_category(entity, category)
 		old = {}
 	end
 
-	---@type data.FuelCategoryID[]
+	---@type FuelCategoryID[]
 	local fc = {}
 
 	for _, candidate in ipairs(old) do
@@ -295,7 +295,7 @@ end
 
 --- [entity.set.fuel_category]
 ---@param entity any
----@param categories data.FuelCategoryID[]|string
+---@param categories FuelCategoryID[]|string
 function apm.lib.utils.entity.set.fuel_category(entity, categories)
 	if entity.burner then
 		entity.burner.fuel_categories = {}
@@ -332,14 +332,14 @@ end
 
 --- [entity.has.crafting_category]
 ---@param entity any
----@param category data.RecipeCategoryID
+---@param category RecipeCategoryID
 ---@return boolean
 function apm.lib.utils.entity.has.crafting_category(entity, category)
 	if not entity.crafting_categories then
 		return false
 	end
 
-	---@type data.RecipeCategoryID[]
+	---@type RecipeCategoryID[]
 	local categories = entity.crafting_categories
 
 	for _, c in pairs(categories) do
@@ -353,7 +353,7 @@ end
 
 --- [entity.add.crafting_category]
 ---@param entity any
----@param category data.RecipeCategoryID
+---@param category RecipeCategoryID
 function apm.lib.utils.entity.add.crafting_category(entity, category)
 	if not apm.lib.utils.entity.has.crafting_category(entity, category) then
 		table.insert(entity.crafting_categories, category)
@@ -380,7 +380,7 @@ end
 ---@return boolean
 function apm.lib.utils.entity.has.flag(entity, flag)
 	if type(entity.flags) == "table" and entity.flags then
-		---@type data.EntityPrototypeFlags
+		---@type EntityPrototypeFlags
 		local flags = entity.flags
 
 		for i = 0, #flags do

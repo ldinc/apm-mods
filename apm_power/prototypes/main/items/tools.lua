@@ -5,7 +5,7 @@ local self = 'apm_power/prototypes/main/items/tools.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_saw_blade_iron',
@@ -22,7 +22,7 @@ local item = {
 data:extend({ item })
 
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_saw_blade_iron_used',
@@ -39,7 +39,7 @@ local item = {
 data:extend({ item })
 
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_saw_blade_steel',
@@ -56,7 +56,7 @@ local item = {
 data:extend({ item })
 
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_saw_blade_steel_used',

@@ -474,7 +474,7 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 
 		apm.lib.utils.recipe.overwrite.group("wooden-board-paper", "apm_power_intermediates", "ac_b")
 	else
-		---@type data.RecipePrototype
+		---@type RecipePrototype
 		local recipe = {
 			type = "recipe",
 			name = "apm_wooden_board_from_paper"
@@ -624,7 +624,7 @@ local unlock_steel_with_oxy = function()
 	local item_icon_c = { apm.lib.icons.dynamics.smelting }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe = {
 		type = "recipe",
 		name = "apm_steel_2",

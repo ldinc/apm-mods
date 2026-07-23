@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 local base_animation_progress = 0.26666667
 
 --- [apm_coking_plant_0]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local coking_plant = {
 	type = "assembling-machine",
 	name = "apm_coking_plant_0",
@@ -107,7 +107,7 @@ data:extend({ coking_plant })
 
 ------
 --- [apm_coking_plant_1]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local coking_plant = table.deepcopy(coking_plant)
 coking_plant.name = "apm_coking_plant_1"
 coking_plant.icons = {
@@ -142,7 +142,7 @@ coking_plant.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_4way(apm.lib.u
 data:extend({ coking_plant })
 
 --- [apm_coking_plant_2]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local coking_plant = table.deepcopy(coking_plant)
 coking_plant.name = "apm_coking_plant_2"
 coking_plant.icons = {

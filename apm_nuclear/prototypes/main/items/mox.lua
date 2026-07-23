@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/items/mox.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_fuel_rod_mox",
@@ -25,7 +25,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_fuel_rod_mox_active",
@@ -41,7 +41,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_fuel_rod_mox_cooled",

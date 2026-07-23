@@ -5,7 +5,7 @@ local self = 'apm_lib/prototypes/items.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_dummy',
@@ -18,7 +18,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item         = {
 	type          = 'item',
 	name          = 'apm_hidden_fuel',

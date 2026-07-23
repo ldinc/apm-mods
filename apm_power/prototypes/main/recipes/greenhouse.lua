@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_tree_seeds"
@@ -38,7 +38,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_fertiliser_1")
 --local item_icon_b = {apm.lib.icons.dynamics.t1}
 local icons = apm.lib.utils.icon.merge({ item_icon_a })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fertiliser_1"
@@ -73,7 +73,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_fertiliser_2")
 --local item_icon_b = {apm.lib.icons.dynamics.t2}
 local icons = apm.lib.utils.icon.merge({ item_icon_a })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fertiliser_2"
@@ -106,7 +106,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("wood")
 local item_icon_b = { apm.lib.icons.dynamics.t1 }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_wood_0"
@@ -140,7 +140,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("wood")
 local item_icon_b = { apm.lib.icons.dynamics.t2 }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_wood_1"
@@ -174,7 +174,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("wood")
 local item_icon_b = { apm.lib.icons.dynamics.t3 }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_wood_2"

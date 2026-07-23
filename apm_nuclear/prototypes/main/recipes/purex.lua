@@ -13,7 +13,7 @@ APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_sho
 --
 -- ----------------------------------------------------------------------------
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_nuclear_ash",
@@ -39,7 +39,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_phosphorus",
@@ -72,7 +72,7 @@ data:extend({ recipe })
 --
 -- ----------------------------------------------------------------------------
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_phosphorpentachlorid",
@@ -103,7 +103,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_phosphoroxychlorid",
@@ -134,7 +134,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_trimethyl_phosphate",
@@ -166,7 +166,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_tbp_30",

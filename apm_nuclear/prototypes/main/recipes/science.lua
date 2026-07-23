@@ -12,7 +12,7 @@ APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_sho
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_nuclear_science_pack",

@@ -10,7 +10,7 @@ APM_LOG_HEADER(self)
 --
 -- ----------------------------------------------------------------------------
 
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local charging_station = {
 	type = "assembling-machine",
 	name = "apm_battery_charging_station",
@@ -134,7 +134,7 @@ data:extend({ charging_station })
 --
 -- ----------------------------------------------------------------------------
 
----@type data.BurnerGeneratorPrototype
+---@type BurnerGeneratorPrototype
 local discharging_station = {
 	type = "burner-generator",
 	name = "apm_battery_discharging_station",

@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.ExplosionPrototype
+---@type ExplosionPrototype
 local sound = {
 	type = "explosion",
 	name = "radioactive_a_1",

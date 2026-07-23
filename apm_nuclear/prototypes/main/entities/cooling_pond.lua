@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/entities/cooling_pond.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local cooling_pond = {
 	type = "assembling-machine",
 	name = "apm_cooling_pond_0",

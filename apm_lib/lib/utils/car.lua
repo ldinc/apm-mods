@@ -22,7 +22,7 @@ end
 
 --- [car.get.by_name]
 ---@param car_name string
----@return data.CarPrototype
+---@return CarPrototype
 ---@return boolean
 function apm.lib.utils.car.get.by_name(car_name)
 	local car = data.raw.car[car_name]
@@ -39,7 +39,7 @@ end
 
 --- [car.get.fuel_categories]
 ---@param car_name string
----@return data.FuelCategoryID[]?
+---@return FuelCategoryID[]?
 function apm.lib.utils.car.get.fuel_categories(car_name)
 	local car, ok = apm.lib.utils.car.get.by_name(car_name)
 
@@ -141,7 +141,7 @@ end
 
 --- [car.add.fuel_category]
 ---@param car_name string
----@param category data.FuelCategoryID
+---@param category FuelCategoryID
 function apm.lib.utils.car.add.fuel_category(car_name, category)
 	local car, ok = apm.lib.utils.car.get.by_name(car_name)
 

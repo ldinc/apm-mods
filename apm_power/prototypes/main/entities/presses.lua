@@ -35,7 +35,7 @@ local smoke_steam = {
 local base_animation_progress = 1.0666667
 
 --- [apm_press_machine_0]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local press = {
 	type = "assembling-machine",
 	name = "apm_press_machine_0",
@@ -112,7 +112,7 @@ press.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ press })
 
 --- [apm_press_machine_1]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local press = table.deepcopy(press)
 press.name = "apm_press_machine_1"
 press.icons = {
@@ -146,7 +146,7 @@ press.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 data:extend({ press })
 
 --- [apm_press_machine_2]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local press = table.deepcopy(press)
 press.name = "apm_press_machine_2"
 press.icons = {

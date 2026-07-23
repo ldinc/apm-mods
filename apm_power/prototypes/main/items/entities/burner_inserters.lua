@@ -5,7 +5,7 @@ local self = 'apm_power/prototypes/main/items/entities/burner_inserters.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_burner_long_inserter',

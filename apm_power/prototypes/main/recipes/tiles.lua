@@ -14,7 +14,7 @@ local item_icon_c = apm.lib.utils.icon.get.from_item("apm_generic_ash")
 item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, { -8, -8 })
 local icons = apm.lib.utils.icon.merge({ item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_asphalt_1"
@@ -48,7 +48,7 @@ local item_icon_c = apm.lib.utils.icon.get.from_item("apm_crushed_stone")
 item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, { -8, -8 })
 local icons = apm.lib.utils.icon.merge({ item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_asphalt_2"
@@ -82,7 +82,7 @@ local item_icon_c = apm.lib.utils.icon.get.from_item("apm_generic_ash")
 item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, { -8, -8 })
 local icons = apm.lib.utils.icon.merge({ item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_asphalt_3"
@@ -117,7 +117,7 @@ local item_icon_c = apm.lib.utils.icon.get.from_item("apm_crushed_stone")
 item_icon_c = apm.lib.utils.icons.mod(item_icon_c, 0.5, { -8, -8 })
 local icons = apm.lib.utils.icon.merge({ item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_asphalt_4"

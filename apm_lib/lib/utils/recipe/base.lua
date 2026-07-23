@@ -18,7 +18,7 @@ end
 
 --- [recipe.get.by_name]
 ---@param recipe_name string
----@return data.RecipePrototype
+---@return RecipePrototype
 ---@return boolean
 function apm.lib.utils.recipe.get.by_name(recipe_name)
 	local recipe = data.raw["recipe"][recipe_name]

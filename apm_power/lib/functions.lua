@@ -40,7 +40,7 @@ function apm.power.machine_frame_addition(recipe_name, level_in, level_out, amou
 	end
 end
 
----@param recipe data.RecipePrototype
+---@param recipe RecipePrototype
 ---@return string
 ---@return number
 ---@return boolean

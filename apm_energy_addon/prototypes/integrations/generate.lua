@@ -28,7 +28,7 @@ if mods.apm_nuclear then
 	local item_battery = data.raw.item[rtg_name]
 
 	-- discharged item
-	---@type data.ItemPrototype
+	---@type ItemPrototype
 	local item = {
 		type = "item",
 		name = "apm_decayed_rtg",
@@ -47,7 +47,7 @@ if mods.apm_nuclear then
 	local item_icon_b = { apm.lib.icons.dynamics.recycling }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe = {
 		type = "recipe",
 		name = "apm_decayed_rtg_reprocessing",
@@ -84,7 +84,7 @@ if mods.apm_nuclear then
 	recipe.allow_as_intermediate = false
 	recipe.allow_intermediates = false
 
-	---@type data.IngredientPrototype[]
+	---@type IngredientPrototype[]
 	local ingredients = {
 		{ type = "item", name = item.name,                amount = 5 },
 		{ type = "item", name = "apm_oxide_pellet_pu239", amount = 1 },
@@ -93,7 +93,7 @@ if mods.apm_nuclear then
 		{ type = "fluid", name = "apm_tbp_30", amount = 100 },
 	}
 
-	---@type data.ProductPrototype[]
+	---@type ProductPrototype[]
 	local results = {
 		{ type = "item",  name = "apm_oxide_pellet_np237",     amount = 5,     show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_radioactive_waste",      amount = 1,     show_details_in_recipe_tooltip = false },
@@ -115,7 +115,7 @@ end
 if mods["aai-vehicles-warden"] and apm_energy_addon_compat_earendel then
 	apm.energy_addon.generate_electric_powered("vehicle-warden")
 
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe = {
 		type = "recipe",
 		name = "apm_electric_vehicle-warden",
@@ -137,7 +137,7 @@ if mods["aai-vehicles-warden"] and apm_energy_addon_compat_earendel then
 
 	data:extend({ recipe })
 
-	---@type data.TechnologyPrototype
+	---@type TechnologyPrototype
 	local technology = {
 		type = "technology",
 		name = "vehicle-warden-2",

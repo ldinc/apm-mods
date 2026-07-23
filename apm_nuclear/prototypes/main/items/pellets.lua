@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/items/pellets.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_oxide_pellet_u238",
@@ -21,7 +21,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_oxide_pellet_u235",
@@ -37,7 +37,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_oxide_pellet_th232",
@@ -53,7 +53,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_oxide_pellet_np237",
@@ -73,7 +73,7 @@ data:extend({ item })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_oxide_pellet_pu239",

@@ -61,7 +61,7 @@ function electric_mining_drill_status_colors()
 	}
 end
 
----@type data.MiningDrillPrototype
+---@type MiningDrillPrototype
 local steam_mining_drill = {
 	resource_categories = { "basic-solid" },
 	resource_searching_radius = 2.49,

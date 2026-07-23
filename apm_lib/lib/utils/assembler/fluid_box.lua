@@ -12,7 +12,7 @@ function apm.lib.utils.assembler.add.fluid_connections(assembler_name, level)
 		return
 	end
 
-	---@type (data.Sprite | data.Sprite4Way)?
+	---@type (Sprite | Sprite4Way)?
 	local pipe_picture = nil
 
 	if level == 1 then
@@ -63,7 +63,7 @@ function apm.lib.utils.assembler.add.fluid_connections(assembler_name, level)
 	assembler.fluid_boxes_off_when_no_fluid_recipe = true
 end
 
----@return (data.Sprite | data.Sprite4Way)?
+---@return (Sprite | Sprite4Way)?
 function apm.lib.utils.assembler.pipe_picture_frozen()
 	if not mods["space-age"] then
 		return {}

@@ -15,7 +15,7 @@ local function CreateHexafluoride(i)
 	local base_color = { r = 0.0, g = 0.3 + (i * 0.035), b = 0.3 + (i * 0.035) }
 	local flow_color = { r = 0.0, g = 0.85, b = 0.85 }
 
-	---@type data.FluidPrototype
+	---@type FluidPrototype
 	fluid = {
 		type = "fluid",
 		name = "apm_nuclear_hexafluoride_" .. string.format("%03d", enrichment),
@@ -44,7 +44,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function CreateNitricAcidFuelSolution(suffix, tint_1, tint_2, subgroup, order)
-	---@type data.FluidPrototype
+	---@type FluidPrototype
 	local fluid = {
 		type = "fluid",
 		name = "apm_purex_solution_" .. tostring(suffix),
@@ -93,7 +93,7 @@ CreateNitricAcidFuelSolution("thorium_breeder", { r = 0.632, g = 0.480, b = 0.09
 
 data:extend(
 	{
-		---@type data.FluidPrototype
+		---@type FluidPrototype
 		{
 			type = "fluid",
 			name = "apm_bromine",
@@ -110,7 +110,7 @@ data:extend(
 			subgroup = "apm_nuclear_chemistry",
 			order = "ab_b",
 		},
-		---@type data.FluidPrototype
+		---@type FluidPrototype
 		{
 			type = "fluid",
 			name = "apm_bromine_trifluoride",
@@ -128,7 +128,7 @@ data:extend(
 			subgroup = "apm_nuclear_chemistry",
 			order = "ab_c",
 		},
-		---@type data.FluidPrototype
+		---@type FluidPrototype
 		{
 			type = "fluid",
 			name = "apm_phosphoroxychlorid",
@@ -144,7 +144,7 @@ data:extend(
 			subgroup = "apm_nuclear_chemistry",
 			order = "ad_f",
 		},
-		---@type data.FluidPrototype
+		---@type FluidPrototype
 		{
 			type = "fluid",
 			name = "apm_trimethyl_phosphate",
@@ -162,7 +162,7 @@ data:extend(
 			subgroup = "apm_nuclear_chemistry",
 			order = "ae_a",
 		},
-		---@type data.FluidPrototype
+		---@type FluidPrototype
 		{
 			type = "fluid",
 			name = "apm_tbp_30",
@@ -178,7 +178,7 @@ data:extend(
 			subgroup = "apm_nuclear_chemistry",
 			order = "af_a",
 		},
-		---@type data.FluidPrototype
+		---@type FluidPrototype
 		{
 			type = "fluid",
 			name = "apm_hot_water",
@@ -196,7 +196,7 @@ data:extend(
 			subgroup = "apm_nuclear_waste_products",
 			order = "za_a"
 		},
-		---@type data.FluidPrototype
+		---@type FluidPrototype
 		{
 			type = "fluid",
 			name = "apm_radioactive_wastewater",

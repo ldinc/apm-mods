@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
     type = "item",
     name = "apm_radioactive_waste",

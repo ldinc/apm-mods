@@ -140,7 +140,7 @@ function apm.lib.utils.technology.remove.science_packs_except(technology_name, s
 		skip_list[sp] = true
 	end
 
-	---@type data.ResearchIngredient[]
+	---@type ResearchIngredient[]
 	local new_set = {}
 
 	for _, sp in ipairs(technology.unit.ingredients) do
@@ -160,7 +160,7 @@ apm.lib.utils.technology.basic_science_packs = {
 	["apm_steam_science_pack"] = true,
 }
 
---- @param tech data.TechnologyPrototype?
+--- @param tech TechnologyPrototype?
 function apm.lib.utils.technology.remove.apms_if_has_others_by_ref(tech)
 	if not tech then
 		return
@@ -175,7 +175,7 @@ function apm.lib.utils.technology.remove.apms_if_has_others_by_ref(tech)
 	end
 end
 
----@param tech data.TechnologyPrototype
+---@param tech TechnologyPrototype
 ---@param map { [string]: string }
 ---@param any_mode boolean?
 ---@return boolean

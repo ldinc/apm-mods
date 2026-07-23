@@ -28,7 +28,7 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_oxide_pellet_th232",
@@ -62,7 +62,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_thorium",
@@ -95,7 +95,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_fuel_rod_thorium_activ
 local item_icon_b = { apm.lib.icons.dynamics.temp_down }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_cell_thorium_cooling",
@@ -135,7 +135,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
 local fluid = data.raw.fluid["apm_purex_solution_thorium"]
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_cell_thorium_recovery_stage_a",
@@ -179,7 +179,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
 local fluid = data.raw.fluid["apm_purex_solution_thorium"]
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_cell_thorium_recovery_stage_b",
@@ -223,7 +223,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium",
@@ -251,7 +251,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_loaded",
@@ -283,7 +283,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_breeder_thorium_active
 local item_icon_b = { apm.lib.icons.dynamics.temp_down }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_cooling",
@@ -317,7 +317,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_unloading",
@@ -355,7 +355,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
 local fluid = data.raw.fluid["apm_purex_solution_thorium_breeder"]
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_seperation_process_a",
@@ -404,7 +404,7 @@ recipe.crafting_machine_tint = {
 	tertiary  = fluid.flow_color,
 }
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_seperation_process_b",

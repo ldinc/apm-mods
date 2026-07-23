@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/items/thorium.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_fuel_rod_thorium",
@@ -25,7 +25,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_fuel_rod_thorium_active",
@@ -41,7 +41,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_fuel_rod_thorium_cooled",
@@ -57,7 +57,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_breeder_thorium",
@@ -73,7 +73,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_breeder_thorium_loaded",
@@ -93,7 +93,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_breeder_thorium_active",
@@ -109,7 +109,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_breeder_thorium_cooled",
@@ -125,7 +125,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_breeder_thorium_seperated",

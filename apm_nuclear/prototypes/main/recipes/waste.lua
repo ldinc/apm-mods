@@ -32,7 +32,7 @@ local item_icon_a = get_raw_fluid_icons("apm_radioactive_wastewater")
 local item_icon_b = { apm.lib.icons.dynamics.recycling }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_radioactive_wastewater_recyling",

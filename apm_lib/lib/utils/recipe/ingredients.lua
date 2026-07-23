@@ -3,7 +3,7 @@ if not apm.lib.utils.recipe.has then apm.lib.utils.recipe.has = {} end
 if not apm.lib.utils.recipe.ingredient.get then apm.lib.utils.recipe.ingredient.get = {} end
 
 --- [has_ingredient]
----@param base data.IngredientPrototype[]
+---@param base IngredientPrototype[]
 ---@param ingredient_name string
 ---@return boolean
 local function has_ingredient(base, ingredient_name)
@@ -39,7 +39,7 @@ function apm.lib.utils.recipe.has.ingredient(recipe_name, ingredient_name)
 end
 
 --- [recipe.has.ingredient]
----@param recipe data.RecipePrototype
+---@param recipe RecipePrototype
 ---@param ingredient_name string
 ---@return boolean
 function apm.lib.utils.recipe.has.ingredient_by_ref(recipe, ingredient_name)
@@ -82,10 +82,10 @@ local function add_ingredient(base_dn, type_name, ingredient_name, ingredient_am
 end
 
 --- [convert_ingredients]
----@param ingredients data.IngredientPrototype[]
----@return data.IngredientPrototype[]
+---@param ingredients IngredientPrototype[]
+---@return IngredientPrototype[]
 local function convert_ingredients(ingredients)
-	---@type data.IngredientPrototype[]
+	---@type IngredientPrototype[]
 	local t_new = {}
 
 	for _, v in pairs(ingredients) do
@@ -109,10 +109,10 @@ end
 
 --- [ingredient_mod]
 ---@param recipe_name string
----@param base data.IngredientPrototype[]
+---@param base IngredientPrototype[]
 ---@param ingredient_name string
 ---@param ingredient_amount number
----@return data.IngredientPrototype[]
+---@return IngredientPrototype[]
 local function ingredient_mod(recipe_name, base, ingredient_name, ingredient_amount)
 	local ingredients_convert = convert_ingredients(base)
 	base = ingredients_convert
@@ -164,7 +164,7 @@ local function ingredient_mod(recipe_name, base, ingredient_name, ingredient_amo
 end
 
 --- [recipe.ingredient.mod_by_ref]
----@param recipe data.RecipePrototype
+---@param recipe RecipePrototype
 ---@param ingredient_name string
 ---@param ingredient_amount number
 function apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, ingredient_name, ingredient_amount)
@@ -191,7 +191,7 @@ function apm.lib.utils.recipe.ingredient.mod(recipe_name, ingredient_name, ingre
 end
 
 --- [recipe.ingredient.remove_by_ref]
----@param recipe data.RecipePrototype
+---@param recipe RecipePrototype
 ---@param ingredient_name string
 function apm.lib.utils.recipe.ingredient.remove_by_ref(recipe, ingredient_name)
 	if not apm.lib.utils.item.exist(ingredient_name) then return end
@@ -217,11 +217,11 @@ end
 
 --- [replace_ingredient]
 ---@param recipe_name string
----@param base data.IngredientPrototype[]
+---@param base IngredientPrototype[]
 ---@param ingredient_old string
 ---@param ingredient_new string
 ---@param amount_multi number?
----@return data.IngredientPrototype[]
+---@return IngredientPrototype[]
 local function replace_ingredient(recipe_name, base, ingredient_old, ingredient_new, amount_multi)
 	local type_name_old = apm.lib.utils.item.get_type(ingredient_old)
 	local type_name_new = apm.lib.utils.item.get_type(ingredient_new)
@@ -360,7 +360,7 @@ function apm.lib.utils.recipe.ingredient.replace_all(ingredient_old, ingredient_
 end
 
 --- [recipe.ingredient.get_count_by_ref]
----@param recipe data.RecipePrototype
+---@param recipe RecipePrototype
 ---@param ingredient_name string
 ---@return integer
 ---@return boolean

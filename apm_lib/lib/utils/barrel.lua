@@ -120,7 +120,7 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 
 	-- fill barrel
 	-------------------------------------
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe_fill_barrel = {
 		type = "recipe",
 		name = "apm_filled-barrel-" .. fluid.name,
@@ -148,7 +148,7 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 	end
 	recipe_fill_barrel.icon_size = 32
 	recipe_fill_barrel.ingredients = {
-		---@type data.FluidIngredientPrototype
+		---@type FluidIngredientPrototype
 		{
 			type = "fluid",
 			name = fluid.name,
@@ -156,7 +156,7 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 			ignored_by_productivity = fluid_per_barrel,
 			ignored_by_stats = fluid_per_barrel,
 		},
-		---@type data.ItemIngredientPrototype
+		---@type ItemIngredientPrototype
 		{
 			type = "item",
 			name = empty_c_name,
@@ -165,7 +165,7 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 		}
 	}
 	recipe_fill_barrel.results = {
-		---@type data.ItemProductPrototype
+		---@type ItemProductPrototype
 		{
 			type = "item",
 			name = filled_container_item.name,
@@ -179,7 +179,7 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 
 	-- empty filled barrel
 	-------------------------------------
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe_empty_filled_barrel = {
 		type = "recipe",
 		name = "apm_empty-" .. fluid.name
@@ -207,7 +207,7 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 	end
 	recipe_empty_filled_barrel.icon_size = 32
 	recipe_empty_filled_barrel.ingredients = {
-		---@type data.ItemIngredientPrototype
+		---@type ItemIngredientPrototype
 		{
 			type = "item",
 			name = filled_container_item.name,
@@ -216,7 +216,7 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 		}
 	}
 	recipe_empty_filled_barrel.results = {
-		---@type data.FluidProductPrototype
+		---@type FluidProductPrototype
 		{
 			type = "fluid",
 			name = fluid.name,
@@ -224,7 +224,7 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 			ignored_by_stats = fluid_per_barrel,
 			ignored_by_productivity = fluid_per_barrel
 		},
-		---@type data.ItemProductPrototype
+		---@type ItemProductPrototype
 		{
 			type = "item",
 			name = empty_c_name,

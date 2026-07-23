@@ -4,7 +4,7 @@
 	"title": "Amator Phasma's Coal & Steam (forked)",
 	"author": "AmatorPhasma, ldinc",
 	"dependencies": [
-		"base",
+		"base >= 2.1.7",
 		"? space-age >= 1.0.0",
 		"? quality",
 		"apm_resource_pack_ldinc >= 0.32.2",

@@ -5,7 +5,7 @@ local self = 'apm_nuclear/prototypes/main/equipment/rtg.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.GeneratorEquipmentPrototype
+---@type GeneratorEquipmentPrototype
 local rtg = {
   type = "generator-equipment",
   name = "apm_rtg_radioisotope_thermoelectric_generator",

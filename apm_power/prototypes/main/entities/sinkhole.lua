@@ -45,7 +45,7 @@ pipe_covers.west = empty
 local rate = settings.startup["apm_sinkhole_fluid_rate"].value / 10
 
 --- [apm_sinkhole]
----@type data.FurnacePrototype
+---@type FurnacePrototype
 local sinkhole = {
 	type = "furnace",
 	name = "apm_sinkhole",
@@ -139,7 +139,7 @@ sinkhole.graphics_set = {
 	},
 }
 
----@type data.FluidBox
+---@type FluidBox
 box = {
 	production_type = "input",
 	pipe_picture = pipe_picture,

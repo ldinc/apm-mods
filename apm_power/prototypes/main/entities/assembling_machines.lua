@@ -13,7 +13,7 @@ local base_animation_progress = 1.0666667
 --
 -- ----------------------------------------------------------------------------
 
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local assembling_machine = {
 
 	type = "assembling-machine",
@@ -96,7 +96,7 @@ data:extend({ assembling_machine })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local assembling_machine = table.deepcopy(assembling_machine)
 assembling_machine.name = "apm_assembling_machine_1"
 assembling_machine.icons = {

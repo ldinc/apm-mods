@@ -2,7 +2,7 @@ if not apm.lib.utils.recipe then apm.lib.utils.recipe = {} end
 if not apm.lib.utils.recipe.has then apm.lib.utils.recipe.has = {} end
 
 --- [has_result]
----@param base data.ProductPrototype[]
+---@param base ProductPrototype[]
 ---@param result_name string
 ---@return boolean
 local function has_result(base, result_name)
@@ -185,7 +185,7 @@ function apm.lib.utils.recipe.result.add_with_probability(
 	if recipe.results then
 		table.insert(
 			recipe.results,
-			---@type data.ProductPrototype
+			---@type ProductPrototype
 			{
 				type = type_name,
 				name = result_name,
@@ -210,7 +210,7 @@ function apm.lib.utils.recipe.result.add_with_probability(
 end
 
 --- [check_for_probability]
----@param base_dn data.ProductPrototype
+---@param base_dn ProductPrototype
 ---@param result_amount number?
 local function check_for_probability(base_dn, result_amount)
 	if base_dn.independent_probability and result_amount >= 1 then

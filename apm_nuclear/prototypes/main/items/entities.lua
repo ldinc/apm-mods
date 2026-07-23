@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/items/entities.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_cooling_pond_0",
@@ -22,7 +22,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_hybrid_cooling_tower_0",
@@ -39,7 +39,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_nuclear_breeder",

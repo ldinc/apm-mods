@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/entities/hybrid_cooling_tower.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.FurnacePrototype
+---@type FurnacePrototype
 local hybrid_cooling_tower = {
 	result_inventory_size = 0,
 	source_inventory_size = 0,

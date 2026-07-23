@@ -14,7 +14,7 @@ APM_LOG_HEADER(self)
 local function ParticleFilter(i)
 	local bonus = 0.075 * i * -1
 
-	---@type data.ModulePrototype
+	---@type ModulePrototype
 	local item = {
 		type = "module",
 		name = "apm_particle_filter_" .. i,

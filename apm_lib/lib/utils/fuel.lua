@@ -13,17 +13,17 @@ if apm.lib.utils.fuel.entity.add == nil then apm.lib.utils.fuel.entity.add = {} 
 if apm.lib.utils.fuel.entities == nil then apm.lib.utils.fuel.entities = {} end
 if apm.lib.utils.fuel.entities.add == nil then apm.lib.utils.fuel.entities.add = {} end
 
----@return data.FuelCategory[]
+---@return FuelCategory[]
 function apm.lib.utils.fuel.get.default_category()
 	return { { name = "chemical", type = "fuel-category" } }
 end
 
----@return data.FuelCategory[]
+---@return FuelCategory[]
 function apm.lib.utils.fuel.get.default_fluid_category()
 	return { { name = "apm_petrol", type = "fuel-category" } }
 end
 
----@return data.FuelCategoryID[]
+---@return FuelCategoryID[]
 function apm.lib.utils.fuel.get.default_nuclear_category_ids()
 	return { "apm_nuclear_uranium", "apm_nuclear_mox", "apm_nuclear_neptunium", "apm_nuclear_thorium" }
 end
@@ -43,7 +43,7 @@ function apm.lib.utils.fuel.add.to_exlude_list(entity_name)
 end
 
 --- [fuel.get_base_fuel_value]
----@return data.Energy
+---@return Energy
 function apm.lib.utils.fuel.get_base_fuel_value()
 	local fuel_value = 2.5
 
@@ -95,9 +95,9 @@ function apm.lib.utils.fuel.overwrite_coal_fuel_value()
 end
 
 --- [fuel.get_coal_fuel_value()]
----@return data.Energy
+---@return Energy
 function apm.lib.utils.fuel.get_coal_fuel_value()
-	---@type data.ItemPrototype, boolean
+	---@type ItemPrototype, boolean
 	local item, ok = apm.lib.utils.item.get_by_name("coal")
 	if not ok then
 		return apm.lib.utils.fuel.get_base_fuel_value()
@@ -115,7 +115,7 @@ end
 ---@param item_name string
 ---@param emissions_multiplier number
 function apm.lib.utils.fuel.overwrite_emissions_multiplier(item_name, emissions_multiplier)
-	---@type data.ItemPrototype, boolean
+	---@type ItemPrototype, boolean
 	local item, ok = apm.lib.utils.item.get_by_name("coal")
 	if not ok then
 		return
@@ -129,7 +129,7 @@ end
 ---@param item_name string
 ---@param multiplicator number
 ---@param burnt_result string?
----@param fuel_category data.FuelCategoryID?
+---@param fuel_category FuelCategoryID?
 function apm.lib.utils.fuel.overhaul(level, item_name, multiplicator, burnt_result, fuel_category)
 	if not apm.lib.utils.item.exist(item_name) then return end
 

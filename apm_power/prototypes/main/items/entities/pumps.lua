@@ -9,7 +9,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item('pump')
 local item_icon_b = { apm.lib.icons.dynamics.t1 }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_pump_0',

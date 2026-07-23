@@ -5,7 +5,7 @@ local self = 'apm_power/prototypes/main/items/intermediates.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_resin',
@@ -21,7 +21,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_rubber',
@@ -37,7 +37,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_gearing',
@@ -53,7 +53,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_wood_board',
@@ -69,7 +69,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_mechanical_relay',
@@ -85,7 +85,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_steam_relay',
@@ -101,7 +101,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_sealing_rings',
@@ -117,7 +117,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_treated_wood_planks',
@@ -135,7 +135,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_electromagnet',
@@ -151,7 +151,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_egen_unit',
@@ -168,7 +168,7 @@ local item = {
 data:extend({ item })
 
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_crushed_stone',
@@ -190,7 +190,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_stone_brick_raw',
@@ -205,7 +205,7 @@ local item = {
 }
 
 data:extend({ item })
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_pistions',
@@ -221,7 +221,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_simple_engine',
@@ -237,7 +237,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_steam_engine',
@@ -253,7 +253,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_machine_frame_basic',
@@ -270,7 +270,7 @@ local item = {
 data:extend({ item })
 
 if apm.lib.features.frames_recycling then
-	---@type data.ItemPrototype
+	---@type ItemPrototype
 	local item = {
 		type = 'item',
 		name = 'apm_machine_frame_basic_used',
@@ -287,7 +287,7 @@ if apm.lib.features.frames_recycling then
 	data:extend({ item })
 end
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_machine_frame_steam',
@@ -304,7 +304,7 @@ local item = {
 data:extend({ item })
 
 if apm.lib.features.frames_recycling then
-	---@type data.ItemPrototype
+	---@type ItemPrototype
 	local item = {
 		type = 'item',
 		name = 'apm_machine_frame_steam_used',
@@ -321,7 +321,7 @@ if apm.lib.features.frames_recycling then
 	data:extend({ item })
 end
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_machine_frame_advanced',
@@ -337,7 +337,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_iron_bearing_ball',
@@ -353,7 +353,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_iron_bearing',
@@ -370,7 +370,7 @@ local item = {
 data:extend({ item })
 
 if apm.lib.features.frames_recycling then
-	---@type data.ItemPrototype
+	---@type ItemPrototype
 	local item = {
 		type = 'item',
 		name = 'apm_machine_frame_advanced_used',
@@ -387,7 +387,7 @@ if apm.lib.features.frames_recycling then
 	data:extend({ item })
 end
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_gun_powder',

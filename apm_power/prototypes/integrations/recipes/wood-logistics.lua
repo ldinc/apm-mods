@@ -10,7 +10,7 @@ apm.lib.utils.assembler.add.crafting_categories("apm_assembling_machine_1", craf
 
 local item_icon = apm.lib.utils.icon.get.from_item("apm_treated_wood_planks")
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local handcrafted_wood_planks = {
 	type = "recipe",
 	name = "apm_treated_wood_planks_handcraft_only"

@@ -4,7 +4,7 @@ require('lib.log')
 if apm.lib.utils.assembler.get == nil then apm.lib.utils.assembler.get = {} end
 
 ---@param assembler_name string
----@return data.FuelCategory[]?
+---@return FuelCategory[]?
 function apm.lib.utils.assembler.get.fuel_categories(assembler_name)
 	local assembler, ok = apm.lib.utils.assembler.get.by_name(assembler_name)
 
@@ -18,7 +18,7 @@ function apm.lib.utils.assembler.get.fuel_categories(assembler_name)
 
 	if assembler.energy_source.type == "burner" then
 		if assembler.energy_source.fuel_categories then
-			---@type data.FuelCategory[]
+			---@type FuelCategory[]
 			local categories = {}
 
 			for _, category in pairs(assembler.energy_source.fuel_categories) do
@@ -66,7 +66,7 @@ function apm.lib.utils.assembler.get.fuel_categories(assembler_name)
 end
 
 ---@param assembler_name string
----@param category data.FuelCategoryID
+---@param category FuelCategoryID
 function apm.lib.utils.assembler.burner.add_fuel_category(assembler_name, category)
 	local assembler, ok = apm.lib.utils.assembler.get.by_name(assembler_name)
 

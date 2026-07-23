@@ -35,7 +35,7 @@ local smoke_steam = {
 local base_animation_progress = 1.0666667
 
 --- [apm_crusher_machine_0]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local crusher = {
 	type = "assembling-machine",
 	name = "apm_crusher_machine_0",
@@ -117,7 +117,7 @@ crusher.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ crusher })
 
 --- [apm_crusher_machine_1]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local crusher = table.deepcopy(crusher)
 crusher.name = "apm_crusher_machine_1"
 crusher.icons = {
@@ -153,7 +153,7 @@ crusher.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 data:extend({ crusher })
 
 --- [apm_crusher_machine_2]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local crusher = table.deepcopy(crusher)
 crusher.name = "apm_crusher_machine_2"
 crusher.icons = {

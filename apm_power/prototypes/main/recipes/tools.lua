@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_saw_blade_iron"
@@ -19,12 +19,12 @@ recipe.categories = { "advanced-crafting" }
 
 recipe.enabled = false
 recipe.energy_required = 1
----@type data.IngredientPrototype[]
+---@type IngredientPrototype[]
 recipe.ingredients = {
 	{ type = "item", name = "iron-plate",        amount = 2 },
 	{ type = "item", name = "apm_sealing_rings", amount = 2 }
 }
----@type data.ProductPrototype[]
+---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item", name = "apm_saw_blade_iron", amount = 1 }
 }
@@ -38,7 +38,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_saw_blade_steel"
@@ -48,12 +48,12 @@ recipe.categories = { "advanced-crafting" }
 
 recipe.enabled = false
 recipe.energy_required = 1
----@type data.IngredientPrototype[]
+---@type IngredientPrototype[]
 recipe.ingredients = {
 	{ type = "item", name = "steel-plate",       amount = 1 },
 	{ type = "item", name = "apm_sealing_rings", amount = 2 }
 }
----@type data.ProductPrototype[]
+---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item", name = "apm_saw_blade_steel", amount = 1 }
 }
@@ -71,7 +71,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_saw_blade_iron_used")
 local item_icon_b = { apm.lib.icons.dynamics.recycling }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_saw_blade_iron_maintenance"
@@ -84,13 +84,13 @@ recipe.icons = icons
 
 recipe.enabled = false
 recipe.energy_required = 2
----@type data.IngredientPrototype[]
+---@type IngredientPrototype[]
 recipe.ingredients = {
 	{ type = "item",  name = "apm_saw_blade_iron_used", amount = 5 },
 	{ type = "fluid", name = "water",                   amount = 30 },
 	{ type = "item",  name = "apm_crushed_stone",       amount = 2 }
 }
----@type data.ProductPrototype[]
+---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item",  name = "apm_saw_blade_iron", amount = 4 },
 	{ type = "item",  name = "apm_saw_blade_iron", amount_min = 1, amount_max = 1,        independent_probability = 0.5,           ignored_by_stats = 1, ignored_by_productivity = 1 },
@@ -113,7 +113,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_saw_blade_steel_used")
 local item_icon_b = { apm.lib.icons.dynamics.recycling }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_saw_blade_steel_maintenance"
@@ -126,13 +126,13 @@ recipe.icons = icons
 
 recipe.enabled = false
 recipe.energy_required = 3
----@type data.IngredientPrototype[]
+---@type IngredientPrototype[]
 recipe.ingredients = {
 	{ type = "item",  name = "apm_saw_blade_steel_used", amount = 5 },
 	{ type = "fluid", name = "water",                    amount = 30 },
 	{ type = "item",  name = "apm_crushed_stone",        amount = 2 }
 }
----@type data.ProductPrototype[]
+---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item",  name = "apm_saw_blade_steel", amount = 4 },
 	{ type = "item",  name = "apm_saw_blade_steel", amount_min = 1, amount_max = 1,        independent_probability = 0.95,          ignored_by_stats = 1, ignored_by_productivity = 1 },

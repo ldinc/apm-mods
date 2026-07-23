@@ -25,8 +25,8 @@ function apm.lib.utils.technology.trigger.remove(technology_name, set_default_sp
 	end
 end
 
----@param technology_name data.TechnologyID
----@return data.TechnologyTrigger?
+---@param technology_name TechnologyID
+---@return TechnologyTrigger?
 function apm.lib.utils.technology.trigger.get(technology_name)
 	if not apm.lib.utils.technology.exist(technology_name) then
 		return nil
@@ -79,7 +79,7 @@ function apm.lib.utils.technology.trigger.set.craft_fluid(technology_name, trigg
 
 	apm.lib.utils.technology.unit.clear_all_by_ref(technology)
 
-	---@type data.CraftFluidTechnologyTrigger
+	---@type CraftFluidTechnologyTrigger
 	local trigger = {
 		type = "craft-fluid",
 		fluid = trigger_item,
@@ -93,14 +93,14 @@ function apm.lib.utils.technology.trigger.set.craft_fluid(technology_name, trigg
 	technology.research_trigger = trigger
 end
 
----@param technology_name data.TechnologyID
----@param trigger_entity data.EntityID
+---@param technology_name TechnologyID
+---@param trigger_entity EntityID
 function apm.lib.utils.technology.trigger.set.mine(technology_name, trigger_entity)
 	if not apm.lib.utils.technology.exist(technology_name) then
 		return
 	end
 
-	---@type data.MineEntityTechnologyTrigger
+	---@type MineEntityTechnologyTrigger
 	local trigger = {
 		type = "mine-entity",
 		entities = { trigger_entity },

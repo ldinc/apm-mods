@@ -56,7 +56,7 @@ function apm.energy_addon.generate_electric_powered(name)
 	local item_car = data.raw["item-with-entity-data"][name]
 	local item_name = "apm_electric_" .. name
 
-	---@type data.ItemPrototype
+	---@type ItemPrototype
 	local item = {
 		type = "item",
 		name = item_name,
@@ -150,7 +150,7 @@ end
 
 function apm.energy_addon.generate_electric_locomotive_new_recipe(name)
 	local resultName = "apm_electric_" .. name
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe = {
 		type = "recipe",
 		name = resultName,
@@ -176,7 +176,7 @@ function apm.energy_addon.generate_electric_locomotive_new_tech(name, suffix)
 	local tName = "apm_electric_" .. suffix
 	local itmName = "apm_electric_" .. name
 
-	---@type data.TechnologyPrototype
+	---@type TechnologyPrototype
 	local technology = {
 		type = "technology",
 		name = tName,
@@ -204,7 +204,7 @@ function apm.energy_addon.generate_electric_powered_spidertron(name)
 	local item_spidertron = data.raw["item-with-entity-data"][name]
 	local e_name = "apm_electric_" .. name
 
-	---@type data.ItemPrototype
+	---@type ItemPrototype
 	local item = {
 
 		type = "item",
@@ -243,7 +243,7 @@ end
 
 function apm.energy_addon.generate_electric_spidertron_new_recipe(name)
 	local resultName = "apm_electric_" .. name
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe = {
 		type = "recipe",
 		name = resultName,
@@ -269,7 +269,7 @@ function apm.energy_addon.generate_electric_spidertron_new_tech(name, suffix)
 	local tName = "apm_electric_" .. suffix
 	local itmName = "apm_electric_" .. name
 
-	---@type data.TechnologyPrototype
+	---@type TechnologyPrototype
 	local technology = {
 		type = "technology",
 		name = tName,

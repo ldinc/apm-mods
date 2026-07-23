@@ -24,7 +24,7 @@ end
 
 --- [locomotive.get.by_name]
 ---@param locomotive_name string
----@return data.LocomotivePrototype
+---@return LocomotivePrototype
 ---@return boolean
 function apm.lib.utils.locomotive.get.by_name(locomotive_name)
 	local locomotive = data.raw.locomotive[locomotive_name]
@@ -42,7 +42,7 @@ end
 
 --- [locomotive.get.fuel_categories]
 ---@param locomotive_name string
----@return data.FuelCategory[]?
+---@return FuelCategory[]?
 function apm.lib.utils.locomotive.get.fuel_categories(locomotive_name)
 	local locomotive, ok = apm.lib.utils.locomotive.get.by_name(locomotive_name)
 
@@ -93,7 +93,7 @@ end
 
 --- [locomotive.add.fuel_category]
 ---@param locomotive_name string
----@param fuel_category data.FuelCategoryID
+---@param fuel_category FuelCategoryID
 function apm.lib.utils.locomotive.add.fuel_category(locomotive_name, fuel_category)
 	local locomotive, ok = apm.lib.utils.locomotive.get.by_name(locomotive_name)
 

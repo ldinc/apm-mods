@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/equipment/fission_reactor.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.GeneratorEquipmentPrototype
+---@type GeneratorEquipmentPrototype
 local reactor = {
 	type = "generator-equipment",
 	name = "apm_fission_reactor",

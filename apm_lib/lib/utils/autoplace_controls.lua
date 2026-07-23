@@ -8,16 +8,16 @@ if not apm.lib.utils.autoplace_controls.table then apm.lib.utils.autoplace_contr
 
 --- [autoplace_controls.add.ore]
 ---@param ore_name string
----@param frequency data.MapGenSize
----@param size data.MapGenSize
----@param richness data.MapGenSize
+---@param frequency MapGenSize
+---@param size MapGenSize
+---@param richness MapGenSize
 function apm.lib.utils.autoplace_controls.add.ore(ore_name, frequency, size, richness)
 	if not data.raw.resource[ore_name] then
 		APM_LOG_WARN(self, 'add.ore()', 'resource with name: "' .. tostring(ore_name) .. '" doesnt exist.')
 		return
 	end
 
-	---@type data.FrequencySizeRichness
+	---@type FrequencySizeRichness
 	local value = {
 		frequency = frequency,
 		size = size,

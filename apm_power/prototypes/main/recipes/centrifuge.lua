@@ -16,7 +16,7 @@ item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -8, 8 })
 local item_icon_c = { apm.lib.icons.dynamics.recycling }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_seawater_centrifuging"
@@ -52,7 +52,7 @@ item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -8, 8 })
 local item_icon_c = { apm.lib.icons.dynamics.recycling }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_dirty_water_purification"
@@ -90,7 +90,7 @@ item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -8, 8 })
 local item_icon_c = { apm.lib.icons.dynamics.recycling }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_coal_saturated_wastewater_seperation"

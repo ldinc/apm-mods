@@ -28,7 +28,7 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_mox",
@@ -61,7 +61,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_fuel_rod_mox_active")
 local item_icon_b = { apm.lib.icons.dynamics.temp_down }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_mox_cooling",
@@ -99,7 +99,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
 local fluid = data.raw.fluid["apm_purex_solution_mox"]
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_mox_recovery_stage_a",
@@ -141,7 +141,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
 local fluid = data.raw.fluid["apm_purex_solution_mox"]
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_mox_recovery_stage_b",

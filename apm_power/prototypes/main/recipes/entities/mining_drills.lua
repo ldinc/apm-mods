@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_burner_miner_drill_2"
@@ -36,7 +36,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_steam_mining_drill"
@@ -61,7 +61,7 @@ recipe.always_show_made_in = apm.lib.features.show.made_in
 if apm.lib.features.reuse_previous_tier then
 	local prev = "burner-mining-drill"
 
-	---@type data.ItemPrototype, boolean
+	---@type ItemPrototype, boolean
 	local burner_2, ok = apm.lib.utils.item.get_by_name("apm_burner_miner_drill_2", true)
 
 	if ok and not burner_2.hidden then

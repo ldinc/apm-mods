@@ -5,7 +5,7 @@ local self = 'lib.utils.fluid'
 
 --- [fluid.exist]
 ---@param fluid_name string
----@return data.FluidPrototype
+---@return FluidPrototype
 ---@return boolean
 function apm.lib.utils.fluid.get_by_name(fluid_name)
 	local fluid =  data.raw.fluid[fluid_name]

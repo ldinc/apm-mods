@@ -8,7 +8,7 @@ local icon_path = "__apm_resource_pack_ldinc__/graphics/icons/"
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_steam_inserter",
@@ -23,7 +23,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_steam_inserter_long",

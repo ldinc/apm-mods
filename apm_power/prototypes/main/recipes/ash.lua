@@ -14,7 +14,7 @@ local item_icon_b = apm.lib.utils.icon.get.from_item("apm_generic_ash")
 item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_stone_brick_raw_with_ash"
@@ -49,7 +49,7 @@ local item_icon_b = apm.lib.utils.icon.get.from_item("apm_generic_ash")
 item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 
@@ -85,7 +85,7 @@ local item_icon_b = apm.lib.utils.icon.get.from_item("apm_generic_ash")
 item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_coal_ash_washing"
@@ -124,7 +124,7 @@ item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
 local item_icon_c = { apm.lib.icons.dynamics.smelting }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_coal_ash_production"
@@ -159,7 +159,7 @@ item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { -9, -9 })
 local item_icon_c = { apm.lib.icons.dynamics.smelting }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b, item_icon_c })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_wood_ash_production"

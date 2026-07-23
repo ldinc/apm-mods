@@ -29,7 +29,7 @@ apm.energy_addon.generate_electric_powered("car")
 --
 -- ----------------------------------------------------------------------------
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_electric_car",
@@ -56,7 +56,7 @@ data:extend({ recipe })
 --
 -- ----------------------------------------------------------------------------
 
----@type data.TechnologyPrototype
+---@type TechnologyPrototype
 local technology = {
 	name = "automobilism_electric-1",
 
@@ -90,7 +90,7 @@ apm.energy_addon.generate_electric_powered("tank")
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_electric_tank",
@@ -117,7 +117,7 @@ data:extend({ recipe })
 --
 -- ----------------------------------------------------------------------------
 
----@type data.TechnologyPrototype
+---@type TechnologyPrototype
 local technology = {
 	name = "tanks_electric-1",
 
@@ -152,7 +152,7 @@ apm.energy_addon.generate_electric_powered_locomotive("locomotive")
 --
 -- ----------------------------------------------------------------------------
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_electric_locomotive",
@@ -179,7 +179,7 @@ data:extend({ recipe })
 --
 -- ----------------------------------------------------------------------------
 
----@type data.TechnologyPrototype
+---@type TechnologyPrototype
 local technology = {
 	name = "locomotive_electric",
 

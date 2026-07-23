@@ -24,7 +24,7 @@ end
 
 --- [assembler.mod.category.add]
 ---@param assembler_name string
----@param category data.RecipeCategoryID
+---@param category RecipeCategoryID
 function apm.lib.utils.assembler.mod.category.add(assembler_name, category)
 	local assembler, ok = apm.lib.utils.assembler.get.by_name(assembler_name)
 
@@ -51,7 +51,7 @@ end
 --- [assembler.mod.module_specification]
 ---@param assembler_name string
 ---@param value integer?
----@param allowed_effects data.EffectTypeLimitation?
+---@param allowed_effects EffectTypeLimitation?
 function apm.lib.utils.assembler.mod.module_specification(assembler_name, value, allowed_effects)
 	local assembler, ok = apm.lib.utils.assembler.get.by_name(assembler_name)
 

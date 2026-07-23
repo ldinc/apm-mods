@@ -26,7 +26,7 @@ end
 
 --- [lab.get.by_name]
 ---@param lab_name string
----@return data.LabPrototype
+---@return LabPrototype
 ---@return boolean
 function apm.lib.utils.lab.get.by_name(lab_name)
 	local lab = data.raw.lab[lab_name]
@@ -45,7 +45,7 @@ end
 
 --- [lab.get.fuel_categories]
 ---@param lab_name string
----@return data.FuelCategory[]?
+---@return FuelCategory[]?
 function apm.lib.utils.lab.get.fuel_categories(lab_name)
 	local lab, ok = apm.lib.utils.lab.get.by_name(lab_name)
 
@@ -141,7 +141,7 @@ function apm.lib.utils.lab.overhaul(lab_name)
 end
 
 --- [check_for_science_packs]
----@param lab data.LabPrototype
+---@param lab LabPrototype
 ---@param science_pack string
 ---@return boolean
 local function check_for_science_packs(lab, science_pack)

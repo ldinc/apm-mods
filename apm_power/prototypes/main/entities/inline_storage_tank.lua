@@ -23,7 +23,7 @@ local pipe_picture =
 	west = empty
 }
 
----@type data.StorageTankPrototype
+---@type StorageTankPrototype
 local tank = {
 	type = "storage-tank",
 	name = "apm_inline_storage_tank",

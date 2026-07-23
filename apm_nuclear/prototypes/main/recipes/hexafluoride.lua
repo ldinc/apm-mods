@@ -18,7 +18,7 @@ local function CreateRecipeCentrifuging(i)
 	local enrichment_output_B = 2 + ((i + 1) * 5)
 	local energy_required = 30
 
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	recipe = {
 		type = "recipe",
 		name = "apm_hexafluoride_" .. string.format("%03d", enrichment_output_B),
@@ -68,7 +68,7 @@ local item_icon_b = apm.lib.utils.icon.get.from_fluid("apm_yellowcake")
 item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.45, { -9, 9 })
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_hexafluoride_007",
@@ -105,7 +105,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_fluorite_ore",
@@ -137,7 +137,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_potassium_bromide",
@@ -169,7 +169,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_bromine",
@@ -201,7 +201,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_bromine_trifluoride",
@@ -233,7 +233,7 @@ data:extend({ recipe })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_yellowcake",

@@ -15,7 +15,7 @@ function init.alloc_defenitions()
 end
 
 ---@param unlock_technology string
----@param parent_technologies data.TechnologyPrototype | string
+---@param parent_technologies TechnologyPrototype | string
 function init.add_technology_conditional(unlock_technology, parent_technologies)
 	local p_techs = {}
 

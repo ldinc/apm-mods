@@ -50,7 +50,7 @@ local smoke_puddling_furnace = {
 }
 
 --- [apm_puddling_furnace_0]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local puddling_furnace = {
 	type = "assembling-machine",
 	name = "apm_puddling_furnace_0",
@@ -159,7 +159,7 @@ data:extend({ puddling_furnace })
 -- ----------------------------------------------------------------------------
 
 --- [apm_steelworks_0]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local steelworks = {
 	type = "assembling-machine",
 	name = "apm_steelworks_0",
@@ -308,7 +308,7 @@ data:extend({ steelworks })
 -- ----------------------------------------------------------------------------
 
 --- [apm_steelworks_1]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 steelworks = table.deepcopy(steelworks)
 steelworks.name = "apm_steelworks_1"
 steelworks.icons = {

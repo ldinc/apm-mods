@@ -3,7 +3,7 @@ if not rampant_heavy_wall.lib then rampant_heavy_wall.lib = {} end
 if not rampant_heavy_wall.lib.utils then rampant_heavy_wall.lib.utils = {} end
 
 ---@param str string?
----@return data.IngredientPrototype[]?
+---@return IngredientPrototype[]?
 function rampant_heavy_wall.lib.utils.create_ingredients_from_string(str)
 	if not string or string == "" then
 		return nil

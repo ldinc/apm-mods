@@ -24,7 +24,7 @@ end
 
 --- [generator.get.by_name]
 ---@param generator_name string
----@return data.GeneratorPrototype
+---@return GeneratorPrototype
 ---@return boolean
 function apm.lib.utils.generator.get.by_name(generator_name)
 	local generator = data.raw.generator[generator_name]
@@ -42,7 +42,7 @@ end
 
 --- [generator.set.burner_fuel_categories]
 ---@param generator_name string
----@param fuel_categories data.FuelCategoryID | data.FuelCategoryID[]
+---@param fuel_categories FuelCategoryID | FuelCategoryID[]
 function apm.lib.utils.generator.set.burner_fuel_categories(generator_name, fuel_categories)
 	local generator, ok = apm.lib.utils.generator.get.by_name(generator_name)
 
@@ -55,7 +55,7 @@ end
 
 --- [generator.get.fuel_categories]
 ---@param generator_name string
----@return data.FuelCategory[]?
+---@return FuelCategory[]?
 function apm.lib.utils.generator.get.fuel_categories(generator_name)
 	local generator, ok = apm.lib.utils.generator.get.by_name(generator_name)
 

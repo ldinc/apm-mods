@@ -22,7 +22,7 @@ end
 
 --- [boiler.get.by_name]
 ---@param boiler_name string
----@return data.BoilerPrototype
+---@return BoilerPrototype
 ---@return boolean
 function apm.lib.utils.boiler.get.by_name(boiler_name)
 	local boiler = data.raw.boiler[boiler_name]
@@ -39,7 +39,7 @@ end
 
 --- [boiler.get.fuel_categories]
 ---@param boiler_name string
----@return data.FuelCategoryID[]?
+---@return FuelCategoryID[]?
 function apm.lib.utils.boiler.get.fuel_categories(boiler_name)
 	local boiler, ok = apm.lib.utils.boiler.get.by_name(boiler_name)
 

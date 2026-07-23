@@ -8,17 +8,17 @@ if not apm.lib.utils.technology.unit.set then apm.lib.utils.technology.unit.set 
 ---@param ingredients string[]
 ---@param count uint64
 ---@param time double
----@param formula? data.MathExpression
----@return data.TechnologyUnit
+---@param formula? MathExpression
+---@return TechnologyUnit
 function apm.lib.utils.technology.unit.new(ingredients, count, time, formula)
-	---@type data.TechnologyUnit[]
+	---@type TechnologyUnit[]
 	local list = {}
 
 	for _, value in ipairs(ingredients) do
 		table.insert(list, { value, 1 })
 	end
 
-	---@type data.TechnologyUnit
+	---@type TechnologyUnit
 	local unit = {
 		ingredients = list,
 		count = count,

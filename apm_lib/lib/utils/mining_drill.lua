@@ -25,7 +25,7 @@ end
 
 --- [mining_drill.get.by_name]
 ---@param mining_drill_name string
----@return data.MiningDrillPrototype
+---@return MiningDrillPrototype
 ---@return boolean
 function apm.lib.utils.mining_drill.get.by_name(mining_drill_name)
 	local mining_drill = data.raw["mining-drill"][mining_drill_name]
@@ -42,7 +42,7 @@ end
 
 --- [mining_drill.get.fuel_categories]
 ---@param mining_drill_name string
----@return data.FuelCategory[]?
+---@return FuelCategory[]?
 function apm.lib.utils.mining_drill.get.fuel_categories(mining_drill_name)
 	local mining_drill, ok = apm.lib.utils.mining_drill.get.by_name(mining_drill_name)
 

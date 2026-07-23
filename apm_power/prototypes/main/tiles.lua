@@ -173,7 +173,7 @@ local concrete_transitions_between_transitions =
 	}
 }
 
----@type data.TilePrototype
+---@type TilePrototype
 local tile_asphalt = {
 	type = "tile",
 	name = "apm_asphalt",

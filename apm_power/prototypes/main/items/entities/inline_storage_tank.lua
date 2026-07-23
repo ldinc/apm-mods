@@ -7,7 +7,7 @@ local self = 'apm_power/prototypes/main/items/entities/greenhouse.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_inline_storage_tank',

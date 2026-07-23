@@ -23,7 +23,7 @@ end
 
 --- [tile.get.by_name]
 ---@param tile_name string
----@return data.TilePrototype
+---@return TilePrototype
 ---@return boolean
 function apm.lib.utils.tile.get.by_name(tile_name)
 	local tile = data.raw.tile[tile_name]
@@ -92,7 +92,7 @@ function apm.lib.utils.tile.unification(old_tile_name, new_tile_name)
 		if old_minable_item_name then
 			if apm.lib.utils.item.exist(old_minable_item_name) then
 				local item = data.raw.item[old_minable_item_name]
-				---@type data.CollisionMaskConnector
+				---@type CollisionMaskConnector
 				local cond = {
 					layers = {
 						water_tile = true

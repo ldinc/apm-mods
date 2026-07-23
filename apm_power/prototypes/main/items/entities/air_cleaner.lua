@@ -6,7 +6,7 @@ local item_sounds = require("__base__.prototypes.item_sounds")
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_air_cleaner_machine_0',
@@ -29,7 +29,7 @@ item.icons = {
 data:extend({ item })
 
 --- [electric aircleaner]
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_air_cleaner_machine_1',

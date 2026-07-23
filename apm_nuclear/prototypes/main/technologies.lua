@@ -7,9 +7,9 @@ local self = "apm_nuclear/prototypes/main/technologies.lua"
 APM_LOG_HEADER(self)
 
 ---@param t_name string
----@param t_prerequisites data.TechnologyID[]
+---@param t_prerequisites TechnologyID[]
 ---@param t_recipes string[]
----@param t_unit?  data.TechnologyUnit
+---@param t_unit?  TechnologyUnit
 local new_fn = function(t_name, t_prerequisites, t_recipes, t_unit)
 	apm.lib.utils.technology.new(
 		"apm_nuclear",

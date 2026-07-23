@@ -5,13 +5,13 @@ require("lib.utils.builders.fluid_box")
 local self = "lib.utils.builders.energy_source"
 
 --- Construct new energy source instance
---- @param emmisions_pm? {data.AirbornePollutantID: number}
---- @param smoke? data.SmokePrototype[]
---- @param fluid_box? data.FluidBox
+--- @param emmisions_pm? {AirbornePollutantID: number}
+--- @param smoke? SmokePrototype[]
+--- @param fluid_box? FluidBox
 --- @param volume? float
 --- @param min_t? float
 --- @param max_t? float
---- @return data.FluidEnergySource
+--- @return FluidEnergySource
 function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, fluid_box, volume, min_t, max_t)
 	if not smoke then
 		smoke = { apm.lib.utils.builders.smoke.light }
@@ -33,7 +33,7 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, flu
 		fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(volume, min_t, max_t)
 	end
 
-	---@type data.FluidEnergySource
+	---@type FluidEnergySource
 	local result = {
 		type = "fluid",
 		fluid_box = fluid_box,
@@ -48,8 +48,8 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, flu
 end
 
 --- Construct new void energy source
----@param emmisions_pm? table<data.AirbornePollutantID, double>
----@return data.VoidEnergySource
+---@param emmisions_pm? table<AirbornePollutantID, double>
+---@return VoidEnergySource
 function apm.lib.utils.builders.energy_source.new_void(emmisions_pm)
 	return {
 		type = "void",
@@ -70,12 +70,12 @@ function apm.lib.utils.builders.energy_source.new_electric(emmisions_pm, drain)
 	}
 end
 
----@param fuel_categories? data.FuelCategoryID[]
----@param emmisions_pm? {[data.AirbornePollutantID]: number},
+---@param fuel_categories? FuelCategoryID[]
+---@param emmisions_pm? {[AirbornePollutantID]: number},
 ---@param smoke any
 ---@param fuel_inventory_size any
 ---@param eff any
----@return data.EnergySource
+---@return EnergySource
 function apm.lib.utils.builders.energy_source.new_burner(fuel_categories, emmisions_pm, smoke, fuel_inventory_size, eff)
 	if not emmisions_pm then
 		emmisions_pm = apm.power.constants.emissions.t0
@@ -104,7 +104,7 @@ function apm.lib.utils.builders.energy_source.new_burner(fuel_categories, emmisi
 	}
 end
 
----@return data.BurnerEnergySource
+---@return BurnerEnergySource
 function apm.lib.utils.builders.energy_source.new_electroaccum(fuel_inventory_size, burnt_inventory_size)
 	return {
 		type = "burner",

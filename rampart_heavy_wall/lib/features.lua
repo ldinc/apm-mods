@@ -161,7 +161,7 @@ function extract_gate(s)
 	return s:match("gate:%s*(.-)%s*$")
 end
 
----@return data.IngredientPrototype[]?
+---@return IngredientPrototype[]?
 function rampant_heavy_wall.lib.features.custom_recipe_for_wall()
 	if not rampant_heavy_wall.lib.features.is_resipe_overwritten then
 		return nil
@@ -176,7 +176,7 @@ function rampant_heavy_wall.lib.features.custom_recipe_for_wall()
 	return rampant_heavy_wall.lib.utils.create_ingredients_from_string(str)
 end
 
----@return data.IngredientPrototype[]?
+---@return IngredientPrototype[]?
 function rampant_heavy_wall.lib.features.custom_recipe_for_gate()
 	if not rampant_heavy_wall.lib.features.is_resipe_overwritten then
 		return nil

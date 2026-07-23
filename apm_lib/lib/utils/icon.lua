@@ -159,7 +159,7 @@ end
 -- icon_tables: a table of icon tables -> {{{icon=...},...}, {{icon=...},...}}
 -- ----------------------------------------------------------------------------
 ---@paran icon_tables any
----@return data.IconData[]
+---@return IconData[]
 function apm.lib.utils.icon.merge(icon_tables)
 	local min_size = 1024
 

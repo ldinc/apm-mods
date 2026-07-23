@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/items/science.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.ToolPrototype
+---@type ToolPrototype
 local item = {
 	type = "tool",
 	name = "apm_nuclear_science_pack",

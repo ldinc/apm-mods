@@ -39,7 +39,7 @@ end
 
 --- [reactor.get.by_name]
 ---@param reactor_name string
----@return data.ReactorPrototype
+---@return ReactorPrototype
 ---@return boolean
 function apm.lib.utils.reactor.get.by_name(reactor_name)
 	local reactor = data.raw.reactor[reactor_name]
@@ -57,7 +57,7 @@ end
 
 --- [reactor.get.fuel_categories]
 ---@param reactor_name string
----@return data.FuelCategory[]?
+---@return FuelCategory[]?
 function apm.lib.utils.reactor.get.fuel_categories(reactor_name)
 	local reactor, ok = apm.lib.utils.reactor.get.by_name(reactor_name)
 
@@ -128,7 +128,7 @@ end
 
 --- [reactor.add.fuel_category]
 ---@param reactor_name string
----@param fuel_categorie data.FuelCategoryID
+---@param fuel_categorie FuelCategoryID
 function apm.lib.utils.reactor.add.fuel_category(reactor_name, fuel_categorie)
 	local reactor, ok = apm.lib.utils.reactor.get.by_name(reactor_name)
 
@@ -141,7 +141,7 @@ end
 
 --- [reactor.set.fuel_categories]
 ---@param reactor_name string
----@param fuel_categories data.FuelCategoryID|data.FuelCategoryID[]
+---@param fuel_categories FuelCategoryID|FuelCategoryID[]
 function apm.lib.utils.reactor.set.fuel_categories(reactor_name, fuel_categories)
 	local reactor, ok = apm.lib.utils.reactor.get.by_name(reactor_name)
 

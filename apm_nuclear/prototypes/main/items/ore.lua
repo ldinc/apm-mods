@@ -7,7 +7,7 @@ local self = "apm_nuclear/prototypes/main/items/ore.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_fluorite_ore",
@@ -33,7 +33,7 @@ data:extend({ item })
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "thorium-ore",

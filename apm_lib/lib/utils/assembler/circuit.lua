@@ -4,7 +4,7 @@ require("lib.log")
 if apm.lib.utils.assembler.get == nil then apm.lib.utils.assembler.get = {} end
 
 --- Default circuit definition for assembling machine
----@return { [1]: data.CircuitConnectorDefinition, [2]: data.CircuitConnectorDefinition, [3]: data.CircuitConnectorDefinition, [4]: data.CircuitConnectorDefinition }
+---@return { [1]: CircuitConnectorDefinition, [2]: CircuitConnectorDefinition, [3]: CircuitConnectorDefinition, [4]: CircuitConnectorDefinition }
 function apm.lib.utils.assembler.get.default_circuit_connector()
 	-- if circuit_connector_definitions["assembling-machine"] then
 	-- 	return circuit_connector_definitions["assembling-machine"]

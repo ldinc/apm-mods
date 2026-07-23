@@ -9,7 +9,7 @@ APM_LOG_HEADER(self)
 
 local resource_autoplace = require("__core__.lualib.resource-autoplace")
 
----@type data.AutoplaceControl
+---@type AutoplaceControl
 local autoplace_control = {
 	type = "autoplace-control",
 	name = "thorium-ore",
@@ -21,7 +21,7 @@ local autoplace_control = {
 
 data:extend({ autoplace_control })
 
----@type data.ResourceEntityPrototype
+---@type ResourceEntityPrototype
 -- local resource = {
 -- 	type = "resource",
 -- 	name = "thorium-ore",
@@ -118,7 +118,7 @@ local driving_sound = {
 	fade_ticks = 6
 }
 
----@type data.ResourceEntityPrototype
+---@type ResourceEntityPrototype
 local resource = {
 	type = "resource",
 	name = name,

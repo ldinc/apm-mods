@@ -36,10 +36,10 @@ end
 --- Adding new technology to game
 ---@param mod_name string
 ---@param technology string
----@param t_prerequisites data.TechnologyID[]
+---@param t_prerequisites TechnologyID[]
 ---@param t_recipes string[]
----@param t_trigger? data.TechnologyTrigger
----@param t_unit?  data.TechnologyUnit
+---@param t_trigger? TechnologyTrigger
+---@param t_unit?  TechnologyUnit
 ---@paran t_icon? string
 ---@param t_icon_size? uint64
 ---@param t_is_essential? boolean
@@ -86,7 +86,7 @@ function apm.lib.utils.technology.new(
 		table.insert(effects, { type = "unlock-recipe", recipe = name })
 	end
 
-	---@type data.TechnologyPrototype
+	---@type TechnologyPrototype
 	local new = {
 		type = "technology",
 		name = technology,

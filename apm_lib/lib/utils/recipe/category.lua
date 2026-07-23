@@ -1,4 +1,4 @@
----@param category_id data.RecipeCategoryID
+---@param category_id RecipeCategoryID
 ---@return boolean
 function apm.lib.utils.recipe.category.exists(category_id)
 	local category = data.raw["recipe-category"][category_id]

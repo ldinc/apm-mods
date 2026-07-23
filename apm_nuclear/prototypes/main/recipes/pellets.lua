@@ -14,7 +14,7 @@ APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_sho
 -- ----------------------------------------------------------------------------
 local fluid = data.raw.fluid["apm_nuclear_hexafluoride_002"]
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_oxide_pellet_u238",
@@ -47,7 +47,7 @@ data:extend({ recipe })
 -- ----------------------------------------------------------------------------
 local fluid = data.raw.fluid["apm_nuclear_hexafluoride_047"]
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_oxide_pellet_u235",

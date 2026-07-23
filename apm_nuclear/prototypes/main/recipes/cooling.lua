@@ -25,7 +25,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_fluid("apm_hot_water")
 local item_icon_b = { apm.lib.icons.dynamics.temp_down }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "hot_water_cooling",
@@ -68,7 +68,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_fluid("steam")
 local item_icon_b = { apm.lib.icons.dynamics.temp_down }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "steam_condensing",

@@ -11,7 +11,7 @@ APM_LOG_HEADER(self)
 -- ----------------------------------------------------------------------------
 local target = "apm_inline_storage_tank"
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = target,

@@ -35,7 +35,7 @@ local smoke_steam = {
 local base_animation_progress = 1.0666667
 
 --- [apm_sieve_0]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local sieve = {
 	type = "assembling-machine",
 	name = "apm_sieve_0",

@@ -35,7 +35,7 @@ local smoke_steam = {
 }
 
 --- [apm_lab_0]
----@type data.LabPrototype
+---@type LabPrototype
 local lab = {
 
 	type = "lab",
@@ -145,7 +145,7 @@ lab.off_animation = {
 data:extend({ lab })
 
 --- [apm_lab_0]
----@type data.LabPrototype
+---@type LabPrototype
 local lab = table.deepcopy(lab)
 lab.name = "apm_lab_1"
 lab.icons = {

@@ -12,7 +12,7 @@ APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_sho
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_shielded_nuclear_fuel_cell",
@@ -45,7 +45,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("apm_shielded_nuclear_fuel_
 local item_icon_b = { apm.lib.icons.dynamics.recycling }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.RecipePrototype
+---@type RecipePrototype
 local recipe = {
 	type = "recipe",
 	name = "apm_shielded_nuclear_fuel_cell_reprocessing",

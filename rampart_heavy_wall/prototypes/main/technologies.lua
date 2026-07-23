@@ -4,7 +4,7 @@ local wall = rampant_heavy_wall.lib.const.wall.name
 local gate = rampant_heavy_wall.lib.const.gate.name
 local tint = rampant_heavy_wall.lib.const.wall.tint
 
----@type data.TechnologyPrototype
+---@type TechnologyPrototype
 local wall_tech = {
 	type = "technology",
 	name = wall,

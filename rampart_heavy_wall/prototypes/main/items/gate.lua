@@ -5,7 +5,7 @@ require("lib.const")
 local name = rampant_heavy_wall.lib.const.gate.name
 local tint = rampant_heavy_wall.lib.const.gate.tint
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = name,

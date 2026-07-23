@@ -4,7 +4,7 @@ require('lib.log')
 if apm.lib.utils.assembler.get == nil then apm.lib.utils.assembler.get = {} end
 
 ---@param assembler_name string
----@return data.AssemblingMachinePrototype
+---@return AssemblingMachinePrototype
 ---@return boolean
 function apm.lib.utils.assembler.get.by_name(assembler_name)
 	local assembler = data.raw["assembling-machine"][assembler_name]

@@ -23,7 +23,7 @@ end
 
 --- [modules.get.by_name]
 ---@param module_name string
----@return data.ModulePrototype
+---@return ModulePrototype
 ---@return boolean
 function apm.lib.utils.modules.get.by_name(module_name)
 	local module = data.raw.module[module_name]
@@ -53,7 +53,7 @@ function apm.lib.utils.modules.has_productivity(module_name)
 end
 
 --- Check if moduele has productivity effect
----@param module data.ModulePrototype
+---@param module ModulePrototype
 ---@return boolean
 function apm.lib.utils.modules.has_productivity_ref(module)
 	if not module then
@@ -72,7 +72,7 @@ end
 --- [modules.create.category]
 ---@param category_name string
 function apm.lib.utils.modules.create.category(category_name)
-	---@type data.ModuleCategory
+	---@type ModuleCategory
 	local module_category = {
 		type = "module-category",
 		name = category_name,

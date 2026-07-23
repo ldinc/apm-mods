@@ -23,7 +23,7 @@ end
 
 --- [resource.get.by_name]
 ---@param resource_name string
----@return data.ResourceEntityPrototype
+---@return ResourceEntityPrototype
 ---@return boolean
 function apm.lib.utils.resource.get.by_name(resource_name)
 	local resource = data.raw.resource[resource_name]

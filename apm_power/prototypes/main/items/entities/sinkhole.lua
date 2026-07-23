@@ -5,7 +5,7 @@ local self = 'apm_power/prototypes/main/items/entities/sieve.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_sinkhole',
@@ -28,7 +28,7 @@ local item_icon_a = apm.lib.utils.icon.get.from_item("pipe-to-ground")
 local item_icon_b = { apm.lib.icons.dynamics.cooling }
 local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_sinkhole_small',

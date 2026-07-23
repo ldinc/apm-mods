@@ -11,7 +11,7 @@ if apm.lib.utils.furnace.add == nil then apm.lib.utils.furnace.add = {} end
 
 --- [furnace.get.by_name]
 ---@param furnace_name string
----@return data.FurnacePrototype
+---@return FurnacePrototype
 ---@return boolean
 function apm.lib.utils.furnace.get.by_name(furnace_name)
 	local furnace = data.raw.furnace[furnace_name]
@@ -54,7 +54,7 @@ end
 
 --- [furnace.get.fuel_categories]
 ---@param furnace_name string
----@return data.FuelCategoryID[]?
+---@return FuelCategoryID[]?
 function apm.lib.utils.furnace.get.fuel_categories(furnace_name)
 	local furnace, ok = apm.lib.utils.furnace.get.by_name(furnace_name)
 

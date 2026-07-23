@@ -5,7 +5,7 @@ local self = 'apm_lib/prototypes/signals.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.VirtualSignalPrototype
+---@type VirtualSignalPrototype
 local signal = {
 	type = "virtual-signal",
 	name = "apm_radioactive",
@@ -19,7 +19,7 @@ local signal = {
 
 data:extend({ signal })
 
----@type data.VirtualSignalPrototype
+---@type VirtualSignalPrototype
 local signal = {
 	type = "virtual-signal",
 	name = "apm_burnt_result",
@@ -33,7 +33,7 @@ local signal = {
 
 data:extend({ signal })
 
----@type data.VirtualSignalPrototype
+---@type VirtualSignalPrototype
 local signal = {
 	type = "virtual-signal",
 	name = "apm_info",
@@ -47,7 +47,7 @@ local signal = {
 
 data:extend({ signal })
 
----@type data.VirtualSignalPrototype
+---@type VirtualSignalPrototype
 local signal = {
 	type = "virtual-signal",
 	name = "apm_warning",
@@ -61,7 +61,7 @@ local signal = {
 
 data:extend({ signal })
 
----@type data.VirtualSignalPrototype
+---@type VirtualSignalPrototype
 local signal = {
 	type = "virtual-signal",
 	name = "apm_bullet_point",
@@ -75,7 +75,7 @@ local signal = {
 
 data:extend({ signal })
 
----@type data.VirtualSignalPrototype
+---@type VirtualSignalPrototype
 local signal = {
 	type = "virtual-signal",
 	name = "apm_alert_equipment_burner",

@@ -13,7 +13,7 @@ if stack_size == nil or stack_size == 0 then
 	stack_size = 2000
 end
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_generic_ash',

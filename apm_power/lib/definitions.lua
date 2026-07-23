@@ -51,10 +51,10 @@ apm.power.color.starter_set                                       = { r = 0.689,
 --
 --
 -- ----------------------------------------------------------------------------
---- @type table<string, table<data.AirbornePollutantID, double>>
+--- @type table<string, table<AirbornePollutantID, double>>
 apm.power.constants.emissions                                     = {}
 
----@type table<data.AirbornePollutantID, double>
+---@type table<AirbornePollutantID, double>
 apm.power.constants.emissions.t0                                  = { pollution = 5 }
 apm.power.constants.emissions.t1                                  = { pollution = 3 }
 apm.power.constants.emissions.t2                                  = { pollution = 4 }
@@ -76,7 +76,7 @@ apm.power.constants.emissions.steam_miner                         = { pollution 
 apm.power.constants.emissions.equipment_burner_generator_basic    = { pollution = 3.5 }
 apm.power.constants.emissions.equipment_burner_generator_advanced = { pollution = 2.5 }
 
---- @type { [string]: data.Energy }
+--- @type { [string]: Energy }
 apm.power.constants.energy_usage                                  = {}
 apm.power.constants.energy_usage.burner                           = "150kW"
 apm.power.constants.energy_usage.steam                            = "200kW"
@@ -96,7 +96,7 @@ apm.power.constants.energy_usage.puddling_furnace_0               = "490kW"
 apm.power.constants.energy_usage.steelworks_0                     = "910kW"
 apm.power.constants.energy_usage.steelworks_1                     = "1092kW"
 
---- @type { [string]: data.Energy }
+--- @type { [string]: Energy }
 apm.power.constants.engery_drain                                  = {}
 apm.power.constants.engery_drain.electric                         = "30kW"
 apm.power.constants.engery_drain.steelworks_0                     = "300kW"

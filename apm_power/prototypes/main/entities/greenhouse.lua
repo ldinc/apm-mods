@@ -35,7 +35,7 @@ local smoke_steam = {
 }
 
 --- [apm_greenhouse_0]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local greenhouse = {
 	type = "assembling-machine",
 	name = "apm_greenhouse_0",
@@ -114,7 +114,7 @@ data:extend({ greenhouse })
 
 
 --- [apm_greenhouse_1]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local greenhouse = table.deepcopy(greenhouse)
 greenhouse.type = "assembling-machine"
 greenhouse.name = "apm_greenhouse_1"
@@ -151,7 +151,7 @@ data:extend({ greenhouse })
 
 
 --- [apm_greenhouse_2]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local greenhouse = table.deepcopy(greenhouse)
 greenhouse.type = "assembling-machine"
 greenhouse.name = "apm_greenhouse_2"

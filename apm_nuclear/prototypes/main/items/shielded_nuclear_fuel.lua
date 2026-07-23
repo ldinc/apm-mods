@@ -5,7 +5,7 @@ local self = "apm_nuclear/prototypes/main/items/shielded_nuclear_fuel.lua"
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_shielded_nuclear_fuel_cell",
@@ -25,7 +25,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = "item",
 	name = "apm_shielded_nuclear_fuel_cell_used",

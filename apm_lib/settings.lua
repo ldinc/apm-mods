@@ -40,7 +40,7 @@ data:extend({
 --
 --
 -- ----------------------------------------------------------------------------
----@type data.ModBoolSettingPrototype
+---@type ModBoolSettingPrototype
 local setting = {
 	type = "bool-setting",
 	name = "apm_lib_inserter_functions",

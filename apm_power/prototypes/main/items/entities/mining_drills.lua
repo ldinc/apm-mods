@@ -5,7 +5,7 @@ local self = 'apm_power/prototypes/main/items/entities/mining_drills.lua'
 
 APM_LOG_HEADER(self)
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_burner_miner_drill_2',
@@ -23,7 +23,7 @@ local item = {
 
 data:extend({ item })
 
----@type data.ItemPrototype
+---@type ItemPrototype
 local item = {
 	type = 'item',
 	name = 'apm_steam_mining_drill',

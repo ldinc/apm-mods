@@ -14,7 +14,7 @@ APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_sho
 -- ----------------------------------------------------------------------------
 data:extend(
 	{
-		---@type data.RecipePrototype
+		---@type RecipePrototype
 		{
 			type = "recipe",
 			name = "apm_cooling_pond_0",
@@ -34,7 +34,7 @@ data:extend(
 			always_show_products = true,
 			always_show_made_in = apm_nuclear_always_show_made_in
 		},
-		---@type data.RecipePrototype
+		---@type RecipePrototype
 		{
 			type = "recipe",
 			name = "apm_hybrid_cooling_tower_0",
@@ -54,7 +54,7 @@ data:extend(
 			always_show_products = true,
 			always_show_made_in = apm_nuclear_always_show_made_in
 		},
-		---@type data.RecipePrototype
+		---@type RecipePrototype
 		{
 			type = "recipe",
 			name = "apm_nuclear_breeder",

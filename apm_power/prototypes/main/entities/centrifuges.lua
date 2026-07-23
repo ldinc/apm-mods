@@ -29,7 +29,7 @@ smoke_steam[1].name = "light-smoke"
 smoke_steam[1].frequency = 8
 
 --- [apm_centrifuge_0]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local centrifuge = {
 	type = "assembling-machine",
 	name = "apm_centrifuge_0",
@@ -105,7 +105,7 @@ centrifuge.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({ centrifuge })
 
 --- [apm_centrifuge_1]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local centrifuge = table.deepcopy(centrifuge)
 centrifuge.name = "apm_centrifuge_1"
 centrifuge.icons = {
@@ -137,7 +137,7 @@ centrifuge.fluid_boxes = apm.lib.utils.builders.fluid_boxes.new_2way(
 data:extend({ centrifuge })
 
 --- [apm_centrifuge_2]
----@type data.AssemblingMachinePrototype
+---@type AssemblingMachinePrototype
 local centrifuge = table.deepcopy(centrifuge)
 centrifuge.name = "apm_centrifuge_2"
 centrifuge.icons = {

@@ -22,7 +22,7 @@ end
 
 --- [pump.get.by_name]
 ---@param pump_name string
----@return data.PumpPrototype
+---@return PumpPrototype
 ---@return boolean
 function apm.lib.utils.pump.get.by_name(pump_name)
 	local pump = data.raw.pump[pump_name]
@@ -40,7 +40,7 @@ end
 
 --- [pump.get.fuel_categories]
 ---@param pump_name string
----@return data.FuelCategory[]?
+---@return FuelCategory[]?
 function apm.lib.utils.pump.get.fuel_categories(pump_name)
 	local pump, ok = apm.lib.utils.pump.get.by_name(pump_name)
 

@@ -4,7 +4,7 @@ local generate = function()
 
 	apm.energy_addon.generate_electric_powered("bob-tank-2")
 
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe = {
 		type = "recipe",
 		name = "apm_electric_bob-tank-2",
@@ -26,7 +26,7 @@ local generate = function()
 
 	data:extend({ recipe })
 
-	---@type data.TechnologyPrototype
+	---@type TechnologyPrototype
 	local technology = {
 		type = "technology",
 		name = "tanks_electric-2",
@@ -52,7 +52,7 @@ local generate = function()
 
 	apm.energy_addon.generate_electric_powered("bob-tank-3")
 
-	---@type data.RecipePrototype
+	---@type RecipePrototype
 	local recipe = {
 		type = "recipe",
 		name = "apm_electric_bob-tank-3",
@@ -74,7 +74,7 @@ local generate = function()
 
 	data:extend({ recipe })
 
-	---@type data.TechnologyPrototype
+	---@type TechnologyPrototype
 	local technology = {
 		type = "technology",
 		name = "tanks_electric-3",

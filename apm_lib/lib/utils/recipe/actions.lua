@@ -3,7 +3,7 @@ if not apm.lib.utils.recipe then apm.lib.utils.recipe = {} end
 --- [recipe.clone]
 ---@param recipe_name string
 ---@param recipe_name_new string
----@return data.RecipePrototype?
+---@return RecipePrototype?
 function apm.lib.utils.recipe.clone(recipe_name, recipe_name_new)
 	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
@@ -67,7 +67,7 @@ end
 --- [recipe.category.create]
 ---@param category_name string
 function apm.lib.utils.recipe.category.create(category_name)
-	---@type data.RecipeCategory
+	---@type RecipeCategory
 	local recipe_category = {
 		type = "recipe-category",
 		name = category_name,
@@ -83,7 +83,7 @@ function apm.lib.utils.recipe.category.create(category_name)
 end
 
 --- [recipe.category.add] add  category for recipe
----@param recipe data.RecipePrototype
+---@param recipe RecipePrototype
 ---@param category_name string
 function apm.lib.utils.recipe.category.add(recipe, category_name)
 	if not recipe.categories then
@@ -104,7 +104,7 @@ function apm.lib.utils.recipe.category.add(recipe, category_name)
 end
 
 --- [recipe.category.change] set single category for recipe!
----@param recipe data.RecipePrototype
+---@param recipe RecipePrototype
 ---@param category_name string
 function apm.lib.utils.recipe.category.change(recipe, category_name)
 	recipe.categories = { category_name }
@@ -120,7 +120,7 @@ end
 --- [recipe.category.replace]
 --- Replace one specific category in a recipe's category list, leaving other
 --- categories intact. Returns true if at least one replacement was made.
----@param recipe data.RecipePrototype
+---@param recipe RecipePrototype
 ---@param category_old string
 ---@param category_new string
 ---@return boolean
