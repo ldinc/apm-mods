@@ -1,8 +1,11 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.12
-Date: 13.07.2026
+Date: 23.07.2026
   Bugfixes:
     - [apm.lib.utils.batteries.generate] Used old category field in recipe instead categories.
+    - [apm.lib.utils.recipe.result.mod] Checked the removed 'probability' field instead of Factorio 2.1 'independent_probability', leaving stale amount_min/amount_max on results.
+    - [apm.lib.utils.recipe.category.add] Crash on recipes without an explicit 'categories' field; the default { "crafting" } category is now preserved.
+    - [apm.lib.utils.builder.recipe.item.probability] Emitted the removed 'probability' field and internal keys instead of Factorio 2.1 'independent_probability'.
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.11
 Date: 13.07.2026

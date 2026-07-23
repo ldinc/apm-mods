@@ -86,7 +86,10 @@ end
 ---@param recipe data.RecipePrototype
 ---@param category_name string
 function apm.lib.utils.recipe.category.add(recipe, category_name)
-	if #recipe.categories == 0 then
+	if not recipe.categories then
+		-- recipes without explicit categories default to { "crafting" } on load
+		recipe.categories = { "crafting", category_name }
+	elseif #recipe.categories == 0 then
 		recipe.categories = { category_name }
 	else
 		table.insert(recipe.categories, category_name)

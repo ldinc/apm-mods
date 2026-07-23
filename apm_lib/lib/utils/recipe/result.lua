@@ -213,7 +213,7 @@ end
 ---@param base_dn data.ProductPrototype
 ---@param result_amount number?
 local function check_for_probability(base_dn, result_amount)
-	if base_dn.probability and result_amount >= 1 then
+	if base_dn.independent_probability and result_amount >= 1 then
 		base_dn.independent_probability = nil
 		base_dn.amount_min = nil
 		base_dn.amount_max = nil

@@ -137,8 +137,8 @@ local function probability_definiton(name, amount_min, amount_max, probability, 
 		amount_max = amount_max * alternative.item_multi
 	end
 
-	return { type = alternative.type, name = alternative.name, amount_min = amount_min, amount_max = amount_max, probability =
-	probability, weight_min = weight_min, weight_max = weight_max, fluid_multi = fluid_multi }
+	return { type = alternative.type, name = alternative.name, amount_min = amount_min, amount_max = amount_max,
+		independent_probability = probability }
 end
 
 -- Function -------------------------------------------------------------------
