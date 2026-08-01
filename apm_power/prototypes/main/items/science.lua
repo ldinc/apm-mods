@@ -14,8 +14,8 @@ local item = {
 		apm.power.icons.sciencepack_1
 	},
 	stack_size = 200,
-	subgroup = "apm_power_science",
-	order = "aa_a",
+	subgroup = "science-pack",
+	order = "a[apm_industrial_science_pack]",
 
 	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }
@@ -31,8 +31,8 @@ local item = {
 		apm.power.icons.sciencepack_2
 	},
 	stack_size = 200,
-	subgroup = "apm_power_science",
-	order = "ab_a",
+	subgroup = "science-pack",
+	order = "ab[apm_steam_science_pack]",
 
 	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }

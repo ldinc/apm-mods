@@ -58,3 +58,10 @@ for k, v in pairs(data.raw.fluid) do
 
 	data:extend({ recipe })
 end
+
+-- Normalize the science pack display: all packs from the order map are moved
+-- into the vanilla "science-pack" subgroup and get their order string from the
+-- map, so the technology and lab GUIs show the intended progression. apm_power's
+-- data-final-fixes runs after all sibling apm mods and all optional dependencies,
+-- so every science pack is already created at this point.
+apm.lib.utils.technology.overwrite.science_pack_order_strings("science-pack")

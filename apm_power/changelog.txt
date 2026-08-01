@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.21
+Date: 24.07.2026
+  Features:
+    - Set the default science pack order map used by [apm.lib.utils.technology.overwrite.science_pack_order_strings]; Space Age science packs are added to the map when the space-age mod is active.
+    - Applied [apm.lib.utils.technology.overwrite.science_pack_order_strings] at the end of data-final-fixes: all science packs from the order map are moved into the vanilla 'science-pack' subgroup and get their order string from the map.
+  Changes:
+    - Required base >= 2.1.7 and apm_lib_ldinc >= 0.32.13.
+    - Moved apm_industrial_science_pack and apm_steam_science_pack into the vanilla 'science-pack' item subgroup and changed their order strings to sort before the vanilla science packs; the technology GUI orders research ingredients by item group, subgroup and order string, not by the ingredients array.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.20
 Date: 13.07.2026
   Changes:

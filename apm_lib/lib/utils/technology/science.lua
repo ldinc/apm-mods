@@ -286,3 +286,97 @@ function apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(
 		end
 	end
 end
+
+--- Active science pack order map applied to the science pack items by
+--- [technology.overwrite.science_pack_order_strings].
+--- Other mods can adjust it via [technology.set.science_pack_order] and
+--- [technology.set.science_pack_orders] depending on their mod set
+--- (e.g. from their overwrites/integrations stage, before it is applied).
+---@type table<string, string>
+apm.lib.utils.technology.science_pack_order = {
+	["apm_industrial_science_pack"] = "a[apm_industrial_science_pack]",
+	["apm_steam_science_pack"] = "b[apm_steam_science_pack]",
+	["automation-science-pack"] = "c[automation-science-pack]",
+	["logistic-science-pack"] = "d[logistic-science-pack]",
+	["military-science-pack"] = "e[military-science-pack]",
+	["chemical-science-pack"] = "f[chemical-science-pack]",
+	["production-science-pack"] = "g[production-science-pack]",
+	["utility-science-pack"] = "h[utility-science-pack]",
+	["apm_nuclear_science_pack"] = "i[apm_nuclear_science_pack]",
+	["space-science-pack"] = "j[space-science-pack]",
+	["electromagnetic-science-pack"] = "k[electromagnetic-science-pack]",
+	["metallurgic-science-pack"] = "l[metallurgic-science-pack]",
+	["agricultural-science-pack"] = "m[agricultural-science-pack]",
+	["cryogenic-science-pack"] = "n[cryogenic-science-pack]",
+	["promethium-science-pack"] = "o[promethium-science-pack]",
+}
+
+--- [technology.set.science_pack_order]
+--- Sets or overrides the order string of a single science pack.
+---@param science_pack_name string
+---@param order string
+function apm.lib.utils.technology.set.science_pack_order(science_pack_name, order)
+	apm.lib.utils.technology.science_pack_order[science_pack_name] = order
+end
+
+--- [technology.set.science_pack_orders]
+--- Merges the given map into the active science pack order map.
+---@param orders table<string, string>
+function apm.lib.utils.technology.set.science_pack_orders(orders)
+	for science_pack_name, order in pairs(orders) do
+		apm.lib.utils.technology.set.science_pack_order(science_pack_name, order)
+	end
+end
+
+--- [technology.remove.science_pack_order]
+--- Removes a single science pack from the order map (e.g. when an overhaul mod
+--- like Krastorio2 or Space Exploration replaces the vanilla science packs).
+---@param science_pack_name string
+function apm.lib.utils.technology.remove.science_pack_order(science_pack_name)
+	apm.lib.utils.technology.science_pack_order[science_pack_name] = nil
+end
+
+--- [technology.remove.science_pack_orders]
+--- Removes the given science packs from the order map.
+---@param science_pack_names string[]
+function apm.lib.utils.technology.remove.science_pack_orders(science_pack_names)
+	for _, science_pack_name in ipairs(science_pack_names) do
+		apm.lib.utils.technology.remove.science_pack_order(science_pack_name)
+	end
+end
+
+--- [technology.overwrite.science_pack_order_strings]
+--- Applies [apm.lib.utils.technology.science_pack_order] to the order strings of the
+--- science pack item prototypes. The game sorts the science packs of a technology in
+--- the technology and lab GUIs by item group, subgroup and this order string,
+--- not by the ingredients array.
+--- Packs without an item prototype (not part of the current mod set) are skipped.
+--- Note: for vanilla packs the map holds the APM progression order, so applying it
+--- rewrites their order strings (affects inventory sorting as well).
+--- Best called at the end of data-final-fixes.lua, after all mods have created
+--- their science packs.
+---@param subgroup string? # also set the item subgroup of the science packs (e.g. "science-pack")
+function apm.lib.utils.technology.overwrite.science_pack_order_strings(subgroup)
+	local count = 0
+
+	for pack_name, order in pairs(apm.lib.utils.technology.science_pack_order) do
+		local item = data.raw["item"][pack_name] or (data.raw["tool"] and data.raw["tool"][pack_name])
+
+		if item then
+			item.order = order
+
+			if subgroup then
+				item.subgroup = subgroup
+			end
+
+			count = count + 1
+		end
+	end
+
+	if APM_CAN_LOG_INFO then
+		log(APM_MSG_INFO(
+			"overwrite.science_pack_order_strings()",
+			"order string updated for " .. tostring(count) .. " science packs"
+		))
+	end
+end
