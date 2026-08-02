@@ -5,13 +5,13 @@ local self = "apm_nuclear/prototypes/main/recipes/hexafluoride.lua"
 
 APM_LOG_HEADER(self)
 
-local apm_nuclear_always_show_made_in = settings.startup["apm_nuclear_always_show_made_in"].value
-APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_show_made_in)
+
 
 -- Function -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
+---@param i uint64
 local function CreateRecipeCentrifuging(i)
 	local enrichment_input = 2 + ((i) * 5)
 	local enrichment_output_A = 2 + ((i - 1) * 5)
@@ -44,7 +44,7 @@ local function CreateRecipeCentrifuging(i)
 			{ type = "fluid", name = "apm_nuclear_hexafluoride_" .. string.format("%03d", enrichment_output_B), amount = 50 },
 		},
 
-		always_show_made_in = apm_nuclear_always_show_made_in,
+		always_show_made_in = apm.nuclear.features.show_made_in,
 	}
 
 	data:extend({ recipe })
@@ -94,7 +94,7 @@ local recipe = {
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -125,7 +125,7 @@ local recipe = {
 	},
 	main_product = "APM_FLUORITE",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -156,7 +156,7 @@ local recipe = {
 	},
 	main_product = "apm_potassium_bromide",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -187,7 +187,7 @@ local recipe = {
 	},
 	main_product = "apm_bromine",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -218,7 +218,7 @@ local recipe = {
 	},
 	main_product = "apm_bromine_trifluoride",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -250,7 +250,7 @@ local recipe = {
 	},
 	main_product = "apm_yellowcake",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })

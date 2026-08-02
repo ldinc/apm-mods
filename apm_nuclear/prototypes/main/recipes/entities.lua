@@ -5,8 +5,7 @@ local self = "apm_nuclear/prototypes/main/recipes/entities.lua"
 
 APM_LOG_HEADER(self)
 
-local apm_nuclear_always_show_made_in = settings.startup["apm_nuclear_always_show_made_in"].value
-APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_show_made_in)
+
 
 -- Uniques --------------------------------------------------------------------
 --
@@ -31,7 +30,7 @@ data:extend(
 			},
 			main_product = "apm_cooling_pond_0",
 			requester_paste_multiplier = 4,
-			always_show_made_in = apm_nuclear_always_show_made_in
+			always_show_made_in = apm.nuclear.features.show_made_in
 		},
 		---@type RecipePrototype
 		{
@@ -50,7 +49,7 @@ data:extend(
 			},
 			main_product = "apm_hybrid_cooling_tower_0",
 			requester_paste_multiplier = 4,
-			always_show_made_in = apm_nuclear_always_show_made_in
+			always_show_made_in = apm.nuclear.features.show_made_in
 		},
 		---@type RecipePrototype
 		{

@@ -6,16 +6,6 @@ local self = "apm_nuclear/prototypes/main/recipes/cooling.lua"
 
 APM_LOG_HEADER(self)
 
-local apm_nuclear_always_show_made_in = false
-
-local v = settings.startup["apm_nuclear_always_show_made_in"].value
-
-if type(v) == "boolean" then
-	apm_nuclear_always_show_made_in = v
-end
-
-APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_show_made_in)
-
 -- Recipe ---------------------------------------------------------------------
 --
 --
@@ -52,7 +42,7 @@ local recipe = {
 
 	main_product = "water",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 
@@ -93,7 +83,7 @@ local recipe = {
 	},
 	main_product = "water",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })

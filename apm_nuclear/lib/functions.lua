@@ -8,7 +8,10 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
+---@param enrichment uint64
+---@return IconData[]
 function apm.nuclear.icons.get_apm_hexafluoride_enrichment(enrichment)
+	---@type IconData[]
 	local icons = {}
 	table.insert(icons,
 		{ icon = apm.lib.icons.path.chemical_flame_1, icon_size = 64, tint = { r = 0.0, g = 0.741, b = 0.0 } })
@@ -28,7 +31,9 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+---@param vehicle_name string
 function apm.nuclear.nuclear_vehicle(vehicle_name)
+	---@type CarPrototype | LocomotivePrototype
 	local vehicle
 
 	if apm.lib.utils.car.exist(vehicle_name) then
@@ -56,10 +61,11 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.nuclear.generate_angel_coolant_recipes()
+	---@type RecipePrototype[]
 	local recipes = {}
 
 	for _, recipe in pairs(data.raw.recipe) do
-		if recipe.category == 'apm_nuclear_cooling_0' then
+		if apm.lib.utils.recipe.category.has(recipe, 'apm_nuclear_cooling_0') then
 			table.insert(recipes, recipe)
 		end
 	end
@@ -98,7 +104,8 @@ end
 --
 -- ----------------------------------------------------------------------------
 
----comment
+--- Updates a fusion-reactor-equipment prototype into a fission reactor:
+--- localised name, fission burner and optional power output.
 ---@param equipment_name string
 ---@param tier? uint32
 ---@param power? string
@@ -112,10 +119,6 @@ function apm.nuclear.update_fission_equipment(equipment_name, tier, power)
 
 	local equipment = data.raw['generator-equipment'][equipment_name]
 	equipment.localised_name = localised_name
-	equipment.energy_source = {
-		type = "electric",
-		usage_priority = "secondary-output",
-	}
 	equipment.burner = {
 		type = "burner",
 		fuel_categories = { 'apm_nuclear_shielded_cell' },

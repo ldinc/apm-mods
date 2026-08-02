@@ -103,6 +103,25 @@ function apm.lib.utils.recipe.category.add(recipe, category_name)
 	end
 end
 
+--- [recipe.category.has]
+--- Returns true if the recipe has the given category in its 'categories' list.
+---@param recipe RecipePrototype
+---@param category_name string
+---@return boolean
+function apm.lib.utils.recipe.category.has(recipe, category_name)
+	if not recipe.categories then
+		return false
+	end
+
+	for _, category in ipairs(recipe.categories) do
+		if category == category_name then
+			return true
+		end
+	end
+
+	return false
+end
+
 --- [recipe.category.change] set single category for recipe!
 ---@param recipe RecipePrototype
 ---@param category_name string

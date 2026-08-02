@@ -30,7 +30,6 @@ local function CreateHexafluoride(i)
 		heat_capacity = "0.1kJ",
 		pressure_to_speed_ratio = 0.4,
 		flow_to_energy_ratio = 0.59,
-		group = "apm_nuclear",
 		subgroup = "apm_nuclear_hexafluoride",
 		order = "aa_[" .. string.format("%03d", enrichment) .. "]",
 		auto_barrel = false,
@@ -43,13 +42,17 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-function CreateNitricAcidFuelSolution(suffix, tint_1, tint_2, subgroup, order)
+---@param suffix string
+---@param tint_1 Color
+---@param tint_2 Color
+---@param subgroup ItemSubGroupID
+---@param order Order
+local function CreateNitricAcidFuelSolution(suffix, tint_1, tint_2, subgroup, order)
 	---@type FluidPrototype
 	local fluid = {
 		type = "fluid",
 		name = "apm_purex_solution_" .. tostring(suffix),
 		icons = apm.lib.utils.icon.generate.fluid(tint_1, tint_2, apm.lib.icons.dynamics.radioactive),
-		group = "apm_nuclear",
 		subgroup = subgroup,
 		order = order,
 		icon_size = 32,
@@ -106,7 +109,6 @@ data:extend(
 			icons = apm.lib.utils.icon.generate.chemical({ r = 0.616, g = 0.114, b = 0.047 }, nil,
 				{ r = 0.616, g = 0.114, b = 0.047 }, { r = 0.616, g = 0.114, b = 0.047 }, apm.nuclear.icons.bromine),
 			icon_size = 32,
-			group = "apm_nuclear",
 			subgroup = "apm_nuclear_chemistry",
 			order = "ab_b",
 		},
@@ -124,7 +126,6 @@ data:extend(
 				{ r = 0.616, g = 0.114, b = 0.047 }, { r = 0.615, g = 0.765, b = 0.027 },
 				apm.nuclear.icons.bromine_trifluoride),
 			icon_size = 32,
-			group = "apm_nuclear",
 			subgroup = "apm_nuclear_chemistry",
 			order = "ab_c",
 		},
@@ -140,7 +141,6 @@ data:extend(
 			icons = apm.lib.utils.icon.generate.chemical({ r = 0.150, g = 0.800, b = 0.000 }, nil, { r = 0.9, g = 0.5, b = 0.0 },
 				{ r = 0.900, g = 0.000, b = 0.000 }, apm.nuclear.icons.phosphoroxychlorid),
 			icon_size = 32,
-			group = "apm_nuclear",
 			subgroup = "apm_nuclear_chemistry",
 			order = "ad_f",
 		},
@@ -158,7 +158,6 @@ data:extend(
 				{ r = 0.9, g = 0.5, b = 0.0 }, { r = 0.900, g = 0.000, b = 0.000 }, apm.nuclear.icons
 			.trimethyl_phosphate),
 			icon_size = 32,
-			group = "apm_nuclear",
 			subgroup = "apm_nuclear_chemistry",
 			order = "ae_a",
 		},
@@ -174,7 +173,6 @@ data:extend(
 			flow_color = { r = 0.800, g = 0.700, b = 0.600 },
 			icons = apm.lib.utils.icon.generate.fluid({ r = 0.730, g = 0.800, b = 0.600 }, { r = 0.800, g = 0.700, b = 0.600 }),
 			icon_size = 32,
-			group = "apm_nuclear",
 			subgroup = "apm_nuclear_chemistry",
 			order = "af_a",
 		},
@@ -192,7 +190,6 @@ data:extend(
 			icons = apm.lib.utils.icon.generate.fluid({ r = 0.169, g = 0.568, b = 0.595 }, { r = 0.700, g = 0.700, b = 0.700 },
 				nil, { r = 0.950, g = 0.314, b = 0.163 }),
 			icon_size = 32,
-			group = "apm_nuclear",
 			subgroup = "apm_nuclear_waste_products",
 			order = "za_a"
 		},
@@ -209,7 +206,6 @@ data:extend(
 			icons = apm.lib.utils.icon.generate.fluid({ r = 0.62, g = 0.81, b = 0.0 }, { r = 0.65, g = 0.89, b = 0.0 },
 				apm.lib.icons.dynamics.radioactive),
 			icon_size = 32,
-			group = "apm_nuclear",
 			subgroup = "apm_nuclear_waste_products",
 			order = "zb_a"
 		},

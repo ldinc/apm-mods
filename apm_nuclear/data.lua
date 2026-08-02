@@ -5,6 +5,7 @@ require("__apm_lib_ldinc__.lib.features.all")
 
 require('lib.definitions')
 require('lib.functions')
+require('lib.features')
 
 require('prototypes.main.categories')
 require('prototypes.main.fluids')

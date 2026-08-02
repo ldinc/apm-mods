@@ -5,8 +5,7 @@ local self = "apm_nuclear/prototypes/main/recipes/shielded_nuclear_fuel.lua"
 
 APM_LOG_HEADER(self)
 
-local apm_nuclear_always_show_made_in = settings.startup["apm_nuclear_always_show_made_in"].value
-APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_show_made_in)
+
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -31,7 +30,7 @@ local recipe = {
 	},
 	main_product = "apm_shielded_nuclear_fuel_cell",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -75,7 +74,7 @@ local recipe = {
 	allow_decomposition = false,
 	allow_as_intermediate = false,
 	allow_intermediates = false,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })

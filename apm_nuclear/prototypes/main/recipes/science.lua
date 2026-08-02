@@ -5,8 +5,7 @@ local self = "apm_nuclear/prototypes/main/recipes/science.lua"
 
 APM_LOG_HEADER(self)
 
-local apm_nuclear_always_show_made_in = settings.startup["apm_nuclear_always_show_made_in"].value
-APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_show_made_in)
+
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -31,7 +30,7 @@ local recipe = {
 	},
 	main_product = "apm_nuclear_science_pack",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })

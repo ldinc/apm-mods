@@ -10,10 +10,14 @@ Date: 24.07.2026
     - Converted apm_nuclear_science_pack from 'tool' to a plain item, like the Factorio 2.1 base science packs.
     - Applied [apm.lib.utils.technology.overwrite.science_pack_order_strings] at the end of data-final-fixes for the correct science pack order in the technology and lab GUIs.
     - Applied [apm.lib.utils.technology.overwrite.lab_science_pack_order] at the end of data-final-fixes: the science pack inputs of all labs are sorted by the order map (the lab GUI follows the inputs array order).
+    - Centralized the 'apm_nuclear_always_show_made_in' startup setting into 'apm.nuclear.features.show_made_in' via [apm.lib.features.startup.get_boolean_value_from_setting]; the per-file locals were removed.
     - Positioned apm_nuclear_science_pack in the science pack order map depending on the mod set: after utility science with apm_power installed, after production science in a vanilla game.
   Bugfixes:
     - Fixed wrong mod name in mod detection: 'apm_power' -> 'apm_power_ldinc' (the fork's name); the affected integration branches never matched with the fork installed.
     - Fixed unguarded burner equipment registration in control.lua: 'fusion-reactor-equipment(-2/-3/-4)' was always registered with apm_equipment, even when the equipment does not exist in the current mod set (e.g. without space-age or Bob's Equipment); only existing equipment is registered now.
+    - Fixed 'apm.nuclear.generate_angel_coolant_recipes' silently generating no recipes on Factorio 2.1: it checked the removed RecipePrototype 'category' field instead of the 'categories' array (Angels integration).
+    - Removed a dead 'energy_source' assignment in 'apm.nuclear.update_fission_equipment'; GeneratorEquipmentPrototype has no such field and the game ignored it.
+    - Removed the invalid 'group' field from the fluid definitions; item group membership is derived from 'subgroup' (the field was ignored by the game).
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.03
 Date: 19.04.2026

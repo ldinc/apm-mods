@@ -5,8 +5,7 @@ local self = "apm_nuclear/prototypes/main/recipes/intermediates.lua"
 
 APM_LOG_HEADER(self)
 
-local apm_nuclear_always_show_made_in = settings.startup["apm_nuclear_always_show_made_in"].value
-APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_show_made_in)
+
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -28,7 +27,7 @@ local recipe = {
 	},
 	main_product = "apm_fuel_rod_container",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -68,7 +67,7 @@ local recipe = {
 	allow_decomposition = false,
 	allow_as_intermediate = false,
 	allow_intermediates = false,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -95,7 +94,7 @@ local recipe = {
 	},
 	main_product = "apm_breeder_container",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -137,7 +136,7 @@ local recipe = {
 	allow_decomposition = false,
 	allow_as_intermediate = false,
 	allow_intermediates = false,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -162,7 +161,7 @@ local recipe = {
 	},
 	main_product = "apm_waste_container",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -188,7 +187,7 @@ local recipe = {
 	},
 	main_product = "apm_depleted_uranium_metal_mixture",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -213,7 +212,7 @@ local recipe = {
 	},
 	main_product = "apm_depleted_uranium_ingots",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -242,7 +241,7 @@ local recipe = {
 	},
 	main_product = "apm_rtg_radioisotope_thermoelectric_generator",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -273,7 +272,7 @@ local recipe = {
 	},
 	main_product = "apm_hexafluoride_sample",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })

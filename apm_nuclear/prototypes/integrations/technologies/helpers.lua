@@ -1,8 +1,8 @@
 if not apm.nuclear.helper then apm.nuclear.helper = {} end
 
----@param skiplist any
+---@param skiplist table<string, boolean>?
 ---@param prefix string
----@retutrn any
+---@return table<string, boolean>
 function apm.nuclear.helper.add_to_skiplist(skiplist, prefix)
 	local techlist = apm.lib.utils.technology.find.by_prefix(prefix)
 

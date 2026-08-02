@@ -15,7 +15,6 @@ local apm_nuclear_compat_realistic_reactors_cooling_tower = settings.startup
 		["apm_nuclear_compat_realistic_reactors_cooling_tower"].value
 local apm_nuclear_compat_reverse_factory = settings.startup["apm_nuclear_compat_reverse_factory"].value
 local apm_nuclear_compat_mferrari = settings.startup["apm_nuclear_compat_mferrari"].value
-local apm_nuclear_always_show_made_in = settings.startup["apm_nuclear_always_show_made_in"].value
 
 APM_LOG_SETTINGS(self, "apm_nuclear_compat_bob", apm_nuclear_compat_bob)
 APM_LOG_SETTINGS(self, "apm_nuclear_compat_angel", apm_nuclear_compat_angel)
@@ -27,7 +26,6 @@ APM_LOG_SETTINGS(self, "apm_nuclear_compat_realistic_reactors_cooling_tower",
 	apm_nuclear_compat_realistic_reactors_cooling_tower)
 APM_LOG_SETTINGS(self, "apm_nuclear_compat_reverse_factory", apm_nuclear_compat_reverse_factory)
 APM_LOG_SETTINGS(self, "apm_nuclear_compat_mferrari", apm_nuclear_compat_mferrari)
-APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_show_made_in)
 
 -- apm ------------------------------------------------------------------------------------
 --
@@ -190,7 +188,7 @@ if mods.RealisticReactors and apm_nuclear_compat_realistic_reactors then
 	apm.lib.utils.recipe.ingredient.mod("water-cooling", "water", 500)
 	apm.lib.utils.recipe.result.mod("water-cooling", "water", 475)
 	apm.lib.utils.recipe.set.icons("water-cooling", icons)
-	if apm_nuclear_always_show_made_in then
+	if apm.nuclear.features.show_made_in then
 		apm.lib.utils.recipe.set.always_show_made_in("water-cooling", true)
 	end
 

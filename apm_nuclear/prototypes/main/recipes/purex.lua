@@ -5,8 +5,7 @@ local self = "apm_nuclear/prototypes/main/recipes/purex.lua"
 
 APM_LOG_HEADER(self)
 
-local apm_nuclear_always_show_made_in = settings.startup["apm_nuclear_always_show_made_in"].value
-APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_show_made_in)
+
 
 -- Recipe ---------------------------------------------------------------------
 --
@@ -29,7 +28,7 @@ local recipe = {
 	},
 	main_product = "apm_nuclear_ash",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -60,7 +59,7 @@ local recipe = {
 	},
 	main_product = "apm_phosphorus",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -91,7 +90,7 @@ local recipe = {
 	},
 	main_product = "apm_phosphorpentachlorid",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -121,7 +120,7 @@ local recipe = {
 	},
 	main_product = "apm_phosphoroxychlorid",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -152,7 +151,7 @@ local recipe = {
 	},
 	main_product = "apm_trimethyl_phosphate",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -183,7 +182,7 @@ local recipe = {
 	},
 	main_product = "apm_tbp_30",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })

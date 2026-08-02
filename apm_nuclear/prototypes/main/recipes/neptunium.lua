@@ -5,13 +5,14 @@ local self = "apm_nuclear/prototypes/main/recipes/neptunium.lua"
 
 APM_LOG_HEADER(self)
 
-local apm_nuclear_always_show_made_in = settings.startup["apm_nuclear_always_show_made_in"].value
-APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_show_made_in)
+
 
 -- Function -------------------------------------------------------------------
 --
 --
 -- ----------------------------------------------------------------------------
+---@param fluid_name FluidID
+---@return IconData[]
 local function get_raw_fluid_icons(fluid_name)
 	local used_fluid = data.raw.fluid[fluid_name]
 	local t_icons = {}
@@ -46,7 +47,7 @@ local recipe = {
 	},
 	main_product = "apm_fuel_rod_neptunium",
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -83,7 +84,7 @@ local recipe = {
 		{ type = "fluid", name = "apm_radioactive_wastewater",    amount = 150, temperature = 90 }
 	},
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -126,7 +127,7 @@ local recipe = {
 		{ type = "fluid", name = fluid.name,                    amount = 100 }
 	},
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })
@@ -173,7 +174,7 @@ local recipe = {
 		-- {type="item", name="bob-fusion-catalyst", amount=1}
 	},
 	requester_paste_multiplier = 4,
-	always_show_made_in = apm_nuclear_always_show_made_in,
+	always_show_made_in = apm.nuclear.features.show_made_in,
 }
 
 data:extend({ recipe })

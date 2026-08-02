@@ -8,6 +8,7 @@ Date: 24.07.2026
     - [apm.lib.utils.technology.remove.science_pack_order] and [apm.lib.utils.technology.remove.science_pack_orders] API to drop science packs from the order map, e.g. for overhaul mods that replace the vanilla packs (Krastorio2, Space Exploration).
     - [apm.lib.utils.technology.overwrite.science_pack_order_strings] Applies the science pack order map to the item prototype order strings that drive the science pack order in the technology GUI; optionally also normalizes the item subgroup (e.g. to 'science-pack').
     - [apm.lib.utils.technology.overwrite.lab_science_pack_order] Sorts the science pack inputs of all labs by the order map; the lab GUI shows the packs of a lab in the order of its inputs array.
+    - [apm.lib.utils.recipe.category.has] Checks whether a recipe has a given category in its 'categories' list.
   Bugfixes:
     - [apm.lib.utils.item.mod.overwrite_weight_for_science_packs] Silently skipped science packs defined as 'tool' prototypes (e.g. by third-party mods); the lookup now falls back to data.raw['tool'].
     - [apm.lib.utils.assembler.centrifuge.overhaul] The south orientation of the nuclear centrifuge now uses a custom integration (base) sprite with the pipe drawn in (centrifuge-ABC-integration-S.png); the separate south pipe picture was removed.
