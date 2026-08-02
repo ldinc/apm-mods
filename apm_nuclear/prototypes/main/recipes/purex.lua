@@ -17,7 +17,7 @@ APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_sho
 local recipe = {
 	type = "recipe",
 	name = "apm_nuclear_ash",
-	category = "smelting",
+	categories = { "smelting" },
 
 	enabled = false,
 	energy_required = 3.5,
@@ -29,7 +29,6 @@ local recipe = {
 	},
 	main_product = "apm_nuclear_ash",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -43,7 +42,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_phosphorus",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.860, g = 0.180, b = 0.067 },
 		secondary = { r = 0.860, g = 0.280, b = 0.067 },
@@ -61,7 +60,6 @@ local recipe = {
 	},
 	main_product = "apm_phosphorus",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -76,7 +74,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_phosphorpentachlorid",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.730, g = 0.800, b = 0.800 },
 		secondary = { r = 0.860, g = 0.280, b = 0.067 },
@@ -93,7 +91,6 @@ local recipe = {
 	},
 	main_product = "apm_phosphorpentachlorid",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -107,7 +104,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_phosphoroxychlorid",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.730, g = 0.800, b = 0.800 },
 		secondary = { r = 0.860, g = 0.280, b = 0.067 },
@@ -124,7 +121,6 @@ local recipe = {
 	},
 	main_product = "apm_phosphoroxychlorid",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -138,7 +134,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_trimethyl_phosphate",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.730, g = 0.800, b = 0.800 },
 		secondary = { r = 0.860, g = 0.280, b = 0.067 },
@@ -156,7 +152,6 @@ local recipe = {
 	},
 	main_product = "apm_trimethyl_phosphate",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -170,7 +165,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_tbp_30",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.730, g = 0.800, b = 0.600 },
 		secondary = { r = 0.800, g = 0.700, b = 0.600 },
@@ -188,7 +183,6 @@ local recipe = {
 	},
 	main_product = "apm_tbp_30",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 

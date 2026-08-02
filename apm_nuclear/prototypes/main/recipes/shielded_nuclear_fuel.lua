@@ -16,7 +16,7 @@ APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_sho
 local recipe = {
 	type = "recipe",
 	name = "apm_shielded_nuclear_fuel_cell",
-	category = "crafting-with-fluid",
+	categories = { "crafting-with-fluid" },
 
 	enabled = false,
 	energy_required = 5,
@@ -31,7 +31,6 @@ local recipe = {
 	},
 	main_product = "apm_shielded_nuclear_fuel_cell",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -49,7 +48,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 local recipe = {
 	type = "recipe",
 	name = "apm_shielded_nuclear_fuel_cell_reprocessing",
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_products",
 	order = "af_b",
 	icons = icons,
@@ -73,7 +72,6 @@ local recipe = {
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	allow_decomposition = false,
 	allow_as_intermediate = false,
 	allow_intermediates = false,

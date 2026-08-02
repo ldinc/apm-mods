@@ -29,7 +29,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 local recipe = {
 	type = "recipe",
 	name = "hot_water_cooling",
-	category = "apm_fluid_cooling_0",
+	categories = { "apm_fluid_cooling_0" },
 	icons = icons,
 
 	subgroup = "apm_nuclear_cooling_tower",
@@ -52,7 +52,6 @@ local recipe = {
 
 	main_product = "water",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -72,7 +71,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 local recipe = {
 	type = "recipe",
 	name = "steam_condensing",
-	category = "apm_fluid_cooling_0",
+	categories = { "apm_fluid_cooling_0" },
 	icons = icons,
 
 	subgroup = "apm_nuclear_cooling_tower",
@@ -94,7 +93,6 @@ local recipe = {
 	},
 	main_product = "water",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 

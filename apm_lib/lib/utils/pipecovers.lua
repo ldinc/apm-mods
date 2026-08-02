@@ -319,14 +319,14 @@ end
 function apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures()
 	return
 	{
-		north =
-		{
-			filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/pipe-N.png",
-			width = 71,
-			height = 38,
-			shift = util.by_pixel(2.25, 13.5),
-			scale = 0.5,
-		},
+		north = util.empty_sprite(),
+		-- {
+		-- 	filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/pipe-N.png",
+		-- 	width = 71,
+		-- 	height = 38,
+		-- 	shift = util.by_pixel(2.25, 13.5),
+		-- 	scale = 0.5,
+		-- },
 		east =
 		{
 			filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/pipe-E.png",
@@ -336,6 +336,7 @@ function apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures()
 			scale = 0.5,
 
 		},
+		-- south = util.empty_sprite(),
 		south =
 		{
 			filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/pipe-S.png",

@@ -529,7 +529,7 @@ function apm.lib.utils.item.mod.overwrite_weight_for_science_packs(w)
 	local science_pack_names = apm.lib.utils.item.get.all_science_packs_names()
 
 	for name, _ in pairs(science_pack_names) do
-		local item = data.raw["item"] and data.raw["item"][name]
+		local item = data.raw["item"] and data.raw["item"][name] or (data.raw["tool"] and data.raw["tool"][name])
 		if item then
 			item.weight = w
 		end

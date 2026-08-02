@@ -44,7 +44,7 @@ local sinkhole = {
 			filename                  = "__apm_power_ldinc__/sounds/entities/water-drain.ogg",
 			volume                    = 0.3,
 			audible_distance_modifier = 0.2,
-			independent_probability   = 0.1,
+			probability               = 0.1,
 		},
 	},
 

@@ -91,7 +91,7 @@ local mod_name = "apm_power"
 ---@param t_recipes string[]
 ---@param t_trigger? TechnologyTrigger
 ---@param t_unit?  TechnologyUnit
----@paran t_icon? string
+---@param t_icon? string
 ---@param t_icon_size? uint64
 ---@param t_is_essential? boolean
 local new_tech = function(

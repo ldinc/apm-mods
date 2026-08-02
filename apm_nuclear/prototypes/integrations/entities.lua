@@ -31,7 +31,7 @@ APM_LOG_SETTINGS(self, "apm_nuclear_compat_mferrari", apm_nuclear_compat_mferrar
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.apm_power then
+if mods.apm_power_ldinc then
 	if not mods.ScienceCostTweakerM or not apm_nuclear_compat_sctm then
 		apm.lib.utils.lab.add.science_pack("apm_lab_1", "apm_nuclear_science_pack")
 	end

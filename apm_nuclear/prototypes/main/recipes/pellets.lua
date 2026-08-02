@@ -18,7 +18,7 @@ local fluid = data.raw.fluid["apm_nuclear_hexafluoride_002"]
 local recipe = {
 	type = "recipe",
 	name = "apm_oxide_pellet_u238",
-	category = "chemistry",
+	categories = { "chemistry" },
 	enabled = false,
 	energy_required = 2,
 	crafting_machine_tint = {
@@ -35,7 +35,6 @@ local recipe = {
 	},
 	main_product = "apm_oxide_pellet_u238",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -51,7 +50,7 @@ local fluid = data.raw.fluid["apm_nuclear_hexafluoride_047"]
 local recipe = {
 	type = "recipe",
 	name = "apm_oxide_pellet_u235",
-	category = "chemistry",
+	categories = { "chemistry" },
 	enabled = false,
 	energy_required = 2.5,
 
@@ -69,7 +68,6 @@ local recipe = {
 	},
 	main_product = "apm_oxide_pellet_u235",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 

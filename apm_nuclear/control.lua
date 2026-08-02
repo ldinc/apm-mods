@@ -49,10 +49,19 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function register_burner_equipment()
-	remote.call('apm_equipment', 'add_burner_equipment', 'fusion-reactor-equipment')
-	remote.call('apm_equipment', 'add_burner_equipment', 'fusion-reactor-equipment-2')
-	remote.call('apm_equipment', 'add_burner_equipment', 'fusion-reactor-equipment-3')
-	remote.call('apm_equipment', 'add_burner_equipment', 'fusion-reactor-equipment-4')
+	---@type string[]
+	local equipment_names = {
+		'fusion-reactor-equipment',
+		'fusion-reactor-equipment-2',
+		'fusion-reactor-equipment-3',
+		'fusion-reactor-equipment-4',
+	}
+
+	for _, equipment_name in ipairs(equipment_names) do
+		if prototypes.equipment[equipment_name] then
+			remote.call('apm_equipment', 'add_burner_equipment', equipment_name)
+		end
+	end
 end
 
 -- Function -------------------------------------------------------------------

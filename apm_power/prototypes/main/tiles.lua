@@ -199,13 +199,13 @@ local tile_asphalt = {
 				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-dummy.png",
 				count = 1,
 				size = 2,
-				independent_probability = 0.39
+				probability = 0.39
 			},
 			{
 				picture = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/asphalt-dummy.png",
 				count = 1,
 				size = 4,
-				independent_probability = 1
+				probability = 1
 			}
 		},
 

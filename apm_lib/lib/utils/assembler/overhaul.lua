@@ -1,5 +1,5 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
 if apm.lib.utils.assembler.burner == nil then apm.lib.utils.assembler.burner = {} end
 if apm.lib.utils.assembler.centrifuge == nil then apm.lib.utils.assembler.centrifuge = {} end
@@ -17,9 +17,9 @@ function apm.lib.utils.assembler.burner.overhaul(assembler_name, only_refined)
 		assembler.energy_source.burnt_inventory_size = 1
 		-- assembler.energy_source.effectivity = 0.42
 		if only_refined then
-			apm.lib.utils.entity.set.fuel_category(assembler, 'apm_refined_chemical')
+			apm.lib.utils.entity.set.fuel_category(assembler, "apm_refined_chemical")
 		else
-			apm.lib.utils.entity.set.fuel_category(assembler, { 'chemical', 'apm_refined_chemical' })
+			apm.lib.utils.entity.set.fuel_category(assembler, { "chemical", "apm_refined_chemical" })
 		end
 
 		if APM_CAN_LOG_INFO then
@@ -57,26 +57,63 @@ function apm.lib.utils.assembler.centrifuge.overhaul(centrifuge_name, level)
 			1000,
 			apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures(),
 			defines.direction.north,
-			{ 0, -1 },
-			{ north = -1 }
+			{ 0, -1 }
 		),
 		apm.lib.utils.builders.fluid_box.new(
 			"output",
 			1000,
 			apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures(),
 			defines.direction.south,
-			{ -1, 1 },
-			{ north = -1 }
+			{ -1, 1 }
 		),
 		apm.lib.utils.builders.fluid_box.new(
 			"output",
 			1000,
 			apm.lib.utils.pipecovers.nuclear_centrifuge_pipepictures(),
 			defines.direction.south,
-			{ 1, 1 },
-			{ north = -1 }
+			{ 1, 1 }
 		),
 	}
+
+	local idle_animation = centrifuge.graphics_set and centrifuge.graphics_set.idle_animation
+
+	if idle_animation and idle_animation.layers then
+		---@cast idle_animation Animation
+		local south_animation = table.deepcopy(idle_animation)
+
+		south_animation.layers[1] = {
+			filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/centrifuge-ABC-integration-S.png",
+			priority = "high",
+			width = 246,
+			height = 250,
+			shift = util.by_pixel(0.5, 3.0),
+			line_length = 1,
+			scale = 0.5,
+			frame_count = 1,
+			repeat_count = 64,
+		}
+
+		-- extra shadow for the custom south integration sprite
+		table.insert(south_animation.layers, 2, {
+			filename = "__apm_resource_pack_ldinc__/graphics/entities/nuclear_centrifuge/centrifuge-ABC-integration-S-shadow.png",
+			priority = "high",
+			width = 246,
+			height = 250,
+			shift = util.by_pixel(0.5, 3.0),
+			line_length = 1,
+			scale = 0.5,
+			frame_count = 1,
+			repeat_count = 64,
+			draw_as_shadow = true,
+		})
+
+		centrifuge.graphics_set.idle_animation = {
+			north = idle_animation,
+			east = idle_animation,
+			south = south_animation,
+			west = idle_animation,
+		}
+	end
 
 	centrifuge.fast_replaceable_group = "centrifuge"
 	centrifuge.allowed_effects = { "consumption", "speed", "pollution" }

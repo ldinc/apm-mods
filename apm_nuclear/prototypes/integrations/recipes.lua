@@ -43,7 +43,7 @@ end
 --
 -- ----------------------------------------------------------------------------------------
 if mods.Bio_Industries and apm_nuclear_compat_bio_industries then
-	if not mods.apm_power then
+	if not mods.apm_power_ldinc then
 		apm.lib.utils.recipe.remove("apm_nuclear_ash")
 		apm.lib.utils.recipe.ingredient.replace("apm_phosphorus", "apm_nuclear_ash", "bi-ash")
 	end
@@ -134,12 +134,17 @@ end
 
 if mods.angelsrefining and apm_nuclear_compat_angel then
 	apm.lib.utils.recipe.ingredient.replace("apm_potassium_bromide_filltration", "water", "angels-water-saline")
-	apm.lib.utils.recipe.category.change("apm_radioactive_wastewater_recyling", "angels-water-treatment")
+
+	local recipe, ok = apm.lib.utils.recipe.get.by_name("apm_radioactive_wastewater_recyling")
+	if ok then
+		apm.lib.utils.recipe.category.change(recipe, "angels-water-treatment")
+	end
+
 	apm.lib.utils.recipe.result.replace("apm_radioactive_wastewater_recyling", "water", "angels-water-purified")
 end
 
 if mods.angelssmelting and apm_nuclear_compat_angel then
-	if not mods.apm_power then
+	if not mods.apm_power_ldinc then
 		apm.lib.utils.recipe.result.mod("coolant-cool-steam", "angels-water-purified", 45)
 		apm.lib.utils.recipe.result.mod("coolant-cool-100", "steam", 100)
 		apm.lib.utils.recipe.result.mod("coolant-cool-200", "steam", 100)
@@ -151,9 +156,15 @@ end
 
 if mods.angelssmelting and mods.angelspetrochem and mods.bobplates and apm_nuclear_compat_angel then
 	apm.lib.utils.recipe.remove("apm_fluorite_ore")
-	apm.lib.utils.recipe.category.change("apm_depleted_uranium_metal_mixture", "angels-powder-mixing")
+
+	local recipe, ok = apm.lib.utils.recipe.get.by_name("apm_depleted_uranium_metal_mixture")
+	if ok then
+		apm.lib.utils.recipe.category.change(recipe, "angels-powder-mixing")
+	end
+
 	apm.lib.utils.recipe.ingredient.replace("apm_depleted_uranium_metal_mixture", "iron-plate", "angels-processed-iron", 2)
-	--apm.lib.utils.recipe.category.change('apm_depleted_uranium_ingots', 'induction-smelting')
+	-- NOTE: category.change() takes a recipe prototype since apm_lib 0.32.10, not a name; see the pattern above.
+	-- Disabled: category change of 'apm_depleted_uranium_ingots' to 'induction-smelting'
 	--TODO Create molten metal for this...
 end
 
@@ -168,14 +179,17 @@ if mods.RealisticReactors and apm_nuclear_compat_realistic_reactors then
 	local item_icon_a = apm.lib.utils.icon.get.from_fluid("water")
 	local item_icon_b = { apm.lib.icons.dynamics.temp_down }
 	local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
-	apm.lib.utils.recipe.category.change("water-cooling", "apm_fluid_cooling_0")
+	local recipe, ok = apm.lib.utils.recipe.get.by_name("water-cooling")
+	if ok then
+		apm.lib.utils.recipe.category.change(recipe, "apm_fluid_cooling_0")
+	end
+
 	apm.lib.utils.recipe.overwrite.group("water-cooling", "apm_nuclear_cooling_tower", "ab_b")
 	apm.lib.utils.recipe.set.hidden("water-cooling", false)
 	apm.lib.utils.recipe.energy_required.mod("water-cooling", 3.5)
 	apm.lib.utils.recipe.ingredient.mod("water-cooling", "water", 500)
 	apm.lib.utils.recipe.result.mod("water-cooling", "water", 475)
 	apm.lib.utils.recipe.set.icons("water-cooling", icons)
-	apm.lib.utils.recipe.set.always_show_products("water-cooling", true)
 	if apm_nuclear_always_show_made_in then
 		apm.lib.utils.recipe.set.always_show_made_in("water-cooling", true)
 	end

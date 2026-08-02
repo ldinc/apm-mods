@@ -50,3 +50,13 @@ require('prototypes.main.recipes.shielded_nuclear_fuel')
 require('prototypes.main.recipes.science')
 
 require('prototypes.main.technologies')
+
+-- Position the own science pack in the science pack order map
+-- [apm.lib.utils.technology.science_pack_order] depending on the mod set:
+-- with apm_power it follows utility science, in a vanilla game it follows
+-- production science.
+if mods["apm_power_ldinc"] then
+	apm.lib.utils.technology.set.science_pack_order_after("apm_nuclear_science_pack", "utility-science-pack")
+else
+	apm.lib.utils.technology.set.science_pack_order_after("apm_nuclear_science_pack", "production-science-pack")
+end

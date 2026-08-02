@@ -113,7 +113,6 @@ require('prototypes.main.recipes.tools')
 require('prototypes.main.recipes.tiles')
 
 require('prototypes.main.technologies')
-require('prototypes.main.science_pack_order')
 
 require('prototypes.main.equipment.equipment_grid_categories')
 require('prototypes.main.equipment.equipment_grids')

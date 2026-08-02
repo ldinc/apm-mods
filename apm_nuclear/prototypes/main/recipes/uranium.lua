@@ -32,7 +32,7 @@ end
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_uranium",
-	category = "crafting-with-fluid",
+	categories = { "crafting-with-fluid" },
 
 	enabled = false,
 	energy_required = 5,
@@ -45,7 +45,6 @@ local recipe = {
 	},
 	main_product = "apm_fuel_rod_uranium",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 data:extend({ recipe })
@@ -63,7 +62,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_uranium_cooling",
-	category = "apm_nuclear_cooling_0",
+	categories = { "apm_nuclear_cooling_0" },
 	subgroup = "apm_nuclear_used_fuel_cold",
 	order = "aa_a",
 	icons = icons,
@@ -81,7 +80,6 @@ local recipe = {
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -101,7 +99,7 @@ local fluid = data.raw.fluid["apm_purex_solution_uranium"]
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_uranium_recovery_stage_a",
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_recycling_stage_a",
 	order = "aa_a",
 	icons = icons,
@@ -124,7 +122,6 @@ local recipe = {
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -144,7 +141,7 @@ local fluid = data.raw.fluid["apm_purex_solution_uranium"]
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_uranium_recovery_stage_b",
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_recycling_stage_b",
 	order = "aa_a",
 	icons = icons,
@@ -164,16 +161,15 @@ local recipe = {
 	},
 	results = {
 		{ type = "item",  name = "apm_oxide_pellet_u238",      amount = apm.nuclear.constants.amount_of_oxide_pellets - 3, show_details_in_recipe_tooltip = false },
-		{ type = "item",  name = "apm_oxide_pellet_np237",     amount_min = 1,                                             amount_max = 1,                        probability = apm.nuclear.constants.probability_neptunium, show_details_in_recipe_tooltip = false },
-		{ type = "item",  name = "apm_oxide_pellet_th232",     amount_min = 1,                                             amount_max = 1,                        probability = apm.nuclear.constants.probability_thorium,   show_details_in_recipe_tooltip = false },
-		{ type = "item",  name = "apm_oxide_pellet_pu239",     amount_min = 1,                                             amount_max = 1,                        probability = apm.nuclear.constants.probability_plutonium, show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = "apm_oxide_pellet_np237",     amount_min = 1,                                             amount_max = 1,                        independent_probability = apm.nuclear.constants.probability_neptunium, show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = "apm_oxide_pellet_th232",     amount_min = 1,                                             amount_max = 1,                        independent_probability = apm.nuclear.constants.probability_thorium,   show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = "apm_oxide_pellet_pu239",     amount_min = 1,                                             amount_max = 1,                        independent_probability = apm.nuclear.constants.probability_plutonium, show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_radioactive_waste",      amount = 1,                                                 show_details_in_recipe_tooltip = false },
 		{ type = "fluid", name = "apm_radioactive_wastewater", amount = apm.nuclear.constants.amount_of_rocow }
 		-- {type="item", name="bob-fusion-catalyst", amount=1}
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -187,7 +183,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_uranium",
-	category = "advanced-crafting",
+	categories = { "advanced-crafting" },
 
 	enabled = false,
 	energy_required = 5,
@@ -201,7 +197,6 @@ local recipe = {
 	},
 	main_product = "apm_breeder_uranium",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -215,7 +210,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_uranium_loaded",
-	category = "advanced-crafting",
+	categories = { "advanced-crafting" },
 
 	enabled = false,
 	energy_required = 5,
@@ -228,7 +223,6 @@ local recipe = {
 	},
 	main_product = "apm_breeder_uranium_loaded",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 data:extend({ recipe })
@@ -246,7 +240,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_uranium_cooling",
-	category = "apm_nuclear_cooling_0",
+	categories = { "apm_nuclear_cooling_0" },
 	subgroup = "apm_nuclear_breeding_uranium",
 	order = "ad_a",
 	icons = icons,
@@ -264,7 +258,6 @@ local recipe = {
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -278,7 +271,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_uranium_unloading",
-	category = "advanced-crafting",
+	categories = { "advanced-crafting" },
 	subgroup = "apm_nuclear_breeding_uranium",
 	order = "ae_a",
 	icons = {
@@ -296,7 +289,6 @@ local recipe = {
 	},
 	main_product = "apm_breeder_uranium_seperated",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -316,7 +308,7 @@ local fluid = data.raw.fluid["apm_purex_solution_breeder_uranium"]
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_uranium_seperation_process_a",
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_breeding_uranium",
 	order = "af_a",
 	icons = icons,
@@ -338,7 +330,6 @@ local recipe = {
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -358,7 +349,7 @@ local fluid = data.raw.fluid["apm_purex_solution_breeder_uranium"]
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_uranium_seperation_process_b",
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_breeding_uranium",
 	order = "af_b",
 	icons = icons,
@@ -378,13 +369,12 @@ local recipe = {
 	results = {
 		{ type = "item",  name = "apm_oxide_pellet_u238",      amount = apm.nuclear.constants.amount_of_oxide_pellets - 5, show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_oxide_pellet_pu239",     amount = 3,                                                 show_details_in_recipe_tooltip = false },
-		{ type = "item",  name = "apm_oxide_pellet_np237",     amount_min = 1,                                             amount_max = 1,                        probability = apm.nuclear.constants.probability_neptunium, show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = "apm_oxide_pellet_np237",     amount_min = 1,                                             amount_max = 1,                        independent_probability = apm.nuclear.constants.probability_neptunium, show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_radioactive_waste",      amount = 1,                                                 show_details_in_recipe_tooltip = false },
 		{ type = "fluid", name = "apm_radioactive_wastewater", amount = apm.nuclear.constants.amount_of_rocow }
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 

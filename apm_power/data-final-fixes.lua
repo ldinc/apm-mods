@@ -65,3 +65,6 @@ end
 -- data-final-fixes runs after all sibling apm mods and all optional dependencies,
 -- so every science pack is already created at this point.
 apm.lib.utils.technology.overwrite.science_pack_order_strings("science-pack")
+
+-- The lab GUI shows the packs of a lab in the order of its inputs array.
+apm.lib.utils.technology.overwrite.lab_science_pack_order()

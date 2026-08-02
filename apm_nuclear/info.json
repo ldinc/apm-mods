@@ -1,13 +1,13 @@
 {
 	"name": "apm_nuclear_ldinc",
-	"version": "0.32.03",
+	"version": "0.33.00",
 	"title": "Amator Phasma's Nuclear",
 	"author": "AmatorPhasma, ldinc",
 	"dependencies": [
-		"base",
+		"base >= 2.1.7",
 		"? space-age >= 1.0.0",
 		"apm_resource_pack_ldinc >= 0.30.3",
-		"apm_lib_ldinc >= 0.32.08",
+		"apm_lib_ldinc >= 0.32.13",
 		"? apm_power_ldinc >= 0.32.00",
 		"? bobplates >= 2.0.0",
 		"? bobores >= 2.0.0"
@@ -19,6 +19,6 @@
 	"segmented_units_required": false,
 	"expansion_shaders_required": false,
 	"description": "This mod is inspired by 'Nuclear Power' by Fatmice and 'Uranium Power' by Simdezimon.",
-	"factorio_version": "2.0",
+	"factorio_version": "2.1",
 	"homepage": ""
 }

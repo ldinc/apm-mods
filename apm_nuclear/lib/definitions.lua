@@ -142,14 +142,14 @@ apm.nuclear.icons.phosphorpentachlorid = {icon=apm.nuclear.icons.path.phosphorpe
 apm.nuclear.icons.phosphoroxychlorid = {icon=apm.nuclear.icons.path.phosphoroxychlorid, icon_size=64}
 apm.nuclear.icons.generic_ash = {icon=apm.lib.icons.path.dust, icon_size=64, tint=apm.nuclear.color.generic_ash}
 apm.nuclear.icons.trimethyl_phosphate = {icon=apm.nuclear.icons.path.trimethyl_phosphate, icon_size=64}
-apm.nuclear.icons.fluorite = {size=64, icon=apm.nuclear.icons.path.fluorite, filename=apm.nuclear.icons.path.fluorite, scale=0.25, icon_mipmaps=4, icon_size=64}
-apm.nuclear.icons.fluorite_1 = {size=64, icon=apm.nuclear.icons.path.fluorite_1, filename=apm.nuclear.icons.path.fluorite_1, scale=0.25, icon_mipmaps=4, icon_size=64}
-apm.nuclear.icons.fluorite_2 = {size=64, icon=apm.nuclear.icons.path.fluorite_2, filename=apm.nuclear.icons.path.fluorite_2, scale=0.25, icon_mipmaps=4, icon_size=64}
-apm.nuclear.icons.fluorite_3 = {size=64, icon=apm.nuclear.icons.path.fluorite_3, filename=apm.nuclear.icons.path.fluorite_3, scale=0.25, icon_mipmaps=4, icon_size=64}
-apm.nuclear.icons.thorium_ore = {size=64, icon=apm.nuclear.icons.path.thorium_ore, filename=apm.nuclear.icons.path.thorium_ore, scale=0.25, icon_mipmaps=4, icon_size=64}
-apm.nuclear.icons.thorium_ore_1 = {size=64, icon=apm.nuclear.icons.path.thorium_ore_1, filename=apm.nuclear.icons.path.thorium_ore_1, scale=0.25, icon_mipmaps=4, icon_size=64}
-apm.nuclear.icons.thorium_ore_2 = {size=64, icon=apm.nuclear.icons.path.thorium_ore_2, filename=apm.nuclear.icons.path.thorium_ore_2, scale=0.25, icon_mipmaps=4, icon_size=64}
-apm.nuclear.icons.thorium_ore_3 = {size=64, icon=apm.nuclear.icons.path.thorium_ore_3, filename=apm.nuclear.icons.path.thorium_ore_3, scale=0.25, icon_mipmaps=4, icon_size=64}
+apm.nuclear.icons.fluorite = {size=64, icon=apm.nuclear.icons.path.fluorite, filename=apm.nuclear.icons.path.fluorite, scale=0.25, icon_size=64}
+apm.nuclear.icons.fluorite_1 = {size=64, icon=apm.nuclear.icons.path.fluorite_1, filename=apm.nuclear.icons.path.fluorite_1, scale=0.25, icon_size=64}
+apm.nuclear.icons.fluorite_2 = {size=64, icon=apm.nuclear.icons.path.fluorite_2, filename=apm.nuclear.icons.path.fluorite_2, scale=0.25, icon_size=64}
+apm.nuclear.icons.fluorite_3 = {size=64, icon=apm.nuclear.icons.path.fluorite_3, filename=apm.nuclear.icons.path.fluorite_3, scale=0.25, icon_size=64}
+apm.nuclear.icons.thorium_ore = {size=64, icon=apm.nuclear.icons.path.thorium_ore, filename=apm.nuclear.icons.path.thorium_ore, scale=0.25, icon_size=64}
+apm.nuclear.icons.thorium_ore_1 = {size=64, icon=apm.nuclear.icons.path.thorium_ore_1, filename=apm.nuclear.icons.path.thorium_ore_1, scale=0.25, icon_size=64}
+apm.nuclear.icons.thorium_ore_2 = {size=64, icon=apm.nuclear.icons.path.thorium_ore_2, filename=apm.nuclear.icons.path.thorium_ore_2, scale=0.25, icon_size=64}
+apm.nuclear.icons.thorium_ore_3 = {size=64, icon=apm.nuclear.icons.path.thorium_ore_3, filename=apm.nuclear.icons.path.thorium_ore_3, scale=0.25, icon_size=64}
 apm.nuclear.icons.waste_container = {icon=apm.nuclear.icons.path.waste_container, icon_size=64}
 apm.nuclear.icons.waste_radioactive = {icon=apm.nuclear.icons.path.waste_radioactive, icon_size=64}
 apm.nuclear.icons.rtg = {icon=apm.nuclear.icons.path.rtg, icon_size=64}

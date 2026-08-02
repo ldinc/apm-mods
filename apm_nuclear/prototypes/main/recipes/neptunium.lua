@@ -32,7 +32,7 @@ end
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_neptunium",
-	category = "crafting-with-fluid",
+	categories = { "crafting-with-fluid" },
 
 	enabled = false,
 	energy_required = 5,
@@ -46,7 +46,6 @@ local recipe = {
 	},
 	main_product = "apm_fuel_rod_neptunium",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -66,7 +65,7 @@ local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_neptunium_cooling",
 	icons = icons,
-	category = "apm_nuclear_cooling_0",
+	categories = { "apm_nuclear_cooling_0" },
 	subgroup = "apm_nuclear_used_fuel_cold",
 	order = "ae_a",
 	allow_decomposition = false,
@@ -84,7 +83,6 @@ local recipe = {
 		{ type = "fluid", name = "apm_radioactive_wastewater",    amount = 150, temperature = 90 }
 	},
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -105,7 +103,7 @@ local recipe = {
 	type = "recipe",
 	name = "apm_fuel_cell_neptunium_recovery_stage_a",
 	icons = icons,
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_recycling_stage_a",
 	order = "ae_a",
 	crafting_machine_tint = {
@@ -128,7 +126,6 @@ local recipe = {
 		{ type = "fluid", name = fluid.name,                    amount = 100 }
 	},
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -149,7 +146,7 @@ local recipe = {
 	type = "recipe",
 	name = "apm_fuel_cell_neptunium_recovery_stage_b",
 	icons = icons,
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_recycling_stage_b",
 	order = "ae_a",
 	crafting_machine_tint = {
@@ -176,7 +173,6 @@ local recipe = {
 		-- {type="item", name="bob-fusion-catalyst", amount=1}
 	},
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 

@@ -29,7 +29,7 @@ local function CreateRecipeCentrifuging(i)
 			secondary = { r = 0 + (8 - i) * 0.074, g = 1, b = 0, a = 0.000 },
 			tertiary  = { r = 0 + (8 - i) * 0.074, g = 1, b = 0, a = 0.000 },
 		},
-		category = "centrifuging",
+		categories = { "centrifuging" },
 
 		subgroup = "apm_nuclear_hexafluoride",
 		order = "aa_[" .. string.format("%03d", enrichment_output_B) .. "]",
@@ -44,7 +44,6 @@ local function CreateRecipeCentrifuging(i)
 			{ type = "fluid", name = "apm_nuclear_hexafluoride_" .. string.format("%03d", enrichment_output_B), amount = 50 },
 		},
 
-		always_show_products = true,
 		always_show_made_in = apm_nuclear_always_show_made_in,
 	}
 
@@ -72,7 +71,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 local recipe = {
 	type = "recipe",
 	name = "apm_hexafluoride_007",
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_chemistry",
 	order = "az_a",
 	icons = icons,
@@ -95,7 +94,6 @@ local recipe = {
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -109,7 +107,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_fluorite_ore",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.694, g = 0.756, b = 0.095, a = 0.000 },
 		secondary = { r = 0.694, g = 0.756, b = 0.095, a = 0.000 },
@@ -127,7 +125,6 @@ local recipe = {
 	},
 	main_product = "APM_FLUORITE",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -141,7 +138,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_potassium_bromide",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.867, g = 0.651, b = 0.620, a = 0.000 },
 		secondary = { r = 0.867, g = 0.651, b = 0.620, a = 0.000 },
@@ -159,7 +156,6 @@ local recipe = {
 	},
 	main_product = "apm_potassium_bromide",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -173,7 +169,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_bromine",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.637, g = 0.000, b = 0.000, a = 0.000 },
 		secondary = { r = 0.637, g = 0.000, b = 0.000, a = 0.000 },
@@ -191,7 +187,6 @@ local recipe = {
 	},
 	main_product = "apm_bromine",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -205,7 +200,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_bromine_trifluoride",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.615, g = 0.765, b = 0.027, a = 0.000 },
 		secondary = { r = 0.615, g = 0.765, b = 0.027, a = 0.000 },
@@ -223,7 +218,6 @@ local recipe = {
 	},
 	main_product = "apm_bromine_trifluoride",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -237,7 +231,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_yellowcake",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.950, g = 0.950, b = 0.000, a = 0.000 },
 		secondary = { r = 0.950, g = 0.950, b = 0.000, a = 0.000 },
@@ -256,7 +250,6 @@ local recipe = {
 	},
 	main_product = "apm_yellowcake",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 

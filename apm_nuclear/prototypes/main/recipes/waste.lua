@@ -36,7 +36,7 @@ local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
 local recipe = {
 	type = "recipe",
 	name = "apm_radioactive_wastewater_recyling",
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_recycling_stage_b",
 	order = "ca_a",
 	icons = icons,
@@ -59,7 +59,6 @@ local recipe = {
 	},
 	main_product = "",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	allow_decomposition = false,
 	allow_as_intermediate = false,
 	allow_intermediates = false,

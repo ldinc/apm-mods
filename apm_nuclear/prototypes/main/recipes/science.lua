@@ -16,7 +16,7 @@ APM_LOG_SETTINGS(self, "apm_nuclear_always_show_made_in", apm_nuclear_always_sho
 local recipe = {
 	type = "recipe",
 	name = "apm_nuclear_science_pack",
-	category = "advanced-crafting",
+	categories = { "advanced-crafting" },
 
 	enabled = false,
 	energy_required = 21,
@@ -31,7 +31,6 @@ local recipe = {
 	},
 	main_product = "apm_nuclear_science_pack",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 

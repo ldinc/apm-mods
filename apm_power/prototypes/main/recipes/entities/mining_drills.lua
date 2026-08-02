@@ -61,7 +61,7 @@ recipe.always_show_made_in = apm.lib.features.show.made_in
 if apm.lib.features.reuse_previous_tier then
 	local prev = "burner-mining-drill"
 
-	---@type ItemPrototype, boolean
+	---@type ItemPrototype
 	local burner_2, ok = apm.lib.utils.item.get_by_name("apm_burner_miner_drill_2", true)
 
 	if ok and not burner_2.hidden then

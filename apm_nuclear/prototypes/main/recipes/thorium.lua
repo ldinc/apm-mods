@@ -32,7 +32,7 @@ end
 local recipe = {
 	type = "recipe",
 	name = "apm_oxide_pellet_th232",
-	category = "chemistry",
+	categories = { "chemistry" },
 	crafting_machine_tint = {
 		primary   = { r = 0.541, g = 0.337, b = 0.170, a = 0.000 },
 		secondary = { r = 0.541, g = 0.337, b = 0.170, a = 0.000 },
@@ -52,7 +52,6 @@ local recipe = {
 	},
 	main_product = "apm_oxide_pellet_th232",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -66,7 +65,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_fuel_rod_thorium",
-	category = "crafting-with-fluid",
+	categories = { "crafting-with-fluid" },
 
 	enabled = false,
 	energy_required = 5,
@@ -80,7 +79,6 @@ local recipe = {
 	},
 	main_product = "apm_fuel_rod_thorium",
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -100,7 +98,7 @@ local recipe = {
 	type = "recipe",
 	name = "apm_fuel_cell_thorium_cooling",
 	icons = icons,
-	category = "apm_nuclear_cooling_0",
+	categories = { "apm_nuclear_cooling_0" },
 	subgroup = "apm_nuclear_used_fuel_cold",
 	order = "ad_a",
 
@@ -119,7 +117,6 @@ local recipe = {
 		{ type = "fluid", name = "apm_radioactive_wastewater",  amount = 50, temperature = 90 }
 	},
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -140,7 +137,7 @@ local recipe = {
 	type = "recipe",
 	name = "apm_fuel_cell_thorium_recovery_stage_a",
 	icons = icons,
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_recycling_stage_a",
 	order = "ad_a",
 	crafting_machine_tint = {
@@ -163,7 +160,6 @@ local recipe = {
 		{ type = "fluid", name = fluid.name,                    amount = 100 }
 	},
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -184,7 +180,7 @@ local recipe = {
 	type = "recipe",
 	name = "apm_fuel_cell_thorium_recovery_stage_b",
 	icons = icons,
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_recycling_stage_b",
 	order = "ad_a",
 	crafting_machine_tint = {
@@ -206,14 +202,13 @@ local recipe = {
 	results = {
 		{ type = "item",  name = "apm_oxide_pellet_u235",      amount = 1,                                    show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_oxide_pellet_u238",      amount = 6,                                    show_details_in_recipe_tooltip = false },
-		{ type = "item",  name = "apm_oxide_pellet_np237",     amount_min = 1,                                amount_max = 1,                        probability = apm.nuclear.constants.probability_neptunium / 3, show_details_in_recipe_tooltip = false },
-		{ type = "item",  name = "apm_oxide_pellet_pu239",     amount_min = 1,                                amount_max = 1,                        probability = apm.nuclear.constants.probability_plutonium / 3, show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = "apm_oxide_pellet_np237",     amount_min = 1,                                amount_max = 1,                        independent_probability = apm.nuclear.constants.probability_neptunium / 3, show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = "apm_oxide_pellet_pu239",     amount_min = 1,                                amount_max = 1,                        independent_probability = apm.nuclear.constants.probability_plutonium / 3, show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_radioactive_waste",      amount = 1,                                    show_details_in_recipe_tooltip = false },
 		{ type = "fluid", name = "apm_radioactive_wastewater", amount = apm.nuclear.constants.amount_of_rocow }
 		-- {type="item", name="bob-fusion-catalyst", amount=1}
 	},
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -227,7 +222,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium",
-	category = "crafting-with-fluid",
+	categories = { "crafting-with-fluid" },
 
 	enabled = false,
 	energy_required = 5,
@@ -241,7 +236,6 @@ local recipe = {
 	},
 	requester_paste_multiplier = 4,
 	main_product = "apm_breeder_thorium",
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -255,7 +249,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_loaded",
-	category = "crafting-with-fluid",
+	categories = { "crafting-with-fluid" },
 
 	enabled = false,
 	energy_required = 5,
@@ -268,7 +262,6 @@ local recipe = {
 	},
 	requester_paste_multiplier = 4,
 	main_product = "apm_breeder_thorium_loaded",
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -288,7 +281,7 @@ local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_cooling",
 	icons = icons,
-	category = "apm_nuclear_cooling_0",
+	categories = { "apm_nuclear_cooling_0" },
 	subgroup = "apm_nuclear_breeding_thorium",
 	order = "ad_a",
 
@@ -307,7 +300,6 @@ local recipe = {
 		{ type = "fluid", name = "apm_radioactive_wastewater", amount = 50, temperature = 90 }
 	},
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -321,7 +313,7 @@ data:extend({ recipe })
 local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_unloading",
-	category = "advanced-crafting",
+	categories = { "advanced-crafting" },
 	subgroup = "apm_nuclear_breeding_thorium",
 	order = "ae_a",
 	icons = {
@@ -339,7 +331,6 @@ local recipe = {
 	},
 	requester_paste_multiplier = 4,
 	main_product = "apm_breeder_thorium_seperated",
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -360,7 +351,7 @@ local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_seperation_process_a",
 	icons = icons,
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_breeding_thorium",
 	order = "af_a",
 	crafting_machine_tint = {
@@ -383,7 +374,6 @@ local recipe = {
 		{ type = "fluid", name = fluid.name,                   amount = 100 }
 	},
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 
@@ -409,7 +399,7 @@ local recipe = {
 	type = "recipe",
 	name = "apm_breeder_thorium_seperation_process_b",
 	icons = icons,
-	category = "chemistry",
+	categories = { "chemistry" },
 	subgroup = "apm_nuclear_breeding_thorium",
 	order = "af_b",
 
@@ -426,13 +416,12 @@ local recipe = {
 	results = {
 		{ type = "item",  name = "apm_oxide_pellet_u238",      amount = 5,                                    show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_oxide_pellet_np237",     amount = 4,                                    show_details_in_recipe_tooltip = false },
-		{ type = "item",  name = "apm_oxide_pellet_pu239",     amount_min = 1,                                amount_max = 1,                        probability = apm.nuclear.constants.probability_plutonium / 2, show_details_in_recipe_tooltip = false },
+		{ type = "item",  name = "apm_oxide_pellet_pu239",     amount_min = 1,                                amount_max = 1,                        independent_probability = apm.nuclear.constants.probability_plutonium / 2, show_details_in_recipe_tooltip = false },
 		{ type = "item",  name = "apm_radioactive_waste",      amount = 1,                                    show_details_in_recipe_tooltip = false },
 		{ type = "fluid", name = "apm_radioactive_wastewater", amount = apm.nuclear.constants.amount_of_rocow }
 		-- {type="item", name="bob-fusion-catalyst", amount=1},
 	},
 	requester_paste_multiplier = 4,
-	always_show_products = true,
 	always_show_made_in = apm_nuclear_always_show_made_in,
 }
 

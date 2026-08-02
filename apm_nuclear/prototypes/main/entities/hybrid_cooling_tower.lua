@@ -162,7 +162,7 @@ hybrid_cooling_tower.fluid_boxes = {
 	box(
 		"input",
 		10000,
-		apm.lib.utils.pipecovers.assembler4pipepictures(),
+		apm.lib.utils.pipecovers.assembler3pipepictures(),
 		defines.direction.south,
 		{ 0, 1 },
 		{ north = -1 }
@@ -170,7 +170,7 @@ hybrid_cooling_tower.fluid_boxes = {
 	box(
 		"output",
 		1000,
-		apm.lib.utils.pipecovers.assembler4pipepictures(),
+		apm.lib.utils.pipecovers.assembler3pipepictures(),
 		defines.direction.north,
 		{ 0, -1 },
 		{ north = -1 }
