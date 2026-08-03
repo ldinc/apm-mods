@@ -9,6 +9,15 @@ Date: 24.07.2026
     - [apm.lib.utils.technology.overwrite.science_pack_order_strings] Applies the science pack order map to the item prototype order strings that drive the science pack order in the technology GUI; optionally also normalizes the item subgroup (e.g. to 'science-pack').
     - [apm.lib.utils.technology.overwrite.lab_science_pack_order] Sorts the science pack inputs of all labs by the order map; the lab GUI shows the packs of a lab in the order of its inputs array.
     - [apm.lib.utils.recipe.category.has] Checks whether a recipe has a given category in its 'categories' list.
+    - [radiation] Simplified the item count filter (all quality tiers are counted, as before).
+    - [radiation] The radiation tick sound is now played via LuaSurface::play_sound at the character position instead of spawning temporary explosion entities; the 9 explosion sound prototypes were replaced by plain 'sound' prototypes (Factorio 2.1 SoundPath requires a SoundPrototype name).
+    - [radiation] The radioactive item list moved to 'storage.radiation.items' with schema versioning ('storage.radiation.version'); existing saves are migrated automatically in migrate_storage(), which also serves as the template for future storage upgrades.
+    - [radiation] The item list is now kept in a cached sorted array (rebuilt only when the list changes) instead of being re-sorted on every inventory check.
+    - [containers.dlllist] Removed the redundant parallel id array; values must now be tables with an 'id' field (the inserter queue already satisfied this), and the container test was reconciled with the documented swap-pop cursor semantics.
+  Bugfixes:
+    - [inserter] Fixed the per-tick batch processing running 'batch_size + 1' iterations instead of 'batch_size'.
+    - [radiation] Fixed 'check_table' leaking into the global namespace and merged the duplicated item list validation into one function.
+    - [apm.lib.features.runtime.get] A setting whose current value is 'false' was logged as 'setting "..." not found' (spurious error); missing settings are now distinguished from false values.
   Bugfixes:
     - [apm.lib.utils.item.mod.overwrite_weight_for_science_packs] Silently skipped science packs defined as 'tool' prototypes (e.g. by third-party mods); the lookup now falls back to data.raw['tool'].
     - [apm.lib.utils.assembler.centrifuge.overhaul] The south orientation of the nuclear centrifuge now uses a custom integration (base) sprite with the pipe drawn in (centrifuge-ABC-integration-S.png); the separate south pipe picture was removed.

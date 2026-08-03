@@ -483,7 +483,7 @@ local function add_inserter(inserter)
 		---@type QueueItem
 		local item = { id = id, entity = inserter, fuel_inventory = fuel_inventory, bulk = bulk, err = 0 }
 
-		dllist.add(storage.inserters.queue, id, item)
+		dllist.add(storage.inserters.queue, item)
 	end
 end
 
@@ -891,7 +891,7 @@ function inserter_script.on_tick(tick)
 		return
 	end
 
-	for _ = 0, storage.inserters.settings.batch_size, 1 do
+	for _ = 1, storage.inserters.settings.batch_size, 1 do
 		local t_object, pickup_target, drop_target = get_next_inserter()
 
 		if t_object then

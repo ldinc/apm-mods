@@ -28,7 +28,7 @@ end
 function apm.lib.features.runtime.get(key)
 	local v = apm.lib.features.runtime.values[key]
 
-	if v then
+	if v ~= nil then
 		return v
 	end
 

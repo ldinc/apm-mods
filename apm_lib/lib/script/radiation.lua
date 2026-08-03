@@ -4,9 +4,6 @@
 -- ----------------------------------------------------------------------------
 require("lib.features")
 local core = require("lib.script.core")
-local sound = require("lib.script.sound")
-require("lib.utils.prototypes")
-require("lib.utils")
 
 
 -- Definitions ----------------------------------------------------------------
@@ -15,60 +12,114 @@ require("lib.utils")
 -- ----------------------------------------------------------------------------
 local radiation_script = {}
 
-function radiation_script.alloc_defenitions()
-	if not storage.items_radioactive_01774 then
-		storage.items_radioactive_01774 = {}
+--- Schema version of storage.radiation. Bump this when the storage layout
+--- changes and add a migration step in migrate_storage().
+local STORAGE_VERSION = 1
+
+--- Level -> letter used in the radioactive sound prototype names
+--- (prototypes/sounds/radiation.lua).
+local radiation_sound_paths = {
+	[1] = "a",
+	[2] = "b",
+	[3] = "c",
+}
+
+--- Lua-side cache of the radioactive item list, sorted by level (desc) then
+--- name. Not persisted; rebuilt lazily and invalidated on every list change.
+---@type { name: string, level: integer }[]?
+local sorted_items = nil
+
+---@return { name: string, level: integer }[]
+local function get_sorted_items()
+	if sorted_items then
+		return sorted_items
 	end
 
+	sorted_items = {}
+
+	for item_name, level in pairs(storage.radiation.items) do
+		table.insert(sorted_items, { name = item_name, level = level })
+	end
+
+	table.sort(sorted_items, function(a, b)
+		if a.level ~= b.level then
+			return a.level > b.level
+		end
+
+		return a.name < b.name
+	end)
+
+	return sorted_items
+end
+
+local function invalidate_sorted_items()
+	sorted_items = nil
+end
+
+function radiation_script.alloc_definitions()
 	if not storage.radiation then storage.radiation = {} end
 
-	if not storage.radiation.apm_nuclear_radiation then
+	if storage.radiation.apm_nuclear_radiation == nil then
 		storage.radiation.apm_nuclear_radiation = true
 	end
 
-	if not storage.radiation.radiation_dmg_multiplier then
+	if storage.radiation.radiation_dmg_multiplier == nil then
 		storage.radiation.radiation_dmg_multiplier = 1.0
 	end
 
-	if not storage.radiation.radiation_dmg_based_on_stack then
+	if storage.radiation.radiation_dmg_based_on_stack == nil then
 		storage.radiation.radiation_dmg_based_on_stack = false
 	end
 
-	if not storage.radiation.checked_item_list then
+	if storage.radiation.checked_item_list == nil then
 		storage.radiation.checked_item_list = false
-	end
-
-	if not storage.items_radioactive_01774 then
-		storage.items_radioactive_01774 = {}
 	end
 end
 
----@param t any
----@param order function(any, any, any) boolean
----@return function()
-local function spairs(t, order)
-	-- collect the keys
-	local keys = {}
+--- Migrates the radiation storage layout to STORAGE_VERSION.
+--- Called from on_init and on_update (on_configuration_changed).
+local function migrate_storage()
+	---@type uint64
+	local version = storage.radiation.version or 0
 
-	for k in pairs(t) do keys[#keys + 1] = k end
+	if version < 1 then
+		-- v1: the item list moved from storage.items_radioactive_01774
+		-- (and the even older storage.items_radioactive) into storage.radiation.items
+		storage.radiation.items = {}
 
-	-- if order function given, sort by it by passing the table and keys a, b,
-	-- otherwise just sort the keys
-	if order then
-		table.sort(keys, function(a, b) return order(t, a, b) end)
-	else
-		table.sort(keys)
+		local legacy = storage.items_radioactive_01774 or storage.items_radioactive
+
+		if legacy then
+			for item_name, level in pairs(legacy) do
+				storage.radiation.items[item_name] = level
+			end
+
+			storage.items_radioactive_01774 = nil
+			storage.items_radioactive = nil
+
+			log("Info: radiation.migrate_storage(): migrated radioactive items to storage.radiation.items (v1)")
+		end
+
+		storage.radiation.version = 1
 	end
 
-	-- return the iterator function
-	local i = 0
+	-- if version < 2 then ... end -- template for future migrations
+end
 
-	return function()
-		i = i + 1
-		if keys[i] then
-			return keys[i], t[keys[i]]
+--- Removes entries whose item prototype no longer exists.
+local function validate_item_list()
+	for item_name, _ in pairs(storage.radiation.items) do
+		if not prototypes.item[item_name] then
+			storage.radiation.items[item_name] = nil
+
+			log(APM_MSG_ERROR(
+				"radiation.validate_item_list",
+				"Invalid radioactive item was removed [" .. tostring(item_name) .. "]"
+			))
 		end
 	end
+
+	invalidate_sorted_items()
 end
 
 local function get_config()
@@ -93,60 +144,64 @@ local function add_item(item_name, level)
 		level = 2
 	end
 
-	if not storage.radiation then
+	local items = storage.radiation.items
 
-	end
-
-	if storage.items_radioactive_01774[item_name] then
-		if storage.items_radioactive_01774[item_name] ~= level then
-			storage.items_radioactive_01774[item_name] = level
-
-			log('Info: add_item(): item: "' .. tostring(item_name) .. '" updated.')
-
-			return true
+	if items[item_name] == level then
+		if APM_CAN_LOG_INFO then
+			log(APM_MSG_INFO(
+				"add_item()",
+				'item: "' .. tostring(item_name) .. '" is already on the list.'
+			))
 		end
-
-		log('Info: add_item(): item: "' .. tostring(item_name) .. '" is already on the list.')
 
 		return true
 	end
 
-	if not storage.items_radioactive_01774[item_name] then
-		if apm.lib.utils.prototypes.item.exists(item_name) then
-			storage.items_radioactive_01774[item_name] = level
-
-			log('Info: add_item(): add item: "' .. tostring(item_name) .. '" to the radioactive list.')
-
-			return true
+	if not prototypes.item[item_name] then
+		if APM_CAN_LOG_WARN then
+			log(APM_MSG_WARNING(
+				"add_item()",
+				'item: "' .. tostring(item_name) .. '" does not exist.'
+			))
 		end
-
-		log('Warning: add_item(): item: "' .. tostring(item_name) .. '" does not exist.')
 
 		return false
 	end
 
-	return false
+	items[item_name] = level
+	invalidate_sorted_items()
+
+	if APM_CAN_LOG_INFO then
+		log(APM_MSG_INFO(
+			"add_item()",
+			'item: "' .. tostring(item_name) .. '" set to level: "' .. tostring(level) .. '"'
+		))
+	end
+
+	return true
 end
 
 ---@param item_name string
 ---@return boolean
 local function remove_item(item_name)
-	if not storage.items_radioactive_01774 then return false end
+	if not storage.radiation.items[item_name] then return false end
 
-	if not storage.items_radioactive_01774[item_name] then return false end
+	storage.radiation.items[item_name] = nil
+	invalidate_sorted_items()
 
-	storage.items_radioactive_01774[item_name] = nil
-
-	log('Info: remove_item(): remove item: "' .. tostring(item_name) .. '" from the radioactive list.')
+	if APM_CAN_LOG_INFO then
+		log(APM_MSG_INFO(
+			"remove_item()",
+			'item: "' .. tostring(item_name) .. '" removed from the radioactive list.'
+		))
+	end
 
 	return true
 end
 
----@return table<string, any>?
+---@return table<string, integer>
 local function list_items()
-	if not storage.items_radioactive_01774 then return nil end
-
-	return storage.items_radioactive_01774
+	return storage.radiation.items
 end
 
 local function generate_radioactive_table()
@@ -156,27 +211,17 @@ local function generate_radioactive_table()
 end
 
 function radiation_script.on_init()
-	radiation_script.alloc_defenitions();
+	radiation_script.alloc_definitions()
 
+	migrate_storage()
 	get_config()
 	generate_radioactive_table()
+	validate_item_list()
 end
 
 function radiation_script.on_load()
-	-- get_config()
-end
-
-local function convert_table()
-	if storage.items_radioactive then
-		storage.items_radioactive = nil
-
-		log("Info: radiation.convert_table(): removed old table after update")
-	end
-	if not storage.items_radioactive_01774 then
-		storage.items_radioactive_01774 = {}
-
-		log("Info: radiation.convert_table(): create new table after update")
-	end
+	-- storage is not accessible in on_load; the sorted item cache is Lua-side
+	-- and rebuilt lazily, so there is nothing to do here.
 end
 
 -- Function -------------------------------------------------------------------
@@ -184,26 +229,12 @@ end
 --
 -- ----------------------------------------------------------------------------
 function radiation_script.on_update()
-	radiation_script.alloc_defenitions();
+	radiation_script.alloc_definitions()
+
+	migrate_storage()
 	get_config()
-	convert_table()
 	generate_radioactive_table()
-	check_table()
-end
-
-function check_table()
-	for item_name, _ in pairs(storage.items_radioactive_01774) do
-		if not apm.lib.utils.prototypes.item.exists(item_name) then
-			storage.items_radioactive_01774[item_name] = nil
-
-			log(
-				APM_MSG_ERROR(
-					"radiation_script.check_table",
-					"Invalid radiactive item was removed [" .. tostring(item_name) .. "]"
-				)
-			)
-		end
-	end
+	validate_item_list()
 end
 
 ---@param player LuaPlayer?
@@ -213,7 +244,7 @@ end
 local function damage_to_character_from_item(player, character, item_name, count)
 	if not player or not character then return end
 
-	local item_rtype = storage.items_radioactive_01774[item_name]
+	local item_rtype = storage.radiation.items[item_name]
 	local rnd_min = 2 ^ item_rtype
 	local rnd_max = rnd_min * 2 * item_rtype
 	local damage = math.random(rnd_min, rnd_max) * storage.radiation.radiation_dmg_multiplier
@@ -230,45 +261,37 @@ local function damage_to_character_from_item(player, character, item_name, count
 	core.send_dmg_msg_to_player(player, msg)
 end
 
-local comparator = function(t, a, b) return t[b] < t[a] end
+---@param character LuaEntity
+---@param level integer
+local function play_radiation_sound(character, level)
+	if level < 1 then
+		level = 1
+	elseif level > 3 then
+		level = 3
+	end
+
+	-- 2.1 SoundPath: the sound prototype name, raw file paths are not supported
+	character.surface.play_sound({
+		path = "radioactive_" .. radiation_sound_paths[level] .. "_" .. tostring(math.random(3)),
+		position = character.position,
+	})
+end
 
 ---@param player LuaPlayer?
 ---@param character LuaEntity?
 ---@param cause_damage boolean
 local function check_inventory(player, character, cause_damage)
 	if not player or not character then return end
+	if not character.get_main_inventory() then return end
 
-
-	local inv = character.get_main_inventory()
-	if not inv then
-		return
-	end
-
-	for item_name, radiation_level in spairs(storage.items_radioactive_01774, comparator) do
-		---@type ItemFilter
-		local filter = {
-			name = item_name,
-			quality = "normal",
-			comparator = ">="
-		}
-
-		local count = character.get_item_count(filter)
+	for _, entry in ipairs(get_sorted_items()) do
+		local count = character.get_item_count({ name = entry.name })
 
 		if count > 0 then
-			local radioactive_type = "radioactive_b_"
-
-			if radiation_level <= 1 then
-				radioactive_type = "radioactive_a_"
-			elseif radiation_level == 2 then
-				radioactive_type = "radioactive_b_"
-			elseif radiation_level >= 3 then
-				radioactive_type = "radioactive_c_"
-			end
-
-			sound.create_on_character_position(radioactive_type .. tostring(math.random(3)), player)
+			play_radiation_sound(character, entry.level)
 
 			if cause_damage == true then
-				damage_to_character_from_item(player, character, item_name, count)
+				damage_to_character_from_item(player, character, entry.name, count)
 			end
 
 			if not storage.radiation.radiation_dmg_based_on_stack then
@@ -288,13 +311,7 @@ end
 -- ----------------------------------------------------------------------------
 local function check_item_list()
 	if not storage.radiation.checked_item_list then
-		for item_name, _ in pairs(storage.items_radioactive_01774) do
-			if not apm.lib.utils.prototypes.item.exists(item_name) then
-				storage.items_radioactive_01774[item_name] = nil
-
-				log('Info: check_item_list(): item: "' .. tostring(item_name) .. '" does not exist, removed from list.')
-			end
-		end
+		validate_item_list()
 
 		storage.radiation.checked_item_list = true
 	end
