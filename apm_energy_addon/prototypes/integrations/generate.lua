@@ -23,7 +23,7 @@ APM_LOG_SETTINGS(self, "apm_energy_addon_always_show_made_in", apm_energy_addon_
 -- ----------------------------------------------------------------------------------------
 
 --- [apm_nuclear]
-if mods.apm_nuclear then
+if mods.apm_nuclear_ldinc then
 	local rtg_name = "apm_rtg_radioisotope_thermoelectric_generator"
 	local item_battery = data.raw.item[rtg_name]
 

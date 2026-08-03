@@ -27,7 +27,7 @@ if mods["reverse-factory"] and apm_energy_addon_compat_reverse_factory then
 
 	exclude("apm_charging_battery")
 
-	if mods.apm_nuclear then
+	if mods.apm_nuclear_ldinc then
 		exclude("apm_decayed_rtg_reprocessing")
 	end
 

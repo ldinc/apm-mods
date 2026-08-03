@@ -16,7 +16,7 @@ Date: 24.07.2026
     - Fixed wrong mod name in mod detection: 'apm_power' -> 'apm_power_ldinc' (the fork's name); the affected integration branches never matched with the fork installed.
     - Fixed unguarded burner equipment registration in control.lua: 'fusion-reactor-equipment(-2/-3/-4)' was always registered with apm_equipment, even when the equipment does not exist in the current mod set (e.g. without space-age or Bob's Equipment); only existing equipment is registered now.
     - Fixed 'apm.nuclear.generate_angel_coolant_recipes' silently generating no recipes on Factorio 2.1: it checked the removed RecipePrototype 'category' field instead of the 'categories' array (Angels integration).
-    - Removed a dead 'energy_source' assignment in 'apm.nuclear.update_fission_equipment'; GeneratorEquipmentPrototype has no such field and the game ignored it.
+    - [apm.nuclear.update_fission_equipment] The 'energy_source' block on generator-equipment is required in 2.1; it is now written with 'primary-output' priority (was 'secondary-output'), matching the vanilla fission reactor equipment.
     - Removed the invalid 'group' field from the fluid definitions; item group membership is derived from 'subgroup' (the field was ignored by the game).
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.03

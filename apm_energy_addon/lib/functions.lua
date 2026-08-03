@@ -12,7 +12,11 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
+--- Converts a vehicle to battery power: swaps its burner energy source for an
+--- electro-accumulator one and marks it as electric in the description.
+---@param vehicle_name string
 function apm.energy_addon.overhaul(vehicle_name)
+	---@type CarPrototype | LocomotivePrototype | SpiderVehiclePrototype
 	local vehicle
 
 	if apm.lib.utils.car.exist(vehicle_name) then
@@ -49,6 +53,9 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+--- Generates the electric variant of a car-type vehicle: item, entity copy
+--- with electric sounds and the battery overhaul.
+---@param name string
 function apm.energy_addon.generate_electric_powered(name)
 	local item_icon_a = apm.lib.utils.icon.get.from_item(name)
 	local item_icon_b = { apm.energy_addon.icons.electric_symbol }
@@ -86,7 +93,7 @@ function apm.energy_addon.generate_electric_powered(name)
 		car.sound_no_fuel.filename = "__apm_resource_pack_ldinc__/sounds/car/car-no-fuel-1.ogg"
 	end
 
-	if car.working_sound.main_sounds then
+	if car.working_sound and car.working_sound.main_sounds then
 		car.working_sound.main_sounds = {
 			sound = {
 				filename = "__apm_resource_pack_ldinc__/sounds/car/car-engine.ogg",
@@ -102,13 +109,23 @@ function apm.energy_addon.generate_electric_powered(name)
 		}
 	end
 
-	car.working_sound.activate_sound = nil
-	car.working_sound.deactivate_sound = nil
+	if car.working_sound then
+		car.working_sound.activate_sound = nil
+		car.working_sound.deactivate_sound = nil
+	end
+
 	data:extend({ car })
 
 	apm.energy_addon.overhaul(item.name)
 end
 
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+--- Generates the electric variant of a locomotive: item, entity copy and the
+--- battery overhaul.
+---@param name string
 function apm.energy_addon.generate_electric_powered_locomotive(name)
 	local item_icon_a = apm.lib.utils.icon.get.from_item(name)
 	local item_icon_b = { apm.energy_addon.icons.electric_symbol }
@@ -141,13 +158,21 @@ function apm.energy_addon.generate_electric_powered_locomotive(name)
 	-- -- locomotive.working_sound.sound.filename = "__apm_resource_pack_ldinc__/sounds/car/car-engine.ogg"
 	-- locomotive.working_sound.sound.volume = 1.0
 
-	locomotive.working_sound.activate_sound = nil
-	locomotive.working_sound.deactivate_sound = nil
+	if locomotive.working_sound then
+		locomotive.working_sound.activate_sound = nil
+		locomotive.working_sound.deactivate_sound = nil
+	end
+
 	data:extend({ locomotive })
 
 	apm.energy_addon.overhaul(item.name)
 end
 
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+---@param name string
 function apm.energy_addon.generate_electric_locomotive_new_recipe(name)
 	local resultName = "apm_electric_" .. name
 	---@type RecipePrototype
@@ -172,6 +197,12 @@ function apm.energy_addon.generate_electric_locomotive_new_recipe(name)
 	data:extend({ recipe })
 end
 
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+---@param name string
+---@param suffix string
 function apm.energy_addon.generate_electric_locomotive_new_tech(name, suffix)
 	local tName = "apm_electric_" .. suffix
 	local itmName = "apm_electric_" .. name
@@ -197,6 +228,13 @@ function apm.energy_addon.generate_electric_locomotive_new_tech(name, suffix)
 	data:extend({ technology })
 end
 
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+--- Generates the electric variant of a spider-vehicle: item, entity copy and
+--- the battery overhaul.
+---@param name string
 function apm.energy_addon.generate_electric_powered_spidertron(name)
 	local item_icon_a = apm.lib.utils.icon.get.from_item(name)
 	local item_icon_b = { apm.energy_addon.icons.electric_symbol }
@@ -234,13 +272,21 @@ function apm.energy_addon.generate_electric_powered_spidertron(name)
 	-- -- locomotive.working_sound.sound.filename = "__apm_resource_pack_ldinc__/sounds/car/car-engine.ogg"
 	-- locomotive.working_sound.sound.volume = 1.0
 
-	spidertron.working_sound.activate_sound = nil
-	spidertron.working_sound.deactivate_sound = nil
+	if spidertron.working_sound then
+		spidertron.working_sound.activate_sound = nil
+		spidertron.working_sound.deactivate_sound = nil
+	end
+
 	data:extend({ spidertron })
 
 	apm.energy_addon.overhaul(item.name)
 end
 
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+---@param name string
 function apm.energy_addon.generate_electric_spidertron_new_recipe(name)
 	local resultName = "apm_electric_" .. name
 	---@type RecipePrototype
@@ -259,12 +305,18 @@ function apm.energy_addon.generate_electric_spidertron_new_recipe(name)
 		},
 		main_product = resultName,
 		requester_paste_multiplier = 4,
-		always_show_made_in = apm_energy_addon_always_show_made_in or true,
+		always_show_made_in = apm_energy_addon_always_show_made_in,
 	}
 
 	data:extend({ recipe })
 end
 
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
+---@param name string
+---@param suffix string
 function apm.energy_addon.generate_electric_spidertron_new_tech(name, suffix)
 	local tName = "apm_electric_" .. suffix
 	local itmName = "apm_electric_" .. name

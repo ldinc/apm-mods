@@ -171,7 +171,7 @@ local equipment = {
 	},
 	energy_source = {
 		type = "electric",
-		usage_priority = "secondary-output",
+		usage_priority = "primary-output",
 	},
 	power = "200kW",
 	categories = { "armor" },

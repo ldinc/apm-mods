@@ -1,7 +1,7 @@
 require('util')
 require('__apm_lib_ldinc__.lib.log')
 
-local self = 'apm_energy_addon/prototypes/integrations/entities.lua'
+local self = 'apm_energy_addon/prototypes/integrations/entities_updates.lua'
 
 APM_LOG_HEADER(self)
 

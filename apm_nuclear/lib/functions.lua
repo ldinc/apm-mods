@@ -119,6 +119,10 @@ function apm.nuclear.update_fission_equipment(equipment_name, tier, power)
 
 	local equipment = data.raw['generator-equipment'][equipment_name]
 	equipment.localised_name = localised_name
+	equipment.energy_source = {
+		type = "electric",
+		usage_priority = "primary-output",
+	}
 	equipment.burner = {
 		type = "burner",
 		fuel_categories = { 'apm_nuclear_shielded_cell' },
