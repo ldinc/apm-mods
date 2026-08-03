@@ -6,13 +6,13 @@ local self = "apm_power/prototypes/main/recipes-overwrites.lua"
 APM_LOG_HEADER(self)
 
 apm.lib.utils.recipe.ingredient.replace("assembling-machine-1", "iron-gear-wheel", "apm_gearing")
-if apm.lib.utils.setting.get.starup("apm_power_overhaul_machine_frames") then
+if apm.lib.utils.setting.get.startup("apm_power_overhaul_machine_frames") then
 	apm.lib.utils.recipe.ingredient.mod("assembling-machine-1", "iron-plate", 0)
 	apm.power.machine_frame_addition("assembling-machine-1", 3, nil, 3, nil)
 end
 
 apm.lib.utils.recipe.ingredient.replace("assembling-machine-2", "iron-gear-wheel", "apm_gearing")
-if apm.lib.utils.setting.get.starup("apm_power_overhaul_machine_frames") then
+if apm.lib.utils.setting.get.startup("apm_power_overhaul_machine_frames") then
 	apm.lib.utils.recipe.ingredient.mod("assembling-machine-2", "steel-plate", 0)
 	apm.power.machine_frame_addition("assembling-machine-2", 3, 3, 5, 3)
 end

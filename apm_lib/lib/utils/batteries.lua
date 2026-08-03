@@ -39,7 +39,6 @@ function apm.lib.utils.batteries.generate(level, battery_name, fuel_value, overl
 		localised_name = { "item-name.apm_discharged", { "item-name." .. battery_name } },
 		localised_description = { "item-description.apm_discharged" },
 		icons = icons,
-		icon_mipmaps = 4,
 		stack_size = item_battery.stack_size,
 		subgroup = item_battery.subgroup,
 		order = item_battery.order .. "z",

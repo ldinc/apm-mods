@@ -162,7 +162,7 @@ if mods["aai-industry"] and apm_power_compat_earendel then
 	apm.lib.utils.recipe.ingredient.replace("steam-engine", "electric-motor", "iron-gear-wheel")
 	apm.lib.utils.recipe.ingredient.replace("steam-turbine", "electric-motor", "iron-gear-wheel")
 
-	if mods.boblogistics and apm.lib.utils.setting.get.starup("bobmods-logistics-beltoverhaul") then
+	if mods.boblogistics and apm.lib.utils.setting.get.startup("bobmods-logistics-beltoverhaul") then
 		apm.lib.utils.recipe.ingredient.replace("basic-transport-belt", "motor", "iron-gear-wheel", 2)
 	else
 		apm.lib.utils.recipe.ingredient.replace("transport-belt", "motor", "iron-gear-wheel", 2)

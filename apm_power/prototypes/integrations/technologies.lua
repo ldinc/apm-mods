@@ -296,7 +296,7 @@ if mods.ScienceCostTweakerM and apm_power_compat_sctm then
 	apm.lib.utils.technology.mod.unit_time("sct-automation-science-pack", 30)
 
 	if mods.boblogistics then
-		if apm.lib.utils.setting.get.starup("bobmods-logistics-beltoverhaul") then
+		if apm.lib.utils.setting.get.startup("bobmods-logistics-beltoverhaul") then
 			apm.lib.utils.technology.remove.prerequisites("logistics-0", "sct-automation-science-pack")
 		else
 			apm.lib.utils.technology.remove.prerequisites("logistics", "sct-automation-science-pack")

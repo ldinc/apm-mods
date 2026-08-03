@@ -63,7 +63,7 @@ if mods["AsphaltRoads"] and apm_power_compat_arcitos then
 end
 
 if mods.bobpower and apm_power_compat_bob then
-	if apm.lib.utils.setting.get.starup("bobmods-power-steam") then
+	if apm.lib.utils.setting.get.startup("bobmods-power-steam") then
 		apm.lib.utils.item.remove("apm_boiler_2")
 		apm.lib.utils.item.remove("apm_steam_engine_2")
 	end

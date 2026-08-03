@@ -41,7 +41,7 @@ function apm.lib.utils.recipe.set.always_show_products(recipe_name, bool, catego
 
 	if APM_CAN_LOG_INFO then
 		-- log(APM_MSG_INFO("set.always_show_products()", 'set true for recipe: "' .. tostring(recipe_name) .. '"'))
-		log(APM_MSG_INFO("set.always_show_products()", 'Depricated!: "' .. tostring(recipe_name) .. '"'))
+		log(APM_MSG_INFO("set.always_show_products()", 'Deprecated!: "' .. tostring(recipe_name) .. '"'))
 	end
 end
 

@@ -43,7 +43,7 @@ end
 
 --- [boblogistics]
 if mods.boblogistics then
-	if not mods.bobinserters and apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
+	if not mods.bobinserters and apm.lib.utils.setting.get.startup('bobmods-logistics-inserteroverhaul') then
 		apm.lib.utils.technology.delete('apm_burner_long_inserter')
 
 		apm.lib.utils.technology.add.prerequisites('bob-long-inserters-1', 'apm_puddling_furnace_0')
@@ -53,7 +53,7 @@ if mods.boblogistics then
 		apm.lib.utils.technology.mod.unit_count('bob-long-inserters-1', 50)
 		apm.lib.utils.technology.mod.unit_time('bob-long-inserters-1', 25)
 	end
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
+	if apm.lib.utils.setting.get.startup('bobmods-logistics-beltoverhaul') then
 		-- logistics-0
 		apm.lib.utils.technology.add.prerequisites('apm_power_steam', 'logistics-0')
 		apm.lib.utils.technology.add.prerequisites('logistics-0', 'apm_rubber-1')
@@ -118,7 +118,7 @@ end
 
 --- [bobpower]
 if mods.bobpower then
-	if apm.lib.utils.setting.get.starup('bobmods-power-steam') then
+	if apm.lib.utils.setting.get.startup('bobmods-power-steam') then
 		apm.lib.utils.technology.delete('apm_power_boiler')
 		apm.lib.utils.technology.delete('apm_steam_engine')
 	end

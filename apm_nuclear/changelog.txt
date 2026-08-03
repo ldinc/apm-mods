@@ -11,6 +11,7 @@ Date: 24.07.2026
     - Applied [apm.lib.utils.technology.overwrite.science_pack_order_strings] at the end of data-final-fixes for the correct science pack order in the technology and lab GUIs.
     - Applied [apm.lib.utils.technology.overwrite.lab_science_pack_order] at the end of data-final-fixes: the science pack inputs of all labs are sorted by the order map (the lab GUI follows the inputs array order).
     - Centralized the 'apm_nuclear_always_show_made_in' startup setting into 'apm.nuclear.features.show_made_in' via [apm.lib.features.startup.get_boolean_value_from_setting]; the per-file locals were removed.
+    - Use the renamed [apm.lib.utils.setting.get.startup] (was 'setting.get.starup').
     - Positioned apm_nuclear_science_pack in the science pack order map depending on the mod set: after utility science with apm_power installed, after production science in a vanilla game.
   Bugfixes:
     - Fixed wrong mod name in mod detection: 'apm_power' -> 'apm_power_ldinc' (the fork's name); the affected integration branches never matched with the fork installed.

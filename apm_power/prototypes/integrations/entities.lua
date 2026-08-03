@@ -80,7 +80,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 if mods.bobpower and apm_power_compat_bob then
-	if apm.lib.utils.setting.get.starup("bobmods-power-steam") then
+	if apm.lib.utils.setting.get.startup("bobmods-power-steam") then
 		apm.lib.utils.boiler.set.hidden("apm_boiler_2")
 		apm.lib.utils.boiler.set.next_upgrade("apm_boiler_2", nil)
 		apm.lib.utils.boiler.set.next_upgrade("boiler", "bob-boiler-2")

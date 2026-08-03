@@ -3,7 +3,7 @@ local apm_power_compat_bob_overhaul_machine_frames = settings.startup["apm_power
 
 --- [bobpower]
 if mods.bobpower then
-	if apm.lib.utils.setting.get.starup('bobmods-power-steam') then
+	if apm.lib.utils.setting.get.startup('bobmods-power-steam') then
 		apm.lib.utils.recipe.remove('apm_boiler_2')
 		apm.lib.utils.recipe.remove('apm_steam_engine_2')
 	end
@@ -22,7 +22,7 @@ end
 
 --- [boblogistics]
 if mods.boblogistics then
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-inserteroverhaul') then
+	if apm.lib.utils.setting.get.startup('bobmods-logistics-inserteroverhaul') then
 		apm.lib.utils.recipe.ingredient.mod('fast-inserter', 'apm_gearing', 0)
 		if mods.bobores and mods.bobplates then
 			apm.lib.utils.recipe.ingredient.replace('inserter', 'iron-plate', 'bob-tin-plate')
@@ -33,7 +33,7 @@ if mods.boblogistics then
 		end
 	end
 
-	if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
+	if apm.lib.utils.setting.get.startup('bobmods-logistics-beltoverhaul') then
 		apm.lib.utils.recipe.ingredient.replace('logistic-science-pack', 'basic-transport-belt', 'transport-belt')
 	end
 
@@ -92,7 +92,7 @@ if mods.bobelectronics then
 	if not mods.boblogistics then
 		apm.lib.utils.recipe.ingredient.mod('splitter', 'bob-basic-circuit-board', 0)
 	elseif mods.boblogistics and (not mods.angelsindustries) then
-		if apm.lib.utils.setting.get.starup('bobmods-logistics-beltoverhaul') then
+		if apm.lib.utils.setting.get.startup('bobmods-logistics-beltoverhaul') then
 			apm.lib.utils.recipe.ingredient.mod('splitter', 'bob-basic-circuit-board', 5)
 		else
 			apm.lib.utils.recipe.ingredient.mod('splitter', 'bob-basic-circuit-board', 0)

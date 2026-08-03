@@ -16,7 +16,7 @@ APM_LOG_HEADER(self)
 ---@param amount_out number?
 ---@param ov boolean?
 function apm.power.machine_frame_addition(recipe_name, level_in, level_out, amount_in, amount_out, ov)
-	if not apm.lib.utils.setting.get.starup('apm_power_overhaul_machine_frames') and not ov then return end
+	if not apm.lib.utils.setting.get.startup('apm_power_overhaul_machine_frames') and not ov then return end
 
 	local frame_in = {
 		[1] = 'apm_machine_frame_basic',
@@ -33,7 +33,7 @@ function apm.power.machine_frame_addition(recipe_name, level_in, level_out, amou
 
 	apm.lib.utils.recipe.ingredient.mod(recipe_name, frame_in[level_in], amount_in)
 
-	local used_flag = apm.lib.utils.setting.get.starup('apm_power_machine_frames_recycling')
+	local used_flag = apm.lib.utils.setting.get.startup('apm_power_machine_frames_recycling')
 
 	if amount_out and used_flag then
 		apm.lib.utils.recipe.result.mod(recipe_name, frame_out[level_out], amount_out)

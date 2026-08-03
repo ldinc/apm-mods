@@ -43,7 +43,7 @@ if mods.bobpower and mods.bobplates and apm_nuclear_compat_bob then
 		apm.lib.utils.reactor.add.fuel_category('bob-nuclear-reactor-3', 'apm_nuclear_deuterium')
 	end
 
-	if apm.lib.utils.setting.get.starup('bobmods-power-nuclear') then
+	if apm.lib.utils.setting.get.startup('bobmods-power-nuclear') then
 		if apm.lib.utils.item.exist('thorium-ore') then
 			apm.lib.utils.reactor.set.fuel_categories('nuclear-reactor',
 				{ 'apm_nuclear_uranium', 'apm_nuclear_mox', 'apm_nuclear_neptunium' })
