@@ -117,7 +117,7 @@ if mods.angelsrefining and apm_power_compat_angel then
 	apm.lib.utils.recipe.ingredient.replace_all("angels-solid-mud", "apm_dry_mud")
 	local crusher = data.raw["assembling-machine"]["angels-burner-ore-crusher"]
 	if crusher then
-		crusher.next_upgrade = ""
+		crusher.next_upgrade = nil
 	end
 
 
