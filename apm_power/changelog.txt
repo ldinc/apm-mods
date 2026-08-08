@@ -1,11 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.22
+Date: 08.08.2026
+  Compatibility:
+    - Fixes for Angel's mods (many thanks jooe for PR).
+---------------------------------------------------------------------------------------------------
 Version: 0.32.21
-Date: 24.07.2026
+Date: 08.08.2026
   Features:
-    - Applied [apm.lib.utils.technology.overwrite.science_pack_order_strings] at the end of data-final-fixes: all science packs from the order map are moved into the vanilla 'science-pack' subgroup and get their order string from the map.
-    - Applied [apm.lib.utils.technology.overwrite.lab_science_pack_order] at the end of data-final-fixes: the science pack inputs of all labs are sorted by the order map (the lab GUI follows the inputs array order).
+    - Science pack natural reordering (early test).
   Changes:
-    - Required base >= 2.1.7 and apm_lib_ldinc >= 0.32.13.
     - Use the renamed [apm.lib.utils.setting.get.startup] (was 'setting.get.starup').
     - Moved apm_industrial_science_pack and apm_steam_science_pack into the vanilla 'science-pack' item subgroup and changed their order strings to sort before the vanilla science packs; the technology GUI orders research ingredients by item group, subgroup and order string, not by the ingredients array.
   Bugfixes:

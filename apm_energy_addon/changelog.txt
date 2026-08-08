@@ -1,11 +1,11 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.33.00
-Date: 24.07.2026
+Version: 0.32.03
+Date: 08.08.2026
   Changes:
-    - Support factorio base game 2.1.x (required base >= 2.1.7 and apm_lib_ldinc >= 0.32.13).
+    - Support factorio base game 2.1.x.
   Bugfixes:
-    - Fixed wrong mod name in mod detection: 'apm_nuclear' -> 'apm_nuclear_ldinc' (the fork's name); the RTG decay/reprocessing integration and the reverse-factory exclusion never matched with the fork installed.
-    - Fixed the apm_equipment_energy_transmitter generator-equipment missing its required 'energy_source' block (mandatory in 2.1; written with 'primary-output' priority like the vanilla fission reactor equipment).
+    - Fixed wrong mod name in mod detection: 'apm_nuclear' -> 'apm_nuclear_ldinc'; the RTG decay/reprocessing integration and the reverse-factory exclusion never matched with the fork installed.
+    - Fixed the apm_equipment_energy_transmitter generator-equipment missing its required 'energy_source' block.
     - Fixed 'always_show_made_in' being forced to true for the electric spidertron recipe ('or true' leftover).
     - Added nil guards for the vehicle working_sound overwrites (potential crash with modded vehicles without a working_sound).
 ---------------------------------------------------------------------------------------------------

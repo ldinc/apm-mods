@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.32.13
-Date: 24.07.2026
+Version: 0.32.12
+Date: 08.08.2026
   Features:
     - [apm.lib.utils.technology.science_pack_order] New science pack order map: science pack name -> tier (integer, gaps of 10), driving the science pack order in the technology and lab GUIs; covers the vanilla, Space Age and APM science packs.
     - [apm.lib.utils.technology.set.science_pack_order] and [apm.lib.utils.technology.set.science_pack_orders] API to adjust the science pack order map per mod set, e.g. from the overwrites/integrations stage.
@@ -19,13 +19,8 @@ Date: 24.07.2026
     - [inserter] Fixed the per-tick batch processing running 'batch_size + 1' iterations instead of 'batch_size'.
     - [radiation] Fixed 'check_table' leaking into the global namespace and merged the duplicated item list validation into one function.
     - [apm.lib.features.runtime.get] A setting whose current value is 'false' was logged as 'setting "..." not found' (spurious error); missing settings are now distinguished from false values.
-  Bugfixes:
     - [apm.lib.utils.item.mod.overwrite_weight_for_science_packs] Silently skipped science packs defined as 'tool' prototypes (e.g. by third-party mods); the lookup now falls back to data.raw['tool'].
     - [apm.lib.utils.assembler.centrifuge.overhaul] The south orientation of the nuclear centrifuge now uses a custom integration (base) sprite with the pipe drawn in (centrifuge-ABC-integration-S.png); the separate south pipe picture was removed.
----------------------------------------------------------------------------------------------------
-Version: 0.32.12
-Date: 23.07.2026
-  Bugfixes:
     - [apm.lib.utils.batteries.generate] Used old category field in recipe instead categories.
     - [apm.lib.utils.recipe.result.mod] Checked the removed 'probability' field instead of Factorio 2.1 'independent_probability', leaving stale amount_min/amount_max on results.
     - [apm.lib.utils.recipe.category.add] Crash on recipes without an explicit 'categories' field; the default { "crafting" } category is now preserved.

@@ -1,23 +1,22 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.33.00
-Date: 24.07.2026
+Version: 0.32.04
+Date: 08.08.2026
   Changes:
-    - Support factorio base game 2.1.x (required base >= 2.1.7 and apm_lib_ldinc >= 0.32.13).
+    - Support factorio base game 2.1.x.
     - Migrated all recipes to the Factorio 2.1 'categories' array (RecipePrototype::category was removed).
     - Migrated recipe product 'probability' fields to Factorio 2.1 'independent_probability'.
     - Removed fields dropped by Factorio 2.1: 'always_show_products' and 'icon_mipmaps'.
-    - [apm.lib.utils.recipe.category.change] Updated call sites to the prototype-first signature from apm_lib 0.32.10.
+    - [apm.lib.utils.recipe.category.change] Changed interface.
     - Converted apm_nuclear_science_pack from 'tool' to a plain item, like the Factorio 2.1 base science packs.
     - Applied [apm.lib.utils.technology.overwrite.science_pack_order_strings] at the end of data-final-fixes for the correct science pack order in the technology and lab GUIs.
     - Applied [apm.lib.utils.technology.overwrite.lab_science_pack_order] at the end of data-final-fixes: the science pack inputs of all labs are sorted by the order map (the lab GUI follows the inputs array order).
     - Centralized the 'apm_nuclear_always_show_made_in' startup setting into 'apm.nuclear.features.show_made_in' via [apm.lib.features.startup.get_boolean_value_from_setting]; the per-file locals were removed.
     - Use the renamed [apm.lib.utils.setting.get.startup] (was 'setting.get.starup').
-    - Positioned apm_nuclear_science_pack in the science pack order map depending on the mod set: after utility science with apm_power installed, after production science in a vanilla game.
+    - Science pack tesst reordering.
   Bugfixes:
     - Fixed wrong mod name in mod detection: 'apm_power' -> 'apm_power_ldinc' (the fork's name); the affected integration branches never matched with the fork installed.
     - Fixed unguarded burner equipment registration in control.lua: 'fusion-reactor-equipment(-2/-3/-4)' was always registered with apm_equipment, even when the equipment does not exist in the current mod set (e.g. without space-age or Bob's Equipment); only existing equipment is registered now.
     - Fixed 'apm.nuclear.generate_angel_coolant_recipes' silently generating no recipes on Factorio 2.1: it checked the removed RecipePrototype 'category' field instead of the 'categories' array (Angels integration).
-    - [apm.nuclear.update_fission_equipment] The 'energy_source' block on generator-equipment is required in 2.1; it is now written with 'primary-output' priority (was 'secondary-output'), matching the vanilla fission reactor equipment.
     - Removed the invalid 'group' field from the fluid definitions; item group membership is derived from 'subgroup' (the field was ignored by the game).
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.03
