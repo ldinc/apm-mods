@@ -31,7 +31,7 @@ end
 -- ----------------------------------------------------------------------------
 function angel.player_create(event)
 	if settings.startup["apm_power_compat_angel"].value then
-		if game.active_mods["angelsrefining"] then
+		if script.active_mods["angelsrefining"] then
 			local player = game.players[event.player_index]
 			table.insert(created_player_list, player)
 		end
