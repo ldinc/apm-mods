@@ -12,7 +12,7 @@ local apm_nuclear_compat_bio_industries = settings.startup["apm_nuclear_compat_b
 local apm_nuclear_compat_sctm = settings.startup["apm_nuclear_compat_sctm"].value
 local apm_nuclear_compat_realistic_reactors = settings.startup["apm_nuclear_compat_realistic_reactors"].value
 local apm_nuclear_compat_realistic_reactors_cooling_tower = settings.startup
-["apm_nuclear_compat_realistic_reactors_cooling_tower"].value
+		["apm_nuclear_compat_realistic_reactors_cooling_tower"].value
 local apm_nuclear_compat_reverse_factory = settings.startup["apm_nuclear_compat_reverse_factory"].value
 local apm_nuclear_compat_mferrari = settings.startup["apm_nuclear_compat_mferrari"].value
 
@@ -65,6 +65,7 @@ end
 if mods.angelspetrochem and mods.angelsrefining and apm_nuclear_compat_angel then
 	apm.lib.utils.technology.force.recipe_for_unlock("nuclear-fuel-reprocessing", "apm_phosphorpentachlorid")
 	apm.lib.utils.technology.force.recipe_for_unlock("nuclear-fuel-reprocessing", "apm_phosphoroxychlorid")
+	apm.lib.utils.technology.force.recipe_for_unlock("nuclear-fuel-reprocessing", "apm_phosphoroxychlorid-barrel")
 end
 
 -- Earendel -------------------------------------------------------------------
