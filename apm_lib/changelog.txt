@@ -3,6 +3,7 @@ Version: 0.32.13
 Date: 10.08.2026
   Bugfixes:
     - [radiation] Fixed a crash when a mod registering radioactive items was added to an existing save: the added mod's on_init runs before this mod's on_update, so the remote interface now creates the storage layout lazily on first use.
+    - [angelsrefining] fix game -> script rename
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.12
 Date: 08.08.2026
