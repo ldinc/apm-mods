@@ -24,6 +24,53 @@ local radiation_sound_paths = {
 	[3] = "c",
 }
 
+--- Migrates the radiation storage layout to STORAGE_VERSION.
+--- Called from on_init and on_update (on_configuration_changed).
+local function migrate_storage()
+	---@type uint64
+	local version = storage.radiation.version or 0
+
+	if version < 1 then
+		-- v1: the item list moved from storage.items_radioactive_01774
+		-- (and the even older storage.items_radioactive) into storage.radiation.items
+		storage.radiation.items = {}
+
+		local legacy = storage.items_radioactive_01774 or storage.items_radioactive
+
+		if legacy then
+			for item_name, level in pairs(legacy) do
+				storage.radiation.items[item_name] = level
+			end
+
+			storage.items_radioactive_01774 = nil
+			storage.items_radioactive = nil
+
+			log("Info: radiation.migrate_storage(): migrated radioactive items to storage.radiation.items (v1)")
+		end
+
+		storage.radiation.version = 1
+	end
+
+	-- if version < 2 then ... end -- template for future migrations
+end
+
+--- Ensures storage.radiation.items exists and returns it.
+--- Required when a mod is added to an existing save: the added mod's on_init
+--- (which registers items via the remote interface) runs before this mod's
+--- on_update/on_init have created the storage layout.
+---@return table<string, integer>
+local function ensure_items()
+	if not storage.radiation then
+		radiation_script.alloc_definitions()
+	end
+
+	if not storage.radiation.items then
+		migrate_storage()
+	end
+
+	return storage.radiation.items
+end
+
 --- Lua-side cache of the radioactive item list, sorted by level (desc) then
 --- name. Not persisted; rebuilt lazily and invalidated on every list change.
 ---@type { name: string, level: integer }[]?
@@ -37,7 +84,7 @@ local function get_sorted_items()
 
 	sorted_items = {}
 
-	for item_name, level in pairs(storage.radiation.items) do
+	for item_name, level in pairs(ensure_items()) do
 		table.insert(sorted_items, { name = item_name, level = level })
 	end
 
@@ -76,39 +123,9 @@ function radiation_script.alloc_definitions()
 	end
 end
 
---- Migrates the radiation storage layout to STORAGE_VERSION.
---- Called from on_init and on_update (on_configuration_changed).
-local function migrate_storage()
-	---@type uint64
-	local version = storage.radiation.version or 0
-
-	if version < 1 then
-		-- v1: the item list moved from storage.items_radioactive_01774
-		-- (and the even older storage.items_radioactive) into storage.radiation.items
-		storage.radiation.items = {}
-
-		local legacy = storage.items_radioactive_01774 or storage.items_radioactive
-
-		if legacy then
-			for item_name, level in pairs(legacy) do
-				storage.radiation.items[item_name] = level
-			end
-
-			storage.items_radioactive_01774 = nil
-			storage.items_radioactive = nil
-
-			log("Info: radiation.migrate_storage(): migrated radioactive items to storage.radiation.items (v1)")
-		end
-
-		storage.radiation.version = 1
-	end
-
-	-- if version < 2 then ... end -- template for future migrations
-end
-
 --- Removes entries whose item prototype no longer exists.
 local function validate_item_list()
-	for item_name, _ in pairs(storage.radiation.items) do
+	for item_name, _ in pairs(ensure_items()) do
 		if not prototypes.item[item_name] then
 			storage.radiation.items[item_name] = nil
 
@@ -144,7 +161,7 @@ local function add_item(item_name, level)
 		level = 2
 	end
 
-	local items = storage.radiation.items
+	local items = ensure_items()
 
 	if items[item_name] == level then
 		if APM_CAN_LOG_INFO then
@@ -184,9 +201,11 @@ end
 ---@param item_name string
 ---@return boolean
 local function remove_item(item_name)
-	if not storage.radiation.items[item_name] then return false end
+	local items = ensure_items()
 
-	storage.radiation.items[item_name] = nil
+	if not items[item_name] then return false end
+
+	items[item_name] = nil
 	invalidate_sorted_items()
 
 	if APM_CAN_LOG_INFO then
@@ -201,7 +220,7 @@ end
 
 ---@return table<string, integer>
 local function list_items()
-	return storage.radiation.items
+	return ensure_items()
 end
 
 local function generate_radioactive_table()

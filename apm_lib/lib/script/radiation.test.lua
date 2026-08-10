@@ -96,4 +96,13 @@ expect("on_update keeps items", count_after, count_before)
 expect("remove", _G.__remote.remove_item("test-item"), true)
 expect("removed from list", tostring(_G.__remote.list_items()["test-item"]), "nil")
 
+-- added-mod-to-save scenario: a remote call may arrive before on_init ran
+-- (added mod's on_init runs before on_configuration_changed of loaded mods)
+storage = {}
+expect("add before init works", _G.__remote.add_item("test-item", 3), true)
+expect("storage created lazily", storage.radiation.items["test-item"], 3)
+expect("version set lazily", storage.radiation.version, 1)
+expect("list_items before init", _G.__remote.list_items()["test-item"], 3)
+expect("remove before init", _G.__remote.remove_item("test-item"), true)
+
 print("radiation.test.lua: ALL TESTS PASSED")

@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.13
+Date: 10.08.2026
+  Bugfixes:
+    - [radiation] Fixed a crash when a mod registering radioactive items was added to an existing save: the added mod's on_init runs before this mod's on_update, so the remote interface now creates the storage layout lazily on first use.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.12
 Date: 08.08.2026
   Features:
@@ -18,7 +23,7 @@ Date: 08.08.2026
   Bugfixes:
     - [inserter] Fixed the per-tick batch processing running 'batch_size + 1' iterations instead of 'batch_size'.
     - [radiation] Fixed 'check_table' leaking into the global namespace and merged the duplicated item list validation into one function.
-    - [apm.lib.features.runtime.get] A setting whose current value is 'false' was logged as 'setting "..." not found' (spurious error); missing settings are now distinguished from false values.
+    - [radiation] Fixed a crash when a mod registering radioactive items was added to an existing save: the added mod's on_init runs before this mod's on_update, so the remote interface now creates the storage layout lazily on first use.
     - [apm.lib.utils.item.mod.overwrite_weight_for_science_packs] Silently skipped science packs defined as 'tool' prototypes (e.g. by third-party mods); the lookup now falls back to data.raw['tool'].
     - [apm.lib.utils.assembler.centrifuge.overhaul] The south orientation of the nuclear centrifuge now uses a custom integration (base) sprite with the pipe drawn in (centrifuge-ABC-integration-S.png); the separate south pipe picture was removed.
     - [apm.lib.utils.batteries.generate] Used old category field in recipe instead categories.
