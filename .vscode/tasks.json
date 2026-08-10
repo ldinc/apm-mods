@@ -1,0 +1,74 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Factorio: deploy all mods",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/deploy.ps1", "-All", "-Environment", "${input:environment}"],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Factorio: deploy changed mods (git)",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/deploy.ps1", "-Changed", "-Environment", "${input:environment}"],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Factorio: deploy mod...",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/deploy.ps1", "-Environment", "${input:environment}", "${input:mod}"],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Factorio: deploy all + run game",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/deploy.ps1", "-All", "-Launch", "-Environment", "${input:environment}"],
+			"problemMatcher": []
+		},
+		{
+			"label": "Factorio: deploy changed (git) + run game",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/deploy.ps1", "-Changed", "-Launch", "-Environment", "${input:environment}"],
+			"problemMatcher": []
+		},
+		{
+			"label": "Factorio: deploy mod + run game...",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/deploy.ps1", "-Launch", "-Environment", "${input:environment}", "${input:mod}"],
+			"problemMatcher": []
+		},
+		{
+			"label": "Tests: run all",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/run_tests.ps1"],
+			"group": "test",
+			"problemMatcher": []
+		}
+	],
+	"inputs": [
+		{
+			"id": "environment",
+			"type": "pickString",
+			"description": "Target Factorio environment",
+			"options": ["stable", "unstable"],
+			"default": "stable"
+		},
+		{
+			"id": "mod",
+			"type": "pickString",
+			"description": "Mod to deploy",
+			"options": ["apm_lib", "apm_power", "apm_nuclear", "apm_energy_addon", "apm_resource_pack", "rampart_heavy_wall"],
+			"default": "apm_lib"
+		}
+	]
+}

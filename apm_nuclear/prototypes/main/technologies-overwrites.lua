@@ -64,14 +64,48 @@ apm.lib.utils.technology.add.prerequisites("fusion-reactor-equipment", "apm_nucl
 apm.lib.utils.technology.add.science_pack("fusion-reactor-equipment", "apm_nuclear_science_pack", 1)
 
 if mods["space-age"] then
-  apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
-  apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment", "apm_shielded_nuclear_fuel_cell_reprocessing")
+	apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
+	apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment",
+		"apm_shielded_nuclear_fuel_cell_reprocessing")
 else
-  apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
-  apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment", "apm_shielded_nuclear_fuel_cell_reprocessing")
-  
+	apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
+	apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment",
+		"apm_shielded_nuclear_fuel_cell_reprocessing")
 end
 
+--- [fix barreling] <<<
+
+--- for angles only
+apm.lib.utils.technology.remove.recipe_from_unlock("fluid-handling", "apm_phosphoroxychlorid-barrel")
+apm.lib.utils.technology.remove.recipe_from_unlock("fluid-handling", "empty-apm_phosphoroxychlorid-barrel")
+
+---@param tname string
+---@param trecipe string
+local bind = function(tname, trecipe)
+	apm.lib.utils.technology.force.recipe_for_unlock(tname,
+		trecipe .. "-barrel")
+	apm.lib.utils.technology.force.recipe_for_unlock(tname,
+		"empty-" .. trecipe .. "-barrel")
+end
+
+--- base
+apm.lib.utils.technology.force.recipe_for_unlock("apm_nuclear_breeder_uranium",
+	"apm_purex_solution_breeder_uranium-barrel")
+apm.lib.utils.technology.force.recipe_for_unlock("apm_nuclear_breeder_uranium",
+	"empty-apm_purex_solution_breeder_uranium-barrel")
+
+bind("nuclear-fuel-reprocessing", "apm_purex_solution_mox")
+bind("apm_nuclear_neptunium_fuel", "apm_purex_solution_neptunium")
+bind("apm_nuclear_breeder_thorium", "apm_purex_solution_thorium_breeder")
+bind("apm_nuclear_thorium_fuel", "apm_purex_solution_thorium")
+bind("nuclear-fuel-reprocessing", "apm_purex_solution_uranium")
+bind("uranium-processing", "apm_bromine")
+bind("uranium-processing", "apm_bromine_trifluoride")
+bind("uranium-processing", "apm_radioactive_wastewater")
+bind("nuclear-fuel-reprocessing", "apm_tbp_30")
+bind("nuclear-fuel-reprocessing", "apm_trimethyl_phosphate")
+
+--- >>> [fix barreling]
 
 -- space-science-pack
 --apm.lib.utils.technology.add.prerequisites("space-science-pack", "apm_nuclear_science_pack")
