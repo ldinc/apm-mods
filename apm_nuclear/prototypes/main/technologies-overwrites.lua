@@ -7,7 +7,6 @@ APM_LOG_HEADER(self)
 
 --atomic-bomb
 apm.lib.utils.technology.remove.prerequisites("atomic-bomb", "kovarex-enrichment-process")
-apm.lib.utils.technology.add.prerequisites("atomic-bomb", "apm_nuclear_science_pack")
 apm.lib.utils.technology.add.prerequisites("atomic-bomb", "nuclear-fuel-reprocessing")
 apm.lib.utils.technology.add.science_pack("atomic-bomb", "apm_nuclear_science_pack", 1)
 
@@ -67,6 +66,10 @@ if mods["space-age"] then
 	apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
 	apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment",
 		"apm_shielded_nuclear_fuel_cell_reprocessing")
+
+	apm.lib.utils.technology.add.prerequisites("apm_nuclear_breeder", "productivity-module-2")
+
+	apm.lib.utils.technology.add.prerequisites("atomic-bomb", "space-science-pack")
 else
 	apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
 	apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment",
@@ -105,7 +108,19 @@ bind("uranium-processing", "apm_radioactive_wastewater")
 bind("nuclear-fuel-reprocessing", "apm_tbp_30")
 bind("nuclear-fuel-reprocessing", "apm_trimethyl_phosphate")
 
+bind("nuclear-fuel-reprocessing", "apm_hot_water")
+
 --- >>> [fix barreling]
+
+apm.lib.utils.technology.add.prerequisites("kovarex-enrichment-process", "nuclear-fuel-reprocessing")
+apm.lib.utils.technology.add.prerequisites("atomic-bomb", "production-science-pack")
+
+apm.lib.utils.technology.remove.prerequisites("kovarex-enrichment-process", "uranium-processing")
+apm.lib.utils.technology.remove.prerequisites("atomic-bomb", "apm_nuclear_science_pack")
+apm.lib.utils.technology.remove.prerequisites("uranium-ammo", "uranium-processing")
+
+apm.lib.utils.technology.remove.prerequisites("artillery-shell-range-1", "apm_nuclear_science_pack")
+apm.lib.utils.technology.remove.prerequisites("artillery-shell-speed-1", "apm_nuclear_science_pack")
 
 -- space-science-pack
 --apm.lib.utils.technology.add.prerequisites("space-science-pack", "apm_nuclear_science_pack")
@@ -119,3 +134,35 @@ apm.lib.utils.technology.disable("kovarex-enrichment-process")
 --apm.lib.utils.technology.add.prerequisites("uranium-ammo", "apm_depleted_uranium")
 apm.lib.utils.technology.add.prerequisites("uranium-ammo", "apm_nuclear_science_pack")
 apm.lib.utils.technology.add.science_pack("uranium-ammo", "apm_nuclear_science_pack", 1)
+
+if mods["space-age"] then
+	apm.lib.utils.technology.remove.prerequisites("atomic-bomb", "nuclear-fuel-reprocessing")
+	apm.lib.utils.technology.remove.prerequisites("atomic-bomb", "production-science-pack")
+
+	apm.lib.utils.technology.remove.prerequisites("kovarex-enrichment-process", "nuclear-fuel-reprocessing")
+	apm.lib.utils.technology.remove.prerequisites("productivity-module-2", "productivity-module")
+	apm.lib.utils.technology.remove.prerequisites("follower-robot-count-5", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("apm_nuclear_breeder", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("apm_nuclear_breeder", "nuclear-fuel-reprocessing")
+	apm.lib.utils.technology.remove.prerequisites("personal-roboport-mk2-equipment", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("personal-roboport-mk2-equipment", "utility-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("processing-unit-productivity", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("scrap-recycling-productivity", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("low-density-structure-productivity", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("rail-support-foundations", "utility-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("advanced-asteroid-processing", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("advanced-asteroid-processing", "utility-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("epic-quality", "utility-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("health", "utility-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("plastic-bar-productivity", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("rocket-fuel-productivity", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("stack-inserter", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("stack-inserter", "utility-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("biolab", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("biolab", "utility-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("biolab", "uranium-processing")
+	apm.lib.utils.technology.remove.prerequisites("overgrowth-soil", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("overgrowth-soil", "utility-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("spidertron", "production-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("fusion-reactor-equipment", "apm_nuclear_science_pack")
+end

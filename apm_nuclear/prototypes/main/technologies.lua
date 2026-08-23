@@ -38,7 +38,7 @@ new_fn(
 --- [apm_nuclear_science_pack]
 new_fn(
 	"apm_nuclear_science_pack",
-	{ "uranium-processing", "apm_depleted_uranium" },
+	{ "apm_depleted_uranium" },
 	{ "apm_nuclear_science_pack", "apm_hexafluoride_sample" },
 	new_unit(
 		{ "automation-science-pack", "logistic-science-pack", "chemical-science-pack" },
@@ -50,7 +50,7 @@ new_fn(
 --- [apm_nuclear_fuel]
 new_fn(
 	"apm_nuclear_fuel",
-	{ "apm_nuclear_science_pack", "rocket-fuel", "nuclear-fuel-reprocessing" },
+	{ "rocket-fuel", "nuclear-fuel-reprocessing" },
 	{ "nuclear-fuel" },
 	new_unit(
 		{ "automation-science-pack", "logistic-science-pack", "chemical-science-pack", "apm_nuclear_science_pack" },
@@ -62,7 +62,7 @@ new_fn(
 --- [apm_nuclear_neptunium_fuel]
 new_fn(
 	"apm_nuclear_neptunium_fuel",
-	{ "apm_nuclear_science_pack", "nuclear-fuel-reprocessing" },
+	{ "nuclear-fuel-reprocessing" },
 	{
 		"apm_fuel_rod_neptunium",
 		"apm_fuel_rod_neptunium_cooling",
@@ -79,7 +79,7 @@ new_fn(
 --- [apm_nuclear_rtg]
 new_fn(
 	"apm_nuclear_rtg",
-	{ "apm_nuclear_science_pack", "production-science-pack", "utility-science-pack", "nuclear-fuel-reprocessing" },
+	{ "production-science-pack", "utility-science-pack", "nuclear-fuel-reprocessing" },
 	{ "apm_rtg_radioisotope_thermoelectric_generator" },
 	new_unit(
 		{ "automation-science-pack", "logistic-science-pack", "chemical-science-pack", "utility-science-pack",
@@ -92,7 +92,7 @@ new_fn(
 --- [apm_nuclear_breeder]
 new_fn(
 	"apm_nuclear_breeder",
-	{ "apm_nuclear_science_pack", "production-science-pack", "apm_depleted_uranium", "nuclear-fuel-reprocessing" },
+	{ "production-science-pack", "nuclear-fuel-reprocessing" },
 	{ "apm_nuclear_breeder", "apm_breeder_container", "apm_breeder_container_worn_maintenance" },
 	new_unit(
 		{ "automation-science-pack", "logistic-science-pack", "chemical-science-pack", "production-science-pack",
@@ -130,7 +130,7 @@ new_fn(
 --- [apm_nuclear_thorium_processing]
 new_fn(
 	"apm_nuclear_thorium_processing",
-	{ "uranium-processing", "apm_nuclear_science_pack" },
+	{ "apm_nuclear_science_pack" },
 	{ "apm_oxide_pellet_th232" },
 	new_unit(
 		{ "automation-science-pack", "logistic-science-pack", "chemical-science-pack", "apm_nuclear_science_pack" },

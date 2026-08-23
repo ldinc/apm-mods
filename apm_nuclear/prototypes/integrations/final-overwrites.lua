@@ -127,6 +127,13 @@ if mods["linox"] then
 	skiplist = getter(skiplist)
 end
 
+--- [space age]
+if mods["space-age"] then
+	getter = require("prototypes.integrations.technologies.space-age")
+
+	skiplist = getter(skiplist)
+end
+
 if apm_nuclear_inherit_nuclear_science_to_infinite_tech then
 	apm.nuclear.update_infinite_technologies(skiplist)
 end

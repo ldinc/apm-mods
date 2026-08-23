@@ -1,6 +1,6 @@
-require('__apm_lib_ldinc__.lib.log')
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_nuclear/lib/functions.lua'
+local self = "apm_nuclear/lib/functions.lua"
 
 APM_LOG_HEADER(self)
 
@@ -23,7 +23,7 @@ function apm.nuclear.icons.get_apm_hexafluoride_enrichment(enrichment)
 		{ icon = apm.lib.icons.path.chemical_flame_4, icon_size = 64, tint = { r = 0.0, g = 0.741, b = 0.0 } })
 	table.insert(icons, { icon = apm.nuclear.icons.path.uranium_hexafluoride, icon_size = 64 })
 	table.insert(icons,
-		{ icon = apm.nuclear.icons.path.enrichment_tier .. string.format("%03d", enrichment) .. '.png', icon_size = 64 })
+		{ icon = apm.nuclear.icons.path.enrichment_tier .. string.format("%03d", enrichment) .. ".png", icon_size = 64 })
 	return icons
 end
 
@@ -49,7 +49,7 @@ function apm.nuclear.nuclear_vehicle(vehicle_name)
 	if vehicle.energy_source.type == "burner" then
 		vehicle.energy_source.fuel_inventory_size = 1
 		vehicle.energy_source.burnt_inventory_size = vehicle.energy_source.fuel_inventory_size
-		vehicle.energy_source.fuel_categories = { 'apm_nuclear_uranium' }
+		vehicle.energy_source.fuel_categories = { "apm_nuclear_uranium" }
 		vehicle.energy_source.emissions_per_minute = nil
 	end
 
@@ -65,7 +65,7 @@ function apm.nuclear.generate_angel_coolant_recipes()
 	local recipes = {}
 
 	for _, recipe in pairs(data.raw.recipe) do
-		if apm.lib.utils.recipe.category.has(recipe, 'apm_nuclear_cooling_0') then
+		if apm.lib.utils.recipe.category.has(recipe, "apm_nuclear_cooling_0") then
 			table.insert(recipes, recipe)
 		end
 	end
@@ -80,12 +80,12 @@ function apm.nuclear.generate_angel_coolant_recipes()
 		apm.lib.utils.icon.add_tier_lable(recipe.name, 1)
 		apm.lib.utils.icon.add_tier_lable(new_recipe.name, 2)
 
-		apm.lib.utils.recipe.ingredient.mod(new_recipe.name, 'water', 0)
-		apm.lib.utils.recipe.ingredient.mod(new_recipe.name, 'angels-liquid-coolant', 500)
-		apm.lib.utils.recipe.result.mod(new_recipe.name, 'apm_hot_water', 0)
-		apm.lib.utils.recipe.result.mod(new_recipe.name, 'angels-liquid-coolant-used', 500)
-		apm.lib.utils.recipe.result.mod(new_recipe.name, 'apm_radioactive_wastewater', 0)
-		apm.lib.utils.recipe.result.mod_temperature(new_recipe.name, 'angels-liquid-coolant-used', nil, 300)
+		apm.lib.utils.recipe.ingredient.mod(new_recipe.name, "water", 0)
+		apm.lib.utils.recipe.ingredient.mod(new_recipe.name, "angels-liquid-coolant", 500)
+		apm.lib.utils.recipe.result.mod(new_recipe.name, "apm_hot_water", 0)
+		apm.lib.utils.recipe.result.mod(new_recipe.name, "angels-liquid-coolant-used", 500)
+		apm.lib.utils.recipe.result.mod(new_recipe.name, "apm_radioactive_wastewater", 0)
+		apm.lib.utils.recipe.result.mod_temperature(new_recipe.name, "angels-liquid-coolant-used", nil, 300)
 
 		local technology_name = apm.lib.utils.technology.find.technology_by_recipe(recipe.name)
 		if technology_name then
@@ -94,7 +94,7 @@ function apm.nuclear.generate_angel_coolant_recipes()
 			apm.lib.utils.recipe.enable(new_recipe.name)
 		end
 
-		APM_LOG_INFO(self, 'generate_angel_coolant_recipes()',
+		APM_LOG_INFO(self, "generate_angel_coolant_recipes()",
 			'recipe variant with angels coolant for: "' .. tostring(recipe.name))
 	end
 end
@@ -110,14 +110,14 @@ end
 ---@param tier? uint32
 ---@param power? string
 function apm.nuclear.update_fission_equipment(equipment_name, tier, power)
-	if not data.raw['generator-equipment'][equipment_name] then return end
+	if not data.raw["generator-equipment"][equipment_name] then return end
 
 	local localised_name = { "equipment-name.apm_fission_reactor", "MK" .. tostring(tier) }
 	if not tier or tier <= 0 then
 		localised_name = { "equipment-name.apm_fission_reactor", "" }
 	end
 
-	local equipment = data.raw['generator-equipment'][equipment_name]
+	local equipment = data.raw["generator-equipment"][equipment_name]
 	equipment.localised_name = localised_name
 	equipment.energy_source = {
 		type = "electric",
@@ -125,7 +125,7 @@ function apm.nuclear.update_fission_equipment(equipment_name, tier, power)
 	}
 	equipment.burner = {
 		type = "burner",
-		fuel_categories = { 'apm_nuclear_shielded_cell' },
+		fuel_categories = { "apm_nuclear_shielded_cell" },
 		fuel_inventory_size = 1,
 		burnt_inventory_size = 1,
 	}
@@ -144,38 +144,31 @@ end
 function apm.nuclear.update_infinite_technologies(skiplist)
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'update_infinite_technologies()',
-			'-- start ----------------------------------------------------------------------'
+			"update_infinite_technologies()",
+			"-- start ----------------------------------------------------------------------"
 		))
 	end
 
 	if not skiplist then
-		for _, technology in pairs(data.raw.technology) do
-			if technology.max_level and type(technology.max_level) == 'string' and technology.max_level == 'infinite' then
-				if not apm.lib.utils.technology.prerequisite.has.science_pack(technology.name, 'apm_nuclear_science_pack') then
-					apm.lib.utils.technology.add.prerequisites(technology.name, 'apm_nuclear_science_pack')
-				end
-				apm.lib.utils.technology.add.science_pack(technology.name, 'apm_nuclear_science_pack', 1)
-			end
-		end
-	else
-		for _, technology in pairs(data.raw.technology) do
-			if technology.max_level and type(technology.max_level) == 'string' and technology.max_level == 'infinite' then
-				if not skiplist[technology.name] then
-					if not apm.lib.utils.technology.prerequisite.has.science_pack(technology.name, 'apm_nuclear_science_pack') then
-						apm.lib.utils.technology.add.prerequisites(technology.name, 'apm_nuclear_science_pack')
-					end
-					apm.lib.utils.technology.add.science_pack(technology.name, 'apm_nuclear_science_pack', 1)
-				end
+		skiplist = {}
+	end
+
+
+	for _, technology in pairs(data.raw.technology) do
+		if technology.max_level and type(technology.max_level) == "string" and technology.max_level == "infinite" then
+			if not skiplist[technology.name] then
+				-- if not apm.lib.utils.technology.prerequisite.has.science_pack(technology.name, "apm_nuclear_science_pack") then
+				-- 	apm.lib.utils.technology.add.prerequisites(technology.name, "apm_nuclear_science_pack")
+				-- end
+				apm.lib.utils.technology.add.science_pack(technology.name, "apm_nuclear_science_pack", 1)
 			end
 		end
 	end
 
-
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'update_infinite_technologies()',
-			'-- end ------------------------------------------------------------------------'
+			"update_infinite_technologies()",
+			"-- end ------------------------------------------------------------------------"
 		))
 	end
 end
