@@ -1,9 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.14
+Date: 24.08.2026
+  Bugfixes:
+    - [aai-Industries] apm.lib.utils.patch.aai.generate_vehicle_fuel (fix compat with 2.1.x version).
+---------------------------------------------------------------------------------------------------
 Version: 0.32.13
 Date: 10.08.2026
   Bugfixes:
     - [radiation] Fixed a crash when a mod registering radioactive items was added to an existing save: the added mod's on_init runs before this mod's on_update, so the remote interface now creates the storage layout lazily on first use.
-    - [angelsrefining] fix game -> script rename
+    - [angelsrefining] fix game -> script rename (thx jooe).
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.12
 Date: 08.08.2026

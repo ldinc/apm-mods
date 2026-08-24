@@ -223,7 +223,7 @@ end
 function apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(technology_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or technology == nil then
 		return
 	end
 

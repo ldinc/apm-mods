@@ -1,4 +1,4 @@
-require 'util'
+require "util"
 
 -- NOTE: The code below used from https://github.com/notnotmelon/amator-suite/blob/master/apm-lib-notnotmelon/lib/utils/patch/aai.lua
 -- Thx to https://mods.factorio.com/user/notnotmelon for fix
@@ -13,11 +13,11 @@ end
 --
 -------------------------------------------------------------------------------
 function apm.lib.utils.patch.aai.generate_vehicle_fuel()
-	if data.raw.item['processed-fuel'] then
-		local vehicle_fuel_value = apm.lib.utils.string.convert_to_number(data.raw.item['processed-fuel'].fuel_value)
+	if data.raw.item["processed-fuel"] then
+		local vehicle_fuel_value = apm.lib.utils.string.convert_to_number(data.raw.item["processed-fuel"].fuel_value)
 
 		for _, item in pairs(data.raw.item) do
-			if item.fuel_value and item.name ~= 'processed-fuel' and item.fuel_category == 'apm_refined_chemical' then
+			if item.fuel_value and item.name ~= "processed-fuel" and item.fuel_category == "apm_refined_chemical" then
 				local fuel_value = apm.lib.utils.string.convert_to_number(item.fuel_value)
 
 				if fuel_value > 0 then
@@ -36,11 +36,12 @@ function apm.lib.utils.patch.aai.generate_vehicle_fuel()
 						end
 					end
 
+					---@type RecipePrototype
 					local recipe = {
-						type = 'recipe',
-						name = 'processed-fuel-from-' .. item.name,
+						type = "recipe",
+						name = "processed-fuel-from-" .. item.name,
 						enabled = false,
-						category = 'fuel-processing',
+						categories = { "fuel-processing" },
 						energy_required = recipe_out,
 						ingredients = {
 							{
@@ -52,14 +53,14 @@ function apm.lib.utils.patch.aai.generate_vehicle_fuel()
 						results = {
 							{
 								type = "item",
-								name = 'processed-fuel',
+								name = "processed-fuel",
 								amount = recipe_out,
 							}
 						},
 						localised_name = {
-							'recipe-name.processed-fuel-recipe',
-							{ 'item-name.processed-fuel' },
-							{ 'item-name.' .. item.name }
+							"recipe-name.processed-fuel-recipe",
+							{ "item-name.processed-fuel" },
+							{ "item-name." .. item.name }
 						}
 					}
 
@@ -69,7 +70,7 @@ function apm.lib.utils.patch.aai.generate_vehicle_fuel()
 					if item.icon then
 						recipe.icons = {
 							{
-								icon = '__aai-industry__/graphics/icons/processed-fuel.png',
+								icon = "__aai-industry__/graphics/icons/processed-fuel.png",
 								scale = 1,
 								shift = { 0, 0 }
 							},
@@ -82,11 +83,10 @@ function apm.lib.utils.patch.aai.generate_vehicle_fuel()
 						recipe.icon_size = 32
 					elseif item.icons then
 						recipe.icons = {
-							{ icon = '__aai-industry__/graphics/icons/processed-fuel.png', scale = 1, shift = { 0, 0 } }
+							{ icon = "__aai-industry__/graphics/icons/processed-fuel.png", scale = 1, shift = { 0, 0 } }
 						}
 						for _, icon_layer in pairs(item.icons) do
 							local scale = 0.5
-							local icon_size = 32
 							local shift = { -8, -8 }
 							local tint = nil
 							if icon_layer.icon_size == 64 then
@@ -102,7 +102,7 @@ function apm.lib.utils.patch.aai.generate_vehicle_fuel()
 									icon = icon_layer.icon,
 									icon_size = icon_layer.icon_size,
 									scale = scale,
-									shift = { -8, -8 },
+									shift = shift,
 									tint = tint
 								}
 							)
@@ -112,7 +112,7 @@ function apm.lib.utils.patch.aai.generate_vehicle_fuel()
 
 
 					data:extend({ recipe })
-					apm.lib.utils.technology.add.recipe_for_unlock('fuel-processing', recipe.name)
+					apm.lib.utils.technology.add.recipe_for_unlock("fuel-processing", recipe.name)
 				end
 			end
 		end
