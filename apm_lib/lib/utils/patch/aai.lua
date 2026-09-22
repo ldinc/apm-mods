@@ -17,7 +17,7 @@ function apm.lib.utils.patch.aai.generate_vehicle_fuel()
 		local vehicle_fuel_value = apm.lib.utils.string.convert_to_number(data.raw.item["processed-fuel"].fuel_value)
 
 		for _, item in pairs(data.raw.item) do
-			if item.fuel_value and item.name ~= "processed-fuel" and item.fuel_category == "apm_refined_chemical" then
+			if item.fuel_value and item.name ~= "processed-fuel" and apm.lib.utils.item.has.fuel_category_by_ref(item, "apm_refined_chemical") then
 				local fuel_value = apm.lib.utils.string.convert_to_number(item.fuel_value)
 
 				if fuel_value > 0 then

@@ -1,7 +1,7 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.fuel'
+local self = "lib.utils.fuel"
 
 if apm.lib.utils.fuel.category == nil then apm.lib.utils.fuel.category = {} end
 if apm.lib.utils.fuel.add == nil then apm.lib.utils.fuel.add = {} end
@@ -28,7 +28,6 @@ function apm.lib.utils.fuel.get.default_nuclear_category_ids()
 	return { "apm_nuclear_uranium", "apm_nuclear_mox", "apm_nuclear_neptunium", "apm_nuclear_thorium" }
 end
 
-
 --- [fuel.add.to_exlude_list]
 ---@param entity_name any
 function apm.lib.utils.fuel.add.to_exlude_list(entity_name)
@@ -36,7 +35,7 @@ function apm.lib.utils.fuel.add.to_exlude_list(entity_name)
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'add.to_exlude_list()',
+			"add.to_exlude_list()",
 			'add entity: "' .. tostring(entity_name) .. '" to fuel overhoule exlude_list'
 		))
 	end
@@ -47,17 +46,17 @@ end
 function apm.lib.utils.fuel.get_base_fuel_value()
 	local fuel_value = 2.5
 
-	if settings.startup['apm_power_coal_value_01779'] then
-		converted = tonumber(settings.startup['apm_power_coal_value_01779'].value) -- value is MJ
+	if settings.startup["apm_power_coal_value_01779"] then
+		converted = tonumber(settings.startup["apm_power_coal_value_01779"].value) -- value is MJ
 		if converted then
 			fuel_value = converted
 
 			if APM_CAN_LOG_INFO then
-				log(APM_MSG_INFO('get_base_fuel_value()', 'from settings: ' .. tostring(fuel_value)))
+				log(APM_MSG_INFO("get_base_fuel_value()", "from settings: " .. tostring(fuel_value)))
 			end
 		else
 			if APM_CAN_LOG_INFO then
-				log(APM_MSG_INFO('get_base_fuel_value()', 'invalid settings: ' .. tostring(fuel_value)))
+				log(APM_MSG_INFO("get_base_fuel_value()", "invalid settings: " .. tostring(fuel_value)))
 			end
 		end
 	end
@@ -66,11 +65,11 @@ function apm.lib.utils.fuel.get_base_fuel_value()
 		fuel_value = apm.power.overwrites.data_stage.coal_fuel_value
 
 		if APM_CAN_LOG_INFO then
-			log(APM_MSG_INFO('get_base_fuel_value()', 'interface overwrite: ' .. tostring(fuel_value)))
+			log(APM_MSG_INFO("get_base_fuel_value()", "interface overwrite: " .. tostring(fuel_value)))
 		end
 	end
 
-	return tostring(fuel_value * 1000000) .. 'J'
+	return tostring(fuel_value * 1000000) .. "J"
 end
 
 --- [fuel.overwrite_coal_fuel_value]
@@ -79,7 +78,7 @@ function apm.lib.utils.fuel.overwrite_coal_fuel_value()
 	local item, ok = apm.lib.utils.item.get_by_name("coal")
 	if not ok then
 		if APM_CAN_LOG_WARN then
-			log(APM_MSG_WARNING('overwrite_coal_fuel_value()', 'there is no ITEM: coal'))
+			log(APM_MSG_WARNING("overwrite_coal_fuel_value()", "there is no ITEM: coal"))
 		end
 
 		return
@@ -88,7 +87,7 @@ function apm.lib.utils.fuel.overwrite_coal_fuel_value()
 	local fuel_value = apm.lib.utils.fuel.get_base_fuel_value()
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('overwrite_coal_fuel_value()', 'set coal fuel value to: ' .. tostring(fuel_value)))
+		log(APM_MSG_INFO("overwrite_coal_fuel_value()", "set coal fuel value to: " .. tostring(fuel_value)))
 	end
 
 	item.fuel_value = fuel_value
@@ -104,7 +103,7 @@ function apm.lib.utils.fuel.get_coal_fuel_value()
 	end
 
 
-	if not apm.lib.utils.item.exist('coal') then
+	if not apm.lib.utils.item.exist("coal") then
 		return apm.lib.utils.fuel.get_base_fuel_value()
 	end
 
@@ -129,7 +128,7 @@ end
 ---@param item_name string
 ---@param multiplicator number
 ---@param burnt_result string?
----@param fuel_category FuelCategoryID?
+---@param fuel_category FuelCategoryID|FuelCategoryID[]|nil defaults to "chemical"
 function apm.lib.utils.fuel.overhaul(level, item_name, multiplicator, burnt_result, fuel_category)
 	if not apm.lib.utils.item.exist(item_name) then return end
 
@@ -144,7 +143,7 @@ function apm.lib.utils.fuel.overhaul(level, item_name, multiplicator, burnt_resu
 	local base_acceleration_multiplier = 0.8
 	local base_top_speed_multiplier = 0.8
 
-	local new_value = tostring(apm.lib.utils.math.round(base_value * multiplicator, 2)) .. 'J'
+	local new_value = tostring(apm.lib.utils.math.round(base_value * multiplicator, 2)) .. "J"
 	local new_emissions_multiplier = apm.lib.utils.math.round(base_emissions_value - (level * 0.10), 2)
 	if new_emissions_multiplier < 0.8 then
 		new_emissions_multiplier = 0.8
@@ -153,11 +152,13 @@ function apm.lib.utils.fuel.overhaul(level, item_name, multiplicator, burnt_resu
 	local new_top_speed_multiplier = apm.lib.utils.math.round(base_top_speed_multiplier + (0.06 * level), 2)
 
 	if not fuel_category then
-		fuel_category = 'chemical'
+		fuel_category = "chemical"
 	end
 
-	item.fuel_value                   = new_value
-	item.fuel_category                = fuel_category
+	item.fuel_value = new_value
+
+	apm.lib.utils.item.set.fuel_categories_by_ref(item, fuel_category)
+
 	item.fuel_emissions_multiplier    = new_emissions_multiplier
 	item.fuel_acceleration_multiplier = new_acceleration_multiplier
 	item.fuel_top_speed_multiplier    = new_top_speed_multiplier
@@ -165,12 +166,13 @@ function apm.lib.utils.fuel.overhaul(level, item_name, multiplicator, burnt_resu
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
-			'overhaul()',
+			"overhaul()",
 			'item/fluid with name: "' ..
 			tostring(item_name) ..
 			'" changed. New fuel value: "' ..
 			tostring(new_value) ..
-			'" with burnt_result: "' .. tostring(burnt_result) .. '" with category: "' .. tostring(fuel_category) .. '"'
+			'" with burnt_result: "' ..
+			tostring(burnt_result) .. '" with categories: "' .. table.concat(item.fuel_categories, ", ") .. '"'
 		))
 	end
 end
@@ -186,6 +188,6 @@ function apm.lib.utils.fuel.category.create(category_name)
 	data:extend({ recipe_category })
 
 	if APM_CAN_LOG_INFO then
-		log(APM_MSG_INFO('category.create()', 'created category with name: "' .. tostring(category_name) .. '"'))
+		log(APM_MSG_INFO("category.create()", 'created category with name: "' .. tostring(category_name) .. '"'))
 	end
 end

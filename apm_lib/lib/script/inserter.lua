@@ -282,6 +282,44 @@ local function inserter_chain_fuel(t_object, pickup_inventory, drop_target)
 	return false
 end
 
+
+--- item name -> list of its fuel categories. Built lazily from prototypes, which cannot
+--- change during a session, so the cache does not affect determinism.
+---@type table<string, string[]>
+local item_fuel_categories_cache = {}
+
+--- Factorio 2.1.20 replaced LuaItemPrototype::fuel_category with fuel_categories
+--- (array[string], nil when the item is not a fuel). Reading the old key raises an
+--- error, and reading the new one builds a fresh table on every call, so it is cached.
+---@param item LuaItemPrototype
+---@return string[]
+local function get_item_fuel_categories(item)
+	local cached = item_fuel_categories_cache[item.name]
+
+	if cached then
+		return cached
+	end
+
+	local list = item.fuel_categories or {}
+
+	item_fuel_categories_cache[item.name] = list
+
+	return list
+end
+
+---@param item LuaItemPrototype
+---@param burner_categories table<string, boolean>
+---@return boolean
+local function item_fits_burner(item, burner_categories)
+	for _, category in ipairs(get_item_fuel_categories(item)) do
+		if burner_categories[category] then
+			return true
+		end
+	end
+
+	return false
+end
+
 ---@param t_object QueueItem
 ---@param inventory LuaInventory?
 ---@return ItemStackDefinition?
@@ -297,7 +335,7 @@ local function inventory_get_fuel(t_object, inventory)
 
 	for _, content in ipairs(contents) do
 		local item = prototypes.item[content.name]
-		if item and item.fuel_category and fuel_categories[item.fuel_category] then
+		if item and item_fits_burner(item, fuel_categories) then
 			scratch_fuel.name    = item.name
 			scratch_fuel.count   = 1
 			scratch_fuel.quality = content.quality
@@ -310,8 +348,6 @@ local function inventory_get_fuel(t_object, inventory)
 	return nil
 end
 
----@param t_object QueueItem
----@param pickup_target LuaEntity?
 ---@param t_object QueueItem
 ---@param pickup_target LuaEntity?
 local function steal_fuel_to_inserter(t_object, pickup_target)

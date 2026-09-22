@@ -276,6 +276,47 @@ function apm.lib.utils.item.remove(item_name)
 	end
 end
 
+--- [item.get.fuel_categories_by_ref]
+---@param item ItemPrototype
+---@return FuelCategoryID[]
+function apm.lib.utils.item.get.fuel_categories_by_ref(item)
+	if type(item.fuel_categories) == "table" then
+		return item.fuel_categories
+	end
+
+	return {}
+end
+
+--- [item.has.fuel_category_by_ref]
+---@param item ItemPrototype
+---@param category FuelCategoryID
+---@return boolean
+function apm.lib.utils.item.has.fuel_category_by_ref(item, category)
+	for _, c in ipairs(apm.lib.utils.item.get.fuel_categories_by_ref(item)) do
+		if c == category then
+			return true
+		end
+	end
+
+	return false
+end
+
+--- [item.set.fuel_categories_by_ref]
+---@param item ItemPrototype
+---@param categories FuelCategoryID|FuelCategoryID[]|nil nil removes the fuel categories
+function apm.lib.utils.item.set.fuel_categories_by_ref(item, categories)
+	if categories == nil then
+		item.fuel_categories = nil
+		return
+	end
+
+	if type(categories) == "string" then
+		item.fuel_categories = { categories }
+	else
+		item.fuel_categories = table.deepcopy(categories)
+	end
+end
+
 --- [item.mod.remove_fuel_value]
 ---@param item_name string
 function apm.lib.utils.item.mod.remove_fuel_value(item_name)
@@ -285,7 +326,8 @@ function apm.lib.utils.item.mod.remove_fuel_value(item_name)
 		return
 	end
 
-	item.fuel_category                = nil
+	apm.lib.utils.item.set.fuel_categories_by_ref(item, nil)
+
 	item.fuel_value                   = nil
 	item.fuel_acceleration_multiplier = nil
 	item.fuel_top_speed_multiplier    = nil
@@ -309,9 +351,9 @@ function apm.lib.utils.item.mod.fuel_category(item_name, fuel_category)
 		return
 	end
 
-	item.fuel_category = fuel_category
+	apm.lib.utils.item.set.fuel_categories_by_ref(item, fuel_category)
 
-	if APM_LOG_INFO then
+	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
 			"mod.fuel_category()",
 			'item/fluid with name: "' ..
@@ -381,7 +423,16 @@ function apm.lib.utils.item.mod.burnt_result(item_name, burnt_result)
 			["apm_vehicle_only"] = true
 		}
 
-		if check_category[item.fuel_category] then
+		local fuel_category = nil
+
+		for _, c in ipairs(apm.lib.utils.item.get.fuel_categories_by_ref(item)) do
+			if check_category[c] then
+				fuel_category = c
+				break
+			end
+		end
+
+		if fuel_category then
 			if burnt_result then
 				item.localised_description = {
 					"",
@@ -389,7 +440,7 @@ function apm.lib.utils.item.mod.burnt_result(item_name, burnt_result)
 					"\n",
 					{
 						"apm_info_fuel_tier",
-						{ "fuel-category-name." .. tostring(item.fuel_category) },
+						{ "fuel-category-name." .. tostring(fuel_category) },
 					}
 				}
 			else
@@ -399,7 +450,7 @@ function apm.lib.utils.item.mod.burnt_result(item_name, burnt_result)
 					"\n",
 					{
 						"apm_info_fuel_tier",
-						{ "fuel-category-name." .. tostring(item.fuel_category) }
+						{ "fuel-category-name." .. tostring(fuel_category) }
 					}
 				}
 			end
@@ -466,12 +517,13 @@ function apm.lib.utils.item.overwrite.battery(level, item_name, fuel_value, burn
 	local new_acceleration_multiplier  = apm.lib.utils.math.round(base_acceleration_multiplier + (0.2 * level), 2)
 	local new_top_speed_multiplier     = apm.lib.utils.math.round(base_top_speed_multiplier + (0.1 * level), 2)
 
-	item.fuel_category                 = "apm_electrical"
-	item.fuel_value                    = fuel_value
-	item.fuel_acceleration_multiplier  = new_acceleration_multiplier
-	item.fuel_top_speed_multiplier     = new_top_speed_multiplier
-	item.burnt_result                  = burnt_result
-	item.fuel_emissions_multiplier     = 0
+	apm.lib.utils.item.set.fuel_categories_by_ref(item, "apm_electrical")
+
+	item.fuel_value                   = fuel_value
+	item.fuel_acceleration_multiplier = new_acceleration_multiplier
+	item.fuel_top_speed_multiplier    = new_top_speed_multiplier
+	item.burnt_result                 = burnt_result
+	item.fuel_emissions_multiplier    = 0
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(

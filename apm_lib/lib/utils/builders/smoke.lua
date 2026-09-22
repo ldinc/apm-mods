@@ -1,7 +1,5 @@
-require 'util'
-require('lib.log')
-
-local self = 'lib.utils.builders.smoke'
+require "util"
+require("lib.log")
 
 local smoke_position = { -0.65, -2.15 }
 
@@ -154,6 +152,7 @@ apm.lib.utils.builders.smoke.burner.t2 = {
 	},
 }
 
+---@return SmokeSource
 function apm.lib.utils.builders.smoke.new(
 		name,
 		deviation,
@@ -197,17 +196,20 @@ function apm.lib.utils.builders.smoke.new(
 		slow_down_factor = 1
 	end
 
-	return {
+	---@type SmokeSource
+	local smoke = {
 		name = name,
 		deviation = deviation,
 		frequency = frequency,
 		position = nil,
 		north_position = positions.north,
-		south_position_position = positions.south,
-		west_position_position = positions.west,
-		east_position_position = positions.east,
+		south_position = positions.south,
+		west_position = positions.west,
+		east_position = positions.east,
 		starting_vertical_speed = starting_vertical_speed,
 		starting_frame_deviation = starting_frame_deviation,
 		slow_down_factor = slow_down_factor,
 	}
+
+	return smoke
 end
