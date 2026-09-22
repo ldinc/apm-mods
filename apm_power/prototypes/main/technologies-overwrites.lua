@@ -4,7 +4,7 @@ require("__apm_lib_ldinc__.lib.log")
 --- vanilla
 
 apm.lib.utils.technology.force.recipe_for_unlock("apm_stone_bricks", "stone-brick")
-apm.lib.utils.technology.add.prerequisites("stone-walls", "apm_stone_bricks")
+apm.lib.utils.technology.add.prerequisites("stone-wall", "apm_stone_bricks")
 
 apm.lib.utils.technology.force.recipe_for_unlock("landfill", "apm_landfill")
 
@@ -24,9 +24,9 @@ apm.lib.utils.technology.force.recipe_for_unlock("apm_stone_bricks", "storage-ta
 apm.lib.utils.technology.add.science_pack("turrets", "apm_industrial_science_pack")
 apm.lib.utils.technology.remove.science_pack("turrets", "automation-science-pack")
 
-apm.lib.utils.technology.add.science_pack("stone-walls", "apm_industrial_science_pack", 1)
-apm.lib.utils.technology.remove.science_pack("stone-walls", "automation-science-pack")
-apm.lib.utils.technology.mod.unit_count("stone-walls", 20)
+apm.lib.utils.technology.add.science_pack("stone-wall", "apm_industrial_science_pack", 1)
+apm.lib.utils.technology.remove.science_pack("stone-wall", "automation-science-pack")
+apm.lib.utils.technology.mod.unit_count("stone-wall", 20)
 
 apm.lib.utils.technology.add.science_pack("military", "apm_industrial_science_pack", 1)
 apm.lib.utils.technology.remove.science_pack("military", "automation-science-pack")

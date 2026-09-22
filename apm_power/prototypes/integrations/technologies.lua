@@ -291,7 +291,7 @@ if mods.ScienceCostTweakerM and apm_power_compat_sctm then
 
 	apm.lib.utils.technology.remove.prerequisites("apm_power_electricity", "automation-science-pack")
 	apm.lib.utils.technology.remove.prerequisites("turrets", "sct-automation-science-pack")
-	apm.lib.utils.technology.remove.prerequisites("stone-walls", "sct-automation-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("stone-wall", "sct-automation-science-pack")
 
 	apm.lib.utils.technology.force.recipe_for_unlock("sct-automation-science-pack", "apm_electromagnet")
 	apm.lib.utils.technology.add.prerequisites("sct-automation-science-pack", "apm_lab_1")
