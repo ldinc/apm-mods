@@ -145,7 +145,7 @@ recipe.ingredients = {
 ---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item",  name = "apm_coal_crushed",              amount = 6 },
-	{ type = "item",  name = "apm_crusher_drums_used",        amount = 2,  ignored_by_stats = 1,  ignored_by_productivity = 1 },
+	{ type = "item",  name = "apm_crusher_drums_used",        amount = 2,  ignored_by_stats = 2,  ignored_by_productivity = 2 },
 	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 20, ignored_by_stats = 20, ignored_by_productivity = 20 }
 }
 recipe.main_product = ""
@@ -256,7 +256,7 @@ recipe.ingredients = {
 ---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item",  name = "apm_coal_briquette",            amount = 6 },
-	{ type = "item",  name = "apm_press_plates_used",         amount = 2,  ignored_by_stats = 1,  ignored_by_productivity = 1 },
+	{ type = "item",  name = "apm_press_plates_used",         amount = 2,  ignored_by_stats = 2,  ignored_by_productivity = 2 },
 	{ type = "fluid", name = "apm_coal_saturated_wastewater", amount = 20, ignored_by_stats = 20, ignored_by_productivity = 20 }
 }
 recipe.main_product = ""
@@ -656,7 +656,7 @@ recipe.ingredients = {
 recipe.results = {
 	{ type = "item",  name = "apm_wood_pellets",       amount = 8 },
 	--{type='item', name='apm_wood_pellets', amount_min=1, amount_max=1, independent_probability=0.5, show_details_in_recipe_tooltip=false},
-	{ type = "item",  name = "apm_crusher_drums_used", amount = 2, ignored_by_stats = 1, ignored_by_productivity = 1 },
+	{ type = "item",  name = "apm_crusher_drums_used", amount = 2, ignored_by_stats = 2, ignored_by_productivity = 2 },
 	{ type = "fluid", name = "apm_dirt_water",         amount = 20 }
 }
 recipe.main_product = ""
