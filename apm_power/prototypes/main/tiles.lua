@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_power/prototypes/main/tiles.lua'
+local self = "apm_power/prototypes/main/tiles.lua"
 
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
 
@@ -73,7 +73,7 @@ local concrete_transitions =
 	concrete_to_out_of_map_transition
 }
 
-function sound_variations(filename_string, variations, volume_parameter, modifiers_parameter)
+local function sound_variations(filename_string, variations, volume_parameter, modifiers_parameter)
 	local result = {}
 	for i = 1, variations do
 		result[i] = { filename = filename_string .. "-" .. i .. ".ogg", volume = volume_parameter or 0.5 }

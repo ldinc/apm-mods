@@ -8,7 +8,7 @@ if mods["bzlead"] or mods["bzlead2"] then
 
 		local base = apm.lib.utils.icon.get.from_item("stone-brick")
 		local ico = apm.lib.utils.icon.get.from_item("apm_crushed_stone")
-		subicon = apm.lib.utils.icons.mod(ico, 0.6, { -8, -8 })
+		local subicon = apm.lib.utils.icons.mod(ico, 0.6, { -8, -8 })
 
 		local icons = apm.lib.utils.icon.merge({
 			base,
@@ -38,7 +38,7 @@ if mods["bzcarbon"] then
 
 		local base = apm.lib.utils.icon.get.from_item("electronic-circuit")
 
-		subicon = { apm.lib.icons.dynamics.t1 }
+		local subicon = { apm.lib.icons.dynamics.t1 }
 
 		local icons = apm.lib.utils.icon.merge({
 			base,

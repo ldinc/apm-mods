@@ -1,1 +1,0 @@
-data.raw["gui-style"]["default"]["apm"] = {parent = "frame", type = "frame_style", minimal_width = 400}

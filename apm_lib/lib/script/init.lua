@@ -50,7 +50,7 @@ end
 ---@param unlock_technology string
 ---@param cond_recipes string[]|string
 function init.add_technology_conditional_recipe(unlock_technology, cond_recipes)
-	if storage_state_is_valid then
+	if storage_state_is_valid() then
 		return
 	end
 
@@ -79,7 +79,7 @@ end
 
 ---@param force LuaForce
 local function activate_technologies_conditional(force)
-	if storage_state_is_valid then
+	if storage_state_is_valid() then
 		return
 	end
 
@@ -117,7 +117,7 @@ local function activate_technologies_conditional_recipes(force)
 	local technologies = force.technologies
 	local recipes = force.recipes
 
-	if storage_state_is_valid then
+	if storage_state_is_valid() then
 		return
 	end
 
@@ -146,7 +146,7 @@ end
 
 ---@param force LuaForce
 local function check_technologies(force)
-	if storage_state_is_valid then
+	if storage_state_is_valid() then
 		return
 	end
 

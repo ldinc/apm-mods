@@ -109,10 +109,9 @@ apm.lib.utils.technology.add.recipe_for_unlock("concrete", "apm_sinkhole")
 --- [steam-power]
 apm.lib.utils.technology.add.prerequisites("steam-power", "apm_puddling_furnace_0")
 
-apm.lib.utils.technology.add.recipe_for_unlock("steam-power", "apm_fuel-1")
-apm.lib.utils.technology.add.recipe_for_unlock("steam-power", "apm_puddling_furnace_0")
-apm.lib.utils.technology.add.recipe_for_unlock("steam-power", "apm_water_supply-1")
-apm.lib.utils.technology.add.recipe_for_unlock("steam-power", "apm_stone_bricks")
+-- apm.lib.utils.technology.add.prerequisites("steam-power", "apm_fuel-1")
+
+
 
 apm.lib.utils.technology.trigger.set.craft_item("steam-power", "steel-plate", 50)
 

@@ -94,49 +94,54 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+
+--- [AAI Industry]
 if mods["aai-industry"] and apm_power_compat_earendel then
-	apm.lib.utils.technology.remove.recipe_from_unlock("basic-automation", "burner-inserter")
-	apm.lib.utils.recipe.enable("burner-inserter")
-	apm.lib.utils.technology.delete("basic-logistics")
-	apm.lib.utils.technology.delete("basic-automation")
-	apm.lib.utils.technology.force.recipe_for_unlock("automation", "inserter")
-	apm.lib.utils.technology.force.recipe_for_unlock("apm_stone_bricks", "stone-tablet")
-	apm.lib.utils.technology.add.prerequisites("toolbelt", "apm_power_automation_science_pack")
-	apm.lib.utils.technology.add.prerequisites("rail-signals", "electronics")
-	apm.lib.utils.technology.add.recipe_for_unlock("apm_power_electricity", "electric-motor")
-	apm.lib.utils.technology.add.prerequisites("fuel-processing", "apm_power_electricity")
-	apm.lib.utils.technology.delete("electricity")
-	apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "small-electric-pole")
-	apm.lib.utils.technology.delete("basic-fluid-handling")
-	apm.lib.utils.technology.force.recipe_for_unlock("apm_water_supply-1", "pipe")
-	apm.lib.utils.technology.force.recipe_for_unlock("apm_water_supply-1", "pipe-to-ground")
-	apm.lib.utils.technology.delete("electric-mining")
-	apm.lib.utils.technology.force.recipe_for_unlock("apm_electric_mining_drills", "electric-mining-drill")
-	apm.lib.utils.technology.delete("steam-power")
-	apm.lib.utils.technology.force.recipe_for_unlock("apm_power_steam", "boiler")
-
-	apm.lib.utils.technology.trigger.set.craft_item("automation-science-pack", "apm_lab_1", 1)
-	apm.lib.utils.technology.add.prerequisites("lamp", "automation-science-pack")
-
-	apm.lib.utils.technology.add.prerequisites("stone-wall", "military")
-
-	--- [electronics]
-	apm.lib.utils.technology.force.recipe_for_unlock("electronics", "copper-cable")
-	apm.lib.utils.technology.add.prerequisites("electronics", "apm_lab_1")
-	apm.lib.utils.technology.add.prerequisites("automation-science-pack", "electronics")
-
-	apm.lib.utils.technology.add.prerequisites("electric-lab", "automation")
-
-	apm.lib.utils.technology.force.recipe_for_unlock("radar", "radar")
-
-	apm.lib.utils.technology.delete("sand-processing")
-
-	apm.lib.utils.technology.add.prerequisites("glass-processing", "apm_stone_bricks")
-
-	if not mods.bobelectronics then
-		apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "electronic-circuit")
-	end
+	require("prototypes.integrations.technologies.aai-industry")
 end
+-- if mods["aai-industry"] and apm_power_compat_earendel then
+-- 	apm.lib.utils.technology.remove.recipe_from_unlock("basic-automation", "burner-inserter")
+-- 	apm.lib.utils.recipe.enable("burner-inserter")
+-- 	apm.lib.utils.technology.delete("basic-logistics")
+-- 	apm.lib.utils.technology.delete("basic-automation")
+-- 	apm.lib.utils.technology.force.recipe_for_unlock("automation", "inserter")
+-- 	apm.lib.utils.technology.force.recipe_for_unlock("apm_stone_bricks", "stone-tablet")
+-- 	apm.lib.utils.technology.add.prerequisites("toolbelt", "apm_power_automation_science_pack")
+-- 	apm.lib.utils.technology.add.prerequisites("rail-signals", "electronics")
+-- 	apm.lib.utils.technology.add.recipe_for_unlock("apm_power_electricity", "electric-motor")
+-- 	apm.lib.utils.technology.add.prerequisites("fuel-processing", "apm_power_electricity")
+-- 	apm.lib.utils.technology.delete("electricity")
+-- 	apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "small-electric-pole")
+-- 	apm.lib.utils.technology.delete("basic-fluid-handling")
+-- 	apm.lib.utils.technology.force.recipe_for_unlock("apm_water_supply-1", "pipe")
+-- 	apm.lib.utils.technology.force.recipe_for_unlock("apm_water_supply-1", "pipe-to-ground")
+-- 	apm.lib.utils.technology.delete("electric-mining")
+-- 	apm.lib.utils.technology.force.recipe_for_unlock("apm_electric_mining_drills", "electric-mining-drill")
+-- 	apm.lib.utils.technology.delete("steam-power")
+-- 	apm.lib.utils.technology.force.recipe_for_unlock("apm_power_steam", "boiler")
+
+-- 	apm.lib.utils.technology.trigger.set.craft_item("automation-science-pack", "apm_lab_1", 1)
+-- 	apm.lib.utils.technology.add.prerequisites("lamp", "automation-science-pack")
+
+-- 	apm.lib.utils.technology.add.prerequisites("stone-wall", "military")
+
+-- 	--- [electronics]
+-- 	apm.lib.utils.technology.force.recipe_for_unlock("electronics", "copper-cable")
+-- 	apm.lib.utils.technology.add.prerequisites("electronics", "apm_lab_1")
+-- 	apm.lib.utils.technology.add.prerequisites("automation-science-pack", "electronics")
+
+-- 	apm.lib.utils.technology.add.prerequisites("electric-lab", "automation")
+
+-- 	apm.lib.utils.technology.force.recipe_for_unlock("radar", "radar")
+
+-- 	apm.lib.utils.technology.delete("sand-processing")
+
+-- 	apm.lib.utils.technology.add.prerequisites("glass-processing", "apm_stone_bricks")
+
+-- 	if not mods.bobelectronics then
+-- 		apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "electronic-circuit")
+-- 	end
+-- end
 
 if mods["aai-vehicles-miner"] and apm_power_compat_earendel then
 	apm.lib.utils.technology.add.science_pack("vehicle-miner", "apm_industrial_science_pack", 1)
@@ -162,7 +167,7 @@ if mods["aai-vehicles-chaingunner"] and apm_power_compat_earendel then
 	apm.lib.utils.technology.add.science_pack("basic-vehicles", "apm_industrial_science_pack", 1)
 end
 
-if (mods["space-exploration"] or mods["aai-industry"]) and apm_power_compat_earendel then
+if (mods["space-exploration"]) and apm_power_compat_earendel then
 	apm.lib.utils.technology.remove.prerequisites_all("sand-processing")
 
 	apm.lib.utils.technology.add.prerequisites("sand-processing", "apm_stone_bricks")

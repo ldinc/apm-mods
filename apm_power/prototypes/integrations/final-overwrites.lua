@@ -247,7 +247,7 @@ local skiplist = nil
 
 --- [Cerys-Moon-of-Fulgora]
 if mods["Cerys-Moon-of-Fulgora"] then
-	getter = require("prototypes.integrations.technologies.cerys")
+	local getter = require("prototypes.integrations.technologies.cerys")
 
 	skiplist = getter()
 end

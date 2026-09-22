@@ -43,7 +43,7 @@ data:extend({ burner_miner })
 -- Steam mining drill
 
 -- clone from original factorio
-function electric_mining_drill_status_colors()
+local function electric_mining_drill_status_colors()
 	return
 	{
 		-- If no_power, idle, no_minable_resources, disabled, insufficient_input or full_output is used, always_draw of corresponding layer must be set to true to draw it in those states.

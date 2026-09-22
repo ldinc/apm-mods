@@ -140,7 +140,7 @@ sinkhole.graphics_set = {
 }
 
 ---@type FluidBox
-box = {
+local box = {
 	production_type = "input",
 	pipe_picture = pipe_picture,
 	pipe_covers = pipe_covers,

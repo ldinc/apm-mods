@@ -137,7 +137,9 @@ greenhouse.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 	smoke_steam
 )
 
-animation_progress = base_animation_progress / greenhouse.crafting_speed
+local animation_progress = base_animation_progress / greenhouse.crafting_speed
+
+greenhouse.graphics_set.animation_progress = animation_progress
 
 greenhouse.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/hr_greenhouse_1.png"
@@ -173,7 +175,9 @@ greenhouse.energy_source = apm.lib.utils.builders.energy_source.new_electric(
 	apm.power.constants.engery_drain.electric
 )
 
-animation_progress = base_animation_progress / greenhouse.crafting_speed
+local animation_progress = base_animation_progress / greenhouse.crafting_speed
+
+greenhouse.graphics_set.animation_progress = animation_progress
 
 greenhouse.graphics_set.animation.layers[1].filename =
 "__apm_resource_pack_ldinc__/graphics/entities/greenhouse/hr_greenhouse_2.png"

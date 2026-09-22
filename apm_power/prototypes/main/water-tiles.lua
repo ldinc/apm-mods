@@ -1,7 +1,7 @@
-require('util')
-require('__apm_lib_ldinc__.lib.log')
+require("util")
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_power/prototypes/main/water-tiles.lua'
+local self = "apm_power/prototypes/main/water-tiles.lua"
 
 APM_LOG_HEADER(self)
 
@@ -11,7 +11,7 @@ local tile_subgroup_for_overwrite = {
 	["gleba-water-tiles"] = "apm_dirt_water",
 }
 
-function update_water_fuild_on_tiles(tile_subgroup_for_overwrite)
+local function update_water_fuild_on_tiles(tile_subgroup_for_overwrite)
 	for _, tile_name in ipairs(water_tile_type_names) do
 		local tile = data.raw["tile"][tile_name]
 
