@@ -102,12 +102,10 @@ end
 -- if mods["aai-industry"] and apm_power_compat_earendel then
 -- 	apm.lib.utils.technology.remove.recipe_from_unlock("basic-automation", "burner-inserter")
 -- 	apm.lib.utils.recipe.enable("burner-inserter")
--- 	apm.lib.utils.technology.delete("basic-logistics")
 -- 	apm.lib.utils.technology.delete("basic-automation")
 -- 	apm.lib.utils.technology.force.recipe_for_unlock("automation", "inserter")
 -- 	apm.lib.utils.technology.force.recipe_for_unlock("apm_stone_bricks", "stone-tablet")
 -- 	apm.lib.utils.technology.add.prerequisites("toolbelt", "apm_power_automation_science_pack")
--- 	apm.lib.utils.technology.add.prerequisites("rail-signals", "electronics")
 -- 	apm.lib.utils.technology.add.recipe_for_unlock("apm_power_electricity", "electric-motor")
 -- 	apm.lib.utils.technology.add.prerequisites("fuel-processing", "apm_power_electricity")
 -- 	apm.lib.utils.technology.delete("electricity")
@@ -290,7 +288,7 @@ if mods.ScienceCostTweakerM and apm_power_compat_sctm then
 	apm.lib.utils.technology.delete("apm_power_automation_science_pack")
 
 	apm.lib.utils.technology.remove.prerequisites("apm_power_electricity", "automation-science-pack")
-	apm.lib.utils.technology.remove.prerequisites("turrets", "sct-automation-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("gun-turret", "sct-automation-science-pack")
 	apm.lib.utils.technology.remove.prerequisites("stone-wall", "sct-automation-science-pack")
 
 	apm.lib.utils.technology.force.recipe_for_unlock("sct-automation-science-pack", "apm_electromagnet")

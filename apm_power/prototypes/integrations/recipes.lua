@@ -88,11 +88,7 @@ if mods.ExpensiveLandfillRecipe and apm_power_compat_expensivelandfillrecipe the
 	apm.lib.utils.recipe.ingredient.mod("apm_landfill", "gravel-pile", 150)
 	apm.lib.utils.recipe.energy_required.mod("apm_landfill", 10)
 	apm.lib.utils.recipe.result.mod("apm_landfill", "landfill", 1)
-	if settings.startup["apm_power_generic_ash"].value == true then
-		apm.lib.utils.recipe.ingredient.mod("apm_landfill", "apm_generic_ash", 1500)
-	else
-		apm.lib.utils.recipe.ingredient.mod("apm_landfill", "apm_generic_ash", 1500)
-	end
+	apm.lib.utils.recipe.ingredient.mod("apm_landfill", "apm_generic_ash", 1500)
 end
 
 -- linver ---------------------------------------------------------------------

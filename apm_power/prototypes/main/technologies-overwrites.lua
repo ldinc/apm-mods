@@ -21,8 +21,8 @@ apm.lib.utils.technology.remove.recipe_from_unlock("fluid-handling", "empty-apm_
 apm.lib.utils.technology.remove.recipe_from_unlock("fluid-handling", "apm_coke_oven_gas-barrel")
 apm.lib.utils.technology.force.recipe_for_unlock("apm_stone_bricks", "storage-tank")
 
-apm.lib.utils.technology.add.science_pack("turrets", "apm_industrial_science_pack")
-apm.lib.utils.technology.remove.science_pack("turrets", "automation-science-pack")
+apm.lib.utils.technology.add.science_pack("gun-turret", "apm_industrial_science_pack")
+apm.lib.utils.technology.remove.science_pack("gun-turret", "automation-science-pack")
 
 apm.lib.utils.technology.add.science_pack("stone-wall", "apm_industrial_science_pack", 1)
 apm.lib.utils.technology.remove.science_pack("stone-wall", "automation-science-pack")
@@ -54,11 +54,6 @@ apm.lib.utils.technology.add.science_pack("automated-rail-transportation", "apm_
 apm.lib.utils.technology.remove.science_pack("automated-rail-transportation", "automation-science-pack")
 apm.lib.utils.technology.remove.science_pack("automated-rail-transportation", "logistic-science-pack")
 
-apm.lib.utils.technology.add.prerequisites("rail-signals", "apm_power_electricity")
---apm.lib.utils.technology.add.science_pack('rail-signals', 'apm_industrial_science_pack', 1)
---apm.lib.utils.technology.add.science_pack('rail-signals', 'apm_steam_science_pack', 1)
-apm.lib.utils.technology.remove.science_pack("rail-signals", "logistic-science-pack")
-
 apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "steam-engine")
 apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "small-electric-pole")
 apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "electronic-circuit")
@@ -77,13 +72,7 @@ apm.lib.utils.technology.force.recipe_for_unlock("automation", "inserter")
 apm.lib.utils.technology.mod.unit_count("automation", 75)
 apm.lib.utils.technology.mod.unit_time("automation", 30)
 
-apm.lib.utils.technology.add.prerequisites("optics", "apm_power_electricity")
---apm.lib.utils.technology.add.science_pack('optics', 'apm_industrial_science_pack', 1)
-apm.lib.utils.technology.mod.unit_count("optics", 50)
-apm.lib.utils.technology.mod.unit_time("optics", 25)
-
 apm.lib.utils.technology.add.prerequisites("logistic-science-pack", "automation")
---apm.lib.utils.technology.add.science_pack('logistic-science-pack', 'apm_industrial_science_pack', 1)
 apm.lib.utils.technology.force.recipe_for_unlock("logistic-science-pack", "lab")
 
 
@@ -126,7 +115,6 @@ apm.lib.utils.technology.add.prerequisites("automation-science-pack", "apm_treat
 apm.lib.utils.technology.remove.prerequisites("automation-science-pack", "steam-power")
 apm.lib.utils.technology.trigger.set.craft_item("automation-science-pack", "apm_lab_1")
 
-apm.lib.utils.technology.add.recipe_for_unlock("basic-logistics", "automation-science-pack")
 apm.lib.utils.technology.add.recipe_for_unlock("automation-science-pack", "apm_electromagnet")
 apm.lib.utils.technology.add.recipe_for_unlock("automation-science-pack", "apm_egen_unit")
 

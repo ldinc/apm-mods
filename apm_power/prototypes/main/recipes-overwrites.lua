@@ -56,9 +56,6 @@ apm.lib.utils.recipe.ingredient.mod("burner-inserter", "apm_simple_engine", 1)
 apm.lib.utils.recipe.ingredient.mod("burner-inserter", "iron-stick", 0)
 apm.lib.utils.recipe.ingredient.mod("burner-inserter", "apm_mechanical_relay", 1)
 
-apm.lib.utils.recipe.ingredient.mod("steam-inserter", "iron-gear-wheel", 1)
-apm.lib.utils.recipe.ingredient.mod("steam-inserter", "apm_iron_bearing", 1)
-
 
 apm.lib.utils.recipe.ingredient.mod("burner-mining-drill", "iron-gear-wheel", 0)
 apm.lib.utils.recipe.ingredient.mod("burner-mining-drill", "apm_simple_engine", 1)
@@ -145,7 +142,7 @@ apm.lib.utils.recipe.ingredient.mod("electric-mining-drill", "apm_gearing", 2)
 apm.lib.utils.recipe.ingredient.mod("electric-mining-drill", "apm_electromagnet", 4)
 apm.lib.utils.recipe.ingredient.mod("electric-mining-drill", "apm_steam_mining_drill", 1)
 
-apm.lib.utils.recipe.ingredient.mod("empty-barrel", "apm_sealing_rings", 1)
+apm.lib.utils.recipe.ingredient.mod("barrel", "apm_sealing_rings", 1)
 
 apm.lib.utils.recipe.ingredient.replace("plastic-bar", "coal", "apm_coal_crushed", 2)
 apm.lib.utils.recipe.ingredient.replace("explosives", "coal", "apm_coal_crushed", 2)

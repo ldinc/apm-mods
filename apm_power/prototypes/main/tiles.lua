@@ -250,7 +250,7 @@ local tile_asphalt = {
 					scale = 0.5
 				},
 
-				outer_corner_mask = {
+				outer_corner = {
 					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-outer-corner-mask.png",
 					count = 8,
 					scale = 0.5
@@ -262,13 +262,13 @@ local tile_asphalt = {
 					scale = 0.5
 				},
 
-				u_transition_mask = {
+				u_transition = {
 					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-u-mask.png",
 					count = 8,
 					scale = 0.5
 				},
 
-				o_transition_mask = {
+				o_transition = {
 					spritesheet = "__apm_resource_pack_ldinc__/graphics/tiles/asphalt/hr-asphalt-o-mask.png",
 					count = 4,
 					scale = 0.5
