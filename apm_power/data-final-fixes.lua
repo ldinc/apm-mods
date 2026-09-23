@@ -33,30 +33,36 @@ local get_icons = function(prototype)
 	end
 end
 
-for k, v in pairs(data.raw.fluid) do
-	local newicons = get_icons(v)
+for _, v in pairs(data.raw.fluid) do
+	if not v.parameter and not v.hidden then
+		local newicons = get_icons(v)
 
-	---@type RecipePrototype
-	local recipe =
-	{
-		type = "recipe",
-		name = v.name .. "-sinkhole"
-	}
-	recipe.categories = { "apm_sinkhole" }
-	recipe.subgroup = "fluid-recipes"
-	recipe.enabled = true
-	recipe.hidden = true
-	recipe.energy_required = 20
-	recipe.ingredients =
-	{
-		{ type = "fluid", name = v.name, amount = amount }
-	}
-	recipe.results = {}
-	recipe.icons = newicons
-	recipe.icon_size = 32
-	recipe.order = "z[sinkhole]"
+		---@type RecipePrototype
+		local recipe =
+		{
+			type = "recipe",
+			name = v.name .. "-sinkhole"
+		}
+		recipe.categories = { "apm_sinkhole" }
+		recipe.subgroup = "fluid-recipes"
+		recipe.enabled = true
+		recipe.hidden = true
+		recipe.energy_required = 20
+		recipe.ingredients =
+		{
+			{ type = "fluid", name = v.name, amount = amount }
+		}
+		recipe.results = {}
+		recipe.icons = newicons
+		recipe.icon_size = 32
+		recipe.order = "z[sinkhole]"
 
-	data:extend({ recipe })
+		---@type LocalisedString
+		local fluid_name = v.localised_name or { "fluid-name." .. v.name } --[[@as LocalisedString]]
+		recipe.localised_name = { "recipe-name.apm_fluid_sinkhole", fluid_name }
+
+		data:extend({ recipe })
+	end
 end
 
 -- Normalize the science pack display: all packs from the order map are moved

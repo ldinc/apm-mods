@@ -141,14 +141,14 @@ if mods["aai-vehicles-miner"] and apm_power_compat_earendel then
 	apm.lib.utils.car.overhaul("vehicle-miner")
 	apm.lib.utils.car.set.fuel_category("vehicle-miner", "chemical")
 	apm.lib.utils.car.set.fuel_category("vehicle-miner-mk2", { "apm_refined_chemical" })
-	if not mods.apm_energy_addon then
+	if not mods.apm_energy_addon_ldinc then
 		apm.lib.utils.car.set.fuel_category("vehicle-miner-mk3", { "apm_refined_chemical" })
 		apm.lib.utils.car.set.fuel_category("vehicle-miner-mk4", { "apm_refined_chemical" })
 	end
 	apm.lib.utils.car.set.fuel_category("vehicle-miner-mk5", { "apm_refined_chemical" })
 	if mods["aai-industry"] then
 		apm.lib.utils.car.add.fuel_category("vehicle-miner-mk2", "apm_vehicle_only")
-		if not mods.apm_energy_addon then
+		if not mods.apm_energy_addon_ldinc then
 			apm.lib.utils.car.add.fuel_category("vehicle-miner-mk3", "apm_vehicle_only")
 			apm.lib.utils.car.add.fuel_category("vehicle-miner-mk4", "apm_vehicle_only")
 		end

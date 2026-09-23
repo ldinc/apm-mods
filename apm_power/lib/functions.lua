@@ -1,6 +1,6 @@
-require('__apm_lib_ldinc__.lib.log')
+require("__apm_lib_ldinc__.lib.log")
 
-local self = 'apm_power/lib/functions.lua'
+local self = "apm_power/lib/functions.lua"
 
 APM_LOG_HEADER(self)
 
@@ -16,24 +16,24 @@ APM_LOG_HEADER(self)
 ---@param amount_out number?
 ---@param ov boolean?
 function apm.power.machine_frame_addition(recipe_name, level_in, level_out, amount_in, amount_out, ov)
-	if not apm.lib.utils.setting.get.startup('apm_power_overhaul_machine_frames') and not ov then return end
+	if not apm.lib.utils.setting.get.startup("apm_power_overhaul_machine_frames") and not ov then return end
 
 	local frame_in = {
-		[1] = 'apm_machine_frame_basic',
-		[2] = 'apm_machine_frame_steam',
-		[3] = 'apm_machine_frame_advanced'
+		[1] = "apm_machine_frame_basic",
+		[2] = "apm_machine_frame_steam",
+		[3] = "apm_machine_frame_advanced"
 	}
 	local frame_out = {
-		[1] = 'apm_machine_frame_basic_used',
-		[2] = 'apm_machine_frame_steam_used',
-		[3] = 'apm_machine_frame_advanced_used'
+		[1] = "apm_machine_frame_basic_used",
+		[2] = "apm_machine_frame_steam_used",
+		[3] = "apm_machine_frame_advanced_used"
 	}
 
 	-- apm.lib.utils.recipe.ingredient.mod(recipe_name, frame_in[level_in], amount_in, amount_in+2)
 
 	apm.lib.utils.recipe.ingredient.mod(recipe_name, frame_in[level_in], amount_in)
 
-	local used_flag = apm.lib.utils.setting.get.startup('apm_power_machine_frames_recycling')
+	local used_flag = apm.lib.utils.setting.get.startup("apm_power_machine_frames_recycling")
 
 	if amount_out and used_flag then
 		apm.lib.utils.recipe.result.mod(recipe_name, frame_out[level_out], amount_out)
@@ -49,8 +49,8 @@ local function find_frames_type_and_count(recipe)
 
 	for _, ingredient in ipairs(recipe.ingredients) do
 		if ingredient.name ~= "apm_machine_frame_basic" and
-			ingredient.name ~= "apm_machine_frame_steam" and
-			ingredient.name ~= "apm_machine_frame_advanced"
+				ingredient.name ~= "apm_machine_frame_steam" and
+				ingredient.name ~= "apm_machine_frame_advanced"
 		then
 			local ingredient_recipe, ok = apm.lib.utils.recipe.get.by_name(ingredient.name)
 

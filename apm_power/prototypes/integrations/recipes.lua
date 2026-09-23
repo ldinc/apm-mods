@@ -1,7 +1,7 @@
 require("util")
 require("__apm_lib_ldinc__.lib.log")
 
-local self = "apm_power/prototypes/integrations/recipes.lua"
+local self = "apm_power_ldinc/prototypes/integrations/recipes.lua"
 
 APM_LOG_HEADER(self)
 
@@ -53,12 +53,12 @@ APM_LOG_SETTINGS(self, "apm_power_compat_reverse_factory", apm_power_compat_reve
 APM_LOG_SETTINGS(self, "apm_power_compat_arcitos", apm_power_compat_arcitos)
 APM_LOG_SETTINGS(self, "apm_power_always_show_made_in", apm.lib.features.show.made_in)
 
-if mods.apm_energy_addon then
+if mods.apm_energy_addon_ldic then
 	apm.lib.utils.recipe.ingredient.mod("apm_battery_charging_station", "steel-plate", 0)
 	apm.power.machine_frame_addition("apm_battery_charging_station", 3, 3, 6, 3, true)
 end
 
-if mods.apm_nuclear then
+if mods.apm_nuclear_ldinc then
 	apm.lib.utils.recipe.ingredient.mod("apm_cooling_pond_0", "steel-plate", 0)
 	apm.power.machine_frame_addition("apm_cooling_pond_0", 3, nil, 6, nil, true)
 	apm.lib.utils.recipe.ingredient.mod("apm_hybrid_cooling_tower_0", "steel-plate", 0)
