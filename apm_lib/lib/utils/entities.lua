@@ -31,7 +31,7 @@ function apm.lib.utils.entities.add.fuel_category_with_conditional(entity_type, 
 			))
 		end
 
-		if apm.lib.utils.entity.has.fuel_category(entity, conditional_category) then
+		if apm.lib.utils.entity.has.fuel_category(entity --[[@as ApmEntity]], conditional_category) then
 			apm.lib.utils.entity.add.fuel_category(entity, category)
 		end
 	end
@@ -61,7 +61,7 @@ function apm.lib.utils.entities.set.fuel_categoriy_to_all_with_condition(entity_
 			))
 		end
 
-		if apm.lib.utils.entity.has.fuel_category(entity, conditional_category) then
+		if apm.lib.utils.entity.has.fuel_category(entity --[[@as ApmEntity]], conditional_category) then
 			apm.lib.utils.entity.set.fuel_category(entity, categories)
 		end
 	end

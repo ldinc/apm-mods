@@ -39,7 +39,7 @@ end
 function apm.lib.utils.technology.add.science_pack(technology_name, science_pack, science_amount)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 
@@ -90,7 +90,7 @@ end
 function apm.lib.utils.technology.remove.science_pack(technology_name, science_pack)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 
@@ -129,7 +129,7 @@ end
 function apm.lib.utils.technology.remove.science_packs_except(technology_name, science_pack_list)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok or not science_pack_list or not technology.unit then
+	if not ok or not technology or not science_pack_list or not technology.unit then
 		return
 	end
 

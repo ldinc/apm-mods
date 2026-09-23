@@ -113,7 +113,7 @@ end
 function apm.lib.utils.technology.mod.unit_time(technology_name, time)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok or not technology.unit then
+	if not ok or not technology or not technology.unit then
 		return
 	end
 
@@ -133,7 +133,7 @@ end
 function apm.lib.utils.technology.mod.unit_count(technology_name, count)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok or not technology.unit then
+	if not ok or not technology or not technology.unit then
 		return
 	end
 
@@ -153,7 +153,7 @@ end
 function apm.lib.utils.technology.mod.order(technology_name, order)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 
@@ -170,7 +170,7 @@ end
 function apm.lib.utils.technology.mod.icon(technology_name, icon)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 
@@ -188,7 +188,7 @@ end
 function apm.lib.utils.technology.disable(technology_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 
@@ -210,7 +210,7 @@ end
 function apm.lib.utils.technology.delete(technology_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 
@@ -244,7 +244,7 @@ end
 function apm.lib.utils.technology.overwrite.localised_name(technology_name, localised_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 
@@ -257,7 +257,7 @@ end
 function apm.lib.utils.technology.overwrite.localised_description(technology_name, localised_description)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 

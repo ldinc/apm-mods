@@ -34,7 +34,7 @@ end
 function apm.lib.utils.technology.unit.clear_all(technology_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 

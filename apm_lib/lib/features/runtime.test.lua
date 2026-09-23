@@ -10,7 +10,7 @@ local rt = apm.lib.features.runtime
 
 local function expect(label, actual, wanted)
 	if actual == wanted then print("PASS: " .. label)
-	else print("FAIL: " .. label .. " got=" .. tostring(actual) .. " wanted=" .. tostring(wanted)) os.exit(1) end
+	else print("FAIL: " .. label .. " got=" .. tostring(actual) .. " wanted=" .. tostring(wanted)) error("test failed", 0) end
 end
 
 _G.__logs = {}

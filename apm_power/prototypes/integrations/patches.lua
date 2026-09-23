@@ -38,12 +38,3 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_mferrari', apm_power_compat_mferrari)
 APM_LOG_SETTINGS(self, 'apm_power_compat_linver', apm_power_compat_linver)
 APM_LOG_SETTINGS(self, 'apm_power_compat_realistic_reactors', apm_power_compat_realistic_reactors)
 APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reverse_factory)
-
--- Earendel -------------------------------------------------------------------
---
---
--- ----------------------------------------------------------------------------
-if mods['space-exploration'] and apm_power_compat_earendel then
-    --apm.lib.utils.patch.space_exploration('prototype_type', 'prototype_name')
-    -- apm.lib.utils.patch.space_exploration('assembling-machine', 'apm_offshore_pump_burner')
-end

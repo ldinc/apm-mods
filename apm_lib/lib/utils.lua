@@ -123,7 +123,6 @@ require 'lib.utils.builder'
 
 if not apm.lib.utils.patch then apm.lib.utils.patch = {} end
 require 'lib.utils.patch.aai'
--- require 'lib.utils.patch.space_exploration'
 
 if not apm.lib.utils.builders then apm.lib.utils.builders = {} end
 if not apm.lib.utils.builders.smoke then apm.lib.utils.builders.smoke = {} end

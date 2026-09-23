@@ -29,7 +29,7 @@ prototypes = {
 	item = {
 		["uranium-235"] = true,
 		["uranium-fuel-cell"] = true,
-		["used-up-uranium-fuel-cell"] = true,
+		["depleted-uranium-fuel-cell"] = true,
 		["legacy-item"] = true,
 		["test-item"] = true,
 	}
@@ -48,7 +48,7 @@ local function expect(label, actual, wanted)
 		print("PASS: " .. label)
 	else
 		print("FAIL: " .. label .. "\n  got:    " .. tostring(actual) .. "\n  wanted: " .. tostring(wanted))
-		os.exit(1)
+		error("test failed", 0)
 	end
 end
 

@@ -30,7 +30,7 @@ end
 function apm.lib.utils.technology.get.prerequisites(technology_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return nil
 	end
 
@@ -68,7 +68,7 @@ end
 function apm.lib.utils.technology.add.prerequisites(technology_name, prerequisites_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return nil
 	end
 
@@ -106,7 +106,7 @@ end
 function apm.lib.utils.technology.remove.prerequisites(technology_name, prerequisites_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 
@@ -138,7 +138,7 @@ end
 function apm.lib.utils.technology.remove.prerequisites_all(technology_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 

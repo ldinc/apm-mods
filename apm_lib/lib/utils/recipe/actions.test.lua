@@ -1,5 +1,7 @@
 -- Standalone unit test for lib/utils/recipe/actions.lua (recipe category API)
 -- Run from this directory: lua actions.test.lua (or run_tests.sh from the repository root)
+-- the test passes bare recipe tables, not full RecipePrototypes
+---@diagnostic disable: missing-fields
 apm = { lib = { utils = {} } }
 data = { raw = {} }
 log = function() end
@@ -12,7 +14,7 @@ dofile("actions.lua")
 local has = apm.lib.utils.recipe.category.has
 local function expect(label, actual, wanted)
 	if actual == wanted then print("PASS: " .. label)
-	else print("FAIL: " .. label .. " got=" .. tostring(actual) .. " wanted=" .. tostring(wanted)) os.exit(1) end
+	else print("FAIL: " .. label .. " got=" .. tostring(actual) .. " wanted=" .. tostring(wanted)) error("test failed", 0) end
 end
 
 expect("present", has({ categories = { "crafting", "chemistry" } }, "chemistry"), true)

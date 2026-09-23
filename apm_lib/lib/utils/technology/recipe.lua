@@ -8,7 +8,7 @@ if not apm.lib.utils.technology.add then apm.lib.utils.technology.add = {} end
 function apm.lib.utils.technology.check_if_recipe_is_in_unlock(technology_name, recipe_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return false
 	end
 
@@ -33,7 +33,7 @@ end
 function apm.lib.utils.technology.add.recipe_for_unlock(technology_name, recipe_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 
@@ -72,7 +72,7 @@ end
 function apm.lib.utils.technology.remove.recipe_from_unlock(technology_name, recipe_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or not technology then
 		return
 	end
 

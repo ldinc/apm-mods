@@ -21,7 +21,7 @@ dofile("item.lua")
 
 local function expect(label, actual, wanted)
 	if actual == wanted then print("PASS: " .. label)
-	else print("FAIL: " .. label .. " got=" .. tostring(actual) .. " wanted=" .. tostring(wanted)) os.exit(1) end
+	else print("FAIL: " .. label .. " got=" .. tostring(actual) .. " wanted=" .. tostring(wanted)) error("test failed", 0) end
 end
 
 apm.lib.utils.item.mod.overwrite_weight_for_science_packs(7)

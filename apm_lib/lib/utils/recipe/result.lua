@@ -100,16 +100,16 @@ function apm.lib.utils.recipe.result.replace(recipe_name, result_old, result_new
 	end
 
 	local recipe = data.raw.recipe[recipe_name]
-	local type_name = apm.lib.utils.item.get_type(result_new)
+	-- result_new exists (checked above), so the type is "item" or "fluid"
+	local type_name = apm.lib.utils.item.get_type(result_new) --[[@as "item"|"fluid"]]
 
 	if not amount_multi then
 		amount_multi = 1
 	end
 
-	-- simple recipe (results)
-	if recipe.results ~= nil and recipe.normal == nil and recipe.expensive == nil then
+	if recipe.results ~= nil then
 		for k, v in pairs(recipe.results) do
-			if v[1] == result_old or v.name == result_old then
+			if v.name == result_old then
 				recipe.results[k].type = type_name
 				recipe.results[k].name = result_new
 

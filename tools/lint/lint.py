@@ -205,6 +205,14 @@ LUALS_TYPE_NOISE = [
     # prototype types live in the "data" namespace, which LuaLS resolves inconsistently
     ("assign-type-mismatch", r"^Cannot assign `data\.(\w+)` to `\1\??`"),
     ("assign-type-mismatch", r"^Cannot assign `string` to `\(data\.\w+\)\?`"),
+    ("param-type-mismatch", r"^Cannot assign `string` to parameter `data\.\w+`"),
+    # ID aliases (ItemID, FluidID, TechnologyID, ...) exist in both APIs with the same name: the
+    # prototype one is `string`, the runtime one also allows Lua objects, and LuaLS merges them
+    ("param-type-mismatch", r"^Cannot assign `string(\|(Lua\w+|Fluid))+(\.\.\.\(\+\d+\))?` to parameter `string\??`"),
+    ("assign-type-mismatch", r"^Cannot assign `string(\|(Lua\w+|Fluid))+(\.\.\.\(\+\d+\))?` to `string\??`"),
+    ("return-type-mismatch", r"has a type of `string\??`, returning value of type `string(\|(Lua\w+|Fluid))+(\.\.\.\(\+\d+\))?`"),
+    # LocalisedString: the runtime alias (numbers, booleans, Lua objects) merged with the prototype one
+    ("assign-type-mismatch", r"to `(LocalisedString\.\.\.\|)?(string\|)?LuaGuiElement(\|LuaItemStack)?`\.?$"),
 ]
 
 

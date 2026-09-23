@@ -30,7 +30,6 @@ require('prototypes.main.entities.steam_engines')
 require('prototypes.main.entities.inline_storage_tank')
 require('prototypes.main.entities.steam_inserters')
 --require('prototypes.main.entities.transport_belts')
--- require('prototypes.main.entities.lamp')
 
 require('prototypes.main.tiles')
 

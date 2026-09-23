@@ -257,7 +257,7 @@ end
 local function generate_radioactive_table()
 	add_item("uranium-235", 2)
 	add_item("uranium-fuel-cell", 2)
-	add_item("used-up-uranium-fuel-cell", 3)
+	add_item("depleted-uranium-fuel-cell", 3)
 end
 
 function radiation_script.on_init()

@@ -50,7 +50,7 @@ end
 ---@param value V
 ---@return boolean added
 local function add(self, value)
-	local id = value.id
+	local id = (value --[[@as DLLItem]]).id
 
 	if self.index_of[id] then
 		return false

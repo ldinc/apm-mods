@@ -18,7 +18,7 @@ dofile("science.lua")
 local M = apm.lib.utils.technology
 local function expect(label, actual, wanted)
 	if actual == wanted then print("PASS: " .. label)
-	else print("FAIL: " .. label .. "\n  got:    " .. tostring(actual) .. "\n  wanted: " .. tostring(wanted)) os.exit(1) end
+	else print("FAIL: " .. label .. "\n  got:    " .. tostring(actual) .. "\n  wanted: " .. tostring(wanted)) error("test failed", 0) end
 end
 
 -- default tiers

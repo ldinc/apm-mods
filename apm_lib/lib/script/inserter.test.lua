@@ -164,7 +164,7 @@ local function expect(label, actual, wanted)
     print("PASS: " .. label)
   else
     print("FAIL: " .. label .. "\n  got:    " .. tostring(actual) .. "\n  wanted: " .. tostring(wanted))
-    os.exit(1)
+    error("test failed", 0)
   end
 end
 

@@ -108,7 +108,7 @@ end
 --- [item.get_type]
 ---@param item_name string
 ---@param prefer_item boolean?
----@return string?
+---@return "item"|"fluid"|nil
 function apm.lib.utils.item.get_type(item_name, prefer_item)
 	local result
 	local count = 0
@@ -146,29 +146,28 @@ function apm.lib.utils.item.add.radioactive_description(item_name, level)
 		return
 	end
 
-	local item = data.raw.item[item_name]
-
 	local loc_string = "apm_radioactive_item"
 
 	if level then
 		loc_string = "apm_radioactive_item_" .. level
 	end
 
-	--- TODO: rework ... seems strange
-	if item.localised_description then
-		if type(item.localised_description) == "string" then
-			local old = item.localised_description
+	---@type LocalisedString
+	local radioactive = { loc_string }
+	local old = item.localised_description
 
-			item.localised_description = { old }
-		elseif type(item.localised_description) == "table" then
-			if #item.localised_description > 0 and type(item.localised_description[1]) == string then
-				table.insert(item.localised_description, loc_string)
-			else
-				table.insert(item.localised_description, { loc_string })
-			end
-		end
+	-- The radioactive line goes below the existing description:
+	-- - an explicit localised_description (a literal string or a localised string) is kept;
+	-- - otherwise the default "item-description.<name>" is kept when the locale has it
+	--   ("?" takes the first alternative that can be translated), else only the radioactive line.
+	if old ~= nil then
+		item.localised_description = { "", old, "\n", radioactive }
 	else
-		item.localised_description = { loc_string }
+		item.localised_description = {
+			"?",
+			{ "", { "item-description." .. item.name }, "\n", radioactive },
+			radioactive,
+		}
 	end
 
 	if APM_CAN_LOG_INFO then

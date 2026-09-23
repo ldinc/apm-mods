@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.24
+Date: 24.09.2026
+  Changes:
+    - Removed the unused burner lamp prototype (a 2.x lamp cannot have a burner) and the empty Space Exploration patch block.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.23
 Date: 23.09.2026
   Changes:

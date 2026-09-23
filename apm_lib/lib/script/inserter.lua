@@ -22,7 +22,8 @@ local scratch_work    = { name = "", count = 0, quality = nil }
 function inserter_script.alloc_defenitions()
 	if not storage.inserters then storage.inserters = {} end
 
-	local q = storage.inserters.queue
+	-- a queue from before the packed-array rewrite (fields nodes/head) is replaced
+	local q = storage.inserters.queue --[[@as table?]]
 	if not q or q.values == nil or q.nodes ~= nil or q.head ~= nil then
 		---@type DLL<integer, QueueItem>
 		storage.inserters.queue = dllist.new()
@@ -84,7 +85,7 @@ end
 -- Fields:
 --   names      : table<string, true> | nil   -- set of filter item names, nil if no slots
 --   mode_allow : boolean                      -- true = whitelist, false = blacklist
---   ash_in_set : boolean                      -- fast path used by the burnt-result loop
+-- The quality part of a filter is ignored: a filter matches every quality of its item.
 local scratch_filter_state = { names = nil, mode_allow = true }
 
 --- Build (or refresh) the filter decision for an inserter. Call once per
