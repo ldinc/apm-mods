@@ -50,7 +50,7 @@ local setting = {
 	"aa_a"
 }
 
-if mods.apm_power then
+if mods["apm_power_ldinc"] then
 	setting.default_value = true
 	log("Info: settings.lua: apm_lib_inserter_functions.default_value is: true")
 else

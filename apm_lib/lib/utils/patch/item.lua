@@ -2,8 +2,8 @@ if not apm.lib.utils then apm.lib.utils = {} end
 if not apm.lib.utils.patch then apm.lib.utils.patch = {} end
 if not apm.lib.utils.patch.item then apm.lib.utils.patch.item = {} end
 
-require('__apm_lib_ldinc__.lib.utils.prototypes')
-require('__apm_lib_ldinc__.lib.log')
+require("__apm_lib_ldinc__.lib.utils.prototypes")
+require("__apm_lib_ldinc__.lib.log")
 
 ---@param tag string
 ---@param old_item_name string
@@ -31,6 +31,7 @@ function apm.lib.utils.patch.item.replace(tag, old_item_name, new_item_name)
 
 			while missing > 0 do
 				local removed = entity.remove_item(old_item_name)
+				if removed == 0 then break end -- e.g. only non-normal quality left: remove_item takes normal only
 
 				if APM_CAN_LOG_INFO then
 					log(

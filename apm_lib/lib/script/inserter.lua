@@ -8,7 +8,7 @@ local inserter_script = {}
 local scratch_leech   = { name = "", count = 0, quality = nil }
 local scratch_chain   = { name = "", count = 0 }
 local scratch_fuel    = { name = "", count = 1, quality = nil }
-local scratch_ash     = { name = "apm_generic_ash", count = 0 }
+local ASH_NAME        = "apm_generic_ash"
 local scratch_work    = { name = "", count = 0, quality = nil }
 
 ---@class QueueItem
@@ -139,21 +139,6 @@ local function filter_passes(item_name)
 	end
 	local in_set = names[item_name] == true
 	return in_set == scratch_filter_state.mode_allow
-end
-
-local force_bonus_cache = setmetatable({}, { __mode = "v" })
-
-local function get_force_bonus(force, bulk)
-	local entry = force_bonus_cache[force.name]
-	if not entry then
-		entry = { force = force }
-		force_bonus_cache[force.name] = entry
-	end
-	if bulk then
-		return force.bulk_inserter_capacity_bonus
-	else
-		return force.inserter_stack_size_bonus
-	end
 end
 
 ---@param want_pickup_item_count integer
@@ -375,7 +360,9 @@ end
 ---@param from LuaEntity?
 ---@param to LuaEntity?
 local function try_transfer_ash_from_to(from, to)
-	if not from or not to then return end
+	if not from or not to or not from.valid or not to.valid then return end
+	-- the ash item comes from apm_power; without it there is nothing to move
+	if not prototypes.item[ASH_NAME] then return end
 
 	local to_burner   = to.burner
 	local from_burner = from.burner
@@ -384,14 +371,29 @@ local function try_transfer_ash_from_to(from, to)
 
 	local to_brr   = to_burner.burnt_result_inventory
 	local from_brr = from_burner.burnt_result_inventory
+	if not to_brr or not from_brr then return end
 	if not from_brr.is_full() or to_brr.is_full() then return end
 
-	local can_be_inserted = to_brr.get_insertable_count("apm_generic_ash")
-	if can_be_inserted >= storage.inserters.settings.ash_size then
-		scratch_ash.count = apm.lib.features.stack_size.ash
-		local added = to_brr.insert(scratch_ash)
-		scratch_ash.count = added
-		from_brr.remove(scratch_ash)
+	-- Move only ash that is really in the source (per quality): remove first, then insert,
+	-- and give back what did not fit. Never calls remove/insert with count 0
+	-- ("count must be positive") and never creates ash from nothing.
+	for _, content in pairs(from_brr.get_contents()) do
+		if content.name == ASH_NAME then
+			local item = { name = ASH_NAME, quality = content.quality }
+			local room = to_brr.get_insertable_count(item)
+			if room >= storage.inserters.settings.ash_size then
+				local count = math.min(content.count, room, apm.lib.features.stack_size.ash)
+				if count > 0 then
+					local removed = from_brr.remove({ name = ASH_NAME, quality = content.quality, count = count })
+					if removed > 0 then
+						local added = to_brr.insert({ name = ASH_NAME, quality = content.quality, count = removed })
+						if added < removed then
+							from_brr.insert({ name = ASH_NAME, quality = content.quality, count = removed - added })
+						end
+					end
+				end
+			end
+		end
 	end
 end
 
@@ -927,7 +929,8 @@ function inserter_script.on_tick(tick)
 		return
 	end
 
-	for _ = 1, storage.inserters.settings.batch_size, 1 do
+	-- never more than the queue holds: a small queue would process the same inserters twice per tick
+	for _ = 1, math.min(storage.inserters.settings.batch_size, inserter_size), 1 do
 		local t_object, pickup_target, drop_target = get_next_inserter()
 
 		if t_object then

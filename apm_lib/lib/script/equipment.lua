@@ -189,7 +189,7 @@ local function check_burnt_fuel_inventory_is_blocked(fuel_inventory, burnt_fuel_
 		local item_fuel = fuel_inventory[i]
 
 		if item_fuel.valid_for_read then
-			table.insert(fuel_items, i, item_fuel.name)
+			fuel_items[i] = item_fuel.name
 		end
 	end
 
@@ -373,7 +373,9 @@ local function equipment_manager_residues(player_inventory, equipment)
 		if player_inventory.can_insert(item_stack) then
 			local inserted = player_inventory.insert(item_stack)
 
-			equipment_inventory.remove({ name = item.name, count = inserted })
+			if inserted > 0 then
+				equipment_inventory.remove({ name = item.name, count = inserted, quality = item_stack.quality }) -- same quality as inserted
+			end
 		end
 	end
 end

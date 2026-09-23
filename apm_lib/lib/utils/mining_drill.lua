@@ -118,7 +118,7 @@ function apm.lib.utils.mining_drill.burner.overhaul(mining_drill_name, level)
 		return
 	end
 
-	if not mining_drill.energy_source.type == "burner" then
+	if mining_drill.energy_source.type ~= "burner" then
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
 				"burner.overhaul()",

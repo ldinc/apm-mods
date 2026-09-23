@@ -251,7 +251,7 @@ local function replace_ingredient(recipe_name, base, ingredient_old, ingredient_
 			replaced = true
 		end
 
-		if v.name == ingredient_old then
+		if v.name == ingredient_new then
 			ingredient_new_key = k
 		end
 	end

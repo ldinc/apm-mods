@@ -212,7 +212,8 @@ local function check_recipes(force)
 	log("Info: execute: check_recipes() for force: " .. tostring(force.name))
 
 	for _, surface in pairs(game.surfaces) do
-		local entities = surface.find_entities_filtered({ force = force, type = { "assembling-machine", "furnace" } })
+		-- only assembling machines: LuaEntity.set_recipe does not exist for furnaces (they pick recipes themselves)
+		local entities = surface.find_entities_filtered({ force = force, type = "assembling-machine" })
 
 		for _, entity in pairs(entities) do
 			local recipe = entity.get_recipe()

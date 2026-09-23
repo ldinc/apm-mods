@@ -1,4 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.15
+Date: 23.09.2026
+  Bugfixes:
+    - [inserter] Fixed a crash  in the ash chaining (try_transfer_ash_from_to).
+    - [inserter] Bulk inserters use the bulk capacity bonus again (a second get_force_bonus hid the cached one).
+    - [inserter] Destroyed inserters are removed from the queue on on_entity_died again.
+    - [settings] apm_lib_inserter_functions defaults to true with apm_power again (checked the wrong mod name).
+    - [storage] Fixed a crash when a container is destroyed by a character without a player.
+    - [init] Fixed a crash in the recipe check on furnaces (set_recipe exists only for assembling machines).
+    - [equipment] Fixed a crash for burner equipment with more than one fuel slot and an empty first slot.
+    - [apm.lib.utils.recipe.ingredient.replace] Merging into an ingredient that already exists no longer drops the old amount.
+    - [apm.lib.utils.recipe.result.mod] Amount 0 no longer adds a zero result when the result is missing.
+    - [apm.lib.utils.recipe.overwrite.group] Accepts (name, subgroup, order) as well as (name, group, subgroup, order).
+    - [apm.lib.utils.recipe.overwrite.localised_description] Checked the item instead of the recipe.
+    - [builders] Removed keys that Factorio 2.x ignores: smoke slow_down_factor, and smoke/burns_fluid/scale_fluid_usage inside fluid boxes.
+    - [equipment] Burnt results of non-normal quality were copied to the player instead of moved.
+    - [inserter] A queue smaller than the batch size processed the same inserters several times per tick.
+    - [patch] Replacing items no longer loops forever when only non-normal quality items are left.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.14
 Date: 24.08.2026
   Bugfixes:

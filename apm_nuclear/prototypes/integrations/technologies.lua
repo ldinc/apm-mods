@@ -66,6 +66,21 @@ if mods.angelspetrochem and mods.angelsrefining and apm_nuclear_compat_angel the
 	apm.lib.utils.technology.force.recipe_for_unlock("nuclear-fuel-reprocessing", "apm_phosphorpentachlorid")
 	apm.lib.utils.technology.force.recipe_for_unlock("nuclear-fuel-reprocessing", "apm_phosphoroxychlorid")
 	apm.lib.utils.technology.force.recipe_for_unlock("nuclear-fuel-reprocessing", "apm_phosphoroxychlorid-barrel")
+	apm.lib.utils.technology.force.recipe_for_unlock("nuclear-fuel-reprocessing", "empty-apm_phosphoroxychlorid-barrel")
+else
+	-- the phosphor chemistry is only used with Angel's; without it nothing unlocks these recipes
+	for _, recipe_name in pairs({
+		"apm_phosphorpentachlorid",
+		"apm_phosphoroxychlorid",
+		"apm_phosphoroxychlorid-barrel",
+		"empty-apm_phosphoroxychlorid-barrel",
+	}) do
+		local recipe = data.raw.recipe[recipe_name]
+		if recipe then
+			recipe.hidden = true
+			recipe.hidden_in_factoriopedia = true
+		end
+	end
 end
 
 -- Earendel -------------------------------------------------------------------

@@ -145,7 +145,7 @@ end
 ---@param science_pack string
 ---@return boolean
 local function check_for_science_packs(lab, science_pack)
-	for s in pairs(lab.inputs) do
+	for _, s in pairs(lab.inputs) do
 		if s == science_pack then
 			return true
 		end

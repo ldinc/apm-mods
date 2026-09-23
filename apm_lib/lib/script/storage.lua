@@ -99,12 +99,11 @@ local function container(entity, cause)
 	entity.surface.spill_inventory(param)
 
 	if cause ~= nil then
-		if cause.type == "character" or cause.type == "player" then
-			local force = cause.player.force
-			local player_name = cause.player.name
-			local msg = { "apm_msg_storage_died", player_name }
+		local player = cause.valid and cause.type == "character" and cause.player
+		if player then -- characters without a connected player have no .player
+			local msg = { "apm_msg_storage_died", player.name }
 
-			core.send_msg_to_force(force, msg)
+			core.send_msg_to_force(player.force, msg)
 		end
 	end
 end

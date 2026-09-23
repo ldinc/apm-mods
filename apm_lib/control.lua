@@ -6,7 +6,7 @@ local initial = require("lib.local.initial")
 local updates = require("lib.local.updates")
 local inserter = require("lib.script.inserter")
 local radiation = require("lib.script.radiation")
-local storage = require("lib.script.storage")
+local storage_script = require("lib.script.storage")
 local equipment = require("lib.script.equipment")
 local init = require("lib.script.init")
 
@@ -22,7 +22,7 @@ local function event_on_init()
 	initial.run()
 	inserter.on_init()
 	radiation.on_init()
-	storage.on_init()
+	storage_script.on_init()
 	equipment.on_init()
 	inserter.register_to_mod_events()
 end
@@ -34,7 +34,7 @@ end
 local function event_on_load()
 	inserter.on_load()
 	radiation.on_load()
-	storage.on_load()
+	storage_script.on_load()
 	equipment.on_load()
 	inserter.register_to_mod_events()
 end
@@ -48,7 +48,7 @@ local function event_on_update()
 	updates.run()
 	inserter.on_update()
 	radiation.on_update()
-	storage.on_update()
+	storage_script.on_update()
 	equipment.on_update()
 
 	-- apm.lib.features.runtime.update()
@@ -78,7 +78,7 @@ end
 local function event_mod_setting_changed(event)
 	inserter.on_update()
 	radiation.on_update()
-	storage.on_update()
+	storage_script.on_update()
 end
 
 -- Function -------------------------------------------------------------------
@@ -136,7 +136,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function event_on_entity_died(event)
-	storage.died(event)
+	storage_script.died(event)
 end
 
 -- Function -------------------------------------------------------------------
@@ -256,7 +256,6 @@ end
 local destroy_events = {
 	defines.events.on_robot_mined_entity,
 	defines.events.on_player_mined_entity,
-	defines.events.on_entity_died,
 	defines.events.script_raised_destroy,
 	defines.events.on_space_platform_mined_entity,
 }
@@ -277,7 +276,18 @@ script.on_event(defines.events.on_runtime_mod_setting_changed, function(event) e
 script.on_event(defines.events.on_entity_cloned, function(event) event_on_entity_cloned(event) end)
 script.on_event(defines.events.on_player_rotated_entity, function(event) event_on_rotate(event) end)
 script.on_event(defines.events.on_entity_settings_pasted, function(event) event_on_entity_settings_pasted(event) end)
-script.on_event(defines.events.on_entity_died, function(event) event_on_entity_died(event) end, entity_died_filter)
+
+-- on_entity_died: one handler for inserters (queue) and containers (storage spill); a second
+-- script.on_event for the same event would replace the first
+local died_filter = {}
+for _, f in ipairs(entity_build_filter) do died_filter[#died_filter + 1] = f end
+for _, f in ipairs(entity_died_filter) do died_filter[#died_filter + 1] = f end
+
+script.on_event(defines.events.on_entity_died, function(event)
+	on_destroy_entity(event)
+	event_on_entity_died(event)
+end, died_filter)
+
 script.on_event(defines.events.on_lua_shortcut, function(event) event_on_lua_shortcut(event) end)
 script.on_event(defines.events.on_player_placed_equipment, function(event) event_on_player_placed_equipment(event) end)
 script.on_event(defines.events.on_player_removed_equipment, function(event) event_on_player_removed_equipment(event) end)

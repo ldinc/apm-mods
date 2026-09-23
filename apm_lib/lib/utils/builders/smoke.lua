@@ -14,7 +14,6 @@ apm.lib.utils.builders.smoke.light = {
 	west_position = smoke_position,
 	starting_vertical_speed = 0.08,
 	starting_frame_deviation = 60,
-	slow_down_factor = 1,
 }
 
 
@@ -29,7 +28,6 @@ apm.lib.utils.builders.smoke.dark = {
 	west_position = smoke_position,
 	starting_vertical_speed = 0.08,
 	starting_frame_deviation = 60,
-	slow_down_factor = 1,
 }
 
 local smoke_position_a = { -0.58, -0.85 }
@@ -48,7 +46,6 @@ apm.lib.utils.builders.smoke.burner.t0 = {
 		west_position = smoke_position_a,
 		starting_vertical_speed = 0.09,
 		starting_frame_deviation = 60,
-		slow_down_factor = 1,
 	},
 	{
 		name = "apm_dark_smoke",
@@ -60,7 +57,6 @@ apm.lib.utils.builders.smoke.burner.t0 = {
 		west_position = smoke_position_b,
 		starting_vertical_speed = 0.08,
 		starting_frame_deviation = 64,
-		slow_down_factor = 1,
 	},
 	{
 		name = "apm_dark_smoke",
@@ -72,7 +68,6 @@ apm.lib.utils.builders.smoke.burner.t0 = {
 		west_position = smoke_position_c,
 		starting_vertical_speed = 0.07,
 		starting_frame_deviation = 68,
-		slow_down_factor = 1,
 	},
 }
 apm.lib.utils.builders.smoke.burner.t1 = {
@@ -86,7 +81,6 @@ apm.lib.utils.builders.smoke.burner.t1 = {
 		west_position = smoke_position_a,
 		starting_vertical_speed = 0.09,
 		starting_frame_deviation = 60,
-		slow_down_factor = 1,
 	},
 	{
 		name = "apm_dark_smoke",
@@ -98,7 +92,6 @@ apm.lib.utils.builders.smoke.burner.t1 = {
 		west_position = smoke_position_b,
 		starting_vertical_speed = 0.08,
 		starting_frame_deviation = 64,
-		slow_down_factor = 1,
 	},
 	{
 		name = "apm_dark_smoke",
@@ -110,7 +103,6 @@ apm.lib.utils.builders.smoke.burner.t1 = {
 		west_position = smoke_position_c,
 		starting_vertical_speed = 0.07,
 		starting_frame_deviation = 68,
-		slow_down_factor = 1,
 	},
 }
 apm.lib.utils.builders.smoke.burner.t2 = {
@@ -124,7 +116,6 @@ apm.lib.utils.builders.smoke.burner.t2 = {
 		west_position = smoke_position_a,
 		starting_vertical_speed = 0.09,
 		starting_frame_deviation = 60,
-		slow_down_factor = 1,
 	},
 	{
 		name = "apm_dark_smoke",
@@ -136,7 +127,6 @@ apm.lib.utils.builders.smoke.burner.t2 = {
 		west_position = smoke_position_b,
 		starting_vertical_speed = 0.08,
 		starting_frame_deviation = 64,
-		slow_down_factor = 1,
 	},
 	{
 		name = "apm_dark_smoke",
@@ -148,7 +138,6 @@ apm.lib.utils.builders.smoke.burner.t2 = {
 		west_position = smoke_position_c,
 		starting_vertical_speed = 0.07,
 		starting_frame_deviation = 68,
-		slow_down_factor = 1,
 	},
 }
 
@@ -160,8 +149,7 @@ function apm.lib.utils.builders.smoke.new(
 		position,
 		positions,
 		starting_vertical_speed,
-		starting_frame_deviation,
-		slow_down_factor
+		starting_frame_deviation
 )
 	if not name then
 		name = "apm_smoke"
@@ -192,10 +180,6 @@ function apm.lib.utils.builders.smoke.new(
 		starting_frame_deviation = 60
 	end
 
-	if not slow_down_factor then
-		slow_down_factor = 1
-	end
-
 	---@type SmokeSource
 	local smoke = {
 		name = name,
@@ -208,7 +192,6 @@ function apm.lib.utils.builders.smoke.new(
 		east_position = positions.east,
 		starting_vertical_speed = starting_vertical_speed,
 		starting_frame_deviation = starting_frame_deviation,
-		slow_down_factor = slow_down_factor,
 	}
 
 	return smoke

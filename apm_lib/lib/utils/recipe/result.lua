@@ -275,7 +275,7 @@ function apm.lib.utils.recipe.result.mod(recipe_name, result_name, result_amount
 				end
 			end
 		end
-		if seen_result ~= true then
+		if seen_result ~= true and result_amount and result_amount > 0 then -- amount 0 means "remove"
 			table.insert(recipe.results, { type = type_name, name = result_name, amount = result_amount })
 
 			if APM_CAN_LOG_INFO then

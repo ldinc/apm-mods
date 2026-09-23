@@ -11,9 +11,9 @@ APM_LOG_HEADER(self)
 local item = {
 	type = "item",
 	name = "apm_fluorite_ore",
-	icons = {
-		apm.nuclear.icons.fluorite
-	},
+	-- icon only: the shared definition also carries sprite keys (size/filename) and the ground-sprite scale
+	icon = apm.nuclear.icons.fluorite.icon,
+	icon_size = 64,
 	pictures = {
 		apm.nuclear.icons.fluorite,
 		apm.nuclear.icons.fluorite_1,

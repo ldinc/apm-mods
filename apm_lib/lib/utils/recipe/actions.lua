@@ -198,10 +198,18 @@ function apm.lib.utils.recipe.energy_required.mod(recipe_name, value)
 end
 
 --- [recipe.overwrite.group]
+--- Called as (recipe_name, subgroup, order) or (recipe_name, group, subgroup, order);
+--- a recipe has no group of its own (it comes from its subgroup), so `group` is ignored.
 ---@param recipe_name string
----@param subgroup string
+---@param group string
+---@param subgroup string?
 ---@param order string?
 function apm.lib.utils.recipe.overwrite.group(recipe_name, group, subgroup, order)
+	if order == nil then
+		-- 3-argument form: (recipe_name, subgroup, order)
+		subgroup, order = group, subgroup
+	end
+
 	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
 	if not ok then
@@ -232,7 +240,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 function apm.lib.utils.recipe.overwrite.localised_description(recipe_name, localised_description)
-	if not apm.lib.utils.item.exist(recipe_name) then return end
+	if not apm.lib.utils.recipe.exist(recipe_name) then return end
 	local recipe = data.raw.recipe[recipe_name]
 
 	recipe.localised_description = localised_description

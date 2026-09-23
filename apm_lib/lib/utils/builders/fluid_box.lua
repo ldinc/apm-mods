@@ -56,7 +56,6 @@ function apm.lib.utils.builders.fluid_box.new_steam_input_3way(volume, min_t, ma
 		minimum_temperature = min_t,
 		maximum_temperature = max_t,
 
-		smoke = apm.lib.utils.builders.smoke.light,
 
 		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
 		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
@@ -101,9 +100,6 @@ function apm.lib.utils.builders.fluid_box.new_steam_input_4way(volume, min_t, ma
 		filter = "steam",
 		minimum_temperature = min_t,
 		maximum_temperature = max_t,
-		burns_fluid = false,
-		scale_fluid_usage = true,
-		smoke = apm.lib.utils.builders.smoke.light,
 
 		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
 		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
