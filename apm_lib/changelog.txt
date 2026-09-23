@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.17
+Date: 23.09.2026
+  Bugfixes:
+    - [inserter] Fuel chaining, leeching and burnt-result pickup keep the item quality.
+    - [inserter] Items are moved only into an empty hand and only as many as were really removed; nothing is lost or created.
+    - [inserter] Burner inserters leech only fuel they can burn (no nutrients, fuel cells, ...), from the pickup or the drop target.
+    - [inserter] Stolen fuel goes back when the inserter cannot take it.
+    - [inserter] Quality-only inserter filters no longer crash.
+    - [inserter] Stack bonus cache is refreshed on configuration change and on_technology_effects_reset.
+    - [radiation] Levels are clamped to 1..3 (level 0 from the remote interface crashed the damage tick).
+    - [radiation] The damage message shows the damage after resistances, rounded.
+  Optimizations:
+    - Runtime setting changes of other mods no longer trigger a full inserter rescan.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.16
 Date: 23.09.2026
   Bugfixes:

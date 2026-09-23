@@ -11,11 +11,11 @@ if not apm.lib.utils.technology.remove then apm.lib.utils.technology.remove = {}
 function apm.lib.utils.technology.has.science_pack(technology_name, science_pack_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or technology == nil then
 		return false
 	end
 
-	if not technology.unit then
+	if technology.unit == nil then
 		return false
 	end
 

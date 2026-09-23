@@ -14,6 +14,14 @@ function init.alloc_defenitions()
 	if not storage.apm.lib.technologies.conditional_recipes then storage.apm.lib.technologies.conditional_recipes = {} end
 end
 
+function init.reset_lists()
+	init.alloc_defenitions()
+
+	storage.apm.lib.technologies.list                = {}
+	storage.apm.lib.technologies.conditional         = {}
+	storage.apm.lib.technologies.conditional_recipes = {}
+end
+
 ---@param unlock_technology string
 ---@param parent_technologies TechnologyPrototype | string
 function init.add_technology_conditional(unlock_technology, parent_technologies)
@@ -129,7 +137,7 @@ local function activate_technologies_conditional_recipes(force)
 			for _, p_recipe in pairs(cond_recipes) do
 				local cond_recipe = recipes[p_recipe]
 
-				if cond_recipe.enabled then
+				if cond_recipe and cond_recipe.enabled then
 					tech.researched = true
 
 					log("-> for force: " ..

@@ -1,9 +1,3 @@
-require("lib.log")
-
-local self = "apm_lib/lib/definitions.lua"
-
-APM_LOG_HEADER(self)
-
 if apm.lib.icons == nil then apm.lib.icons = {} end
 if apm.lib.icons.path == nil then apm.lib.icons.path = {} end
 if apm.lib.icons.dynamics == nil then apm.lib.icons.dynamics = {} end

@@ -24,6 +24,26 @@ local radiation_sound_paths = {
 	[3] = "c",
 }
 
+local MIN_LEVEL = 1
+local MAX_LEVEL = 3
+
+
+---@param level any
+---@return integer
+local function normalize_level(level)
+	level = math.floor(tonumber(level) or 2)
+
+	if level < MIN_LEVEL then
+		return MIN_LEVEL
+	end
+
+	if level > MAX_LEVEL then
+		return MAX_LEVEL
+	end
+
+	return level
+end
+
 --- Migrates the radiation storage layout to STORAGE_VERSION.
 --- Called from on_init and on_update (on_configuration_changed).
 local function migrate_storage()
@@ -123,16 +143,20 @@ function radiation_script.alloc_definitions()
 	end
 end
 
---- Removes entries whose item prototype no longer exists.
+--- Removes entries whose item prototype no longer exists and fixes invalid levels.
 local function validate_item_list()
-	for item_name, _ in pairs(ensure_items()) do
+	local items = ensure_items()
+
+	for item_name, level in pairs(items) do
 		if not prototypes.item[item_name] then
-			storage.radiation.items[item_name] = nil
+			items[item_name] = nil
 
 			log(APM_MSG_ERROR(
 				"radiation.validate_item_list",
 				"Invalid radioactive item was removed [" .. tostring(item_name) .. "]"
 			))
+		elseif normalize_level(level) ~= level then
+			items[item_name] = normalize_level(level)
 		end
 	end
 
@@ -157,8 +181,15 @@ end
 ---@param level integer?
 ---@return boolean
 local function add_item(item_name, level)
-	if not level then
-		level = 2
+	local requested = level
+	level = normalize_level(level)
+
+	if requested ~= nil and requested ~= level and APM_CAN_LOG_WARN then
+		log(APM_MSG_WARNING(
+			"add_item()",
+			'item: "' .. tostring(item_name) .. '" level ' .. tostring(requested) ..
+			" is not in " .. MIN_LEVEL .. ".." .. MAX_LEVEL .. ", using " .. level
+		))
 	end
 
 	local items = ensure_items()
@@ -263,19 +294,22 @@ end
 local function damage_to_character_from_item(player, character, item_name, count)
 	if not player or not character then return end
 
-	local item_rtype = storage.radiation.items[item_name]
-	local rnd_min = 2 ^ item_rtype
-	local rnd_max = rnd_min * 2 * item_rtype
+	local level = normalize_level(storage.radiation.items[item_name])
+	local rnd_min = math.floor(2 ^ level)
+	local rnd_max = rnd_min * 2 * level
 	local damage = math.random(rnd_min, rnd_max) * storage.radiation.radiation_dmg_multiplier
 
 	if storage.radiation.radiation_dmg_based_on_stack and count then
 		damage = damage * count
 	end
 
-	character.damage(damage, game.forces.neutral)
+	if damage <= 0 then return end
+
+	-- damage type defaults to "impact"; the returned value is after resistances
+	local dealt = character.damage(damage, game.forces.neutral)
 
 	---@type LocalisedString
-	local msg = { "apm_msg_radiation_dmg", damage, item_name }
+	local msg = { "apm_msg_radiation_dmg", string.format("%.1f", dealt or damage), item_name }
 
 	core.send_dmg_msg_to_player(player, msg)
 end
@@ -283,13 +317,8 @@ end
 ---@param character LuaEntity
 ---@param level integer
 local function play_radiation_sound(character, level)
-	if level < 1 then
-		level = 1
-	elseif level > 3 then
-		level = 3
-	end
+	level = normalize_level(level)
 
-	-- 2.1 SoundPath: the sound prototype name, raw file paths are not supported
 	character.surface.play_sound({
 		path = "radioactive_" .. radiation_sound_paths[level] .. "_" .. tostring(math.random(3)),
 		position = character.position,

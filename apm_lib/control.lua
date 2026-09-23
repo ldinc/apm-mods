@@ -76,6 +76,10 @@ end
 --
 -- ----------------------------------------------------------------------------
 local function event_mod_setting_changed(event)
+	if not event.setting or event.setting:sub(1, 8) ~= "apm_lib_" then
+		return
+	end
+
 	inserter.on_update()
 	radiation.on_update()
 	storage_script.on_update()
@@ -302,6 +306,7 @@ script.on_event(defines.events.on_research_finished, function(event) event_on_re
 script.on_event(defines.events.on_research_reversed, function(event) event_on_research_reversed(event) end)
 script.on_event(defines.events.on_force_created, function(event) event_on_force_created(event) end)
 script.on_event(defines.events.on_forces_merged, function(event) event_on_forces_merged(event) end)
+script.on_event(defines.events.on_technology_effects_reset, function(event) inserter.refresh_force_bonus(event.force) end)
 
 script.on_nth_tick(60 * 10, function(event) on_nth_tick(event) end)
 

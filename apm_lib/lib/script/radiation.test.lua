@@ -25,19 +25,31 @@ apm = { lib = {} }
 storage = {}
 game = { tick = 0, forces = { neutral = {} } }
 remote = { add_interface = function(name, t) _G.__remote = t end }
-prototypes = { item = {
-	["uranium-235"] = true, ["uranium-fuel-cell"] = true, ["used-up-uranium-fuel-cell"] = true,
-	["legacy-item"] = true, ["test-item"] = true,
-} }
+prototypes = {
+	item = {
+		["uranium-235"] = true,
+		["uranium-fuel-cell"] = true,
+		["used-up-uranium-fuel-cell"] = true,
+		["legacy-item"] = true,
+		["test-item"] = true,
+	}
+}
 log = function() end
-APM_CAN_LOG_INFO = false APM_CAN_LOG_WARN = false
-APM_MSG_INFO = function(...) return "" end APM_MSG_WARNING = function(...) return "" end APM_MSG_ERROR = function(...) return "" end
+APM_CAN_LOG_INFO = false
+APM_CAN_LOG_WARN = false
+APM_MSG_INFO = function(...) return "" end
+APM_MSG_WARNING = function(...) return "" end
+APM_MSG_ERROR = function(...) return "" end
 
 local radiation = dofile("radiation.lua")
 
 local function expect(label, actual, wanted)
-	if actual == wanted then print("PASS: " .. label)
-	else print("FAIL: " .. label .. "\n  got:    " .. tostring(actual) .. "\n  wanted: " .. tostring(wanted)) os.exit(1) end
+	if actual == wanted then
+		print("PASS: " .. label)
+	else
+		print("FAIL: " .. label .. "\n  got:    " .. tostring(actual) .. "\n  wanted: " .. tostring(wanted))
+		os.exit(1)
+	end
 end
 
 -- migration from the legacy storage table on init
@@ -62,7 +74,10 @@ local character = {
 	position = { 0, 0 },
 	get_main_inventory = function() return {} end,
 	get_item_count = function(filter) return ({ ["test-item"] = 5, ["uranium-235"] = 10 })[filter.name] or 0 end,
-	damage = function(dmg, force) table.insert(dmgs, { dmg = dmg, force = force }) end,
+	damage = function(dmg, force)
+		table.insert(dmgs, { dmg = dmg, force = force })
+		return dmg
+	end,
 	surface = { play_sound = function(spec) table.insert(sounds, spec) end },
 }
 _G.__players = { { player = { print = function() end }, character = character } }
@@ -82,6 +97,20 @@ storage.radiation.radiation_dmg_based_on_stack = true
 dmgs, sounds = {}, {}
 radiation.on_tick()
 expect("two damages in stack mode", #dmgs, 2)
+
+-- levels outside 1..3 are clamped (level 0 made math.random(1, 0) fail)
+expect("level 0 accepted", _G.__remote.add_item("test-item", 0), true)
+expect("level 0 clamped to 1", storage.radiation.items["test-item"], 1)
+expect("level 7 clamped to 3", (_G.__remote.add_item("test-item", 7) and storage.radiation.items["test-item"]), 3)
+expect("level 2.6 floored", (_G.__remote.add_item("test-item", 2.6) and storage.radiation.items["test-item"]), 2)
+expect("default level", (_G.__remote.add_item("test-item") and storage.radiation.items["test-item"]), 2)
+storage.radiation.items["test-item"] = -4 -- stored by an old version
+dmgs = {}
+radiation.on_tick()
+expect("bad stored level still damages", #dmgs >= 1, true)
+radiation.on_update()
+expect("bad stored level fixed on update", storage.radiation.items["test-item"], 1)
+_G.__remote.add_item("test-item", 3)
 
 -- on_update is idempotent
 local count_before = 0

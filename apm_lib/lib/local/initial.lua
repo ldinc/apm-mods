@@ -7,6 +7,8 @@ require("lib.utils.mod")
 --
 -- ----------------------------------------------------------------------------
 local function initial_apm_mods()
+	init.reset_lists()
+
 	-- apm_power
 	if apm.lib.utils.mod.enabled("apm_power_ldinc") then
 		init.add_technology_conditional_recipe("apm_wood_liquefaction",

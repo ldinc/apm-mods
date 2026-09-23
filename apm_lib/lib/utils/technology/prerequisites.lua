@@ -9,7 +9,7 @@ if not apm.lib.utils.technology.get then apm.lib.utils.technology.get = {} end
 function apm.lib.utils.technology.has.prerequisites(technology_name, prerequisites_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
-	if not ok then
+	if not ok or technology == nil then
 		return false
 	end
 
@@ -85,14 +85,14 @@ function apm.lib.utils.technology.add.prerequisites(technology_name, prerequisit
 
 		if APM_CAN_LOG_INFO then
 			log(APM_MSG_INFO(
-				'add.prerequisites()',
+				"add.prerequisites()",
 				'added: "' .. tostring(prerequisites_name) .. '" to "' .. tostring(technology_name) .. '"'
 			))
 		end
 	else
 		if APM_CAN_LOG_WARN then
 			log(APM_MSG_WARNING(
-				'add.prerequisites()',
+				"add.prerequisites()",
 				'"' ..
 				tostring(technology_name) .. '" allready has "' .. tostring(prerequisites_name) .. '" as prerequisites'
 			))
@@ -124,7 +124,7 @@ function apm.lib.utils.technology.remove.prerequisites(technology_name, prerequi
 
 			if APM_CAN_LOG_INFO then
 				log(APM_MSG_INFO(
-					'remove.prerequisites()',
+					"remove.prerequisites()",
 					'removed prerequisites: "' ..
 					tostring(prerequisites_name) .. '" from technology: "' .. tostring(technology_name) .. '"'
 				))
@@ -170,11 +170,11 @@ function apm.lib.utils.technology.force.prerequisites(technology_name, prerequis
 		return
 	end
 
-	if type(prerequisites_names) == 'table' then
+	if type(prerequisites_names) == "table" then
 		for _, p_tech_name in pairs(prerequisites_names) do
 			apm.lib.utils.technology.add.prerequisites(technology_name, p_tech_name)
 		end
-	elseif type(prerequisites_names) == 'string' then
+	elseif type(prerequisites_names) == "string" then
 		apm.lib.utils.technology.add.prerequisites(technology_name, prerequisites_names)
 	end
 end

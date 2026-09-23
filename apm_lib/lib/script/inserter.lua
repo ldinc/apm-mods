@@ -6,7 +6,7 @@ local strings         = require("lib.containers.strings")
 local inserter_script = {}
 
 local scratch_leech   = { name = "", count = 0, quality = nil }
-local scratch_chain   = { name = "", count = 0 }
+local scratch_chain   = { name = "", count = 0, quality = nil }
 local scratch_fuel    = { name = "", count = 1, quality = nil }
 local ASH_NAME        = "apm_generic_ash"
 local scratch_work    = { name = "", count = 0, quality = nil }
@@ -85,7 +85,7 @@ end
 --   names      : table<string, true> | nil   -- set of filter item names, nil if no slots
 --   mode_allow : boolean                      -- true = whitelist, false = blacklist
 --   ash_in_set : boolean                      -- fast path used by the burnt-result loop
-local scratch_filter_state = { names = nil, mode_allow = true, ash_in_set = false }
+local scratch_filter_state = { names = nil, mode_allow = true }
 
 --- Build (or refresh) the filter decision for an inserter. Call once per
 --- visit, then query with `filter_passes()`.
@@ -99,15 +99,16 @@ local function build_filter_state(entity)
 	local filter_slot_count = entity.filter_slot_count
 
 	scratch_filter_state.mode_allow = (entity.inserter_filter_mode ~= "blacklist")
-	scratch_filter_state.ash_in_set = false
 
 	if filter_slot_count == 0 then
 		scratch_filter_state.names = nil
+
 		return scratch_filter_state
 	end
 
 	-- Reuse the names table across calls instead of reallocating.
 	local names = scratch_filter_state.names
+
 	if names then
 		for k in pairs(names) do names[k] = nil end
 	else
@@ -117,11 +118,9 @@ local function build_filter_state(entity)
 
 	for i = 1, filter_slot_count do
 		local flt = entity.get_filter(i)
-		if flt then
+
+		if flt and flt.name then
 			names[flt.name] = true
-			if flt.name == "apm_generic_ash" and flt.comparator == "=" then
-				scratch_filter_state.ash_in_set = true
-			end
 		end
 	end
 
@@ -177,30 +176,54 @@ local function check_drop_target(drop_target, item_stack)
 	return true -- we can always lay down an item on ground
 end
 
---- transfer the item stack on leeching or fuel chaining
---- it decisions which method we need (filter inserter need a bypass methode, otherwise he can not pickup fuel for them self)
+--- Moves items from an inventory into the inserter's hand (leeching, fuel chaining,
+--- burnt results). set_stack bypasses the inserter filters, so a filter inserter can pick
+--- up fuel for itself.
+--- Removes first and puts only what was really removed into the hand, with its quality;
+--- anything that does not end up in the hand goes back. So no items are created, lost or
+--- turned into normal quality.
+--- The hand must be empty, or (allow_merge) hold the same item and quality, e.g. a bulk
+--- inserter waiting at the pickup with a part stack of ash. item_stack.count is what is
+--- added on top of the hand, the caller keeps it within the hand size.
 ---@param inserter LuaEntity
 ---@param inventory LuaInventory
 ---@param item_stack ItemStackDefinition
+---@param allow_merge boolean?
 ---@return boolean
-local function transfer_leeching(inserter, inventory, item_stack)
-	local held_stack = inserter.held_stack
-	if not held_stack.valid_for_read then
-		if inserter.filter_slot_count == 0 then
-			if held_stack.transfer_stack(item_stack) then
-				inventory.remove(item_stack)
-
-				return true
-			end
-		else
-			held_stack.set_stack(item_stack)
-			inventory.remove(item_stack)
-
-			return true
-		end
+local function transfer_leeching(inserter, inventory, item_stack, allow_merge)
+	if not item_stack.count or item_stack.count < 1 then
+		return false
 	end
 
-	return false
+	local name, quality = item_stack.name, item_stack.quality or "normal"
+	local held_stack = inserter.held_stack
+	local before = 0
+
+	if held_stack.valid_for_read then
+		if not allow_merge or held_stack.name ~= name or held_stack.quality.name ~= quality then
+			return false
+		end
+		before = held_stack.count
+	end
+
+	local removed = inventory.remove(item_stack)
+	if removed == 0 then
+		return false
+	end
+
+	if before > 0 then
+		held_stack.count = math.min(before + removed, held_stack.prototype.stack_size)
+	else
+		held_stack.set_stack({ name = name, quality = quality, count = removed })
+	end
+
+	local added = (held_stack.valid_for_read and held_stack.count or 0) - before
+
+	if added < removed then
+		inventory.insert({ name = name, quality = quality, count = removed - added })
+	end
+
+	return added > 0
 end
 
 ---@param pickup_target LuaEntity?
@@ -222,51 +245,6 @@ local function get_a_fuel_inventory(pickup_target, drop_target)
 
 	return nil
 end
-
---- can pickup 'fuel' for it self from pickup_target or drop_target
----@param entity LuaEntity
----@param pickup_target LuaEntity?
----@param drop_target LuaEntity?
----@return boolean
-local function burner_inserter_leech(entity, pickup_target, drop_target)
-	local target_inventory = get_a_fuel_inventory(pickup_target, drop_target)
-	if not target_inventory or target_inventory.is_empty() then return false end
-
-	-- Look at slot 1 directly instead of building a full contents table.
-	local slot = target_inventory[1]
-	if not slot.valid_for_read or slot.count < 2 then return false end
-
-	scratch_leech.name    = slot.name
-	scratch_leech.count   = math.min(slot.count - 1, 5)
-	scratch_leech.quality = slot.quality
-
-	return transfer_leeching(entity, target_inventory, scratch_leech)
-end
-
---- chain fuel from pickup_target to drop_target
----@param t_object QueueItem
----@param pickup_inventory LuaInventory
----@param drop_target LuaEntity
----@return boolean
-local function inserter_chain_fuel(t_object, pickup_inventory, drop_target)
-	if pickup_inventory.is_empty() then return false end
-
-	local pickup_inventory_contents = pickup_inventory.get_contents()
-
-	for _, item in ipairs(pickup_inventory_contents) do
-		scratch_chain.name  = item.name
-		scratch_chain.count = calc_item_count(item.count, t_object)
-
-		if drop_target.can_insert(scratch_chain) then
-			return transfer_leeching(t_object.entity, pickup_inventory, scratch_chain)
-		end
-
-		return false
-	end
-
-	return false
-end
-
 
 --- item name -> list of its fuel categories. Built lazily from prototypes, which cannot
 --- change during a session, so the cache does not affect determinism.
@@ -305,15 +283,104 @@ local function item_fits_burner(item, burner_categories)
 	return false
 end
 
+--- Takes up to 5 fuel the inserter can burn from the target's fuel inventory,
+--- leaving at least one item in the slot.
+---@param entity LuaEntity
+---@param target LuaEntity?
+---@param burner_categories table<string, boolean>
+---@return boolean
+local function leech_from(entity, target, burner_categories)
+	if not target or not target.valid then
+		return false
+	end
+
+	local target_inventory = target.get_fuel_inventory()
+
+	if not target_inventory or target_inventory.is_empty() then
+		return false
+	end
+
+	for i = 1, #target_inventory do
+		local slot = target_inventory[i]
+
+		if slot.valid_for_read and slot.count >= 2 and item_fits_burner(slot.prototype, burner_categories) then
+			scratch_leech.name    = slot.name
+			scratch_leech.count   = math.min(slot.count - 1, 5)
+			scratch_leech.quality = slot.quality.name
+
+			return transfer_leeching(entity, target_inventory, scratch_leech)
+		end
+	end
+
+	return false
+end
+
+--- can pickup 'fuel' for it self from pickup_target or drop_target
+--- Only fuel of the inserter's own fuel categories (not e.g. nutrients or fuel cells).
+---@param entity LuaEntity
+---@param pickup_target LuaEntity?
+---@param drop_target LuaEntity?
+---@return boolean
+local function burner_inserter_leech(entity, pickup_target, drop_target)
+	local burner = entity.burner
+
+	if not burner then
+		return false
+	end
+
+	local burner_categories = burner.fuel_categories
+
+	return leech_from(entity, pickup_target, burner_categories)
+			or leech_from(entity, drop_target, burner_categories)
+end
+
+--- chain fuel from pickup_target to drop_target
+---@param t_object QueueItem
+---@param pickup_inventory LuaInventory
+---@param drop_target LuaEntity
+---@return boolean
+local function inserter_chain_fuel(t_object, pickup_inventory, drop_target)
+	if pickup_inventory.is_empty() then
+		return false
+	end
+
+	-- only the first entry, as before; with its quality, else the normal-quality
+	-- variant would be checked and moved
+	local item = pickup_inventory.get_contents()[1]
+
+	if not item then
+		return false
+	end
+
+	scratch_chain.name    = item.name
+	scratch_chain.quality = item.quality
+	scratch_chain.count   = calc_item_count(item.count, t_object)
+
+	if drop_target.can_insert(scratch_chain) then
+		return transfer_leeching(t_object.entity, pickup_inventory, scratch_chain)
+	end
+
+	return false
+end
+
 ---@param t_object QueueItem
 ---@param inventory LuaInventory?
 ---@return ItemStackDefinition?
 local function inventory_get_fuel(t_object, inventory)
-	if not inventory or not t_object.fuel_inventory then return nil end
-	if inventory.is_empty() then return nil end
+	if not inventory or not t_object.fuel_inventory then
+		return nil
+	end
+
+	if inventory.is_empty() then
+		return nil
+	end
 
 	local burner = t_object.entity.burner
-	if not burner then return nil end
+
+	if not burner then
+		return nil
+	end
+
 	local fuel_categories = burner.fuel_categories
 
 	local contents = inventory.get_contents()
@@ -325,8 +392,11 @@ local function inventory_get_fuel(t_object, inventory)
 			scratch_fuel.count   = 1
 			scratch_fuel.quality = content.quality
 
-			inventory.remove(scratch_fuel)
-			return scratch_fuel
+			if inventory.remove(scratch_fuel) == 1 then
+				return scratch_fuel
+			end
+
+			return nil
 		end
 	end
 
@@ -342,18 +412,24 @@ local function steal_fuel_to_inserter(t_object, pickup_target)
 	-- and it IS the burner's inventory — so we can skip reading
 	-- `entity.burner` and `entity.burner.inventory` entirely.
 	local fuel_inventory = t_object.fuel_inventory
-	if not fuel_inventory then return end
 
-	-- Try the pickup target's fuel inventory first (e.g. another burner machine).
-	local fuel = inventory_get_fuel(t_object, get_a_fuel_inventory(pickup_target))
-
-	-- Fall back to the pickup target's main chest inventory.
-	if not fuel then
-		fuel = inventory_get_fuel(t_object, pickup_target.get_inventory(defines.inventory.chest))
+	if not fuel_inventory then
+		return
 	end
 
-	if fuel then
-		fuel_inventory.insert(fuel)
+	-- Try the pickup target's fuel inventory first (e.g. another burner machine),
+	-- then its main chest inventory.
+	local source = get_a_fuel_inventory(pickup_target)
+	local fuel = inventory_get_fuel(t_object, source)
+
+	if not fuel then
+		source = pickup_target.get_inventory(defines.inventory.chest)
+		fuel = inventory_get_fuel(t_object, source)
+	end
+
+	-- give the fuel back when the inserter can't take it (the slot it came from is free)
+	if fuel and source and fuel_inventory.insert(fuel) == 0 then
+		source.insert(fuel)
 	end
 end
 
@@ -372,16 +448,22 @@ local function try_transfer_ash_from_to(from, to)
 	local to_brr   = to_burner.burnt_result_inventory
 	local from_brr = from_burner.burnt_result_inventory
 	if not to_brr or not from_brr then return end
-	if not from_brr.is_full() or to_brr.is_full() then return end
+	if to_brr.is_full() then return end
+
+	-- The ash moves on as soon as there is a batch of it (ash_size, 10% of the ash stack),
+	-- not only when the source slot is full: a machine that stopped for another reason
+	-- (e.g. its output is full) never fills its burnt-result slot, so its ash was never passed on.
+	local batch     = storage.inserters.settings.ash_size
+	local from_full = from_brr.is_full()
 
 	-- Move only ash that is really in the source (per quality): remove first, then insert,
 	-- and give back what did not fit. Never calls remove/insert with count 0
 	-- ("count must be positive") and never creates ash from nothing.
 	for _, content in pairs(from_brr.get_contents()) do
-		if content.name == ASH_NAME then
+		if content.name == ASH_NAME and (content.count >= batch or from_full) then
 			local item = { name = ASH_NAME, quality = content.quality }
 			local room = to_brr.get_insertable_count(item)
-			if room >= storage.inserters.settings.ash_size then
+			if room >= batch then
 				local count = math.min(content.count, room, apm.lib.features.stack_size.ash)
 				if count > 0 then
 					local removed = from_brr.remove({ name = ASH_NAME, quality = content.quality, count = count })
@@ -473,33 +555,37 @@ local function inserter_work(tick, t_object, pickup_target, drop_target)
 	local burnt_inv = pickup_target.get_burnt_result_inventory()
 	if not burnt_inv or burnt_inv.is_empty() then return end
 
-	-- Precompute the filter decision once for this inserter/tick.
-	local state           = build_filter_state(entity)
+	-- Precompute the filter decision once for this inserter/tick
+	-- (a blacklisted ash filter is covered by filter_passes too).
+	build_filter_state(entity)
 
-	-- Ash is specifically blacklisted iff it's in the filter set AND the
-	-- inserter is in blacklist mode.
-	local ash_blacklisted = state.ash_in_set and not state.mode_allow
+	-- only the first entry, as before
+	local item = burnt_inv.get_contents()[1]
 
-	local contents        = burnt_inv.get_contents()
-	local held_stack      = entity.held_stack
-
-	for _, item in ipairs(contents) do
-		local name = item.name
-		if item.count >= 1 and filter_passes(name) then
-			scratch_work.name    = name
-			scratch_work.count   = calc_item_count(item.count, t_object)
-			scratch_work.quality = item.quality
-
-			if check_drop_target(drop_target, scratch_work) then
-				local is_ash = (name == "apm_generic_ash")
-				if not (ash_blacklisted and is_ash)
-						and held_stack.transfer_stack(scratch_work)
-				then
-					burnt_inv.remove(scratch_work)
-				end
-			end
-		end
+	if not item or item.count < 1 or not filter_passes(item.name) then
 		return
+	end
+
+	-- a hand with the same item (bulk inserter filling up at the pickup) is topped up,
+	-- a hand with anything else is left alone
+	local held_stack = entity.held_stack
+	local in_hand = 0
+	if held_stack.valid_for_read then
+		if held_stack.name ~= item.name or held_stack.quality.name ~= item.quality then return end
+		in_hand = held_stack.count
+	end
+
+	local count = calc_item_count(item.count + in_hand, t_object) - in_hand
+	if count < 1 then return end
+
+	scratch_work.name    = item.name
+	scratch_work.count   = count
+	scratch_work.quality = item.quality
+
+	-- vanilla takes burnt results out only to chests, belts and the ground; this also
+	-- feeds them into the next machine of a chain when that machine accepts them
+	if check_drop_target(drop_target, scratch_work) then
+		transfer_leeching(entity, burnt_inv, scratch_work, true)
 	end
 end
 
@@ -816,6 +902,11 @@ function inserter_script.on_update()
 	inserter_script.alloc_defenitions()
 	get_config()
 	rescan()
+
+	-- technologies (and their bonuses) can change with a mod update
+	for _, force in pairs(game.forces) do
+		refresh_force_bonus(force)
+	end
 end
 
 ---@param src_entity LuaEntity
@@ -836,28 +927,16 @@ end
 
 ---@param entity LuaEntity
 local function burner_fuel_leech_on_build(entity)
-	local surface = entity.surface
-	local pickup_position = entity.pickup_position
-	local drop_position = entity.drop_position
+	local valid_targets = storage.inserters.settings.valid_targets
+	local pickup_target = entity.pickup_target
+	local drop_target   = entity.drop_target
 
-	local pickup_target
-	local filter = {
-		type = storage.inserters.settings.valid_targets_string,
-		position = pickup_position,
-	}
+	if pickup_target and not valid_targets[pickup_target.type] then
+		pickup_target = nil
+	end
 
-	local hits = surface.find_entities_filtered(filter)
-	local pickup_target = hits[1]
-
-	local drop_target
-
-	filter = {
-		type = storage.inserters.settings.valid_targets_string,
-		position = drop_position,
-	}
-
-	for _, p_e in pairs(surface.find_entities_filtered(filter)) do
-		drop_target = p_e
+	if drop_target and not valid_targets[drop_target.type] then
+		drop_target = nil
 	end
 
 	burner_inserter_leech(entity, pickup_target, drop_target)
