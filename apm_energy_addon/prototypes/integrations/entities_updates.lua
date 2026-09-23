@@ -22,11 +22,11 @@ if mods['aai-vehicles-miner'] and apm_energy_addon_compat_earendel then
 	apm.energy_addon.overhaul('vehicle-miner-mk4')
 
 	-- the vehicle-miner need a effectivity of 2 to work correct
-	apm.lib.utils.car.effectivity('vehicle-miner', 2)
-	apm.lib.utils.car.effectivity('vehicle-miner-mk2', 2)
-	apm.lib.utils.car.effectivity('vehicle-miner-mk3', 2)
-	apm.lib.utils.car.effectivity('vehicle-miner-mk4', 2)
-	apm.lib.utils.car.effectivity('vehicle-miner-mk5', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner-mk2', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner-mk3', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner-mk4', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-miner-mk5', 2)
 end
 
 if mods['aai-vehicles-laser-tank'] and apm_energy_addon_compat_earendel then
@@ -34,7 +34,7 @@ if mods['aai-vehicles-laser-tank'] and apm_energy_addon_compat_earendel then
 end
 
 if mods['aai-vehicles-warden'] and apm_energy_addon_compat_earendel then
-	apm.lib.utils.car.effectivity('vehicle-warden', 2)
+	apm.lib.utils.car.set.effectivity('vehicle-warden', 2)
 end
 
 -- bob ------------------------------------------------------------------------------------

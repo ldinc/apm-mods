@@ -65,7 +65,7 @@ function apm.energy_addon.generate_electric_powered(name)
 
 	---@type ItemPrototype
 	local item = {
-		type = "item",
+		type = "item-with-entity-data",
 		name = item_name,
 		localised_name = { "entity-name.apm_electric", { "entity-name." .. name } },
 		icons = icons,
@@ -133,7 +133,7 @@ function apm.energy_addon.generate_electric_powered_locomotive(name)
 	local item_car = data.raw["item-with-entity-data"][name]
 	local item = {}
 
-	item.type = "item"
+	item.type = "item-with-entity-data"
 	item.name = "apm_electric_" .. name
 	item.localised_name = { "entity-name.apm_electric", { "entity-name." .. name } }
 	item.icons = icons
@@ -245,7 +245,7 @@ function apm.energy_addon.generate_electric_powered_spidertron(name)
 	---@type ItemPrototype
 	local item = {
 
-		type = "item",
+		type = "item-with-entity-data",
 		name = e_name,
 		localised_name = { "entity-name.apm_electric", { "entity-name." .. name } },
 		icons = icons,

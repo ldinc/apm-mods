@@ -162,7 +162,7 @@ end
 if mods.bobplates and apm_energy_addon_compat_bob then
 	apm.lib.utils.batteries.generate(
 		2,
-		"bob-lithium-ion-battery",
+		"bob-battery-2",
 		apm.energy_addon.constants.fuel_value.battery_bob_lithium_ion,
 		apm.energy_addon.icons.depleted_battery_overlay,
 		0.90,
@@ -170,7 +170,7 @@ if mods.bobplates and apm_energy_addon_compat_bob then
 	)
 	apm.lib.utils.batteries.generate(
 		3,
-		"bob-silver-zinc-battery",
+		"bob-battery-3",
 		apm.energy_addon.constants.fuel_value.battery_bob_silver_zinc,
 		apm.energy_addon.icons.depleted_battery_overlay,
 		0.95,
@@ -178,25 +178,3 @@ if mods.bobplates and apm_energy_addon_compat_bob then
 	)
 end
 
-if mods.boblogistics and apm_energy_addon_compat_bob then
-	apm.energy_addon.generate_electric_powered_locomotive("bob-locomotive-2")
-	apm.energy_addon.generate_electric_powered_locomotive("bob-locomotive-3")
-	apm.energy_addon.generate_electric_powered_locomotive("bob-armoured-locomotive")
-	apm.energy_addon.generate_electric_powered_locomotive("bob-armoured-locomotive-2")
-
-	apm.energy_addon.generate_electric_locomotive_new_recipe("bob-locomotive-2")
-	apm.energy_addon.generate_electric_locomotive_new_tech("bob-locomotive-2", "bob-railway-2")
-	apm.energy_addon.generate_electric_locomotive_new_recipe("bob-locomotive-3")
-	apm.energy_addon.generate_electric_locomotive_new_tech("bob-locomotive-3", "bob-railway-3")
-	apm.energy_addon.generate_electric_locomotive_new_recipe("bob-armoured-locomotive")
-	apm.energy_addon.generate_electric_locomotive_new_tech("bob-armoured-locomotive", "bob-armoured-railway")
-	apm.energy_addon.generate_electric_locomotive_new_recipe("bob-armoured-locomotive-2")
-	apm.energy_addon.generate_electric_locomotive_new_tech("bob-armoured-locomotive-2", "bob-armoured-railway-2")
-end
-
-if mods.bobwarfare and apm_energy_addon_compat_bob then
-	---@diagnostic disable-next-line: different-requires
-	local bobwarfare = require("bobs.bobwarfare")
-
-	bobwarfare.generate()
-end

@@ -42,10 +42,7 @@ apm.energy_addon.icons.path.electric_symbol =
 --
 -- ----------------------------------------------------------------------------
 apm.energy_addon.icons.depleted_battery_overlay = {
-  size = 64,
-  icon = apm.energy_addon.icons.path
-      .depleted_battery_overlay,
-  filename = apm.energy_addon.icons.path.depleted_battery_overlay,
+  icon = apm.energy_addon.icons.path.depleted_battery_overlay,
   icon_size = 64
 }
 apm.energy_addon.icons.rtg_decayed = { icon = apm.energy_addon.icons.path.rtg_decayed, icon_size = 64 }

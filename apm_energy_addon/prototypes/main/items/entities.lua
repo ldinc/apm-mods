@@ -16,7 +16,7 @@ local item_car = data.raw['item-with-entity-data']['car']
 
 ---@type ItemPrototype
 local item = {
-	type = "item",
+	type = "item-with-entity-data",
 	name = "apm_electric_car",
 	stack_size = item_car.stack_size,
 	icons = icons,
@@ -40,7 +40,7 @@ local item_tank = data.raw['item-with-entity-data']['tank']
 
 ---@type ItemPrototype
 local item = {
-	type = "item",
+	type = "item-with-entity-data",
 	name = "apm_electric_tank",
 	icons = icons,
 	subgroup = item_tank.subgroup,
@@ -64,7 +64,7 @@ local item_locomotive = data.raw['item-with-entity-data']['locomotive']
 
 ---@type ItemPrototype
 local item = {
-	type = "item",
+	type = "item-with-entity-data",
 	name = "apm_electric_locomotive",
 	icons = icons,
 	stack_size = item_locomotive.stack_size,

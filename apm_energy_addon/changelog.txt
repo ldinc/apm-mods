@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.04
+Date: 23.09.2026
+  Changes:
+    - Requires Factorio 2.1.20 (fuel_categories).
+    - Electric vehicles are item-with-entity-data items (keep grid contents when picked up).
+    - Generated technologies need at least the science packs of their prerequisites.
+  Bugfixes:
+    - Fixed a crash with AAI vehicles miner/warden (car.set.effectivity).
+    - Bob's batteries (bob-battery-2/-3) are fuel again.
+    - Bob's electric vehicles are generated after Bob's own setup (optional dependencies), so they use batteries and keep Bob's equipment grids.
+    - Electric Bob tanks need the previous electric tank tier; tank tech icon size.
+    - Discharging station animation speed; depleted battery icon layer.
+    - Locale: electric Bob railway tech name, German translations.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.03
 Date: 08.08.2026
   Changes:

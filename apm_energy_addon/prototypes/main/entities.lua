@@ -184,8 +184,6 @@ discharging_station.working_sound = {
 }
 
 discharging_station.animation = {
-	animation_speed = 0.16666667,
-
 	layers = {
 		{
 			filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_0.png",
@@ -193,6 +191,7 @@ discharging_station.animation = {
 			width = 320,
 			height = 256,
 			frame_count = 5,
+			animation_speed = 0.16666667,
 			line_length = 5,
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
@@ -204,6 +203,7 @@ discharging_station.animation = {
 			width = 320,
 			height = 256,
 			frame_count = 5,
+			animation_speed = 0.16666667,
 			line_length = 5,
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
@@ -215,8 +215,6 @@ discharging_station.animation = {
 
 
 discharging_station.idle_animation = {
-	animation_speed = 0.16666667,
-
 	layers = {
 		{
 			filename = "__apm_resource_pack_ldinc__/graphics/entities/charging_station/hr_charging_station_idle_0.png",
@@ -224,6 +222,7 @@ discharging_station.idle_animation = {
 			width = 320,
 			height = 256,
 			frame_count = 5,
+			animation_speed = 0.16666667,
 			line_length = 5,
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,
@@ -235,6 +234,7 @@ discharging_station.idle_animation = {
 			width = 320,
 			height = 256,
 			frame_count = 5,
+			animation_speed = 0.16666667,
 			line_length = 5,
 			shift = { 0.4375, -0.28125 },
 			scale = 0.5,

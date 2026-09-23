@@ -35,7 +35,7 @@ local generate = function()
 		effects = {
 			{ type = "unlock-recipe", recipe = recipe.name },
 		},
-		prerequisites = { "bob-tanks-2", "electric-engine", "battery" },
+		prerequisites = { "bob-tanks-2", "tanks_electric-1", "electric-engine", "battery" }, -- the recipe uses apm_electric_tank
 		unit = {
 			count = 125,
 			ingredients = { { "automation-science-pack", 1 }, { "logistic-science-pack", 1 }, { "military-science-pack", 1 }, { "chemical-science-pack", 1 } },
@@ -79,11 +79,11 @@ local generate = function()
 		type = "technology",
 		name = "tanks_electric-3",
 		icon = "__base__/graphics/technology/tank.png",
-		icon_size = 128,
+		icon_size = 256,
 		effects = {
 			{ type = "unlock-recipe", recipe = recipe.name },
 		},
-		prerequisites = { "bob-tanks-3", "electric-engine", "battery" },
+		prerequisites = { "bob-tanks-3", "tanks_electric-2", "electric-engine", "battery" }, -- the recipe uses apm_electric_bob-tank-2
 		unit = {
 			count = 175,
 			ingredients = { { "automation-science-pack", 1 }, { "logistic-science-pack", 1 }, { "military-science-pack", 1 }, { "chemical-science-pack", 1 }, { "utility-science-pack", 1 } },

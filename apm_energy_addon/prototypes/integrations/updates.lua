@@ -32,7 +32,7 @@ if mods["reverse-factory"] and apm_energy_addon_compat_reverse_factory then
 	end
 
 	if mods.bobplates and apm_energy_addon_compat_bob then
-		exclude("apm_charging_lithium-ion-battery")
-		exclude("apm_charging_silver-zinc-battery")
+		exclude("apm_charging_bob-battery-2")
+		exclude("apm_charging_bob-battery-3")
 	end
 end
