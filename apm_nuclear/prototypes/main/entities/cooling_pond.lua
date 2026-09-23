@@ -42,8 +42,6 @@ local cooling_pond = {
 		},
 
 		idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-
-		apparent_volume = 1.5,
 	},
 
 	module_slots = 2,

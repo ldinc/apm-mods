@@ -21,7 +21,6 @@ breeder_reactor.working_sound = {
 		sound = {
 			filename = "__apm_resource_pack_ldinc__/sounds/entities/breeder_working.ogg",
 			volume = 0.8,
-			apparent_volume = 1.5,
 		},
 	}
 }

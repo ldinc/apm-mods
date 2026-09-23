@@ -8,6 +8,7 @@ Date: 23.09.2026
     - Fixed "ItemPrototype::fuel_category was removed".
     - Some fixes with  fision and fusion reactors.
     - Fluorite ore icon was drawn at half size.
+    - Working sounds: removed apparent_volume (not in 2.x).
     - Without Angel's: the phosphor recipes (and their barrel recipes) could never be unlocked; they are hidden now. With Angel's the empty-barrel recipe is unlocked too.
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.05
