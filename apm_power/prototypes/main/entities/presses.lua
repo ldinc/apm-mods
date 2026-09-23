@@ -14,8 +14,7 @@ local smoke_burner = {
 		{ -0.58, -2.15 },
 		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 
@@ -27,8 +26,7 @@ local smoke_steam = {
 		{ -0.58, -2.15 },
 		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 
@@ -61,8 +59,7 @@ local press = {
 	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
 
 	working_sound = {
-		filename = "__apm_resource_pack_ldinc__/sounds/entities/press.ogg",
-		volume = 0.8,
+		sound = { filename = "__apm_resource_pack_ldinc__/sounds/entities/press.ogg", volume = 0.8 },
 		idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
 	},
 

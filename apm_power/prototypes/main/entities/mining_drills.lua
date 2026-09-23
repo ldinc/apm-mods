@@ -88,7 +88,7 @@ local steam_mining_drill = {
 	damaged_trigger_effect = hit_effects.entity(),
 	working_sound = {
 		sound = { filename = "__base__/sound/electric-mining-drill.ogg", volume = 1.0, advanced_volume_control = { attenuation = "exponential" } },
-		max_sounds_per_type = 4,
+		max_sounds_per_prototype = 4,
 		fade_in_ticks = 4,
 		fade_out_ticks = 20
 	},
@@ -123,7 +123,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward",
 				},
 				{
@@ -137,7 +136,6 @@ steam_mining_drill.graphics_set = {
 					animation_speed = 0.5,
 					shift = util.by_pixel(-0.5, -6.5),
 					scale = 0.5,
-					direction_count = 1,
 					run_mode = "forward-then-backward",
 
 				},
@@ -154,7 +152,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward"
 				},
 				{
@@ -170,7 +167,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward"
 				}
 			}
@@ -189,7 +185,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward",
 				},
 				{
@@ -203,7 +198,6 @@ steam_mining_drill.graphics_set = {
 					animation_speed = 0.5,
 					shift = util.by_pixel(0, -5.75),
 					scale = 0.5,
-					direction_count = 1,
 					run_mode = "forward-then-backward",
 
 				},
@@ -220,7 +214,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward"
 				},
 				{
@@ -236,7 +229,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward"
 				}
 			},
@@ -255,7 +247,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward",
 				},
 				{
@@ -269,7 +260,6 @@ steam_mining_drill.graphics_set = {
 					animation_speed = 0.5,
 					shift = util.by_pixel(-0.5, -7.5),
 					scale = 0.5,
-					direction_count = 1,
 					run_mode = "forward-then-backward",
 
 				},
@@ -286,7 +276,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward"
 				},
 				{
@@ -302,7 +291,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward"
 				}
 			},
@@ -321,7 +309,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward",
 				},
 				{
@@ -335,7 +322,6 @@ steam_mining_drill.graphics_set = {
 					animation_speed = 0.5,
 					shift = util.by_pixel(-0.5, -6),
 					scale = 0.5,
-					direction_count = 1,
 					run_mode = "forward-then-backward",
 
 				},
@@ -352,7 +338,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward"
 				},
 				{
@@ -368,7 +353,6 @@ steam_mining_drill.graphics_set = {
 					-- repeat_count = 5,
 					scale = 0.5,
 					frame_count = 64,
-					direction_count = 1,
 					run_mode = "forward-then-backward"
 				}
 			}

@@ -22,7 +22,6 @@ smoke_burner[1].east_position = smoke_position
 smoke_burner[1].west_position = smoke_position
 smoke_burner[1].starting_vertical_speed = 0.08
 smoke_burner[1].starting_frame_deviation = 60
-smoke_burner[1].slow_down_factor = 1
 
 local smoke_steam = table.deepcopy(smoke_burner)
 smoke_steam[1].name = "light-smoke"

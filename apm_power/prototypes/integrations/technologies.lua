@@ -55,7 +55,7 @@ apm.lib.utils.technology.force.recipe_for_unlock("apm_fertiliser_2", "apm_ammoni
 
 -- more early electric engine technology
 apm.lib.utils.technology.remove.science_pack("electric-engine", "chemical-science-pack")
-apm.lib.utils.technology.add.prerequisites("electric-engine", "apm_power_electricicty")
+apm.lib.utils.technology.add.prerequisites("electric-engine", "apm_power_electricity")
 
 apm.lib.utils.technology.add.prerequisites("lamp", "apm_power_electricity")
 apm.lib.utils.technology.add.prerequisites("radar", "apm_power_electricity")
@@ -69,11 +69,11 @@ if mods["AsphaltRoads"] and apm_power_compat_arcitos then
 	apm.lib.utils.technology.add.prerequisites("Arci-asphalt", "apm_asphalt-1")
 	if mods.bobplates and not mods.bobrevamp then
 		apm.lib.utils.technology.remove.prerequisites("Arci-asphalt", "oil-processing")
-		apm.lib.utils.technology.add.prerequisites("Arci-asphalt", "chemical-processing-2")
+		apm.lib.utils.technology.add.prerequisites("Arci-asphalt", "bob-chemical-processing-2")
 	end
 	if mods.bobrevamp then
 		apm.lib.utils.technology.remove.prerequisites("Arci-asphalt", "oil-processing")
-		apm.lib.utils.technology.add.prerequisites("Arci-asphalt", "chemical-plant")
+		apm.lib.utils.technology.add.prerequisites("Arci-asphalt", "bob-chemical-plant")
 	end
 end
 
@@ -161,7 +161,7 @@ if mods["aai-vehicles-hauler"] and apm_power_compat_earendel then
 end
 
 if mods["aai-vehicles-chaingunner"] and apm_power_compat_earendel then
-	apm.lib.utils.technology.add.prerequisites("vehicle-chaingunner", "apm_power_automation_science_pack")
+	apm.lib.utils.technology.add.prerequisites("vehicle-chaingunner", "automation-science-pack")
 	apm.lib.utils.technology.add.science_pack("basic-vehicles", "apm_industrial_science_pack", 1)
 end
 
@@ -216,7 +216,7 @@ if mods.angelspetrochem and apm_power_compat_angel then
 end
 
 if mods["angelsaddons-warehouses"] and apm_power_compat_angel then
-	apm.lib.utils.technology.add.prerequisites("angels-warehouses", "apm_power_automation_science_pack")
+	apm.lib.utils.technology.add.prerequisites("angels-warehouses", "automation-science-pack")
 	apm.lib.utils.technology.add.science_pack("angels-warehouses", "apm_industrial_science_pack", 1)
 end
 
@@ -260,7 +260,7 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-if (mods.angelsbioprocessing and apm_power_compat_angel) or (mods.Bio_Industries and apm_power_compat_bio_industries) or (mods.bobgreenhouse and apm_power_compat_bob) then
+if (mods.angelsbioprocessing and apm_power_compat_angel) or ((mods.Bio_Industries or mods.Bio_Industries_2) and apm_power_compat_bio_industries) or (mods.bobgreenhouse and apm_power_compat_bob) then
 	-- apm.lib.utils.technology.delete('apm_fertiliser_2')
 	-- apm.lib.utils.technology.delete('apm_greenhouse-3')
 end
@@ -309,7 +309,7 @@ if mods.ScienceCostTweakerM and apm_power_compat_sctm then
 	end
 
 	if mods.bobinserters or mods.boblogistics then
-		apm.lib.utils.technology.remove.prerequisites("long-inserters-1", "sct-automation-science-pack")
+		apm.lib.utils.technology.remove.prerequisites("bob-long-inserters-1", "sct-automation-science-pack")
 	end
 
 	if mods["aai-industry"] then

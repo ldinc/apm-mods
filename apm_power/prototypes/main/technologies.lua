@@ -33,7 +33,6 @@ apm_inserter_bonus.type = "technology"
 apm_inserter_bonus.name = "apm_inserter_capacity_bonus"
 apm_inserter_bonus.icon = "__base__/graphics/technology/inserter-capacity.png"
 apm_inserter_bonus.icon_size = 256
-apm_inserter_bonus.icon_mipmaps = 4
 apm_inserter_bonus.effects = {
 	{ type = "inserter-stack-size-bonus", modifier = 1 },
 }
@@ -50,7 +49,6 @@ apm_steam_mining_drill.type = "technology"
 apm_steam_mining_drill.name = "apm_steam_mining_drill"
 apm_steam_mining_drill.icon = "__base__/graphics/technology/mining-productivity.png"
 apm_steam_mining_drill.icon_size = 256
-apm_steam_mining_drill.icon_mipmaps = 4
 apm_steam_mining_drill.effects = {
 	{ type = "unlock-recipe", recipe = "apm_steam_mining_drill" },
 }
@@ -67,7 +65,6 @@ apm_electric_mining_drills.type = "technology"
 apm_electric_mining_drills.name = "apm_electric_mining_drills"
 apm_electric_mining_drills.icon = "__base__/graphics/technology/mining-productivity.png"
 apm_electric_mining_drills.icon_size = 256
-apm_electric_mining_drills.icon_mipmaps = 4
 apm_electric_mining_drills.effects = {
 	{ type = "unlock-recipe", recipe = "electric-mining-drill" },
 }

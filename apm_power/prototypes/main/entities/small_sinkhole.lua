@@ -40,12 +40,12 @@ local sinkhole = {
 
 	impact_category = "metal",
 	working_sound = {
-		{
+		sound = {
 			filename                  = "__apm_power_ldinc__/sounds/entities/water-drain.ogg",
 			volume                    = 0.3,
 			audible_distance_modifier = 0.2,
-			probability               = 0.1,
 		},
+		probability = 0.1,
 	},
 
 	repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
@@ -139,8 +139,6 @@ if mods["space-age"] then
 			priority = "high",
 			width = 128,
 			height = 163,
-			frame_count = 1,
-			line_length = 1,
 			shift = util.by_pixel(0, -15.75),
 			scale = 0.5,
 		},
@@ -149,8 +147,6 @@ if mods["space-age"] then
 			priority = "high",
 			width = 128,
 			height = 163,
-			frame_count = 1,
-			line_length = 1,
 			shift = util.by_pixel(0, -11.75),
 			scale = 0.5,
 		},
@@ -159,8 +155,6 @@ if mods["space-age"] then
 			priority = "high",
 			width = 128,
 			height = 163,
-			frame_count = 1,
-			line_length = 1,
 			shift = util.by_pixel(3, -10),
 			scale = 0.5,
 		},
@@ -169,8 +163,6 @@ if mods["space-age"] then
 			priority = "high",
 			width = 128,
 			height = 163,
-			frame_count = 1,
-			line_length = 1,
 			shift = util.by_pixel(-0.05, -12.25),
 			scale = 0.5,
 		},

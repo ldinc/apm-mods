@@ -1,4 +1,4 @@
-if mods["bzsilicon"] then
+if mods["bzsilicon"] or mods["bzsilicon2"] then
 	local categories = { "basic-crushing" }
 
 	if categories then

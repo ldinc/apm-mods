@@ -14,8 +14,7 @@ local smoke_burner = {
 		{ 0.32, -2.15 },
 		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 
@@ -27,8 +26,7 @@ local smoke_steam = {
 		{ 0.32, -2.15 },
 		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 
@@ -60,8 +58,7 @@ local crusher = {
 	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
 
 	working_sound = {
-		filename = "__base__/sound/burner-mining-drill-1.ogg",
-		volume = 1.0,
+		sound = { filename = "__base__/sound/burner-mining-drill-1.ogg", volume = 1.0 },
 		idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
 	},
 

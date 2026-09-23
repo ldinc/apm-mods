@@ -47,7 +47,7 @@ APM_LOG_SETTINGS(self, "apm_power_compat_reverse_factory", apm_power_compat_reve
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.Bio_Industries and apm_power_compat_bio_industries then
+if (mods.Bio_Industries or mods.Bio_Industries_2) and apm_power_compat_bio_industries then
     local item_icon_a = apm.lib.utils.icon.get.from_item("apm_tree_seeds")
     local item_icon_b = apm.lib.utils.icon.get.from_fluid("water")
     item_icon_b = apm.lib.utils.icons.mod(item_icon_b, 0.5, { 8, 8 })

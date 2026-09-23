@@ -32,7 +32,7 @@ if mods["bzcarbon"] then
 
 	if recipe then
 		apm.lib.utils.recipe.ingredient.mod(new_name, "graphite", 3)
-		apm.lib.utils.recipe.ingredient.mod(new_name, "irom-plate", 1)
+		apm.lib.utils.recipe.ingredient.mod(new_name, "iron-plate", 1)
 		apm.lib.utils.recipe.ingredient.mod(new_name, "copper-cable", 4)
 		apm.lib.utils.recipe.ingredient.mod(new_name, "apm_wood_board", 2)
 

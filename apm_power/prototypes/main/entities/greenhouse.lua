@@ -16,8 +16,7 @@ local smoke_burner = {
 		{ -0.70, -2.15 },
 		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 
@@ -29,8 +28,7 @@ local smoke_steam = {
 		{ -0.70, -2.15 },
 		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 
@@ -62,7 +60,6 @@ local greenhouse = {
 	working_sound = {
 		filename = "__apm_resource_pack_ldinc__/sounds/ambient/greenhouse.ogg",
 		volume = 0.8,
-		apparent_volume = 1.5,
 	},
 
 	energy_usage = apm.power.constants.energy_usage.greenhouse_0,
@@ -199,8 +196,6 @@ if mods["space-age"] then
 		priority = "high",
 		width = 320,
 		height = 256,
-		frame_count = 1,
-		line_length = 1,
 		shift = { 0.4375, -0.28125 },
 		scale = 0.5,
 	}

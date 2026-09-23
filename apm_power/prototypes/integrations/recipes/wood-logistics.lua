@@ -16,7 +16,7 @@ local handcrafted_wood_planks = {
 	name = "apm_treated_wood_planks_handcraft_only"
 }
 
-handcrafted_wood_planks.categories = { "crafting-or-carpentry" }
+handcrafted_wood_planks.categories = { "apm_handcrafting_only" }
 handcrafted_wood_planks.subgroup = "apm_power_intermediates"
 handcrafted_wood_planks.order = "ag_a"
 handcrafted_wood_planks.icons = item_icon

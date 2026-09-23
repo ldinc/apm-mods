@@ -18,7 +18,6 @@ armor.icons = {
 --armor.icon_size = apm.power.icons.starter_armor.icon_size
 armor.hidden = true
 armor.flags = { 'hide-from-bonus-gui' }
-armor.group = "apm_other"
 armor.subgroup = "apm_starter_armor"
 armor.order = "aa_a"
 armor.resistances = {}

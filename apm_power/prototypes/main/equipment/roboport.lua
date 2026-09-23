@@ -19,7 +19,6 @@ item.icons = {
 	apm.power.icons.equipment_roboport_small
 }
 item.stack_size = 20
-item.group = "apm_other"
 item.subgroup = "apm_starter_armor"
 item.order = "aa_d"
 item.place_as_equipment_result = "apm_equipment_roboport_small"
@@ -33,11 +32,11 @@ local equipment = {}
 equipment.type = "roboport-equipment"
 equipment.name = "apm_equipment_roboport_small"
 equipment.hidden = true
-equipment.flags = { 'hide-from-bonus-gui' }
 equipment.sprite = {}
 equipment.sprite.filename = "__base__/graphics/equipment/personal-roboport-equipment.png"
-equipment.sprite.width = 64
-equipment.sprite.height = 64
+equipment.sprite.width = 128 -- the 2.x image is 128x128 (like vanilla, drawn at 0.5)
+equipment.sprite.height = 128
+equipment.sprite.scale = 0.5
 equipment.sprite.priority = "medium"
 equipment.shape = {}
 equipment.shape.width = 2

@@ -97,6 +97,7 @@ apm.lib.utils.bot.construction.overhaul("construction-robot", 1)
 -- offshore pump
 if not mods["space-age"] then
 	apm.lib.utils.item.remove("offshore-pump")
+	apm.lib.utils.recipe.remove("offshore-pump") -- nothing unlocks it any more (APM offshore pumps replace it)
 else
 	local pump = data.raw["offshore-pump"]["offshore-pump"]
 

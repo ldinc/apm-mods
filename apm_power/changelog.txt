@@ -1,4 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.23
+Date: 23.09.2026
+  Changes:
+    - Requires Factorio 2.1.20 (fuel_categories).
+    - apm_steam_engine_2 needs a steam engine with "reuse previous tier" (like apm_boiler_2).
+    - Wood-logistics: the treated wood planks from wood recipe is hand-crafting only.
+    - Space Age: gears and belts keep their "crafting" category (APM's light metallurgy is added), so other mods' assemblers can still make them.
+  Bugfixes:
+    - Removed keys that Factorio 2.x ignores: icon_mipmaps, item/fluid "group", equipment "flags", smoke slow_down_factor, drill layer direction_count, frame_count on frozen patches; air cleaner uses module_slots and impact_category.
+    - Working sounds use the 2.x structure (idle sounds and probability were ignored).
+    - Steam inserters no longer upgrade to the vanilla inserter.
+    - Puddling furnace and coking plant 2 smoke; particle filter beacon tint; iron sieve icon tint; air cleaner description; treated wood planks weight.
+    - Equipment sprites are drawn at grid size (starter roboport showed a quarter of its image).
+    - engine-unit gets apm_gearing (was a non-existent item).
+    - Base: the vanilla offshore pump recipe is hidden (nothing unlocks it).
+    - Tech tree: railway needs steam-power, personal roboport and robot speed 2 need chemical science as a prerequisite, stale 1.1 tech names fixed.
+  Compatibility:
+    - Bob's: 2.x names for belts, techs, furnaces, recipes (carbon, bob-enriched-fuel, assembling-machine-3), burner generator only when enabled, bob-tank-2/3 from bobwarfare.
+    - AAI: motor replacements run before motors are swapped for simple engines; glass is "glass" without Bob's.
+    - Bio Industries 2, bzsilicon2, bzfoundry2 (coke -> apm_coke), bz typos, Krastorio2 tech list, wood-logistics loader/tech, energy addon mod name.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.22
 Date: 08.08.2026
   Compatibility:

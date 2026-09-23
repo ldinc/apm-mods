@@ -46,7 +46,7 @@ apm.lib.utils.technology.add.science_pack("railway", "apm_industrial_science_pac
 apm.lib.utils.technology.add.science_pack("railway", "apm_steam_science_pack", 1)
 apm.lib.utils.technology.remove.science_pack("railway", "automation-science-pack")
 apm.lib.utils.technology.remove.science_pack("railway", "logistic-science-pack")
-apm.lib.utils.technology.force.prerequisites("railway", { "apm_power_steam", "apm_treated_wood_planks-1" })
+apm.lib.utils.technology.force.prerequisites("railway", { "steam-power", "apm_treated_wood_planks-1" })
 
 --- [automated-rail-transportation]
 apm.lib.utils.technology.add.science_pack("automated-rail-transportation", "apm_industrial_science_pack", 1)
@@ -107,7 +107,7 @@ apm.lib.utils.technology.trigger.set.craft_item("steam-power", "steel-plate", 50
 --- [electric-engine]
 apm.lib.utils.technology.add.prerequisites("electric-engine", "engine")
 apm.lib.utils.technology.remove.prerequisites("electric-engine", "lubricant")
-apm.lib.utils.technology.add.prerequisites("electric-engine", "apm_power_automation_science_pack")
+apm.lib.utils.technology.add.prerequisites("electric-engine", "automation-science-pack")
 
 
 --- [automation-science-pack]
@@ -168,9 +168,11 @@ apm.lib.utils.technology.remove.science_pack("worker-robots-storage-1", "chemica
 
 --- [personal-roboport-equipment]
 apm.lib.utils.technology.add.science_pack("personal-roboport-equipment", "chemical-science-pack")
+apm.lib.utils.technology.add.prerequisites("personal-roboport-equipment", "chemical-science-pack")
 
 --- [worker-robots-speed-2]
 apm.lib.utils.technology.add.science_pack("worker-robots-speed-2", "chemical-science-pack")
+apm.lib.utils.technology.add.prerequisites("worker-robots-speed-2", "chemical-science-pack")
 
 if not mods["space-age"] then
 	apm.lib.utils.technology.remove.recipe_from_unlock("steam-power", "offshore-pump")

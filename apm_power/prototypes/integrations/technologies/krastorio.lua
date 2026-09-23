@@ -11,12 +11,10 @@ local list = {
 }
 
 for _, t in ipairs(list) do
-	local tech = data.raw["technology"][t]
-
 	local sp = { "apm_industrial_science_pack", "apm_steam_science_pack", "utility-science-pack", "space-science-pack" }
 
 	for _, sp_name in ipairs(sp) do
-		apm.lib.utils.technology.remove.science_pack(tech.name, sp_name)
+		apm.lib.utils.technology.remove.science_pack(t, sp_name) -- skips techs that don't exist (e.g. mining-productivity-4 with Space Age)
 	end
 end
 

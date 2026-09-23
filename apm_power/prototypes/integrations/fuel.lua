@@ -51,7 +51,7 @@ APM_LOG_SETTINGS(self, 'apm_power_compat_reverse_factory', apm_power_compat_reve
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.Bio_Industries and apm_power_compat_bio_industries then
+if (mods.Bio_Industries or mods.Bio_Industries_2) and apm_power_compat_bio_industries then
 	apm.lib.utils.fuel.overhaul(1, 'bi-woodpulp', 0.25, 'apm_generic_ash', 'chemical')
 	apm.lib.utils.item.mod.remove_fuel_value('seedling')
 	apm.lib.utils.item.mod.remove_fuel_value('bi-big-wooden-pole')

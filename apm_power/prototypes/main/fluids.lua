@@ -18,7 +18,6 @@ data:extend(
 			icons = apm.lib.utils.icon.generate.fluid({ r = 0.216, g = 0.566, b = 0.819 }, { r = 0.326, g = 0.209, b = 0.111 },
 				nil),
 			icon_size = 32,
-			group = "apm_power",
 			subgroup = "apm_power_fluid",
 			order = 'aa_a'
 		},
@@ -33,7 +32,6 @@ data:extend(
 			icons = apm.lib.utils.icon.generate.fluid({ r = 0.399, g = 0.246, b = 0.155 }, { r = 0.419, g = 0.266, b = 0.175 },
 				nil),
 			icon_size = 32,
-			group = "apm_power",
 			subgroup = "apm_power_fluid",
 			order = 'ab_a'
 		},
@@ -48,7 +46,6 @@ data:extend(
 			icons = apm.lib.utils.icon.generate.fluid({ r = 0.192, g = 0.216, b = 0.254 }, { r = 0.222, g = 0.236, b = 0.274 },
 				nil),
 			icon_size = 32,
-			group = "apm_power",
 			subgroup = "apm_power_fluid",
 			order = 'ac_b'
 		},
@@ -64,7 +61,6 @@ data:extend(
 			icons = apm.lib.utils.icon.generate.fluid({ r = 0.197, g = 0.145, b = 0.114 }, { r = 0.227, g = 0.185, b = 0.154 },
 				nil),
 			icon_size = 32,
-			group = "apm_power",
 			subgroup = "apm_power_fluid",
 			order = 'ad_c'
 		},
@@ -81,7 +77,6 @@ data:extend(
 				{ r = 1, g = 1, b = 1 }, apm.power.icons.coke_oven_gas_symbol),
 			icon_size = 32,
 			fuel_value = '0.5MJ',
-			group = "apm_power",
 			subgroup = "apm_power_fluid",
 			order = 'ae_d'
 		},

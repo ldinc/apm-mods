@@ -18,7 +18,6 @@ item.icons = {
 	apm.power.icons.zx80_construction_robot
 }
 item.stack_size = 5
-item.group = "apm_other"
 item.subgroup = "apm_starter_armor"
 item.order = "aa_e"
 item.place_result = "apm_zx80_construction_robot"

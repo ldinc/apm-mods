@@ -16,7 +16,7 @@ if mods["bzcarbon"] or mods["bzcarbon2"] then
 
 	local prereq = {
 		"lubricant",
-		"fluid-hadndling",
+		"fluid-handling",
 		"nuclear-power",
 		"battery",
 		"advanced-material-processing-2",

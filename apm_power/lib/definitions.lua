@@ -37,7 +37,7 @@ apm.power.color.mud_wet                                           = { r = 0.193,
 apm.power.color.mud_dry                                           = { r = 0.437, g = 0.300, b = 0.185 }
 apm.power.color.tar                                               = { r = 0.187, g = 0.135, b = 0.104 }
 apm.power.color.coke_oven_gas                                     = { r = 0.244, g = 0.141, b = 0.141 }
-apm.power.color.sive_iron                                         = { r = 0.669, g = 0.744, b = 0.819 }
+apm.power.color.sieve_iron                                        = { r = 0.669, g = 0.744, b = 0.819 }
 apm.power.color.sieve_copper                                      = { r = 0.864, g = 0.526, b = 0.454 }
 apm.power.color.crushed_stone                                     = { r = 0.703, g = 0.617, b = 0.454 }
 
@@ -218,25 +218,23 @@ apm.power.icons.path.equipment_energy_transmitter        =
 -- base game
 --apm.power.icons.coal = {icon=apm.power.icons.path.coal, icon_size=64, icon_mipmaps=4}
 --apm.power.icons.wood = {icon=apm.power.icons.path.wood, icon_size=64, icon_mipmaps=4}
-apm.power.icons.offshore_pump                            = { icon = apm.power.icons.path.offshore_pump, icon_size = 64, icon_mipmaps = 4 }
-apm.power.icons.burner_mining_drill                      = { icon = apm.power.icons.path.burner_mining_drill, icon_size = 64, icon_mipmaps = 4 }
-apm.power.icons.electric_mining_drill                    = { icon = apm.power.icons.path.electric_mining_drill, icon_size = 64, icon_mipmaps = 4 }
+apm.power.icons.offshore_pump                            = { icon = apm.power.icons.path.offshore_pump, icon_size = 64 }
+apm.power.icons.burner_mining_drill                      = { icon = apm.power.icons.path.burner_mining_drill, icon_size = 64 }
+apm.power.icons.electric_mining_drill                    = { icon = apm.power.icons.path.electric_mining_drill, icon_size = 64 }
 apm.power.icons.starter_armor                            = {
 	icon = apm.power.icons.path.starter_armor,
 	icon_size = 64,
 	tint =
 			apm.power.color.starter_set,
-	icon_mipmaps = 4
 }
 apm.power.icons.equipment_roboport_small                 = {
 	icon = apm.power.icons.path.equipment_roboport_small,
 	icon_size = 64,
 	tint =
 			apm.power.color.starter_set,
-	icon_mipmaps = 4
 }
-apm.power.icons.boiler                                   = { icon = apm.power.icons.path.boiler, icon_size = 64, icon_mipmaps = 4 }
-apm.power.icons.steam_engine                             = { icon = apm.power.icons.path.steam_engine, icon_size = 64, icon_mipmaps = 4 }
+apm.power.icons.boiler                                   = { icon = apm.power.icons.path.boiler, icon_size = 64 }
+apm.power.icons.steam_engine                             = { icon = apm.power.icons.path.steam_engine, icon_size = 64 }
 
 apm.power.icons.pistions                                 = { icon = apm.power.icons.path.pistions, icon_size = 64 }
 apm.power.icons.simple_engine                            = { icon = apm.power.icons.path.simple_engine, icon_size = 64 }
@@ -364,15 +362,14 @@ apm.power.icons.saw_blade_iron                           = { icon = apm.power.ic
 apm.power.icons.saw_blade_iron_used                      = { icon = apm.power.icons.path.saw_blade_iron_used, icon_size = 64 }
 apm.power.icons.saw_blade_steel                          = { icon = apm.power.icons.path.saw_blade_steel, icon_size = 64 }
 apm.power.icons.saw_blade_steel_used                     = { icon = apm.power.icons.path.saw_blade_steel_used, icon_size = 64 }
-apm.power.icons.burner_filter_inserter                   = { icon = apm.power.icons.path.burner_filter_inserter, icon_size = 64, icon_mipmaps = 4 }
-apm.power.icons.burner_long_inserter                     = { icon = apm.power.icons.path.burner_long_inserter, icon_size = 64, icon_mipmaps = 4 }
+apm.power.icons.burner_filter_inserter                   = { icon = apm.power.icons.path.burner_filter_inserter, icon_size = 64 }
+apm.power.icons.burner_long_inserter                     = { icon = apm.power.icons.path.burner_long_inserter, icon_size = 64 }
 apm.power.icons.crushed_stone                            = {
 	size = 64,
 	icon = apm.power.icons.path.crushed_stone,
 	filename =
 			apm.power.icons.path.crushed_stone,
 	scale = 0.25,
-	icon_mipmaps = 4,
 	tint = apm.power.color.crushed_stone,
 	icon_size = 64
 }
@@ -382,7 +379,6 @@ apm.power.icons.crushed_stone_1                          = {
 	filename =
 			apm.power.icons.path.crushed_stone_1,
 	scale = 0.25,
-	icon_mipmaps = 4,
 	tint = apm.power.color.crushed_stone,
 	icon_size = 64
 }
@@ -392,7 +388,6 @@ apm.power.icons.crushed_stone_2                          = {
 	filename =
 			apm.power.icons.path.crushed_stone_2,
 	scale = 0.25,
-	icon_mipmaps = 4,
 	tint = apm.power.color.crushed_stone,
 	icon_size = 64
 }
@@ -402,7 +397,6 @@ apm.power.icons.crushed_stone_3                          = {
 	filename =
 			apm.power.icons.path.crushed_stone_3,
 	scale = 0.25,
-	icon_mipmaps = 4,
 	tint = apm.power.color.crushed_stone,
 	icon_size = 64
 }
@@ -413,7 +407,6 @@ apm.power.icons.asphalt                                  = {
 	filename =
 			apm.power.icons.path.asphalt,
 	scale = 0.25,
-	icon_mipmaps = 2,
 	icon_size = 64
 }
 apm.power.icons.asphalt_1                                = {
@@ -422,12 +415,11 @@ apm.power.icons.asphalt_1                                = {
 	filename =
 			apm.power.icons.path.asphalt_1,
 	scale = 0.25,
-	icon_mipmaps = 2,
 	icon_size = 64
 }
 
 apm.power.icons.coke_oven_gas_symbol                     = { icon = apm.power.icons.path.coke_oven_gas_symbol, icon_size = 64 }
-apm.power.icons.zx80_construction_robot                  = { icon = apm.power.icons.path.zx80_construction_robot, icon_size = 64, tint = { r = 0.689, g = 0.571, b = 0.377 }, icon_mipmaps = 4 }
+apm.power.icons.zx80_construction_robot                  = { icon = apm.power.icons.path.zx80_construction_robot, icon_size = 64, tint = { r = 0.689, g = 0.571, b = 0.377 } }
 apm.power.icons.equipment_battery_tiny                   = { icon = apm.power.icons.path.equipment_battery_tiny, icon_size = 64 }
 
 apm.power.icons.item_burner_generator_basic              = { icon = apm.power.icons.path.item_burner_generator_basic, icon_size = 64 }
@@ -457,5 +449,4 @@ apm.power.icons.electric_generator_unit                  = {
 	icon =
 	"__apm_resource_pack_ldinc__/graphics/icons/electric-generator-unit.png",
 	icon_size = 64,
-	icon_mipmaps = 4
 }

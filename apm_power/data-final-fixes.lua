@@ -28,7 +28,6 @@ local get_icons = function(prototype)
 		return { {
 			icon = prototype.icon,
 			icon_size = prototype.icon_size,
-			icon_mipmaps = prototype.icon_mipmaps
 		} }
 	end
 end

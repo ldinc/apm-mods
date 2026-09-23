@@ -14,8 +14,7 @@ local smoke_burner = {
 		{ 0, 0 },
 		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 

@@ -16,8 +16,7 @@ local smoke_burner = {
 		{ -0.65, -2.15 },
 		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 
@@ -29,8 +28,7 @@ local smoke_steam = {
 		{ -0.65, -2.15 },
 		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 
@@ -58,8 +56,7 @@ local lab = {
 	close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
 
 	working_sound = {
-		filename = "__base__/sound/lab.ogg",
-		volume = 0.8,
+		sound = { filename = "__base__/sound/lab.ogg", volume = 0.8 },
 		idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
 	},
 	-- lab.working_sound.apparent_volume = 1.5

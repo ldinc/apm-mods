@@ -18,34 +18,31 @@ local smoke_puddling_furnace = {
 	apm.lib.utils.builders.smoke.new(
 		"light-smoke",
 		{ 0.1, 0.1 },
-		nil,
 		4,
 		smoke_puddling_furnace_position_a,
+		nil,
 		0.08,
-		60,
-		1
+		60
 	),
 
 	apm.lib.utils.builders.smoke.new(
 		"light-smoke",
 		{ 0.1, 0.1 },
-		nil,
 		3.4,
 		smoke_puddling_furnace_position_b,
+		nil,
 		0.08,
-		60,
-		1
+		60
 	),
 
 	apm.lib.utils.builders.smoke.new(
 		"light-smoke",
 		{ 0.1, 0.1 },
-		nil,
 		2.8,
 		smoke_puddling_furnace_position_c,
+		nil,
 		0.08,
-		60,
-		1
+		60
 	)
 }
 
@@ -360,8 +357,6 @@ if mods["space-age"] then
 		priority = "high",
 		width = 320,
 		height = 256,
-		frame_count = 16,
-		line_length = 8,
 		shift = util.by_pixel(-1, -8),
 		scale = 0.5,
 	}

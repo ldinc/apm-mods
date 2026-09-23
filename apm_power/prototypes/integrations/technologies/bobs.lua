@@ -19,8 +19,8 @@ end
 
 --- [bobplates]
 if mods.bobplates then
-	apm.lib.utils.technology.add.prerequisites('bob-alloy-processing', 'apm_power_automation_science_pack')
-	apm.lib.utils.technology.add.prerequisites('bib0chemical-processing-1', 'apm_power_electricity')
+	apm.lib.utils.technology.add.prerequisites('bob-alloy-processing', 'automation-science-pack')
+	apm.lib.utils.technology.add.prerequisites('bob-chemical-processing-1', 'apm_power_electricity')
 	apm.lib.utils.technology.add.prerequisites('bob-electrolysis-1', 'apm_power_electricity')
 	apm.lib.utils.technology.add.prerequisites('bob-air-compressor-1', 'apm_power_electricity')
 	apm.lib.utils.technology.add.prerequisites('bob-water-bore-1', 'apm_power_electricity')
@@ -28,11 +28,10 @@ end
 
 --- [bobmining]
 if mods.bobmining then
-	apm.lib.utils.technology.add.prerequisites('bob-drills-1', 'apm_electric_mining_drills')
+	apm.lib.utils.technology.add.prerequisites('bob-drills-2', 'apm_electric_mining_drills')
 	apm.lib.utils.technology.add.prerequisites('bob-area-drills-1', 'apm_electric_mining_drills')
 	apm.lib.utils.technology.add.prerequisites('bob-water-miner-1', 'apm_electric_mining_drills')
-	apm.lib.utils.technology.add.prerequisites('bob-pumpjacks-1', 'apm_electric_mining_drills')
-	apm.lib.utils.technology.add.prerequisites('bob-pumpjacks-1', 'logistic-science-pack')
+	apm.lib.utils.technology.add.prerequisites('bob-pumpjacks-2', 'apm_electric_mining_drills')
 	apm.lib.utils.technology.add.prerequisites('bob-steel-axe-2', 'logistic-science-pack')
 end
 
@@ -55,17 +54,17 @@ if mods.boblogistics then
 	end
 	if apm.lib.utils.setting.get.startup('bobmods-logistics-beltoverhaul') then
 		-- logistics-0
-		apm.lib.utils.technology.add.prerequisites('apm_power_steam', 'logistics-0')
+		apm.lib.utils.technology.add.prerequisites('steam-power', 'logistics-0')
 		apm.lib.utils.technology.add.prerequisites('logistics-0', 'apm_rubber-1')
 		apm.lib.utils.technology.add.science_pack('logistics-0', 'apm_industrial_science_pack', 1)
 		apm.lib.utils.technology.remove.science_pack('logistics-0', 'automation-science-pack')
-		apm.lib.utils.technology.force.recipe_for_unlock('logistics-0', 'basic-transport-belt')
+		apm.lib.utils.technology.force.recipe_for_unlock('logistics-0', 'bob-basic-transport-belt')
 		apm.lib.utils.technology.mod.order('logistics-0', 'a-a-a')
 
 		apm.lib.utils.technology.add.prerequisites('logistics', 'logistics-0')
 
 		-- logistics
-		apm.lib.utils.technology.remove.prerequisites('apm_power_steam', 'logistics')
+		apm.lib.utils.technology.remove.prerequisites('steam-power', 'logistics')
 		apm.lib.utils.technology.add.prerequisites('logistics', 'apm_power_electricity')
 		apm.lib.utils.technology.remove.prerequisites('logistics', 'apm_rubber-1')
 		apm.lib.utils.technology.add.science_pack('logistics', 'automation-science-pack', 1)
@@ -77,8 +76,6 @@ if mods.boblogistics then
 
 	apm.lib.utils.technology.force.recipe_for_unlock('apm_water_supply-1', 'bob-copper-pipe')
 	apm.lib.utils.technology.force.recipe_for_unlock('apm_water_supply-1', 'bob-copper-pipe-to-ground')
-	apm.lib.utils.technology.force.recipe_for_unlock('apm_stone_bricks', 'bob-stone-pipe')
-	apm.lib.utils.technology.force.recipe_for_unlock('apm_stone_bricks', 'bob-stone-pipe-to-ground')
 
 	if mods["aai-loaders"] then
 		apm.lib.utils.technology.remove.prerequisites_all("aai-basic-loader")

@@ -18,7 +18,6 @@ item.icons = {
 	apm.power.icons.equipment_battery_tiny
 }
 item.stack_size = 20
-item.group = "apm_other"
 item.subgroup = "apm_starter_armor"
 item.order = "aa_c"
 item.place_as_equipment_result = "apm_equipment_battery_tiny"
@@ -32,11 +31,11 @@ local equipment = {}
 equipment.type = "battery-equipment"
 equipment.name = "apm_equipment_battery_tiny"
 equipment.hidden = true
-equipment.flags = { 'hide-from-bonus-gui' }
 equipment.sprite = {}
 equipment.sprite.filename = apm.power.icons.equipment_battery_tiny.icon
 equipment.sprite.width = apm.power.icons.equipment_battery_tiny.icon_size
 equipment.sprite.height = apm.power.icons.equipment_battery_tiny.icon_size
+equipment.sprite.scale = 0.5 -- 32 px per grid cell, like vanilla
 equipment.sprite.priority = "medium"
 equipment.shape = {}
 equipment.shape.width = 1

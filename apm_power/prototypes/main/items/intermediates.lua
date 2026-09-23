@@ -130,7 +130,7 @@ local item = {
 	fuel_categories = { "chemical" },
 	fuel_value = "1MJ",
 
-	weight = apm.lib.utils.constants.value.weight.product.defaults,
+	weight = apm.lib.utils.constants.value.weight.wood,
 }
 
 data:extend({ item })

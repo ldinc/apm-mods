@@ -160,7 +160,7 @@ coking_plant.allowed_effects = apm.power.constants.modules.allowed_effects_2
 coking_plant.energy_source = apm.lib.utils.builders.energy_source.new_burner(
 	{ "apm_refined_chemical" },
 	apm.power.constants.emissions.cp_2,
-	apm.lib.utils.builders.smoke.burner.t12
+	apm.lib.utils.builders.smoke.burner.t2
 )
 
 coking_plant.graphics_set.animation_progress = base_animation_progress / coking_plant.crafting_speed

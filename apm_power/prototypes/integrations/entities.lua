@@ -104,21 +104,18 @@ if mods.bobpower and apm_power_compat_bob then
 	apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor-2", { "chemical", "apm_refined_chemical" })
 	apm.lib.utils.reactor.set.fuel_categories("bob-burner-reactor-3", { "chemical", "apm_refined_chemical" })
 
-	apm.lib.utils.entity.set.fuel_category(
-		data.raw["burner-generator"]["bob-burner-generator"],
-		{ "chemical", "apm_refined_chemical" }
-	)
+	-- only exists with the bobpower setting "bobmods-power-burnergenerator"
+	local burner_generator = data.raw["burner-generator"]["bob-burner-generator"]
+	if burner_generator then
+		apm.lib.utils.entity.set.fuel_category(burner_generator, { "chemical", "apm_refined_chemical" })
+	end
 end
 
 if mods.bobplates and apm_power_compat_bob then
-	apm.lib.utils.assembler.burner.overhaul("bob-chemical-boiler")
-	apm.lib.utils.assembler.burner.overhaul("bob-chemical-steel-furnace", true)
-	apm.lib.utils.assembler.burner.overhaul("bob-mixing-furnace")
-	apm.lib.utils.assembler.burner.overhaul("bob-mixing-steel-furnace", true)
-end
-
-if mods.bobtech and apm_power_compat_bob then
-	--apm.lib.utils.lab.overhaul("bob-lab-2")
+	apm.lib.utils.assembler.burner.overhaul("bob-stone-chemical-furnace")
+	apm.lib.utils.assembler.burner.overhaul("bob-steel-chemical-furnace", true)
+	apm.lib.utils.assembler.burner.overhaul("bob-stone-mixing-furnace")
+	apm.lib.utils.assembler.burner.overhaul("bob-steel-mixing-furnace", true)
 end
 
 if mods.bobmining and apm_power_compat_bob then

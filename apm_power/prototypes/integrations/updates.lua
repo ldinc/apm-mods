@@ -192,7 +192,7 @@ if mods["aai-vehicles-flame-tumbler"] and apm_power_compat_earendel then
 end
 
 if mods["aai-vehicles-laser-tank"] and apm_power_compat_earendel then
-	if not mods.apm_energy_addon then
+	if not mods.apm_energy_addon_ldinc then
 		apm.lib.utils.car.set.fuel_category("vehicle-laser-tank", { "apm_refined_chemical" })
 		if mods["aai-industry"] then
 			apm.lib.utils.car.add.fuel_category("vehicle-laser-tank", "apm_vehicle_only")
@@ -234,7 +234,7 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.bobvehicleequipment and apm_power_compat_bob then
+if mods.bobwarfare and apm_power_compat_bob then -- the tanks are defined in bobwarfare
 	apm.lib.utils.car.set.fuel_category("bob-tank-2", { "apm_refined_chemical" })
 	apm.lib.utils.car.set.fuel_category("bob-tank-3", { "apm_refined_chemical" })
 	if mods["aai-industry"] then

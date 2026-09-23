@@ -66,7 +66,7 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.Bio_Industries and apm_power_compat_bio_industries then
+if (mods.Bio_Industries or mods.Bio_Industries_2) and apm_power_compat_bio_industries then
 	apm.lib.utils.recipe.result.replace_all("bi-seed", "apm_tree_seeds")
 	apm.lib.utils.recipe.ingredient.replace_all("bi-seed", "apm_tree_seeds")
 	apm.lib.utils.recipe.result.replace_all("bi-ash", "apm_generic_ash")
@@ -183,7 +183,7 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-if (mods.Bio_Industries and apm_power_compat_bio_industries) then
+if ((mods.Bio_Industries or mods.Bio_Industries_2) and apm_power_compat_bio_industries) then
 	apm.lib.utils.recipe.ingredient.replace_all("apm_crushed_stone", "stone-crushed")
 	apm.lib.utils.recipe.result.replace_all("apm_crushed_stone", "stone-crushed")
 	apm.lib.utils.recipe.overwrite.group("apm_crushed_stone", "apm_power", "apm_power_intermediates", "ak_a")

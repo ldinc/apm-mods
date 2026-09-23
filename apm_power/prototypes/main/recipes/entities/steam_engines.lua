@@ -31,8 +31,8 @@ recipe.main_product = "apm_steam_engine_2"
 recipe.requester_paste_multiplier = 4
 recipe.always_show_made_in = apm.lib.features.show.made_in
 
-if apm.lib.features.frames_overhaul then
-	apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, "apm_steam_engine_1", 1)
+if apm.lib.features.reuse_previous_tier then
+	apm.lib.utils.recipe.ingredient.mod_by_ref(recipe, "steam-engine", 1) -- like apm_boiler_2 (apm_steam_engine_1 does not exist)
 end
 
 data:extend({ recipe })

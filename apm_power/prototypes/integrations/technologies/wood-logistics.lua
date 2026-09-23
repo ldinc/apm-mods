@@ -11,6 +11,7 @@ apm.lib.utils.technology.add.prerequisites(original_wood_logistics, "apm_crusher
 
 local tech = apm.lib.utils.technology.get.by_name(original_wood_logistics)
 if tech then
+	tech.research_trigger = nil -- the unit below replaces the mod's trigger
 	tech.unit = {
 		ingredients = {
 			{ "apm_industrial_science_pack", 1 },

@@ -21,6 +21,7 @@ if mods["aai-loaders"] and apm.lib.features.power.compat.earendel then
 
 	if lubricant_enabled then
 		local loader_entity = data.raw["loader-1x1"][loader]
+		if not loader_entity then return end
 
 		--- update description
 		local fpm = 0.05

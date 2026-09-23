@@ -53,7 +53,7 @@ APM_LOG_SETTINGS(self, "apm_power_compat_reverse_factory", apm_power_compat_reve
 APM_LOG_SETTINGS(self, "apm_power_compat_arcitos", apm_power_compat_arcitos)
 APM_LOG_SETTINGS(self, "apm_power_always_show_made_in", apm.lib.features.show.made_in)
 
-if mods.apm_energy_addon_ldic then
+if mods.apm_energy_addon_ldinc then
 	apm.lib.utils.recipe.ingredient.mod("apm_battery_charging_station", "steel-plate", 0)
 	apm.power.machine_frame_addition("apm_battery_charging_station", 3, 3, 6, 3, true)
 end
@@ -143,8 +143,6 @@ if mods["aai-industry"] and apm_power_compat_earendel then
 	apm.lib.utils.recipe.ingredient.mod("long-handed-inserter", "electric-motor", 1)
 	apm.lib.utils.recipe.ingredient.mod("long-handed-inserter", "apm_gearing", 1)
 
-	apm.lib.utils.recipe.ingredient.replace_all("motor", "apm_simple_engine")
-
 	if not mods.bobelectronics then
 		apm.lib.utils.recipe.ingredient.mod("inserter", "electronic-circuit", 1)
 		apm.lib.utils.recipe.ingredient.mod("apm_offshore_pump_1", "electronic-circuit", 5)
@@ -159,7 +157,7 @@ if mods["aai-industry"] and apm_power_compat_earendel then
 	apm.lib.utils.recipe.ingredient.replace("steam-turbine", "electric-motor", "iron-gear-wheel")
 
 	if mods.boblogistics and apm.lib.utils.setting.get.startup("bobmods-logistics-beltoverhaul") then
-		apm.lib.utils.recipe.ingredient.replace("basic-transport-belt", "motor", "iron-gear-wheel", 2)
+		apm.lib.utils.recipe.ingredient.replace("bob-basic-transport-belt", "motor", "iron-gear-wheel", 2)
 	else
 		apm.lib.utils.recipe.ingredient.replace("transport-belt", "motor", "iron-gear-wheel", 2)
 		apm.lib.utils.recipe.ingredient.replace("underground-belt", "motor", "iron-gear-wheel")
@@ -167,8 +165,9 @@ if mods["aai-industry"] and apm_power_compat_earendel then
 	end
 	apm.lib.utils.recipe.ingredient.mod("engine-unit", "motor", 0)
 
+	apm.lib.utils.recipe.ingredient.replace_all("motor", "apm_simple_engine")
+
 	if not mods.bobelectronics then
-		--apm.lib.utils.recipe.ingredient.replace('electronic-circuit', 'wood', 'apm_wood_board')
 		apm.lib.utils.recipe.ingredient.mod("electric-mining-drill", "electronic-circuit", 3)
 		apm.lib.utils.recipe.ingredient.mod("electronic-circuit", "stone-tablet", 1)
 	else
@@ -208,15 +207,19 @@ if (mods["space-exploration"] or mods["aai-industry"]) and apm_power_compat_eare
 	-- integrate stone from sand
 	apm.lib.utils.recipe.ingredient.mod("sand-from-stone", "apm_crushed_stone", 4)
 	apm.lib.utils.recipe.ingredient.mod("sand-from-stone", "stone", 0)
+
 	local recipe, ok = apm.lib.utils.recipe.get.by_name("sand-from-stone")
+
 	if ok then
 		apm.lib.utils.recipe.category.change(recipe, "apm_crusher")
 	end
-	-- integrate glass
-	apm.lib.utils.recipe.ingredient.mod("apm_greenhouse_0", "bob-glass", 25)
-	apm.lib.utils.recipe.ingredient.mod("apm_greenhouse_1", "bob-glass", 25)
-	apm.lib.utils.recipe.ingredient.mod("apm_greenhouse_2", "bob-glass", 25)
-	apm.lib.utils.recipe.ingredient.mod("apm_lab_1", "bob-glass", 10)
+
+	-- integrate glass (Bob's glass is "bob-glass", AAI / SE use "glass")
+	local glass = apm.lib.utils.item.exist("bob-glass") and "bob-glass" or "glass"
+	apm.lib.utils.recipe.ingredient.mod("apm_greenhouse_0", glass, 25)
+	apm.lib.utils.recipe.ingredient.mod("apm_greenhouse_1", glass, 25)
+	apm.lib.utils.recipe.ingredient.mod("apm_greenhouse_2", glass, 25)
+	apm.lib.utils.recipe.ingredient.mod("apm_lab_1", glass, 10)
 end
 
 if mods["space-exploration"] and apm_power_compat_earendel then
@@ -461,7 +464,7 @@ if mods.angelsbioprocessing and apm_power_compat_angel then
 		apm.lib.utils.recipe.energy_required.mod("wooden-board-paper", 1)
 		apm.lib.utils.recipe.ingredient.mod("wooden-board-paper", "angels-solid-paper", 6)
 		apm.lib.utils.recipe.result.mod("wooden-board-paper", "apm_wood_board", 3)
-		apm.lib.utils.recipe.result.mod("wooden-board-paper", "wooden-board", 0)
+		apm.lib.utils.recipe.result.mod("wooden-board-paper", "bob-wooden-board", 0)
 
 		local recipe, ok = apm.lib.utils.recipe.get.by_name("wooden-board-paper")
 		if ok then

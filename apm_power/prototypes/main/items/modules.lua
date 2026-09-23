@@ -39,8 +39,8 @@ local function ParticleFilter(i)
 		-- beacon visualization
 		beacon_tint =
     {
-      primary = {255.0/54.0, 255.0/79.0, 255.0/105.0, 1.000}, -- #364f69ff
-      secondary = {255.0/200.0, 255.0/218.0, 255.0/219.0, 1.000}, -- #c8dadbff
+      primary = {54.0/255.0, 79.0/255.0, 105.0/255.0, 1.000}, -- #364f69ff
+      secondary = {200.0/255.0, 218.0/255.0, 219.0/255.0, 1.000}, -- #c8dadbff
     },
 		art_style = "vanilla",
 		requires_beacon_alt_mode = false,

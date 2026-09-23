@@ -71,7 +71,7 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
-if mods.Bio_Industries and apm_power_compat_bio_industries then
+if (mods.Bio_Industries or mods.Bio_Industries_2) and apm_power_compat_bio_industries then
 	apm.lib.utils.recipe.category.overwrite_all("biofarm-mod-crushing", "apm_crusher")
 
 	local recipe, ok = apm.lib.utils.recipe.get.by_name("bi_recipe_woodpulp")
@@ -85,7 +85,7 @@ if mods.Bio_Industries and apm_power_compat_bio_industries then
 	end
 end
 
-if mods.Bio_Industries and apm_power_compat_bio_industries then
+if (mods.Bio_Industries or mods.Bio_Industries_2) and apm_power_compat_bio_industries then
 	apm.lib.utils.recipe.category.overwrite_all("biofarm-mod-crushing", "apm_crusher")
 
 	if apm_power_always_show_made_in then

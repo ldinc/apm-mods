@@ -11,6 +11,7 @@ local icon_path = "__apm_resource_pack_ldinc__/graphics/icons/"
 
 local inserter = table.deepcopy(data.raw.inserter["burner-inserter"])
 inserter.name = "apm_steam_inserter"
+inserter.next_upgrade = nil -- burner-inserter upgrades to the vanilla inserter (other pickup side and reach)
 inserter.icon = icon_path .. "apm_steam_inserter.png"
 inserter.minable = { mining_time = 0.1, result = "apm_steam_inserter" }
 inserter.energy_per_movement = "6kJ"

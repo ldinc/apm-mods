@@ -82,7 +82,7 @@ apm.lib.utils.recipe.ingredient.mod("offshore-pump", "electronic-circuit", 0)
 apm.lib.utils.recipe.ingredient.mod("engine-unit", "iron-gear-wheel", 0)
 apm.lib.utils.recipe.ingredient.mod("engine-unit", "apm_simple_engine", 2)
 apm.lib.utils.recipe.ingredient.mod("engine-unit", "apm_iron_bearing", 2)
-apm.lib.utils.recipe.ingredient.mod("engine-unit", "apm_iron_gearing", 2)
+apm.lib.utils.recipe.ingredient.mod("engine-unit", "apm_gearing", 2)
 
 apm.lib.utils.recipe.ingredient.mod("electric-engine-unit", "apm_electromagnet", 8)
 apm.lib.utils.recipe.ingredient.mod("electric-engine-unit", "apm_simple_engine", 0)
@@ -222,7 +222,8 @@ if mods["space-age"] then
 		local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
 		if ok then
-			apm.lib.utils.recipe.category.change(recipe, "apm_light_metallurgy")
+			-- add, don't replace: other mods' assemblers (only "crafting") must still make gears and belts
+			apm.lib.utils.recipe.category.add(recipe, "apm_light_metallurgy")
 		end
 	end
 
