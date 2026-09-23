@@ -14,7 +14,8 @@
     "editor.formatOnSave": true,
     "Lua.diagnostics.workspaceDelay": 30000,
     "Lua.diagnostics.disable": [
-        "empty-block"
+        "empty-block",
+        "different-requires"
     ],
     "Lua.diagnostics.globals": [
         "rf",

@@ -131,9 +131,7 @@ circuit_connector_definitions["apm_inline_storage_tank"] = circuit_connector_def
 			}
 		)
 
--- tank.circuit_wire_connection_points = circuit_connector_definitions[tank.name].points
--- tank.circuit_connector_sprites = circuit_connector_definitions[tank.name].sprites
-
+---@diagnostic disable-next-line: assign-type-mismatch
 tank.circuit_connector = circuit_connector_definitions[tank.name]
 
 tank.circuit_wire_max_distance = default_circuit_wire_max_distance
