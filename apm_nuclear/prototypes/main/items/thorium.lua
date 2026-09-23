@@ -12,7 +12,7 @@ local item = {
 	icons = {
 		apm.nuclear.icons.fuel_container_thorium
 	},
-	fuel_category = "apm_nuclear_thorium",
+	fuel_categories = { "apm_nuclear_thorium" },
 	burnt_result = "apm_fuel_rod_thorium_active",
 	stack_size = apm.lib.features.stack_size.default,
 	subgroup = "apm_nuclear_fuel",
@@ -81,7 +81,7 @@ local item = {
 		apm.nuclear.icons.breeder_container_thorium_loaded
 	},
 	subgroup = "apm_nuclear_breeding_thorium",
-	fuel_category = "apm_nuclear_breeder",
+	fuel_categories = { "apm_nuclear_breeder" },
 	burnt_result = "apm_breeder_thorium_active",
 	fuel_value = apm.nuclear.constants.fuel_value.breeder.thorium,
 	fuel_glow_color = apm.nuclear.color.fuel_glow.breeder.thorium,

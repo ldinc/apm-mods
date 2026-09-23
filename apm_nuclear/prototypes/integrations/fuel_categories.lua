@@ -95,6 +95,9 @@ if mods.RealisticReactors and apm_nuclear_compat_realistic_reactors then
 	local apm_cats = { 'apm_nuclear_uranium', 'apm_nuclear_mox', 'apm_nuclear_neptunium', 'apm_nuclear_thorium',
 		'apm_nuclear_deuterium', 'apm_nuclear_breeder' }
 	for i = 1, 250 do
-		insert_categories(data.raw.reactor["realistic-reactor-" .. i], apm_cats)
+		local reactor = data.raw.reactor["realistic-reactor-" .. i]
+		if reactor and reactor.energy_source then -- only exists in old RealisticReactors versions
+			insert_categories(reactor, apm_cats)
+		end
 	end
 end

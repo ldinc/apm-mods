@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.06
+Date: 23.09.2026
+  Changes:
+    - Requires Factorio 2.1.20.
+    - Without Space Age: spidertron also needs the nuclear science pack, like its prerequisite fission-reactor-equipment.
+  Bugfixes:
+    - Fixed "ItemPrototype::fuel_category was removed".
+    - Some fixes with  fision and fusion reactors.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.05
 Date: 24.08.2026
   Changes:

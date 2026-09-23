@@ -101,35 +101,35 @@ local skiplist = nil
 
 --- [Cerys-Moon-of-Fulgora]
 if mods["Cerys-Moon-of-Fulgora"] then
-	getter = require("prototypes.integrations.technologies.cerys")
+	local getter = require("prototypes.integrations.technologies.cerys")
 
 	skiplist = getter(skiplist)
 end
 
 --- [Expanded Rocket Payloads Continued]
 if mods["expanded-rocket-payloads-continued"] then
-	getter = require("prototypes.integrations.technologies.expanded-rocket-payloads-continued")
+	local getter = require("prototypes.integrations.technologies.expanded-rocket-payloads-continued")
 
 	skiplist = getter(skiplist)
 end
 
 --- [exotic-space-industries]
 if mods["exotic-space-industries"] then
-	getter = require("prototypes.integrations.technologies.exotic-space-industries")
+	local getter = require("prototypes.integrations.technologies.exotic-space-industries")
 
 	skiplist = getter(skiplist)
 end
 
 --- [linox]
 if mods["linox"] then
-	getter = require("prototypes.integrations.technologies.linox")
+	local getter = require("prototypes.integrations.technologies.linox")
 
 	skiplist = getter(skiplist)
 end
 
 --- [space age]
 if mods["space-age"] then
-	getter = require("prototypes.integrations.technologies.space-age")
+	local getter = require("prototypes.integrations.technologies.space-age")
 
 	skiplist = getter(skiplist)
 end

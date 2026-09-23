@@ -57,12 +57,11 @@ apm.lib.utils.technology.add.prerequisites("nuclear-fuel-reprocessing", "apm_nuc
 apm.lib.utils.technology.add.science_pack("nuclear-fuel-reprocessing", "apm_nuclear_science_pack", 1)
 apm.lib.utils.technology.mod.unit_count("nuclear-fuel-reprocessing", 150)
 
--- fusion-reactor-equipment
---apm.lib.utils.technology.add.prerequisites("fusion-reactor-equipment", "apm_nuclear_rtg")
-apm.lib.utils.technology.add.prerequisites("fusion-reactor-equipment", "apm_nuclear_science_pack")
-apm.lib.utils.technology.add.science_pack("fusion-reactor-equipment", "apm_nuclear_science_pack", 1)
-
 if mods["space-age"] then
+	-- fusion-reactor-equipment (Space Age only)
+	apm.lib.utils.technology.add.prerequisites("fusion-reactor-equipment", "apm_nuclear_science_pack")
+	apm.lib.utils.technology.add.science_pack("fusion-reactor-equipment", "apm_nuclear_science_pack", 1)
+
 	apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
 	apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment",
 		"apm_shielded_nuclear_fuel_cell_reprocessing")
@@ -71,9 +70,14 @@ if mods["space-age"] then
 
 	apm.lib.utils.technology.add.prerequisites("atomic-bomb", "space-science-pack")
 else
-	apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
-	apm.lib.utils.technology.add.recipe_for_unlock("fusion-reactor-equipment",
+	-- without Space Age the portable reactor technology is "fission-reactor-equipment"
+	apm.lib.utils.technology.add.prerequisites("fission-reactor-equipment", "apm_nuclear_science_pack")
+	apm.lib.utils.technology.add.science_pack("fission-reactor-equipment", "apm_nuclear_science_pack", 1)
+	apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment", "apm_shielded_nuclear_fuel_cell")
+	apm.lib.utils.technology.add.recipe_for_unlock("fission-reactor-equipment",
 		"apm_shielded_nuclear_fuel_cell_reprocessing")
+	-- spidertron depends on fission-reactor-equipment, so it needs the same science packs
+	apm.lib.utils.technology.add.science_pack("spidertron", "apm_nuclear_science_pack", 1)
 end
 
 --- [fix barreling] <<<

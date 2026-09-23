@@ -28,8 +28,6 @@ local function CreateHexafluoride(i)
 		gas_temperature = 56.5,
 		max_temperature = 57.5,
 		heat_capacity = "0.1kJ",
-		pressure_to_speed_ratio = 0.4,
-		flow_to_energy_ratio = 0.59,
 		subgroup = "apm_nuclear_hexafluoride",
 		order = "aa_[" .. string.format("%03d", enrichment) .. "]",
 		auto_barrel = false,
@@ -61,8 +59,6 @@ local function CreateNitricAcidFuelSolution(suffix, tint_1, tint_2, subgroup, or
 		default_temperature = 25,
 		max_temperature = 25,
 		heat_capacity = "0.1kJ",
-		pressure_to_speed_ratio = 0.4,
-		flow_to_energy_ratio = 0.59,
 	}
 
 	data:extend({ fluid })

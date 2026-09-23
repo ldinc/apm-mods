@@ -18,9 +18,9 @@ function apm.lib.utils.assembler.add.fluid_connections(assembler_name, level)
 	if level == 1 then
 		pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
 	elseif level == 2 then
-		pipe_picture = assembler2pipepictures()
+		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures()
 	elseif level == 3 then
-		pipe_picture = assembler3pipepictures()
+		pipe_picture = apm.lib.utils.pipecovers.assembler3pipepictures()
 	elseif level == 4 then
 		pipe_picture = apm.lib.utils.pipecovers.assembler4pipepictures()
 	else

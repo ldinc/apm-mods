@@ -476,7 +476,7 @@ end
 
 --- [item.overwrite.localised_name]
 ---@param item_name string
----@param localised_name string
+---@param localised_name LocalisedString
 function apm.lib.utils.item.overwrite.localised_name(item_name, localised_name)
 	local item, ok = apm.lib.utils.item.get_by_name(item_name, true)
 
@@ -489,7 +489,7 @@ end
 
 --- [item.overwrite.localised_description]
 ---@param item_name string
----@param localised_description string
+---@param localised_description LocalisedString
 function apm.lib.utils.item.overwrite.localised_description(item_name, localised_description)
 	local item, ok = apm.lib.utils.item.get_by_name(item_name, true)
 

@@ -240,7 +240,7 @@ end
 
 --- [technology.overwrite.localised_name]
 ---@param technology_name string
----@param localised_name string
+---@param localised_name LocalisedString
 function apm.lib.utils.technology.overwrite.localised_name(technology_name, localised_name)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
@@ -253,7 +253,7 @@ end
 
 --- [technology.overwrite.localised_description]
 ---@param technology_name string
----@param localised_description string
+---@param localised_description LocalisedString
 function apm.lib.utils.technology.overwrite.localised_description(technology_name, localised_description)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 

@@ -23,7 +23,12 @@ apm.lib.utils.recipe.result.mod("nuclear-fuel", "nuclear-fuel", 10)
 apm.lib.utils.recipe.ingredient.mod("atomic-bomb", "uranium-235", 0)
 apm.lib.utils.recipe.ingredient.mod("atomic-bomb", "apm_oxide_pellet_pu239", 15)
 
-apm.lib.utils.recipe.ingredient.mod("fusion-reactor-equipment", "apm_depleted_uranium_ingots", 5)
+if mods["space-age"] then
+	apm.lib.utils.recipe.ingredient.mod("fusion-reactor-equipment", "apm_depleted_uranium_ingots", 5)
+else
+	-- without Space Age the portable reactor is "fission-reactor-equipment"
+	apm.lib.utils.recipe.ingredient.mod("fission-reactor-equipment", "apm_depleted_uranium_ingots", 5)
+end
 --apm.lib.utils.recipe.ingredient.mod("fusion-reactor-equipment", "water", 5, 50)
 
 apm.lib.utils.recipe.ingredient.mod("satellite", "apm_rtg_radioisotope_thermoelectric_generator", 25)

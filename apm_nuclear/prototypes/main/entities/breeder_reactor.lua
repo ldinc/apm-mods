@@ -94,7 +94,6 @@ breeder_reactor.heat_buffer = {
 	specific_heat = "10MJ",
 	max_transfer = "10GW",
 	minimum_glow_temperature = 350,
-	glow_alpha_modifier = 0.6,
 	connections = {
 		{
 			position = { -2, -2 },

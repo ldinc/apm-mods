@@ -53,9 +53,9 @@ if mods.bobpower and apm_nuclear_compat_bob then
 end
 
 if mods.bobequipment and apm_nuclear_compat_bob then
-	apm.lib.utils.technology.add.science_pack("bob-fusion-reactor-equipment-2", "apm_nuclear_science_pack")
-	apm.lib.utils.technology.add.science_pack("bob-fusion-reactor-equipment-3", "apm_nuclear_science_pack")
-	apm.lib.utils.technology.add.science_pack("bob-fusion-reactor-equipment-4", "apm_nuclear_science_pack")
+	apm.lib.utils.technology.add.science_pack("bob-fission-reactor-equipment-2", "apm_nuclear_science_pack")
+	apm.lib.utils.technology.add.science_pack("bob-fission-reactor-equipment-3", "apm_nuclear_science_pack")
+	apm.lib.utils.technology.add.science_pack("bob-fission-reactor-equipment-4", "apm_nuclear_science_pack")
 end
 
 -- angel ----------------------------------------------------------------------
@@ -126,9 +126,6 @@ if mods["apm_power_ldinc"] then
 
 		apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("fission-reactor-equipment")
 		apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("spidertron")
-		apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("")
-		apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("")
-		apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("")
 
 		--- optimize t-tree
 		apm.lib.utils.technology.remove.prerequisites("fission-reactor-equipment", "nuclear-power")
