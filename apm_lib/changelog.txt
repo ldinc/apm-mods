@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.16
+Date: 23.09.2026
+  Bugfixes:
+    - [apm.lib.utils.patch.item.replace] Handles quality properly.
+    - [apm.lib.utils.patch.entity.replace] Keeps direction, quality and inventory contents; spills the item if the new entity can't be placed.
+    - [apm.lib.utils.recipe.ingredient.replace] Item amounts are rounded to whole numbers.
+    - [apm.lib.utils.character.crafting_category.add] No duplicates.
+    - [apm.lib.utils.item] Support well-known items types.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.15
 Date: 23.09.2026
   Bugfixes:

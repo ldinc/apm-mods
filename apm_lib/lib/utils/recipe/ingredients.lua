@@ -215,6 +215,14 @@ function apm.lib.utils.recipe.ingredient.remove(recipe_name, ingredient_name)
 	apm.lib.utils.recipe.ingredient.remove_by_ref(recipe, ingredient_name)
 end
 
+--- item amounts must be whole numbers (uint16); fluids may be fractional
+---@param entry table?
+local function round_item_amount(entry)
+	if entry and entry.type ~= "fluid" and entry.amount then
+		entry.amount = math.max(1, math.floor(entry.amount + 0.5))
+	end
+end
+
 --- [replace_ingredient]
 ---@param recipe_name string
 ---@param base IngredientPrototype[]
@@ -272,6 +280,7 @@ local function replace_ingredient(recipe_name, base, ingredient_old, ingredient_
 		else
 			base[ingredient_old_key].amount = base_amount * amount_multi
 		end
+		round_item_amount(base[ingredient_old_key])
 	end
 
 	if already_has_ingredient_new and ingredient_old_key and ingredient_new_key then
@@ -281,6 +290,7 @@ local function replace_ingredient(recipe_name, base, ingredient_old, ingredient_
 		else
 			base[ingredient_new_key].amount = 1 + (base_amount * amount_multi)
 		end
+		round_item_amount(base[ingredient_new_key])
 		table.remove(base, ingredient_old_key)
 	end
 

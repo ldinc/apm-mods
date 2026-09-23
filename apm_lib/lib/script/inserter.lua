@@ -155,7 +155,7 @@ local function calc_item_count(want_pickup_item_count, t_object)
 		possible_stack_size = stack_override
 	else
 		-- One `.force` read (unavoidable), then cached bonus lookup.
-		local stack_bonus, bulk_bonus = get_force_bonus(entity.force)
+		local stack_bonus, bulk_bonus = get_force_bonus(entity.force --[[@as LuaForce]])
 		possible_stack_size = 1 + (t_object.bulk and bulk_bonus or stack_bonus)
 	end
 

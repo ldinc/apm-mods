@@ -24,7 +24,17 @@ local types_list = {
 	"capsule",
 	"rail-planner",
 	"ammo",
-	"tool"
+	"tool",
+	"item-with-entity-data",
+	"armor",
+	"gun",
+	"repair-tool",
+	"space-platform-starter-pack",
+	"spidertron-remote",
+	"selection-tool",
+	"item-with-inventory",
+	"item-with-tags",
+	"item-with-label",
 }
 
 --- [item.get_types_list]
