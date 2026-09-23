@@ -44,6 +44,9 @@ RampantFixed/
 rso-mod
 log.txt
 
+# lint repots
+lint-report/
+
 # vscode
 .VSCodeCounter/
 AGENTS.md
