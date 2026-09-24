@@ -295,6 +295,12 @@ local function leech_from(entity, target, burner_categories)
 		return false
 	end
 
+	local fuel_inventory = entity.get_fuel_inventory()
+
+	if not fuel_inventory then
+		return false
+	end
+
 	local target_inventory = target.get_fuel_inventory()
 
 	if not target_inventory or target_inventory.is_empty() then
@@ -309,7 +315,23 @@ local function leech_from(entity, target, burner_categories)
 			scratch_leech.count   = math.min(slot.count - 1, 5)
 			scratch_leech.quality = slot.quality.name
 
-			return transfer_leeching(entity, target_inventory, scratch_leech)
+			-- straight into the inserter's own fuel slot: an inserter without any energy
+			-- cannot use fuel that is only in its hand
+			local removed         = target_inventory.remove(scratch_leech)
+
+			if removed == 0 then
+				return false
+			end
+
+			scratch_leech.count = removed
+			local inserted = fuel_inventory.insert(scratch_leech)
+
+			if inserted < removed then
+				scratch_leech.count = removed - inserted
+				target_inventory.insert(scratch_leech)
+			end
+
+			return inserted > 0
 		end
 	end
 
@@ -518,7 +540,8 @@ end
 ---@param t_object QueueItem
 ---@param pickup_target LuaEntity?
 ---@param drop_target LuaEntity?
-local function inserter_work(tick, t_object, pickup_target, drop_target)
+---@param at_pickup boolean? the hand is at the pickup position
+local function inserter_work(tick, t_object, pickup_target, drop_target, at_pickup)
 	local entity = t_object.entity
 
 	-- Fuel leeching --------------------------------------------------------
@@ -534,7 +557,8 @@ local function inserter_work(tick, t_object, pickup_target, drop_target)
 		end
 	end
 
-	if not pickup_target then return end
+	-- the rest moves items into the hand: only while the hand is at the pickup
+	if not pickup_target or not at_pickup then return end
 
 	-- Fuel chain -----------------------------------------------------------
 	if drop_target then
@@ -743,7 +767,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 
----@return QueueItem?, LuaEntity?, LuaEntity?
+---@return QueueItem?, LuaEntity?, LuaEntity?, boolean?
 local function get_next_inserter()
 	local t_object, _ = dllist.get_next_loop(storage.inserters.queue)
 
@@ -761,8 +785,14 @@ local function get_next_inserter()
 	local dx         = pickup_pos.x - held_pos.x
 	local dy         = pickup_pos.y - held_pos.y
 
-	if dx > 0.01 or dx < -0.01 or dy > 0.01 or dy < -0.01 then
-		if entity.status ~= defines.entity_status.no_fuel then
+	local at_pickup  = not (dx > 0.01 or dx < -0.01 or dy > 0.01 or dy < -0.01)
+
+	-- A hand that is not at the pickup is left alone, except for refuelling: a burner inserter
+	-- without fuel may be stuck anywhere (no energy to move its hand back).
+	if not at_pickup then
+		local fuel_inventory = t_object.fuel_inventory
+
+		if entity.status ~= defines.entity_status.no_fuel and not (fuel_inventory and fuel_inventory.is_empty()) then
 			return nil
 		end
 	end
@@ -786,7 +816,8 @@ local function get_next_inserter()
 	end
 
 	t_object.err = 0
-	return t_object, pickup_target, drop_target
+
+	return t_object, pickup_target, drop_target, at_pickup
 end
 
 -- Remote Function ------------------------------------------------------------
@@ -1011,10 +1042,10 @@ function inserter_script.on_tick(tick)
 
 	-- never more than the queue holds: a small queue would process the same inserters twice per tick
 	for _ = 1, math.min(storage.inserters.settings.batch_size, inserter_size), 1 do
-		local t_object, pickup_target, drop_target = get_next_inserter()
+		local t_object, pickup_target, drop_target, at_pickup = get_next_inserter()
 
 		if t_object then
-			inserter_work(tick, t_object, pickup_target, drop_target)
+			inserter_work(tick, t_object, pickup_target, drop_target, at_pickup)
 		end
 	end
 end
@@ -1030,7 +1061,17 @@ end
 remote.add_interface("apm_inserter", {
 	count_inserter = function() return remote_inserter_global_size() end,
 	count_ids = function() return remote_inserter_global_ids() end,
-	rescan = function() return rescan() end
+	rescan = function() return rescan() end,
+	-- For the tips-and-tricks simulations: a simulation's script cannot change its map
+	-- settings. The next settings change or configuration change replaces the value again.
+	set_enabled = function(value)
+		inserter_script.alloc_defenitions()
+		storage.inserters.settings.fn_enabled = value and true or false
+	end,
+	is_enabled = function()
+		return storage.inserters ~= nil and storage.inserters.settings ~= nil and
+		storage.inserters.settings.fn_enabled == true
+	end,
 })
 
 -- Function -------------------------------------------------------------------

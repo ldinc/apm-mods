@@ -1,0 +1,666 @@
+diff --git a/apm_lib/changelog.txt b/apm_lib/changelog.txt
+index fcae619..8b17475 100644
+--- a/apm_lib/changelog.txt
++++ b/apm_lib/changelog.txt
+@@ -1,4 +1,9 @@
+ ---------------------------------------------------------------------------------------------------
++Version: 0.32.19
++Date: 24.09.2026
++  Features:
++    - Tips and tricks: new "Amator Phasma's mods" section, and a "Radioactive items" tip with a simulation.
++---------------------------------------------------------------------------------------------------
+ Version: 0.32.18
+ Date: 24.09.2026
+   Bugfixes:
+diff --git a/apm_lib/data.lua b/apm_lib/data.lua
+index 34e0d38..8ce66c6 100644
+--- a/apm_lib/data.lua
++++ b/apm_lib/data.lua
+@@ -18,3 +18,4 @@ require('prototypes.signals')
+ require('prototypes.sounds.radiation')
+ require('prototypes.sounds.equipment')
+ require('prototypes.items')
++require('prototypes.tips')
+diff --git a/apm_lib/info.json b/apm_lib/info.json
+index 675b453..5775796 100644
+--- a/apm_lib/info.json
++++ b/apm_lib/info.json
+@@ -1,6 +1,6 @@
+ {
+ 	"name": "apm_lib_ldinc",
+-	"version": "0.32.18",
++	"version": "0.32.19",
+ 	"title": "Amator Phasma's Library (forked)",
+ 	"author": "AmatorPhasma, ldinc",
+ 	"dependencies": [
+diff --git a/apm_lib/locale/en/tips.cfg b/apm_lib/locale/en/tips.cfg
+new file mode 100644
+index 0000000..698124a
+--- /dev/null
++++ b/apm_lib/locale/en/tips.cfg
+@@ -0,0 +1,7 @@
++[tips-and-tricks-item-name]
++apm-introduction=Amator Phasma's mods
++apm-radiation=Radioactive items
++
++[tips-and-tricks-item-description]
++apm-introduction=The APM mods start you on burner and steam machines. The tips below show what inserters and radioactive items do differently with these mods.\nThe inserter functions are the map setting [font=default-semibold]Extended functions for inserter[/font] (on by default with APM Power).
++apm-radiation=Radioactive items such as [item=uranium-235] hurt you while they are in your inventory or in your hand. You hear a Geiger counter, and the item tooltip shows how radioactive it is.\nMore radioactive items hurt more. Keep them in chests and let inserters and robots move them.\nThe damage can be turned off or scaled in the map settings.
+diff --git a/apm_lib/prototypes/tips.lua b/apm_lib/prototypes/tips.lua
+new file mode 100644
+index 0000000..afe0840
+--- /dev/null
++++ b/apm_lib/prototypes/tips.lua
+@@ -0,0 +1,35 @@
++-- Tips and tricks of the APM mods: the shared category, the title entry and the radiation tip.
++-- The inserter tips are in apm_power: its burner machines use them, and the inserter
++-- functions are on by default only when apm_power is enabled.
++
++data:extend({
++	{
++		type = "tips-and-tricks-item-category",
++		name = "apm",
++		order = "z-[apm]",
++	},
++	{
++		type = "tips-and-tricks-item",
++		name = "apm-introduction",
++		category = "apm",
++		order = "a",
++		is_title = true,
++		trigger = { type = "time-elapsed", ticks = 60 * 60 * 5 },
++	},
++	{
++		type = "tips-and-tricks-item",
++		name = "apm-radiation",
++		category = "apm",
++		order = "z-a",
++		indent = 1,
++		tag = "[item=uranium-235]",
++		dependencies = { "apm-introduction" },
++		trigger = { type = "research", technology = "uranium-processing" },
++		simulation = {
++			init_file = "__apm_lib_ldinc__/simulations/radiation.lua",
++			-- the real radiation script runs in the simulation
++			mods = { "apm_lib_ldinc" },
++			hide_health_bars = false,
++		},
++	},
++})
+diff --git a/apm_lib/simulations/radiation.lua b/apm_lib/simulations/radiation.lua
+new file mode 100644
+index 0000000..4bb8cbd
+--- /dev/null
++++ b/apm_lib/simulations/radiation.lua
+@@ -0,0 +1,29 @@
++-- Tips and tricks simulation: radioactive items hurt the character that carries them.
++-- Runs as a console command inside the simulation (no require). The damage comes from
++-- apm_lib's own runtime script, loaded through `mods = { "apm_lib_ldinc" }` in the tip.
++
++game.simulation.camera_position = { 0, 0 }
++
++local player = game.simulation.create_test_player({ name = "engineer" })
++game.simulation.camera_player = player
++
++-- radiation damage is a map setting; make sure it is on in the simulation
++pcall(function() settings.global["apm_lib_radiation_dmg"] = { value = true } end)
++
++local character = player.character
++
++if character then
++	character.insert({ name = "uranium-235", count = 5 })
++end
++
++storage.apm_player = player
++
++-- keep the engineer alive: heal every 30 s
++script.on_nth_tick(60 * 30, function()
++	local p = storage.apm_player
++	local c = p and p.valid and p.character
++
++	if c and c.valid then
++		c.health = c.max_health
++	end
++end)
+diff --git a/apm_power/changelog.txt b/apm_power/changelog.txt
+index d9b4889..181ab09 100644
+--- a/apm_power/changelog.txt
++++ b/apm_power/changelog.txt
+@@ -1,4 +1,11 @@
+ ---------------------------------------------------------------------------------------------------
++Version: 0.32.25
++Date: 24.09.2026
++  Features:
++    - Tips and tricks with simulations: fuel chaining, burner inserters refuelling from machines, ash in machine chains.
++  Changes:
++    - Removed lib/simulations (an unused copy of the inserter logic); the simulations now run apm_lib's own script.
++---------------------------------------------------------------------------------------------------
+ Version: 0.32.24
+ Date: 24.09.2026
+   Changes:
+diff --git a/apm_power/data.lua b/apm_power/data.lua
+index b1a5bb3..e826dbe 100644
+--- a/apm_power/data.lua
++++ b/apm_power/data.lua
+@@ -112,6 +112,7 @@ require('prototypes.main.recipes.tools')
+ require('prototypes.main.recipes.tiles')
+ 
+ require('prototypes.main.technologies')
++require('prototypes.tips')
+ 
+ require('prototypes.main.equipment.equipment_grid_categories')
+ require('prototypes.main.equipment.equipment_grids')
+diff --git a/apm_power/info.json b/apm_power/info.json
+index cfebc78..aac54e4 100644
+--- a/apm_power/info.json
++++ b/apm_power/info.json
+@@ -1,6 +1,6 @@
+ {
+ 	"name": "apm_power_ldinc",
+-	"version": "0.32.24",
++	"version": "0.32.25",
+ 	"title": "Amator Phasma's Coal & Steam (forked)",
+ 	"author": "AmatorPhasma, ldinc",
+ 	"dependencies": [
+diff --git a/apm_power/lib/simulations/inserters-chaining-fuel.lua b/apm_power/lib/simulations/inserters-chaining-fuel.lua
+deleted file mode 100644
+index 282dc67..0000000
+--- a/apm_power/lib/simulations/inserters-chaining-fuel.lua
++++ /dev/null
+@@ -1,175 +0,0 @@
+-local blueprint =
+-"0eNqVk91uwjAMhd/F1ymifzD6KhOq0tZApMbpkpQNob77nBaqTWUaXFWJne+c4yZXqNoeO6vIQ3EFVRtyULxfwakjyTbskdQIBchOl9I51FWr6FhqWZ8UYbmGQYCiBr+giIe9ACSvvMKJMi4uJfW6QssN4l+agM44BhgK2gEar3IBFyjSVc5SFmvV3QlO4RlLZbn5Xik/etmyJneQsZojDGLhI5l9KDoo4lJUn9D5pXp+E89G8Xt36dB79u1Cl0Vt2EXPtdajxaZUHjWXDrJ1KGDanuZxU60N+xL86cPYk/VagDbNmMpHLcrRyTxUMZ8LSSNj8dmzybAfHsRP5/hVbwltpMihZZPL/Jtf+RvFQ56qcfIAnD0P3r0Ezmew84YwOjBe1rjEvk3QR6k3z5uL05fcbWfyp+FfQX9dpjj7gQ1vJVyU4Gd+ggLOfFXGE/km2WW7Xb5N8zTbJsPwDUF8ONc="
+-
+-local demo_surface = game.surfaces[1]
+-
+-game.simulation.camera_position = { 0, 0.05 }
+-
+-local force = game.forces.player
+-
+-force.recipes["apm_sieve_iron"].enabled = true
+-
+-demo_surface.create_entities_from_blueprint_string {
+-	string = blueprint,
+-	position = { 0, 0 },
+-}
+-
+-
+----@param pickup_target LuaEntity?
+----@param drop_target LuaEntity?
+----@return LuaInventory?
+-local function get_a_fuel_inventory(pickup_target, drop_target)
+-	if pickup_target ~= nil then
+-		local pickup_inventory = pickup_target.get_fuel_inventory()
+-
+-		if pickup_inventory ~= nil then
+-			return pickup_inventory
+-		end
+-	end
+-	if drop_target ~= nil then
+-		local drop_inventory = drop_target.get_fuel_inventory()
+-
+-		return drop_inventory
+-	end
+-
+-	return nil
+-end
+-
+---- transfer the item stack on leeching or fuel chaining
+---- it decisions which method we need (filter inserter need a bypass methode, otherwise he can not pickup fuel for them self)
+----@param inserter LuaEntity
+----@param inventory LuaInventory
+----@param item_stack ItemStackDefinition
+----@return boolean
+-local function transfer_leeching(inserter, inventory, item_stack)
+-	local held_stack = inserter.held_stack
+-	if not held_stack.valid_for_read then
+-		if inserter.filter_slot_count == 0 then
+-			if held_stack.transfer_stack(item_stack) then
+-				inventory.remove(item_stack)
+-
+-				return true
+-			end
+-		else
+-			held_stack.set_stack(item_stack)
+-			inventory.remove(item_stack)
+-
+-			return true
+-		end
+-	end
+-
+-	return false
+-end
+-
+---- can pickup 'fuel' for it self from pickup_target or drop_target
+----@param entity LuaEntity
+----@param pickup_target LuaEntity?
+----@param drop_target LuaEntity?
+----@return boolean
+-local function burner_inserter_leech(entity, pickup_target, drop_target)
+-	local target_inventory = get_a_fuel_inventory(pickup_target, drop_target)
+-	if not target_inventory then return false end
+-
+-
+-	local target_inventory_contents = target_inventory.get_contents()
+-
+-	for _, item in ipairs(target_inventory_contents) do
+-		if item.count >= 2 then
+-			local stack_size = math.min(item.count - 1, 5)
+-			---@type ItemStackDefinition
+-			local item_stack = { name = item.name, count = stack_size, quality = item.quality }
+-
+-			return transfer_leeching(entity, target_inventory, item_stack)
+-		end
+-
+-		return false
+-	end
+-end
+-
+-local function calc_item_count(_, __)
+-	return 1
+-end
+-
+---- chain fuel from pickup_target to drop_target
+----@param t_object QueueItem
+----@param pickup_inventory LuaInventory
+----@param drop_target LuaEntity
+----@return boolean
+-local function inserter_chain_fuel(t_object, pickup_inventory, drop_target)
+-	local pickup_inventory_contents = pickup_inventory.get_contents()
+-
+-	for _, item in ipairs(pickup_inventory_contents) do
+-		local stack_size = calc_item_count((item.count), t_object)
+-		local item_stack = { name = item.name, count = stack_size }
+-
+-		if drop_target.can_insert(item_stack) then
+-			return transfer_leeching(t_object.entity, pickup_inventory, item_stack)
+-		end
+-
+-		return false
+-	end
+-end
+--- game.simulation.camera_alt_info = true
+-
+-local entities = demo_surface.find_entities({ { -10, -10 }, { 10, 10 } })
+-
+----@type LuaEntity[]
+-local inserters = {}
+-
+----@type LuaEntity[]
+-local assemblers = {}
+-
+-for _, entity in ipairs(entities) do
+-	if entity.name == "burner-inserter" then
+-		table.insert(inserters, entity)
+-	end
+-	if entity.type == "assembling-machine" then
+-		table.insert(assemblers, entity)
+-	end
+-end
+-
+-script.on_nth_tick(1, function(event)
+-	for _, inserter in ipairs(inserters) do
+-		if
+-				inserter.pickup_target
+-				and
+-				inserter.pickup_target.burner
+-				and
+-				inserter.drop_target
+-				and
+-				inserter.drop_target.burner
+-				and
+-				inserter.drop_target.burner.inventory.is_empty()
+-		then
+-			inserter_chain_fuel(
+-				{ id = 1, err = 0, entity = inserter },
+-				inserter.pickup_target.burner.inventory,
+-				inserter.drop_target
+-			)
+-		end
+-	end
+-end)
+-
+-script.on_nth_tick(60 * 15, function(event)
+-	for _, assembler in ipairs(assemblers) do
+-		assembler.burner.remaining_burning_fuel = 0
+-		assembler.burner.burnt_result_inventory.clear()
+-		assembler.burner.inventory.clear()
+-
+-		assembler.highlight_box_blink_interval = 100
+-
+-		---@type LuaEntity?
+-		local box = assembler.surface.create_entity {
+-			name = "highlight-box",
+-			position = assembler.position,
+-		}
+-
+-
+-		-- box.text
+-	end
+-end)
+-
+-
+--- data.raw["recipe"]["apm_sieve_iron"].enabled = true
+-
+--- demo_surface.daytime = 0.5 -- Set fixed daylight
+diff --git a/apm_power/locale/en/tips.cfg b/apm_power/locale/en/tips.cfg
+new file mode 100644
+index 0000000..b5b030f
+--- /dev/null
++++ b/apm_power/locale/en/tips.cfg
+@@ -0,0 +1,9 @@
++[tips-and-tricks-item-name]
++apm-fuel-chaining=Fuel chaining
++apm-fuel-leech=Burner inserters refuel from machines
++apm-ash-chaining=Ash in machine chains
++
++[tips-and-tricks-item-description]
++apm-fuel-chaining=An inserter between two burner machines also passes fuel along: when the first machine has at least 5 fuel and the next one less than 5, it moves fuel into the next machine's fuel slot.\nSo a row of [entity=apm_assembling_machine_0] only needs fuel at the start of the row.
++apm-fuel-leech=A [entity=burner-inserter] without fuel takes some from the fuel slot of the machine it takes from or puts into, even when it only carries other items. It only takes fuel it can burn and leaves at least one item in the slot.
++apm-ash-chaining=Burner machines produce [item=apm_generic_ash]. An inserter that moves items from one burner machine into the next one also moves the ash along, into the next machine's burnt-result slot, as soon as there is a batch of it (10% of the ash stack; checked about every 17 seconds). The inserter at the end of the chain puts it into a chest or onto a belt.\nSo one inserter at the end of a chain clears the ash of the whole chain.
+diff --git a/apm_power/prototypes/tips.lua b/apm_power/prototypes/tips.lua
+new file mode 100644
+index 0000000..6ca13d4
+--- /dev/null
++++ b/apm_power/prototypes/tips.lua
+@@ -0,0 +1,50 @@
++-- Tips and tricks for the apm_lib inserter functions, with simulations. The category and the
++-- title entry "apm-introduction" come from apm_lib (prototypes/tips.lua).
++-- `mods = { "apm_lib_ldinc" }` runs apm_lib's runtime script in the simulations, so they show
++-- the real behaviour instead of a copy of it.
++
++---@param file string
++---@return SimulationDefinition
++local function simulation(file)
++	return {
++		init_file = "__apm_power_ldinc__/simulations/" .. file,
++		mods = { "apm_lib_ldinc" },
++		init_update_count = 60,
++	}
++end
++
++data:extend({
++	{
++		type = "tips-and-tricks-item",
++		name = "apm-fuel-chaining",
++		category = "apm",
++		order = "b",
++		indent = 1,
++		tag = "[entity=apm_assembling_machine_0][item=coal]",
++		dependencies = { "apm-introduction" },
++		trigger = { type = "build-entity", entity = "apm_assembling_machine_0", count = 3 },
++		simulation = simulation("fuel-chaining.lua"),
++	},
++	{
++		type = "tips-and-tricks-item",
++		name = "apm-fuel-leech",
++		category = "apm",
++		order = "c",
++		indent = 1,
++		tag = "[entity=burner-inserter]",
++		dependencies = { "apm-introduction", "burner-inserter-refueling" },
++		trigger = { type = "build-entity", entity = "burner-inserter", count = 10 },
++		simulation = simulation("fuel-leech.lua"),
++	},
++	{
++		type = "tips-and-tricks-item",
++		name = "apm-ash-chaining",
++		category = "apm",
++		order = "d",
++		indent = 1,
++		tag = "[item=apm_generic_ash]",
++		dependencies = { "apm-fuel-chaining" },
++		trigger = { type = "build-entity", entity = "apm_assembling_machine_0", count = 6 },
++		simulation = simulation("ash-chaining.lua"),
++	},
++})
+diff --git a/apm_power/simulations/ash-chaining.lua b/apm_power/simulations/ash-chaining.lua
+new file mode 100644
+index 0000000..cfccced
+--- /dev/null
++++ b/apm_power/simulations/ash-chaining.lua
+@@ -0,0 +1,83 @@
++-- Tips and tricks simulation: ash moves along a chain of burner machines. The first
++-- machine's ash goes into the second machine's burnt-result slot in one batch, and the
++-- inserter at the end of the chain puts it into the chest.
++-- Runs as a console command inside the simulation (no require). The behaviour comes from
++-- apm_lib's own runtime script, loaded through `mods = { "apm_lib_ldinc" }` in the tip.
++
++game.simulation.camera_position = { 0.5, 0.5 }
++
++local surface = game.surfaces[1]
++
++-- the inserter functions are a map setting; make sure they are on in the simulation
++pcall(function() settings.global["apm_lib_inserter_functions"] = { value = true } end)
++
++---@param x number
++---@param recipe string?
++---@return LuaEntity
++local function machine(x, recipe)
++	local m = surface.create_entity({ name = "apm_assembling_machine_0", position = { x, 0.5 }, force = "player" })
++	---@cast m -nil
++	if recipe then
++		m.set_recipe(recipe)
++		m.insert({ name = "iron-plate", count = 100 })
++	end
++	return m
++end
++
++--- Places a burner inserter at x that takes from `from` and puts into `to`. Tries every
++--- direction, so it does not depend on which way the direction points.
++---@param x number
++---@param from LuaEntity
++---@param to LuaEntity
++---@return LuaEntity?
++local function inserter(x, from, to)
++	for _, dir in pairs({ defines.direction.east, defines.direction.west, defines.direction.north, defines.direction.south }) do
++		local e = surface.create_entity({ name = "burner-inserter", position = { x, 0.5 }, direction = dir, force = "player" })
++		if e then
++			if e.pickup_target == from and e.drop_target == to then
++				return e
++			end
++			e.destroy()
++		end
++	end
++end
++
++local a, b = machine(-3.5, "iron-gear-wheel"), machine(0.5, "iron-gear-wheel")
++local chest = surface.create_entity({ name = "wooden-chest", position = { 3.5, 0.5 }, force = "player" })
++---@cast chest -nil
++
++-- enough fuel in both, so no fuel is chained and only the ash moves
++for _, e in pairs({ a, b }) do
++	e.get_fuel_inventory().insert({ name = "coal", count = 20 })
++end
++
++-- a batch of ash in the first machine (a batch is 10% of the ash stack)
++a.burner.burnt_result_inventory.insert({ name = "apm_generic_ash", count = 250 })
++
++inserter(-1.5, a, b)
++inserter(2.5, b, chest)
++
++remote.call("apm_inserter", "rescan")
++
++storage.apm = { a = a, b = b, chest = chest }
++
++-- every 40 s: a new batch of ash in the first machine, the chest is emptied
++script.on_nth_tick(60 * 40, function()
++	local s = storage.apm
++
++	if s.a.valid then
++		s.a.burner.burnt_result_inventory.insert({ name = "apm_generic_ash", count = 250 })
++	end
++
++	if s.chest.valid then
++		s.chest.clear_items_inside()
++	end
++
++	for _, e in pairs({ s.a, s.b }) do
++		if e.valid then
++			e.get_output_inventory().clear()
++			e.insert({ name = "iron-plate", count = 100 })
++			e.get_fuel_inventory().insert({ name = "coal", count = 5 })
++		end
++	end
++end)
+diff --git a/apm_power/simulations/fuel-chaining.lua b/apm_power/simulations/fuel-chaining.lua
+new file mode 100644
+index 0000000..ac9e33d
+--- /dev/null
++++ b/apm_power/simulations/fuel-chaining.lua
+@@ -0,0 +1,74 @@
++-- Tips and tricks simulation: fuel chaining. The inserters pass fuel from one burner
++-- machine's fuel slot to the next; only the first machine gets coal.
++-- Runs as a console command inside the simulation (no require). The behaviour comes from
++-- apm_lib's own runtime script, loaded through `mods = { "apm_lib_ldinc" }` in the tip.
++
++game.simulation.camera_position = { 0.5, 0.5 }
++
++local surface = game.surfaces[1]
++
++-- the inserter functions are a map setting; make sure they are on in the simulation
++pcall(function() settings.global["apm_lib_inserter_functions"] = { value = true } end)
++
++---@param x number
++---@param recipe string?
++---@return LuaEntity
++local function machine(x, recipe)
++	local m = surface.create_entity({ name = "apm_assembling_machine_0", position = { x, 0.5 }, force = "player" })
++	---@cast m -nil
++	if recipe then
++		m.set_recipe(recipe)
++		m.insert({ name = "iron-plate", count = 100 })
++	end
++	return m
++end
++
++--- Places a burner inserter at x that takes from `from` and puts into `to`. Tries every
++--- direction, so it does not depend on which way the direction points.
++---@param x number
++---@param from LuaEntity
++---@param to LuaEntity
++---@return LuaEntity?
++local function inserter(x, from, to)
++	for _, dir in pairs({ defines.direction.east, defines.direction.west, defines.direction.north, defines.direction.south }) do
++		local e = surface.create_entity({ name = "burner-inserter", position = { x, 0.5 }, direction = dir, force = "player" })
++		if e then
++			if e.pickup_target == from and e.drop_target == to then
++				return e
++			end
++			e.destroy()
++		end
++	end
++end
++
++local a, b, c = machine(-3.5, "iron-gear-wheel"), machine(0.5, "iron-gear-wheel"), machine(4.5, "iron-gear-wheel")
++a.get_fuel_inventory().insert({ name = "coal", count = 20 })
++
++-- the inserters start without fuel: they take it from the machine they serve
++inserter(-1.5, a, b)
++inserter(2.5, b, c)
++
++-- script-built entities raise no build event: let apm_lib pick up the inserters
++remote.call("apm_inserter", "rescan")
++
++storage.apm_machines = { a, b, c }
++
++-- every 30 s: machines 2 and 3 run dry, machine 1 gets coal again
++script.on_nth_tick(60 * 30, function()
++	local m = storage.apm_machines
++
++	for i, e in pairs(m) do
++		if e.valid then
++			e.get_output_inventory().clear()
++			e.insert({ name = "iron-plate", count = 100 })
++			if i > 1 then
++				e.get_fuel_inventory().clear()
++				e.burner.remaining_burning_fuel = 0
++			end
++		end
++	end
++
++	if m[1].valid then
++		m[1].get_fuel_inventory().insert({ name = "coal", count = 20 })
++	end
++end)
+diff --git a/apm_power/simulations/fuel-leech.lua b/apm_power/simulations/fuel-leech.lua
+new file mode 100644
+index 0000000..7f8dd6b
+--- /dev/null
++++ b/apm_power/simulations/fuel-leech.lua
+@@ -0,0 +1,75 @@
++-- Tips and tricks simulation: a burner inserter that carries iron plates refuels itself
++-- from the fuel slot of the machine it feeds.
++-- Runs as a console command inside the simulation (no require). The behaviour comes from
++-- apm_lib's own runtime script, loaded through `mods = { "apm_lib_ldinc" }` in the tip.
++
++game.simulation.camera_position = { 0, 0.5 }
++
++local surface = game.surfaces[1]
++
++-- the inserter functions are a map setting; make sure they are on in the simulation
++pcall(function() settings.global["apm_lib_inserter_functions"] = { value = true } end)
++
++---@param x number
++---@param recipe string?
++---@return LuaEntity
++local function machine(x, recipe)
++	local m = surface.create_entity({ name = "apm_assembling_machine_0", position = { x, 0.5 }, force = "player" })
++	---@cast m -nil
++	if recipe then
++		m.set_recipe(recipe)
++		m.insert({ name = "iron-plate", count = 100 })
++	end
++	return m
++end
++
++--- Places a burner inserter at x that takes from `from` and puts into `to`. Tries every
++--- direction, so it does not depend on which way the direction points.
++---@param x number
++---@param from LuaEntity
++---@param to LuaEntity
++---@return LuaEntity?
++local function inserter(x, from, to)
++	for _, dir in pairs({ defines.direction.east, defines.direction.west, defines.direction.north, defines.direction.south }) do
++		local e = surface.create_entity({ name = "burner-inserter", position = { x, 0.5 }, direction = dir, force = "player" })
++		if e then
++			if e.pickup_target == from and e.drop_target == to then
++				return e
++			end
++			e.destroy()
++		end
++	end
++end
++
++local chest = surface.create_entity({ name = "wooden-chest", position = { -2.5, 0.5 }, force = "player" })
++---@cast chest -nil
++chest.insert({ name = "iron-plate", count = 200 })
++
++local m = machine(0.5, "iron-gear-wheel")
++m.get_fuel_inventory().insert({ name = "coal", count = 20 })
++
++-- the inserter has no fuel and only ever carries iron plates
++local ins = inserter(-1.5, chest, m)
++
++remote.call("apm_inserter", "rescan")
++
++storage.apm = { chest = chest, machine = m, inserter = ins }
++
++-- every 20 s: the inserter runs out of fuel again, the chest and the machine are refilled
++script.on_nth_tick(60 * 20, function()
++	local s = storage.apm
++
++	if s.inserter and s.inserter.valid then
++		s.inserter.get_fuel_inventory().clear()
++		s.inserter.burner.remaining_burning_fuel = 0
++	end
++
++	if s.chest.valid then
++		s.chest.insert({ name = "iron-plate", count = 50 })
++	end
++
++	if s.machine.valid then
++		s.machine.get_output_inventory().clear()
++		s.machine.get_fuel_inventory().insert({ name = "coal", count = 5 })
++	end
++end)

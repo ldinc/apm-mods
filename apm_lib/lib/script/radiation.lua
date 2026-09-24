@@ -406,7 +406,12 @@ end
 remote.add_interface("apm_radiation", {
 	add_item = function(item_name, level) return add_item(item_name, level) end,
 	remove_item = function(item_name) return remove_item(item_name) end,
-	list_items = function() return list_items() end,
+	-- For the tips-and-tricks simulations: a simulation's script cannot change its map
+	-- settings. The next settings change or configuration change replaces the value again.
+	set_enabled = function(value)
+		radiation_script.alloc_definitions()
+		storage.radiation.apm_nuclear_radiation = value and true or false
+	end,
 })
 
 -- ----------------------------------------------------------------------------
