@@ -73,3 +73,5 @@ apm.lib.utils.technology.overwrite.science_pack_order_strings("science-pack")
 
 -- The lab GUI shows the packs of a lab in the order of its inputs array.
 apm.lib.utils.technology.overwrite.lab_science_pack_order()
+
+require("prototypes.tips-final")

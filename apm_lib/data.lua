@@ -20,3 +20,4 @@ require("prototypes.sounds.equipment")
 require("prototypes.items")
 
 require("prototypes.tips")
+require("prototypes.simulation-power")

@@ -1,4 +1,4 @@
-require('prototypes.integrations.technology')
+require("prototypes.integrations.technology")
 
 -- generated techs must at least need the science packs of their prerequisites
 -- (e.g. electric-engine needs chemical science without apm_power)
@@ -18,3 +18,5 @@ for _, technology_name in pairs({
 end
 
 apm.lib.utils.builder.recipe.update()
+
+require("prototypes.tips")

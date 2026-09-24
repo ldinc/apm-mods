@@ -133,13 +133,6 @@ local function count(inv, name)
 end
 
 
----@param e LuaEntity
-local function empty_fuel(e)
-	e.get_fuel_inventory().clear()
-	if e.burner then e.burner.remaining_burning_fuel = 0 end
-	e.energy = 0
-end
-
 local a = machine(-3.5, 20, 0)
 local b = machine(0.5, 20)
 

@@ -14,3 +14,5 @@ apm.lib.utils.builder.recipe.update()
 
 apm.lib.utils.technology.overwrite.science_pack_order_strings("science-pack")
 apm.lib.utils.technology.overwrite.lab_science_pack_order()
+
+require("prototypes.tips")
