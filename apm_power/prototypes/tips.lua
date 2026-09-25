@@ -6,10 +6,7 @@
 ---@param file string
 ---@return SimulationDefinition
 local function simulation(file)
-	return {
-		init_file = "__apm_power_ldinc__/simulations/" .. file,
-		mods = { "apm_lib_ldinc" },
-	}
+	return apm.lib.utils.tips.simulation("__apm_power_ldinc__/simulations/" .. file, { "apm_lib_ldinc" })
 end
 
 data:extend({
