@@ -4,32 +4,55 @@ if not aai then aai = {} end
 --
 --
 -- ----------------------------------------------------------------------------
-local function replace_aai_burner_assembling_machine()
-	local surface = game.surfaces["nauvis"]
-	local range = 20
-	local containers = surface.find_entities_filtered { type = "container", area = { { -range, -range }, { range, range } } }
-	for _, container in pairs(containers) do
-		local inventory = container.get_inventory(defines.inventory.chest)
-		if not inventory then
-			goto continue
-		end
 
-		local content = inventory.get_contents()
-		for _, item in pairs(content) do
-			if item.name == 'burner-ore-crusher' then
-				if settings.startup['apm_power_compat_angel'].value then
-					if script.active_mods['angelsrefining'] then
-						inventory.remove({ name = item.name, count = item.count })
-						inventory.insert({ name = "apm_crusher_machine_0", count = item.count * 2 })
-					end
-				end
+local aai_replace_list = {
+	["burner-assembling-machine"] = "apm_assembling_machine_0",
+	["motor"] = "apm_simple_engine",
+}
+
+---@param kind "created"|"respawn"|"ship"|"debris"
+local function patch_list(kind)
+	local interface = remote.interfaces["freeplay"]
+
+	if not (interface and interface["get_" .. kind .. "_items"] and interface["set_" .. kind .. "_items"]) then
+		return
+	end
+
+	---@diagnostic disable-next-line: param-type-mismatch
+	local items = remote.call("freeplay", "get_" .. kind .. "_items") --[[@as table<string, integer>]]
+	local changed = false
+
+	for from, to in pairs(aai_replace_list) do
+		local count = items[from]
+
+		if count then
+			items[from] = nil
+
+			if to and prototypes.item[to] then
+				items[to] = (items[to] or 0) + count
 			end
-			if item.name == 'burner-assembling-machine' then
-				inventory.remove({ name = item.name, count = item.count })
-				inventory.insert({ name = 'apm_assembling_machine_0', count = 1 })
-			end
+
+			changed = true
 		end
-		::continue::
+	end
+
+	if changed then
+		---@diagnostic disable-next-line: param-type-mismatch
+		remote.call("freeplay", "set_" .. kind .. "_items", items)
+	end
+end
+
+function aai.patch_starting_items()
+	if not script.active_mods["aai-industry"] then
+		return
+	end
+
+	if not settings.startup["apm_power_compat_earendel"] or not settings.startup["apm_power_compat_earendel"].value then
+		return
+	end
+
+	for _, kind in pairs({ "created", "respawn", "ship", "debris" }) do
+		patch_list(kind)
 	end
 end
 
@@ -40,9 +63,9 @@ end
 function aai.on_tick()
 	if game.tick > 2 then return end
 	if game.tick == 2 then
-		if settings.startup['apm_power_compat_earendel'].value then
-			if script.active_mods['aai-industry'] then
-				if settings.global['crash-sequence'].value then
+		if settings.startup["apm_power_compat_earendel"].value then
+			if script.active_mods["aai-industry"] then
+				if settings.global["crash-sequence"].value then
 					replace_aai_burner_assembling_machine()
 				end
 			end

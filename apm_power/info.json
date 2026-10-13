@@ -9,7 +9,7 @@
 		"? quality",
 		"apm_resource_pack_ldinc >= 0.32.4",
 		"apm_lib_ldinc >= 0.32.16",
-		"(?) aai-industry >= 0.6.5",
+		"(?) aai-industry >= 0.7.5",
 		"? bobwarfare >= 2.0.0",
 		"? bobores >= 2.0.0",
 		"? boblogistics >= 2.0.0",

@@ -9,6 +9,49 @@ APM_LOG_HEADER(self)
 --
 --
 -- ----------------------------------------------------------------------------
+-- local item_icon_a = apm.lib.utils.icon.get.from_item("apm_crushed_stone")
+
+-- local item_icon_b = apm.lib.utils.icon.get.from_item("stone-brick")
+-- log(serpent.block(item_icon_b))
+-- item_icon_b = apm.lib.utils.icon.mod(item_icon_b, 0.75, { -32, -32 })
+-- local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
+
+
+local item_icon_a = apm.lib.utils.icon.get.from_item("apm_crushed_stone")
+local item_icon_b = apm.lib.utils.icon.get.from_item("stone-brick")
+item_icon_b = apm.lib.utils.icon.mod(item_icon_b, 0.6, { -7, -7 })
+local icons = apm.lib.utils.icon.merge({ item_icon_a, item_icon_b })
+
+---@type RecipePrototype
+local recipe = {
+	type = "recipe",
+	name = "apm_stone_crushed_1"
+}
+
+recipe.categories = { "apm_crusher" }
+recipe.order = "aj_a"
+recipe.icons = icons
+
+recipe.enabled = false
+recipe.energy_required = 1
+---@type IngredientPrototype[]
+recipe.ingredients = {
+	{ type = "item", name = "stone-brick", amount = 4 }
+}
+---@type ProductPrototype[]
+recipe.results = {
+	{ type = "item", name = "apm_crushed_stone", amount = 16 }
+}
+recipe.main_product = "apm_crushed_stone"
+recipe.requester_paste_multiplier = 4
+recipe.always_show_made_in = apm.lib.features.show.made_in
+
+data:extend({ recipe })
+
+-- Recipe ---------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
 ---@type RecipePrototype
 local recipe = {
 	type = "recipe",
@@ -63,8 +106,8 @@ recipe.ingredients = {
 ---@type ProductPrototype[]
 recipe.results = {
 	{ type = "item",  name = "apm_crusher_drums", amount = 4,     ignored_by_stats = 4,  ignored_by_productivity = 4 },
-	{ type = "item",  name = "apm_crusher_drums", amount_min = 1, amount_max = 1,        independent_probability = 0.95,          ignored_by_stats = 1, ignored_by_productivity = 1 },
-	{ type = "item",  name = "repair-pack",       amount_min = 1, amount_max = 1,        independent_probability = 0.95,          ignored_by_stats = 1, ignored_by_productivity = 1, show_details_in_recipe_tooltip = false },
+	{ type = "item",  name = "apm_crusher_drums", amount_min = 1, amount_max = 1,        independent_probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 1 },
+	{ type = "item",  name = "repair-pack",       amount_min = 1, amount_max = 1,        independent_probability = 0.95, ignored_by_stats = 1, ignored_by_productivity = 1, show_details_in_recipe_tooltip = false },
 	{ type = "fluid", name = "apm_dirt_water",    amount = 30,    ignored_by_stats = 30, ignored_by_productivity = 30 }
 }
 recipe.main_product = ""

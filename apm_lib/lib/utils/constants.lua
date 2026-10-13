@@ -2,10 +2,10 @@ if apm.lib.utils.constants == nil then apm.lib.utils.constants = {} end
 if apm.lib.utils.constants.value == nil then apm.lib.utils.constants.value = {} end
 if apm.lib.utils.constants.value.weight == nil then apm.lib.utils.constants.value.weight = {} end
 
-local gram = gram or  1
+local gram = gram or 1
 local grams = grams or gram
-local kg = kg or (1000*grams)
-local tons = tons or (1000*kg)
+local kg = kg or (1000 * grams)
+local tons = tons or (1000 * kg)
 local second = second or 60
 local minute = minute or (60 * second)
 local hour = hour or (60 * minute)
@@ -93,9 +93,19 @@ apm.lib.utils.constants.value.weight.product.electric_element = 0.01 * kg
 
 apm.lib.utils.constants.value.weight.product.c = 0.01 * kg
 
-
-
-
-
-
-
+apm.lib.utils.constants.science = {
+	apm = {
+		industrial = "apm_industrial_science_pack",
+		steam = "apm_steam_science_pack",
+		nuclear = "apm_nuclear_science_pack",
+	},
+	base = {
+		automation = "automation-science-pack",
+		chemical = "chemical-science-pack",
+		logistics = "logistic-science-pack",
+		military = "military-science-pack",
+		production = "production-science-pack",
+		utility = "utility-science-pack",
+		space = "space-science-pack",
+	}
+}

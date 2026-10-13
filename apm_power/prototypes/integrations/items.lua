@@ -69,9 +69,9 @@ if mods.bobpower and apm_power_compat_bob then
 	end
 end
 
-if mods["aai-industry"] and apm_power_compat_earendel then
-	apm.lib.utils.item.remove("sand")
-end
+-- if mods["aai-industry"] and apm_power_compat_earendel then
+-- apm.lib.utils.item.remove("sand")
+-- end
 
 --- [bobs]
 if apm_power_compat_bob then

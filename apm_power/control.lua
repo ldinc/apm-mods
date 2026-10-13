@@ -4,7 +4,7 @@
 -- ----------------------------------------------------------------------------
 local updates = require("lib.updates")
 -- local core = require('__apm_lib_ldinc__.lib.script.core')
--- local patch_aai = require('__apm_lib_ldinc__.lib.script.patch.aai')
+local patch_aai = require("__apm_lib_ldinc__.lib.script.patch.aai")
 local patch_angel = require("__apm_lib_ldinc__.lib.script.patch.angel")
 
 -- Function -------------------------------------------------------------------
@@ -22,6 +22,8 @@ end
 -- ----------------------------------------------------------------------------
 local function On_Init()
 	updates.run()
+
+	patch_aai.patch_starting_items()
 
 	register_burner_equipment()
 end

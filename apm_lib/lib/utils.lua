@@ -122,7 +122,6 @@ if not apm.lib.utils.builder then apm.lib.utils.builder = {} end
 require "lib.utils.builder"
 
 if not apm.lib.utils.patch then apm.lib.utils.patch = {} end
-require "lib.utils.patch.aai"
 
 if not apm.lib.utils.builders then apm.lib.utils.builders = {} end
 if not apm.lib.utils.builders.smoke then apm.lib.utils.builders.smoke = {} end

@@ -4,7 +4,6 @@ require("__apm_lib_ldinc__.lib.log")
 --- vanilla
 
 apm.lib.utils.technology.force.recipe_for_unlock("apm_stone_bricks", "stone-brick")
-apm.lib.utils.technology.add.prerequisites("stone-wall", "apm_stone_bricks")
 
 apm.lib.utils.technology.force.recipe_for_unlock("landfill", "apm_landfill")
 
@@ -107,7 +106,7 @@ apm.lib.utils.technology.trigger.set.craft_item("steam-power", "steel-plate", 50
 --- [electric-engine]
 apm.lib.utils.technology.add.prerequisites("electric-engine", "engine")
 apm.lib.utils.technology.remove.prerequisites("electric-engine", "lubricant")
-apm.lib.utils.technology.add.prerequisites("electric-engine", "automation-science-pack")
+apm.lib.utils.technology.remove.prerequisites("electric-engine", "apm_power_electricity")
 
 
 --- [automation-science-pack]
@@ -126,6 +125,7 @@ apm.lib.utils.technology.trigger.set.craft_item("electronics", "apm_steam_scienc
 --- [iron-stick]
 apm.lib.utils.technology.remove.recipe_from_unlock("railway", "iron-stick")
 apm.lib.utils.recipe.enable("iron-stick")
+apm.lib.utils.technology.remove.prerequisites("railway", "steam-power")
 
 -- apm.lib.utils.technology.force.recipe_for_unlock('military-2', 'radar')
 

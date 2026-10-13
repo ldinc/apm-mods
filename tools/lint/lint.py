@@ -45,7 +45,7 @@ LUALS_SEVERITY = {1: "error", 2: "warning", 3: "info", 4: "hint"}
 
 # Repo folders that are linted. Other folders (old / deprecated mods) are ignored.
 # Override with "lint": {"mods": [...]} in build.config.json.
-LINT_MODS = ["apm_energy_addon", "apm_lib", "apm_nuclear", "apm_power", "apm_resource_pack"]
+LINT_MODS = ["apm_energy_addon", "apm_lib", "apm_nuclear", "apm_power", "apm_resource_pack", "apm_loader"]
 
 
 def env_path(name: str) -> Path:

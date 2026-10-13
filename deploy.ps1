@@ -29,7 +29,7 @@ $ErrorActionPreference = "Stop"
 
 Set-Location $PSScriptRoot
 
-$buildAllMods = @("apm_lib", "apm_nuclear", "apm_power", "apm_resource_pack", "apm_energy_addon")
+$buildAllMods = @("apm_lib", "apm_nuclear", "apm_power", "apm_resource_pack", "apm_energy_addon", "apm_loaders", "apm_stack")
 
 $cfg = Get-Content "build.config.json" -Raw | ConvertFrom-Json
 $target = $cfg.factorio.$Environment
@@ -40,7 +40,8 @@ if (-not $target) {
 
 if ($All) {
 	$Mods = $buildAllMods
-} elseif ($Changed) {
+}
+elseif ($Changed) {
 	$Mods = @(
 		git -c core.quotepath=false status --porcelain |
 		ForEach-Object { $_.Substring(3).Trim('"').Split('/')[0] } |

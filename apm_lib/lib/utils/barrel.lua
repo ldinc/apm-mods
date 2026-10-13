@@ -97,25 +97,30 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 	-- filled barrel item
 	-------------------------------------
 	local filled_container_item = {}
+
 	filled_container_item.type = "item"
 	filled_container_item.name = "apm_filled-barrel-" .. fluid.name
 	filled_container_item.localised_name = { "item-name.filled-barrel", { "fluid-name." .. fluid.name } }
-	filled_container_item.icons = {
-		{ icon = empty_c_item.icon },
-		{ icon = c_side_mask,      tint = side_tint },
-		{ icon = c_hoop_top_mask,  tint = top_hoop_tint },
-	}
+	filled_container_item.icons = apm.lib.utils.icon.get.from_item(empty_c_name)
+
+	table.insert(filled_container_item.icons, { icon = c_side_mask, tint = side_tint })
+	table.insert(filled_container_item.icons, { icon = c_hoop_top_mask, tint = top_hoop_tint })
+
 	if fluid.icons then
 		for _, icon in pairs(fluid.icons) do
 			local new_icon = apm.lib.utils.icon.mod(icon, 0.5, { 0, 5 })
+
 			table.insert(filled_container_item.icons, new_icon)
 		end
 	elseif fluid.icon then
-		local new_icon = apm.lib.utils.icon.mod({ icon = fluid.icon }, 0.5, { 0, 5 })
+		local new_icon = apm.lib.utils.icon.mod({ icon = fluid.icon, icon_size = fluid.icon_size }, 0.5, { 0, 5 })
+
 		table.insert(filled_container_item.icons, new_icon)
 	end
+
 	filled_container_item.icon_size = 32
 	filled_container_item.stack_size = empty_c_item.stack_size
+
 	data:extend({ filled_container_item })
 
 	-- fill barrel
@@ -137,15 +142,19 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 		{ icon = c_fill_side_mask, tint = side_tint },
 		{ icon = c_fill_top_mask,  tint = top_hoop_tint }
 	}
+
 	if fluid.icons then
 		for _, icon in pairs(fluid.icons) do
 			local new_icon = apm.lib.utils.icon.mod(icon, 0.5, { 4, -8 })
+
 			table.insert(recipe_fill_barrel.icons, new_icon)
 		end
 	elseif fluid.icon then
-		local new_icon = apm.lib.utils.icon.mod({ icon = fluid.icon }, 0.5, { 4, -8 })
+		local new_icon = apm.lib.utils.icon.mod({ icon = fluid.icon, icon_size = fluid.icon_size }, 0.5, { 4, -8 })
+
 		table.insert(recipe_fill_barrel.icons, new_icon)
 	end
+
 	recipe_fill_barrel.icon_size = 32
 	recipe_fill_barrel.ingredients = {
 		---@type FluidIngredientPrototype
@@ -174,7 +183,9 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 			ignored_by_productivity = 1
 		}
 	}
+
 	recipe_fill_barrel.allow_decomposition = false
+
 	data:extend({ recipe_fill_barrel })
 
 	-- empty filled barrel
@@ -196,15 +207,19 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 		{ icon = c_empty_side_mask, tint = side_tint },
 		{ icon = c_empty_top_mask,  tint = top_hoop_tint }
 	}
+
 	if fluid.icons then
 		for _, icon in pairs(fluid.icons) do
 			local new_icon = apm.lib.utils.icon.mod(icon, 0.5, { 7, 8 })
+
 			table.insert(recipe_empty_filled_barrel.icons, new_icon)
 		end
 	elseif fluid.icon then
-		local new_icon = apm.lib.utils.icon.mod({ icon = fluid.icon }, 0.5, { 7, 8 })
+		local new_icon = apm.lib.utils.icon.mod({ icon = fluid.icon, icon_size = fluid.icon_size }, 0.5, { 7, 8 })
+
 		table.insert(recipe_empty_filled_barrel.icons, new_icon)
 	end
+
 	recipe_empty_filled_barrel.icon_size = 32
 	recipe_empty_filled_barrel.ingredients = {
 		---@type ItemIngredientPrototype
@@ -233,7 +248,9 @@ function apm.lib.utils.barrel.generate(fluid_name, c_name, technology_name, b_fo
 			ignored_by_productivity = 1
 		}
 	}
+
 	recipe_empty_filled_barrel.allow_decomposition = false
+
 	data:extend({ recipe_empty_filled_barrel })
 
 	apm.lib.utils.technology.add.recipe_for_unlock(technology_name, recipe_fill_barrel.name)

@@ -3,7 +3,7 @@ if not apm.lib.utils.technology.find then apm.lib.utils.technology.find = {} end
 
 --- [technology.find.technology_by_recipe]
 ---@param recipe_name string
----@return string?
+---@return TechnologyID?
 function apm.lib.utils.technology.find.technology_by_recipe(recipe_name)
 	for technology_name, _ in pairs(data.raw.technology) do
 		if apm.lib.utils.technology.check_if_recipe_is_in_unlock(technology_name, recipe_name) then
@@ -12,6 +12,16 @@ function apm.lib.utils.technology.find.technology_by_recipe(recipe_name)
 	end
 
 	return nil
+end
+
+---@param products_name table<ItemID, TechnologyID[]>
+---@return table<ItemID, TechnologyID[]>
+function apm.lib.utils.technology.find.technologies_by_products(products_name)
+	for _, technology in pairs(data.raw.technology) do
+		set, _ = apm.lib.utils.technology.has.one_of_product(technology, products_name)
+	end
+
+	return set
 end
 
 --- [technology.find.by_prefix]
@@ -166,15 +176,18 @@ end
 
 --- [technology.mod.icon]
 ---@param technology_name string
----@param icon any
-function apm.lib.utils.technology.mod.icon(technology_name, icon)
+---@param icon string
+---@param icon_size number? default: the technology's icon_size, else 256
+function apm.lib.utils.technology.mod.icon(technology_name, icon, icon_size)
 	local technology, ok = apm.lib.utils.technology.get.by_name(technology_name)
 
 	if not ok or not technology then
 		return
 	end
 
+	technology.icons = nil
 	technology.icon = icon
+	technology.icon_size = icon_size or technology.icon_size or 256
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(
@@ -224,7 +237,6 @@ function apm.lib.utils.technology.delete(technology_name)
 
 	technology.prerequisites = {}
 
-	-- let us find who is linked to this technology and remove the prerequisites
 	for technology, _ in pairs(data.raw.technology) do
 		if technology ~= technology_name then
 			if apm.lib.utils.technology.has.prerequisites(technology, technology_name) then
@@ -236,6 +248,8 @@ function apm.lib.utils.technology.delete(technology_name)
 	if apm.lib.utils.technology.trigger.get(technology_name) then
 		apm.lib.utils.technology.trigger.remove(technology_name, true)
 	end
+
+	apm.lib.utils.technology.remove.science_packs_except(technology_name, {})
 end
 
 --- [technology.overwrite.localised_name]

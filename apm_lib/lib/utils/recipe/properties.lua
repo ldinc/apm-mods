@@ -57,8 +57,9 @@ end
 
 --- [recipe.set.icon]
 ---@param recipe_name string
----@param icon_path any
-function apm.lib.utils.recipe.set.icon(recipe_name, icon_path)
+---@param icon_path string
+---@param icon_size number? default: the recipe's icon_size, else 64
+function apm.lib.utils.recipe.set.icon(recipe_name, icon_path, icon_size)
 	local recipe, ok = apm.lib.utils.recipe.get.by_name(recipe_name)
 
 	if not ok then
@@ -68,22 +69,31 @@ function apm.lib.utils.recipe.set.icon(recipe_name, icon_path)
 	if apm.lib.utils.recipe.has.main_product(recipe_name) then
 		local main_product_name = apm.lib.utils.recipe.get.main_product(recipe_name)
 
-		local main_product = data.raw.item(main_product_name) or data.raw.fluid(main_product_name)
+		local main_product = data.raw.fluid[main_product_name]
+
+		if not main_product then
+			for item_type in pairs(defines.prototypes.item) do
+				main_product = data.raw[item_type] and data.raw[item_type][main_product_name]
+
+				if main_product then break end
+			end
+		end
 
 
-		recipe.subgroup = main_product.subgroup
-		recipe.order = main_product.order
+		if main_product then
+			recipe.subgroup = main_product.subgroup
+			recipe.order = main_product.order
+		end
+
 
 		if recipe.main_product then
 			recipe.main_product = nil
 		end
 	end
 
-	if not recipe.icons then
-		recipe.icon = icon_path
-	else
-		recipe.icons = { icon = icon_path }
-	end
+	recipe.icons = nil
+	recipe.icon = icon_path
+	recipe.icon_size = icon_size or recipe.icon_size or 64
 
 	if APM_CAN_LOG_INFO then
 		log(APM_MSG_INFO(

@@ -134,11 +134,18 @@ if mods["aai-industry"] and apm_power_compat_earendel then
 	apm.lib.utils.recipe.ingredient.mod("inserter", "apm_gearing", 1)
 	apm.lib.utils.recipe.remove("electronic-circuit-stone")
 
+	apm.lib.utils.recipe.remove("electronic-circuit-wood")
+
 	apm.lib.utils.recipe.ingredient.mod("burner-mining-drill", "motor", 0)
 	apm.lib.utils.recipe.ingredient.mod("burner-mining-drill", "stone-brick", 0)
 	apm.lib.utils.recipe.ingredient.mod("burner-mining-drill", "stone-furnace", 1)
 
-	apm.lib.utils.recipe.ingredient.replace("glass", "sand", "apm_crushed_stone")
+	local sand, ok = apm.lib.utils.recipe.get.by_name("sand")
+
+	if ok then
+		apm.lib.utils.recipe.ingredient.replace("sand", "stone", "apm_crushed_stone")
+		apm.lib.utils.recipe.category.change(sand, "apm_crusher")
+	end
 
 	apm.lib.utils.recipe.ingredient.mod("long-handed-inserter", "electric-motor", 1)
 	apm.lib.utils.recipe.ingredient.mod("long-handed-inserter", "apm_gearing", 1)
@@ -166,6 +173,7 @@ if mods["aai-industry"] and apm_power_compat_earendel then
 	apm.lib.utils.recipe.ingredient.mod("engine-unit", "motor", 0)
 
 	apm.lib.utils.recipe.ingredient.replace_all("motor", "apm_simple_engine")
+	apm.lib.utils.recipe.remove("motor")
 
 	if not mods.bobelectronics then
 		apm.lib.utils.recipe.ingredient.mod("electric-mining-drill", "electronic-circuit", 3)
