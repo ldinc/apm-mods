@@ -107,5 +107,12 @@ apm.lib.utils.constants.science = {
 		production = "production-science-pack",
 		utility = "utility-science-pack",
 		space = "space-science-pack",
+	},
+	sa = {
+		agricultural = "agricultural-science-pack",
+		cryogenic = "cryogenic-science-pack",
+		electromagnetic = "electromagnetic-science-pack",
+		metallurgic = "metallurgic-science-pack",
+		promethium = "promethium-science-pack"
 	}
 }

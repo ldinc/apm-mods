@@ -9,6 +9,7 @@
 		"? quality",
 		"apm_resource_pack_ldinc >= 0.32.4",
 		"apm_lib_ldinc >= 0.32.16",
+		"+ freeplay_starting_equipment >= 0.3.0",
 		"(?) aai-industry >= 0.7.5",
 		"? bobwarfare >= 2.0.0",
 		"? bobores >= 2.0.0",

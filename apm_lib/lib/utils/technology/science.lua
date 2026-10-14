@@ -146,6 +146,7 @@ function apm.lib.utils.technology.remove.science_packs_except(technology_name, s
 	for _, sp in ipairs(technology.unit.ingredients) do
 		if sp then
 			local key = sp[1]
+
 			if skip_list[key] then
 				table.insert(new_set, sp)
 			end
@@ -287,13 +288,6 @@ function apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites(
 	end
 end
 
---- Active science pack order map: science pack name -> tier (integer).
---- Applied to the science pack items by [technology.overwrite.science_pack_order_strings]
---- and to the lab inputs by [technology.overwrite.lab_science_pack_order];
---- packs are sorted by tier, then by name. Tiers use gaps of 10, so other mods
---- can slot packs between the default ones via [technology.set.science_pack_order]
---- and [technology.set.science_pack_order_after] depending on their mod set
---- (e.g. from their overwrites/integrations stage, before the map is applied).
 ---@type table<string, integer>
 apm.lib.utils.technology.science_pack_order = {
 	["apm_industrial_science_pack"] = 10,
@@ -313,16 +307,41 @@ apm.lib.utils.technology.science_pack_order = {
 	["promethium-science-pack"] = 150,
 }
 
---- Formats the order string used on the science pack item prototypes for a tier.
----@param tier number
----@param science_pack_name string
----@return string
-local function format_science_pack_order(tier, science_pack_name)
-	if tier % 1 == 0 then
-		return string.format("%03d[%s]", tier, science_pack_name)
+local function rank_code(rank)
+	local a = string.byte("a")
+	local code = ""
+
+	for _ = 1, 3 do
+		code = string.char(a + rank % 26) .. code
+		rank = math.floor(rank / 26)
 	end
 
-	return string.format("%09.4f[%s]", tier, science_pack_name)
+	return code
+end
+
+---@return table<string, string> pack name -> order string
+local function science_pack_order_strings()
+	local entries = {}
+
+	for pack_name, tier in pairs(apm.lib.utils.technology.science_pack_order) do
+		entries[#entries + 1] = { name = pack_name, tier = tier }
+	end
+
+	table.sort(entries, function(a, b)
+		if a.tier ~= b.tier then
+			return a.tier < b.tier
+		end
+
+		return a.name < b.name
+	end)
+
+	local orders = {}
+
+	for rank, entry in ipairs(entries) do
+		orders[entry.name] = rank_code(rank - 1) .. "_" .. entry.name
+	end
+
+	return orders
 end
 
 --- [technology.set.science_pack_order]
@@ -382,26 +401,16 @@ function apm.lib.utils.technology.remove.science_pack_orders(science_pack_names)
 	end
 end
 
---- [technology.overwrite.science_pack_order_strings]
---- Applies the tiers of [apm.lib.utils.technology.science_pack_order] to the order
---- strings of the science pack item prototypes. The game sorts the science packs of
---- a technology in the technology GUI by item group, subgroup and this order string,
---- not by the ingredients array (the lab GUI follows the lab's inputs array instead,
---- see [technology.overwrite.lab_science_pack_order]).
---- Packs without an item prototype (not part of the current mod set) are skipped.
---- Note: for vanilla packs the map holds the APM progression order, so applying it
---- rewrites their order strings (affects inventory sorting as well).
---- Best called at the end of data-final-fixes.lua, after all mods have created
---- their science packs.
 ---@param subgroup string? # also set the item subgroup of the science packs (e.g. "science-pack")
 function apm.lib.utils.technology.overwrite.science_pack_order_strings(subgroup)
 	local count = 0
+	local orders = science_pack_order_strings()
 
-	for pack_name, tier in pairs(apm.lib.utils.technology.science_pack_order) do
+	for pack_name, order in pairs(orders) do
 		local item = data.raw["item"][pack_name] or (data.raw["tool"] and data.raw["tool"][pack_name])
 
 		if item then
-			item.order = format_science_pack_order(tier, pack_name)
+			item.order = order
 
 			if subgroup then
 				item.subgroup = subgroup
@@ -419,14 +428,6 @@ function apm.lib.utils.technology.overwrite.science_pack_order_strings(subgroup)
 	end
 end
 
---- [technology.overwrite.lab_science_pack_order]
---- Sorts the inputs of all labs by [apm.lib.utils.technology.science_pack_order].
---- The lab GUI shows the science packs of a lab in the order of its inputs array,
---- unlike the technology GUI, which sorts by item group, subgroup and order string.
---- Packs missing from the order map keep their relative order and are placed
---- after the mapped packs.
---- Best called at the end of data-final-fixes.lua, after all mods have added
---- their science packs to the labs.
 function apm.lib.utils.technology.overwrite.lab_science_pack_order()
 	local order_map = apm.lib.utils.technology.science_pack_order
 	local count = 0

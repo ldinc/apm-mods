@@ -491,37 +491,8 @@ function equipment_script.check_equipment_manager(player)
 	control_equipment_manager_shortcut(player)
 end
 
---- Registers the APM starting items with freeplay_starting_equipment. Its interface is
---- missing when that mod's script does not run, e.g. in tips-and-tricks simulations, which
---- only load the scripts they list.
-local function setup_starting_items()
-	local default_starting_items = {
-		{ name = "apm_equipment_burner_generator_basic", count = 1 },
-		{ name = "burner-mining-drill",                  count = 12 },
-		{ name = "apm_coke",                             count = 400 },
-		{ name = "burner-inserter",                      count = 10 },
-		{ name = "stone-furnace",                        count = 10 },
-		{ name = "personal-roboport-equipment",          count = 1 },
-		{ name = "battery-equipment",                    count = 2 },
-		{ name = "apm_zx80_construction_robot",          count = 10 },
-		{ name = "modular-armor",                        count = 1 },
-		{ name = "apm_assembling_machine_0",             count = 5 },
-		{ name = "firearm-magazine",                     count = 50 },
-	}
-
-	local interface = remote.interfaces["ldinc_starting_equipment"]
-
-	if not interface or not interface["add_list"] then
-		return
-	end
-
-	remote.call("ldinc_starting_equipment", "add_list", "apm_lib", default_starting_items)
-end
-
 function equipment_script.on_init()
 	setup_environment(false, false)
-
-	setup_starting_items()
 end
 
 function equipment_script.on_load()
