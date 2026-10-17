@@ -1,27 +1,16 @@
-require 'util'
-require('lib.log')
+require "util"
+require("lib.log")
 
-local self = 'lib.utils.builders.fluid_box'
-
-function apm.lib.utils.builders.fluid_box.new_steam_input(volume, min_t, max_t)
+---@param volume number?
+function apm.lib.utils.builders.fluid_box.new_steam_input(volume)
 	if volume == nil then
 		volume = 100
 	end
 
-	if min_t == nil then
-		min_t = 100.0
-	end
-
-	if max_t == nil then
-		max_t = 550.0
-	end
-
-	return 
+	return
 	{
 		volume = volume,
 		filter = "steam",
-		minimum_temperature = min_t,
-		maximum_temperature = max_t,
 		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
 		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
 		pipe_connections = {
@@ -35,27 +24,16 @@ function apm.lib.utils.builders.fluid_box.new_steam_input(volume, min_t, max_t)
 	}
 end
 
-
-function apm.lib.utils.builders.fluid_box.new_steam_input_3way(volume, min_t, max_t)
+---@param volume number?
+function apm.lib.utils.builders.fluid_box.new_steam_input_3way(volume)
 	if volume == nil then
 		volume = 1000
-	end
-
-	if min_t == nil then
-		min_t = 100.0
-	end
-
-	if max_t == nil then
-		max_t = 1000.0
 	end
 
 	return {
 		volume = volume,
 		production_type = "input",
 		filter = "steam",
-		minimum_temperature = min_t,
-		maximum_temperature = max_t,
-
 
 		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
 		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
@@ -80,26 +58,16 @@ function apm.lib.utils.builders.fluid_box.new_steam_input_3way(volume, min_t, ma
 	}
 end
 
-function apm.lib.utils.builders.fluid_box.new_steam_input_4way(volume, min_t, max_t)
-
+---@param volume number?
+function apm.lib.utils.builders.fluid_box.new_steam_input_4way(volume)
 	if volume == nil then
 		volume = 1000
-	end
-
-	if min_t == nil then
-		min_t = 100.0
-	end
-
-	if max_t == nil then
-		max_t = 1000.0
 	end
 
 	return {
 		volume = volume,
 		production_type = "input",
 		filter = "steam",
-		minimum_temperature = min_t,
-		maximum_temperature = max_t,
 
 		pipe_picture = apm.lib.utils.pipecovers.assembler2pipepictures(),
 		pipe_covers = apm.lib.utils.pipecovers.pipecoverspictures(),
@@ -163,7 +131,8 @@ function apm.lib.utils.builders.fluid_box.new_output(volume)
 	}
 end
 
-function apm.lib.utils.builders.fluid_box.new(ptype, volume, pipe_picture, direction, position, secondary_draw_orders, filter)
+function apm.lib.utils.builders.fluid_box.new(ptype, volume, pipe_picture, direction, position, secondary_draw_orders,
+																							filter)
 	if not ptype then
 		ptype = "input"
 	end
@@ -173,7 +142,7 @@ function apm.lib.utils.builders.fluid_box.new(ptype, volume, pipe_picture, direc
 	end
 
 	if not pipe_picture then
-		pipe_picture =  apm.lib.utils.pipecovers.assembler1pipepictures()
+		pipe_picture = apm.lib.utils.pipecovers.assembler1pipepictures()
 	end
 
 	if not direction then
@@ -181,7 +150,7 @@ function apm.lib.utils.builders.fluid_box.new(ptype, volume, pipe_picture, direc
 	end
 
 	if not position then
-		position = {0, -1}
+		position = { 0, -1 }
 	end
 
 	if not secondary_draw_orders then
@@ -196,10 +165,11 @@ function apm.lib.utils.builders.fluid_box.new(ptype, volume, pipe_picture, direc
 		volume = volume,
 		pipe_connections = {
 			{
-				flow_direction=ptype,
+				flow_direction = ptype,
 				direction = direction,
-				position = position },
+				position = position
 			},
+		},
 		secondary_draw_orders = secondary_draw_orders
 	}
 end

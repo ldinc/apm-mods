@@ -2,8 +2,6 @@ require "util"
 require("lib.log")
 require("lib.utils.builders.fluid_box")
 
-local self = "lib.utils.builders.energy_source"
-
 --- Construct new energy source instance
 --- @param emmisions_pm? {AirbornePollutantID: number}
 --- @param smoke? SmokePrototype[]
@@ -30,7 +28,7 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, flu
 	end
 
 	if not fluid_box then
-		fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(volume, min_t, max_t)
+		fluid_box = apm.lib.utils.builders.fluid_box.new_steam_input(volume)
 	end
 
 	---@type FluidEnergySource
@@ -41,6 +39,8 @@ function apm.lib.utils.builders.energy_source.new_steam(emmisions_pm, smoke, flu
 		burns_fluid = false,
 		scale_fluid_usage = true,
 		maximum_temperature = max_t,
+		minimum_input_temperature = min_t,
+		maximum_input_temperature = max_t,
 		emissions_per_minute = emmisions_pm,
 	}
 

@@ -403,6 +403,10 @@ end
 
 ---@param subgroup string? # also set the item subgroup of the science packs (e.g. "science-pack")
 function apm.lib.utils.technology.overwrite.science_pack_order_strings(subgroup)
+	if not apm.lib.features.science.sort_fn_enabled then
+		return
+	end
+
 	local count = 0
 	local orders = science_pack_order_strings()
 
@@ -429,6 +433,10 @@ function apm.lib.utils.technology.overwrite.science_pack_order_strings(subgroup)
 end
 
 function apm.lib.utils.technology.overwrite.lab_science_pack_order()
+	if not apm.lib.features.science.sort_fn_enabled then
+		return
+	end
+
 	local order_map = apm.lib.utils.technology.science_pack_order
 	local count = 0
 

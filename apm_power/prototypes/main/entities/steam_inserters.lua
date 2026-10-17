@@ -111,6 +111,13 @@ local pipecovers = {
 	},
 }
 
+local empty = {
+	filename = "__core__/graphics/empty.png",
+	priority = "extra-high",
+	width = 1,
+	height = 1
+}
+
 inserter.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 	nil,
 	nil,
@@ -124,6 +131,7 @@ inserter.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 				flow_direction = "input-output",
 				direction = defines.direction.north,
 				position = { 0, -0.14 },
+
 			},
 			{
 				flow_direction = "input-output",
@@ -131,7 +139,22 @@ inserter.energy_source = apm.lib.utils.builders.energy_source.new_steam(
 				position = { 0, 0.14 },
 			},
 		},
-		secondary_draw_orders = { north = -1 },
+		pipe_picture = {
+			north = {
+				layers = {
+					{
+						filename = gpraphics_path .. "platform-vertical-pipe-patch.png",
+						scale = 0.5,
+						height = 192,
+						width = 256,
+						shift = util.by_pixel(0, 34),
+					}
+				},
+			},
+			east = empty,
+			south = empty,
+			west = empty,
+		},
 	},
 	50,
 	120,
