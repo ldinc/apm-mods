@@ -107,6 +107,7 @@ local function Machine(fuel, burnt)
 	local fuel_inv, burnt_inv = Inventory(fuel), Inventory(burnt)
 	return {
 		valid = true,
+		name = "stone-furnace",
 		type = "furnace",
 		position = { x = 0, y = 0 },
 		burner = { fuel_categories = { chemical = true }, burnt_result_inventory = burnt_inv },
@@ -125,6 +126,7 @@ local function Inserter(own_fuel, status, pickup, drop, held)
 	local fuel_inv = Inventory(own_fuel)
 	return {
 		valid = true,
+		name = "burner-inserter",
 		type = "inserter",
 		unit_number = 1,
 		force = force,
@@ -269,5 +271,33 @@ do
 	run(ins)
 	expect("filter: blacklisted ash not taken", pickup.burnt_inv.count_of("apm_generic_ash", "normal"), 4)
 end
+
+-- 7. the burner's fuel categories are read once per entity name (LuaBurner::fuel_categories
+-- builds a new table on every read)
+do
+	local reads = 0
+	local function counted(entity)
+		local burner = entity.burner
+		entity.burner = nil
+		return setmetatable(entity, {
+			__index = function(_, k)
+				if k == "burner" then
+					reads = reads + 1
+					return burner
+				end
+			end
+		})
+	end
+	for _ = 1, 3 do
+		local pickup = Machine({}, {})
+		local drop = Machine({ { "coal", "normal", 10 } })
+		local ins = counted(Inserter({}, nil, pickup, drop))
+		ins.name = "cached-inserter"
+		run(ins)
+		expect("cache: still leeches", ins.fuel_inv.count_of("coal", "normal"), 5)
+	end
+	expect("cache: burner of the inserter read once", reads, 1)
+end
+
 
 print("inserter.test.lua: ALL TESTS PASSED")

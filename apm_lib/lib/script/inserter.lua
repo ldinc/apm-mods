@@ -227,6 +227,25 @@ local function transfer_leeching(inserter, inventory, item_stack, allow_merge)
 	return added > 0
 end
 
+---@type table<string, table<string, boolean>|false>
+local burner_categories_cache = {}
+
+---@param entity LuaEntity
+---@return table<string, boolean>? categories nil: the entity has no burner
+local function get_burner_categories(entity)
+	local name = entity.name
+	local cached = burner_categories_cache[name]
+
+	if cached == nil then
+		local burner = entity.burner
+
+		cached = burner and burner.fuel_categories or false
+		burner_categories_cache[name] = cached
+	end
+
+	return cached or nil
+end
+
 ---@param pickup_target LuaEntity?
 ---@param drop_target LuaEntity?
 ---@return LuaInventory?
@@ -345,13 +364,11 @@ end
 ---@param drop_target LuaEntity?
 ---@return boolean
 local function burner_inserter_leech(entity, pickup_target, drop_target)
-	local burner = entity.burner
+	local burner_categories = get_burner_categories(entity)
 
-	if not burner then
+	if not burner_categories then
 		return false
 	end
-
-	local burner_categories = burner.fuel_categories
 
 	return leech_from(entity, pickup_target, burner_categories)
 			or leech_from(entity, drop_target, burner_categories)
@@ -390,6 +407,8 @@ end
 ---@param inventory LuaInventory?
 ---@return ItemStackDefinition?
 local function inventory_get_fuel(t_object, inventory)
+	local fuel_categories = get_burner_categories(t_object.entity)
+
 	if not inventory or not t_object.fuel_inventory then
 		return nil
 	end
@@ -400,11 +419,10 @@ local function inventory_get_fuel(t_object, inventory)
 
 	local burner = t_object.entity.burner
 
-	if not burner then
+	if not fuel_categories then
 		return nil
 	end
 
-	local fuel_categories = burner.fuel_categories
 
 	local contents = inventory.get_contents()
 
@@ -459,39 +477,52 @@ end
 ---@param from LuaEntity?
 ---@param to LuaEntity?
 local function try_transfer_ash_from_to(from, to)
-	if not from or not to or not from.valid or not to.valid then return end
-	-- the ash item comes from apm_power; without it there is nothing to move
-	if not prototypes.item[ASH_NAME] then return end
+	if not from or not to or not from.valid or not to.valid then
+		return
+	end
 
-	local to_burner   = to.burner
-	local from_burner = from.burner
-	if not to_burner or not from_burner then return end
-	if not to_burner.fuel_categories["chemical"] then return end
+	if not prototypes.item[ASH_NAME] then
+		return
+	end
 
-	local to_brr   = to_burner.burnt_result_inventory
-	local from_brr = from_burner.burnt_result_inventory
-	if not to_brr or not from_brr then return end
-	if to_brr.is_full() then return end
+	local to_categories = get_burner_categories(to)
 
-	-- The ash moves on as soon as there is a batch of it (ash_size, 10% of the ash stack),
-	-- not only when the source slot is full: a machine that stopped for another reason
-	-- (e.g. its output is full) never fills its burnt-result slot, so its ash was never passed on.
+	if not to_categories or not to_categories["chemical"] then
+		return
+	end
+
+	if not get_burner_categories(from) then
+		return
+	end
+
+	local to_brr   = to.get_burnt_result_inventory()
+	local from_brr = from.get_burnt_result_inventory()
+
+	if not to_brr or not from_brr then
+		return
+	end
+
+	if to_brr.is_full() then
+		return
+	end
+
 	local batch     = storage.inserters.settings.ash_size
 	local from_full = from_brr.is_full()
 
-	-- Move only ash that is really in the source (per quality): remove first, then insert,
-	-- and give back what did not fit. Never calls remove/insert with count 0
-	-- ("count must be positive") and never creates ash from nothing.
 	for _, content in pairs(from_brr.get_contents()) do
 		if content.name == ASH_NAME and (content.count >= batch or from_full) then
 			local item = { name = ASH_NAME, quality = content.quality }
 			local room = to_brr.get_insertable_count(item)
+
 			if room >= batch then
 				local count = math.min(content.count, room, apm.lib.features.stack_size.ash)
+
 				if count > 0 then
 					local removed = from_brr.remove({ name = ASH_NAME, quality = content.quality, count = count })
+
 					if removed > 0 then
 						local added = to_brr.insert({ name = ASH_NAME, quality = content.quality, count = removed })
+
 						if added < removed then
 							from_brr.insert({ name = ASH_NAME, quality = content.quality, count = removed - added })
 						end
@@ -517,7 +548,9 @@ local function try_transfer_ash(tick, t_object, pickup_target, drop_target)
 
 
 	--- check does drop target valid
-	if not drop_target or not drop_target.burner then return end
+	if not drop_target or not get_burner_categories(drop_target) then
+		return
+	end
 
 	if
 			t_object.ash_last_check_tick
@@ -640,15 +673,9 @@ end
 ---@return boolean
 local function entity_condition(entity)
 	if storage.inserters.settings.valid_targets[entity.type] then
-		local burner_inventory = entity.get_fuel_inventory()
+		local categories = get_burner_categories(entity)
 
-		if
-				burner_inventory
-				and
-				entity.burner
-				and
-				entity.burner.fuel_categories["chemical"]
-		then -- this will only catch entities with a burner NOT fluids (thats good)
+		if categories and categories["chemical"] and entity.get_fuel_inventory() then
 			return true
 		end
 	end
@@ -1070,7 +1097,7 @@ remote.add_interface("apm_inserter", {
 	end,
 	is_enabled = function()
 		return storage.inserters ~= nil and storage.inserters.settings ~= nil and
-		storage.inserters.settings.fn_enabled == true
+				storage.inserters.settings.fn_enabled == true
 	end,
 })
 
