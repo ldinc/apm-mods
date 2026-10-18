@@ -18,6 +18,18 @@ local scratch_work    = { name = "", count = 0, quality = nil }
 ---@field bulk boolean?
 ---@field err integer
 ---@field ash_last_check_tick integer?
+---@field pickup_x number? cached pickup position (nil: read it on the next visit that needs it)
+---@field pickup_y number?
+---@field pickup TargetCache? inventories of the pickup target
+---@field drop TargetCache? inventories of the drop target
+
+---@class TargetCache
+---@field id integer? unit number of the target (nil: not cached, read every time)
+---@field fuel LuaInventory|false
+---@field burnt LuaInventory|false
+
+local S_WAITING       = defines.entity_status.waiting_for_source_items
+local S_NO_FUEL       = defines.entity_status.no_fuel
 
 function inserter_script.alloc_defenitions()
 	if not storage.inserters then storage.inserters = {} end
@@ -246,25 +258,6 @@ local function get_burner_categories(entity)
 	return cached or nil
 end
 
----@param pickup_target LuaEntity?
----@param drop_target LuaEntity?
----@return LuaInventory?
-local function get_a_fuel_inventory(pickup_target, drop_target)
-	if pickup_target ~= nil then
-		local pickup_inventory = pickup_target.get_fuel_inventory()
-
-		if pickup_inventory ~= nil then
-			return pickup_inventory
-		end
-	end
-	if drop_target ~= nil then
-		local drop_inventory = drop_target.get_fuel_inventory()
-
-		return drop_inventory
-	end
-
-	return nil
-end
 
 --- item name -> list of its fuel categories. Built lazily from prototypes, which cannot
 --- change during a session, so the cache does not affect determinism.
@@ -305,23 +298,11 @@ end
 
 --- Takes up to 5 fuel the inserter can burn from the target's fuel inventory,
 --- leaving at least one item in the slot.
----@param entity LuaEntity
----@param target LuaEntity?
+---@param fuel_inventory LuaInventory
+---@param target_inventory LuaInventory|false|nil
 ---@param burner_categories table<string, boolean>
 ---@return boolean
-local function leech_from(entity, target, burner_categories)
-	if not target or not target.valid then
-		return false
-	end
-
-	local fuel_inventory = entity.get_fuel_inventory()
-
-	if not fuel_inventory then
-		return false
-	end
-
-	local target_inventory = target.get_fuel_inventory()
-
+local function leech_from(fuel_inventory, target_inventory, burner_categories)
 	if not target_inventory or target_inventory.is_empty() then
 		return false
 	end
@@ -357,21 +338,26 @@ local function leech_from(entity, target, burner_categories)
 	return false
 end
 
---- can pickup 'fuel' for it self from pickup_target or drop_target
+--- can pickup 'fuel' for it self from the pickup or the drop target's fuel inventory
 --- Only fuel of the inserter's own fuel categories (not e.g. nutrients or fuel cells).
 ---@param entity LuaEntity
----@param pickup_target LuaEntity?
----@param drop_target LuaEntity?
+---@param fuel_inventory LuaInventory?
+---@param pickup_fuel LuaInventory|false|nil
+---@param drop_fuel LuaInventory|false|nil
 ---@return boolean
-local function burner_inserter_leech(entity, pickup_target, drop_target)
+local function burner_inserter_leech(entity, fuel_inventory, pickup_fuel, drop_fuel)
+	if not fuel_inventory then
+		return false
+	end
+
 	local burner_categories = get_burner_categories(entity)
 
 	if not burner_categories then
 		return false
 	end
 
-	return leech_from(entity, pickup_target, burner_categories)
-			or leech_from(entity, drop_target, burner_categories)
+	return leech_from(fuel_inventory, pickup_fuel, burner_categories)
+			or leech_from(fuel_inventory, drop_fuel, burner_categories)
 end
 
 --- chain fuel from pickup_target to drop_target
@@ -446,12 +432,12 @@ end
 
 ---@param t_object QueueItem
 ---@param pickup_target LuaEntity?
-local function steal_fuel_to_inserter(t_object, pickup_target)
-	if not t_object or not pickup_target then return end
+---@param pickup_fuel LuaInventory|false|nil
+local function steal_fuel_to_inserter(t_object, pickup_target, pickup_fuel)
+	if not t_object or not pickup_target then
+		return
+	end
 
-	-- The cached fuel_inventory exists iff the inserter is a burner,
-	-- and it IS the burner's inventory — so we can skip reading
-	-- `entity.burner` and `entity.burner.inventory` entirely.
 	local fuel_inventory = t_object.fuel_inventory
 
 	if not fuel_inventory then
@@ -460,7 +446,7 @@ local function steal_fuel_to_inserter(t_object, pickup_target)
 
 	-- Try the pickup target's fuel inventory first (e.g. another burner machine),
 	-- then its main chest inventory.
-	local source = get_a_fuel_inventory(pickup_target)
+	local source = pickup_fuel or nil
 	local fuel = inventory_get_fuel(t_object, source)
 
 	if not fuel then
@@ -533,71 +519,107 @@ local function try_transfer_ash_from_to(from, to)
 	end
 end
 
+local ASH_TICK_RATE = 1000
+
 ---@param tick integer
+---@param t_object QueueItem
+---@return boolean
+local function ash_check_due(tick, t_object)
+	local settings = storage.inserters.settings
+
+	if not settings.ash_chaining or settings.ash_size == 0 then
+		return false
+	end
+
+	local last = t_object.ash_last_check_tick
+
+	if last and tick - last < ASH_TICK_RATE then
+		return false
+	end
+
+
+	t_object.ash_last_check_tick = tick
+
+	return true
+end
+
 ---@param t_object QueueItem
 ---@param pickup_target LuaEntity?
 ---@param drop_target LuaEntity?
-local function try_transfer_ash(tick, t_object, pickup_target, drop_target)
-	if not storage.inserters.settings.ash_chaining or storage.inserters.settings.ash_size == 0 then
-		return
-	end
-
-	-- if t_object.entity.status == defines.entity_status.full_burnt_result_output then
-	-- 	-- TODO: check if can drop ash to storage or belt, or land
-	-- end
-
-
-	--- check does drop target valid
+local function try_transfer_ash(t_object, pickup_target, drop_target)
 	if not drop_target or not get_burner_categories(drop_target) then
 		return
 	end
-
-	if
-			t_object.ash_last_check_tick
-			and
-			(tick - t_object.ash_last_check_tick < 1000)
-	then
-		return
-	end
-
-	t_object.ash_last_check_tick = tick
 
 	try_transfer_ash_from_to(pickup_target, drop_target)
 	try_transfer_ash_from_to(t_object.entity, drop_target)
 end
 
+---@param cache TargetCache?
+---@param target LuaEntity
+---@return TargetCache
+local function target_cache(cache, target)
+	local id = target.unit_number
+
+	if cache and id and cache.id == id
+			and (cache.fuel == false or cache.fuel.valid)
+			and (cache.burnt == false or cache.burnt.valid)
+	then
+		return cache
+	end
+
+	return {
+		id    = id,
+		fuel  = target.get_fuel_inventory() or false,
+		burnt = target.get_burnt_result_inventory() or false,
+	}
+end
+
 --- This function made it possible that a inserter can handle the 'burnt_result_inventory' on all machiens.
 --- That burner inserter can also leech fuel from drop target.
 --- That burner inserters are capable to chain fuel through all burner machines
----@param tick integer
 ---@param t_object QueueItem
 ---@param pickup_target LuaEntity?
 ---@param drop_target LuaEntity?
----@param at_pickup boolean? the hand is at the pickup position
-local function inserter_work(tick, t_object, pickup_target, drop_target, at_pickup)
-	local entity = t_object.entity
+---@param at_pickup boolean
+---@param status defines.entity_status?
+---@param ash_due boolean
+local function inserter_work(t_object, pickup_target, drop_target, at_pickup, status, ash_due)
+	local entity                   = t_object.entity
+
+	local pickup                   = pickup_target and target_cache(t_object.pickup, pickup_target) or nil
+	local drop                     = drop_target and target_cache(t_object.drop, drop_target) or nil
+	t_object.pickup, t_object.drop = pickup, drop
 
 	-- Fuel leeching --------------------------------------------------------
-	if entity.status == defines.entity_status.no_fuel then
-		steal_fuel_to_inserter(t_object, pickup_target)
+	if status == S_NO_FUEL then
+		steal_fuel_to_inserter(t_object, pickup_target, pickup and pickup.fuel)
 	end
 
-	try_transfer_ash(tick, t_object, pickup_target, drop_target)
+	if ash_due then
+		try_transfer_ash(t_object, pickup_target, drop_target)
+	end
 
-	if t_object.fuel_inventory and t_object.fuel_inventory.get_item_count() <= 0 then
-		if burner_inserter_leech(entity, pickup_target, drop_target) then
+	local fuel_inventory = t_object.fuel_inventory
+
+	if fuel_inventory and fuel_inventory.is_empty() then
+		if burner_inserter_leech(entity, fuel_inventory, pickup and pickup.fuel, drop and drop.fuel) then
 			return
 		end
 	end
 
-	-- the rest moves items into the hand: only while the hand is at the pickup
-	if not pickup_target or not at_pickup then return end
+	-- the rest moves items into the hand: only while the hand waits at the pickup
+	if not pickup_target or not pickup or not at_pickup then
+		return
+	end
 
 	-- Fuel chain -----------------------------------------------------------
-	if drop_target then
-		local pickup_inventory = pickup_target.get_fuel_inventory()
+	if drop_target and drop then
+		local pickup_inventory = pickup.fuel
+
 		if pickup_inventory then
-			local drop_inventory = drop_target.get_fuel_inventory()
+			local drop_inventory = drop.fuel
+
 			if drop_inventory
 					and pickup_inventory.get_item_count() >= 5
 					and drop_inventory.get_item_count() < 5
@@ -610,8 +632,11 @@ local function inserter_work(tick, t_object, pickup_target, drop_target, at_pick
 	end
 
 	-- Burnt-result clearing ------------------------------------------------
-	local burnt_inv = pickup_target.get_burnt_result_inventory()
-	if not burnt_inv or burnt_inv.is_empty() then return end
+	local burnt_inv = pickup.burnt
+
+	if not burnt_inv or burnt_inv.is_empty() then
+		return
+	end
 
 	-- Precompute the filter decision once for this inserter/tick
 	-- (a blacklisted ash filter is covered by filter_passes too).
@@ -794,34 +819,40 @@ end
 --
 -- ----------------------------------------------------------------------------
 
----@return QueueItem?, LuaEntity?, LuaEntity?, boolean?
-local function get_next_inserter()
+---@param t_object QueueItem
+---@param entity LuaEntity
+local function cache_pickup_position(t_object, entity)
+	local position = entity.pickup_position
+
+	t_object.pickup_x, t_object.pickup_y = position.x, position.y
+end
+
+---@param tick integer
+---@return QueueItem?, LuaEntity?, LuaEntity?, boolean, defines.entity_status?, boolean
+local function get_next_inserter(tick)
 	local t_object, _ = dllist.get_next_loop(storage.inserters.queue)
 
-	if not t_object then return nil end
-
-	local entity = t_object.entity
-	if not entity or not entity.valid then
-		remove_inserter(t_object)
-		return nil
+	if not t_object then
+		return nil, nil, nil, false, nil, false
 	end
 
-	-- Read each position table exactly once.
-	local pickup_pos = entity.pickup_position
-	local held_pos   = entity.held_stack_position
-	local dx         = pickup_pos.x - held_pos.x
-	local dy         = pickup_pos.y - held_pos.y
+	local entity = t_object.entity
 
-	local at_pickup  = not (dx > 0.01 or dx < -0.01 or dy > 0.01 or dy < -0.01)
+	if not entity or not entity.valid then
+		remove_inserter(t_object)
 
-	-- A hand that is not at the pickup is left alone, except for refuelling: a burner inserter
-	-- without fuel may be stuck anywhere (no energy to move its hand back).
-	if not at_pickup then
-		local fuel_inventory = t_object.fuel_inventory
+		return nil, nil, nil, false, nil, false
+	end
 
-		if entity.status ~= defines.entity_status.no_fuel and not (fuel_inventory and fuel_inventory.is_empty()) then
-			return nil
-		end
+	local status         = entity.status
+	local fuel_inventory = t_object.fuel_inventory
+	local waiting        = status == S_WAITING
+	local refuel         = status == S_NO_FUEL or (fuel_inventory ~= nil and fuel_inventory.is_empty())
+	local ash_due        = ash_check_due(tick, t_object)
+
+
+	if not (waiting or refuel or ash_due) then
+		return nil, nil, nil, false, nil, false
 	end
 
 	local pickup_target = entity.pickup_target
@@ -829,22 +860,42 @@ local function get_next_inserter()
 
 	if not pickup_target and not drop_target then
 		remove_inserter(t_object)
-		return nil
+
+		return nil, nil, nil, false, nil, false
 	end
 
 	local valid_targets = storage.inserters.settings.valid_targets
+
 	if pickup_target and not valid_targets[pickup_target.type] then
 		if drop_target and not valid_targets[drop_target.type] then
 			if drop_target.type ~= "inserter" then
 				remove_inserter(t_object)
 			end
-			return nil
+
+			return nil, nil, nil, false, nil, false
 		end
 	end
 
 	t_object.err = 0
 
-	return t_object, pickup_target, drop_target, at_pickup
+	-- Waiting for source items: the hand should be at the pickup; checked, so nothing is ever
+	-- put into a hand that is still on its way. The pickup position only changes on rotation
+	-- and the like (check_entity forgets it then), and is read again with each ash check.
+	local at_pickup = false
+
+	if waiting then
+		if ash_due or not t_object.pickup_x then
+			cache_pickup_position(t_object, entity)
+		end
+
+		local held_pos = entity.held_stack_position
+		local dx       = t_object.pickup_x - held_pos.x
+		local dy       = t_object.pickup_y - held_pos.y
+
+		at_pickup      = not (dx > 0.01 or dx < -0.01 or dy > 0.01 or dy < -0.01)
+	end
+
+	return t_object, pickup_target, drop_target, at_pickup, status, ash_due
 end
 
 -- Remote Function ------------------------------------------------------------
@@ -998,7 +1049,11 @@ local function burner_fuel_leech_on_build(entity)
 		drop_target = nil
 	end
 
-	burner_inserter_leech(entity, pickup_target, drop_target)
+	burner_inserter_leech(
+		entity, entity.get_fuel_inventory(),
+		pickup_target and pickup_target.get_fuel_inventory(),
+		drop_target and drop_target.get_fuel_inventory()
+	)
 end
 
 ---@param entity LuaEntity
@@ -1038,12 +1093,12 @@ local function check_entity(entity)
 	if entity.valid == false or entity.unit_number == nil then return end
 
 	if (entity.type == "inserter") and (entity.unit_number ~= nil) then
-		local _, tracked = dllist.find(storage.inserters.queue, entity.unit_number)
+		local item, tracked = dllist.find(storage.inserters.queue, entity.unit_number)
 
-		if not tracked then
-			if inserter_condition(entity) then
-				add_inserter(entity)
-			end
+		if tracked and item then
+			item.pickup_x, item.pickup_y = nil, nil
+		elseif inserter_condition(entity) then
+			add_inserter(entity)
 		end
 	end
 end
@@ -1069,10 +1124,10 @@ function inserter_script.on_tick(tick)
 
 	-- never more than the queue holds: a small queue would process the same inserters twice per tick
 	for _ = 1, math.min(storage.inserters.settings.batch_size, inserter_size), 1 do
-		local t_object, pickup_target, drop_target, at_pickup = get_next_inserter()
+		local t_object, pickup_target, drop_target, at_pickup, status, ash_due = get_next_inserter(tick)
 
 		if t_object then
-			inserter_work(tick, t_object, pickup_target, drop_target, at_pickup)
+			inserter_work(t_object, pickup_target, drop_target, at_pickup, status, ash_due)
 		end
 	end
 end
