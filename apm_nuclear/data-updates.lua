@@ -7,9 +7,7 @@ require("prototypes.main.equipment-overwrites")
 require("prototypes.main.technologies-overwrites")
 require("prototypes.integrations.updates")
 
-if mods["space-age"] then
-	apm.lib.utils.planet.add.resource("nauvis", "thorium-ore")
-end
+apm.lib.utils.planet.add.resource("nauvis", "thorium-ore")
 
 --- [radiation resistance patch]
 local armor = apm.lib.utils.armor

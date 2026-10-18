@@ -60,6 +60,46 @@ end
 --
 --
 -- ----------------------------------------------------------------------------
+local function add_thorium_to_nauvis()
+	local surface = game.surfaces["nauvis"]
+
+	if not surface or not prototypes.entity["thorium-ore"] then
+		return
+	end
+
+	local settings = surface.map_gen_settings
+	local changed = false
+
+	settings.autoplace_controls = settings.autoplace_controls or {}
+
+	if prototypes.autoplace_control["thorium-ore"] and not settings.autoplace_controls["thorium-ore"] then
+		settings.autoplace_controls["thorium-ore"] = { frequency = 1, size = 1, richness = 1 }
+		changed = true
+	end
+
+	settings.autoplace_settings = settings.autoplace_settings or {}
+
+	local entity = settings.autoplace_settings["entity"] or { settings = {} }
+
+	entity.settings = entity.settings or {}
+
+	if not entity.settings["thorium-ore"] then
+		entity.settings["thorium-ore"] = { frequency = 1, size = 1, richness = 1 }
+		settings.autoplace_settings["entity"] = entity
+		changed = true
+	end
+
+	if changed then
+		surface.map_gen_settings = settings
+
+		log("apm_nuclear: thorium-ore added to the map generation of nauvis (new chunks only)")
+	end
+end
+
+-- Function -------------------------------------------------------------------
+--
+--
+-- ----------------------------------------------------------------------------
 local function on_init()
 	register_radioactive_items()
 	register_burner_equipment()
@@ -79,6 +119,7 @@ end
 local function on_update()
 	register_radioactive_items()
 	register_burner_equipment()
+	add_thorium_to_nauvis()
 end
 
 -- ----------------------------------------------------------------------------

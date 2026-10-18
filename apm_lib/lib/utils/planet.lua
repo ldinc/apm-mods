@@ -17,12 +17,24 @@ function apm.lib.utils.planet.add.resource(planet_name, resource_name)
 		return
 	end
 
-	if planet.map_gen_settings == nil and planet.map_gen_settings.autoplace_controls then
+	local settings = planet.map_gen_settings
+
+	if settings == nil then
+		APM_LOG_ERR("", "planet.add.resource", "planet '" .. planet_name .. "' has no map_gen_settings")
+
 		return
 	end
 
-	planet.map_gen_settings.autoplace_controls[resource_name] = {}
-	planet.map_gen_settings.autoplace_settings["entity"].settings[resource_name] = {}
+	settings.autoplace_controls = settings.autoplace_controls or {}
+	settings.autoplace_settings = settings.autoplace_settings or {}
+	settings.autoplace_settings["entity"] = settings.autoplace_settings["entity"] or {}
+	settings.autoplace_settings["entity"].settings = settings.autoplace_settings["entity"].settings or {}
+
+	if data.raw["autoplace-control"] and data.raw["autoplace-control"][resource_name] then
+		settings.autoplace_controls[resource_name] = {}
+	end
+
+	settings.autoplace_settings["entity"].settings[resource_name] = {}
 end
 
 ---@param planet_name string
