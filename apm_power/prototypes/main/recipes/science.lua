@@ -52,8 +52,9 @@ local recipe = {
 	name = "apm_industrial_science_pack_1"
 }
 recipe.categories = { "crafting" }
-recipe.subgroup = "apm_power_science"
-recipe.order = "aa_b"
+-- recipe.subgroup = "apm_power_science"
+recipe.subgroup = "science-pack"
+recipe.order = "a[apm_industrial_science_pack]"
 recipe.icons = icons
 
 recipe.enabled = false
@@ -82,6 +83,8 @@ local recipe = {
 
 recipe.categories = { "crafting-with-fluid" }
 --recipe.icons = icons
+
+recipe.order = "a[apm_steam_science_pack]"
 
 recipe.enabled = false
 recipe.energy_required = 5

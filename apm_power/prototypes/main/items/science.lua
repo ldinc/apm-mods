@@ -32,7 +32,7 @@ local item = {
 	},
 	stack_size = 200,
 	subgroup = "science-pack",
-	order = "ab[apm_steam_science_pack]",
+	order = "a[apm_steam_science_pack]",
 
 	weight = apm.lib.utils.constants.value.weight.fuel_element,
 }

@@ -17,6 +17,9 @@ local recipe = {
 	name = "apm_nuclear_science_pack",
 	categories = { "advanced-crafting" },
 
+	subgroup = "science-pack",
+	order = "dn[apm_nuclear_science_pack]",
+
 	enabled = false,
 	energy_required = 21,
 	ingredients = {

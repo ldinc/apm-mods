@@ -14,8 +14,9 @@ local item = {
 		apm.nuclear.icons.sciencepack
 	},
 	stack_size = 200,
-	subgroup = "apm_nuclear_science",
-	order = "aa_a",
+	-- subgroup = "apm_nuclear_science",
+	subgroup = "science-pack",
+	order = "dn[apm_nuclear_science_pack]",
 
 	weight = apm.lib.utils.constants.value.weight.science_pack,
 }
