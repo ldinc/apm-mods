@@ -23,6 +23,7 @@ apm.lib.utils.recipe.result.replace_all(
 )
 
 apm.lib.utils.recipe.remove("crushed-coal")
+apm.lib.utils.item.remove("crushed-coal")
 
 apm.lib.utils.recipe.remove("burner-crusher")
 apm.lib.utils.recipe.remove("electric-crusher")
