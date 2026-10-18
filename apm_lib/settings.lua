@@ -76,7 +76,7 @@ data:extend({
 	{ type = "bool-setting",   name = "apm_lib_storage_spit_out_mark_deconstruct", setting_type = "runtime-global", default_value = true,                                                           order = "ab_b" },
 	{ type = "bool-setting",   name = "apm_lib_radiation_dmg",                     setting_type = "runtime-global", default_value = true,                                                           order = "ac_a" },
 	{ type = "double-setting", name = "apm_lib_radiation_dmg_multiplier",          setting_type = "runtime-global", minimum_value = 0.1,                                                            default_value = 1.0, order = "ac_b" },
-	{ type = "bool-setting",   name = "apm_lib_radiation_dmg_based_on_stack",      setting_type = "runtime-global", default_value = false,                                                          order = "ac_a" },
+	{ type = "bool-setting",   name = "apm_lib_radiation_dmg_based_on_stack",      setting_type = "runtime-global", default_value = true,                                                           order = "ac_a" },
 })
 
 -- runtime-per-user -----------------------------------------------------------

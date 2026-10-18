@@ -10,3 +10,16 @@ require("prototypes.integrations.updates")
 if mods["space-age"] then
 	apm.lib.utils.planet.add.resource("nauvis", "thorium-ore")
 end
+
+--- [radiation resistance patch]
+local armor = apm.lib.utils.armor
+local R = armor.damage_type.radiation
+
+armor.add_resistance("heavy-armor", R, 0, 10)
+armor.add_resistance("modular-armor", R, 1, 15)
+armor.add_resistance("power-armor", R, 3, 30)
+armor.add_resistance("power-armor-mk2", R, 5, 50)
+
+if mods["space-age"] then
+	armor.add_resistance("mech-armor", R, 8, 60)
+end

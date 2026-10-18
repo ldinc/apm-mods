@@ -305,8 +305,7 @@ local function damage_to_character_from_item(player, character, item_name, count
 
 	if damage <= 0 then return end
 
-	-- damage type defaults to "impact"; the returned value is after resistances
-	local dealt = character.damage(damage, game.forces.neutral)
+	local dealt = character.damage(damage, game.forces.neutral, "apm_radiation")
 
 	---@type LocalisedString
 	local msg = { "apm_msg_radiation_dmg", string.format("%.1f", dealt or damage), item_name }
