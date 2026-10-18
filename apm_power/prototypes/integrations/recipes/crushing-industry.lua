@@ -26,3 +26,6 @@ apm.lib.utils.recipe.remove("crushed-coal")
 
 apm.lib.utils.recipe.remove("burner-crusher")
 apm.lib.utils.recipe.remove("electric-crusher")
+
+apm.lib.utils.recipe.ingredient.replace("sand", "stone", "apm_crushed_stone", 2)
+apm.lib.utils.recipe.result.replace("sand", "stone", "apm_crushed_stone")

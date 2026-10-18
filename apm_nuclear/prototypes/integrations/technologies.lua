@@ -114,6 +114,13 @@ if mods.RealisticReactors and apm_nuclear_compat_realistic_reactors then
 end
 
 
+--- [SafTheLamb]
+---
+--- [crushing-industry]
+if mods["crushing-industry"] then
+	require("prototypes.integrations.technologies.crushing-industries")
+end
+
 --- Vanilla
 apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("kovarex-enrichment-process")
 

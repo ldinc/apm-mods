@@ -13,3 +13,5 @@ apm.lib.utils.technology.remove.recipe_from_unlock("steam-power", "burner-crushe
 apm.lib.utils.technology.remove.recipe_from_unlock("steam-power", "sand")
 apm.lib.utils.technology.add.recipe_for_unlock("apm_stone_bricks", "sand")
 apm.lib.utils.technology.add.prerequisites("electronics", "apm_stone_bricks")
+
+apm.lib.utils.technology.remove.prerequisites("electronics", "apm_stone_bricks")
