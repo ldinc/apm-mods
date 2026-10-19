@@ -264,3 +264,18 @@ end
 if mods["planet-muluna"] then
 	require("prototypes.integrations.entities.muluna")
 end
+
+
+if mods["Smart_Inserters"] then
+	local inserter, ok = apm.lib.utils.entity.get.by_name("apm_steam_inserter_long", "inserter")
+
+	if ok then
+		apm.lib.utils.entity.set.hidden(inserter)
+	end
+
+	inserter, ok = apm.lib.utils.entity.get.by_name("apm_burner_long_inserter", "inserter")
+
+	if ok then
+		apm.lib.utils.entity.set.hidden(inserter)
+	end
+end

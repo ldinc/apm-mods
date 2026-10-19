@@ -296,6 +296,7 @@ end
 
 if mods["Smart_Inserters"] then
 	apm.lib.utils.technology.delete("apm_burner_long_inserter")
+	apm.lib.utils.technology.remove.recipe_from_unlock("apm_steam_science_pack", "apm_steam_inserter_long")
 end
 
 if mods["deadlock-beltboxes-loaders"] then

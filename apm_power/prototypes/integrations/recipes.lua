@@ -786,3 +786,8 @@ end
 if mods["Krastorio2"] then
 	require("prototypes.integrations.recipes.krastorio")
 end
+
+if mods["Smart_Inserters"] then
+	apm.lib.utils.recipe.remove("apm_steam_inserter_long")
+	apm.lib.utils.recipe.remove("apm_burner_long_inserter")
+end

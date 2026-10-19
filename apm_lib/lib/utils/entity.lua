@@ -250,6 +250,7 @@ local function check_if_an_entity_exists(next_upgrade)
 	return false
 end
 
+---@param entity EntityPrototype?
 function apm.lib.utils.entity.set.hidden(entity)
 	if entity == nil then
 		return
@@ -257,6 +258,10 @@ function apm.lib.utils.entity.set.hidden(entity)
 
 	entity.hidden = true
 	entity.hidden_in_factoriopedia = true
+
+	if entity.next_upgrade then
+		apm.lib.utils.entity.del.next_upgrade(entity)
+	end
 end
 
 function apm.lib.utils.entity.del.next_upgrade(entity)

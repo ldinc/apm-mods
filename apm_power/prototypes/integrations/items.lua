@@ -124,3 +124,8 @@ end
 if mods["bzfoundry2"] then
 	require("prototypes.integrations.items.bzfoundry2")
 end
+
+if mods["Smart_Inserters"] then
+	apm.lib.utils.item.remove("apm_steam_inserter_long")
+	apm.lib.utils.item.remove("apm_burner_long_inserter")
+end
