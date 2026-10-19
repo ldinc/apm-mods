@@ -55,6 +55,11 @@ apm.lib.utils.car.overhaul_all()
 --
 -- ----------------------------------------------------------------------------
 
+local entity, ok = apm.lib.utils.entity.get.by_name("offshore-pump", "offshore-pump")
+if ok then
+	apm.lib.utils.entity.set.hidden(entity)
+end
+
 -- AlternativeSteam -----------------------------------------------------------
 --
 --

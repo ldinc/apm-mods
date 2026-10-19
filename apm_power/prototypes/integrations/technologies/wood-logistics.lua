@@ -72,3 +72,7 @@ if mods["aai-loaders"] and apm.lib.features.power.compat.earendel then
 		apm.lib.utils.technology.add.prerequisites(loader_tech, "apm_press_machine_0")
 	end
 end
+
+--- TTree optimizing
+apm.lib.utils.technology.remove.prerequisites("advanced-carpentry", "apm_treated_wood_planks-1")
+apm.lib.utils.technology.remove.prerequisites("advanced-carpentry", "apm_treated_wood_planks-2")

@@ -10,3 +10,8 @@ apm.lib.utils.item.overwrite.group("heat-pipe", "apm_nuclear_machines_1", "ab_a"
 apm.lib.utils.item.overwrite.group("heat-exchanger", "apm_nuclear_machines_1", "ac_a")
 apm.lib.utils.item.overwrite.group("steam-turbine", "apm_nuclear_machines_1", "ad_a")
 apm.lib.utils.item.overwrite.group("nuclear-reactor", "apm_nuclear_machines_2", "aa_a")
+
+apm.lib.utils.item.remove("uranium-235")
+apm.lib.utils.item.remove("uranium-238")
+apm.lib.utils.item.remove("uranium-fuel-cell")
+apm.lib.utils.item.remove("depleted-uranium-fuel-cell")

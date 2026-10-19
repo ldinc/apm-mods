@@ -20,6 +20,11 @@ if script.active_mods["alloy-smelting"] then
 	updates.handlers["alloy-smelting"] = require("patches.alloy-smelting")
 end
 
+--- [wood-industry]
+if script.active_mods["wood-industry"] then
+	updates.handlers["wood-industry"] = require("patches.wood-industry")
+end
+
 ---
 --- [/SafTheLamb]
 

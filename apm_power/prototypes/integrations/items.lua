@@ -81,6 +81,9 @@ end
 --- [SafTheLamb]
 ---
 --- [wood-logistics]
+if mods["wood-logistics"] then
+	require("prototypes.integrations.items.wood-logistics")
+end
 
 --- [crushing-industry]
 if mods["crushing-industry"] then
@@ -91,6 +94,11 @@ end
 --- [alloy-smelting]
 if mods["alloy-smelting"] then
 	require("prototypes.integrations.items.alloy-smelting")
+end
+
+--- [wood-industry]
+if mods["wood-industry"] then
+	require("prototypes.integrations.items.wood-industry")
 end
 
 ---

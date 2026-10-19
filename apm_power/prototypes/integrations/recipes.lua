@@ -755,6 +755,11 @@ if mods["alloy-smelting"] then
 	require("prototypes.integrations.recipes.alloy-smelting")
 end
 
+--- [wood-industy]
+if mods["wood-industry"] then
+	require("prototypes.integrations.recipes.wood-industry")
+end
+
 ---
 --- [/SafTheLamb]
 

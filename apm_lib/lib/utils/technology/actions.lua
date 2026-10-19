@@ -237,6 +237,8 @@ function apm.lib.utils.technology.delete(technology_name)
 
 	technology.prerequisites = {}
 
+	technology.effects = {}
+
 	for technology, _ in pairs(data.raw.technology) do
 		if technology ~= technology_name then
 			if apm.lib.utils.technology.has.prerequisites(technology, technology_name) then

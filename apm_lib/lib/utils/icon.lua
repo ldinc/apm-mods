@@ -258,8 +258,6 @@ function apm.lib.utils.icon.merge(icon_tables)
 		if size < min_size then min_size = size end
 	end
 
-	log(serpent.block(icon_tables))
-
 	for _, layer in ipairs(layers) do
 		local scale = min_size / get_icon_size(layer)
 		if layer.scale == nil and scale ~= 1.0 then

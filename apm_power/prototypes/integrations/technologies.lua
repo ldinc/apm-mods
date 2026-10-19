@@ -324,6 +324,16 @@ end
 if mods["wood-military"] then
 	require("prototypes.integrations.technologies.wood-military")
 end
+
+if mods["wood-industry"] then
+	require("prototypes.integrations.technologies.wood-industry")
+end
+
+if mods["crushing-industry"] or mods["alloy-smelting"] or mods["wood-logistics"]
+		or mods["wood-industry"] or mods["wood-military"] then
+	require("prototypes.integrations.technologies.safthelamb")
+end
+
 ---
 --- [/SafTheLamb]
 

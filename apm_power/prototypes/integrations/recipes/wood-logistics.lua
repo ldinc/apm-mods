@@ -2,7 +2,7 @@ if not apm.lib.features.power.compat.safthelamb then
 	return
 end
 
-local crafting_category = { "crafting-or-carpentry" }
+local crafting_category = { "carpentry" }
 
 apm.lib.utils.assembler.add.crafting_categories("apm_assembling_machine_0", crafting_category)
 apm.lib.utils.assembler.add.crafting_categories("apm_assembling_machine_1", crafting_category)
@@ -74,6 +74,18 @@ for name, saw in pairs(recipies) do
 		data.extend({ new_recipe })
 	end
 end
+
+-- recipe, ok = apm.lib.utils.recipe.get.by_name("rail")
+
+-- if ok then
+-- 	apm.lib.utils.recipe.category.change(recipe, "crafting-or-carpentry")
+-- end
+
+-- recipe, ok = apm.lib.utils.recipe.get.by_name("small-electric-pole")
+
+-- if ok then
+-- 	apm.lib.utils.recipe.category.change(recipe, "crafting-or-carpentry")
+-- end
 
 if mods["aai-loaders"] and apm.lib.features.power.compat.earendel then
 	local loader = "aai-wood-loader"
