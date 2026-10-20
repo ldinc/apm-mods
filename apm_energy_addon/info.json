@@ -1,15 +1,15 @@
 {
 	"name": "apm_energy_addon_ldinc",
-	"version": "0.32.04",
+	"version": "0.32.30",
 	"title": "Amator Phasma's Energy (forked Addon)",
 	"author": "AmatorPhasma, ldinc",
 	"dependencies": [
-		"base >= 2.1.20",
+		"base >= 2.1.22",
 		"? space-age >= 1.0.0",
-		"apm_resource_pack_ldinc >= 0.32.5",
-		"apm_lib_ldinc >= 0.32.17",
-		"? apm_power_ldinc >= 0.32.21",
-		"? apm_nuclear_ldinc >= 0.32.04",
+		"apm_resource_pack_ldinc >= 0.32.30",
+		"apm_lib_ldinc >= 0.32.30",
+		"? apm_power_ldinc >= 0.32.30",
+		"? apm_nuclear_ldinc >= 0.32.30",
 		"? reskins-bobs >= 2.3.2",
 		"? bobplates >= 2.0.0",
 		"? boblogistics >= 2.0.0",
@@ -25,5 +25,5 @@
 	"expansion_shaders_required": false,
 	"description": "This is a small mod that adds electric cars and tanks (thats needs batteries) and a charging station. Vanilla and Bob's batteries have now a fuel value, if these are depleted you can recharge them at a charging station.",
 	"factorio_version": "2.1",
-	"homepage": ""
+	"homepage": "https://github.com/ldinc/apm-mods"
 }

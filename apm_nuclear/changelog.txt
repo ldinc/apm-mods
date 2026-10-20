@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.30
+Date: 20.10.2026
+  Changes:
+    - Remove freeplay starting equipment as dependency.
+    - Added tips and simulations.
+    - Tech tree optimization.
+    - Updates and cleanup for 2.1.22 game version.
+    - Pin 0.32.30 version for all related apm's mods.
+    - Added radiation resistance for armors. Now it has own damage type.
+  Bugfixes:
+    - Vanilla without space age: some conditions lead to missing thorium ore patches at startup generation.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.06
 Date: 23.09.2026
   Changes:

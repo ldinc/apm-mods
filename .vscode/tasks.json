@@ -47,6 +47,30 @@
 			"problemMatcher": []
 		},
 		{
+			"label": "Factorio: build all mods",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/deploy.ps1", "-All", "-BuildOnly"],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Factorio: build changed mods (git)",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/deploy.ps1", "-Changed", "-BuildOnly"],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Factorio: build mods (comma-separated)...",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/deploy.ps1", "-BuildOnly", "${input:mods}"],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
 			"label": "Tests: run all",
 			"type": "shell",
 			"command": "powershell",
@@ -69,6 +93,11 @@
 			"description": "Mod to deploy",
 			"options": ["apm_lib", "apm_power", "apm_nuclear", "apm_energy_addon", "apm_resource_pack", "rampart_heavy_wall"],
 			"default": "apm_lib"
+		},
+		{
+			"id": "mods",
+			"type": "promptString",
+			"description": "Mods to build, comma-separated (e.g. apm_lib, apm_power)"
 		}
 	]
 }

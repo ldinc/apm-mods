@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.30
+Date: 20.10.2026
+  Changes:
+    - Set freeplay starting equipment as recomended, but optional deps.
+    - Added tips and simulations.
+    - Tech tree optimization.
+    - Updates and cleanup for 2.1.22 game version.
+    - Pin 0.32.30 version for all related apm's mods.
+  Compatibility:
+    - [aai-industry] reworked.
+    - Saf the lamb's mods comaptability reworked.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.24
 Date: 24.09.2026
   Changes:

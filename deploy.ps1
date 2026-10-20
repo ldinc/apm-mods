@@ -13,15 +13,16 @@
 # .factorio.unstable (same as copy.bat / reload.bat).
 
 param(
+	[Parameter(Position = 0, ValueFromRemainingArguments = $true)]
+	[string[]]$Mods,
+
 	[ValidateSet("stable", "unstable")]
 	[string]$Environment = "stable",
 
 	[switch]$All,
 	[switch]$Changed,
 	[switch]$Launch,
-
-	[Parameter(ValueFromRemainingArguments = $true)]
-	[string[]]$Mods
+	[switch]$BuildOnly
 )
 
 Set-StrictMode -Version Latest
@@ -55,9 +56,25 @@ elseif ($Changed) {
 	}
 }
 
+# accept comma/semicolon separated mod lists (from the VS Code task prompt)
+$Mods = @($Mods | ForEach-Object { $_ -split '[,;]' } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+
 if (-not $Mods -or $Mods.Count -eq 0) {
 	Write-Error "No mods specified. Use -All, -Changed, or pass mod folder names."
 	exit 1
+}
+
+if ($BuildOnly) {
+	if ($Launch) {
+		Write-Error "-BuildOnly and -Launch can not be combined."
+		exit 1
+	}
+
+	Write-Host "Building -> $PSScriptRoot"
+	Write-Host "  mods: $($Mods -join ', ')"
+	& goft.exe -b @Mods
+	if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+	return
 }
 
 $out = Join-Path $target "mods"

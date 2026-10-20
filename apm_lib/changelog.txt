@@ -1,4 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.30
+Date: 20.10.2026
+  Features:
+    - [radiation] New damage type 'apm_radiation'; armors can now carry radiation resistance ([apm.lib.utils.armor.add_resistance]).
+    - Tips-and-tricks entries and simulations for the radiation and power features.
+    - New startup setting 'apm_lib_resort_science_packs_functions' to toggle the science pack sorting (default off).
+  Changes:
+    - [radiation] Damage is based on stack by default now (existing saves keep their setting).
+    - AAI Industry compatibility reworked: icon utilities overhauled, barrel and patch helpers updated.
+    - The freeplay starting equipment dependency is now recommended-but-optional.
+    - Updates and cleanup for 2.1.22 game version.
+    - Pin 0.32.30 version for all related apm's mods.
+  Bugfixes:
+    - [builder] Steam fluid box builders no longer write min/max temperature (2.1.22 compatibility); signature simplified to (volume).
+    - Fixed the steam inserter pipe connection (2.1.22).
+    - [planet] Fixed missing thorium ore generation on Nauvis for games without the space-age mod.
+    - Compatibility fixes for the Smart_Inserters and SafTheLamb's mod sets.
+    - Fixed simulations and tips definitions; assorted lint fixes.
+  Optimizations:
+    - [inserter] Reworked the caches of the inserter fuel logic; the burnt-result type is cached.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.17
 Date: 23.09.2026
   Bugfixes:
