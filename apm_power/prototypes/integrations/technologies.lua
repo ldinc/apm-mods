@@ -58,7 +58,6 @@ apm.lib.utils.technology.remove.science_pack("electric-engine", "chemical-scienc
 
 apm.lib.utils.technology.add.prerequisites("lamp", "apm_power_electricity")
 apm.lib.utils.technology.add.prerequisites("radar", "apm_power_electricity")
-apm.lib.utils.technology.add.prerequisites("fast-inserter", "apm_power_electricity")
 
 -- AsphaltRoads ----------------------------------------------------------------
 --

@@ -894,9 +894,8 @@ new_tech(
 -- TODO: create own icon for this technology
 new_tech(
 	"apm_wood_liquefaction",
-	{ "advanced-oil-processing" },
-	{ "apm_refining_wood_1", "apm_refining_creosote_1", "apm_refining_coke_oven_gas_1", "apm_coke_oven_gas-barrel",
-		"empty-apm_coke_oven_gas-barrel" },
+	{ "advanced-oil-processing", "apm_fuel-4" },
+	{ "apm_refining_wood_1", "apm_refining_creosote_1", "apm_refining_coke_oven_gas_1" },
 	nil,
 	{
 		ingredients = { { sp.automation, 1 }, { sp.logistic, 1 }, { sp.chemical, 1 } },

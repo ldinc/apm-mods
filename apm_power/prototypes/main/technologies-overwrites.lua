@@ -56,8 +56,16 @@ apm.lib.utils.technology.remove.science_pack("automated-rail-transportation", "l
 apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "steam-engine")
 apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "small-electric-pole")
 apm.lib.utils.technology.force.recipe_for_unlock("apm_power_electricity", "electronic-circuit")
-apm.lib.utils.recipe.disable("electric-mining-drill")
 apm.lib.utils.recipe.disable("offshore-pump")
+apm.lib.utils.recipe.disable("electric-mining-drill")
+
+--- [electric-mining]
+if apm.lib.utils.technology.exist("electric-mining-drill") then
+	apm.lib.utils.technology.disable("apm_electric_mining_drills")
+	--- TODO: update tree deps
+	apm.lib.utils.technology.add.prerequisites("electric-mining-drill", "apm_power_electricity")
+	apm.lib.utils.technology.remove.prerequisites("electric-mining-drill", "automation-science-pack")
+end
 
 --- [automation]
 apm.lib.utils.technology.add.prerequisites("automation", "apm_power_electricity")
@@ -125,6 +133,12 @@ apm.lib.utils.technology.trigger.set.craft_item("electronics", "apm_steam_scienc
 --- [iron-stick]
 apm.lib.utils.technology.remove.recipe_from_unlock("railway", "iron-stick")
 apm.lib.utils.recipe.enable("iron-stick")
+local tlist = { "circuit-network", "concrete", "electric-energy-distribution-1" }
+
+for _, tname in pairs(tlist) do
+	apm.lib.utils.technology.remove.recipe_from_unlock(tname, "iron-stick")
+end
+
 apm.lib.utils.technology.remove.prerequisites("railway", "steam-power")
 
 -- apm.lib.utils.technology.force.recipe_for_unlock('military-2', 'radar')
@@ -136,7 +150,9 @@ apm.lib.utils.technology.remove.science_packs_except("gun-turret", { "apm_indust
 apm.lib.utils.technology.set.heritage_science_packs_from_prerequisites("gun-turret")
 
 --- [fast-inserter]
+apm.lib.utils.technology.add.prerequisites("fast-inserter", "automation")
 apm.lib.utils.technology.remove.prerequisites("fast-inserter", "automation-science-pack")
+apm.lib.utils.technology.remove.prerequisites("fast-inserter", "apm_power_electricity")
 
 --- [lamp]
 apm.lib.utils.technology.remove.prerequisites("lamp", "automation-science-pack")
