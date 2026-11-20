@@ -1,8 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.35
+Date: 20.11.2026
+  Bugfixes:
+    - [bzcarbon] Return back electric mining drill tech (missing after global removal apm_electric_mining_drill tech, thx The_Fluffy_01).
+---------------------------------------------------------------------------------------------------
 Version: 0.32.34
 Date: 17.11.2026
   Bugfixes:
-    - Some tree optimization.
+    - Some tree optimizations.
 ---------------------------------------------------------------------------------------------------
 Version: 0.32.33
 Date: 17.11.2026

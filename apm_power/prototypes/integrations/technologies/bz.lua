@@ -28,7 +28,7 @@ if mods["bzcarbon"] or mods["bzcarbon2"] then
 	end
 
 	-- apm.lib.utils.technology.delete("fluid-mining")
-	apm.lib.utils.technology.delete("electric-mining-drill")
+	-- apm.lib.utils.technology.delete("electric-mining-drill")
 	apm.lib.utils.technology.delete("electronics")
 
 	-- apm.lib.utils.technology.remove.prerequisites("uranium-processing", "fluid-mining")
