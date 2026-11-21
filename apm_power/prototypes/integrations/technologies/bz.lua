@@ -14,27 +14,35 @@ if mods["bzcarbon"] or mods["bzcarbon2"] then
 	apm.lib.utils.technology.remove.prerequisites("steel-processing", "graphite-processing")
 	apm.lib.utils.technology.add.prerequisites("fluid-mining", "apm_electric_mining_drills")
 
-	local prereq = {
-		"lubricant",
-		"fluid-handling",
-		"nuclear-power",
-		"battery",
-		"advanced-material-processing-2",
-		"fullerenes"
-	}
+	apm.lib.utils.technology.remove.prerequisites("electronics", "graphite-processing")
 
-	for _, v in ipairs(prereq) do
-		apm.lib.utils.technology.add.prerequisites(v, "graphite-processing")
-	end
+	apm.lib.utils.technology.force.recipe_for_unlock("electronics", "copper-cable")
+	apm.lib.utils.technology.force.recipe_for_unlock("electronics", "electronic-circuit")
 
-	-- apm.lib.utils.technology.delete("fluid-mining")
-	-- apm.lib.utils.technology.delete("electric-mining-drill")
-	apm.lib.utils.technology.delete("electronics")
+	apm.lib.utils.technology.remove.prerequisites_all("fluid-mining")
+	apm.lib.utils.technology.add.prerequisites("fluid-mining", "apm_steam_mining_drill")
 
-	-- apm.lib.utils.technology.remove.prerequisites("uranium-processing", "fluid-mining")
-	-- apm.lib.utils.technology.remove.prerequisites("titanium-processing", "fluid-mining")
+	apm.lib.utils.technology.remove.prerequisites("graphite-processing", "electric-mining-drill")
+	apm.lib.utils.technology.add.prerequisites("electronics", "graphite-processing")
 
-	apm.lib.utils.technology.add.recipe_for_unlock("graphite-processing", "apm_bz_graphite_electronic-circuit")
+	apm.lib.utils.technology.add.prerequisites("graphene", "production-science-pack")
+
+	--- TTree cleanup
+	apm.lib.utils.technology.remove.prerequisites("apm_electric_mining_drills", "apm_steam_mining_drill")
+	apm.lib.utils.technology.remove.prerequisites("electric-mining-drill", "steam-power")
+	apm.lib.utils.technology.remove.prerequisites("fluid-handling", "graphite-processing")
+	apm.lib.utils.technology.remove.prerequisites("battery", "graphite-processing")
+	apm.lib.utils.technology.remove.prerequisites("uranium-processing", "fluid-mining")
+	apm.lib.utils.technology.remove.prerequisites("nuclear-power", "graphite-processing")
+	apm.lib.utils.technology.remove.prerequisites("nuclear-power", "graphite-processing")
+	apm.lib.utils.technology.remove.prerequisites("advanced-material-processing-2", "graphite-processing")
+	apm.lib.utils.technology.remove.prerequisites("fullerenes", "oil-processing")
+	apm.lib.utils.technology.remove.prerequisites("fullerenes", "graphite-processing")
+	apm.lib.utils.technology.remove.prerequisites("lubricant", "graphite-processing")
+	apm.lib.utils.technology.remove.prerequisites("military-3", "chemical-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("laser", "chemical-science-pack")
+	apm.lib.utils.technology.remove.prerequisites("low-density-structure", "advanced-material-processing")
+	apm.lib.utils.technology.remove.prerequisites("low-density-structure", "chemical-science-pack")
 end
 
 if mods["bztitanium"] or mods["bztitanium2"] then

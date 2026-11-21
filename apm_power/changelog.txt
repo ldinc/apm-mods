@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.32.36
+Date: 21.11.2026
+  Changes:
+    - [bzcarbon] Compat tech tree was updated. Also now steam-minning-drill used to obtain graphite ore and use 1/3 input slot to use for fluid input.
+---------------------------------------------------------------------------------------------------
 Version: 0.32.35
 Date: 20.11.2026
   Bugfixes:
